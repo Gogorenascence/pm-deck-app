@@ -4,8 +4,8 @@ steps = [
         CREATE TABLE card_types (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
-            deck_type VARCHAR(100) NOT NULL
-            rules TEXT(200),
+            deck_type VARCHAR(100) NOT NULL,
+            rules TEXT
         );
         """,
         """
@@ -17,7 +17,7 @@ steps = [
         CREATE TABLE extra_effects (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
-            rules TEXT(200),
+            rules TEXT
         );
         """,
         """
@@ -29,7 +29,7 @@ steps = [
         CREATE TABLE reactions (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
-            rules TEXT(200),
+            rules TEXT
         );
         """,
         """
@@ -41,7 +41,7 @@ steps = [
         CREATE TABLE tags (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
-            rules TEXT(200),
+            rules TEXT
         );
         """,
         """
