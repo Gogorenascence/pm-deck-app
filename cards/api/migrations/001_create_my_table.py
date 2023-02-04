@@ -4,6 +4,7 @@ steps = [
         CREATE TABLE card_types (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
+            deck_type VARCHAR(100) NOT NULL
             rules TEXT(200),
         );
         """,
