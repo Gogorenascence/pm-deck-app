@@ -1,0 +1,53 @@
+volumes:
+  cards:
+    external: true
+  pgadmin:
+    external: true
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+        - 8082:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: nantahkl@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: cards
+      PGADMIN_DISABLE_POSTFIX: 1
+  api:
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+    environment:
+      DATABASE_URL: postgresql://cards:cards@db/cards
+      WAIT_HOSTS: db:5432
+      PORT: 8000
+      # SIGNING_KEY: 855hj26pabafb2d4d57f5be921a487480f21f5e48acbc32a4d014147bfd96115d7ddbe8f26219rsds227b343d7f4b9p00p9dd1249e1ec892baf73572353666a97e
+
+  db:
+    image: postgres:14.5-bullseye
+    volumes:
+      - cards:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: cards
+      POSTGRES_USER: cards
+      POSTGRES_DB: cards
+    ports:
+      - "15432:5432"
+  ghi:
+    image: node:lts-bullseye
+    command: /bin/bash run.sh
+    working_dir: /app
+    volumes:
+      - ./ghi:/app
+    ports:
+      - "3000:3000"
+    environment:
+      HOST_OS: ${OS}
+      NODE_ENV: development
+      HOST: "0.0.0.0"
+      REACT_APP_FASTAPI_SERVICE_API_HOST: http://localhost:8000
