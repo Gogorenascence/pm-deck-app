@@ -145,7 +145,7 @@ class CardTypeQueries:
 
                 return record
 
-    def delete_card_types(self, card_type_id: int) -> bool:
+    def delete_card_type(self, card_type_id: int) -> bool:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
@@ -234,7 +234,7 @@ class ExtraEffectQueries:
                 cur.execute(
                     """
                     INSERT INTO extra_effects (name, rules)
-                    VALUES (%s, %s, %s)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
@@ -338,7 +338,7 @@ class ReactionQueries:
                 cur.execute(
                     """
                     INSERT INTO reactions (name, rules)
-                    VALUES (%s, %s, %s)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
@@ -414,7 +414,7 @@ class TagQueries:
                 ]
                 cur.execute(
                     """
-                    UPDATE reactions
+                    UPDATE tags
                     SET name = %s
                         , rules = %s
                     WHERE id = %s
@@ -441,8 +441,8 @@ class TagQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO reactions (name, rules)
-                    VALUES (%s, %s, %s)
+                    INSERT INTO tags (name, rules)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
