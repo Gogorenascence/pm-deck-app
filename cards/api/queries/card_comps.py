@@ -89,6 +89,32 @@ class CardTypeQueries:
 
                 return record
 
+    def create_card_type(self, card_type: CardTypeIn) -> CardTypeOut:
+        with pool.connection() as conn:
+            with conn.cursor() as cur:
+                params = [
+                    card_type.name,
+                    card_type.deck_type,
+                    card_type.rules,
+                ]
+                cur.execute(
+                    """
+                    INSERT INTO card_types (name, deck_type, rules)
+                    VALUES (%s, %s, %s)
+                    RETURNING id, name, deck_type, rules
+                    """,
+                    params,
+                )
+
+                record = None
+                row = cur.fetchone()
+                if row is not None:
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+
+                return record
+
     def update_card_type(self, card_type_id, card_type: CardTypeIn) -> CardTypeOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
@@ -105,32 +131,6 @@ class CardTypeQueries:
                         , deck_type = %s
                         , rules = %s
                     WHERE id = %s
-                    RETURNING id, name, deck_type, rules
-                    """,
-                    params,
-                )
-
-                record = None
-                row = cur.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(cur.description):
-                        record[column.name] = row[i]
-
-                return record
-
-    def create_card_type(self, card_type: CardTypeIn) -> CardTypeOut:
-        with pool.connection() as conn:
-            with conn.cursor() as cur:
-                params = [
-                    card_type.name,
-                    card_type.deck_type,
-                    card_type.rules,
-                ]
-                cur.execute(
-                    """
-                    INSERT INTO card_types (name, deck_type, rules)
-                    VALUES (%s, %s, %s)
                     RETURNING id, name, deck_type, rules
                     """,
                     params,
@@ -196,20 +196,17 @@ class ExtraEffectQueries:
 
                 return record
 
-    def update_card_type(self, extra_effect_id, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
+    def create_extra_effect(self, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     extra_effect.name,
                     extra_effect.rules,
-                    extra_effect_id,
                 ]
                 cur.execute(
                     """
-                    UPDATE extra_effects
-                    SET name = %s
-                        , rules = %s
-                    WHERE id = %s
+                    INSERT INTO extra_effects (name, rules)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
@@ -224,17 +221,20 @@ class ExtraEffectQueries:
 
                 return record
 
-    def create_extra_effect(self, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
+    def update_card_type(self, extra_effect_id, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     extra_effect.name,
                     extra_effect.rules,
+                    extra_effect_id,
                 ]
                 cur.execute(
                     """
-                    INSERT INTO extra_effects (name, rules)
-                    VALUES (%s, %s)
+                    UPDATE extra_effects
+                    SET name = %s
+                        , rules = %s
+                    WHERE id = %s
                     RETURNING id, name, rules
                     """,
                     params,
@@ -300,20 +300,17 @@ class ReactionQueries:
 
                 return record
 
-    def update_reaction(self, reaction_id, reaction: ReactionIn) -> ReactionOut:
+    def create_reaction(self, reaction: ReactionIn) -> ReactionOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     reaction.name,
                     reaction.rules,
-                    reaction_id,
                 ]
                 cur.execute(
                     """
-                    UPDATE reactions
-                    SET name = %s
-                        , rules = %s
-                    WHERE id = %s
+                    INSERT INTO reactions (name, rules)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
@@ -328,17 +325,20 @@ class ReactionQueries:
 
                 return record
 
-    def create_reaction(self, reaction: ReactionIn) -> ReactionOut:
+    def update_reaction(self, reaction_id, reaction: ReactionIn) -> ReactionOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     reaction.name,
                     reaction.rules,
+                    reaction_id,
                 ]
                 cur.execute(
                     """
-                    INSERT INTO reactions (name, rules)
-                    VALUES (%s, %s)
+                    UPDATE reactions
+                    SET name = %s
+                        , rules = %s
+                    WHERE id = %s
                     RETURNING id, name, rules
                     """,
                     params,
@@ -404,20 +404,17 @@ class TagQueries:
 
                 return record
 
-    def update_tag(self, tag_id, card_tag: TagIn) -> TagOut:
+    def create_tag(self, card_tag: TagIn) -> TagOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     card_tag.name,
                     card_tag.rules,
-                    tag_id,
                 ]
                 cur.execute(
                     """
-                    UPDATE tags
-                    SET name = %s
-                        , rules = %s
-                    WHERE id = %s
+                    INSERT INTO tags (name, rules)
+                    VALUES (%s, %s)
                     RETURNING id, name, rules
                     """,
                     params,
@@ -432,17 +429,20 @@ class TagQueries:
 
                 return record
 
-    def create_tag(self, card_tag: TagIn) -> TagOut:
+    def update_tag(self, tag_id, card_tag: TagIn) -> TagOut:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
                     card_tag.name,
                     card_tag.rules,
+                    tag_id,
                 ]
                 cur.execute(
                     """
-                    INSERT INTO tags (name, rules)
-                    VALUES (%s, %s)
+                    UPDATE tags
+                    SET name = %s
+                        , rules = %s
+                    WHERE id = %s
                     RETURNING id, name, rules
                     """,
                     params,
