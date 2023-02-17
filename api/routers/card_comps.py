@@ -26,7 +26,6 @@ router = APIRouter(tags=["card_comps"])
 async def get_all_card_types(queries: CardTypeQueries = Depends()):
     return CardTypesAll(card_types=queries.get_all_card_types())
 
-
 @router.get("/api/card_types/{card_type_id}", response_model=CardTypeOut)
 async def get_card_type(
     card_type_id: str,

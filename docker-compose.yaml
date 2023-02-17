@@ -2,14 +2,10 @@ volumes:
   cards:
     external: true
 services:
-  cards-api:
+  api:
     build:
-      context: ./cards/api
-      dockerfile: ./Dockerfile.dev
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./cards/api:/app
+      context: ./api
+      dockerfile: Dockerfile.dev
     environment:
       CORS_HOST: http://localhost:3000
       DATABASE_URL: mongodb://root:password@mongo
@@ -18,7 +14,11 @@ services:
       WAIT_BEFORE: 5
       WAIT_TIMEOUT: 60
       # SIGNING_KEY: 855hj26pabafb2d4d57f5be921a487480f21f5e48acbc32a4d014147bfd96115d7ddbe8f26219rsds227b343d7f4b9p00p9dd1249e1ec892baf73572353666a97e
-  db:
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+  mongo:
     image: mongo:6
     volumes:
         - ./setup/mongodb:/docker-entrypoint-initdb.d
@@ -28,7 +28,6 @@ services:
         MONGO_INITDB_ROOT_PASSWORD: password
     ports:
       - 27017:27017
-
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -41,4 +40,5 @@ services:
       HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
-      REACT_APP_FASTAPI_SERVICE_API_HOST: http://localhost:3000
+      PUBLIC_URL: http://localhost:3000
+      REACT_APP_FASTAPI_SERVICE_API_HOST: http://localhost:8000

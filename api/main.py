@@ -20,6 +20,7 @@ app.include_router(card_comps.router, tags=["card_comps"])
 # app.include_router(reviews.router, tags=["reviews"])
 # app.include_router(authenticator.router, tags=["authenticator"])
 # app.include_router(spotify.router, tags=["spotify"])
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
