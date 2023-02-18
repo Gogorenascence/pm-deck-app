@@ -33,39 +33,55 @@ class CardTypeOut(CardTypeIn):
 
 
 class CardTypesAll(BaseModel):
-    card_types: List[CardTypeOut]
+    card_types: List
 
 
-# class ExtraEffectIn(BaseModel):
-#     name: str
-#     rules: Optional[str]
-
-# class ExtraEffectOut(ExtraEffectIn):
-#     id: str
-
-# class ExtraEffectsAll(BaseModel):
-#     extra_effects: List
+class ExtraEffectIn(BaseModel):
+    name: str
+    rules: Optional[str]
 
 
-
-# class ReactionIn(BaseModel):
-#     name: str
-#     rules: Optional[str]
-
-# class ReactionOut(ReactionIn):
-#     id: str
-
-# class ReactionsAll(BaseModel):
-#     reactions: List
+class ExtraEffect(ExtraEffectIn):
+    id: PydanticObjectId
 
 
+class ExtraEffectOut(ExtraEffectIn):
+    id: str
 
-# class TagIn(BaseModel):
-#     name: str
-#     rules: Optional[str]
 
-# class TagOut(TagIn):
-#     id: str
+class ExtraEffectsAll(BaseModel):
+    extra_effects: List
 
-# class TagsAll(BaseModel):
-#     card_tags: List
+
+class ReactionIn(BaseModel):
+    name: str
+    rules: Optional[str]
+
+
+class Reaction(ReactionIn):
+    id: PydanticObjectId
+
+
+class ReactionOut(ReactionIn):
+    id: str
+
+
+class ReactionsAll(BaseModel):
+    reactions: List
+
+
+class TagIn(BaseModel):
+    name: str
+    rules: Optional[str]
+
+
+class CardTag(TagIn):
+    id: PydanticObjectId
+
+
+class TagOut(TagIn):
+    id: str
+
+
+class TagsAll(BaseModel):
+    card_tags: List

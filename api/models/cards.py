@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from bson.objectid import ObjectId
-from models.card_comps import CardTypeOut
 
 
 class PydanticObjectId(ObjectId):
@@ -31,10 +30,10 @@ class CardIn(BaseModel):
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str
-    card_type: CardTypeOut
-    extra_effects: List[str]
-    reactions: List[str]
-    card_tags: List[str]
+    card_type: str
+    extra_effects: List
+    reactions: List
+    card_tags: List
 
 
 class Card(CardIn):
@@ -46,4 +45,4 @@ class CardOut(CardIn):
 
 
 class CardsAll(BaseModel):
-    cards: List[CardOut]
+    cards: List

@@ -6,15 +6,18 @@ from models.card_comps import (
     CardType,
     CardTypeOut,
     CardTypesAll,
-    # ExtraEffectIn,
-    # ExtraEffectOut,
-    # ExtraEffectsAll,
-    # ReactionIn,
-    # ReactionOut,
-    # ReactionsAll,
-    # TagIn,
-    # TagOut,
-    # TagsAll
+    ExtraEffectIn,
+    ExtraEffect,
+    ExtraEffectOut,
+    ExtraEffectsAll,
+    ReactionIn,
+    Reaction,
+    ReactionOut,
+    ReactionsAll,
+    TagIn,
+    CardTag,
+    TagOut,
+    TagsAll
 )
 
 
