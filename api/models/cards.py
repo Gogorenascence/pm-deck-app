@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import List, Optional
 from bson.objectid import ObjectId
 
-
 class PydanticObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
@@ -30,7 +29,7 @@ class CardIn(BaseModel):
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str
-    # card_type: str
+    card_type: List
     extra_effects: List
     reactions: List
     card_tags: List

@@ -31,14 +31,12 @@ class CardQueries(Queries):
 
     def create_card(self, card: CardIn) -> Card:
         props = card.dict()
-        # card_type = CardTypeOut.objects.get(id=props[card_type])
-        # props["card_type"] = card_type
+        props["card_type"] = []
         props["extra_effects"] = []
         props["reactions"] = []
         props["card_tags"] = []
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
-        props["card_type"] = str(props["card_type"])
         return Card(**props)
 
     def update_card(self, id: str, card: CardIn) -> CardOut:
