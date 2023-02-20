@@ -30,7 +30,7 @@ class CardIn(BaseModel):
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str
-    card_type: str
+    # card_type: str
     extra_effects: List
     reactions: List
     card_tags: List

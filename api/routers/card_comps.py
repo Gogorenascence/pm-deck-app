@@ -95,7 +95,7 @@ async def create_extra_effect(
     extra_effect = queries.create_extra_effect(extra_effect_in)
     return extra_effect
 
-@router.put("/api/extra_effect/{extra_effect_id}", response_model=ExtraEffectOut | str)
+@router.put("/api/extra_effects/{extra_effect_id}", response_model=ExtraEffectOut | str)
 async def update_extra_effect(
     extra_effect_id: str,
     extra_effect_in: ExtraEffectIn,
@@ -146,7 +146,7 @@ async def create_reaction(
     reaction = queries.create_reaction(reaction_in)
     return reaction
 
-@router.put("/api/reaction/{reaction_id}", response_model=ReactionOut | str)
+@router.put("/api/reactions/{reaction_id}", response_model=ReactionOut | str)
 async def update_reaction(
     reaction_id: str,
     reaction_in: ReactionIn,
@@ -176,7 +176,7 @@ async def delete_reaction(
 async def get_all_tags(queries: TagQueries = Depends()):
     return TagsAll(card_tags=queries.get_all_tags())
 
-@router.get("/api/tag/{tag_id}", response_model=TagOut)
+@router.get("/api/tags/{tag_id}", response_model=TagOut)
 async def get_tag(
     tag_id: str,
     response: Response,
@@ -197,7 +197,7 @@ async def create_tag(
     card_tag = queries.create_tag(tag_in)
     return card_tag
 
-@router.put("/api/tag/{tag_id}", response_model=TagOut | str)
+@router.put("/api/tags/{tag_id}", response_model=TagOut | str)
 async def update_tag(
     tag_id: str,
     tag_in: TagIn,
@@ -210,7 +210,7 @@ async def update_tag(
     else:
         return card_tag
 
-@router.delete("/api/tag/{tag_id}", response_model=bool | str)
+@router.delete("/api/tags/{tag_id}", response_model=bool | str)
 async def delete_tag(
     tag_id: str,
     response: Response,
