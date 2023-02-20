@@ -59,313 +59,115 @@ class CardTypeQueries(Queries):
         return self.collection.delete_one({"_id": ObjectId(id)})
 
 
+class ExtraEffectQueries(Queries):
+    DB_NAME = "cards"
+    COLLECTION = "card_comps"
 
-# class ExtraEffectQueries(Queries):
-#     def get_all_extra_effects(self) -> ExtraEffectsAll:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM extra_effects
-#                     """
-#                 )
+    def get_all_extra_effects(self) -> ExtraEffectsAll:
+        db = self.collection.find()
+        extra_effects = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            extra_effects.append(ExtraEffectOut(**document))
+        return extra_effects
 
-#                 results = []
-#                 for row in cur.fetchall():
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-#                     results.append(record)
+    def get_extra_effect(self, id) -> ExtraEffectOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return ExtraEffectOut(**props)
 
-#                 return results
+    def create_extra_effect(self, extra_effect: ExtraEffectIn) -> ExtraEffect:
+        props = extra_effect.dict()
+        self.collection.insert_one(props)
+        props["id"] = str(props["_id"])
+        return ExtraEffect(**props)
 
-#     def get_extra_effect(self, id) -> ExtraEffectOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM extra_effects
-#                     WHERE id = %s
-#                     """,
-#                     [id],
-#                 )
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
+    def update_extra_effect(self, id: str, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
+        props = extra_effect.dict()
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return ExtraEffectOut(**props, id=id)
 
-#                 return record
-
-#     def create_extra_effect(self, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     extra_effect.name,
-#                     extra_effect.rules,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     INSERT INTO extra_effects (name, rules)
-#                     VALUES (%s, %s)
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def update_card_type(self, extra_effect_id, extra_effect: ExtraEffectIn) -> ExtraEffectOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     extra_effect.name,
-#                     extra_effect.rules,
-#                     extra_effect_id,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     UPDATE extra_effects
-#                     SET name = %s
-#                         , rules = %s
-#                     WHERE id = %s
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def delete_extra_effect(self, extra_effect_id: int) -> bool:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     DELETE FROM extra_effects
-#                     WHERE id = %s
-#                     """,
-#                     [extra_effect_id],
-#                 )
+    def delete_extra_effect(self, id: str) -> bool:
+        return self.collection.delete_one({"_id": ObjectId(id)})
 
 
+class ReactionQueries(Queries):
+    DB_NAME = "cards"
+    COLLECTION = "card_comps"
 
-# class ReactionQueries(Queries):
-#     def get_all_reactions(self) -> ReactionsAll:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM reactions
-#                     """
-#                 )
+    def get_all_reactions(self) -> ReactionsAll:
+        db = self.collection.find()
+        reactions = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            reactions.append(ReactionOut(**document))
+        return reactions
 
-#                 results = []
-#                 for row in cur.fetchall():
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-#                     results.append(record)
+    def get_reaction(self, id) -> ReactionOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return ReactionOut(**props)
 
-#                 return results
+    def create_reaction(self, reaction: ReactionIn) -> Reaction:
+        props = reaction.dict()
+        self.collection.insert_one(props)
+        props["id"] = str(props["_id"])
+        return Reaction(**props)
 
-#     def get_reaction(self, id) -> ReactionOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM reactions
-#                     WHERE id = %s
-#                     """,
-#                     [id],
-#                 )
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
+    def update_reaction(self, id: str, reaction: ReactionIn) -> ReactionOut:
+        props = reaction.dict()
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return ReactionOut(**props, id=id)
 
-#                 return record
-
-#     def create_reaction(self, reaction: ReactionIn) -> ReactionOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     reaction.name,
-#                     reaction.rules,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     INSERT INTO reactions (name, rules)
-#                     VALUES (%s, %s)
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def update_reaction(self, reaction_id, reaction: ReactionIn) -> ReactionOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     reaction.name,
-#                     reaction.rules,
-#                     reaction_id,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     UPDATE reactions
-#                     SET name = %s
-#                         , rules = %s
-#                     WHERE id = %s
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def delete_reaction(self, reaction_id: int) -> bool:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     DELETE FROM reactions
-#                     WHERE id = %s
-#                     """,
-#                     [reaction_id],
-#                 )
+    def delete_reaction(self, id: str) -> bool:
+        return self.collection.delete_one({"_id": ObjectId(id)})
 
 
+class TagQueries(Queries):
+    DB_NAME = "cards"
+    COLLECTION = "card_comps"
 
-# class TagQueries(Queries):
-#     def get_all_tags(self) -> TagsAll:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM tags
-#                     """
-#                 )
+    def get_all_tags(self) -> TagsAll:
+        db = self.collection.find()
+        card_tags = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            card_tags.append(TagOut(**document))
+        return card_tags
 
-#                 results = []
-#                 for row in cur.fetchall():
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-#                     results.append(record)
+    def get_tag(self, id) -> TagOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return TagOut(**props)
 
-#                 return results
+    def create_tag(self, card_tag: TagIn) -> CardTag:
+        props = card_tag.dict()
+        self.collection.insert_one(props)
+        props["id"] = str(props["_id"])
+        return CardTag(**props)
 
-#     def get_tag(self, id) -> TagOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     SELECT * FROM tags
-#                     WHERE id = %s
-#                     """,
-#                     [id],
-#                 )
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
+    def update_tag(self, id: str, card_tag: TagIn) -> TagOut:
+        props = card_tag.dict()
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return TagOut(**props, id=id)
 
-#                 return record
-
-#     def create_tag(self, card_tag: TagIn) -> TagOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     card_tag.name,
-#                     card_tag.rules,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     INSERT INTO tags (name, rules)
-#                     VALUES (%s, %s)
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def update_tag(self, tag_id, card_tag: TagIn) -> TagOut:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 params = [
-#                     card_tag.name,
-#                     card_tag.rules,
-#                     tag_id,
-#                 ]
-#                 cur.execute(
-#                     """
-#                     UPDATE tags
-#                     SET name = %s
-#                         , rules = %s
-#                     WHERE id = %s
-#                     RETURNING id, name, rules
-#                     """,
-#                     params,
-#                 )
-
-#                 record = None
-#                 row = cur.fetchone()
-#                 if row is not None:
-#                     record = {}
-#                     for i, column in enumerate(cur.description):
-#                         record[column.name] = row[i]
-
-#                 return record
-
-#     def delete_tag(self, tag_id: int) -> bool:
-#         with pool.connection() as conn:
-#             with conn.cursor() as cur:
-#                 cur.execute(
-#                     """
-#                     DELETE FROM tags
-#                     WHERE id = %s
-#                     """,
-#                     [tag_id],
-#                 )
+    def delete_tag(self, id: str) -> bool:
+        return self.collection.delete_one({"_id": ObjectId(id)})
