@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import card_comps, cards
-# from authenticator import authenticator
+from routers import card_comps, cards, decks, accounts
+from routers.authenticator import authenticator
 import os
 
 
@@ -18,9 +18,10 @@ origins = [
 
 app.include_router(card_comps.router, tags=["card_comps"])
 app.include_router(cards.router, tags=["cards"])
-# app.include_router(reviews.router, tags=["reviews"])
-# app.include_router(authenticator.router, tags=["authenticator"])
-# app.include_router(spotify.router, tags=["spotify"])
+app.include_router(decks.router, tags=["decks"])
+app.include_router(accounts.router, tags=["accounts"])
+app.include_router(authenticator.router, tags=["authenticator"])
+
 
 app.add_middleware(
     CORSMiddleware,
