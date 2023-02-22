@@ -48,7 +48,7 @@ class DeckQueries(Queries):
 
     def add_card_to_deck(self, deck_id: str, card: dict ) -> DeckOut:
         deck = self.collection.find_one({"_id": ObjectId(deck_id)})
-        card_list = props.get("cards")
+        card_list = deck.get("cards")
 
         in_deck = False
         for card_item in card_list:

@@ -85,7 +85,7 @@ async def get_account(
     return account
 
 @router.put(
-    "/api/account/{account_id}",
+    "/api/accounts/{account_id}",
     response_model=AccountToken | HttpError,
 )
 async def update_account(
