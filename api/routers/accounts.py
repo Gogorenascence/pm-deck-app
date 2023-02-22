@@ -51,7 +51,7 @@ async def get_token(
         return AccountToken(**token_data)
 
 @router.get("/api/accounts/", response_model=list[AccountOut])
-async def get_accounts(repo: AccountQueries = Depends()):
+async def get_all_accounts(repo: AccountQueries = Depends()):
     return repo.get_all_accounts()
 
 @router.post("/api/accounts/", response_model=AccountToken | HttpError)

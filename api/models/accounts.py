@@ -21,12 +21,14 @@ class AccountIn(BaseModel):
     email: str
     password: str
     username: str
+    unhashed_password: Optional[str]
 
 
 class AccountUpdateIn(BaseModel):
     email: Optional[str]
     password: Optional[str]
     username: Optional[str]
+    unhashed_password: Optional[str]
 
 
 class Account(AccountIn):
@@ -38,3 +40,4 @@ class AccountOut(BaseModel):
     email: str
     username: str
     password: str
+    unhashed_password: Optional[str]

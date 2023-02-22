@@ -40,7 +40,6 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return Account(**props)
 
-
     def update_account(self, id: str, info: AccountUpdateIn, hashed_password: Union[None, str]):
         props = info.dict()
         if hashed_password is not None:

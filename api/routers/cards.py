@@ -16,13 +16,13 @@ router = APIRouter(tags=["cards"])
 async def get_all_cards(queries: CardQueries = Depends()):
     return CardsAll(cards=queries.get_all_cards())
 
-@router.get("/api/cards/{card_id}", response_model=CardOut)
+@router.get("/api/cards/{card_number}", response_model=CardOut)
 async def get_card(
-    card_id: str,
+    card_number: int,
     response: Response,
     queries: CardQueries = Depends(),
 ):
-    card = queries.get_card(card_id)
+    card = queries.get_card(card_number)
     if card is None:
         response.status_code = 404
     else:

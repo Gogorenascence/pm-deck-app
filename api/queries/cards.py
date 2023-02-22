@@ -22,8 +22,8 @@ class CardQueries(Queries):
             cards.append(CardOut(**document))
         return cards
 
-    def get_card(self, id) -> CardOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
+    def get_card(self, card_number) -> CardOut:
+        props = self.collection.find_one({"card_number": card_number})
         if not props:
             return None
         props["id"] = str(props["_id"])
