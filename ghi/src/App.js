@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
+// import './App.css';
 import MainPage from "./MainPage";
 import Nav from "./Nav";
 import DecksPage from "./SiteComp/DecksPage"

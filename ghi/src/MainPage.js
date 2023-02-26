@@ -1,13 +1,13 @@
 // import SearchBar from "./Reviews/Search";
-// import {
-//     Container,
-//     InputGroup,
-//     FormControl,
-//     Button,
-//     Row,
-//     Card,
-// } from "react-bootstrap";
-// import { useState } from "react";
+import {
+    Container,
+    InputGroup,
+    FormControl,
+    Button,
+    Row,
+    Card,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
 // import AlbumModal from "./AlbumModal";
 
 // export default function SearchBar() {
@@ -36,67 +36,73 @@
 //   }
 
 function MainPage() {
+    const [decks, setDecks] = useState([]);
+    const [cards, setCards] = useState([])
+
+    const getData = async() =>{
+        const deckResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
+        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const decks = await deckResponse.json();
+        const cards = await cardResponse.json();
+        setDecks(decks.slice(-5));
+        setCards(cards.slice(-5));
+    };
+
+
+    useEffect(() => {
+        getData();
+    })
+
+
     return (
-        <div>
-            {/* <div className="logo-container" id="dark-logo">
-                <img
-                    src={require("./images/logo-512.png")}
-                    height="256"
-                    alt="Reviewify Logo Dark"
-                />
-            </div>
-            <div className="logo-container" id="light-logo">
-                <img
-                    src={require("./images/light-logo-512.png")}
-                    height="256"
-                    alt="Reviewify Logo Light"
-                />
-            </div>
-            <div>
-                <SearchBar />
-            </div> */}
-                        {/* <Container>
-                <InputGroup className="mb-3" size="lg">
-                    <FormControl
-                        placeholder="Search For Artist"
-                        type="input"
-                        onKeyDown={(event) => {
-                            if (event.key === "Enter") {
-                                search();
-                                Display();
-                            }
-                        }}
-                        onChange={(event) => setSearchInput(event.target.value)}
-                    />
-                    <Button
-                        className="search-button"
-                        onClick={() => {
-                            search();
-                            Display();
-                        }}>
-                        Search
-                    </Button>
-                </InputGroup>
-            </Container>
+        <div className="App" style={{ marginTop: "30px" }}>
             <Container>
-                <Row className="mx-2 row row-cols-4">
-                    {albums.map((album, i) => {
+                <Row className="mx-2 row row-cols-5">
+                            <Card>
+                                <p>Deck Builder</p>
+                            </Card>
+                            <Card>
+                                <p>New Decks</p>
+                            </Card>
+                            <Card>
+                                <p>Popular Cards</p>
+                            </Card>
+                            <Card>
+                                <p>Articles</p>
+                            </Card>
+                            <Card>
+                                <p>Game Play</p>
+                            </Card>
+                </Row>
+            </Container>
+
+            <Container>
+                <Row className="mx-2 row row-cols-5">
+                    {decks.map((deck) => {
+                        return (
+                            // <Card
+                            //     key={deck.id}
+                            //     variant="primary">
+                                <p>{deck.name}</p>
+                            // </Card>
+                        );
+                    })}
+                </Row>
+            </Container>
+
+            <Container>
+                <Row className="mx-2 row row-cols-5">
+                    {cards.map((card) => {
                         return (
                             <Card
-                                className="search-card"
-                                key={album.id}
+                                key={card.id}
                                 variant="primary">
-                                <AlbumModal
-                                    artist_id={album.artists[0]["id"]}
-                                    album_id={album.id}
-                                    img_url={album.images[0].url}
-                                    album_name={album.name}
-                                />
+                                <p>{card.name}</p>
                             </Card>
                         );
                     })}
                 </Row>
-            </Container> */}
+            </Container>
         </div>
     );
 }

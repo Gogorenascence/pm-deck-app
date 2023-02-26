@@ -190,7 +190,7 @@ function Nav() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Forum
+                Community
               </button>
               <ul
                 className="dropdown-menu"
