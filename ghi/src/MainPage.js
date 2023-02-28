@@ -37,7 +37,7 @@ import { useState, useEffect } from "react";
 
 function MainPage() {
     const [decks, setDecks] = useState([]);
-    const [cards, setCards] = useState([])
+    const [cards, setCards] = useState([]);
 
     const getData = async() =>{
         const deckResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -47,7 +47,6 @@ function MainPage() {
         setDecks(decks.slice(-5));
         setCards(cards.slice(-5));
     };
-
 
     useEffect(() => {
         getData();
@@ -80,11 +79,11 @@ function MainPage() {
                 <Row className="mx-2 row row-cols-5">
                     {decks.map((deck) => {
                         return (
-                            // <Card
-                            //     key={deck.id}
-                            //     variant="primary">
+                            <Card
+                                key={deck.id}
+                                variant="primary">
                                 <p>{deck.name}</p>
-                            // </Card>
+                            </Card>
                         );
                     })}
                 </Row>

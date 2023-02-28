@@ -51,24 +51,16 @@ class CardQueries(Queries):
     def delete_card(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
-
-    # def add_extra_effect(self, card_id: str, extra_effect_id: str) -> CardOut:
-    #     card = self.collection.find_one({"_id": ObjectId(card_id)})
-    #     extra_effects = card.get("extra_effects")
-
-    #     extra_effect = ExtraEffectOut.objects.get(id=extra_effect_id)
-    #     extra_effects.append(extra_effect)
-    #     card["extra_effects"] = extra_effects
-
-    #     self.collection.find_one_and_update(
-    #         {"_id": ObjectId(card_id)},
-    #         {"$set": card},
-    #         return_document=ReturnDocument.AFTER,
-    #     )
-
-    #     card["id"] = str(card["_id"])
-    #     return CardOut(**card)
-
+    def add_card_type(self, id: str, card_type_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_type = props["card_type"]
+        if card_type_id not in card_type and len(card_type) == 0:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"card_type": card_type_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
 
     # def add_extra_effect(
     #     self,

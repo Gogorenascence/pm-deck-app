@@ -20,7 +20,7 @@ class PydanticObjectId(ObjectId):
 
 class CardTypeIn(BaseModel):
     name: str
-    deck_type: str
+    deck_type: Optional[str]
     rules: Optional[str]
 
 

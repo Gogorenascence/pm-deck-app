@@ -46,30 +46,36 @@ class DeckQueries(Queries):
         )
         return DeckOut(**props, id=id)
 
-    def add_card_to_deck(self, deck_id: str, card: dict ) -> DeckOut:
-        deck = self.collection.find_one({"_id": ObjectId(deck_id)})
-        card_list = deck.get("cards")
-
-        in_deck = False
-        for card_item in card_list:
-            if (card_item.get("card_number") == card.get("card_number")
-            and card_item["quantity"] == 1):
-                card_item["quantity"] += 1
-                in_deck = True
-
-        if not in_deck:
-            card["quantity"] = 1
-            card_list.append(card)
-
-        deck["cards"] = card_list
-
-        self.collection.find_one_and_update(
-            {"_id": ObjectId(id)},
-            {"$set": deck},
-            return_document=ReturnDocument.AFTER,
-        )
-        deck["account_id"] = str(deck["account_id"])
-        return DeckOut(**deck)
-
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
+
+    # def add_card(self, id:str, card_number: int):
+
+
+
+
+
+    # def add_card_to_deck(self, deck_id: str, card: dict ) -> DeckOut:
+    #     deck = self.collection.find_one({"_id": ObjectId(deck_id)})
+    #     card_list = deck["cards"]
+
+    #     in_deck = False
+    #     for card_item in card_list:
+    #         if (card_item.get("card_number") == card.get("card_number")
+    #         and card_item["quantity"] == 1):
+    #             card_item["quantity"] += 1
+    #             in_deck = True
+
+    #     if not in_deck:
+    #         card["quantity"] = 1
+    #         card_list.append(card)
+
+    #     deck["cards"] = card_list
+
+    #     self.collection.find_one_and_update(
+    #         {"_id": ObjectId(id)},
+    #         {"$set": deck},
+    #         return_document=ReturnDocument.AFTER,
+    #     )
+    #     deck["account_id"] = str(deck["account_id"])
+    #     return DeckOut(**deck)

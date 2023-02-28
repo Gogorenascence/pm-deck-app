@@ -1,11 +1,11 @@
 from models.cards import (
     CardIn,
-    Card,
     CardOut,
     CardsAll
     )
 
 from queries.cards import CardQueries
+from queries.card_comps import ExtraEffectQueries
 from fastapi import APIRouter, Depends, Response
 # from authenticator import authenticator
 
@@ -61,3 +61,16 @@ async def delete_card(
         response.status_code = 404
     else:
         return True
+
+@router.put("/api/card/{card_id}/add/{card_type_id}", response_model=CardOut | str)
+async def add_card_type(
+    card_id: str,
+    card_type_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+):
+    card = queries.add_card_type(card_id, card_type_id)
+    if card is None:
+        response.status_code = 404
+    else:
+        return card
