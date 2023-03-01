@@ -74,3 +74,16 @@ async def add_card_type(
         response.status_code = 404
     else:
         return card
+
+@router.put("/api/card/{card_id}/remove/{card_type_id}", response_model=CardOut | str)
+async def remove_card_type(
+    card_id: str,
+    card_type_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+):
+    card = queries.add_card_type(card_id, card_type_id)
+    if card is None:
+        response.status_code = 404
+    else:
+        return card

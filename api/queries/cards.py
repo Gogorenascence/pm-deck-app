@@ -62,6 +62,16 @@ class CardQueries(Queries):
             )
         return CardOut(**props, id=id)
 
+    def remove_card_type(self, id: str, card_type_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_type = props["card_type"]
+        if card_type_id in card_type:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$pull": {"card_type": card_type_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
     # def add_extra_effect(
     #     self,
     #     card: dict,
