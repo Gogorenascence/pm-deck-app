@@ -55,6 +55,8 @@ function LandingPage() {
 
     return (
         <div className="App" style={{ marginTop: "30px" }}>
+            <div>
+
             <Container>
                 <Row className="mx-2 row col-5">
                             <Card>
@@ -74,6 +76,9 @@ function LandingPage() {
                             </Card>
                 </Row>
             </Container>
+            </div>
+
+            <div>
 
             <Container>
                 <Row className="mx-2 row row-col-5">
@@ -88,20 +93,24 @@ function LandingPage() {
                     })}
                 </Row>
             </Container>
+                    </div>
+
+            <div>
 
             <Container>
                 <Row className="mx-2 row row-col-5">
                     {cards.map((card) => {
                         return (
                             <Card
-                                key={card.id}
-                                variant="primary">
+                            key={card.id}
+                            variant="primary">
                                 <p>{card.name}</p>
                             </Card>
                         );
                     })}
                 </Row>
             </Container>
+                    </div>
         </div>
     );
 }

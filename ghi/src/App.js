@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import './App.css';
-import LandingPage from "./LandingPage";
 import DecksPage from "./SiteComp/DecksPage"
 import CardsPage from "./SiteComp/CardsPage"
 import ArticlesPage from "./SiteComp/ArticlesPage"
@@ -9,13 +8,13 @@ import ForumPage from "./SiteComp/ForumPage"
 import MainPage from "./MainPage";
 import Nav from "./Nav";
 import "./index.css"
+import "./Massive.css"
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <LandingPage/>
+      <Nav/>
       <div className="App">
 
         <Routes>
