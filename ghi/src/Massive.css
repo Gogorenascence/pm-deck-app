@@ -2,3 +2,17 @@ Card {
   padding:0px;
   height: auto;
 }
+
+h1 {
+  margin: 200px, 200px;
+  text-align: center;
+}
+
+.blackfooter {
+  background: black;
+  height: 20%;
+  display: flex;
+  justify-content: bottom;
+  z-index: 2000;
+  opacity: .80;
+}
