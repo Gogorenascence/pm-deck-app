@@ -5,10 +5,12 @@ import CardRow from "./display/CardRow";
 function MainPage() {
     return (
       <div>
+      <br/>
+      <h1>Welcome to PlayMaker CardBase</h1>
+      <br/>
       <div>
         <TopRow/>
       </div>
-
       <br/>
       <h1>New Decks</h1>
       <br/>
