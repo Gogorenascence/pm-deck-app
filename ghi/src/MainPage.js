@@ -26,12 +26,6 @@ function MainPage() {
       <div>
         <CardRow/>
       </div>
-      <br/>
-      <h1>Latest Articles</h1>
-      <br/>
-      <div>
-        <ArticleRow/>
-      </div>
       </div>
     );
   }
