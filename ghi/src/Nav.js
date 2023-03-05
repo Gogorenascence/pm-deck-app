@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 
 function Nav() {
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top zindex-2">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           PlayMaker CardBase

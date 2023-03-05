@@ -1,5 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import './App.css';
+// import React, {useRef, useEffect} from "react";
+
+// import {TweenMex, Power3} from "gsap"
+// // import './App.css';
+
 import DecksPage from "./SiteComp/DecksPage"
 import CardsPage from "./SiteComp/CardsPage"
 import ArticlesPage from "./SiteComp/ArticlesPage"
