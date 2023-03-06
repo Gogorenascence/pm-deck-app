@@ -1,7 +1,6 @@
 import TopRow from "./display/TopRow";
 import DeckRow from "./display/DeckRow";
 import CardRow from "./display/CardRow";
-import ArticleRow from "./display/ArticleRow";
 
 
 function MainPage() {

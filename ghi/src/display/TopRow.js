@@ -9,7 +9,7 @@ function TopRow() {
   return (
     <div>
 <Container>
-  <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+  <Row xs={1} sm={2} md={3} lg={3} xl={5} className="g-3">
         <Col>
         <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
       <Card.Img src="mv2.png" alt="Card image" variant="bottom"/>

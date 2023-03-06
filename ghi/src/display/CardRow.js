@@ -3,6 +3,7 @@ import {
     Col,
     Row,
     Card,
+    Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
@@ -26,7 +27,7 @@ function CardRow() {
 return(
 <div>
 <Container>
-    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+    <Row xs={1} sm={2} md={3} lg={3} xl={5} className="g-3">
         {cards.map((card) => {
             return (
                 <Col>
@@ -40,6 +41,12 @@ return(
             );
         })}
     </Row>
+    <br/>
+    <div className="d-grid gap-2">
+        <Button variant="dark" size="lg">
+            Browse All Cards
+        </Button>
+    </div>
 </Container>
 
 </div>
