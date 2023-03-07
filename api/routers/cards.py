@@ -63,7 +63,7 @@ async def delete_card(
 
 
 
-@router.put("/api/card/{card_id}/add/{card_type_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/add_type/{card_type_id}", response_model=CardOut | str)
 async def add_card_type(
     card_id: str,
     card_type_id: str,
@@ -76,7 +76,7 @@ async def add_card_type(
     else:
         return card
 
-@router.put("/api/card/{card_id}/remove/{card_type_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/remove_type/{card_type_id}", response_model=CardOut | str)
 async def remove_card_type(
     card_id: str,
     card_type_id: str,
@@ -90,7 +90,7 @@ async def remove_card_type(
         return card
 
 
-@router.put("/api/card/{card_id}/add/{extra_effect_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/add_extra/{extra_effect_id}", response_model=CardOut | str)
 async def add_extra_effect(
     card_id: str,
     extra_effect_id: str,
@@ -103,7 +103,7 @@ async def add_extra_effect(
     else:
         return card
 
-@router.put("/api/card/{card_id}/remove/{extra_effect_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/remove_extra/{extra_effect_id}", response_model=CardOut | str)
 async def remove_extra_effect(
     card_id: str,
     extra_effect_id: str,
@@ -117,7 +117,7 @@ async def remove_extra_effect(
         return card
 
 
-@router.put("/api/card/{card_id}/add/{reaction_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/add_reaction/{reaction_id}", response_model=CardOut | str)
 async def add_reaction(
     card_id: str,
     reaction_id: str,
@@ -130,7 +130,7 @@ async def add_reaction(
     else:
         return card
 
-@router.put("/api/card/{card_id}/remove/{reaction}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/remove_reaction/{reaction}", response_model=CardOut | str)
 async def remove_reaction(
     card_id: str,
     reaction_id: str,
@@ -144,7 +144,7 @@ async def remove_reaction(
         return card
 
 
-@router.put("/api/card/{card_id}/add/{tag_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/add_tag/{tag_id}", response_model=CardOut | str)
 async def add_tag(
     card_id: str,
     tag_id: str,
@@ -158,7 +158,7 @@ async def add_tag(
         return card
 
 
-@router.put("/api/card/{card_id}/remove/{tag_id}", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/remove_tag/{tag_id}", response_model=CardOut | str)
 async def remove_tag(
     card_id: str,
     tag_id: str,

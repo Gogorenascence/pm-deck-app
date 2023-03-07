@@ -56,7 +56,7 @@ class CardQueries(Queries):
     def add_card_type(self, id: str, card_type_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         card_type = props["card_type"]
-        if card_type_id not in card_type and len(card_type) == 0:
+        if card_type_id not in card_type:
             self.collection.find_one_and_update(
                 {"_id": ObjectId(id)},
                 {"$push": {"card_type": card_type_id}},
