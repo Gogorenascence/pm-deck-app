@@ -1,14 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import React, {useRef, useEffect} from "react";
-
-// import {TweenMex, Power3} from "gsap"
-// // import './App.css';
-
-import DecksPage from "./SiteComp/DecksPage"
-import CardsPage from "./SiteComp/CardsPage"
-import ArticlesPage from "./SiteComp/ArticlesPage"
-import GamePlayPage from "./SiteComp/GamePlayPage"
-import ForumPage from "./SiteComp/ForumPage"
+import DeckBuilder from "./Builder/DeckBuilder"
+import DecksPage from "./Decks/DecksPage"
+import CardsPage from "./Cards/CardsPage"
+import ArticlesPage from "./Articles/ArticlesPage"
+import GamePlayPage from "./GamePlay/GamePlayPage"
+import ForumPage from "./Forum/ForumPage"
 import MainPage from "./MainPage";
 import Nav from "./Nav";
 import "./index.css"
@@ -23,6 +19,7 @@ function App() {
 
         <Routes>
           <Route index element={<MainPage />} />
+          <Route path="/deckbuilder" element={<DeckBuilder />} />
           <Route path="/decks" element={<DecksPage />} />
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/articles" element={<ArticlesPage />} />

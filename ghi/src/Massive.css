@@ -23,3 +23,27 @@ text-align: center;
   z-index: 1;
   opacity: .80;
 }
+
+.blackfooter2 {
+  background: black;
+  height: 40%;
+  display: flex;
+  justify-content: bottom;
+  z-index: 1;
+  opacity: .80;
+}
+
+.left-h1{
+  text-align: left;
+  margin: 30px 5px 20px 5px;
+}
+
+.left {
+  text-align: left;
+  margin: 5px;
+}
+
+.white-space {
+  max-width: 80%;
+  margin: auto;
+}

@@ -32,6 +32,7 @@ class DeckQueries(Queries):
 
     def create_deck(self, deck: DeckIn) -> Deck:
         props = deck.dict()
+        props["strategies"] = []
         props["cards"] = []
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])

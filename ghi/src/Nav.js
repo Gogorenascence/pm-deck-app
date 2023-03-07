@@ -22,7 +22,7 @@ function Nav() {
                 </a>
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink className="dropdown-item" to="/decks">
+                  <NavLink className="dropdown-item" to="/deckbuilder">
                     Deck Builder
                     </NavLink>
                 </li>
@@ -38,7 +38,7 @@ function Nav() {
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/decks">
-                    Deck Search
+                    Search Decks
                     </NavLink>
                 </li>
               </ul>
@@ -82,7 +82,7 @@ function Nav() {
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/cards">
-                    Card Search
+                    Search Cards
                     </NavLink>
                 </li>
               </ul>
@@ -126,7 +126,7 @@ function Nav() {
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/articles">
-                    Article Search
+                    Search Articles
                     </NavLink>
                 </li>
               </ul>
@@ -171,6 +171,11 @@ function Nav() {
                 <li>
                   <NavLink className="dropdown-item" to="/gameplay">
                     Restricted Lists
+                    </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Search Game Play
                     </NavLink>
                 </li>
               </ul>
