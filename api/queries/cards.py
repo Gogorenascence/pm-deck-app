@@ -51,6 +51,8 @@ class CardQueries(Queries):
     def delete_card(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
+
+
     def add_card_type(self, id: str, card_type_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         card_type = props["card_type"]
@@ -72,85 +74,71 @@ class CardQueries(Queries):
                 return_document=ReturnDocument.AFTER,
             )
         return CardOut(**props, id=id)
-    # def add_extra_effect(
-    #     self,
-    #     card: dict,
-    #     account_id: str
-    # ) -> CollectionOut:
-    #     collection = self.collection.find_one({
-    #         "account_id": ObjectId(account_id)
-    #         })
-    #     card_list = collection.get("cards")
 
-    #     found_in_collection = False
-    #     for card_item in card_list:
-    #         if card_item.get("multiverse_id") == card.get("multiverse_id"):
-    #             card_item["quantity"] += 1
-    #             found_in_collection = True
 
-    #     if not found_in_collection:
-    #         card["quantity"] = 1
-    #         card_list.append(card)
+    def add_extra_effect(self, id: str, extra_effect_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        extra_effects = props["extra_effects"]
+        if extra_effect_id not in extra_effects:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"extra_effects": extra_effect_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
 
-    #     collection["cards"] = card_list
+    def remove_extra_effect(self, id: str, extra_effect_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        extra_effects = props["extra_effects"]
+        if extra_effect_id in extra_effects:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"extra_effects": extra_effect_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
 
-    #     self.collection.find_one_and_update(
-    #         {"account_id": ObjectId(account_id)},
-    #         {"$set": collection},
-    #         return_document=ReturnDocument.AFTER,
-    #     )
 
-    #     collection["account_id"] = str(collection["account_id"])
-    #     collection["id"] = str(collection["_id"])
-    #     return collection
+    def add_reaction(self, id: str, reaction_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$push": {"reactions": reaction_id}},
+            return_document=ReturnDocument.AFTER,
+        )
+        return CardOut(**props, id=id)
 
-    # def remove_one_card_copy_from_collection(
-    #     self, multiverse_id: int, account_id: str
-    # ) -> CollectionOut:
-    #     collection = self.collection.find_one({
-    #         "account_id": ObjectId(account_id)
-    #         })
-    #     card_list = collection.get("cards")
+    def remove_reaction(self, id: str, reaction_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        reactions = props["reactions"]
+        if reaction_id in reactions:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$pull": {"reactions": reaction_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
 
-    #     for card_item in card_list:
-    #         if card_item.get("multiverse_id") == multiverse_id:
-    #             card_item["quantity"] -= 1
-    #             if card_item["quantity"] == 0:
-    #                 card_list.remove(card_item)
 
-    #     collection["cards"] = card_list
+    def add_tag(self, id: str, tag_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_tags = props["card_tags"]
+        if tag_id not in card_tags:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"card_tags": tag_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
 
-    #     self.collection.find_one_and_update(
-    #         {"account_id": ObjectId(account_id)},
-    #         {"$set": collection},
-    #         return_document=ReturnDocument.AFTER,
-    #     )
 
-    #     collection["id"] = str(collection["_id"])
-    #     collection["account_id"] = str(collection["account_id"])
-    #     return collection
-
-    # def remove_all_card_copies_from_collection(
-    #     self, multiverse_id: int, account_id: str
-    # ) -> CollectionOut:
-    #     collection = self.collection.find_one({
-    #         "account_id": ObjectId(account_id)
-    #         })
-    #     card_list = collection.get("cards")
-
-    #     for card_item in card_list:
-    #         if card_item.get("multiverse_id") == multiverse_id:
-    #             card_list.remove(card_item)
-
-    #     collection["cards"] = card_list
-
-    #     self.collection.find_one_and_update(
-    #         {"account_id": ObjectId(account_id)},
-    #         {"$set": collection},
-    #         return_document=ReturnDocument.AFTER,
-    #     )
-
-    #     collection["account_id"] = str(collection["account_id"])
-    #     collection["id"] = str(collection["_id"])
-
-    #     return collection
+    def remove_tag(self, id: str, tag_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_tags = props["card_tags"]
+        if tag_id in card_tags:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$pull": {"card_tags": tag_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)

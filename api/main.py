@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import card_comps, cards, decks, accounts
+from routers import card_types, extra_effects, reactions, card_tags, cards, decks, accounts
 from routers.authenticator import authenticator
 import os
 
@@ -16,7 +16,10 @@ origins = [
     os.environ.get("PUBLIC_URL", None),
 ]
 
-app.include_router(card_comps.router, tags=["card_comps"])
+app.include_router(card_types.router, tags=["card_types"])
+app.include_router(extra_effects.router, tags=["extra_effects"])
+app.include_router(reactions.router, tags=["reactions"])
+app.include_router(card_tags.router, tags=["card_tags"])
 app.include_router(cards.router, tags=["cards"])
 app.include_router(decks.router, tags=["decks"])
 app.include_router(accounts.router, tags=["accounts"])

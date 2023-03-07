@@ -50,6 +50,30 @@ class DeckQueries(Queries):
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
+
+
+    def add_card(self, id: str, card_number: str) -> DeckOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        cards = props["cards"]
+        if cards.count(card_number) < 2:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"cards": cards}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
+
+    def remove_card(self, id: str, card_number: str) -> DeckOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        cards = props["cards"]
+        if cards.count(card_number) < 2:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"cards": cards}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
+
     # def add_card(self, id:str, card_number: int):
 
 
