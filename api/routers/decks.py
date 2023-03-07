@@ -61,7 +61,7 @@ async def delete_deck(
     else:
         return True
 
-@router.put("/decks/{deck_id}/add/{card_number}", response_model=DeckOut)
+@router.put("/decks/{deck_id}/add_card/{card_number}", response_model=DeckOut)
 async def add_card(
     deck_id: str,
     card_number: int,
@@ -75,7 +75,32 @@ async def add_card(
     else:
         return deck
 
+@router.put("/decks/{deck_id}/remove_card/{card_number}", response_model=DeckOut)
+async def remove_card(
+    deck_id: str,
+    card_number: int,
+    response: Response,
+    queries: DeckQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck = queries.remove_card(deck_id, card_number)
+    if deck is None:
+        response.status_code = 404
+    else:
+        return deck
 
+@router.put("/decks/{deck_id}/clear/", response_model=DeckOut)
+async def clear_deck(
+    deck_id: str,
+    response: Response,
+    queries: DeckQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck = queries.clear_deck(deck_id)
+    if deck is None:
+        response.status_code = 404
+    else:
+        return deck
 # @router.put("/decks/{deck_id}/add/{card_number}", response_model=DeckOut)
 # async def add_card_to_deck(
 #     deck_id: str,

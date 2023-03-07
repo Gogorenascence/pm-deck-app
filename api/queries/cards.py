@@ -112,11 +112,13 @@ class CardQueries(Queries):
         props = self.collection.find_one({"_id": ObjectId(id)})
         reactions = props["reactions"]
         if reaction_id in reactions:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$pull": {"reactions": reaction_id}},
-                return_document=ReturnDocument.AFTER,
-            )
+            reactions.remove(reaction_id)
+        props["reactions"] = reactions
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
         return CardOut(**props, id=id)
 
 

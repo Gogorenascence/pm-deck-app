@@ -32,8 +32,7 @@ class DeckQueries(Queries):
 
     def create_deck(self, deck: DeckIn) -> Deck:
         props = deck.dict()
-        props["strategies"] = []
-        props["cards"] = []
+        props["views"] = 0
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Deck(**props)
@@ -52,27 +51,41 @@ class DeckQueries(Queries):
 
 
 
-    def add_card(self, id: str, card_number: str) -> DeckOut:
+    def add_card(self, id: str, card_number: int) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         cards = props["cards"]
         if cards.count(card_number) < 2:
             self.collection.find_one_and_update(
                 {"_id": ObjectId(id)},
-                {"$push": {"cards": cards}},
+                {"$push": {"cards": card_number}},
                 return_document=ReturnDocument.AFTER,
             )
-        return CardOut(**props, id=id)
+        return DeckOut(**props, id=id)
 
-    def remove_card(self, id: str, card_number: str) -> DeckOut:
+    def remove_card(self, id: str, card_number: int) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         cards = props["cards"]
-        if cards.count(card_number) < 2:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$push": {"cards": cards}},
-                return_document=ReturnDocument.AFTER,
-            )
-        return CardOut(**props, id=id)
+        if card_number in cards:
+            cards.remove(card_number)
+        props["cards"] = cards
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return DeckOut(**props, id=id)
+
+    def clear_deck(self, id: str) -> DeckOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        props["cards"] = []
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return DeckOut(**props, id=id)
+
+
 
     # def add_card(self, id:str, card_number: int):
 
