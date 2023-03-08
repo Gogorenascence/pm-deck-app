@@ -16,7 +16,7 @@ function CardRow() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
 
-        setCards(data.cards.slice(-5));
+        setCards(data.cards.slice(-5).reverse());
     };
 
     useEffect(() => {
@@ -32,10 +32,7 @@ function CardRow() {
                         return (
                             <Col>
                                 <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
-                                    <Card.Img src="logo4p.png" alt="Card image" variant="bottom"/>
-                                    <Card.ImgOverlay className="blackfooter mt-auto">
-                                        <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">{card.name}</Card.Title>
-                                </Card.ImgOverlay>
+                                    <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
                                 </Card>
                             </Col>
                         );

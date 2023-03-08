@@ -7,7 +7,6 @@ from models.cards import (
     CardOut,
     CardsAll
 )
-# from models.card_comps import CardTypeOut, ExtraEffectOut
 
 
 class CardQueries(Queries):

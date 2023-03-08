@@ -16,7 +16,7 @@ function DeckRow() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        setDecks(data.decks.slice(-5));
+        setDecks(data.decks.slice(-5).reverse());
     };
 
     useEffect(() => {

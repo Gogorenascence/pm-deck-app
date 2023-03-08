@@ -145,7 +145,7 @@ function CardsPage() {
                         <Col >
                             <Card
                                 style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
-                                <Card.Img src="i1g1pmf.png" alt="Card image" variant="bottom"/>
+                                <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
                             </Card>
                         </Col>
                     );

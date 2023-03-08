@@ -26,7 +26,7 @@ text-align: center;
 
 .blackfooter2 {
   background: black;
-  height: 40%;
+  height: 30%;
   display: flex;
   justify-content: bottom;
   z-index: 1;

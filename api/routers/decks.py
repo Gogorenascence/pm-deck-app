@@ -101,42 +101,16 @@ async def clear_deck(
         response.status_code = 404
     else:
         return deck
-# @router.put("/decks/{deck_id}/add/{card_number}", response_model=DeckOut)
-# async def add_card_to_deck(
-#     deck_id: str,
-#     card_number: int,
-#     repo: DeckQueries = Depends(),
-#     # account_data: dict = Depends(authenticator.get_current_account_data),
-# ):
-#     url = f"process.env.REACT_APP_SAMPLE_SERVICE_API_HOST/api/cards/{card_number}"
-#     response = requests.get(url)
-#     content = json.loads(response.content)
 
-#     card_dict = {
-#         "name": content.get("name"),
-#         "multiverse_id": content.get("multiverse_ids")[0],
-#         "mana": content.get('mana_cost'),
-#         "card_type": content.get("type_line"),
-#         "cmc": content.get("cmc"),
-#         "formats": [
-#             legality
-#             for legality in content.get("legalities")
-#             if content.get("legalities")[legality] == "legal"
-#         ],
-#     }
-
-#     if content.get("layout") in [
-#         "modal_dfc",
-#         "transform",
-#     ]:
-#         card_dict["picture_url"] = (
-#             content.get("card_faces")[0].get("image_uris").get("normal")
-#         )
-#         card_dict["mana"] = content.get("card_faces")[0].get("mana_cost")
-#     else:
-#         card_dict["picture_url"] = content.get("image_uris").get("normal")
-#         card_dict["mana"] = content.get("mana_cost")
-
-#     deck = repo.add_card_to_deck(card=card_dict, deck_id=deck_id)
-
-#     return deck
+@router.put("/decks/{deck_id}/cover/", response_model=str)
+async def get_cover_image(
+    deck_id: str,
+    response: Response,
+    queries: DeckQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck = queries.get_cover_image(deck_id)
+    if deck is None:
+        response.status_code = 404
+    else:
+        return deck

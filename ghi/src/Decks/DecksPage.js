@@ -109,10 +109,22 @@ function DecksPage() {
                                         className="card-img-overlay d-flex flex-column justify-content-top">
                                             {deck.name}
                                     </Card.Title>
-                                    <Card.Text className="card-img-overlay d-flex flex-column justify-content-end">
-                                        This is a wider card with supporting text below as a natural lead-in
-                                        to additional content. This content is a little bit longer.
-                                    </Card.Text>
+                                        <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
+                                            style={{margin: '0px 0px 60px 0px', fontWeight: 600}}
+                                        >
+                                            User:
+                                        </Card.Text>
+                                        <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
+                                            style={{margin: '0px 0px 37px 0px', fontWeight: 600}}
+                                        >
+                                            Strategies: {deck.strategies}
+                                        </Card.Text>
+                                        <Card.Text
+                                        className="card-img-overlay container d-flex flex-column justify-content-end"
+                                            style={{fontWeight: 600}}
+                                        >
+                                            Views: {deck.views}
+                                        </Card.Text>
                                 </Card.ImgOverlay>
                             </Card>
                         </Col>

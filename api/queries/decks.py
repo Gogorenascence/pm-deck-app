@@ -1,6 +1,6 @@
 from .client import Queries
 from bson.objectid import ObjectId
-from pymongo import ReturnDocument
+from pymongo import ReturnDocument, MongoClient
 from models.decks import (
     DeckIn,
     Deck,
@@ -8,7 +8,7 @@ from models.decks import (
     DecksAll
 )
 from models.cards import CardOut
-# from models.card_comps import CardTypeOut, ExtraEffectOut
+import os
 
 
 class DeckQueries(Queries):
@@ -85,35 +85,14 @@ class DeckQueries(Queries):
         )
         return DeckOut(**props, id=id)
 
-
-
-    # def add_card(self, id:str, card_number: int):
-
-
-
-
-
-    # def add_card_to_deck(self, deck_id: str, card: dict ) -> DeckOut:
-    #     deck = self.collection.find_one({"_id": ObjectId(deck_id)})
-    #     card_list = deck["cards"]
-
-    #     in_deck = False
-    #     for card_item in card_list:
-    #         if (card_item.get("card_number") == card.get("card_number")
-    #         and card_item["quantity"] == 1):
-    #             card_item["quantity"] += 1
-    #             in_deck = True
-
-    #     if not in_deck:
-    #         card["quantity"] = 1
-    #         card_list.append(card)
-
-    #     deck["cards"] = card_list
-
-    #     self.collection.find_one_and_update(
-    #         {"_id": ObjectId(id)},
-    #         {"$set": deck},
-    #         return_document=ReturnDocument.AFTER,
-    #     )
-    #     deck["account_id"] = str(deck["account_id"])
-    #     return DeckOut(**deck)
+    def get_cover_image(self, id: str) -> str:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        cards = props["cards"]
+        if len(cards) > 0:
+            first = cards[0]
+            DATABASE_URL = os.environ["DATABASE_URL"]
+            conn = MongoClient(DATABASE_URL)
+            db = conn.cards.cards
+            card = db.find_one({"card_number": first})
+            cover_image = card["picture_url"]
+        return cover_image
