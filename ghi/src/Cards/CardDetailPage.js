@@ -35,39 +35,105 @@ function CardDetailPage() {
 
     return (
         <div className="white-space">
-            <div className="left-div">
-                <img className="centered-card" src={card.picture_url} alt="Card image"/>
-                <h1 style={{margin: "0px 40px 20px 40px", fontSize: "40px"}}>Related Cards</h1>
+                <img className="left-card" src={card.picture_url} alt="Card image"/>
                 <div>
-            <Container>
-                <Row xs={1} sm={2} md={3} lg={3} className="g-3">
-                    {relatedCards.map((relatedCard) => {
-                        return (
-                            <Col>
-                                <NavLink to={`/cards/${relatedCard.card_number}`}>
+                    <Container style={{ width: "44%", margin: "3%", float: "left"}}>
+                        <h1 className="centered-h1">Related Cards</h1>
+                        <Row xs={1} sm={2} md={3} lg={3} className="g-3">
+                            {relatedCards.map((relatedCard) => {
+                                return (
+                                    <Col>
+                                        <NavLink to={`/cards/${relatedCard.card_number}`}>
 
-                                <Card
-                                    className="bg-dark text-white text-center"
-                                    style={{ width: '200px', margin: '10px'}}>
-                                    <Card.Img
-                                        src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                        alt="Related Card image"
-                                        variant="bottom"/>
-                                </Card>
-                                </NavLink>
-                            </Col>
-                        );
-                    })}
-                </Row>
-                <br/>
-            </Container>
-        </div>
+                                            <Card
+                                                className="bg-dark text-white text-center"
+                                                style={{ width: '175px', margin: 'auto'}}>
+                                                <Card.Img
+                                                    src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                                    alt="Related Card image"
+                                                    variant="bottom"/>
+                                            </Card>
+                                        </NavLink>
+                                    </Col>
+                                );
+                            })}
+                        </Row>
+                        <br/>
+                    </Container>
+                    <Container style={{margin: "1% 0% 1% 45%", width: "50%"}}>
+                        <h1 >{card.name}</h1>
+                        <Row xs={1} sm={2} md={3} lg={3}>
+                                    <Col>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Type</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.card_type}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Enthusiasm</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.enthusiasm}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Card Number</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.card_number}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                    <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Class</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.class}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Tags</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.tags}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Hero ID</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.hero_id}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                    <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Reactions</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.reactions}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Series</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.series}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                        <Card style={{margin: "6% 0%"}}>
+                                            <Card.Header>Illustrator</Card.Header>
+                                            <Card.Body>
+                                                <Card.Title>{card.illustrator}</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                        </Row>
+                    </Container>
+                        <Card style={{margin: "5% 0% 1% 52%", width: "41%"}}>
+                            <Card.Header>Card Effect</Card.Header>
+                            <Card.Body>
+                                <Card.Title>{card.illustrator}</Card.Title>
+                            </Card.Body>
+                        </Card>
 
 
-
-            </div>
-            <div className="right-div">
-                <p>card</p>
+                {/* <h1 style={{textAlign: "center", margin: "13px 10% 0% 10%"}}>{card.name}</h1> */}
             </div>
 
 
