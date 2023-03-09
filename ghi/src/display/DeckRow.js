@@ -6,11 +6,14 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 
 function DeckRow() {
 
     const [decks, setDecks] = useState([]);
+    // const [cover, setCover] = useState("");
+    // const [deckId, setDeckId] = useState("");
 
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -19,8 +22,15 @@ function DeckRow() {
         setDecks(data.decks.slice(-5).reverse());
     };
 
+    // const getCoverCard = async() =>{
+    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${id}/cover/`);
+    //     const coverData = await response.json();
+
+    //     setCover(coverData);
+
     useEffect(() => {
         getDecks();
+        // getCoverCard();
     })
 
 
@@ -44,9 +54,11 @@ function DeckRow() {
                 </Row>
                 <br/>
                 <div className="d-grid gap-2">
-                    <Button variant="dark" size="lg">
-                        Browse All Decks
-                    </Button>
+                    <Link to="/decks">
+                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
+                            Browse All Decks
+                        </Button>
+                    </Link>
                 </div>
             </Container>
         </div>

@@ -28,6 +28,19 @@ class CardQueries(Queries):
         props["id"] = str(props["_id"])
         return CardOut(**props)
 
+    def get_related_cards(self, card_number) -> CardsAll:
+        card = self.collection.find_one({"card_number": card_number})
+        if not card:
+            return None
+        hero_id = card["hero_id"]
+        db = self.collection.find()
+        cards = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            if (document["hero_id"] == hero_id) and (document["card_number"] != card_number):
+                cards.append(CardOut(**document))
+        return cards
+
     def create_card(self, card: CardIn) -> Card:
         props = card.dict()
         props["card_type"] = []

@@ -27,6 +27,13 @@ async def get_card(
     else:
         return card
 
+@router.get("/api/related_cards/{card_number}", response_model=CardsAll)
+async def get_related_cards(
+    card_number: int,
+    queries: CardQueries = Depends(),
+):
+    return CardsAll(cards=queries.get_related_cards(card_number))
+
 @router.post("/api/cards/", response_model=CardOut)
 async def create_card(
     card_in: CardIn,

@@ -1,0 +1,55 @@
+import {
+    Col,
+    Row,
+    Card,
+    Button,
+    Container,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { NavLink, useParams } from 'react-router-dom';
+
+function RelatedCards() {
+
+    const {card_number} = useParams();
+    const [relatedCards, setRelatedCards] = useState([]);
+
+    const getRelatedCards = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/related_cards/${card_number}`);
+        const data = await response.json();
+        console.log(data)
+        console.log(data.cards)
+        setRelatedCards(data.cards);
+
+    };
+
+    useEffect(() => {
+        getRelatedCards();
+    })
+
+
+
+    return (
+        <div>
+            <Container>
+                <Row xs={1} sm={2} md={3} lg={3} className="g-3">
+                    {relatedCards.map((card) => {
+                        return (
+                            <Col>
+                                <Card
+                                    className="bg-dark text-white text-center"
+                                    style={{ width: '200px', margin: '10px'}}>
+                                    <Card.Img
+                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                        alt="Card image"
+                                        variant="bottom"/>
+                                </Card>
+                            </Col>
+                        );
+                    })}
+                </Row>
+                <br/>
+            </Container>
+        </div>
+    );
+}
+export default RelatedCards;

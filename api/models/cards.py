@@ -24,6 +24,7 @@ class CardIn(BaseModel):
     hero_id: str
     series_name: str
     card_number: int
+    enthusiasm: Optional[int]
     effect_text: Optional[str]
     flavor_text: Optional[str]
     illustrator: Optional[str]

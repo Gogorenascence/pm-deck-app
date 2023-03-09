@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
+
 import CardsPage from "./Cards/CardsPage"
+import CardDetailPage from "./Cards/CardDetailPage";
 import ArticlesPage from "./Articles/ArticlesPage"
 import GamePlayPage from "./GamePlay/GamePlayPage"
 import ForumPage from "./Forum/ForumPage"
@@ -21,7 +23,9 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path="/deckbuilder" element={<DeckBuilder />} />
           <Route path="/decks" element={<DecksPage />} />
+          {/* <Route path="/decks/:deck_id" element={<DeckDetail />} /> */}
           <Route path="/cards" element={<CardsPage />} />
+          <Route path="/cards/:card_number" element={<CardDetailPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/gameplay" element={<GamePlayPage />} />
           <Route path="/forum" element={<ForumPage />} />

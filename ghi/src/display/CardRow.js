@@ -6,6 +6,7 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 
 function CardRow() {
@@ -31,21 +32,24 @@ function CardRow() {
                     {cards.map((card) => {
                         return (
                             <Col>
-                                <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
-                                    <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
-                                </Card>
+                                <NavLink to={`/cards/${card.card_number}`}>
+                                    <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
+                                        <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
+                                    </Card>
+                                </NavLink>
                             </Col>
                         );
                     })}
                 </Row>
                 <br/>
                 <div className="d-grid gap-2">
-                    <Button variant="dark" size="lg">
-                        Browse All Cards
-                    </Button>
+                    <NavLink to="/cards">
+                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
+                            Browse All Cards
+                        </Button>
+                    </NavLink>
                 </div>
             </Container>
-
         </div>
 
     );

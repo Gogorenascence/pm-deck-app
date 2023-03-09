@@ -5,6 +5,7 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 function CardsPage() {
 
@@ -142,11 +143,17 @@ function CardsPage() {
             <Row xs={1} sm={2} md={3} lg={4} xl={4}>
                 {cards.map((card) => {
                     return (
-                        <Col >
-                            <Card
-                                style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
-                                <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
-                            </Card>
+                        <Col>
+                            <NavLink to={`/cards/${card.card_number}`}>
+
+                                <Card
+                                    style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
+                                    <Card.Img
+                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                        alt="Card image"
+                                        variant="bottom"/>
+                                </Card>
+                            </NavLink>
                         </Col>
                     );
                 })}
