@@ -1,12 +1,19 @@
 from .client import Queries
 from bson.objectid import ObjectId
-from pymongo import ReturnDocument
+from pymongo import ReturnDocument, MongoClient
 from models.cards import (
     CardIn,
     Card,
     CardOut,
     CardsAll
 )
+from models.card_comps import (
+    CardTypeOut,
+    ExtraEffectOut,
+    ReactionOut,
+    TagOut
+)
+import os
 
 
 class CardQueries(Queries):
@@ -156,3 +163,83 @@ class CardQueries(Queries):
                 return_document=ReturnDocument.AFTER,
             )
         return CardOut(**props, id=id)
+
+
+    # def get_card_type(self, card_number) -> CardTypeOut:
+    #     card = self.collection.find_one({"card_number": card_number})
+    #     card_type = card["card_type"][0]
+    #     print(card_type)
+
+    #     DATABASE_URL = os.environ["DATABASE_URL"]
+    #     conn = MongoClient(DATABASE_URL)
+    #     db = conn.cards.card_comps
+
+    #     props = db.find_one({"_id": ObjectId(card_type)})
+    #     if not props:
+    #         return None
+    #     props["id"] = str(props["_id"])
+    #     return CardTypeOut(**props)
+
+    def get_card_type(self, id: str) -> CardTypeOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_type_id = props["card_type"][0]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.card_types
+
+        card_type = db.find_one({"_id": ObjectId(card_type_id)})
+        card_type["id"] = str(card_type["_id"])
+        return card_type
+
+    def get_extra_effects(self, id: str) -> list:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        extra_effect_ids = props["extra_effects"]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.extra_effects
+
+        extra_effects = []
+        for extra_effect_id in extra_effect_ids:
+            extra_effect = db.find_one({"_id": ObjectId(extra_effect_id)})
+            extra_effect["id"] = str(extra_effect["_id"])
+            extra_effects.append(ExtraEffectOut(**extra_effect))
+        return extra_effects
+
+    def get_reactions(self, id: str) -> list:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        reaction_ids = props["reactions"]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.reactions
+
+        reactions = []
+        reaction_counts = {}
+        for reaction_id in reaction_ids:
+            if reaction_id not in reaction_counts.keys():
+                reaction_counts[reaction_id] = 1
+            else:
+                reaction_counts[reaction_id] += 1
+        for a,b in reaction_counts.items():
+            reaction = db.find_one({"_id": ObjectId(a)})
+            reaction["id"] = str(reaction["_id"])
+            reaction["count"] = b
+            reactions.append(ReactionOut(**reaction))
+        return reactions
+
+    def get_tags(self, id: str) -> list:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_tag_ids = props["card_tags"]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.card_tags
+
+        card_tags = []
+        for card_tag_id in card_tag_ids:
+            card_tag = db.find_one({"_id": ObjectId(card_tag_id)})
+            card_tag["id"] = str(card_tag["_id"])
+            card_tags.append(TagOut(**card_tag))
+        return card_tags

@@ -3,6 +3,11 @@ from models.cards import (
     CardOut,
     CardsAll
     )
+from models.card_comps import (
+    CardTypeOut,
+    ReactionsAll,
+    TagsAll
+)
 
 from queries.cards import CardQueries
 from fastapi import APIRouter, Depends, Response
@@ -177,3 +182,67 @@ async def remove_tag(
         response.status_code = 404
     else:
         return card
+
+# @router.get("/api/cards/{card_number}/get_card_type", response_model=CardTypeOut)
+# async def get_card_type(
+#     card_number: int,
+#     response: Response,
+#     queries: CardQueries = Depends(),
+# ):
+#     card_type = queries.get_card_type(card_number)
+#     if card_type is None:
+#         response.status_code = 404
+#     else:
+#         return card_type
+
+@router.get("/api/cards/{card_id}/get_card_type/", response_model=CardTypeOut)
+async def get_card_type(
+    card_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    card_type = queries.get_card_type(card_id)
+    if card_type is None:
+        response.status_code = 404
+    else:
+        return card_type
+
+@router.get("/api/cards/{card_id}/get_extra_effects/", response_model=list)
+async def get_extra_effects(
+    card_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    extra_effects = queries.get_extra_effects(card_id)
+    if extra_effects is None:
+        response.status_code = 404
+    else:
+        return extra_effects
+
+@router.get("/api/cards/{card_id}/get_reactions/", response_model=list)
+async def get_reactions(
+    card_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    reactions = queries.get_reactions(card_id)
+    if reactions is None:
+        response.status_code = 404
+    else:
+        return reactions
+
+@router.get("/api/cards/{card_id}/get_tags/", response_model=list)
+async def get_tags(
+    card_id: str,
+    response: Response,
+    queries: CardQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    card_tags = queries.get_tags(card_id)
+    if card_tags is None:
+        response.status_code = 404
+    else:
+        return card_tags

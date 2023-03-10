@@ -56,6 +56,7 @@ class ExtraEffectsAll(BaseModel):
 class ReactionIn(BaseModel):
     name: str
     rules: Optional[str]
+    count: Optional[int]
 
 
 class Reaction(ReactionIn):

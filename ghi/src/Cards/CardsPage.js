@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 function CardsPage() {
 
     const [cards, setCards] = useState([]);
+    // const [query, setQuery] = useState("")
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -31,6 +32,8 @@ function CardsPage() {
                 type="text"
                 placeholder=" Card Name Contains..."
                 style={{width: "740px", height: "37px"}}>
+                {/* value={query}
+                onChange={(event)=> setQuery(event.target.value)} */}
             </input>
             <br/>
             <input
@@ -133,6 +136,7 @@ function CardsPage() {
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
                 <option value="most_views">Popular</option>
+                <option value="card_number">Card Number</option>
             </select>
             <br/>
             <Button className="left" variant="dark">Search Cards</Button>

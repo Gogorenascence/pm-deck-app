@@ -14,23 +14,35 @@ function CardDetailPage() {
     const {card_number} = useParams();
     const [card, setCard] = useState("");
     const [relatedCards, setRelatedCards] = useState([]);
+    const [card_type, setCardType] = useState([])
+
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}`);
         const cardData = await response.json();
+
         setCard(cardData);
     };
+
     const getRelatedCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/related_cards/${card_number}`);
         const relatedData = await response.json();
 
         setRelatedCards(relatedData.cards);
+    };
 
+    const getCardType = async() =>{
+        const card_type_id = card["card_type"][0]
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/${card_type_id}`);
+        const cardTypeData = await response.json();
+
+        setCardType(cardTypeData);
     };
 
     useEffect(() => {
         getCard();
         getRelatedCards();
+        getCardType();
     })
 
     return (
@@ -64,19 +76,19 @@ function CardDetailPage() {
                         <h1 >{card.name}</h1>
                         <Row xs={1} sm={2} md={3} lg={3}>
                                     <Col>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Type</Card.Header>
                                             <Card.Body>
-                                                <Card.Title>{card.card_type}</Card.Title>
+                                                <Card.Title>{card_type.name}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Enthusiasm</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>{card.enthusiasm}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Card Number</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>{card.card_number}</Card.Title>
@@ -84,19 +96,19 @@ function CardDetailPage() {
                                         </Card>
                                     </Col>
                                     <Col>
-                                    <Card style={{margin: "6% 0%"}}>
+                                    <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Class</Card.Header>
                                             <Card.Body>
-                                                <Card.Title>{card.class}</Card.Title>
+                                                <Card.Title>{card.card_class}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Tags</Card.Header>
                                             <Card.Body>
-                                                <Card.Title>{card.tags}</Card.Title>
+                                                <Card.Title>{card.card_tags}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Hero ID</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>{card.hero_id}</Card.Title>
@@ -104,19 +116,19 @@ function CardDetailPage() {
                                         </Card>
                                     </Col>
                                     <Col>
-                                    <Card style={{margin: "6% 0%"}}>
+                                    <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Reactions</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>{card.reactions}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Series</Card.Header>
                                             <Card.Body>
-                                                <Card.Title>{card.series}</Card.Title>
+                                                <Card.Title>{card.series_name}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                        <Card style={{margin: "6% 0%"}}>
+                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header>Illustrator</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>{card.illustrator}</Card.Title>
@@ -125,39 +137,14 @@ function CardDetailPage() {
                                     </Col>
                         </Row>
                     </Container>
-                        <Card style={{margin: "5% 0% 1% 52%", width: "41%"}}>
+                        <Card bg="dark" text="white" style={{margin: "5% 0% 1% 52%", width: "41%"}}>
                             <Card.Header>Card Effect</Card.Header>
                             <Card.Body>
                                 <Card.Title>{card.illustrator}</Card.Title>
                             </Card.Body>
                         </Card>
 
-
-                {/* <h1 style={{textAlign: "center", margin: "13px 10% 0% 10%"}}>{card.name}</h1> */}
             </div>
-
-
-            {/* <Button className="left" variant="dark">Search Cards</Button>
-            <Button className="left" variant="dark">Reset Filters</Button>
-            <Button className="left" variant="dark">Random Card</Button>
-            <br/> */}
-{/*
-            <Row xs={1} sm={2} md={3} lg={4} xl={4}>
-                {cards.map((card) => {
-                    return (
-                        <Col >
-                            <Card
-                                style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
-                                <Card.Img
-                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                    alt="Card image"
-                                    variant="bottom"/>
-                            </Card>
-                        </Col>
-                    );
-                })}
-            </Row> */}
-
     </div>
     );
 }

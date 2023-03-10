@@ -20,7 +20,6 @@ class PydanticObjectId(ObjectId):
 class CardIn(BaseModel):
     name: str
     card_class: str
-    hero_name: str
     hero_id: str
     series_name: str
     card_number: int
