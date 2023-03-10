@@ -151,7 +151,7 @@ function CardsPage() {
                             <NavLink to={`/cards/${card.card_number}`}>
 
                                 <Card
-                                    style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
+                                    style={{ width: '370px', margin: '37px 5px 5px 5px', borderRadius: "17px", overflow: "hidden"}}>
                                     <Card.Img
                                         src={card.picture_url ? card.picture_url : "logo4p.png"}
                                         alt="Card image"

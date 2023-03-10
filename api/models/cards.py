@@ -25,7 +25,7 @@ class CardIn(BaseModel):
     card_number: int
     enthusiasm: Optional[int]
     effect_text: Optional[str]
-    flavor_text: Optional[str]
+    second_effect_text: Optional[str]
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str

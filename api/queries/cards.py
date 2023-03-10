@@ -71,7 +71,6 @@ class CardQueries(Queries):
         return self.collection.delete_one({"_id": ObjectId(id)})
 
 
-
     def add_card_type(self, id: str, card_type_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         card_type = props["card_type"]
@@ -93,6 +92,18 @@ class CardQueries(Queries):
                 return_document=ReturnDocument.AFTER,
             )
         return CardOut(**props, id=id)
+
+    def get_card_type(self, card_number: int) -> CardTypeOut:
+        props = self.collection.find_one({"card_number": card_number})
+        card_type_id = props["card_type"][0]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.card_types
+
+        card_type = db.find_one({"_id": ObjectId(card_type_id)})
+        card_type["id"] = str(card_type["_id"])
+        return card_type
 
 
     def add_extra_effect(self, id: str, extra_effect_id: str) -> CardOut:
@@ -117,6 +128,21 @@ class CardQueries(Queries):
             )
         return CardOut(**props, id=id)
 
+    def get_extra_effects(self, card_number: int) -> list:
+        props = self.collection.find_one({"card_number": card_number})
+        extra_effect_ids = props["extra_effects"]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.extra_effects
+
+        extra_effects = []
+        for extra_effect_id in extra_effect_ids:
+            extra_effect = db.find_one({"_id": ObjectId(extra_effect_id)})
+            extra_effect["id"] = str(extra_effect["_id"])
+            extra_effects.append(ExtraEffectOut(**extra_effect))
+        return extra_effects
+
 
     def add_reaction(self, id: str, reaction_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
@@ -140,75 +166,8 @@ class CardQueries(Queries):
         )
         return CardOut(**props, id=id)
 
-
-    def add_tag(self, id: str, tag_id: str) -> CardOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        card_tags = props["card_tags"]
-        if tag_id not in card_tags:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$push": {"card_tags": tag_id}},
-                return_document=ReturnDocument.AFTER,
-            )
-        return CardOut(**props, id=id)
-
-
-    def remove_tag(self, id: str, tag_id: str) -> CardOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        card_tags = props["card_tags"]
-        if tag_id in card_tags:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$pull": {"card_tags": tag_id}},
-                return_document=ReturnDocument.AFTER,
-            )
-        return CardOut(**props, id=id)
-
-
-    # def get_card_type(self, card_number) -> CardTypeOut:
-    #     card = self.collection.find_one({"card_number": card_number})
-    #     card_type = card["card_type"][0]
-    #     print(card_type)
-
-    #     DATABASE_URL = os.environ["DATABASE_URL"]
-    #     conn = MongoClient(DATABASE_URL)
-    #     db = conn.cards.card_comps
-
-    #     props = db.find_one({"_id": ObjectId(card_type)})
-    #     if not props:
-    #         return None
-    #     props["id"] = str(props["_id"])
-    #     return CardTypeOut(**props)
-
-    def get_card_type(self, id: str) -> CardTypeOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        card_type_id = props["card_type"][0]
-
-        DATABASE_URL = os.environ["DATABASE_URL"]
-        conn = MongoClient(DATABASE_URL)
-        db = conn.cards.card_types
-
-        card_type = db.find_one({"_id": ObjectId(card_type_id)})
-        card_type["id"] = str(card_type["_id"])
-        return card_type
-
-    def get_extra_effects(self, id: str) -> list:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        extra_effect_ids = props["extra_effects"]
-
-        DATABASE_URL = os.environ["DATABASE_URL"]
-        conn = MongoClient(DATABASE_URL)
-        db = conn.cards.extra_effects
-
-        extra_effects = []
-        for extra_effect_id in extra_effect_ids:
-            extra_effect = db.find_one({"_id": ObjectId(extra_effect_id)})
-            extra_effect["id"] = str(extra_effect["_id"])
-            extra_effects.append(ExtraEffectOut(**extra_effect))
-        return extra_effects
-
-    def get_reactions(self, id: str) -> list:
-        props = self.collection.find_one({"_id": ObjectId(id)})
+    def get_reactions(self, card_number: int) -> list:
+        props = self.collection.find_one({"card_number": card_number})
         reaction_ids = props["reactions"]
 
         DATABASE_URL = os.environ["DATABASE_URL"]
@@ -229,8 +188,31 @@ class CardQueries(Queries):
             reactions.append(ReactionOut(**reaction))
         return reactions
 
-    def get_tags(self, id: str) -> list:
+
+    def add_tag(self, id: str, tag_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
+        card_tags = props["card_tags"]
+        if tag_id not in card_tags:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$push": {"card_tags": tag_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
+
+    def remove_tag(self, id: str, tag_id: str) -> CardOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        card_tags = props["card_tags"]
+        if tag_id in card_tags:
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$pull": {"card_tags": tag_id}},
+                return_document=ReturnDocument.AFTER,
+            )
+        return CardOut(**props, id=id)
+
+    def get_tags(self, card_number: int) -> list:
+        props = self.collection.find_one({"card_number": card_number})
         card_tag_ids = props["card_tags"]
 
         DATABASE_URL = os.environ["DATABASE_URL"]

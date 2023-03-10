@@ -103,7 +103,7 @@ function DecksPage() {
                         <Col >
                             <Card
                                 className="bg-dark text-white text-center"
-                                style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
+                                style={{ width: '370px', margin: '37px 5px 5px 5px', borderRadius: "17px", overflow: "hidden"}}>
                                 <Card.Img src="logo4p.png" alt="Card image" variant="bottom"/>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                                     <Card.Title
@@ -111,18 +111,18 @@ function DecksPage() {
                                             {deck.name}
                                     </Card.Title>
                                         <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
-                                            style={{margin: '0px 0px 60px 0px', fontWeight: 600}}
+                                            style={{margin: '0px 0px 70px 0px', fontWeight: "600"}}
                                         >
                                             User:
                                         </Card.Text>
                                         <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
-                                            style={{margin: '0px 0px 37px 0px', fontWeight: 600}}
+                                            style={{margin: '0px 0px 47px 0px', fontWeight: "600"}}
                                         >
                                             Strategies: {deck.strategies}
                                         </Card.Text>
                                         <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"
-                                            style={{fontWeight: 600}}
+                                            style={{margin: '0px 0px 10px 0px', fontWeight: "600"}}
                                         >
                                             Views: {deck.views}
                                         </Card.Text>
