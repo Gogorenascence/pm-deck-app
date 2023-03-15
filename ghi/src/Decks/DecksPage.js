@@ -20,7 +20,7 @@ function DecksPage() {
 
     useEffect(() => {
         getDecks();
-    })
+    }, []);
 
     return (
         <div className="white-space">

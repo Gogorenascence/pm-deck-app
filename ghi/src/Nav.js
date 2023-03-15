@@ -185,7 +185,37 @@ function Nav() {
               </ul>
             </li>
           </ul>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Admin
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/cards/create">
+                    Card Create
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/cards/create">
+                    Card Edit
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </div>
       </div>
       </div>
       </div>

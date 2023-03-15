@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
 import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
-
 import CardsPage from "./Cards/CardsPage"
+import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
+// import EditCardForm from "./Cards/EditCardForm";
 import ArticlesPage from "./Articles/ArticlesPage"
 import GamePlayPage from "./GamePlay/GamePlayPage"
 import ForumPage from "./Forum/ForumPage"
-import MainPage from "./MainPage";
 import Nav from "./Nav";
 import "./index.css"
 import "./Massive.css"
@@ -25,7 +26,9 @@ function App() {
           <Route path="/decks" element={<DecksPage />} />
           {/* <Route path="/decks/:deck_id" element={<DeckDetail />} /> */}
           <Route path="/cards" element={<CardsPage />} />
+          <Route path="/cards/create" element={<CardCreatePage />} />
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
+          {/* <Route path="/cards/:card_number/edit" element={<EditCardForm />} /> */}
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/gameplay" element={<GamePlayPage />} />
           <Route path="/forum" element={<ForumPage />} />

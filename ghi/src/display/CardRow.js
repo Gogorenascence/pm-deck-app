@@ -22,7 +22,7 @@ function CardRow() {
 
     useEffect(() => {
         getCards();
-    })
+    }, []);
 
 
     return(

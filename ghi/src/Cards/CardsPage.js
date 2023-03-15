@@ -21,7 +21,7 @@ function CardsPage() {
 
     useEffect(() => {
         getCards();
-    })
+    },[]);
 
     return (
         <div className="white-space">
