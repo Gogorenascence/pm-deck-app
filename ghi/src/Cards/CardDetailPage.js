@@ -215,6 +215,15 @@ function CardDetailPage() {
                     <CardEditModal/>
 
                     <CardAddCompModal/>
+
+                    <NavLink to="/cards/create">
+                        <Button
+                            style={{margin: "0% 1% 2% 35%", width: "146px"}}
+                            variant="danger"
+                            size="lg">
+                            Create
+                        </Button>
+                    </NavLink>
 </div>
 
             </div>
