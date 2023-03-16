@@ -42,9 +42,9 @@ function CardAddCompModal() {
     const [card_tags, setCardTags] = useState([]);
 
     const [card_type, setCardType] = useState({ id: '' });
-    const [extra_effect, setExtraEffect] = useState([]);
-    const [reaction, setReaction] = useState([]);
-    const [card_tag, setCardTag] = useState([]);
+    const [extra_effect, setExtraEffect] = useState({ id: '' });
+    const [reaction, setReaction] = useState({ id: '' });
+    const [card_tag, setCardTag] = useState({ id: '' });
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);

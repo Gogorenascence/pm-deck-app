@@ -93,6 +93,7 @@ function CardDetailPage() {
                                             <Card
                                                 style={{ width: '175px', margin: 'auto', borderRadius: "9px", overflow: "hidden"}}>
                                                 <Card.Img
+                                                    title={relatedCard.name}
                                                     src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
                                                     alt="Related Card image"
                                                     variant="bottom"/>
@@ -111,7 +112,7 @@ function CardDetailPage() {
                                         <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header style={{fontWeight: "500"}}>Type</Card.Header>
                                             <Card.Body>
-                                                <Card.Title style={{fontWeight: "300"}}>{card_type.name}</Card.Title>
+                                                <Card.Title title={card_type.rules} style={{fontWeight: "300"}}>{card_type.name}</Card.Title>
                                             </Card.Body>
                                         </Card>
                                         <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
@@ -139,7 +140,7 @@ function CardDetailPage() {
                                             <Card.Body>
                                             {card_tags.map((card_tag) => {
                                                     return (
-                                                        <Card.Title style={{fontWeight: "350"}}>{card_tag ? card_tag.name : "n/a"}</Card.Title>
+                                                        <Card.Title title={card_tag.rules} style={{fontWeight: "350"}}>{card_tag ? card_tag.name : "n/a"}</Card.Title>
                                                     );
                                                 })}
                                             </Card.Body>
@@ -157,7 +158,7 @@ function CardDetailPage() {
                                             <Card.Body>
                                             {reactions.length ? (
                                                 reactions.map((reaction) => (
-                                                <Card.Title style={{fontWeight: "350"}} key={reaction.name}>
+                                                <Card.Title title={reaction.rules} style={{fontWeight: "350"}} key={reaction.name}>
                                                     {reaction.name} {reaction.count}
                                                 </Card.Title>
                                                 ))
@@ -194,7 +195,7 @@ function CardDetailPage() {
             <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
             {extra_effects.map((extra_effect) => (
                 <Card.Body key={extra_effect.name}>
-                    <Card.Title style={{fontWeight: "350", height: "22px"}}>{extra_effect.name}</Card.Title>
+                    <Card.Title title={extra_effect.rules} style={{fontWeight: "350", height: "22px"}}>{extra_effect.name}</Card.Title>
                 </Card.Body>
             ))}
         </>
