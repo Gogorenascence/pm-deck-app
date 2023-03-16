@@ -28,7 +28,6 @@ function App() {
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/cards/create" element={<CardCreatePage />} />
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
-          {/* <Route path="/cards/:card_number/edit" element={<EditCardForm />} /> */}
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/gameplay" element={<GamePlayPage />} />
           <Route path="/forum" element={<ForumPage />} />

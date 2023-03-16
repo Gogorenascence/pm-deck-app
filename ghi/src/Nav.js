@@ -206,11 +206,6 @@ function Nav() {
                     Card Create
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/cards/create">
-                    Card Edit
-                  </NavLink>
-                </li>
               </ul>
             </li>
           </ul>
