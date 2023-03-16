@@ -104,6 +104,10 @@ text-align: center;
   margin: 15px 5px 0px 5px;
 }
 
-.bigmodal {
-  width: 60%;
+.opacity-95 {
+  opacity: 92%;
+}
+
+.opacity-100 {
+  opacity: 100%;
 }

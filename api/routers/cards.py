@@ -163,7 +163,7 @@ async def add_reaction(
     else:
         return card
 
-@router.put("/api/cards/{card_id}/remove_reaction/{reaction}/", response_model=CardOut | str)
+@router.put("/api/cards/{card_id}/remove_reaction/{reaction_id}/", response_model=CardOut | str)
 async def remove_reaction(
     card_id: str,
     reaction_id: str,

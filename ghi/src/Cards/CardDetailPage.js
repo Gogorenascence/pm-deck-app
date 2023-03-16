@@ -8,6 +8,7 @@ import {
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
+import CardAddCompModal from "./CardAddCompModal";
 
 
 function CardDetailPage() {
@@ -34,7 +35,7 @@ function CardDetailPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/related_cards/`);
         const relatedData = await response.json();
 
-        setRelatedCards(relatedData.cards);
+        setRelatedCards(relatedData.cards.sort((a,b) => a.card_number - b.card_number));
     };
 
     const getCardType = async() =>{
@@ -138,7 +139,7 @@ function CardDetailPage() {
                                             <Card.Body>
                                             {card_tags.map((card_tag) => {
                                                     return (
-                                                        <Card.Title style={{fontWeight: "350"}}>{card_tag.name}</Card.Title>
+                                                        <Card.Title style={{fontWeight: "350"}}>{card_tag ? card_tag.name : "n/a"}</Card.Title>
                                                     );
                                                 })}
                                             </Card.Body>
@@ -180,34 +181,41 @@ function CardDetailPage() {
                                     </Col>
                         </Row>
                     </Container>
-                        <Card bg="dark" text="white" style={{margin: "5% 0% 1% 52%", width: "41%"}}>
-                            <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
-                            <Card.Body>
-                                <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
-                                <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
-                            </Card.Body>
-                            {extra_effects.length ? (
-                                extra_effects.map((extra_effect, index) => (
-                                    <div key={index}>
-                                        <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
-                                        <Card.Body>
-                                            <Card.Title style={{fontWeight: "350"}}>{extra_effect.name}</Card.Title>
-                                        </Card.Body>
-                                    </div>
-                                ))
-                                ) : (
-                                <br />
-                                )}
-                        </Card>
-                        <NavLink to="/cards">
-                            <Button
-                                style={{margin: "0% 1% 2% 1%", width: "100px"}}
-                                variant="dark"
-                                size="lg">
-                                Back
-                            </Button>
-                        </NavLink>
+                    <Card bg="dark" text="white" style={{margin: "5% 0% 1% 51.75%", width: "41.75%"}}>
+    <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
+    <Card.Body>
+        <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
+        {card.second_effect_text && (
+            <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
+        )}
+    </Card.Body>
+    {extra_effects.length ? (
+        <>
+            <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
+            {extra_effects.map((extra_effect) => (
+                <Card.Body key={extra_effect.name}>
+                    <Card.Title style={{fontWeight: "350", height: "22px"}}>{extra_effect.name}</Card.Title>
+                </Card.Body>
+            ))}
+        </>
+    ) : null}
+</Card>
+
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                    <NavLink to="/cards">
+                        <Button
+                            style={{margin: "0% 1% 2% 14%", width: "100px"}}
+                            variant="dark"
+                            size="lg">
+                            Back
+                        </Button>
+                    </NavLink>
+
                     <CardEditModal/>
+
+                    <CardAddCompModal/>
+</div>
+
             </div>
     </div>
     </div>

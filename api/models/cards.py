@@ -29,10 +29,10 @@ class CardIn(BaseModel):
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str
-    card_type: List
-    extra_effects: List
-    reactions: List
-    card_tags: List
+    card_type: list
+    extra_effects: list
+    reactions: list
+    card_tags: Optional[list]
 
 
 class Card(CardIn):
@@ -44,4 +44,4 @@ class CardOut(CardIn):
 
 
 class CardsAll(BaseModel):
-    cards: List
+    cards: list

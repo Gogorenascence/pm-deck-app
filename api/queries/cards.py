@@ -123,7 +123,7 @@ class CardQueries(Queries):
         if extra_effect_id in extra_effects:
             self.collection.find_one_and_update(
                 {"_id": ObjectId(id)},
-                {"$push": {"extra_effects": extra_effect_id}},
+                {"$pull": {"extra_effects": extra_effect_id}},
                 return_document=ReturnDocument.AFTER,
             )
         return CardOut(**props, id=id)

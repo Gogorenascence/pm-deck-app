@@ -6,7 +6,7 @@ import {
     Container,
     Modal,
 } from "react-bootstrap";
-import { useLocation} from 'react-router-dom';
+import { useLocation, useParams} from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react'
 
 
@@ -29,50 +29,24 @@ function CardEditModal() {
         card_tags: [],
     });
 
+    const {card_number} = useParams();
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [card_types, setCardTypes] = useState([]);
-    const [extra_effects, setExtraEffects] = useState([]);
-    const [reactions, setReactions] = useState([]);
-    const [card_tags, setCardTags] = useState([]);
+    const getCard = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
+        const cardData = await response.json();
 
-    const getCardTypes = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
-        const cardTypeData = await response.json();
-
-        setCardTypes(cardTypeData.card_types);
-    };
-
-    const getExtraEffects = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/`);
-        const extraEffectData = await response.json();
-
-        setExtraEffects(extraEffectData.extra_effects);
-    };
-
-    const getReactions = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/`);
-        const reactionData = await response.json();
-
-        setReactions(reactionData.reactions);
-    };
-
-    const getCardTags = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/`);
-        const cardTagData = await response.json();
-
-        setCardTags(cardTagData.card_tags);
+        setCard(cardData);
+        console.log(cardData)
     };
 
     useEffect(() => {
-        getCardTypes();
-        getExtraEffects();
-        getReactions();
-        getCardTags();
-    }, []);
+        getCard();
+    }, [card_number]);
 
     const handleChange = (event) => {
         setCard({ ...card, [event.target.name]: event.target.value });
@@ -86,9 +60,9 @@ function CardEditModal() {
         console.log(data)
         const card_number = data["card_number"]
 
-        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`;
+        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card.id}/`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -115,8 +89,10 @@ function CardEditModal() {
                 reactions: [],
                 card_tags: [],
             });
-        };
             window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
+        } else {
+            console.error("Error in updating card");
+        }
     };
     const handleClear = (async (event) => {
         event.preventDefault();
@@ -125,8 +101,8 @@ function CardEditModal() {
             card_class: "",
             hero_id: "",
             series_name: "",
-            card_number: 0,
-            enthusiasm: 0,
+            card_number: "",
+            enthusiasm: "",
             effect_text: "",
             second_effect_text: "",
             illustrator: "",
@@ -142,171 +118,161 @@ function CardEditModal() {
 
     return (
 
-    <div>
-
-
-<Button
-                            style={{margin: "0% 2% 2% 0%", width: "100px"}}
-                            onClick={handleShow}
-                            variant="danger"
-                            size="lg">
-                            Edit
-        </Button>
-
-        <Modal
-          show={show}
-          size="xl"
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-
-          </Modal.Header>
-          <Modal.Body>
-
-        <form
-            onSubmit={handleSubmit}
-            id="create-card-page"
-            style={{display: "grid", gridTemplateColumns: "1fr 1fr" }}
-        >
-        <Container style={{marginLeft: "18%"}}>
-            <h5 className="label">Name </h5>
-            <input
-                type="text"
-                placeholder=" Card Name"
-                onChange={handleChange}
-                name="name"
-                value={card.name}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Hero ID</h5>
-            <input
-                type="text"
-                placeholder=" Hero ID"
-                onChange={handleChange}
-                name="hero_id"
-                value={card.hero_id}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Series </h5>
-            <input
-                type="text"
-                placeholder=" Series"
-                onChange={handleChange}
-                name="series_name"
-                value={card.series_name}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Card Number </h5>
-            <input
-                type="number"
-                placeholder=" Card Number"
-                onChange={handleChange}
-                name="card_number"
-                value={card.card_number}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Illustrator </h5>
-            <input
-                type="text"
-                placeholder=" Illustrator"
-                onChange={handleChange}
-                name="illustrator"
-                value={card.illustrator}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Picture Url </h5>
-            <input
-                type="text"
-                placeholder=" Picture Url"
-                onChange={handleChange}
-                name="picture_url"
-                value={card.picture_url}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
+        <div>
             <Button
-                style={{margin: "4% 2% 2% 1%", width: "100px"}}
-                variant="dark"
-                size="lg"
-                onClick={handleSubmit}
-            >
-                    Create
-            </Button>
-            <Button
-                style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                style={{margin: "0% 2% 2% 25%", width: "100px"}}
+                onClick={handleShow}
                 variant="danger"
-                size="lg"
-                onClick={handleClear}
-            >
-                    Reset
+                size="lg">
+                Edit
             </Button>
-        </Container>
-        <Container style={{marginLeft: "9%"}}>
-            <h5 className="label">Card Class </h5>
-            <select
-                type="text"
-                placeholder=" Class"
-                onChange={handleChange}
-                name="card_class"
-                value={card.card_class}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-                <option value="">Class</option>
-                <option value="staunch">Staunch</option>
-                <option value="power">Power</option>
-                <option value="unity">Unity</option>
-                <option value="canny">Canny</option>
-            </select>
-            <h5 className="label">Enthusiasm </h5>
-            <input
-                type="number"
-                placeholder=" Enthusiasm"
-                onChange={handleChange}
-                name="enthusiasm"
-                value={card.enthusiasm}
-                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
-            </input>
-            <br/>
-            <h5 className="label">Effect Text </h5>
-            <textarea
-                type="text"
-                placeholder=" Effect Text"
-                onChange={handleChange}
-                name="effect_text"
-                value={card.effect_text}
-                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
-            </textarea>
-            <br/>
-            <h5 className="label">Second Effect Text </h5>
-            <textarea
-                type="text"
-                placeholder=" Second Effect Text"
-                onChange={handleChange}
-                name="second_effect_text"
-                value={card.second_effect_text}
-                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
-            </textarea>
-            <br/>
-        </Container>
 
-        </form>
+            <Modal
+                show={show}
+                size="xl"
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <h1 className="label" style={{marginLeft: "10.5%"}}>Card Edit</h1>
+                </Modal.Header>
+                <Modal.Body>
 
-          </Modal.Body>
+                    <form
+                        onSubmit={handleSubmit}
+                        id="create-card-page"
+                        style={{display: "grid", gridTemplateColumns: "1fr 1fr"}}
+                    >
+                        <Container style={{marginLeft: "18%"}}>
+                            <h5 className="label">Name </h5>
+                            <input
+                                type="text"
+                                placeholder=" Card Name"
+                                onChange={handleChange}
+                                name="name"
+                                value={card.name}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Hero ID</h5>
+                            <input
+                                type="text"
+                                placeholder=" Hero ID"
+                                onChange={handleChange}
+                                name="hero_id"
+                                value={card.hero_id}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Series </h5>
+                            <input
+                                type="text"
+                                placeholder=" Series"
+                                onChange={handleChange}
+                                name="series_name"
+                                value={card.series_name}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Card Number </h5>
+                            <input
+                                type="number"
+                                placeholder=" Card Number"
+                                onChange={handleChange}
+                                name="card_number"
+                                value={card.card_number}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Illustrator </h5>
+                            <input
+                                type="text"
+                                placeholder=" Illustrator"
+                                onChange={handleChange}
+                                name="illustrator"
+                                value={card.illustrator}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Picture Url </h5>
+                            <input
+                                type="text"
+                                placeholder=" Picture Url"
+                                onChange={handleChange}
+                                name="picture_url"
+                                value={card.picture_url}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <Button
+                                style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                variant="dark"
+                                size="lg"
+                                onClick={handleSubmit}
+                            >
+                                    Save
+                            </Button>
+                            <Button
+                                style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                variant="danger"
+                                size="lg"
+                                onClick={handleClear}
+                            >
+                                    Reset
+                            </Button>
+                        </Container>
+                        <Container style={{margin: "0% 0% 5% 9%"  }}>
+                            <h5 className="label">Card Class </h5>
+                            <select
+                                type="text"
+                                placeholder=" Class"
+                                onChange={handleChange}
+                                name="card_class"
+                                value={card.card_class}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                <option value="">Class</option>
+                                <option value="Staunch">Staunch</option>
+                                <option value="Power">Power</option>
+                                <option value="Unity">Unity</option>
+                                <option value="Canny">Canny</option>
+                            </select>
+                            <h5 className="label">Enthusiasm </h5>
+                            <input
+                                type="number"
+                                placeholder=" Enthusiasm"
+                                onChange={handleChange}
+                                name="enthusiasm"
+                                value={card.enthusiasm}
+                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                            </input>
+                            <br/>
+                            <h5 className="label">Effect Text </h5>
+                            <textarea
+                                type="text"
+                                placeholder=" Effect Text"
+                                onChange={handleChange}
+                                name="effect_text"
+                                value={card.effect_text}
+                                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
+                            </textarea>
+                            <br/>
+                            <h5 className="label">Second Effect Text </h5>
+                            <textarea
+                                type="text"
+                                placeholder=" Second Effect Text"
+                                onChange={handleChange}
+                                name="second_effect_text"
+                                value={card.second_effect_text}
+                                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
+                            </textarea>
+                            <br/>
+                        </Container>
+                    </form>
 
-          <Modal.Footer>
-          <Modal.Body>
-
-          </Modal.Body>
-
-          </Modal.Footer>
-        </Modal>
-    </div>
+                </Modal.Body>
+            </Modal>
+        </div>
   )
 }
 
