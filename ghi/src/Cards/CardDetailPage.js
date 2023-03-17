@@ -6,7 +6,7 @@ import {
     Container,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import CardAddCompModal from "./CardAddCompModal";
 
@@ -21,6 +21,8 @@ function CardDetailPage() {
     const [reactions, setReactions] = useState([])
     const [card_tags, setCardTags] = useState([])
 
+    const [cards, setCards] = useState([]);
+    const navigate = useNavigate();
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
@@ -66,6 +68,22 @@ function CardDetailPage() {
         setCardTags(cardTagData);
     };
 
+    const getCards = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const data = await response.json();
+
+        setCards(data.cards.reverse());
+    };
+
+    const getRandomCard = async() =>{
+        const randomIndex = Math.floor(Math.random() * cards.length);
+        const randomCard = cards[randomIndex].card_number;
+        console.log(randomCard.card_number)
+        window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
+        // navigate(`/cards/${randomCard}`);
+        // window.scrollTo(0, 0);
+    }
+
     useEffect(() => {
         getCard();
         getRelatedCards();
@@ -73,6 +91,7 @@ function CardDetailPage() {
         getExtraEffects();
         getReactions();
         getCardTags();
+        getCards();
     }, [card_number]);
 
     return (
@@ -103,6 +122,14 @@ function CardDetailPage() {
                                 );
                             })}
                         </Row>
+                        <Button
+                            style={{margin: "7% 37.75% 10%", width: "25%", }}
+                            variant="dark"
+                            size="lg"
+                            onClick={getRandomCard}
+                        >
+                            Random Card
+                        </Button>
                         <br/>
                     </Container>
                     <Container style={{margin: "1% 0% 1% 45%", width: "50%"}}>

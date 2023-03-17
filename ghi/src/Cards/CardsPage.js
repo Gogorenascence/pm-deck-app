@@ -5,12 +5,12 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function CardsPage() {
 
     const [cards, setCards] = useState([]);
-    const [randomCard, setRandomCard] = useState(null)
+    const navigate = useNavigate();
     // const [query, setQuery] = useState("")
 
     const getCards = async() =>{
@@ -22,14 +22,13 @@ function CardsPage() {
 
     const getRandomCard = async() =>{
         const randomIndex = Math.floor(Math.random() * cards.length);
-        const randomCard = cards[randomIndex];
-        setRandomCard(randomCard.card_number);
+        const randomCard = cards[randomIndex].card_number;
         console.log(randomCard.card_number)
+        window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
     }
 
     useEffect(() => {
         getCards();
-        getRandomCard();
     },[]);
 
     return (
