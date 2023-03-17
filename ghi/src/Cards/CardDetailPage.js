@@ -112,7 +112,7 @@ function CardDetailPage() {
                                         <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
                                             <Card.Header style={{fontWeight: "500"}}>Type</Card.Header>
                                             <Card.Body>
-                                                <Card.Title title={card_type.rules} style={{fontWeight: "300"}}>{card_type.name}</Card.Title>
+                                                <Card.Title title={card_type.rules} style={{fontWeight: "350"}}>{card_type.name}</Card.Title>
                                             </Card.Body>
                                         </Card>
                                         <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
@@ -205,7 +205,7 @@ function CardDetailPage() {
                         <div style={{ display: "flex", alignItems: "center" }}>
                     <NavLink to="/cards">
                         <Button
-                            style={{margin: "0% 1% 2% 14%", width: "100px"}}
+                            style={{margin: "0% 1% 2% 12.5%", width: "100px"}}
                             variant="dark"
                             size="lg">
                             Back

@@ -9,7 +9,10 @@ import { Link } from 'react-router-dom';
 
 function DecksPage() {
 
+    // const deck_id =
+
     const [decks, setDecks] = useState([]);
+    // const [cover_card, setCoverCard] = useState("");
 
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -17,6 +20,13 @@ function DecksPage() {
 
         setDecks(data.decks);
     };
+
+    // const getCoverCard = async() =>{
+    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/cover/",`);
+    //     const data = await response.json();
+
+    //     setCoverCard(data.decks);
+    // };
 
     useEffect(() => {
         getDecks();

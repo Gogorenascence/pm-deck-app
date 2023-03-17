@@ -10,17 +10,26 @@ import { NavLink } from 'react-router-dom';
 function CardsPage() {
 
     const [cards, setCards] = useState([]);
+    const [randomCard, setRandomCard] = useState(null)
     // const [query, setQuery] = useState("")
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
 
-        setCards(data.cards);
+        setCards(data.cards.reverse());
     };
+
+    const getRandomCard = async() =>{
+        const randomIndex = Math.floor(Math.random() * cards.length);
+        const randomCard = cards[randomIndex];
+        setRandomCard(randomCard.card_number);
+        console.log(randomCard.card_number)
+    }
 
     useEffect(() => {
         getCards();
+        getRandomCard();
     },[]);
 
     return (
@@ -141,7 +150,16 @@ function CardsPage() {
             <br/>
             <Button className="left" variant="dark">Search Cards</Button>
             <Button className="left" variant="dark">Reset Filters</Button>
-            <Button className="left" variant="dark">Random Card</Button>
+
+            {/* <NavLink to={`/cards/${randomCard.card_number}`}> */}
+                <Button
+                    className="left"
+                    variant="dark"
+                    onClick={getRandomCard}
+                    >
+                    Random Card
+                </Button>
+            {/* </NavLink> */}
             <br/>
 
             <Row xs={1} sm={2} md={3} lg={4} xl={4}>

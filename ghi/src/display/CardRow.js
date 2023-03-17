@@ -34,7 +34,7 @@ function CardRow() {
                             <Col>
                                 <NavLink to={`/cards/${card.card_number}`}>
                                     <Card style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
-                                        <Card.Img src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
+                                        <Card.Img title={card.name} src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
                                     </Card>
                                 </NavLink>
                             </Col>
@@ -44,7 +44,7 @@ function CardRow() {
                 <br/>
                 <div className="d-grid gap-2">
                     <NavLink to="/cards">
-                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
+                        <Button variant="dark" size="lg" style={{ width: "100.5%" }}>
                             Browse All Cards
                         </Button>
                     </NavLink>

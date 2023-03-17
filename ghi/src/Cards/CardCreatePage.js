@@ -226,10 +226,10 @@ function CardCreatePage() {
                 value={card.card_class}
                 style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
                 <option value="">Class</option>
-                <option value="staunch">Staunch</option>
-                <option value="power">Power</option>
-                <option value="unity">Unity</option>
-                <option value="canny">Canny</option>
+                <option value="Staunch">Staunch</option>
+                <option value="Power">Power</option>
+                <option value="Unity">Unity</option>
+                <option value="Canny">Canny</option>
             </select>
             <h5 className="label">Enthusiasm </h5>
             <input
