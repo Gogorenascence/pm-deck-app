@@ -137,7 +137,7 @@ function CardCreatePage() {
             id="create-card-page"
             style={{display: "grid", gridTemplateColumns: "1fr 1fr" }}
         >
-        <Container style={{marginLeft: "45%"}}>
+        <Container style={{width: "40%"}}>
             <h1 className="left-h1">Card Create</h1>
             <h5 className="label">Name </h5>
             <input
@@ -216,7 +216,7 @@ function CardCreatePage() {
                     Reset
             </Button>
         </Container>
-        <Container style={{marginTop: "20px"}}>
+        <Container style={{margin:"2.5% 0% 2.5% 14%"}}>
             <h5 className="label">Card Class </h5>
             <select
                 type="text"

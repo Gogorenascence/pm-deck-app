@@ -22,7 +22,6 @@ function CardDetailPage() {
     const [card_tags, setCardTags] = useState([])
 
     const [cards, setCards] = useState([]);
-    const navigate = useNavigate();
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
@@ -80,8 +79,6 @@ function CardDetailPage() {
         const randomCard = cards[randomIndex].card_number;
         console.log(randomCard.card_number)
         window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
-        // navigate(`/cards/${randomCard}`);
-        // window.scrollTo(0, 0);
     }
 
     useEffect(() => {
@@ -96,10 +93,10 @@ function CardDetailPage() {
 
     return (
         <div className="white-space">
-                <div style={{margin: "4% 0%"}}>
-                    <Card className="left-card" style={{borderRadius: "27px", overflow: "hidden"}}>
-                        <Card.Img src={card?.picture_url ?? "logo4p.png"}/>
-                    </Card>
+            <div style={{margin: "4% 0%"}}>
+                <Card className="left-card" style={{borderRadius: "27px", overflow: "hidden"}}>
+                    <Card.Img src={card?.picture_url ?? "logo4p.png"}/>
+                </Card>
                 <div>
                     <Container style={{ width: "44%", margin: "3%", float: "left"}}>
                         <h1 className="centered-h1">Related Cards</h1>
@@ -210,52 +207,52 @@ function CardDetailPage() {
                         </Row>
                     </Container>
                     <Card bg="dark" text="white" style={{margin: "5% 0% 1% 51.75%", width: "41.75%"}}>
-    <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
-    <Card.Body>
-        <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
-        {card.second_effect_text && (
-            <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
-        )}
-    </Card.Body>
-    {extra_effects.length ? (
-        <>
-            <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
-            {extra_effects.map((extra_effect) => (
-                <Card.Body key={extra_effect.name}>
-                    <Card.Title title={extra_effect.rules} style={{fontWeight: "350", height: "22px"}}>{extra_effect.name}</Card.Title>
-                </Card.Body>
-            ))}
-        </>
-    ) : null}
-</Card>
-
+                        <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
+                        <Card.Body>
+                            <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
+                            {card.second_effect_text && (
+                                <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
+                            )}
+                        </Card.Body>
+                        {extra_effects.length ? (
+                            <>
+                                <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
+                                {extra_effects.map((extra_effect) => (
+                                    <Card.Body key={extra_effect.name}>
+                                        <Card.Title title={extra_effect.rules} style={{fontWeight: "350", height: "22px"}}>{extra_effect.name}</Card.Title>
+                                    </Card.Body>
+                                ))}
+                            </>
+                        ) : null}
+                    </Card>
+                    <Container style={{margin: "1% 0% 1% 45%", width: "50%"}}>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                    <NavLink to="/cards">
-                        <Button
-                            style={{margin: "0% 1% 2% 12.5%", width: "100px"}}
-                            variant="dark"
-                            size="lg">
-                            Back
-                        </Button>
-                    </NavLink>
+                            <NavLink to="/cards">
+                                <Button
+                                    style={{margin: "0% 1% 2% 12.5%", width: "100px"}}
+                                    variant="dark"
+                                    size="lg">
+                                    Back
+                                </Button>
+                            </NavLink>
 
-                    <CardEditModal/>
+                            <CardEditModal/>
 
-                    <CardAddCompModal/>
+                            <CardAddCompModal/>
 
-                    <NavLink to="/cards/create">
-                        <Button
-                            style={{margin: "0% 1% 2% 35%", width: "146px"}}
-                            variant="danger"
-                            size="lg">
-                            Create
-                        </Button>
-                    </NavLink>
-</div>
-
+                            <NavLink to="/cards/create">
+                                <Button
+                                    style={{margin: "0% 1% 2% 35%", width: "146px"}}
+                                    variant="danger"
+                                    size="lg">
+                                    Create
+                                </Button>
+                            </NavLink>
+                        </div>
+                    </Container>
+                </div>
             </div>
-    </div>
-    </div>
+        </div>
     );
 }
 

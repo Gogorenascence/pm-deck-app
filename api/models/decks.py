@@ -23,7 +23,9 @@ class DeckIn(BaseModel):
     account_id: str
     description: Optional[str]
     strategies: Optional[list]
-    cards: List
+    cards: list
+    pluck: Optional[list]
+    side: Optional[list]
     views: Optional[int]
 
 

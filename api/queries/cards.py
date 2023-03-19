@@ -50,10 +50,6 @@ class CardQueries(Queries):
 
     def create_card(self, card: CardIn) -> Card:
         props = card.dict()
-        props["card_type"] = []
-        props["extra_effects"] = []
-        props["reactions"] = []
-        props["card_tags"] = []
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Card(**props)

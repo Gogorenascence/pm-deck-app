@@ -102,6 +102,20 @@ async def clear_deck(
     else:
         return deck
 
+@router.put("/decks/{deck_id}/list/", response_model=list)
+async def get_deck_list(
+    deck_id: str,
+    response: Response,
+    queries: DeckQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck_list = queries.get_deck_list(deck_id)
+    if deck_list is None:
+        response.status_code = 404
+    else:
+        return deck_list
+
+
 @router.get("/decks/{deck_id}/cover/", response_model=str)
 async def get_cover_image(
     deck_id: str,
