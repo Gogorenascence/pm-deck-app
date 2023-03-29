@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import CardAddCompModal from "./CardAddCompModal";
+import CardAddToDeckModal from "./CardAddToDeckModal";
 
 
 function CardDetailPage() {
@@ -251,6 +252,7 @@ function CardDetailPage() {
                         </div>
                     </Container>
                 </div>
+                <CardAddToDeckModal/>
             </div>
         </div>
     );

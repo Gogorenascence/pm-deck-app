@@ -102,7 +102,7 @@ async def clear_deck(
     else:
         return deck
 
-@router.put("/decks/{deck_id}/list/", response_model=list)
+@router.get("/decks/{deck_id}/list/", response_model=list)
 async def get_deck_list(
     deck_id: str,
     response: Response,
