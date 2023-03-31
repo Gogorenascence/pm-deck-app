@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from bson.objectid import ObjectId
+from datetime import date
 
 class PydanticObjectId(ObjectId):
     @classmethod
@@ -20,8 +21,13 @@ class PydanticObjectId(ObjectId):
 class DeckIn(BaseModel):
     name: str
     account_id: str
-    description: str
-    cards: List
+    description: Optional[str]
+    strategies: Optional[list]
+    cards: list
+    pluck: Optional[list]
+    side: Optional[list]
+    views: Optional[int]
+    cover_card: Optional[str]
 
 
 class Deck(DeckIn):

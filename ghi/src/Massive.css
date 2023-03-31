@@ -1,6 +1,7 @@
 Card {
   padding:0px;
   height: auto;
+  align-items: center;
 }
 
 h1 {
@@ -21,4 +22,112 @@ text-align: center;
   justify-content: bottom;
   z-index: 1;
   opacity: .80;
+}
+
+.blackfooter2 {
+  background: black;
+  height: 35%;
+  display: flex;
+  justify-content: bottom;
+  z-index: 1;
+  opacity: .80;
+}
+
+.left-h1{
+  text-align: left;
+  margin: 30px 5px 20px 5px;
+}
+
+.left-h2{
+  text-align: left;
+  margin: 4% 5px 20px 5px;
+}
+
+.left {
+  text-align: left;
+  margin: 5px;
+}
+
+.white-space {
+  max-width: 80%;
+  margin: auto;
+}
+
+.navbar-brand {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.nav-item {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.dropdown-item {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.semi-bold-20 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.left-div {
+  width: 50%;
+  float: left;
+}
+
+.right-div {
+  margin-left: 50%;
+}
+
+.left-card {
+  width: 40%;
+  size: 510px;
+  margin: 0% 6% 1% 5%;
+  float: left;
+}
+
+.left2 {
+  text-align: left;
+  margin: 3%;
+}
+
+.centered-h1 {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.label{
+  text-align: left;
+  margin: 15px 5px 0px 5px;
+}
+
+.opacity-95 {
+  opacity: 92%;
+}
+
+.opacity-100 {
+  opacity: 100%;
+}
+
+.scrollable {
+  margin:2% 0%;
+  padding:4px;
+  width: 100%;
+  height: 40vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+
+.maindeck {
+  margin: 2% 0%;
+  background-image: linear-gradient(to right, rgba(151, 9, 9, 0.466), rgba(255, 255, 255, 0.082));
+}
+
+.pluckdeck {
+  margin: 2% 0%;
+  background-image: linear-gradient(to right, rgba(72, 46, 145, 0.466), rgba(255, 255, 255, 0.082));
 }

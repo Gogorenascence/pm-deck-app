@@ -20,19 +20,19 @@ class PydanticObjectId(ObjectId):
 class CardIn(BaseModel):
     name: str
     card_class: str
-    hero_name: str
     hero_id: str
     series_name: str
     card_number: int
+    enthusiasm: Optional[int]
     effect_text: Optional[str]
-    flavor_text: Optional[str]
+    second_effect_text: Optional[str]
     illustrator: Optional[str]
     picture_url: Optional[str]
     file_name: str
-    card_type: List
-    extra_effects: List
-    reactions: List
-    card_tags: List
+    card_type: list
+    extra_effects: list
+    reactions: list
+    card_tags: Optional[list]
 
 
 class Card(CardIn):
@@ -44,4 +44,4 @@ class CardOut(CardIn):
 
 
 class CardsAll(BaseModel):
-    cards: List
+    cards: list

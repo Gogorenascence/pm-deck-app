@@ -22,6 +22,7 @@ class CardTypeIn(BaseModel):
     name: str
     deck_type: Optional[str]
     rules: Optional[str]
+    type_number: Optional[int]
 
 
 class CardType(CardTypeIn):
@@ -39,6 +40,7 @@ class CardTypesAll(BaseModel):
 class ExtraEffectIn(BaseModel):
     name: str
     rules: Optional[str]
+    effect_number: Optional[int]
 
 
 class ExtraEffect(ExtraEffectIn):
@@ -56,6 +58,8 @@ class ExtraEffectsAll(BaseModel):
 class ReactionIn(BaseModel):
     name: str
     rules: Optional[str]
+    count: Optional[int]
+    reaction_number: Optional[int]
 
 
 class Reaction(ReactionIn):
@@ -73,6 +77,7 @@ class ReactionsAll(BaseModel):
 class TagIn(BaseModel):
     name: str
     rules: Optional[str]
+    tag_number: Optional[int]
 
 
 class CardTag(TagIn):

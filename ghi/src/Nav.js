@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Nav() {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top zindex-2">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           PlayMaker CardBase
@@ -21,30 +22,20 @@ function Nav() {
                 </a>
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink className="dropdown-item" to="/decks">
+                  <NavLink className="dropdown-item" to="/deckbuilder">
                     Deck Builder
                     </NavLink>
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/decks">
-                    Popular Decks
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/decks">
-                    Newest Decks
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/decks">
-                    Deck Search
+                    Search Decks
                     </NavLink>
                 </li>
               </ul>
             </li>
           </ul>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a href="/#"
@@ -61,12 +52,12 @@ function Nav() {
               >
                 <li>
                   <NavLink className="dropdown-item" to="/cards">
-                    Popular Cards
-                  </NavLink>
+                    Search Cards
+                    </NavLink>
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/cards">
-                    Newest Cards
+                    Popular Cards
                   </NavLink>
                 </li>
                 <li>
@@ -79,16 +70,11 @@ function Nav() {
                     Products
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/cards">
-                    Card Search
-                    </NavLink>
-                </li>
               </ul>
             </li>
           </ul>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a href="/#"
@@ -105,13 +91,8 @@ function Nav() {
               >
                 <li>
                   <NavLink className="dropdown-item" to="/articles">
-                    Popular Articles
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/articles">
-                    Newest Articles
-                  </NavLink>
+                    Search Articles
+                    </NavLink>
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/articles">
@@ -123,16 +104,11 @@ function Nav() {
                     Series Lore
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/articles">
-                    Article Search
-                    </NavLink>
-                </li>
               </ul>
             </li>
           </ul>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a href="/#"
@@ -147,6 +123,11 @@ function Nav() {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Search Game Play
+                    </NavLink>
+                </li>
                 <li>
                   <NavLink className="dropdown-item" to="/gameplay">
                     How To Play
@@ -176,7 +157,7 @@ function Nav() {
             </li>
           </ul>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a href="/#"
@@ -204,11 +185,42 @@ function Nav() {
               </ul>
             </li>
           </ul>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Admin
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/cards/create">
+                    Card Create
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
       </div>
       </div>
       </div>
+      </div>
+        <Button className="semi-bold-20" variant="outline-warning" size="lg">
+          Login
+        </Button>
+        <Button className="semi-bold-20" variant="outline-light" size="lg">
+          Signup
+        </Button>
       </div>
     </nav>
   );
