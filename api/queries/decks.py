@@ -133,8 +133,8 @@ class DeckQueries(Queries):
             side = db.find_one({"card_number": side_item})
             side["id"] = str(side["_id"])
             side_deck.append(CardOut(**side))
-
-        return main_deck, pluck_deck, side_deck;
+        deck_list = [main_deck, pluck_deck, side_deck]
+        return deck_list
 
     def get_cover_image(self, id: str) -> str:
         props = self.collection.find_one({"_id": ObjectId(id)})

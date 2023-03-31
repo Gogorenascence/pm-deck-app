@@ -5,7 +5,7 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function DecksPage() {
 
@@ -18,7 +18,7 @@ function DecksPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        setDecks(data.decks);
+        setDecks(data.decks.slice(-5).reverse());
     };
 
     // const getCoverCard = async() =>{
@@ -111,10 +111,14 @@ function DecksPage() {
                 {decks.map((deck) => {
                     return (
                         <Col >
+                        <NavLink to={`/decks/${deck.id}`}>
                             <Card
                                 className="bg-dark text-white text-center"
                                 style={{ width: '370px', margin: '37px 5px 5px 5px', borderRadius: "17px", overflow: "hidden"}}>
-                                <Card.Img src="logo4p.png" alt="Card image" variant="bottom"/>
+                                <Card.Img
+                                    src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                                    alt="Card image"
+                                    variant="bottom"/>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                                     <Card.Title
                                         className="card-img-overlay d-flex flex-column justify-content-top">
@@ -138,6 +142,7 @@ function DecksPage() {
                                         </Card.Text>
                                 </Card.ImgOverlay>
                             </Card>
+                            </NavLink>
                         </Col>
                     );
                 })}

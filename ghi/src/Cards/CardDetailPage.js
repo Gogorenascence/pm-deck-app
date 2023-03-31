@@ -6,7 +6,7 @@ import {
     Container,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import CardAddCompModal from "./CardAddCompModal";
 import CardAddToDeckModal from "./CardAddToDeckModal";
@@ -27,8 +27,6 @@ function CardDetailPage() {
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
         const cardData = await response.json();
-
-        console.log("card.picture_url", card.picture_url);
 
         setCard(cardData);
     };
@@ -84,6 +82,7 @@ function CardDetailPage() {
 
     useEffect(() => {
         getCard();
+        console.log(card)
         getRelatedCards();
         getCardType();
         getExtraEffects();

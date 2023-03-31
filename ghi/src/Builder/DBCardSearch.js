@@ -7,33 +7,11 @@ import {
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function CardsPage() {
-
-    const [cards, setCards] = useState([]);
-    // const [query, setQuery] = useState("")
-
-    const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
-
-        setCards(data.cards.reverse());
-    };
-
-    const getRandomCard = async() =>{
-        const randomIndex = Math.floor(Math.random() * cards.length);
-        const randomCard = cards[randomIndex].card_number;
-        console.log(randomCard.card_number)
-        window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
-    }
-
-    useEffect(() => {
-        getCards();
-    },[]);
+function DBCardSearch() {
 
     return (
-        <div className="white-space">
-            <h1 className="left-h1">Card Search</h1>
-            <h2 className="left">Search our collection of cards</h2>
+        <div>
+            <h2 className="left">Search for cards</h2>
             <input
                 className="left"
                 type="text"
@@ -147,40 +125,9 @@ function CardsPage() {
             </select>
             <br/>
             <Button className="left" variant="dark">Reset Filters</Button>
-
-            {/* <NavLink to={`/cards/${randomCard.card_number}`}> */}
-                <Button
-                    className="left"
-                    variant="dark"
-                    onClick={getRandomCard}
-                    >
-                    Random Card
-                </Button>
-            {/* </NavLink> */}
             <br/>
-
-            <Row xs={1} sm={2} md={3} lg={4} xl={4}>
-                {cards.map((card) => {
-                    return (
-                        <Col>
-                            <NavLink to={`/cards/${card.card_number}`}>
-
-                                <Card
-                                    style={{ width: '370px', margin: '37px 5px 5px 5px', borderRadius: "17px", overflow: "hidden"}}>
-                                    <Card.Img
-                                        title={card.name}
-                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                        alt="Card image"
-                                        variant="bottom"/>
-                                </Card>
-                            </NavLink>
-                        </Col>
-                    );
-                })}
-            </Row>
-
-    </div>
+            </div>
     );
 }
 
-export default CardsPage;
+export default DBCardSearch;

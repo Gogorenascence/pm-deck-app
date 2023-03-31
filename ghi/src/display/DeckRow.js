@@ -43,7 +43,11 @@ function DeckRow() {
                         return (
                             <Col>
                                 <Card className="bg-dark text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
-                                    <Card.Img title={deck.name} src="logo4p.png" alt="Card image" variant="bottom"/>
+                                    <Card.Img
+                                        title={deck.name}
+                                        src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                                        alt="Card image"
+                                        variant="bottom"/>
                                     <Card.ImgOverlay className="blackfooter mt-auto">
                                         <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">{deck.name}</Card.Title>
                                     </Card.ImgOverlay>

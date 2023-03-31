@@ -27,6 +27,7 @@ class DeckIn(BaseModel):
     pluck: Optional[list]
     side: Optional[list]
     views: Optional[int]
+    cover_card: Optional[str]
 
 
 class Deck(DeckIn):
