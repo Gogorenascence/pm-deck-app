@@ -18,7 +18,7 @@ function DecksPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        setDecks(data.decks.slice(-5).reverse());
+        setDecks(data.decks.reverse());
     };
 
     // const getCoverCard = async() =>{
