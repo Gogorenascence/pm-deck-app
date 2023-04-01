@@ -4,7 +4,7 @@ import {
     Card,
     Button,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import DBCardSearch from "./DBCardSearch";
 
 function DeckBuilder() {
@@ -25,9 +25,10 @@ function DeckBuilder() {
     const combinedList = main_list.concat(pluck_list);
     const uniqueList = [...new Set(combinedList)];
 
-    const [cards, setCards] = useState([]);
+    const [selectedList, setSelectedList] = useState([]);
+    const [selectedCard, setSelectedCard] = useState(null);
 
-    // const [query, setQuery] = useState("")
+    const [cards, setCards] = useState([]);
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -42,6 +43,20 @@ function DeckBuilder() {
     const handleChange = (event) => {
         setDeck({ ...deck, [event.target.name]: event.target.value });
     };
+
+    const handleCoverCardChange = (event) => {
+        setSelectedCard( event.target.value );
+        setDeck({ ...deck, [event.target.name]: event.target.value });
+        console.log(selectedCard)
+      };
+
+    const handleStrategyChange = e => {
+        let { options } = e.target;
+        options = Array.apply(null, options)
+        const selectedValues = options.filter(x => x.selected).map(x => x.value);
+        setSelectedList(selectedValues);
+        console.log(selectedValues)
+      }
 
     const handleClick = (card) => {
         console.log(card)
@@ -85,6 +100,7 @@ function DeckBuilder() {
         }
         data["cards"] = main;
         data["pluck"] = pluck;
+        data["strategies"] = selectedList
         console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
@@ -117,14 +133,14 @@ function DeckBuilder() {
     return (
         <div className="white-space">
         <h1 className="left-h1">Deck Builder</h1>
-        <div style={{display: "grid", gridTemplateColumns: "30% 60%" }}>
+        <div style={{display: "grid", gridTemplateColumns: "30% 29% 30%" }}>
         <form
             onSubmit={handleSubmit}
             id="create-deck-page"
             // style={{display: "grid", gridTemplateColumns: "1fr 1fr" }}
         >
             <h2 className="left">Build your deck</h2>
-            {/* <h5 className="label">Name </h5> */}
+            <h5 className="label">Name </h5>
             <input
                 type="text"
                 placeholder=" Deck Name"
@@ -134,11 +150,11 @@ function DeckBuilder() {
                 style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
             </input>
             <br/>
-            {/* <h5 className="label">Cover Card</h5> */}
+            <h5 className="label">Cover Card</h5>
             <select
                 type="text"
                 placeholder=" Cover Card"
-                onChange={handleChange}
+                onChange={handleCoverCardChange}
                 name="cover_card"
                 value={deck.cover_card}
                 style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
@@ -148,15 +164,33 @@ function DeckBuilder() {
                     ))}
             </select>
             <br/>
-            {/* <h5 className="label">Deck Description </h5> */}
+            <h5 className="label"> Description </h5>
             <textarea
                 type="text"
                 placeholder=" Deck Description"
                 onChange={handleChange}
-                name="deck_description"
+                name="description"
                 value={deck.description}
                 style={{width: "370px", height: "94px", margin: "5px 5px 0px 5px"}}>
             </textarea>
+            <h5 className="label">Strategies </h5>
+            <select
+                multiple
+                name="strategies"
+                style={{width: "370px", height: "94px", margin: "5px 5px 0px 5px"}}
+                onChange={handleStrategyChange}
+                >
+                <option value="">Strategy</option>
+                <option value="Aggro">Aggro</option>
+                <option value="Combo">Combo</option>
+                <option value="Control">Control</option>
+                <option value="Mid-range">Mid-range</option>
+                <option value="Ramp">Ramp</option>
+                <option value="Second_wind">Second Wind</option>
+                <option value="Stall">Stall</option>
+                <option value="Toolbox">Toolbox</option>
+                <option value="other">other</option>
+            </select>
             <br/>
             <Button
                     className="left"
@@ -165,13 +199,26 @@ function DeckBuilder() {
             >
                     Create
             </Button>
-
             <br/>
-
-
         </form>
-
-            <DBCardSearch/>
+        <div>
+            <h2 className="left">Cover Card</h2>
+            <Card
+                style={{ width: '347px', margin: '5px', borderRadius: "17px", overflow: "hidden"}}
+                >
+                    {selectedCard ? (
+                        <Card.Img
+                            src={selectedCard}
+                            alt="Card image"
+                            variant="bottom"/>
+                            ):(
+                        <Card.Img
+                            src={"logo4p.png"}
+                            alt="Card image"
+                            variant="bottom"/>)}
+            </Card>
+        </div>
+        <DBCardSearch/>
             </div>
             <div className="scrollable">
                 <Row xs="auto" className="justify-content-start">

@@ -11,7 +11,7 @@ import { NavLink, useParams} from 'react-router-dom';
 function DeckDetailPage() {
 
     const {deck_id} = useParams();
-    const [deck, setDeck] = useState("");
+    const [deck, setDeck] = useState({ strategies: []});
     const [deck_list, setDeckList] = useState([])
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
@@ -44,7 +44,34 @@ function DeckDetailPage() {
 
     return (
         <div className="white-space">
-        <h1 className="left-h1">{deck.name}</h1>
+        <Card bg="dark" text="white" style={{margin: "2% 0%"}}>
+            <Card.Header
+                style={{fontWeight: "500", fontSize: "40px"}}>
+                    {deck.name}
+            </Card.Header>
+            {/* <Card.ImgOverlay src={deck.cover_card}></Card.ImgOverlay> */}
+            {/* <Card.Body> */}
+                {/* <Card.Title style={{fontWeight: "350"}}> */}
+                    {/* Strategies: {deck.strategies.join(', ')} */}
+                {/* </Card.Title> */}
+            {/* </Card.Body> */}
+            <Card.Body>
+                <Card.Title
+                // style={{fontWeight: "340"}}
+                >
+                    {deck.strategies.length > 1 ?
+                        (<><strong>Strategies: </strong>{deck.strategies.join(', ')}</>):
+                        (<><strong>Strategy: </strong>{deck.strategies}</>)}
+                </Card.Title>
+            </Card.Body>
+        </Card>
+
+            {deck.description ?
+            <div>
+                <h3 className="left-h1">Deck Description</h3>
+                <p>{deck.description}</p>
+            </div>:
+            null}
             <div className="maindeck">
                 <h2
                     className="left"

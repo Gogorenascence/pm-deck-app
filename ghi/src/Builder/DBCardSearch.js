@@ -16,7 +16,7 @@ function DBCardSearch() {
                 className="left"
                 type="text"
                 placeholder=" Card Name Contains..."
-                style={{width: "740px", height: "37px"}}>
+                style={{width: "366px", height: "37px"}}>
                 {/* value={query}
                 onChange={(event)=> setQuery(event.target.value)} */}
             </input>
@@ -25,32 +25,32 @@ function DBCardSearch() {
                 className="left"
                 type="text"
                 placeholder=" Card Text Contains..."
-                style={{width: "740px", height: "37px"}}>
+                style={{width: "366px", height: "37px"}}>
             </input>
             <br/>
             <input
                 className="left"
                 type="text"
                 placeholder=" Card Number"
-                style={{width: "177px", height: "37px"}}>
+                style={{width: "178px", height: "37px"}}>
             </input>
             <input
                 className="left"
                 type="text"
                 placeholder=" Hero ID"
-                style={{width: "177px", height: "37px"}}>
+                style={{width: "178px", height: "37px"}}>
             </input>
             <input
                 className="left"
                 type="text"
                 placeholder=" Series"
-                style={{width: "177px", height: "37px"}}>
+                style={{width: "178px", height: "37px"}}>
             </input>
             <input
                 className="left"
                 type="text"
                 placeholder=" Illustrator"
-                style={{width: "177px", height: "37px"}}>
+                style={{width: "178px", height: "37px"}}>
             </input>
             <br/>
             <select

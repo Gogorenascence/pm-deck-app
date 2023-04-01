@@ -124,10 +124,10 @@ text-align: center;
 
 .maindeck {
   margin: 2% 0%;
-  background-image: linear-gradient(to right, rgba(151, 9, 9, 0.466), rgba(255, 255, 255, 0.082));
+  background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082));
 }
 
 .pluckdeck {
   margin: 2% 0%;
-  background-image: linear-gradient(to right, rgba(72, 46, 145, 0.466), rgba(255, 255, 255, 0.082));
+  background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082));
 }

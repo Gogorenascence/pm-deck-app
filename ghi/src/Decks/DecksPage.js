@@ -9,10 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 function DecksPage() {
 
-    // const deck_id =
-
     const [decks, setDecks] = useState([]);
-    // const [cover_card, setCoverCard] = useState("");
 
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -20,13 +17,6 @@ function DecksPage() {
 
         setDecks(data.decks.reverse());
     };
-
-    // const getCoverCard = async() =>{
-    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/cover/",`);
-    //     const data = await response.json();
-
-    //     setCoverCard(data.decks);
-    // };
 
     useEffect(() => {
         getDecks();
@@ -132,7 +122,7 @@ function DecksPage() {
                                         <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
                                             style={{margin: '0px 0px 47px 0px', fontWeight: "600"}}
                                         >
-                                            Strategies: {deck.strategies}
+                                            Strategies: {deck.strategies.join(', ')}
                                         </Card.Text>
                                         <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"
