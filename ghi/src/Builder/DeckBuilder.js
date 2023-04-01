@@ -220,6 +220,10 @@ function DeckBuilder() {
         </div>
         <DBCardSearch/>
             </div>
+            <h2
+                    className="left"
+                    style={{margin: "1% 0.5%", fontWeight: "700"}}
+                >Card Pool</h2>
             <div className="scrollable">
                 <Row xs="auto" className="justify-content-start">
                     {cards.map((card) => {
