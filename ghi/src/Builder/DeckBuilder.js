@@ -48,7 +48,7 @@ function DeckBuilder() {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
         console.log(selectedCard)
-      };
+    };
 
     const handleStrategyChange = e => {
         let { options } = e.target;
@@ -56,7 +56,7 @@ function DeckBuilder() {
         const selectedValues = options.filter(x => x.selected).map(x => x.value);
         setSelectedList(selectedValues);
         console.log(selectedValues)
-      }
+    }
 
     const handleClick = (card) => {
         console.log(card)
@@ -115,6 +115,7 @@ function DeckBuilder() {
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
             await response.json();
+            const deck_id = await response.json().id;
             setDeck({
                 name: "",
                 account_id: "",
@@ -126,8 +127,8 @@ function DeckBuilder() {
                 views: 0,
                 cover_card: "",
             });
+            // window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
-            // window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     }
 
     return (
