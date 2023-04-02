@@ -15,8 +15,9 @@ function DeckDetailPage() {
     const [deck_list, setDeckList] = useState([]);
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
-    const [hand, setHand] = useState([]);
+    const [shuffledDeck, setShuffledDeck] = useState([]);
     const [ownership, setOwnership] = useState("");
+    const [mulliganList, setMulliganList] = useState([]);
 
     // // const [query, setQuery] = useState("")
 
@@ -38,21 +39,21 @@ function DeckDetailPage() {
         setPluckList(deckListData[1]);
     };
 
-    const getRandomHand = async() =>{
-        const deck = main_list
-        let currentIndex = deck.length,  randomIndex;
+    const getShuffledDeck = async() =>{
+        const shuffledDeck = main_list.slice(0)
+        let currentIndex = shuffledDeck.length,  randomIndex;
         // While there remain elements to shuffle.
         while (currentIndex != 0) {
             // Pick a remaining element.
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
             // And swap it with the current element.
-            [deck[currentIndex], deck[randomIndex]] = [
-            deck[randomIndex], deck[currentIndex]];
+            [shuffledDeck[currentIndex], shuffledDeck[randomIndex]] = [
+            shuffledDeck[randomIndex], shuffledDeck[currentIndex]];
         }
-        console.log(deck)
-        setHand(deck.slice(0, 9));
-        console.log(hand)
+        console.log(shuffledDeck)
+        setShuffledDeck(shuffledDeck);
+        console.log(shuffledDeck)
 
         const randomPluckIndex = Math.floor(Math.random() * pluck_list.length);
         setOwnership(pluck_list[randomPluckIndex]);
@@ -65,6 +66,38 @@ function DeckDetailPage() {
         getDeckList();
     },[]);
 
+    const handleMulliganChange = (card) => {
+        const deckIndex = shuffledDeck.indexOf(card)
+        if (mulliganList.includes(deckIndex)){
+            const mulliganIndex = mulliganList.indexOf(deckIndex);
+            const newMulliganList = [...mulliganList];
+            newMulliganList.splice(mulliganIndex, 1);
+            setMulliganList(newMulliganList);
+            console.log(mulliganList)
+        }else{
+            console.log(card)
+            setMulliganList([...mulliganList, deckIndex]);
+            console.log(mulliganList)
+        }
+    }
+
+    const mulligan = async() => {
+        for (let card of shuffledDeck){
+            const cardIndex = shuffledDeck.indexOf(card)
+            if (mulliganList.includes(cardIndex)){
+                shuffledDeck[cardIndex] = "Gone"
+            }
+        }
+        for (let card of shuffledDeck.slice(0)){
+            const removeIndex = shuffledDeck.indexOf(card)
+            if (card == "Gone"){
+                shuffledDeck.splice(removeIndex, 1)
+            }
+        }
+        setShuffledDeck(shuffledDeck.slice(0))
+        setMulliganList([])
+        console.log(shuffledDeck)
+    }
 
     return (
         <div className="white-space">
@@ -98,7 +131,7 @@ function DeckDetailPage() {
             null}
             <div style={{display: "flex", marginLeft: "1%"}}>
                 <div>
-                {hand.length > 0 ?
+                {shuffledDeck.length > 0 ?
                 <>
                     <h3
                         className="left"
@@ -106,11 +139,12 @@ function DeckDetailPage() {
                         >Test Hand
                     </h3>
                     <Row xs="auto" className="justify-content-start">
-                        {hand.map((card) => {
+                        {shuffledDeck.slice(0,8).map((card) => {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '130px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
+                                            onClick={() => handleMulliganChange(card)}
                                             >
                                             <Card.Img
                                                 title={card.name}
@@ -125,7 +159,7 @@ function DeckDetailPage() {
                     </> :
                     null}
                 </div>
-                <div>
+                <div style={{marginLeft: '5.25%'}}>
                 {ownership ?
                 <>
                 <h3
@@ -136,7 +170,7 @@ function DeckDetailPage() {
                 <Row xs="auto" className="justify-content-center">
                     <Col>
                                         <Card
-                                            style={{ width: '130px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
                                             >
                                             <Card.Img
                                                 title={ownership.name}
@@ -154,10 +188,18 @@ function DeckDetailPage() {
             <Button
                     className="left"
                     variant="dark"
-                    onClick={getRandomHand}
+                    onClick={getShuffledDeck}
                     style={{marginLeft: "2%"}}
                     >
                     Test Hand
+            </Button>
+            <Button
+                    className="left"
+                    variant="dark"
+                    onClick={mulligan}
+                    style={{marginLeft: "2%"}}
+                    >
+                    Mulligan
             </Button>
             <div className="maindeck">
                 <h2
