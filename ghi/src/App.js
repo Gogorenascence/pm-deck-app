@@ -10,6 +10,7 @@ import ArticlesPage from "./Articles/ArticlesPage"
 import GamePlayPage from "./GamePlay/GamePlayPage"
 import ForumPage from "./Forum/ForumPage"
 import Nav from "./Nav";
+import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav/>
+      <BackToTop/>
       <div className="App">
 
         <Routes>

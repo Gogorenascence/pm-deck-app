@@ -273,7 +273,11 @@ function DeckBuilder() {
                         return (
                             <Col className={uniqueList.includes(card) ? "selected" : null}>
                                     <Card
-                                        style={{ width: '140px', margin: '15px 5px', borderRadius: "9px", overflow: "hidden"}}
+                                        style={{
+                                            width: '140px',
+                                            margin: '15px 5px',
+                                            borderRadius: "9px",
+                                            overflow: "hidden"}}
                                         onClick={() => handleClick(card)}
                                         >
                                         <Card.Img
