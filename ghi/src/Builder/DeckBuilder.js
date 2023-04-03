@@ -273,7 +273,11 @@ function DeckBuilder() {
                         return (
                             <Col className={uniqueList.includes(card) ? "selected" : null}>
                                     <Card
-                                        style={{ width: '140px', margin: '10px 0px 10px 10px', borderRadius: "9px", overflow: "hidden"}}
+                                        style={{
+                                            width: '140px',
+                                            margin: '15px 5px',
+                                            borderRadius: "9px",
+                                            overflow: "hidden"}}
                                         onClick={() => handleClick(card)}
                                         >
                                         <Card.Img
@@ -299,7 +303,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '15px 5px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
@@ -332,7 +336,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '15px 5px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
