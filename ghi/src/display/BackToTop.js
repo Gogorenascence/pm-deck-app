@@ -25,7 +25,7 @@ function BackToTop() {
     return (
         <div>
             <img
-                class="back-to-top"
+                class="back-to-top hidden"
                 src="up.png"
                 style={{height: "9%"}}
                 onClick={goToTop}>
