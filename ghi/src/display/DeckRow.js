@@ -6,7 +6,7 @@ import {
     Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 function DeckRow() {
@@ -42,27 +42,29 @@ function DeckRow() {
                     {decks.map((deck) => {
                         return (
                             <Col>
-                                <Card className="bg-dark text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
-                                    <Card.Img
-                                        title={deck.name}
-                                        src={deck.cover_card ? deck.cover_card : "logo4p.png"}
-                                        alt="Card image"
-                                        variant="bottom"/>
-                                    <Card.ImgOverlay className="blackfooter mt-auto">
-                                        <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">{deck.name}</Card.Title>
-                                    </Card.ImgOverlay>
-                                </Card>
+                                <NavLink to={`/decks/${deck.id}`}>
+                                    <Card className="bg-dark text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
+                                        <Card.Img
+                                            title={deck.name}
+                                            src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                                            alt="Card image"
+                                            variant="bottom"/>
+                                        <Card.ImgOverlay className="blackfooter mt-auto">
+                                            <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">{deck.name}</Card.Title>
+                                        </Card.ImgOverlay>
+                                    </Card>
+                                </NavLink>
                             </Col>
                         );
                     })}
                 </Row>
                 <br/>
                 <div className="d-grid gap-2">
-                    <Link to="/decks">
+                    <NavLink to="/decks">
                         <Button variant="dark" size="lg" style={{ width: "100.5%" }}>
                             Browse All Decks
                         </Button>
-                    </Link>
+                    </NavLink>
                 </div>
             </Container>
         </div>
