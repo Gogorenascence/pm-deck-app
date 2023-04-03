@@ -174,7 +174,7 @@ function DeckDetailPage() {
                 <Row xs="auto" className="justify-content-center">
                     <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '10px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
                                             >
                                             <Card.Img
                                                 title={ownership.name}
@@ -219,7 +219,7 @@ function DeckDetailPage() {
                                 <Col>
                                         <Card
                                             style={{ width: '140px',
-                                                    margin: '5px 5px 10px 5px',
+                                                    margin: '15px 5px',
                                                     borderRadius: "9px",
                                                     overflow: "hidden"}}
                                         >
@@ -253,7 +253,10 @@ function DeckDetailPage() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 5px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px',
+                                                    margin: '15px 5px',
+                                                    borderRadius: "9px",
+                                                    overflow: "hidden"}}
                                             >
                                             <Card.Img
                                                 title={card.name}
