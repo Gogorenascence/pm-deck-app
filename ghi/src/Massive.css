@@ -118,7 +118,6 @@ text-align: center;
   height: 40vh;
   overflow-x: hidden;
   overflow-y: auto;
-  text-align:justify;
 }
 
 .maindeck {
@@ -133,4 +132,21 @@ text-align: center;
 
 .selected {
   background: rgb(255, 0, 0);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 0.5s;
+}
+
+.hidden {
+  opacity: 0%;
+}
+
+.back-to-top:hover {
+  opacity: 60%;
 }
