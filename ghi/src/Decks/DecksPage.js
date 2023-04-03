@@ -9,24 +9,20 @@ import { NavLink } from 'react-router-dom';
 
 function DecksPage() {
 
-    // const deck_id =
-
     const [decks, setDecks] = useState([]);
-    // const [cover_card, setCoverCard] = useState("");
 
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        setDecks(data.decks.slice(-5).reverse());
+        setDecks(data.decks.reverse());
     };
 
-    // const getCoverCard = async() =>{
-    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/cover/",`);
-    //     const data = await response.json();
-
-    //     setCoverCard(data.decks);
-    // };
+    const getRandomDeck = async() =>{
+        const randomIndex = Math.floor(Math.random() * decks.length);
+        const randomDeck = decks[randomIndex].id;
+        window.location.href = `${process.env.PUBLIC_URL}/decks/${randomDeck}`;
+    }
 
     useEffect(() => {
         getDecks();
@@ -104,10 +100,16 @@ function DecksPage() {
             <br/>
             <Button className="left" variant="dark">Search Decks</Button>
             <Button className="left" variant="dark">Reset Filters</Button>
-            <Button className="left" variant="dark">Random Deck</Button>
+            <Button
+                className="left"
+                variant="dark"
+                onClick={getRandomDeck}
+                >
+                Random Deck
+            </Button>
             <br/>
 
-            <Row xs={1} sm={2} md={3} lg={4} xl={4}>
+            <Row xl={4}>
                 {decks.map((deck) => {
                     return (
                         <Col >
@@ -132,7 +134,7 @@ function DecksPage() {
                                         <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
                                             style={{margin: '0px 0px 47px 0px', fontWeight: "600"}}
                                         >
-                                            Strategies: {deck.strategies}
+                                            Strategies: {deck.strategies.join(', ')}
                                         </Card.Text>
                                         <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"

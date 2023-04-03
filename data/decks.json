@@ -1,0 +1,156 @@
+[{
+  "_id": {
+    "$oid": "6407c0495ba5ce1f64fbc4f6"
+  },
+  "name": "Priority Sweepers",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [
+    1001,
+    1002,
+    1001,
+    1003
+  ],
+  "views": 0,
+  "pluck": [
+    1068,
+    1068
+  ],
+  "side": []
+},{
+  "_id": {
+    "$oid": "6407e173e41d4a85bb4b7781"
+  },
+  "name": "Frenzied Rainbow",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [],
+  "views": 0
+},{
+  "_id": {
+    "$oid": "6407e18ee41d4a85bb4b7782"
+  },
+  "name": "Zero Burst",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [],
+  "views": 0
+},{
+  "_id": {
+    "$oid": "6407e19be41d4a85bb4b7783"
+  },
+  "name": "Item Storm",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [],
+  "views": 0
+},{
+  "_id": {
+    "$oid": "6407e391e41d4a85bb4b7784"
+  },
+  "name": "Four Colors",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [],
+  "views": 0
+},{
+  "_id": {
+    "$oid": "6407e3a5e41d4a85bb4b7785"
+  },
+  "name": "Guard Break",
+  "account_id": "string",
+  "description": "string",
+  "strategies": [],
+  "cards": [],
+  "views": 0
+},{
+  "_id": {
+    "$oid": "6426443a60e6bc76953b0d44"
+  },
+  "name": "Priority Sweepers 2",
+  "account_id": "",
+  "description": "",
+  "strategies": [],
+  "cards": [
+    1001,
+    1001,
+    1002,
+    1002,
+    1003,
+    1003,
+    1004,
+    1004,
+    1033,
+    1033,
+    1034,
+    1034,
+    1035,
+    1035,
+    1036,
+    1036,
+    1049,
+    1049,
+    1050,
+    1050,
+    1051,
+    1051,
+    1052,
+    1052,
+    1061,
+    1061,
+    1062,
+    1062,
+    1063,
+    1063,
+    1064,
+    1064,
+    1065,
+    1065,
+    1065,
+    1065,
+    1066,
+    1066,
+    1066,
+    1066
+  ],
+  "pluck": [
+    1067,
+    1067,
+    1068,
+    1068,
+    1083,
+    1083,
+    1084,
+    1084,
+    1091,
+    1091,
+    1092,
+    1092,
+    1097,
+    1097,
+    1098,
+    1098,
+    1102,
+    1102,
+    1106,
+    1106,
+    1107,
+    1107,
+    1115,
+    1115,
+    1119,
+    1119,
+    1122,
+    1122,
+    1123,
+    1123
+  ],
+  "side": [],
+  "views": 0,
+  "cover_card": "https://kornan.dreamhosters.com/i1g1pmf/"
+}]

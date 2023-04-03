@@ -48,7 +48,7 @@ function DeckBuilder() {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
         console.log(selectedCard)
-    };
+      };
 
     const handleStrategyChange = e => {
         let { options } = e.target;
@@ -56,7 +56,7 @@ function DeckBuilder() {
         const selectedValues = options.filter(x => x.selected).map(x => x.value);
         setSelectedList(selectedValues);
         console.log(selectedValues)
-    }
+      }
 
     const handleClick = (card) => {
         console.log(card)
@@ -79,39 +79,11 @@ function DeckBuilder() {
                 const newPluckList = [...pluck_list];
                 newPluckList.splice(pluckIndex, 1);
                 setPluckList(newPluckList);
-                if (card.picture_url == selectedCard){
-                    setSelectedCard(null)
-                }
         }else{
             const mainIndex = main_list.indexOf(card);
             const newMainList = [...main_list];
             newMainList.splice(mainIndex, 1);
             setMainList(newMainList);
-            if (card.picture_url == selectedCard){
-                setSelectedCard(null)
-            }
-        }
-    }
-
-    const clearMain = async() => {
-        setMainList([]);
-        const picture_urls = []
-        for (let card of main_list){
-            picture_urls.push(card.picture_url)
-        }
-        if (picture_urls.includes(selectedCard)){
-            setSelectedCard(null);
-        }
-    }
-
-    const clearPluck = async() => {
-        setPluckList([]);
-        const picture_urls = []
-        for (let card of pluck_list){
-            picture_urls.push(card.picture_url)
-        }
-        if (picture_urls.includes(selectedCard)){
-            setSelectedCard(null);
         }
     }
 
@@ -143,7 +115,6 @@ function DeckBuilder() {
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
             await response.json();
-            const deck_id = await response.json().id;
             setDeck({
                 name: "",
                 account_id: "",
@@ -155,8 +126,8 @@ function DeckBuilder() {
                 views: 0,
                 cover_card: "",
             });
-            // window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
+            // window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     }
 
     return (
@@ -206,7 +177,7 @@ function DeckBuilder() {
             <select
                 multiple
                 name="strategies"
-                style={{width: "370px", height: "94px", margin: "5px 5px 5px 5px"}}
+                style={{width: "370px", height: "94px", margin: "5px 5px 0px 5px"}}
                 onChange={handleStrategyChange}
                 >
                 <option value="">Strategy</option>
@@ -226,28 +197,14 @@ function DeckBuilder() {
                     variant="dark"
                 onClick={handleSubmit}
             >
-                    Create Deck
-            </Button>
-            <Button
-                    className="left"
-                    variant="danger"
-                onClick={clearMain}
-            >
-                    Clear Main
-            </Button>
-            <Button
-                    className="left"
-                    variant="danger"
-                onClick={clearPluck}
-            >
-                    Clear Pluck
+                    Create
             </Button>
             <br/>
         </form>
         <div>
             <h2 className="left">Cover Card</h2>
             <Card
-                style={{ width: '348px', margin: '5px', borderRadius: "17px", overflow: "hidden"}}
+                style={{ width: '347px', margin: '5px', borderRadius: "17px", overflow: "hidden"}}
                 >
                     {selectedCard ? (
                         <Card.Img
@@ -263,17 +220,13 @@ function DeckBuilder() {
         </div>
         <DBCardSearch/>
             </div>
-            <h2
-                    className="left"
-                    style={{margin: "1% 0.5%", fontWeight: "700"}}
-                >Card Pool</h2>
             <div className="scrollable">
                 <Row xs="auto" className="justify-content-start">
                     {cards.map((card) => {
                         return (
-                            <Col className={uniqueList.includes(card) ? "selected" : null}>
+                            <Col>
                                     <Card
-                                        style={{ width: '140px', margin: '10px 0px 10px 10px', borderRadius: "9px", overflow: "hidden"}}
+                                        style={{ width: '140px', margin: '5px 5px 5px 5px', borderRadius: "9px", overflow: "hidden"}}
                                         onClick={() => handleClick(card)}
                                         >
                                         <Card.Img
@@ -299,7 +252,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 5px 10px 5px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
@@ -332,7 +285,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 5px 10px 5px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
