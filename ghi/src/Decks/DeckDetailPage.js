@@ -141,17 +141,21 @@ function DeckDetailPage() {
                     <Row xs="auto" className="justify-content-start">
                         {shuffledDeck.slice(0,8).map((card) => {
                             return (
-                                <Col>
-                                        <Card
-                                            style={{ width: '140px', margin: '5px 0px 10px 0px', borderRadius: "9px", overflow: "hidden"}}
-                                            onClick={() => handleMulliganChange(card)}
-                                            >
-                                            <Card.Img
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                alt="Card image"
-                                                variant="bottom"/>
-                                        </Card>
+                                <Col className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}>
+                                    <Card
+                                        style={{
+                                            width: '140px',
+                                            margin: '10px 0px 10px 0px',
+                                            borderRadius: "9px",
+                                            overflow: "hidden"}}
+                                        onClick={() => handleMulliganChange(card)}
+                                        >
+                                        <Card.Img
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                            alt="Card image"
+                                            variant="bottom"/>
+                                    </Card>
                                 </Col>
                             );
                         })}
@@ -193,14 +197,16 @@ function DeckDetailPage() {
                     >
                     Test Hand
             </Button>
-            <Button
-                    className="left"
-                    variant="dark"
-                    onClick={mulligan}
-                    style={{marginLeft: "2%"}}
-                    >
-                    Mulligan
-            </Button>
+            {shuffledDeck.length > 0 ?
+                <Button
+                        className="left"
+                        variant="dark"
+                        onClick={mulligan}
+                        style={{marginLeft: "2%"}}
+                        >
+                        Mulligan
+                </Button>:
+            null}
             <div className="maindeck">
                 <h2
                     className="left"

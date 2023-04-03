@@ -18,6 +18,12 @@ function DecksPage() {
         setDecks(data.decks.reverse());
     };
 
+    const getRandomDeck = async() =>{
+        const randomIndex = Math.floor(Math.random() * decks.length);
+        const randomDeck = decks[randomIndex].id;
+        window.location.href = `${process.env.PUBLIC_URL}/decks/${randomDeck}`;
+    }
+
     useEffect(() => {
         getDecks();
     }, []);
@@ -94,10 +100,16 @@ function DecksPage() {
             <br/>
             <Button className="left" variant="dark">Search Decks</Button>
             <Button className="left" variant="dark">Reset Filters</Button>
-            <Button className="left" variant="dark">Random Deck</Button>
+            <Button
+                className="left"
+                variant="dark"
+                onClick={getRandomDeck}
+                >
+                Random Deck
+            </Button>
             <br/>
 
-            <Row xs={1} sm={2} md={3} lg={4} xl={4}>
+            <Row xl={4}>
                 {decks.map((deck) => {
                     return (
                         <Col >

@@ -79,11 +79,39 @@ function DeckBuilder() {
                 const newPluckList = [...pluck_list];
                 newPluckList.splice(pluckIndex, 1);
                 setPluckList(newPluckList);
+                if (card.picture_url == selectedCard){
+                    setSelectedCard(null)
+                }
         }else{
             const mainIndex = main_list.indexOf(card);
             const newMainList = [...main_list];
             newMainList.splice(mainIndex, 1);
             setMainList(newMainList);
+            if (card.picture_url == selectedCard){
+                setSelectedCard(null)
+            }
+        }
+    }
+
+    const clearMain = async() => {
+        setMainList([]);
+        const picture_urls = []
+        for (let card of main_list){
+            picture_urls.push(card.picture_url)
+        }
+        if (picture_urls.includes(selectedCard)){
+            setSelectedCard(null);
+        }
+    }
+
+    const clearPluck = async() => {
+        setPluckList([]);
+        const picture_urls = []
+        for (let card of pluck_list){
+            picture_urls.push(card.picture_url)
+        }
+        if (picture_urls.includes(selectedCard)){
+            setSelectedCard(null);
         }
     }
 
@@ -178,7 +206,7 @@ function DeckBuilder() {
             <select
                 multiple
                 name="strategies"
-                style={{width: "370px", height: "94px", margin: "5px 5px 0px 5px"}}
+                style={{width: "370px", height: "94px", margin: "5px 5px 5px 5px"}}
                 onChange={handleStrategyChange}
                 >
                 <option value="">Strategy</option>
@@ -198,14 +226,28 @@ function DeckBuilder() {
                     variant="dark"
                 onClick={handleSubmit}
             >
-                    Create
+                    Create Deck
+            </Button>
+            <Button
+                    className="left"
+                    variant="danger"
+                onClick={clearMain}
+            >
+                    Clear Main
+            </Button>
+            <Button
+                    className="left"
+                    variant="danger"
+                onClick={clearPluck}
+            >
+                    Clear Pluck
             </Button>
             <br/>
         </form>
         <div>
             <h2 className="left">Cover Card</h2>
             <Card
-                style={{ width: '347px', margin: '5px', borderRadius: "17px", overflow: "hidden"}}
+                style={{ width: '348px', margin: '5px', borderRadius: "17px", overflow: "hidden"}}
                 >
                     {selectedCard ? (
                         <Card.Img
@@ -229,9 +271,9 @@ function DeckBuilder() {
                 <Row xs="auto" className="justify-content-start">
                     {cards.map((card) => {
                         return (
-                            <Col>
+                            <Col className={uniqueList.includes(card) ? "selected" : null}>
                                     <Card
-                                        style={{ width: '140px', margin: '5px 5px 5px 5px', borderRadius: "9px", overflow: "hidden"}}
+                                        style={{ width: '140px', margin: '10px 0px 10px 10px', borderRadius: "9px", overflow: "hidden"}}
                                         onClick={() => handleClick(card)}
                                         >
                                         <Card.Img
@@ -257,7 +299,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 5px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
@@ -290,7 +332,7 @@ function DeckBuilder() {
                             return (
                                 <Col>
                                         <Card
-                                            style={{ width: '140px', margin: '5px 5px 10px 5px', borderRadius: "9px", overflow: "hidden"}}
+                                            style={{ width: '140px', margin: '5px 5px 10px 8px', borderRadius: "9px", overflow: "hidden"}}
                                             onClick={() => handleRemoveCard(card)}
                                             >
                                             <Card.Img
