@@ -1,31 +1,37 @@
+import React, { useEffect, useState } from "react";
+
 function BackToTop() {
-    const showOnPx = 100;
-    const backToTopButton = document.querySelector(".back-to-top")
+    const showOnPx = 300;
+    const [showButton, setShowButton] = useState(false);
 
-    const scrollContainer = () => {
-        return document.documentElement || document.body;
-    };
+    useEffect(() => {
+        const scrollContainer = () => {
+            return document.documentElement || document.body;
+        };
 
-    document.addEventListener("scroll", () => {
-        if (scrollContainer().scrollTop > showOnPx) {
-        backToTopButton.classList.remove("hidden")
-        } else {
-        backToTopButton.classList.add("hidden")
-        }
-    })
+        const handleScroll = () => {
+            if (scrollContainer().scrollTop > showOnPx){
+                setShowButton(true);
+            }else{
+                setShowButton(false);
+            }
+        };
+
+        document.addEventListener("scroll", handleScroll);
+
+        return () => {
+            document.removeEventListener("scroll", handleScroll);
+        };
+    }, [showOnPx]);
 
     const goToTop = () => {
-        document.body.scrollIntoView({
-        behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
-
-
 
     return (
         <div>
             <img
-                class="back-to-top hidden"
+                className={`back-to-top ${showButton ? null : "hidden"}`}
                 src="up.png"
                 style={{height: "9%"}}
                 onClick={goToTop}>
