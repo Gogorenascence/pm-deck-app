@@ -164,7 +164,6 @@ function CardsPage() {
                     return (
                         <Col>
                             <NavLink to={`/cards/${card.card_number}`}>
-
                                 <Card
                                     style={{ width: '100%', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
                                     <Card.Img

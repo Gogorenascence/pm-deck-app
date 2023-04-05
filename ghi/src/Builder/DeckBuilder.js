@@ -250,7 +250,7 @@ function DeckBuilder() {
                     <Card
                         style={{ width: '100%',
                                 margin: '2.5% 0% 0% 1%',
-                                borderRadius: "4%",
+                                borderRadius: "7%",
                                 overflow: "hidden"}}>
                     {selectedCard ? (
                         <Card.Img
@@ -279,19 +279,18 @@ function DeckBuilder() {
                                     return (
                                         <Col className={uniqueList.includes(card) ? "selected" : null}
                                             style={{padding: "5px"}}>
-                                                <Card
+                                                <img
                                                     style={{ width: '140px',
                                                             margin: '2.25px 0px',
-                                                            borderRadius: "9px",
+                                                            borderRadius: "7px",
                                                             overflow: "hidden"}}
                                                     onClick={() => handleClick(card)}
-                                                    >
-                                                    <Card.Img
+
                                                         title={card.name}
                                                         src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                         alt="Card image"
                                                         variant="bottom"/>
-                                                </Card>
+
                                         </Col>
                                     );
                                 })}
@@ -311,19 +310,17 @@ function DeckBuilder() {
                             {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
-                                            <Card
+                                            <img
                                                 style={{ width: '140px',
                                                         margin: '2.25px 0px',
-                                                        borderRadius: "9px",
+                                                        borderRadius: "7px",
                                                         overflow: "hidden"}}
                                                 onClick={() => handleRemoveCard(card)}
-                                                >
-                                                <Card.Img
                                                     title={card.name}
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                     alt="Card image"
                                                     variant="bottom"/>
-                                            </Card>
+
                                     </Col>
                                 );
                             })}
@@ -349,19 +346,17 @@ function DeckBuilder() {
                             {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
-                                    <Card
+                                    <img
                                         style={{ width: '140px',
                                                 margin: '2.25px 0px',
-                                                borderRadius: "9px",
+                                                borderRadius: "7px",
                                                 overflow: "hidden"}}
                                                 onClick={() => handleRemoveCard(card)}
-                                                >
-                                                <Card.Img
                                                     title={card.name}
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                     alt="Card image"
                                                     variant="bottom"/>
-                                            </Card>
+
                                     </Col>
                                 );
                             })}

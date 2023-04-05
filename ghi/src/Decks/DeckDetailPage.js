@@ -136,7 +136,7 @@ function DeckDetailPage() {
             null}
             <div style={{display: "flex"}}>
                         {shuffledDeck.length > 0 ?
-                <div className="maindeck" style={{width: "90%"}}>
+                <div className="maindeck2" style={{width: "90%"}}>
                     <div style={{marginLeft: "10px"}}>
 
                                 <h4
@@ -144,27 +144,26 @@ function DeckDetailPage() {
                                     style={{margin: "10px 10px", fontWeight: "700"}}
                                     >Test Hand
                                 </h4>
-                                <div style={{width: "92%", marginLeft: "20px"}}>
+                                <div style={{width: "95%", marginLeft: "20px"}}>
                                     <Row xs="auto" className="justify-content-start">
                                         {shuffledDeck.slice(0,8).map((card) => {
                                             return (
                                                 <Col
                                                     style={{padding: "5px 0px 5px 0px"}}
                                                     className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}>
-                                                    <Card
+                                                    <img
                                                         style={{
                                                             width: '120px',
                                                             margin: '10px 0px 10px 0px',
                                                             borderRadius: "7px",
                                                             overflow: "hidden"}}
                                                             onClick={() => handleMulliganChange(card)}
-                                                        >
-                                                        <Card.Img
+
                                                             title={card.name}
                                                             src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                             alt="Card image"
                                                             variant="bottom"/>
-                                                    </Card>
+
                                                 </Col>
                                             );
                                         })}
@@ -176,7 +175,7 @@ function DeckDetailPage() {
                         null}
                     {ownership ?
 
-                    <div className="pluckdeck" style={{marginLeft: ".5%"}}>
+                    <div className="pluckdeck2" style={{marginLeft: ".5%"}}>
 
                                         <h4
                                             className="left"
@@ -185,18 +184,17 @@ function DeckDetailPage() {
                                         </h4>
                                         <Row xs="auto" className="justify-content-center">
                                             <Col style={{paddingTop: "5px"}}>
-                                                <Card
+                                                <img
                                                     style={{ width: '120px',
                                                     margin: '10px 0px 10px 0px',
                                                     borderRadius: "7px",
                                                     overflow: "hidden"}}
-                                                    >
-                                                    <Card.Img
+
                                                         title={ownership.name}
                                                         src={ownership.picture_url ? ownership.picture_url : "logo4p.png"}
                                                         alt="Card image"
                                                         variant="bottom"/>
-                                                </Card>
+
                                             </Col>
                                         </Row>
 
@@ -243,18 +241,17 @@ function DeckDetailPage() {
                         {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                             return (
                                 <Col style={{padding: "5px"}}>
-                                        <Card
+                                        <img
                                             style={{ width: '140px',
                                                     margin: '2.25px 0px',
-                                                    borderRadius: "9px",
+                                                    borderRadius: "7px",
                                                     overflow: "hidden"}}
-                                        >
-                                            <Card.Img
+
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                 alt="Card image"
                                                 variant="bottom"/>
-                                        </Card>
+
                                 </Col>
                             );
                         })}
@@ -279,18 +276,17 @@ function DeckDetailPage() {
                             {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
-                                        <Card
+                                        <img
                                             style={{ width: '140px',
                                                     margin: '2.25px 0px',
-                                                    borderRadius: "9px",
+                                                    borderRadius: "7px",
                                                     overflow: "hidden"}}
-                                            >
-                                            <Card.Img
+
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                 alt="Card image"
                                                 variant="bottom"/>
-                                        </Card>
+
                                     </Col>
                                 );
                             })}

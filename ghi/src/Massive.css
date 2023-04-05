@@ -113,26 +113,29 @@ text-align: center;
 }
 
 .scrollable {
-  margin: 0% 0% 0% 0%;
+  margin: 0% 0% 0% .5%;
   width: 99%;
   height: 40vh;
   overflow-x: hidden;
   overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.212);
+  background-color: rgba(0, 0, 0, 0.315);
+  border-radius: 2px;
 }
 
 .cardpool {
   margin: 2% 0%;
   background-color: rgba(0, 0, 0, 0.315);
-  border: 5px solid rgb(24, 24, 24);
+  border: 2px solid rgb(24, 24, 24);
   border-radius: 10px;
-  height: 500px;
+  height: 53vh;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .maindeck {
   margin: 2% 0%;
   background-color: rgba(163, 26, 26, 0.315);
-  border: 5px solid rgb(173, 41, 41);
+  border: 2px solid rgb(173, 41, 41);
   border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
@@ -140,7 +143,23 @@ text-align: center;
 .pluckdeck {
   margin: 2% 0%;
   background-color: rgba(26, 63, 163, 0.315);
-  border: 5px solid rgb(41, 50, 173);
+  border: 2px solid rgb(41, 50, 173);
+  border-radius: 10px;
+  /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
+}
+
+.maindeck2 {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+}
+
+.pluckdeck2 {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
@@ -164,4 +183,8 @@ text-align: center;
 
 .back-to-top:hover {
   opacity: 60%;
+}
+
+.no-border {
+  border: none;
 }
