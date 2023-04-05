@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import ''
 
-function BackToTop() {
+function BackToBot() {
     const showOnPx = 300;
     const [showButton, setShowButton] = useState(false);
 
@@ -32,12 +33,12 @@ function BackToTop() {
         <div>
             <img
                 className={`back-to-top ${showButton ? null : "hidden"}`}
-                src="https://i.imgur.com/8VVXzFI.png"
-                style={{height: "9%"} }
+                src="up.png"
+                style={{height: "9%"}}
                 onClick={goToTop}>
             </img>
         </div>
     );
 }
 
-export default BackToTop;
+export default BackToBot;

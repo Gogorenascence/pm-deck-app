@@ -206,7 +206,7 @@ function CardAddCompModal() {
 
         <div>
             <Button
-                style={{margin: "1% 2% 2% 14%", height: "48px",width: "275px"}}
+                style={{margin: "0% 2% 0% 4.5%", width: "100%"}}
                 onClick={handleShow}
                 variant="danger"
                 size="lg">

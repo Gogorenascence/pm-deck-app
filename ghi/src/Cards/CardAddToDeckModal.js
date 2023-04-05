@@ -70,7 +70,7 @@ function CardAddToDeckModal() {
 
         <div>
             <Button
-                style={{margin: "1% 2% 2% 14%", height: "48px",width: "275px"}}
+                style={{marginLeft: "2%", width: "100%"}}
                 onClick={handleShow}
                 variant="dark"
                 size="lg">

@@ -92,165 +92,179 @@ function CardDetailPage() {
 
     return (
         <div className="white-space">
-            <div style={{margin: "4% 0%"}}>
-                <Card className="left-card" style={{borderRadius: "27px", overflow: "hidden"}}>
-                    <Card.Img src={card?.picture_url ?? "logo4p.png"}/>
-                </Card>
-                <div>
-                    <Container style={{ width: "44%", margin: "3%", float: "left"}}>
-                        <h1 className="centered-h1">Related Cards</h1>
-                        <Row xs={1} sm={2} md={3} lg={3} className="g-3">
-                            {relatedCards.map((relatedCard) => {
-                                return (
-                                    <Col>
-                                        <NavLink to={`/cards/${relatedCard.card_number}`}>
+            <div style={{margin: "4% 0%", display: "flex"}}>
+                <Container style={{width: "45%", marginRight: "2%"}}>
+                    <img
+                        src={card?.picture_url ?? "logo4p.png"}
+                        style={{width: "100%",
+                                borderRadius: "4%",
+                                overflow: "hidden"}}/>
+                    <br/>
 
-                                            <Card
-                                                style={{ width: '175px', margin: 'auto', borderRadius: "9px", overflow: "hidden"}}>
-                                                <Card.Img
-                                                    title={relatedCard.name}
-                                                    src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                                    alt="Related Card image"
-                                                    variant="bottom"/>
-                                            </Card>
-                                        </NavLink>
-                                    </Col>
-                                );
-                            })}
-                        </Row>
-                        <Button
-                            style={{margin: "7% 37.75% 10%", width: "25%", }}
-                            variant="dark"
-                            size="lg"
-                            onClick={getRandomCard}
-                        >
-                            Random Card
-                        </Button>
-                        <br/>
+                    <Container style={{margin: "5% 0%"}}>
+                            <h1 className="centered-h1">Related Cards</h1>
+                            <Row xs={1} sm={2} md={3} lg={3} className="g-3">
+                                {relatedCards.map((relatedCard) => {
+                                    return (
+                                        <Col>
+                                            <NavLink to={`/cards/${relatedCard.card_number}`}>
+
+                                                <Card
+                                                    style={{ width: '100%', margin: 'auto', borderRadius: "4.5%", overflow: "hidden"}}>
+                                                    <Card.Img
+                                                        title={relatedCard.name}
+                                                        src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                                        alt="Related Card image"
+                                                        variant="bottom"/>
+                                                </Card>
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                            <Button
+                                style={{margin: "5% 35%", width: "30%", }}
+                                variant="dark"
+                                size="lg"
+                                onClick={getRandomCard}
+                            >
+                                Random Card
+                            </Button>
+                            <br/>
                     </Container>
-                    <Container style={{margin: "1% 0% 1% 45%", width: "50%"}}>
+                </Container>
+
+
+                <div style={{width: "55%"}}>
+                    <div>
                         <h1 >{card.name}</h1>
-                        <Row xs={1} sm={2} md={3} lg={3}>
-                                    <Col>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Type</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title title={card_type.rules} style={{fontWeight: "350"}}>{card_type.name} *</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Enthusiasm</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Card Number</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.card_number}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col>
-                                    <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Class</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.card_class ? card.card_class : "n/a"}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Tags</Card.Header>
-                                            <Card.Body>
-                                            {card_tags.map((card_tag) => {
-                                                    return (
-                                                        <Card.Title title={card_tag.rules} style={{fontWeight: "350"}}>{card_tag ? card_tag.name + " *": "n/a"}</Card.Title>
-                                                    );
-                                                })}
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Hero ID</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.hero_id}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Reactions</Card.Header>
-                                            <Card.Body>
-                                            {reactions.length ? (
-                                                reactions.map((reaction) => (
-                                                <Card.Title title={reaction.rules} style={{fontWeight: "350"}} key={reaction.name}>
-                                                    {reaction.name} {reaction.count} *
-                                                </Card.Title>
-                                                ))
-                                            ) : (
-                                                <Card.Title style={{fontWeight: "350"}}>n/a</Card.Title>
-                                            )}
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Series</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.series_name}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card bg="dark" text="white" style={{margin: "6% 0%"}}>
-                                            <Card.Header style={{fontWeight: "500"}}>Illustrator</Card.Header>
-                                            <Card.Body>
-                                                <Card.Title style={{fontWeight: "350"}}>{card.illustrator}</Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
+                        <Row xs={3} sm={3} md={3} lg={3} style={{justifyContent: "center"}}>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Type</Card.Header>
+                                <Card.Body>
+                                    <Card.Title title={card_type.rules} style={{fontWeight: "350"}}>{card_type.name} *</Card.Title>
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Class</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.card_class ? card.card_class : "n/a"}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Reactions</Card.Header>
+                                <Card.Body>
+                                {reactions.length ? (
+                                    reactions.map((reaction) => (
+                                    <Card.Title title={reaction.rules} style={{fontWeight: "350"}} key={reaction.name}>
+                                        {reaction.name} {reaction.count} *
+                                    </Card.Title>
+                                    ))
+                                ) : (
+                                    <Card.Title style={{fontWeight: "350"}}>n/a</Card.Title>
+                                )}
+                                </Card.Body>
+                            </Card>
+
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Enthusiasm</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Tags</Card.Header>
+                                <Card.Body>
+                                {card_tags.map((card_tag) => {
+                                        return (
+                                            <Card.Title title={card_tag.rules} style={{fontWeight: "350"}}>{card_tag ? card_tag.name + " *": "n/a"}</Card.Title>
+                                        );
+                                    })}
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Series</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.series_name}</Card.Title>
+                                </Card.Body>
+                            </Card>
+
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Card Number</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.card_number}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Hero ID</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.hero_id}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                                <Card.Header style={{fontWeight: "500"}}>Illustrator</Card.Header>
+                                <Card.Body>
+                                    <Card.Title style={{fontWeight: "350"}}>{card.illustrator}</Card.Title>
+                                </Card.Body>
+                            </Card>
                         </Row>
-                    </Container>
-                    <Card bg="dark" text="white" style={{margin: "5% 0% 1% 51.75%", width: "41.75%"}}>
-                        <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
-                        <Card.Body>
-                            <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
-                            {card.second_effect_text && (
-                                <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
-                            )}
-                        </Card.Body>
-                        {extra_effects.length ? (
-                            <>
-                                <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
-                                {extra_effects.map((extra_effect) => (
-                                    <Card.Body key={extra_effect.name}>
-                                        <Card.Title title={extra_effect.rules} style={{fontWeight: "350", height: "22px"}}>{extra_effect.name} *</Card.Title>
-                                    </Card.Body>
-                                ))}
-                            </>
-                        ) : null}
-                    </Card>
-                    <Container style={{margin: "1% 0% 1% 45%", width: "50%"}}>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                            <NavLink to="/cards">
-                                <Button
-                                    style={{margin: "0% 1% 2% 12.5%", width: "100px"}}
-                                    variant="dark"
-                                    size="lg">
-                                    Back
-                                </Button>
-                            </NavLink>
 
-                            <CardEditModal/>
+                        <Card bg="dark" text="white" style={{margin: "2.30% 0% 0% .5%", width: "99%"}}>
+                            <Card.Header style={{fontWeight: "500"}}>Card Effect</Card.Header>
+                            <Card.Body>
+                                <Card.Title style={{fontWeight: "350"}}>{card.effect_text}</Card.Title>
+                                {card.second_effect_text && (
+                                    <Card.Title style={{fontWeight: "350"}}>{card.second_effect_text}</Card.Title>
+                                )}
+                            </Card.Body>
+                            {extra_effects.length ? (
+                                <>
+                                    <Card.Header style={{fontWeight: "500"}}>Extra Effect Types</Card.Header>
+                                    {extra_effects.map((extra_effect) => (
+                                        <Card.Body key={extra_effect.name}>
+                                            <Card.Title title={extra_effect.rules} style={{fontWeight: "350", height: "22px"}}>{extra_effect.name} *</Card.Title>
+                                        </Card.Body>
+                                    ))}
+                                </>
+                            ) : null}
+                        </Card>
 
-                            <CardAddCompModal/>
+                        <Container style={{margin: "2% 0%"}}>
+                            <div style={{display: "flex", marginBottom: ".75%"}}>
+                                <CardEditModal/>
 
-                            <NavLink to="/cards/create">
-                                <Button
-                                    style={{margin: "0% 1% 2% 35%", width: "146px"}}
-                                    variant="danger"
-                                    size="lg">
-                                    Create
-                                </Button>
-                            </NavLink>
-                        </div>
-                    </Container>
+                                <CardAddCompModal/>
+
+                                <NavLink to="/cards/create">
+                                    <Button
+                                        style={{margin: "0% 13.5%"}}
+                                        variant="danger"
+                                        size="lg">
+                                        Create
+                                    </Button>
+                                </NavLink>
+                            </div>
+                            <div style={{ display: "flex"}}>
+                                <NavLink to="/cards">
+                                    <Button
+                                        style={{width: "100%"}}
+                                        variant="dark"
+                                        size="lg">
+                                        Back
+                                    </Button>
+                                </NavLink>
+                                <CardAddToDeckModal/>
+                            </div>
+                        </Container>
+
+                    </div>
                 </div>
-                <CardAddToDeckModal/>
+            </div>
+
+            <div>
+
+
+
             </div>
         </div>
     );

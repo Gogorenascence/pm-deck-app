@@ -116,7 +116,7 @@ function DecksPage() {
                         <NavLink to={`/decks/${deck.id}`}>
                             <Card
                                 className="bg-dark text-white text-center"
-                                style={{ width: '370px', margin: '37px 5px 5px 5px', borderRadius: "17px", overflow: "hidden"}}>
+                                style={{ width: '100%', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
                                 <Card.Img
                                     src={deck.cover_card ? deck.cover_card : "logo4p.png"}
                                     alt="Card image"

@@ -26,7 +26,7 @@ text-align: center;
 
 .blackfooter2 {
   background: black;
-  height: 35%;
+  height: 40%;
   display: flex;
   justify-content: bottom;
   z-index: 1;
@@ -84,7 +84,7 @@ text-align: center;
 
 .left-card {
   width: 40%;
-  size: 510px;
+  /* size: 510px; */
   margin: 0% 6% 1% 5%;
   float: left;
 }
@@ -114,19 +114,34 @@ text-align: center;
 
 .scrollable {
   margin: 0% 0% 0% 0%;
-  width: 100%;
+  width: 99%;
   height: 40vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
+.cardpool {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 5px solid rgb(24, 24, 24);
+  border-radius: 10px;
+  height: 500px;
+  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+}
+
 .maindeck {
   margin: 2% 0%;
+  background-color: rgba(163, 26, 26, 0.315);
+  border: 5px solid rgb(173, 41, 41);
+  border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .pluckdeck {
   margin: 2% 0%;
+  background-color: rgba(26, 63, 163, 0.315);
+  border: 5px solid rgb(41, 50, 173);
+  border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
