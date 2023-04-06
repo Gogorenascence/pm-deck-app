@@ -189,6 +189,65 @@ text-align: center;
   border: none;
 }
 
-.canny {
-  background-color: rgb(93, 38, 145);
+.Staunch {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.Power {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.Unity {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.Canny {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.bigCanny {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.NoClass {
+  color: rgb(0, 0, 0);
+  background: url("./placeh4.png");
+  /* background-blend-mode: multiply; */
+  background-size: 100%;
+  border: 7px solid goldenrod;
+  border-radius: 7px;
+}
+
+.bigNoClass {
+  color: rgb(0, 0, 0);
+  background: url("./placeh5.png");
+  /* background-blend-mode: multiply; */
+  background-size: 100%;
+  border: 7px solid goldenrod;
+  border-radius: 7px;
 }
