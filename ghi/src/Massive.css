@@ -26,7 +26,7 @@ text-align: center;
 
 .blackfooter2 {
   background: black;
-  height: 35%;
+  height: 40%;
   display: flex;
   justify-content: bottom;
   z-index: 1;
@@ -84,7 +84,7 @@ text-align: center;
 
 .left-card {
   width: 40%;
-  size: 510px;
+  /* size: 510px; */
   margin: 0% 6% 1% 5%;
   float: left;
 }
@@ -113,25 +113,59 @@ text-align: center;
 }
 
 .scrollable {
-  margin: 0% 0% 0% 0%;
-  width: 100%;
+  margin: 0% 0% 0% .5%;
+  width: 99%;
   height: 40vh;
   overflow-x: hidden;
   overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.212);
+  background-color: rgba(0, 0, 0, 0.315);
+  border-radius: 2px;
+}
+
+.cardpool {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 2px solid rgb(24, 24, 24);
+  border-radius: 10px;
+  height: 53vh;
+  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .maindeck {
   margin: 2% 0%;
+  background-color: rgba(163, 26, 26, 0.315);
+  border: 2px solid rgb(173, 41, 41);
+  border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .pluckdeck {
   margin: 2% 0%;
+  background-color: rgba(26, 63, 163, 0.315);
+  border: 2px solid rgb(41, 50, 173);
+  border-radius: 10px;
+  /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
+}
+
+.maindeck2 {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+}
+
+.pluckdeck2 {
+  margin: 2% 0%;
+  background-color: rgba(0, 0, 0, 0.315);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .selected {
-  background: rgb(255, 0, 0);
+  outline: 7px solid rgb(255, 0, 0);
 }
 
 .back-to-top {
@@ -149,4 +183,104 @@ text-align: center;
 
 .back-to-top:hover {
   opacity: 60%;
+}
+
+.no-border {
+  border: none;
+}
+
+.Staunch {
+  color: rgb(255, 255, 255);
+  background: url("./placeh2.png"),rgba(0, 158, 92, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(3, 131, 78);
+  border-radius: 7px;
+}
+
+.bigStaunch {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(0, 158, 92, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(3, 131, 78);
+  border-radius: 7px;
+}
+
+.Power {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgb(255, 73, 73);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(255, 31, 31);
+  border-radius: 7px;
+}
+
+.bigPower {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(255, 31, 31);
+  border-radius: 7px;
+}
+
+.Unity {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(50, 132, 255, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(28, 40, 78);
+  border-radius: 7px;
+}
+
+.bigUnity {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(50, 132, 255, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(28, 40, 78);
+  border-radius: 7px;
+}
+
+.Canny {
+  color: aliceblue;
+  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.bigCanny {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+}
+
+.NoClass {
+  color: aliceblue;
+  background: url("./placeh4.png"),#4d475e49;
+  background-blend-mode: overlay;
+  background-size: 100%;
+  border: 7px solid #4D475E;
+  border-radius: 7px;
+  font-weight: 500;
+}
+
+.bigNoClass {
+  color: aliceblue;
+  background: url("./placeh5.png"),#4d475e49;
+  background-blend-mode: overlay;
+  background-size: 100%;
+  border: 7px solid #4D475E;
+  border-radius: 7px;
+  font-weight: 500;
+}
+
+.borderBlack{
+  border: 5px color black;
 }

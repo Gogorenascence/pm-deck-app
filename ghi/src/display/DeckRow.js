@@ -43,7 +43,7 @@ function DeckRow() {
                         return (
                             <Col>
                                 <NavLink to={`/decks/${deck.id}`}>
-                                    <Card className="bg-dark text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
+                                    <Card className="text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
                                         <Card.Img
                                             title={deck.name}
                                             src={deck.cover_card ? deck.cover_card : "logo4p.png"}

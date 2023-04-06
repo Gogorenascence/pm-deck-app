@@ -10,7 +10,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 function DBCardSearch() {
 
     return (
-        <div>
+        <div style={{marginLeft: "45px"}}>
             <h2 className="left">Search for cards</h2>
             <input
                 className="left"
@@ -40,6 +40,7 @@ function DBCardSearch() {
                 placeholder=" Hero ID"
                 style={{width: "178px", height: "37px"}}>
             </input>
+            <br/>
             <input
                 className="left"
                 type="text"
@@ -89,6 +90,7 @@ function DBCardSearch() {
                 <option value="limited">Limited</option>
                 <option value="critical">Critical</option>
             </select>
+            <br/>
             <select
                 className="left"
                 type="text"

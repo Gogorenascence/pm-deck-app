@@ -120,7 +120,7 @@ function CardEditModal() {
 
         <div>
             <Button
-                style={{margin: "0% 2% 2% 25%", width: "100px"}}
+                style={{width: "110%"}}
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
