@@ -245,12 +245,13 @@ function DeckBuilder() {
                     </Button>
                     <br/>
                 </form>
-                <div style={{ width: "370px"}}>
+                <
+                    div style={{ width: "370px"}}>
                     <h2 className="left">Cover Card</h2>
                     <Card
                         style={{ width: '100%',
                                 margin: '2.5% 0% 0% 1%',
-                                borderRadius: "7%",
+                                borderRadius: "%",
                                 overflow: "hidden"}}>
                     {selectedCard ? (
                         <Card.Img
@@ -277,20 +278,18 @@ function DeckBuilder() {
                             <Row xs="auto" className="justify-content-start">
                                 {cards.map((card) => {
                                     return (
-                                        <Col className={uniqueList.includes(card) ? "selected" : null}
-                                            style={{padding: "5px"}}>
+                                        <Col style={{padding: "5px"}}>
                                                 <img
                                                     style={{ width: '140px',
-                                                            margin: '2.25px 0px',
-                                                            borderRadius: "7px",
-                                                            overflow: "hidden"}}
+                                                    margin: '2.25px 0px',
+                                                    borderRadius: "7px",
+                                                    overflow: "hidden"}}
                                                     onClick={() => handleClick(card)}
-
-                                                        title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                        alt="Card image"
-                                                        variant="bottom"/>
-
+                                                    className={uniqueList.includes(card) ? "selected" : null}
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                    alt="Card image"
+                                                    variant="bottom"/>
                                         </Col>
                                     );
                                 })}
@@ -320,7 +319,6 @@ function DeckBuilder() {
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                     alt="Card image"
                                                     variant="bottom"/>
-
                                     </Col>
                                 );
                             })}
@@ -356,7 +354,6 @@ function DeckBuilder() {
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                     alt="Card image"
                                                     variant="bottom"/>
-
                                     </Col>
                                 );
                             })}

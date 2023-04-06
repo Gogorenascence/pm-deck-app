@@ -123,7 +123,7 @@ function CardDetailPage() {
                                 })}
                             </Row>
                             <Button
-                                style={{margin: "5% 35%", width: "30%", }}
+                                style={{margin: "5% 35%", width: "160px", }}
                                 variant="dark"
                                 size="lg"
                                 onClick={getRandomCard}
@@ -139,7 +139,7 @@ function CardDetailPage() {
                     <div>
                         <h1 >{card.name}</h1>
                         <Row xs={3} sm={3} md={3} lg={3} style={{justifyContent: "center"}}>
-                            <Card bg="dark" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <Card bg="primary" text="white" style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
                                 <Card.Header style={{fontWeight: "500"}}>Type</Card.Header>
                                 <Card.Body>
                                     <Card.Title title={card_type.rules} style={{fontWeight: "350"}}>{card_type.name} *</Card.Title>
@@ -237,7 +237,7 @@ function CardDetailPage() {
 
                                 <NavLink to="/cards/create">
                                     <Button
-                                        style={{margin: "0% 13.5%"}}
+                                        style={{margin: "0% 17px"}}
                                         variant="danger"
                                         size="lg">
                                         Create
@@ -247,7 +247,7 @@ function CardDetailPage() {
                             <div style={{ display: "flex"}}>
                                 <NavLink to="/cards">
                                     <Button
-                                        style={{width: "100%"}}
+                                        style={{width: "92px"}}
                                         variant="dark"
                                         size="lg">
                                         Back

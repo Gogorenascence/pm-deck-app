@@ -149,21 +149,19 @@ function DeckDetailPage() {
                                         {shuffledDeck.slice(0,8).map((card) => {
                                             return (
                                                 <Col
-                                                    style={{padding: "5px 0px 5px 0px"}}
-                                                    className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}>
+                                                    style={{padding: "2px 5px 8px 5px"}}>
                                                     <img
                                                         style={{
                                                             width: '120px',
                                                             margin: '10px 0px 10px 0px',
                                                             borderRadius: "7px",
                                                             overflow: "hidden"}}
-                                                            onClick={() => handleMulliganChange(card)}
-
-                                                            title={card.name}
-                                                            src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                            alt="Card image"
-                                                            variant="bottom"/>
-
+                                                        onClick={() => handleMulliganChange(card)}
+                                                        className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                        alt="Card image"
+                                                        variant="bottom"/>
                                                 </Col>
                                             );
                                         })}
@@ -183,7 +181,7 @@ function DeckDetailPage() {
                                             >Ownwership
                                         </h4>
                                         <Row xs="auto" className="justify-content-center">
-                                            <Col style={{paddingTop: "5px"}}>
+                                            <Col style={{paddingTop: "2px"}}>
                                                 <img
                                                     style={{ width: '120px',
                                                     margin: '10px 0px 10px 0px',
@@ -224,7 +222,7 @@ function DeckDetailPage() {
                             className="left"
                             variant="dark"
                             onClick={clearShuffledDeck}
-                            style={{marginLeft: ".4%", width: '65px', textAlign: "center"}}
+                            style={{marginLeft: ".4%", width: '80px', textAlign: "center"}}
                             >
                             Hide
                     </Button>

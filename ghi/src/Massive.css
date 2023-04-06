@@ -165,7 +165,7 @@ text-align: center;
 }
 
 .selected {
-  background: rgb(255, 0, 0);
+  outline: 7px solid rgb(255, 0, 0);
 }
 
 .back-to-top {
@@ -187,4 +187,8 @@ text-align: center;
 
 .no-border {
   border: none;
+}
+
+.canny {
+  background-color: rgb(93, 38, 145);
 }

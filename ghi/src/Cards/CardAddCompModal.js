@@ -91,7 +91,7 @@ function CardAddCompModal() {
 
     const handleTypeChange = (event) => {
         setCardType({ id: event.target.value });
-      };
+    };
 
     const handleAddTypeSubmit = async (event) => {
         event.preventDefault();
@@ -101,7 +101,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -112,7 +112,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -120,7 +120,7 @@ function CardAddCompModal() {
 
     const handleEffectChange = (event) => {
         setExtraEffect({ id: event.target.value });
-      };
+    };
 
     const handleAddEffectSubmit = async (event) => {
         event.preventDefault();
@@ -129,7 +129,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -140,7 +140,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -148,7 +148,7 @@ function CardAddCompModal() {
 
     const handleReactionChange = (event) => {
         setReaction({ id: event.target.value });
-      };
+    };
 
     const handleAddReactionSubmit = async (event) => {
         event.preventDefault();
@@ -157,7 +157,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -168,7 +168,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -176,7 +176,7 @@ function CardAddCompModal() {
 
     const handleTagChange = (event) => {
         setCardTag({ id: event.target.value });
-      };
+    };
 
     const handleAddTagSubmit = async (event) => {
         event.preventDefault();
@@ -185,7 +185,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -196,7 +196,7 @@ function CardAddCompModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };
@@ -206,7 +206,7 @@ function CardAddCompModal() {
 
         <div>
             <Button
-                style={{margin: "0% 2% 0% 4.5%", width: "100%"}}
+                style={{margin: "0% 2% 0% 5.5%", width: "222px"}}
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
