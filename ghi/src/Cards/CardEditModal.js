@@ -120,7 +120,7 @@ function CardEditModal() {
 
         <div>
             <Button
-                style={{width: "110%"}}
+                className="button100"
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
@@ -147,62 +147,62 @@ function CardEditModal() {
                         <Container style={{marginLeft: "18%"}}>
                             <h5 className="label">Name </h5>
                             <input
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Card Name"
                                 onChange={handleChange}
                                 name="name"
-                                value={card.name}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.name}>
                             </input>
                             <br/>
                             <h5 className="label">Hero ID</h5>
                             <input
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Hero ID"
                                 onChange={handleChange}
                                 name="hero_id"
-                                value={card.hero_id}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.hero_id}>
                             </input>
                             <br/>
                             <h5 className="label">Series </h5>
                             <input
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Series"
                                 onChange={handleChange}
                                 name="series_name"
-                                value={card.series_name}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.series_name}>
                             </input>
                             <br/>
                             <h5 className="label">Card Number </h5>
                             <input
+                                className="builder-input"
                                 type="number"
                                 placeholder=" Card Number"
                                 onChange={handleChange}
                                 name="card_number"
-                                value={card.card_number}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.card_number}>
                             </input>
                             <br/>
                             <h5 className="label">Illustrator </h5>
                             <input
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Illustrator"
                                 onChange={handleChange}
                                 name="illustrator"
-                                value={card.illustrator}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.illustrator}>
                             </input>
                             <br/>
                             <h5 className="label">Picture Url </h5>
                             <input
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Picture Url"
                                 onChange={handleChange}
                                 name="picture_url"
-                                value={card.picture_url}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.picture_url}>
                             </input>
                             <br/>
                             <Button
@@ -225,12 +225,12 @@ function CardEditModal() {
                         <Container style={{margin: "0% 0% 5% 9%"  }}>
                             <h5 className="label">Card Class </h5>
                             <select
+                                className="builder-input"
                                 type="text"
                                 placeholder=" Class"
                                 onChange={handleChange}
                                 name="card_class"
-                                value={card.card_class}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.card_class}>
                                 <option value="">Class</option>
                                 <option value="Staunch">Staunch</option>
                                 <option value="Power">Power</option>
@@ -239,32 +239,32 @@ function CardEditModal() {
                             </select>
                             <h5 className="label">Enthusiasm </h5>
                             <input
+                                className="builder-input"
                                 type="number"
                                 placeholder=" Enthusiasm"
                                 onChange={handleChange}
                                 name="enthusiasm"
-                                value={card.enthusiasm}
-                                style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                value={card.enthusiasm}>
                             </input>
                             <br/>
                             <h5 className="label">Effect Text </h5>
                             <textarea
+                                className="create-card-text"
                                 type="text"
                                 placeholder=" Effect Text"
                                 onChange={handleChange}
                                 name="effect_text"
-                                value={card.effect_text}
-                                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
+                                value={card.effect_text}>
                             </textarea>
                             <br/>
                             <h5 className="label">Second Effect Text </h5>
                             <textarea
+                                className="create-card-text"
                                 type="text"
                                 placeholder=" Second Effect Text"
                                 onChange={handleChange}
                                 name="second_effect_text"
-                                value={card.second_effect_text}
-                                style={{width: "370px", height: "148px", margin: "5px 5px 0px 5px"}}>
+                                value={card.second_effect_text}>
                             </textarea>
                             <br/>
                         </Container>

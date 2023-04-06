@@ -13,52 +13,46 @@ function DBCardSearch() {
         <div style={{marginLeft: "45px"}}>
             <h2 className="left">Search for cards</h2>
             <input
-                className="left"
+                className="left dcbsearch-large"
                 type="text"
-                placeholder=" Card Name Contains..."
-                style={{width: "366px", height: "37px"}}>
+                placeholder=" Card Name Contains..." >
                 {/* value={query}
                 onChange={(event)=> setQuery(event.target.value)} */}
             </input>
             <br/>
             <input
-                className="left"
+                className="left dcbsearch-large"
                 type="text"
-                placeholder=" Card Text Contains..."
-                style={{width: "366px", height: "37px"}}>
+                placeholder=" Card Text Contains..." >
+
             </input>
             <br/>
             <input
-                className="left"
+                className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Card Number"
-                style={{width: "178px", height: "37px"}}>
+                placeholder=" Card Number">
             </input>
             <input
-                className="left"
+                className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Hero ID"
-                style={{width: "178px", height: "37px"}}>
+                placeholder=" Hero ID">
             </input>
             <br/>
             <input
-                className="left"
+                className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Series"
-                style={{width: "178px", height: "37px"}}>
+                placeholder=" Series">
             </input>
             <input
-                className="left"
+                className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Illustrator"
-                style={{width: "178px", height: "37px"}}>
+                placeholder=" Illustrator">
             </input>
             <br/>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Type"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Type">
                 <option value="type">Type</option>
                 <option value="fighter">Fighter</option>
                 <option value="aura">Aura</option>
@@ -70,10 +64,9 @@ function DBCardSearch() {
                 <option value="comeback">Comeback</option>
             </select>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Class"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Class">
                 <option value="class">Class</option>
                 <option value="staunch">Staunch</option>
                 <option value="power">Power</option>
@@ -81,10 +74,9 @@ function DBCardSearch() {
                 <option value="canny">Canny</option>
             </select>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Extra Effect"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Extra Effect">
                 <option value="extra_effect">Extra Effect</option>
                 <option value="trigger">Trigger</option>
                 <option value="limited">Limited</option>
@@ -92,10 +84,9 @@ function DBCardSearch() {
             </select>
             <br/>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Reaction"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Reaction">
                 <option value="reaction">Reaction</option>
                 <option value="block">Block</option>
                 <option value="counter">Counter</option>
@@ -103,10 +94,9 @@ function DBCardSearch() {
                 <option value="redirect">Redirect</option>
             </select>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Tag"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Tag">
                 <option value="tag">Tag</option>
                 <option value="5_hp">5 HP</option>
                 <option value="focus">Focus</option>
@@ -115,10 +105,9 @@ function DBCardSearch() {
                 <option value="max_1">Max</option>
             </select>
             <select
-                className="left"
+                className="left dcbsearch-small"
                 type="text"
-                placeholder=" Sorted By"
-                style={{width: "115px", height: "37px"}}>
+                placeholder=" Sorted By">
                 <option value="sorted_by">Sorted By</option>
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
@@ -128,7 +117,7 @@ function DBCardSearch() {
             <br/>
             <Button className="left" variant="dark">Reset Filters</Button>
             <br/>
-            </div>
+        </div>
     );
 }
 

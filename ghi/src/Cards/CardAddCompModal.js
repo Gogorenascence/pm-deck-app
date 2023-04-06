@@ -206,7 +206,7 @@ function CardAddCompModal() {
 
         <div>
             <Button
-                style={{margin: "0% 2% 0% 5.5%", width: "222px"}}
+                className="button225"
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
@@ -230,12 +230,11 @@ function CardAddCompModal() {
                             <Container style={{marginLeft: "18%"}}>
                                 <h5 className="label">Card Type </h5>
                                 <select
+                                    className="builder-input"
                                     type="text"
-                                    placeholder=" Class"
                                     onChange={handleTypeChange}
                                     name="card_type"
-                                    value={card_type.id}
-                                    style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                    value={card_type.id}>
                                     <option value="">Card Type</option>
                                     {card_types.map((card_type) => (
                                         <option value={card_type.id}>{card_type.name}</option>
@@ -243,7 +242,7 @@ function CardAddCompModal() {
                                 </select>
                                 <br/>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddTypeSubmit}
@@ -251,7 +250,7 @@ function CardAddCompModal() {
                                         Add
                                 </Button>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveTypeSubmit}
@@ -264,12 +263,11 @@ function CardAddCompModal() {
                             <Container style={{marginLeft: "9%"}}>
                                 <h5 className="label">Extra Effect </h5>
                                 <select
+                                    className="builder-input"
                                     type="text"
-                                    placeholder=" Extra Effect"
                                     onChange={handleEffectChange}
                                     name="extra_effect"
-                                    value={extra_effect.id}
-                                    style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                    value={extra_effect.id}>
                                     <option value="">Extra Effect</option>
                                     {extra_effects.map((extra_effect) => (
                                         <option value={extra_effect.id}>{extra_effect.name}</option>
@@ -277,7 +275,7 @@ function CardAddCompModal() {
                                 </select>
                                 <br/>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddEffectSubmit}
@@ -285,7 +283,7 @@ function CardAddCompModal() {
                                         Add
                                 </Button>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveEffectSubmit}
@@ -299,12 +297,11 @@ function CardAddCompModal() {
                             <Container style={{marginLeft: "18%"}}>
                                 <h5 className="label">Reaction </h5>
                                 <select
+                                    className="builder-input"
                                     type="text"
-                                    placeholder=" Reaction"
                                     onChange={handleReactionChange}
                                     name="reaction"
-                                    value={reaction.id}
-                                    style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                    value={reaction.id}>
                                     <option value="">Reaction</option>
                                     {reactions.map((reaction) => (
                                         <option value={reaction.id}>{reaction.name}</option>
@@ -312,7 +309,7 @@ function CardAddCompModal() {
                                 </select>
                                 <br/>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddReactionSubmit}
@@ -320,7 +317,7 @@ function CardAddCompModal() {
                                         Add
                                 </Button>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveReactionSubmit}
@@ -333,12 +330,11 @@ function CardAddCompModal() {
                             <Container style={{margin: "0% 0% 5% 9%"}}>
                                 <h5 className="label">Tag </h5>
                                 <select
+                                    className="builder-input"
                                     type="text"
-                                    placeholder=" Tag"
                                     onChange={handleTagChange}
                                     name="card_tag"
-                                    value={card_tag.id}
-                                    style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                                    value={card_tag.id}>
                                     <option value="">Tag</option>
                                     {card_tags.map((card_tag) => (
                                         <option value={card_tag.id}>{card_tag.name}</option>
@@ -346,7 +342,7 @@ function CardAddCompModal() {
                                 </select>
                                 <br/>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddTagSubmit}
@@ -354,7 +350,7 @@ function CardAddCompModal() {
                                         Add
                                 </Button>
                                 <Button
-                                    style={{margin: "4% 2% 2% 1%", width: "100px"}}
+                                    className="add-comp-button"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveTagSubmit}

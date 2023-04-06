@@ -95,10 +95,8 @@ function CardDetailPage() {
             <div style={{margin: "4% 0%", display: "flex"}}>
                 <Container style={{width: "45%", marginRight: "2%"}}>
                     <img
-                        src={card?.picture_url ?? "logo4p.png"}
-                        style={{width: "100%",
-                                borderRadius: "4%",
-                                overflow: "hidden"}}/>
+                        className="cd-card"
+                        src={card?.picture_url ?? "logo4p.png"}/>
                     <br/>
 
                     <Container style={{margin: "5% 0%"}}>
@@ -108,15 +106,12 @@ function CardDetailPage() {
                                     return (
                                         <Col>
                                             <NavLink to={`/cards/${relatedCard.card_number}`}>
-
-                                                <Card
-                                                    style={{ width: '100%', margin: 'auto', borderRadius: "4.5%", overflow: "hidden"}}>
-                                                    <Card.Img
+                                                    <img
+                                                        className="cd-card"
                                                         title={relatedCard.name}
                                                         src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
                                                         alt="Related Card image"
                                                         variant="bottom"/>
-                                                </Card>
                                             </NavLink>
                                         </Col>
                                     );
@@ -141,22 +136,19 @@ function CardDetailPage() {
 
                         <Row xs={3} sm={3} md={3} lg={3} style={{justifyContent: "center"}}>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Type</h3>
                                     <h5 title={card_type.rules}
                                         style={{fontWeight: "500", margin: "18px 0px"}}
                                         >{card_type.name} *</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Class</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Reactions</h3>
                                 {reactions.length ? (
                                     reactions.map((reaction) => (
@@ -169,14 +161,12 @@ function CardDetailPage() {
                                 )}
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Enthusiasm</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Tags</h3>
                                 {card_tags.map((card_tag) => {
                                         return (
@@ -185,34 +175,29 @@ function CardDetailPage() {
                                     })}
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Series</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.series_name}</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Card Number</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_number}</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Hero ID</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.hero_id}</h5>
                             </div>
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}
-                                style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
+                            <div className={card.card_class ? card.card_class : "NoClass"}>
                                 <h3 style={{fontWeight: "500", marginTop: "10px"}}>Illustrator</h3>
                                     <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.illustrator}</h5>
                             </div>
 
                         </Row>
 
-                        <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}
-                            style={{margin: "2.30% 0% 0% .5%", width: "99%"}}>
+                        <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}>
                             <h3 style={{fontWeight: "500", margin: "12px"}}>Card Effect</h3>
                             <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5>
                             {card.second_effect_text && (
@@ -246,7 +231,7 @@ function CardDetailPage() {
 
                                 <NavLink to="/cards/create">
                                     <Button
-                                        style={{margin: "0% 17px"}}
+                                        className="button100"
                                         variant="danger"
                                         size="lg">
                                         Create
@@ -256,7 +241,7 @@ function CardDetailPage() {
                             <div style={{ display: "flex"}}>
                                 <NavLink to="/cards">
                                     <Button
-                                        style={{width: "92px"}}
+                                        className="button100"
                                         variant="dark"
                                         size="lg">
                                         Back

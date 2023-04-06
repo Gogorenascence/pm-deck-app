@@ -196,6 +196,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
+  width: 31.60%;
+  margin: .5% .25% 0% .25%;
 }
 
 .bigStaunch {
@@ -205,6 +207,8 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
+  margin: 2.30% 0% 0% .5%;
+  width: 99%;
 }
 
 .Power {
@@ -214,6 +218,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
+  width: 31.60%;
+  margin: .5% .25% 0% .25%;
 }
 
 .bigPower {
@@ -223,6 +229,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
+  margin: 2.30% 0% 0% .5%;
+  width: 99%;
 }
 
 .Unity {
@@ -232,6 +240,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
+  width: 31.60%;
+  margin: .5% .25% 0% .25%;
 }
 
 .bigUnity {
@@ -241,6 +251,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
+  margin: 2.30% 0% 0% .5%;
+  width: 99%;
 }
 
 .Canny {
@@ -250,6 +262,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
+  width: 31.60%;
+  margin: .5% .25% 0% .25%;
 }
 
 .bigCanny {
@@ -259,6 +273,8 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
+  margin: 2.30% 0% 0% .5%;
+  width: 99%;
 }
 
 .NoClass {
@@ -269,6 +285,8 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
+  width: 31.60%;
+  margin: .5% .25% 0% .25%;
 }
 
 .bigNoClass {
@@ -279,8 +297,80 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
+  margin: 2.30% 0% 0% .5%;
+  width: 99%;
 }
 
-.borderBlack{
-  border: 5px color black;
+.dcbsearch-large {
+  width: 366px;
+  height: 37px;
+}
+
+.dcbsearch-medium {
+  width: 178px;
+  height: 37px;
+}
+
+.dcbsearch-small {
+  width: 115px;
+  height: 37px;
+}
+
+.builder-input {
+  width: 370px;
+  height: 37px;
+  margin: 5px 5px 0px 5px;
+}
+
+.builder-text {
+  width: 370px;
+  height: 94px;
+  margin: 5px 5px 0px 5px;
+}
+
+.cover-card {
+  width: 338px;
+  margin: 2.5% 0px 0px 1%;
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+.builder-card {
+  width: 140px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.add-comp-button {
+  margin: 15px 10px 10px 5px;
+  width: 100px;
+}
+
+.create-card-text {
+  width: 370px;
+  height: 148px;
+  margin: 5px 5px 0px 5px;
+}
+
+.cd-card {
+  width: 100%;
+  border-radius: 4%;
+  overflow: hidden;
+}
+
+.cd-info-small {
+  width: 100%;
+  border-radius: 4%;
+  overflow: hidden;
+}
+
+.button100 {
+  width: 100px;
+  margin-right: 3px;
+}
+
+.button225 {
+  width: 225px;
+  margin-right: 3px;
 }

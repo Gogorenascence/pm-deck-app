@@ -166,28 +166,26 @@ function DeckBuilder() {
                 <form
                     style={{marginBottom: "45px", width: "445px"}}
                     onSubmit={handleSubmit}
-                    id="create-deck-page"
-                    // style={{display: "grid", gridTemplateColumns: "1fr 1fr" }}
-                >
+                    id="create-deck-page">
                     <h2 className="left">Build your deck</h2>
                     <h5 className="label">Name </h5>
                     <input
+                        className="builder-input"
                         type="text"
                         placeholder=" Deck Name"
                         onChange={handleChange}
                         name="name"
-                        value={deck.name}
-                        style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                        value={deck.name}>
                     </input>
                     <br/>
                     <h5 className="label">Cover Card</h5>
                     <select
+                        className="builder-input"
                         type="text"
                         placeholder=" Cover Card"
                         onChange={handleCoverCardChange}
                         name="cover_card"
-                        value={deck.cover_card}
-                        style={{width: "370px", height: "37px", margin: "5px 5px 0px 5px"}}>
+                        value={deck.cover_card}>
                         <option value="">Cover Card</option>
                         {uniqueList.sort((a,b) => a.card_number - b.card_number).map((card) => (
                             <option value={card.picture_url}>{card.name}</option>
@@ -196,18 +194,18 @@ function DeckBuilder() {
                     <br/>
                     <h5 className="label"> Description </h5>
                     <textarea
+                        className="builder-text"
                         type="text"
                         placeholder=" Deck Description"
                         onChange={handleChange}
                         name="description"
-                        value={deck.description}
-                        style={{width: "370px", height: "94px", margin: "5px 5px 0px 5px"}}>
+                        value={deck.description}>
                     </textarea>
                     <h5 className="label">Strategies </h5>
                     <select
+                        className="builder-text"
                         multiple
                         name="strategies"
-                        style={{width: "370px", height: "94px", margin: "5px 5px 5px 5px"}}
                         onChange={handleStrategyChange}
                         >
                         <option value="">Strategy</option>
@@ -245,25 +243,20 @@ function DeckBuilder() {
                     </Button>
                     <br/>
                 </form>
-                <
-                    div style={{ width: "370px"}}>
+                <div style={{ width: "370px"}}>
                     <h2 className="left">Cover Card</h2>
-                    <Card
-                        style={{ width: '100%',
-                                margin: '2.5% 0% 0% 1%',
-                                borderRadius: "%",
-                                overflow: "hidden"}}>
                     {selectedCard ? (
-                        <Card.Img
+                        <img
+                            className="cover-card"
                             src={selectedCard}
                             alt="Card image"
                             variant="bottom"/>
                             ):(
-                        <Card.Img
+                        <img
+                            className="cover-card"
                             src={"logo4p.png"}
                             alt="Card image"
                             variant="bottom"/>)}
-                    </Card>
                 </div>
                 <DBCardSearch/>
                 </Row>
@@ -280,12 +273,8 @@ function DeckBuilder() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                                 <img
-                                                    style={{ width: '140px',
-                                                    margin: '2.25px 0px',
-                                                    borderRadius: "7px",
-                                                    overflow: "hidden"}}
                                                     onClick={() => handleClick(card)}
-                                                    className={uniqueList.includes(card) ? "selected" : null}
+                                                    className={uniqueList.includes(card) ? "selected builder-card" : "builder-card"}
                                                     title={card.name}
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                     alt="Card image"
@@ -309,16 +298,13 @@ function DeckBuilder() {
                             {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
-                                            <img
-                                                style={{ width: '140px',
-                                                        margin: '2.25px 0px',
-                                                        borderRadius: "7px",
-                                                        overflow: "hidden"}}
-                                                onClick={() => handleRemoveCard(card)}
-                                                    title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                    alt="Card image"
-                                                    variant="bottom"/>
+                                        <img
+                                            className="builder-card"
+                                            onClick={() => handleRemoveCard(card)}
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                            alt="Card image"
+                                            variant="bottom"/>
                                     </Col>
                                 );
                             })}
@@ -344,16 +330,13 @@ function DeckBuilder() {
                             {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
-                                    <img
-                                        style={{ width: '140px',
-                                                margin: '2.25px 0px',
-                                                borderRadius: "7px",
-                                                overflow: "hidden"}}
-                                                onClick={() => handleRemoveCard(card)}
-                                                    title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                    alt="Card image"
-                                                    variant="bottom"/>
+                                        <img
+                                            className="builder-card"
+                                            onClick={() => handleRemoveCard(card)}
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                            alt="Card image"
+                                            variant="bottom"/>
                                     </Col>
                                 );
                             })}
@@ -362,7 +345,7 @@ function DeckBuilder() {
                     {pluck_list.length > 0 ?
                     <h3
                         className="left"
-                        style={{margin: "1% 0.5%", fontWeight: "700"}}
+                        style={{margin: "1% 0%", fontWeight: "700"}}
                     >Cards: {pluck_list.length}</h3>:
                     null}
                 </div>
