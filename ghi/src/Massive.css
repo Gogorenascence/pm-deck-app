@@ -263,18 +263,20 @@ text-align: center;
 
 .NoClass {
   color: aliceblue;
-  background: url("./placeh4.png");
+  background: url("./placeh4.png"),#4d475e49;
+  background-blend-mode: overlay;
   background-size: 100%;
-  border: 7px solid rgb(114, 114, 114);
+  border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
 }
 
 .bigNoClass {
   color: aliceblue;
-  background: url("./placeh5.png");
+  background: url("./placeh5.png"),#4d475e49;
+  background-blend-mode: overlay;
   background-size: 100%;
-  border: 7px solid rgb(114, 114, 114);
+  border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
 }
