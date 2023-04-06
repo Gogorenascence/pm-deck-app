@@ -164,7 +164,7 @@ function DeckBuilder() {
             <h1 className="left-h1">Deck Builder</h1>
             <Row xs={3} sm={3} md={3} lg={3}>
                 <form
-                    style={{marginBottom: "45px", width: "445px"}}
+                    style={{marginBottom: "45px", width: "435px"}}
                     onSubmit={handleSubmit}
                     id="create-deck-page">
                     <h2 className="left">Build your deck</h2>
@@ -243,7 +243,7 @@ function DeckBuilder() {
                     </Button>
                     <br/>
                 </form>
-                <div style={{ width: "370px"}}>
+                <div style={{ width: "350px"}}>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img

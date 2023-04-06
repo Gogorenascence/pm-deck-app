@@ -107,7 +107,7 @@ function CardDetailPage() {
                                         <Col>
                                             <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                     <img
-                                                        className="cd-card"
+                                                        className="cd-related-card"
                                                         title={relatedCard.name}
                                                         src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
                                                         alt="Related Card image"
@@ -118,7 +118,7 @@ function CardDetailPage() {
                                 })}
                             </Row>
                             <Button
-                                style={{margin: "5% 35%", width: "160px", }}
+                                style={{margin: "5% 34%", width: "160px", }}
                                 variant="dark"
                                 size="lg"
                                 onClick={getRandomCard}

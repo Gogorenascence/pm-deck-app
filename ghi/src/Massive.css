@@ -196,7 +196,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  width: 31.60%;
+  width: 218px;
   margin: .5% .25% 0% .25%;
 }
 
@@ -207,8 +207,8 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% .5%;
-  width: 99%;
+  margin: 2.30% 0% 0% 1px;
+  width: 662px;
 }
 
 .Power {
@@ -218,7 +218,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
-  width: 31.60%;
+  width: 218px;
   margin: .5% .25% 0% .25%;
 }
 
@@ -229,8 +229,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
-  margin: 2.30% 0% 0% .5%;
-  width: 99%;
+  margin: 2.30% 0% 0% 1px;
+  width: 662px;
 }
 
 .Unity {
@@ -240,7 +240,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
-  width: 31.60%;
+  width: 218px;
   margin: .5% .25% 0% .25%;
 }
 
@@ -251,8 +251,8 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% .5%;
-  width: 99%;
+  margin: 2.30% 0% 0% 1px;
+  width: 662px;
 }
 
 .Canny {
@@ -262,7 +262,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
-  width: 31.60%;
+  width: 218px;
   margin: .5% .25% 0% .25%;
 }
 
@@ -273,8 +273,8 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% .5%;
-  width: 99%;
+  margin: 2.30% 0% 0% 1px;
+  width: 662px;
 }
 
 .NoClass {
@@ -285,7 +285,7 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
-  width: 31.60%;
+  width: 218px;
   margin: .5% .25% 0% .25%;
 }
 
@@ -297,8 +297,8 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
-  margin: 2.30% 0% 0% .5%;
-  width: 99%;
+  margin: 2.30% 0% 0% 1px;
+  width: 662px;
 }
 
 .dcbsearch-large {
@@ -330,7 +330,7 @@ text-align: center;
 
 .cover-card {
   width: 338px;
-  margin: 2.5% 0px 0px 1%;
+  margin: 2.5% 0px 0px 0%;
   border-radius: 17px;
   overflow: hidden;
 }
@@ -354,13 +354,13 @@ text-align: center;
 }
 
 .cd-card {
-  width: 100%;
+  width: 550px;
   border-radius: 4%;
   overflow: hidden;
 }
 
-.cd-info-small {
-  width: 100%;
+.cd-related-card {
+  width: 160px;
   border-radius: 4%;
   overflow: hidden;
 }
