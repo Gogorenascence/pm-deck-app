@@ -190,29 +190,56 @@ text-align: center;
 }
 
 .Staunch {
-  color: aliceblue;
-  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  color: rgb(255, 255, 255);
+  background: url("./placeh2.png"),rgba(0, 158, 92, 0.705);
   background-blend-mode: multiply;
   background-size: 100%;
-  border: 7px solid rgb(68, 28, 78);
+  border: 7px solid rgb(3, 131, 78);
+  border-radius: 7px;
+}
+
+.bigStaunch {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(0, 158, 92, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
 }
 
 .Power {
   color: aliceblue;
-  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background: url("./placeh2.png"),rgb(255, 73, 73);
   background-blend-mode: multiply;
   background-size: 100%;
-  border: 7px solid rgb(68, 28, 78);
+  border: 7px solid rgb(255, 31, 31);
+  border-radius: 7px;
+}
+
+.bigPower {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
 }
 
 .Unity {
   color: aliceblue;
-  background: url("./placeh2.png"),rgba(116, 43, 150, 0.705);
+  background: url("./placeh2.png"),rgba(50, 132, 255, 0.705);
   background-blend-mode: multiply;
   background-size: 100%;
-  border: 7px solid rgb(68, 28, 78);
+  border: 7px solid rgb(28, 40, 78);
+  border-radius: 7px;
+}
+
+.bigUnity {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(50, 132, 255, 0.705);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
 }
 
@@ -235,19 +262,23 @@ text-align: center;
 }
 
 .NoClass {
-  color: rgb(0, 0, 0);
+  color: aliceblue;
   background: url("./placeh4.png");
-  /* background-blend-mode: multiply; */
   background-size: 100%;
-  border: 7px solid goldenrod;
+  border: 7px solid rgb(114, 114, 114);
   border-radius: 7px;
+  font-weight: 500;
 }
 
 .bigNoClass {
-  color: rgb(0, 0, 0);
+  color: aliceblue;
   background: url("./placeh5.png");
-  /* background-blend-mode: multiply; */
   background-size: 100%;
-  border: 7px solid goldenrod;
+  border: 7px solid rgb(114, 114, 114);
   border-radius: 7px;
+  font-weight: 500;
+}
+
+.borderBlack{
+  border: 5px color black;
 }

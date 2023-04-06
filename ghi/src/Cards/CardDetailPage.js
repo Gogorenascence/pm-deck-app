@@ -143,90 +143,98 @@ function CardDetailPage() {
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Type</h3>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Type</h3>
                                     <h5 title={card_type.rules}
-                                        style={{fontWeight: "400", margin: "18px 0px"}}
+                                        style={{fontWeight: "500", margin: "18px 0px"}}
                                         >{card_type.name} *</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Class</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Class</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Reactions</h3>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Reactions</h3>
                                 {reactions.length ? (
                                     reactions.map((reaction) => (
-                                    <h5 title={reaction.rules} style={{fontWeight: "400", margin: "18px 0px"}} key={reaction.name}>
+                                    <h5 title={reaction.rules} style={{fontWeight: "500", margin: "18px 0px"}} key={reaction.name}>
                                         {reaction.name} {reaction.count} *
                                     </h5>
                                     ))
                                 ) : (
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>n/a</h5>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>n/a</h5>
                                 )}
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Enthusiasm</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Enthusiasm</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Tags</h3>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Tags</h3>
                                 {card_tags.map((card_tag) => {
                                         return (
-                                            <h5 title={card_tag.rules} style={{fontWeight: "400", margin: "18px 0px"}}>{card_tag ? card_tag.name + " *": "n/a"}</h5>
+                                            <h5 title={card_tag.rules} style={{fontWeight: "500", margin: "18px 0px"}}>{card_tag ? card_tag.name + " *": "n/a"}</h5>
                                         );
                                     })}
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Series</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.series_name}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Series</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.series_name}</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Card Number</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.card_number}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Card Number</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_number}</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Hero ID</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.hero_id}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Hero ID</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.hero_id}</h5>
                             </div>
 
                             <div className={card.card_class ? card.card_class : "NoClass"}
                                 style={{width: "31.60%", margin: ".5% .25% 0% .25%"}}>
-                                <h3 style={{fontWeight: "500", margin: "10px"}}>Illustrator</h3>
-                                    <h5 style={{fontWeight: "400", margin: "18px 0px"}}>{card.illustrator}</h5>
+                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Illustrator</h3>
+                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.illustrator}</h5>
                             </div>
 
                         </Row>
 
                         <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}
                             style={{margin: "2.30% 0% 0% .5%", width: "99%"}}>
-                            <h3 style={{fontWeight: "500", margin: "10px"}}>Card Effect</h3>
-                                <h5 style={{fontWeight: "400", margin: "15px"}}>{card.effect_text}</h5>
-                                {card.second_effect_text && (
-                                    <h5 style={{fontWeight: "400", margin: "15px"}}>{card.second_effect_text}</h5>
-                                )}
-                                {extra_effects.length ? (
-                                <>
-                                    <h3 style={{fontWeight: "500", margin: "10px"}}>Extra Effect Types</h3>
+                            <h3 style={{fontWeight: "500", margin: "12px"}}>Card Effect</h3>
+                            <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5>
+                            {card.second_effect_text && (
+                                <div className="borderBlack">
+                                    <h5 className="borderBlack"
+                                        style={{fontWeight: "500", margin: "10px 10px 18px 10px"}}>{card.second_effect_text}</h5>
+                                </div>
+                            )}
+                            {extra_effects.length ? (
+                            <>
+                                <h3 style={{fontWeight: "500", margin: "12px"}}>Extra Effect Types</h3>
+                                <div className="borderBlack" style={{display:"flex"}}>
                                     {extra_effects.map((extra_effect) => (
 
-                                            <h5 title={extra_effect.rules} style={{fontWeight: "400", height: "22px", margin: "15px"}}>{extra_effect.name} *</h5>
-
+                                        <h5 title={extra_effect.rules}
+                                            style={{fontWeight: "500",
+                                                height: "22px",
+                                                margin: "0px 5px 20px 15px"}}>
+                                            {extra_effect.name} *</h5>
                                     ))}
-                                </>
+                                </div>
+                            </>
                             ) : null}
                         </div>
 
