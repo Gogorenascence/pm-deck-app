@@ -162,10 +162,10 @@ function CardsPage() {
             <Row xs={1} sm={2} md={3} lg={4} xl={4}>
                 {cards.map((card) => {
                     return (
-                        <Col>
+                        <Col style={{padding: "0"}}>
                             <NavLink to={`/cards/${card.card_number}`}>
                                 <Card
-                                    style={{ width: '100%', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
+                                    style={{ width: '296px', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
                                     <Card.Img
                                         title={card.name}
                                         src={card.picture_url ? card.picture_url : "logo4p.png"}

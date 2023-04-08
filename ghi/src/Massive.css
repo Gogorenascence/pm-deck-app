@@ -196,8 +196,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  width: 218px;
-  margin: .5% .25% 0% .25%;
+  width: 209px;
 }
 
 .bigStaunch {
@@ -207,8 +206,8 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% 1px;
-  width: 662px;
+  margin-top: 4%;
+  width: 650px;
 }
 
 .Power {
@@ -218,8 +217,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
-  width: 218px;
-  margin: .5% .25% 0% .25%;
+  width: 207px;
 }
 
 .bigPower {
@@ -229,7 +227,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
-  margin: 2.30% 0% 0% 1px;
+  margin-top: 4%;
   width: 662px;
 }
 
@@ -240,8 +238,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
-  width: 218px;
-  margin: .5% .25% 0% .25%;
+  width: 207px;
 }
 
 .bigUnity {
@@ -251,7 +248,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% 1px;
+  margin-top: 4%;
   width: 662px;
 }
 
@@ -262,8 +259,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
-  width: 218px;
-  margin: .5% .25% 0% .25%;
+  width: 207px;
 }
 
 .bigCanny {
@@ -273,7 +269,7 @@ text-align: center;
   background-size: 70%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
-  margin: 2.30% 0% 0% 1px;
+  margin-top: 4%;
   width: 662px;
 }
 
@@ -285,8 +281,7 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
-  width: 218px;
-  margin: .5% .25% 0% .25%;
+  width: 207px;
 }
 
 .bigNoClass {
@@ -297,7 +292,7 @@ text-align: center;
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
-  margin: 2.30% 0% 0% 1px;
+  margin-top: 4%;
   width: 662px;
 }
 
@@ -353,16 +348,39 @@ text-align: center;
   margin: 5px 5px 0px 5px;
 }
 
+.cd-container {
+  display: flex;
+  /* justify-content: center; */
+}
+
+.cd-container-child {
+  margin-top: 40px;
+}
+
+.cd-inner {
+  display: flex;
+  justify-content: center;
+}
+
 .cd-card {
-  width: 550px;
+  width: 480px;
   border-radius: 4%;
   overflow: hidden;
 }
 
 .cd-related-card {
-  width: 160px;
+  width: 140px;
   border-radius: 4%;
   overflow: hidden;
+  margin: 0% 10px;
+}
+
+.cd-info {
+  display: grid;
+  gap: 3.5px 3.5px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 662px;
+  justify-items: center;
 }
 
 .button100 {

@@ -92,19 +92,20 @@ function CardDetailPage() {
 
     return (
         <div className="white-space">
-            <div style={{margin: "4% 0%", display: "flex"}}>
-                <Container style={{width: "45%", marginRight: "2%"}}>
-                    <img
-                        className="cd-card"
-                        src={card?.picture_url ?? "logo4p.png"}/>
-                    <br/>
-
-                    <Container style={{margin: "5% 0%"}}>
+            <div className="cd-container">
+                <div className="cd-container-child" style={{width: "50%"}}>
+                    <div className="cd-inner">
+                        <img
+                            className="cd-card"
+                            src={card?.picture_url ?? "logo4p.png"}/>
+                    </div>
+                    <div style={{margin: "5% 0%"}}>
+                        <div>
                             <h1 className="centered-h1">Related Cards</h1>
-                            <Row xs={1} sm={2} md={3} lg={3} className="g-3">
+                            <div className="cd-inner">
                                 {relatedCards.map((relatedCard) => {
                                     return (
-                                        <Col>
+
                                             <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                     <img
                                                         className="cd-related-card"
@@ -113,117 +114,124 @@ function CardDetailPage() {
                                                         alt="Related Card image"
                                                         variant="bottom"/>
                                             </NavLink>
-                                        </Col>
+
                                     );
                                 })}
-                            </Row>
+                            </div>
+                        </div>
+                        <div className="cd-inner">
                             <Button
-                                style={{margin: "5% 34%", width: "160px", }}
+                                style={{width: "170px", marginTop: "20px"}}
                                 variant="dark"
                                 size="lg"
                                 onClick={getRandomCard}
                             >
                                 Random Card
                             </Button>
-                            <br/>
-                    </Container>
-                </Container>
+                        </div>
+                    </div>
+                </div>
 
 
-                <div style={{width: "55%"}}>
-                    <div>
+                <div className="cd-container-child" style={{width: "50%"}}>
+
                         <h1 >{card.name}</h1>
 
-                        <Row xs={3} sm={3} md={3} lg={3} style={{justifyContent: "center"}}>
+                        <div className="cd-inner">
+                            <div className="cd-info">
 
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Type</h3>
-                                    <h5 title={card_type.rules}
-                                        style={{fontWeight: "500", margin: "18px 0px"}}
-                                        >{card_type.name} *</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Class</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Reactions</h3>
-                                {reactions.length ? (
-                                    reactions.map((reaction) => (
-                                    <h5 title={reaction.rules} style={{fontWeight: "500", margin: "18px 0px"}} key={reaction.name}>
-                                        {reaction.name} {reaction.count} *
-                                    </h5>
-                                    ))
-                                ) : (
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>n/a</h5>
-                                )}
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Enthusiasm</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Tags</h3>
-                                {card_tags.map((card_tag) => {
-                                        return (
-                                            <h5 title={card_tag.rules} style={{fontWeight: "500", margin: "18px 0px"}}>{card_tag ? card_tag.name + " *": "n/a"}</h5>
-                                        );
-                                    })}
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Series</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.series_name}</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Card Number</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.card_number}</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Hero ID</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.hero_id}</h5>
-                            </div>
-
-                            <div className={card.card_class ? card.card_class : "NoClass"}>
-                                <h3 style={{fontWeight: "500", marginTop: "10px"}}>Illustrator</h3>
-                                    <h5 style={{fontWeight: "500", margin: "18px 0px"}}>{card.illustrator}</h5>
-                            </div>
-
-                        </Row>
-
-                        <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}>
-                            <h3 style={{fontWeight: "500", margin: "12px"}}>Card Effect</h3>
-                            <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5>
-                            {card.second_effect_text && (
-                                <div className="borderBlack">
-                                    <h5 className="borderBlack"
-                                        style={{fontWeight: "500", margin: "10px 10px 18px 10px"}}>{card.second_effect_text}</h5>
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Type</h4>
+                                        <h5 title={card_type.rules}
+                                            style={{fontWeight: "500", margin: "18px 12px"}}
+                                            >{card_type.name} *</h5>
                                 </div>
-                            )}
-                            {extra_effects.length ? (
-                            <>
-                                <h3 style={{fontWeight: "500", margin: "12px"}}>Extra Effect Types</h3>
-                                <div className="borderBlack" style={{display:"flex"}}>
-                                    {extra_effects.map((extra_effect) => (
 
-                                        <h5 title={extra_effect.rules}
-                                            style={{fontWeight: "500",
-                                                height: "22px",
-                                                margin: "0px 5px 20px 15px"}}>
-                                            {extra_effect.name} *</h5>
-                                    ))}
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Class</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
                                 </div>
-                            </>
-                            ) : null}
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Reactions</h4>
+                                    {reactions.length ? (
+                                        reactions.map((reaction) => (
+                                        <h5 title={reaction.rules} style={{fontWeight: "500", margin: "18px 12px"}} key={reaction.name}>
+                                            {reaction.name} {reaction.count} *
+                                        </h5>
+                                        ))
+                                    ) : (
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>n/a</h5>
+                                    )}
+                                </div>
+
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Enthusiasm</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.enthusiasm ? card.enthusiasm : "n/a"}</h5>
+                                </div>
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Tags</h4>
+                                    {card_tags.map((card_tag) => {
+                                            return (
+                                                <h5 title={card_tag.rules} style={{fontWeight: "500", margin: "18px 12px"}}>{card_tag ? card_tag.name + " *": "n/a"}</h5>
+                                            );
+                                        })}
+                                </div>
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Series</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.series_name}</h5>
+                                </div>
+
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Card Number</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.card_number}</h5>
+                                </div>
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Hero ID</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.hero_id}</h5>
+                                </div>
+
+                                <div className={card.card_class ? card.card_class : "NoClass"}>
+                                    <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Illustrator</h4>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.illustrator}</h5>
+                                </div>
+
+                            </div>
                         </div>
+                        <div className="cd-inner">
+                            <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}>
+                                <h4 style={{fontWeight: "500", margin: "12px"}}>Card Effect</h4>
+                                <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5>
+                                {card.second_effect_text && (
+                                    <div className="borderBlack">
+                                        <h5 className="borderBlack"
+                                            style={{fontWeight: "500", margin: "10px 10px 18px 10px"}}>{card.second_effect_text}</h5>
+                                    </div>
+                                )}
+                                {extra_effects.length ? (
+                                <>
+                                    <h4 style={{fontWeight: "500", margin: "12px"}}>Extra Effect Types</h4>
+                                    <div className="borderBlack" style={{display:"flex"}}>
+                                        {extra_effects.map((extra_effect) => (
 
-                        <Container style={{margin: "2% 0%"}}>
+                                            <h5 title={extra_effect.rules}
+                                                style={{fontWeight: "500",
+                                                    height: "22px",
+                                                    margin: "0px 5px 20px 15px"}}>
+                                                {extra_effect.name} *</h5>
+                                        ))}
+                                    </div>
+                                </>
+                                ) : null}
+                            </div>
+                        </div>
+                        <div className="cd-inner">
+                        <Container style={{margin: "2% 0%", width: "662px"}}>
                             <div style={{display: "flex", marginBottom: ".75%"}}>
                                 <CardEditModal/>
 
@@ -250,16 +258,17 @@ function CardDetailPage() {
                                 <CardAddToDeckModal/>
                             </div>
                         </Container>
+                        </div>
 
-                    </div>
+
                 </div>
+
+
+
+
+
             </div>
 
-            <div>
-
-
-
-            </div>
         </div>
     );
 }
