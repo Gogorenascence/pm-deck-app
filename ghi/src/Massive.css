@@ -196,7 +196,7 @@ text-align: center;
   background-size: 100%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  width: 209px;
+  width: 207px;
 }
 
 .bigStaunch {
@@ -207,7 +207,7 @@ text-align: center;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
   margin-top: 4%;
-  width: 650px;
+  width: 662px;
 }
 
 .Power {
@@ -372,12 +372,12 @@ text-align: center;
   width: 140px;
   border-radius: 4%;
   overflow: hidden;
-  margin: 0% 10px;
+  margin: 0px 10px 10px 10px;
 }
 
 .cd-info {
   display: grid;
-  gap: 3.5px 3.5px;
+  gap: 2% 1%;
   grid-template-columns: repeat(3, 1fr);
   width: 662px;
   justify-items: center;
@@ -391,4 +391,18 @@ text-align: center;
 .button225 {
   width: 225px;
   margin-right: 3px;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: start;
+}
+
+.card-list-card {
+  width: 300px;
+  margin: 30px 5px 5px 5px;
+  border-radius: 4.5%;
+  overflow: hidden;
 }

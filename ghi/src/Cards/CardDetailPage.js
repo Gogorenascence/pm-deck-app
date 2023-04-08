@@ -93,7 +93,7 @@ function CardDetailPage() {
     return (
         <div className="white-space">
             <div className="cd-container">
-                <div className="cd-container-child" style={{width: "50%"}}>
+                <div className="cd-container-child" style={{width: "45%", marginRight: "2%"}}>
                     <div className="cd-inner">
                         <img
                             className="cd-card"
@@ -102,19 +102,17 @@ function CardDetailPage() {
                     <div style={{margin: "5% 0%"}}>
                         <div>
                             <h1 className="centered-h1">Related Cards</h1>
-                            <div className="cd-inner">
+                            <div className="cd-inner card-list" style={{width: "480px"}}>
                                 {relatedCards.map((relatedCard) => {
                                     return (
-
-                                            <NavLink to={`/cards/${relatedCard.card_number}`}>
-                                                    <img
-                                                        className="cd-related-card"
-                                                        title={relatedCard.name}
-                                                        src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                                        alt="Related Card image"
-                                                        variant="bottom"/>
-                                            </NavLink>
-
+                                        <NavLink to={`/cards/${relatedCard.card_number}`}>
+                                                <img
+                                                    className="cd-related-card"
+                                                    title={relatedCard.name}
+                                                    src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                                    alt="Related Card image"
+                                                    variant="bottom"/>
+                                        </NavLink>
                                     );
                                 })}
                             </div>
@@ -175,7 +173,12 @@ function CardDetailPage() {
                                     <h4 style={{fontWeight: "500", margin: "10px 0px 0px 12px"}}>Tags</h4>
                                     {card_tags.map((card_tag) => {
                                             return (
-                                                <h5 title={card_tag.rules} style={{fontWeight: "500", margin: "18px 12px"}}>{card_tag ? card_tag.name + " *": "n/a"}</h5>
+                                                <h5 title={card_tag.rules}
+                                                    style={{fontWeight: "500", margin: "18px 12px"}}>
+                                                        {
+                                                            card_tag.id == "641292cf38b70f477bb72e6f" ?
+                                                            card_tag.name : card_tag.name + " *"}
+                                                </h5>
                                             );
                                         })}
                                 </div>
@@ -231,33 +234,33 @@ function CardDetailPage() {
                             </div>
                         </div>
                         <div className="cd-inner">
-                        <Container style={{margin: "2% 0%", width: "662px"}}>
-                            <div style={{display: "flex", marginBottom: ".75%"}}>
-                                <CardEditModal/>
+                            <Container style={{margin: "2% 0%", width: "662px"}}>
+                                <div style={{display: "flex", marginBottom: ".75%"}}>
+                                    <CardEditModal/>
 
-                                <CardAddCompModal/>
+                                    <CardAddCompModal/>
 
-                                <NavLink to="/cards/create">
-                                    <Button
-                                        className="button100"
-                                        variant="danger"
-                                        size="lg">
-                                        Create
-                                    </Button>
-                                </NavLink>
-                            </div>
-                            <div style={{ display: "flex"}}>
-                                <NavLink to="/cards">
-                                    <Button
-                                        className="button100"
-                                        variant="dark"
-                                        size="lg">
-                                        Back
-                                    </Button>
-                                </NavLink>
-                                <CardAddToDeckModal/>
-                            </div>
-                        </Container>
+                                    <NavLink to="/cards/create">
+                                        <Button
+                                            className="button100"
+                                            variant="danger"
+                                            size="lg">
+                                            Create
+                                        </Button>
+                                    </NavLink>
+                                </div>
+                                <div style={{ display: "flex"}}>
+                                    <NavLink to="/cards">
+                                        <Button
+                                            className="button100"
+                                            variant="dark"
+                                            size="lg">
+                                            Back
+                                        </Button>
+                                    </NavLink>
+                                    <CardAddToDeckModal/>
+                                </div>
+                            </Container>
                         </div>
 
 

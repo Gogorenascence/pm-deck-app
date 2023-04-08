@@ -147,37 +147,26 @@ function CardsPage() {
             </select>
             <br/>
             <Button className="left" variant="dark">Reset Filters</Button>
-
-            {/* <NavLink to={`/cards/${randomCard.card_number}`}> */}
-                <Button
-                    className="left"
-                    variant="dark"
-                    onClick={getRandomCard}
-                    >
-                    Random Card
-                </Button>
-            {/* </NavLink> */}
-            <br/>
-
-            <Row xs={1} sm={2} md={3} lg={4} xl={4}>
+            <Button
+                className="left"
+                variant="dark"
+                onClick={getRandomCard}
+                >
+                Random Card
+            </Button>
+            <div className="card-list">
                 {cards.map((card) => {
                     return (
-                        <Col style={{padding: "0"}}>
-                            <NavLink to={`/cards/${card.card_number}`}>
-                                <Card
-                                    style={{ width: '296px', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
-                                    <Card.Img
-                                        title={card.name}
-                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                        alt="Card image"
-                                        variant="bottom"/>
-                                </Card>
-                            </NavLink>
-                        </Col>
+                        <NavLink to={`/cards/${card.card_number}`}>
+                                <img className="card-list-card"
+                                    title={card.name}
+                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                    alt="Card image"
+                                    variant="bottom"/>
+                        </NavLink>
                     );
                 })}
-            </Row>
-
+            </div>
     </div>
     );
 }

@@ -204,6 +204,15 @@ function CardEditModal() {
                                 name="picture_url"
                                 value={card.picture_url}>
                             </input>
+                            <h5 className="label">File Name </h5>
+                            <input
+                                className="builder-input"
+                                type="text"
+                                placeholder=" File Name"
+                                onChange={handleChange}
+                                name="file_name"
+                                value={card.file_name}>
+                            </input>
                             <br/>
                             <Button
                                 style={{margin: "4% 2% 2% 1%", width: "100px"}}

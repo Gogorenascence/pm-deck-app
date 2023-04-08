@@ -107,16 +107,14 @@ function DecksPage() {
                 >
                 Random Deck
             </Button>
-            <br/>
 
-            <Row xl={4}>
+
+            <div className="card-list">
                 {decks.map((deck) => {
                     return (
-                        <Col >
                         <NavLink to={`/decks/${deck.id}`}>
                             <Card
-                                className="text-white text-center"
-                                style={{ width: '100%', margin: '37px 5px 5px 5px', borderRadius: "4.5%", overflow: "hidden"}}>
+                                className="text-white text-center card-list-card">
                                 <Card.Img
                                     src={deck.cover_card ? deck.cover_card : "logo4p.png"}
                                     alt="Card image"
@@ -144,11 +142,10 @@ function DecksPage() {
                                         </Card.Text>
                                 </Card.ImgOverlay>
                             </Card>
-                            </NavLink>
-                        </Col>
+                        </NavLink>
                     );
                 })}
-            </Row>
+            </div>
 
         </div>
     );
