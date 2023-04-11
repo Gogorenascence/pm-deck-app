@@ -6,7 +6,7 @@ import {
     Container,
     Modal,
 } from "react-bootstrap";
-import { useLocation, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react'
 
 
@@ -282,7 +282,7 @@ function CardEditModal() {
                 </Modal.Body>
             </Modal>
         </div>
-  )
+    )
 }
 
 

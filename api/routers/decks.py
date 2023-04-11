@@ -36,7 +36,7 @@ async def create_deck(
     deck = queries.create_deck(deck_in)
     return deck
 
-@router.put("/api/decks/{deck_id}", response_model=DeckOut | str)
+@router.put("/api/decks/{deck_id}/", response_model=DeckOut | str)
 async def update_deck(
     deck_id: str,
     deck_in: DeckIn,
@@ -49,7 +49,7 @@ async def update_deck(
     else:
         return deck
 
-@router.delete("/api/decks/{deck_id}", response_model=bool | str)
+@router.delete("/api/decks/{deck_id}/", response_model=bool | str)
 async def delete_deck(
     deck_id: str,
     response: Response,

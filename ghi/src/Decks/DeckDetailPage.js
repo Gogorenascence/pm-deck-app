@@ -160,8 +160,7 @@ function DeckDetailPage() {
                                                         className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}
                                                         title={card.name}
                                                         src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                        alt="Card image"
-                                                        variant="bottom"/>
+                                                        alt="Card image"/>
                                                 </Col>
                                             );
                                         })}
@@ -200,6 +199,15 @@ function DeckDetailPage() {
                     </div>:
                     null}
             </div>
+            <NavLink to={`/decks/${deck.id}/edit`}>
+                <Button
+                        className="left"
+                        variant="danger"
+                        style={{marginLeft: "2%"}}
+                        >
+                        Edit Deck
+                </Button>
+            </NavLink>
             <Button
                     className="left"
                     variant="dark"

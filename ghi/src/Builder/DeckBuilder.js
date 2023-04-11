@@ -155,7 +155,7 @@ function DeckBuilder() {
                 views: 0,
                 cover_card: "",
             });
-            // window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
     }
 
@@ -249,13 +249,13 @@ function DeckBuilder() {
                         <img
                             className="cover-card"
                             src={selectedCard}
-                            alt="Card image"
+                            alt={selectedCard.name}
                             variant="bottom"/>
                             ):(
                         <img
                             className="cover-card"
                             src={"logo4p.png"}
-                            alt="Card image"
+                            alt="Card Image"
                             variant="bottom"/>)}
                 </div>
                 <DBCardSearch/>
@@ -277,7 +277,7 @@ function DeckBuilder() {
                                                     className={uniqueList.includes(card) ? "selected builder-card" : "builder-card"}
                                                     title={card.name}
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                    alt="Card image"
+                                                    alt={card.name}
                                                     variant="bottom"/>
                                         </Col>
                                     );
@@ -303,8 +303,7 @@ function DeckBuilder() {
                                             onClick={() => handleRemoveCard(card)}
                                             title={card.name}
                                             src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                            alt="Card image"
-                                            variant="bottom"/>
+                                            alt={card.name}/>
                                     </Col>
                                 );
                             })}
@@ -335,7 +334,7 @@ function DeckBuilder() {
                                             onClick={() => handleRemoveCard(card)}
                                             title={card.name}
                                             src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                            alt="Card image"
+                                            alt={card.name}
                                             variant="bottom"/>
                                     </Col>
                                 );
