@@ -167,7 +167,7 @@ function DeckBuilder() {
                     style={{marginBottom: "45px", width: "435px"}}
                     onSubmit={handleSubmit}
                     id="create-deck-page">
-                    <h2 className="left">Build your deck</h2>
+                    <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
                     <input
                         className="builder-input"

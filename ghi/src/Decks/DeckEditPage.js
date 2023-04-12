@@ -83,7 +83,7 @@ function DeckEditPage() {
         console.log(selectedCard);
         console.log(combinedList);
         console.log(uniqueList);
-    }, [deck, deck_list]);
+    }, [selectedCard, deck, deck_list]);
 
     const handleChange = (event) => {
         setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -211,7 +211,7 @@ function DeckEditPage() {
                     style={{marginBottom: "45px", width: "435px"}}
                     onSubmit={handleSubmit}
                     id="create-deck-page">
-                    <h2 className="left">Build your deck</h2>
+                    <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
                     <input
                         className="builder-input"

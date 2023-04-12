@@ -203,7 +203,7 @@ function DeckDetailPage() {
                 <Button
                         className="left"
                         variant="danger"
-                        style={{marginLeft: "2%"}}
+                        style={{marginLeft: ".5%"}}
                         >
                         Edit Deck
                 </Button>
@@ -212,7 +212,7 @@ function DeckDetailPage() {
                     className="left"
                     variant="dark"
                     onClick={getShuffledDeck}
-                    style={{marginLeft: "2%"}}
+                    style={{marginLeft: ".5%"}}
                     >
                     Test Hand
             </Button>
@@ -230,12 +230,21 @@ function DeckDetailPage() {
                             className="left"
                             variant="dark"
                             onClick={clearShuffledDeck}
-                            style={{marginLeft: ".4%", width: '80px', textAlign: "center"}}
+                            style={{marginLeft: ".5%", width: '80px', textAlign: "center"}}
                             >
                             Hide
                     </Button>
                 </>:
             null}
+            <NavLink to="/decks/">
+                <Button
+                        className="left button100"
+                        variant="dark"
+                        style={{marginLeft: ".5%", textAlign: "center"}}
+                        >
+                        Back
+                </Button>
+            </NavLink>
             <div className="maindeck">
                 <div style={{marginLeft: "20px"}}>
                 <h2

@@ -199,24 +199,18 @@ function CardCreatePage() {
                 value={card.picture_url}>
             </input>
             <br/>
-            <Button
-                className="add-comp-button"
-                variant="dark"
-                size="lg"
-                onClick={handleSubmit}
-            >
-                    Create
-            </Button>
-            <Button
-                className="add-comp-button"
-                variant="danger"
-                size="lg"
-                onClick={handleClear}
-            >
-                    Reset
-            </Button>
+            <h5 className="label">File Name </h5>
+            <input
+                className="builder-input"
+                type="text"
+                placeholder=" File Name"
+                onChange={handleChange}
+                name="file_name"
+                value={card.file_name}>
+            </input>
+            <br/>
         </Container>
-        <Container style={{margin:"2.5% 0% 2.5% 14%"}}>
+        <Container style={{margin:"3.5% 0% 2.5% 10%"}}>
             <h5 className="label">Card Class </h5>
             <select
                 className="builder-input"
@@ -261,6 +255,22 @@ function CardCreatePage() {
                 value={card.second_effect_text}>
             </textarea>
             <br/>
+            <Button
+                className="add-comp-button"
+                variant="dark"
+                size="lg"
+                onClick={handleSubmit}
+            >
+                    Create
+            </Button>
+            <Button
+                className="add-comp-button"
+                variant="danger"
+                size="lg"
+                onClick={handleClear}
+            >
+                    Reset
+            </Button>
         </Container>
 
         </form>
