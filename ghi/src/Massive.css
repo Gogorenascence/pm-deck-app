@@ -428,3 +428,9 @@ text-align: center;
 .hidden2 {
   display: none;
 }
+
+.logo {
+  margin: 2px 4px 4px 5px;
+  width: 60px;
+  opacity: 90%;
+}

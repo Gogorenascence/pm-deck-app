@@ -289,12 +289,21 @@ function DeckBuilder() {
                 </div>
                 <div className="maindeck">
                     <div style={{marginLeft: "20px"}}>
-                    <h2
-                        className="left"
-                        style={{margin: "1% 0%", fontWeight: "700"}}
-                    >Main Deck</h2>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Main Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            {main_list.length > 0 ?
+                            <h5
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >{main_list.length}</h5>:
+                            null}
+                        </div>
                         {main_list.length > 0 ?
-                        <Row xs="auto" className="justify-content-start">
+                        <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
                             {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
@@ -309,23 +318,26 @@ function DeckBuilder() {
                             })}
                         </Row> :
                     <h4 className="left">No cards added</h4>}
-                    {main_list.length > 0 ?
-                    <h3
-                        className="left"
-                        style={{margin: "1% 0.5%", fontWeight: "700"}}
-                    >Cards: {main_list.length}</h3>:
-                    null}
                 </div>
                 </div>
 
                 <div className="pluckdeck">
                     <div style={{marginLeft: "20px"}}>
-                    <h2
-                        className="left"
-                        style={{margin: "1% 0%", fontWeight: "700"}}
-                    >Pluck Deck</h2>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Pluck Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            {pluck_list.length > 0 ?
+                            <h5
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >{pluck_list.length}</h5>:
+                            null}
+                        </div>
                         {pluck_list.length > 0 ?
-                        <Row xs="auto" className="justify-content-start">
+                        <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
                             {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <Col style={{padding: "5px"}}>
@@ -341,12 +353,6 @@ function DeckBuilder() {
                             })}
                         </Row> :
                     <h4 className="left">No cards added</h4>}
-                    {pluck_list.length > 0 ?
-                    <h3
-                        className="left"
-                        style={{margin: "1% 0%", fontWeight: "700"}}
-                    >Cards: {pluck_list.length}</h3>:
-                    null}
                 </div>
             </div>
         </div>
