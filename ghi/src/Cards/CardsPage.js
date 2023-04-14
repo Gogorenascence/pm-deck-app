@@ -11,7 +11,7 @@ function CardsPage() {
     const [query, setQuery] = useState({
         cardName: "",
         cardText: "",
-        cardNumber: 0,
+        cardNumber: "",
         heroID: "",
         series: "",
         illustrator: "",
@@ -30,44 +30,7 @@ function CardsPage() {
 
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
 
-        const filteredCards = sortedCards.reverse().filter(card => {
-        if (query.cardName && !card.name.toLowerCase().includes(query.cardName.toLowerCase())) {
-            return false;
-        }
-        if (query.cardText && !(card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase())) {
-            return false;
-        }
-        if (query.cardNumber && card.card_number !== query.cardNumber) {
-            return false;
-        }
-        if (query.heroID && !card.hero_id.toLowerCase().includes(query.heroID.toLowerCase())) {
-            return false;
-        }
-        if (query.series && !card.series_name.toLowerCase().includes(query.series.toLowerCase())) {
-            return false;
-        }
-        if (query.illustrator && !card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase())) {
-            return false;
-        }
-        if (query.type && card.card_type !== query.type) {
-            return false;
-        }
-        if (query.cardClass && card.card_class !== query.cardClass) {
-            return false;
-        }
-        if (query.extraEffect && !card.effect_texts.includes(query.extraEffect)) {
-            return false;
-        }
-        if (query.reaction && !card.reactions.includes(query.reaction)) {
-            return false;
-        }
-        if (query.tag && !card.card_tags.includes(query.tag)) {
-            return false;
-        }
-        return true;
-    });
-
-    setCards(filteredCards);
+        setCards(sortedCards);
 
     };
 
@@ -104,7 +67,7 @@ function CardsPage() {
         setQuery({
             cardName: "",
             cardText: "",
-            cardNumber: 0,
+            cardNumber: "",
             heroID: "",
             series: "",
             illustrator: "",
@@ -188,14 +151,14 @@ function CardsPage() {
                 value={query.type}
                 onChange={handleQuery}>
                 <option value="">Type</option>
-                <option value="fighter">Fighter</option>
-                <option value="aura">Aura</option>
-                <option value="move">Move</option>
-                <option value="ending">Ending</option>
-                <option value="any_type">Any Type</option>
-                <option value="item">Item</option>
-                <option value="event">Event</option>
-                <option value="comeback">Comeback</option>
+                <option value="64079ed6b2b376b6cd0454f5">Fighter</option>
+                <option value="6407bb289b4fb23f5ddab698">Aura</option>
+                <option value="6407a3bbc503d0c6f5a33238">Move</option>
+                <option value="640ce41c5f6730657ad8739f">Ending</option>
+                <option value="64108e0e159c81c7afebd105">Any Type</option>
+                <option value="64108dee159c81c7afebd104">Item</option>
+                <option value="640ce4bf5f6730657ad873be">Event</option>
+                <option value="64108db9159c81c7afebd103">Comeback</option>
             </select>
             <select
                 className="left"
@@ -205,11 +168,11 @@ function CardsPage() {
                 name="cardClass"
                 value={query.cardClass}
                 onChange={handleQuery}>
-                <option value="class">Class</option>
-                <option value="staunch">Staunch</option>
-                <option value="power">Power</option>
-                <option value="unity">Unity</option>
-                <option value="canny">Canny</option>
+                <option value="">Class</option>
+                <option value="Staunch">Staunch</option>
+                <option value="Power">Power</option>
+                <option value="Unity">Unity</option>
+                <option value="Canny">Canny</option>
             </select>
             <select
                 className="left"
@@ -219,10 +182,10 @@ function CardsPage() {
                 name="extraEffect"
                 value={query.extraEffect}
                 onChange={handleQuery}>
-                <option value="extra_effect">Extra Effect</option>
-                <option value="trigger">Trigger</option>
-                <option value="limited">Limited</option>
-                <option value="critical">Critical</option>
+                <option value="">Extra Effect</option>
+                <option value="64079f10b2b376b6cd0454f6">Trigger</option>
+                <option value="6407aaae5139f66679d6ac52">Limited</option>
+                <option value="64079f5db2b376b6cd0454f7">Critical</option>
             </select>
             <select
                 className="left"
@@ -232,11 +195,11 @@ function CardsPage() {
                 name="reaction"
                 value={query.reaction}
                 onChange={handleQuery}>
-                <option value="reaction">Reaction</option>
-                <option value="block">Block</option>
-                <option value="counter">Counter</option>
-                <option value="endure">Endure</option>
-                <option value="redirect">Redirect</option>
+                <option value="">Reaction</option>
+                <option value="64079f9fb2b376b6cd0454f8">Block</option>
+                <option value="6407a068c503d0c6f5a33231">Counter</option>
+                <option value="6407a0a9c503d0c6f5a33232">Endure</option>
+                <option value="6407ab1c5139f66679d6ac53">Redirect</option>
             </select>
             <select
                 className="left"
@@ -246,12 +209,12 @@ function CardsPage() {
                 name="tag"
                 value={query.tag}
                 onChange={handleQuery}>
-                <option value="tag">Tag</option>
-                <option value="5_hp">5 HP</option>
-                <option value="focus">Focus</option>
-                <option value="auto">Auto</option>
-                <option value="stay">Stay</option>
-                <option value="max_1">Max</option>
+                <option value="">Tag</option>
+                <option value="6407a27fc503d0c6f5a33233">5 HP</option>
+                <option value="6407a29bc503d0c6f5a33234">Focus</option>
+                <option value="6407ac305139f66679d6ac54">Auto</option>
+                <option value="64124686d762a869c0b2e12d">Stay</option>
+                <option value="640ce5e85f6730657ad873cb">Max</option>
             </select>
             <select
                 className="left"
@@ -261,7 +224,7 @@ function CardsPage() {
                 value={sortState}
                 onChange={handleSort}>
                 <option value="none">Sorted By</option>
-                <option value="none">Newest</option>
+                <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
                 <option value="name">A-Z</option>
                 <option value="card_number">Card Number</option>
@@ -282,7 +245,18 @@ function CardsPage() {
                 Random Card
             </Button>
             <div className="card-list">
-                {cards.sort(sortMethods[sortState].method).map(card => {
+                {cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
+                .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
+                .filter(card => card.card_number.toString().includes(query.cardNumber))
+                .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
+                .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
+                .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
+                .filter(card => card.card_type[0].includes(query.type))
+                .filter(card => card.card_class.includes(query.cardClass))
+                .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
+                .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
+                .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
+                .sort(sortMethods[sortState].method).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`}>
                                 <img className="card-list-card"
