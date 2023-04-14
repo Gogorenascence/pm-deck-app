@@ -176,7 +176,7 @@
     "$oid": "640935786b4d5881ee5633dd"
   },
   "name": "Gold Frag",
-  "card_class": "string",
+  "card_class": "",
   "hero_name": "string",
   "hero_id": "GW1",
   "series_name": "Golden Wall",
@@ -188,8 +188,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl02gwi/",
   "file_name": "string",
   "card_type": [
-    "64108dee159c81c7afebd104",
-    "640ce41c5f6730657ad8739f"
+    "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
     "64079f10b2b376b6cd0454f6",
@@ -296,8 +295,8 @@
   "effect_text": "Discard up to 3 cards from your hand, then add 1 to your Focus for each card discarded. If you discarded 3 cards, resolve 1 of those discarded cards as if it was in your play.",
   "flavor_text": "string",
   "illustrator": "mo.moan",
-  "picture_url": "https://kornan.dreamhosters.com/i1r3bea/",
-  "file_name": "string",
+  "picture_url": "https://kornan.dreamhosters.com/i1r3bea",
+  "file_name": "i1r3bea",
   "card_type": [
     "6407bb289b4fb23f5ddab698"
   ],
@@ -323,7 +322,7 @@
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbf/",
-  "file_name": "string",
+  "file_name": "i1b4bbf",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -348,7 +347,7 @@
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbe/",
-  "file_name": "string",
+  "file_name": "i1b4bbe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -372,7 +371,7 @@
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1pl12bbe/",
-  "file_name": "string",
+  "file_name": "i1pl12bbe",
   "card_type": [
     "640ce4bf5f6730657ad873be"
   ],
@@ -588,8 +587,8 @@
   "effect_text": "<Target> All foes with a larger hand than you (damage is calculated separately for each target). <1-5> Deal 3 damage. <6-11> Deal damage equal to the difference. Draw 1 card. <12+> Deal damage equal to the difference plus 2. Ignore the reaction(s) of defending Fighter(s). Draw 2 cards.",
   "second_effect_text": "",
   "illustrator": "mo.moan",
-  "picture_url": "https://kornan.dreamhosters.com/i1r3bee/",
-  "file_name": "",
+  "picture_url": "https://kornan.dreamhosters.com/i1r3bee",
+  "file_name": "i1r3bee",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -803,7 +802,7 @@
   "second_effect_text": "<Trigger> At the start of the round or when this card is revealed, damage you and this card take is reduced by 1.\n\n\n",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1p1bnf",
-  "file_name": "",
+  "file_name": "i1p1bnf",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -832,7 +831,7 @@
   "second_effect_text": "",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1p1bna",
-  "file_name": "",
+  "file_name": "i1p1bna",
   "card_type": [
     "6407bb289b4fb23f5ddab698"
   ],
@@ -855,7 +854,7 @@
   "second_effect_text": "<Trigger> At the start of the round, resolve this Move in your play, then discard it. ",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1p1bnm",
-  "file_name": "",
+  "file_name": "i1p1bnm",
   "card_type": [
     "6407a3bbc503d0c6f5a33238"
   ],
@@ -880,7 +879,7 @@
   "second_effect_text": "",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1p1bne",
-  "file_name": "",
+  "file_name": "i1p1bne",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -904,7 +903,7 @@
   "second_effect_text": "<Trigger> At the start of the round or when this card is revealed, lower the Enthusiasm of all foes by 4.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gef",
-  "file_name": "",
+  "file_name": "i1p4gef",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -931,7 +930,7 @@
   "second_effect_text": "<Trigger> At the start of the round, lower the Enthusiasm of all foes by 4.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gea",
-  "file_name": "",
+  "file_name": "i1p4gea",
   "card_type": [
     "6407bb289b4fb23f5ddab698"
   ],
@@ -956,7 +955,7 @@
   "second_effect_text": "",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gem",
-  "file_name": "",
+  "file_name": "i1p4gem",
   "card_type": [
     "6407a3bbc503d0c6f5a33238"
   ],
@@ -979,7 +978,7 @@
   "second_effect_text": "<Target> Foe with Enthusiasm lower than yours. <1-5> No effect. <6-11> Deal 3 damage. <12+> Deal damage equal to the difference (max of 6).",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gee",
-  "file_name": "",
+  "file_name": "i1p4gee",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -1153,7 +1152,7 @@
   "second_effect_text": "Once per round, if you or your defending Fighter would take damage from a reaction or self inflicted damage, reduce that damage by 2.",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1pl13bni",
-  "file_name": "",
+  "file_name": "i1pl13bni",
   "card_type": [
     "64108dee159c81c7afebd104"
   ],
@@ -1178,7 +1177,7 @@
   "second_effect_text": "<Critical> All foes and their Fighters take 1 damage.",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1pl13bne",
-  "file_name": "",
+  "file_name": "i1pl13bne",
   "card_type": [
     "640ce4bf5f6730657ad873be"
   ],
@@ -1203,7 +1202,7 @@
   "second_effect_text": "<Critical> Add 3 to your Focus.",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1cb13bn",
-  "file_name": "",
+  "file_name": "i1cb13bn",
   "card_type": [
     "64108db9159c81c7afebd103"
   ],
@@ -1228,7 +1227,7 @@
   "second_effect_text": "Lower the Enthusiasm of all foes by 2.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1pl16gei",
-  "file_name": "",
+  "file_name": "i1pl16gei",
   "card_type": [
     "64108dee159c81c7afebd104"
   ],
@@ -1254,7 +1253,7 @@
   "second_effect_text": "<Trigger> At the start of the round, lower the Enthusiasm of all foes by 2, then resolve this Event in your ownership.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1pl16gee",
-  "file_name": "",
+  "file_name": "i1pl16gee",
   "card_type": [
     "640ce4bf5f6730657ad873be"
   ],
@@ -1279,7 +1278,7 @@
   "second_effect_text": "<Critical> Your Ending gains damage plus 1 if it deals damage to a foe with Enthusiasm lower than yours.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1cb16ge",
-  "file_name": "",
+  "file_name": "i1cb16ge",
   "card_type": [
     "64108db9159c81c7afebd103"
   ],
@@ -1476,7 +1475,7 @@
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pf",
-  "file_name": "",
+  "file_name": "i1p2pf",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -1527,7 +1526,7 @@
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pe",
-  "file_name": "",
+  "file_name": "i1p2pe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -1551,7 +1550,7 @@
   "second_effect_text": "<Trigger> If you are targeted for damage, your Fighter gains Redirect 1 (that card is revealed).",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pm",
-  "file_name": "",
+  "file_name": "i1p2pm",
   "card_type": [
     "6407a3bbc503d0c6f5a33238"
   ],
@@ -1576,7 +1575,7 @@
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwa",
-  "file_name": "",
+  "file_name": "i1g3bwa",
   "card_type": [
     "6407bb289b4fb23f5ddab698"
   ],
@@ -1600,7 +1599,7 @@
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwm",
-  "file_name": "",
+  "file_name": "i1g3bwm",
   "card_type": [
     "6407a3bbc503d0c6f5a33238"
   ],
@@ -1623,7 +1622,7 @@
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwf",
-  "file_name": "",
+  "file_name": "i1g3bwf",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -1648,7 +1647,7 @@
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwe",
-  "file_name": "",
+  "file_name": "i1g3bwe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -1719,7 +1718,7 @@
   "second_effect_text": "<Critical> Add the top card of the Main deck to your play.",
   "illustrator": "Filippo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1cb12bb",
-  "file_name": "",
+  "file_name": "i1cb12bb",
   "card_type": [
     "64108db9159c81c7afebd103"
   ],
@@ -1754,5 +1753,502 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "6431be08b87f22f9450ff544"
+  },
+  "name": "Blast Mouth",
+  "card_class": "Power",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1017,
+  "enthusiasm": null,
+  "effect_text": "Deal 2 damage to a foe who has already gone this round. \n \nIf you are last to go this round or have the lowest Enthusiasm, deal 2 additional damage and draw 1 Pluck.",
+  "second_effect_text": "",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1r1bmf",
+  "file_name": "",
+  "card_type": [
+    "64079ed6b2b376b6cd0454f5"
+  ],
+  "extra_effects": [],
+  "reactions": [
+    "6407a068c503d0c6f5a33231",
+    "6407a068c503d0c6f5a33231"
+  ],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "6439559c3d6559427fc5845f"
+  },
+  "name": "Electric Powered Wildflowers!",
+  "card_class": "Unity",
+  "hero_id": "BB1",
+  "series_name": "Bolt Blossom",
+  "card_number": 1046,
+  "enthusiasm": null,
+  "effect_text": "Add 1 random card from your hand to your play. Add 2 to your Focus.",
+  "second_effect_text": "",
+  "illustrator": "Filippo Scalisi",
+  "picture_url": "https://kornan.dreamhosters.com/i1b4bba",
+  "file_name": "i1b4bba",
+  "card_type": [
+    "6407bb289b4fb23f5ddab698"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643956423d6559427fc58466"
+  },
+  "name": "Mirror Plant!!",
+  "card_class": "Unity",
+  "hero_id": "BB1",
+  "series_name": "Bolt Blossom",
+  "card_number": 1047,
+  "enthusiasm": null,
+  "effect_text": "Resolve 1 of the following effects: <> This card copies the text of your Aura. <> Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
+  "second_effect_text": "",
+  "illustrator": "Filippo Scalisi",
+  "picture_url": "https://kornan.dreamhosters.com/i1b4bbm",
+  "file_name": "i1b4bbm",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238",
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643956e33d6559427fc5846d"
+  },
+  "name": "Precious Potted Plant",
+  "card_class": "",
+  "hero_id": "BB1",
+  "series_name": "Bolt Blossom",
+  "card_number": 1089,
+  "enthusiasm": null,
+  "effect_text": "<Limited> Place 1 card from your hand under this Item (if this Item is discarded or changes ownership, the placed card(s) is discarded).\n\n\n",
+  "second_effect_text": "This Item counts as the class of the card(s) under it in each of your plays (this does not count towards play size).",
+  "illustrator": "Filippo Scalisi",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl12bbi",
+  "file_name": "i1pl12bbi.png",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "6439583c3d6559427fc584dc"
+  },
+  "name": "Change of Plans ",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1124,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> During a foe's turn; switch 1 card in your play that has yet to be resolved with 1 card in your hand of the same type (the new card can not be used to defend).",
+  "second_effect_text": "<Critical> Discard 1 card from your hand; add 1 MAX VARIABLE from your hand to your play (MAX VARIABLE counts as an Aura).\n",
+  "illustrator": "mvthwus",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb18g",
+  "file_name": "i1cb18g.png",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643959963d6559427fc5852b"
+  },
+  "name": "\"Hau, Scout Ahead!\"",
+  "card_class": "",
+  "hero_id": "BW1",
+  "series_name": "Bone Whisperer",
+  "card_number": 1072,
+  "enthusiasm": null,
+  "effect_text": "Add 3 to your Focus and reset 1 of your Pluck.\nDiscard up to 2 Pluck in your ownership; select an equal number of foes. Look at their hand(s) and all cards in their play(s), then discard 1 card from their hand(s). ",
+  "second_effect_text": "",
+  "illustrator": "Ranbutam",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl03bwe",
+  "file_name": "i1pl03bwe.png",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "64395a0b3d6559427fc58532"
+  },
+  "name": "Spirit Anchor",
+  "card_class": "",
+  "hero_id": "BW1",
+  "series_name": "Bone Whisperer",
+  "card_number": 1071,
+  "enthusiasm": null,
+  "effect_text": "<Limited> If you resolve an Event this round, place the Event under this Item instead of discarding it at the end of the round (the placed Event(s) count towards your Pluck limit, and if this Item is discarded or changes ownership, the placed Event(s) is discarded).",
+  "second_effect_text": "The Event(s) under this Item can be resolved one more time; the Event is not discarded at the end of the round.",
+  "illustrator": "Ranbutam",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl03bwi",
+  "file_name": "i1pl03bwi.png",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "64395a903d6559427fc58539"
+  },
+  "name": "Reconnection                      ",
+  "card_class": "",
+  "hero_id": "BW1",
+  "series_name": "Bone Whisperer",
+  "card_number": 1109,
+  "enthusiasm": null,
+  "effect_text": "Discard 2 cards from your hand; gain 1 Event.",
+  "second_effect_text": "<Limited> Draw 1 Pluck and you can resolve one additional Event this round.",
+  "illustrator": "Ranbutam",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb3bw",
+  "file_name": "i1cb3bw.png",
+  "card_type": [
+    "64108db9159c81c7afebd103",
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "64395bc43d6559427fc585a2"
+  },
+  "name": "Muertorn the Soul Returning Scythe",
+  "card_class": "",
+  "hero_id": "CP1",
+  "series_name": "Ceifeira Preta",
+  "card_number": 1095,
+  "enthusiasm": null,
+  "effect_text": "Once per round, if you gain a Comeback(s), add 1 Fighter from the discard pile to the top of the Main deck.",
+  "second_effect_text": "<Trigger> If a card(s) in your play is discarded before resolving its main effect, discard this Item; resolve that card (max of 1) as if it was in your play.",
+  "illustrator": "Hugo Roberto",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl15cpi",
+  "file_name": "i1pl15cpi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "64395c473d6559427fc585a9"
+  },
+  "name": "Returning Souls              ",
+  "card_class": "",
+  "hero_id": "CP1",
+  "series_name": "Ceifeira Preta",
+  "card_number": 1121,
+  "enthusiasm": null,
+  "effect_text": "Add 2 Comebacks from the discard pile to your ownership. You can not resolve them this round. ",
+  "second_effect_text": "<Critical> Discard 2 cards from your play; add 1 Aura from the discard pile to your play.",
+  "illustrator": "Hugo Roberto",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb15cp",
+  "file_name": "i1cb15cp.png",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f",
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "64395cf53d6559427fc585f1"
+  },
+  "name": "Burst Esper",
+  "card_class": "Power",
+  "hero_id": "BE1",
+  "series_name": "Burst Esper",
+  "card_number": 1025,
+  "enthusiasm": null,
+  "effect_text": "Deal 2 damage to a random foe and add 2 to your Focus. That foe draws 2 cards. You can resolve this effect one more time.",
+  "second_effect_text": "",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1r3bef",
+  "file_name": "i1r3bef",
+  "card_type": [
+    "64079ed6b2b376b6cd0454f5"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "64395d643d6559427fc585f8"
+  },
+  "name": "Mass Conversion and Release!!",
+  "card_class": "Power",
+  "hero_id": "BE1",
+  "series_name": "Burst Esper",
+  "card_number": 1027,
+  "enthusiasm": null,
+  "effect_text": "Discard up to 3 cards from your hand, then deal 1 damage to 2 random foes for each card discarded. If you discarded 3 cards, ignore the reaction(s) of defending Fighter(s).",
+  "second_effect_text": "<Trigger> If this card is discarded from your hand or play, deal 2 damage to a random foe.",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1r3bem",
+  "file_name": "i1r3bem",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "64395ea73d6559427fc585ff"
+  },
+  "name": "Power Channeling Unit ",
+  "card_class": "",
+  "hero_id": "BE1",
+  "series_name": "Burst Esper",
+  "card_number": 1079,
+  "enthusiasm": null,
+  "effect_text": "<Limited> Return 1 card from the discard pile to your hand.",
+  "second_effect_text": "Once per round, if a card in your play or ownership randomly chooses a foe(s) or card(s) at, you choose the target(s) instead. ",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl07bei",
+  "file_name": "i1pl07bei",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52",
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643961c93d6559427fc58618"
+  },
+  "name": "Testing",
+  "card_class": "",
+  "hero_id": "BE1",
+  "series_name": "Burst Esper",
+  "card_number": 1080,
+  "enthusiasm": null,
+  "effect_text": "Select 1 card in your play (that card is revealed), then unfurl 5 cards. Add all cards matching that card's class or MAX VARIABLE(s) to your hand, then return the other unfurled cards to the top or bottom of the Main deck in any order. ",
+  "second_effect_text": "",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl07bee",
+  "file_name": "i1pl07bee",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "643962953d6559427fc58635"
+  },
+  "name": "Transfer of Bad Energy",
+  "card_class": "",
+  "hero_id": "BE1",
+  "series_name": "Burst Esper",
+  "card_number": 1113,
+  "enthusiasm": null,
+  "effect_text": "Discard 1 card from your hand; 1 random card in your play gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).  ",
+  "second_effect_text": "<C.Trigger> At the start of the round, your Fighter gains Redirect 1 (that card is revealed).",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb7be",
+  "file_name": "i1cb7be",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643976ef3d6559427fc5879c"
+  },
+  "name": "Healing Fire",
+  "card_class": "",
+  "hero_id": "FB1",
+  "series_name": "Flamebell",
+  "card_number": 1073,
+  "enthusiasm": null,
+  "effect_text": "Each time you resolve the effect of an Aura, gain 1 HP.",
+  "second_effect_text": "<Trigger> If your Fighter would be defeated or removed from your play, discard this Item; your Fighter gains Endure 1 (that card is revealed).",
+  "illustrator": "XIOLI",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl04fbi",
+  "file_name": "i1pl04fbi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": []
+},{
+  "_id": {
+    "$oid": "643977593d6559427fc587a3"
+  },
+  "name": "Supernova",
+  "card_class": "",
+  "hero_id": "FB1",
+  "series_name": "Flamebell",
+  "card_number": 1074,
+  "enthusiasm": null,
+  "effect_text": "All foes with a Power card(s) in their play take 1 damage. All Fighters are treated as Power and all effects that increase damage are cancelled.",
+  "second_effect_text": "<Trigger> At the start of the round or if you are targeted for damage, resolve this Event in your ownership.",
+  "illustrator": "XIOLI",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl04fbe",
+  "file_name": "i1pl04fbe",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "643977cc3d6559427fc587aa"
+  },
+  "name": "Rekindled",
+  "card_class": "",
+  "hero_id": "FB1",
+  "series_name": "Flamebell",
+  "card_number": 1110,
+  "enthusiasm": null,
+  "effect_text": "Gain 2 HP.",
+  "second_effect_text": "<Critical> Resolve your Aura one more time.",
+  "illustrator": "XIOLI",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb4fb",
+  "file_name": "i1cb4fb",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f",
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "64397afc3d6559427fc58825"
+  },
+  "name": "Red Fist",
+  "card_class": "Power",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1021,
+  "enthusiasm": null,
+  "effect_text": "Deal 3 damage to your strongest foe, then discard 2 cards from your hand.",
+  "second_effect_text": "<Trigger> Just before using this card’s reaction(s), remove 2 Counter tokens from this card; draw 3 cards.",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1r2rff",
+  "file_name": "i1r2rff",
+  "card_type": [
+    "64079ed6b2b376b6cd0454f5"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [
+    "6407a068c503d0c6f5a33231",
+    "6407a068c503d0c6f5a33231",
+    "6407a068c503d0c6f5a33231"
+  ],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "64397b773d6559427fc5885c"
+  },
+  "name": "Hammerspace",
+  "card_class": "Unity",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1041,
+  "enthusiasm": null,
+  "effect_text": "Draw 1 card and gain 1 Item. \nIf you have a Canny card in your play, reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
+  "second_effect_text": "",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1b3hsf",
+  "file_name": "i1b3hsf",
+  "card_type": [
+    "64079ed6b2b376b6cd0454f5"
+  ],
+  "extra_effects": [],
+  "reactions": [
+    "6407a068c503d0c6f5a33231",
+    "6407ab1c5139f66679d6ac53"
+  ],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
   ]
 }]
