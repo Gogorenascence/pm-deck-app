@@ -251,7 +251,7 @@ function CardsPage() {
                 .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
                 .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
                 .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
-                .filter(card => card.card_type[0].includes(query.type))
+                .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
                 .filter(card => card.card_class.includes(query.cardClass))
                 .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
                 .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)

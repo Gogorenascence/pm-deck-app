@@ -11,6 +11,7 @@ import ArticlesPage from "./Articles/ArticlesPage"
 import GamePlayPage from "./GamePlay/GamePlayPage"
 import ForumPage from "./Forum/ForumPage"
 import Nav from "./Nav";
+import Footer from "./Footer";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
@@ -38,6 +39,7 @@ function App() {
         </Routes>
 
       </div>
+      <Footer/>
     </BrowserRouter>
   );
 }

@@ -434,3 +434,20 @@ text-align: center;
   width: 60px;
   opacity: 90%;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+/* .social {
+  display: inline;
+} */
+
+.social-icon {
+  margin: auto;
+  width: 30px;
+  margin: 2px 4px 6px 6px;
+}

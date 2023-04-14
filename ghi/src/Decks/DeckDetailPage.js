@@ -187,10 +187,10 @@ function DeckDetailPage() {
                                                     borderRadius: "7px",
                                                     overflow: "hidden"}}
 
-                                                        title={ownership.name}
-                                                        src={ownership.picture_url ? ownership.picture_url : "logo4p.png"}
-                                                        alt="Card image"
-                                                        variant="bottom"/>
+                                                    title={ownership.name}
+                                                    src={ownership.picture_url ? ownership.picture_url : "logo4p.png"}
+                                                    alt="Card image"
+                                                    variant="bottom"/>
 
                                             </Col>
                                         </Row>
