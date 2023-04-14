@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom';
 
 function TopRow() {
   return (
-    <div>
-      <Container>
-        <Row xs={1} sm={2} md={3} lg={3} xl={5} className="g-3 justify-content-center align-items-center">
-          <Col>
+    <div className="white-space">
+      <div className="cd-inner">
+          <div style={{width: "250px", margin: "0px 5px"}}>
             <Link to="/deckbuilder">
               <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
                 <Card.Img src="mv2.png" alt="Card image" variant="bottom"/>
@@ -20,8 +19,8 @@ function TopRow() {
                 </Card.ImgOverlay>
               </Card>
             </Link>
-          </Col>
-          <Col>
+          </div>
+          <div style={{width: "250px", margin: "0px 5px"}}>
             <Link to="/decks">
               <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
                 <Card.Img src="1b109Jet and Climber2.png" alt="Card image" variant="bottom"/>
@@ -30,8 +29,8 @@ function TopRow() {
                 </Card.ImgOverlay>
               </Card>
             </Link>
-          </Col>
-          <Col>
+          </div>
+          <div style={{width: "250px", margin: "0px 5px"}}>
             <Link to="/cards">
               <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
                 <Card.Img src="1r307Burst Esper2.png" alt="Card image" variant="bottom"/>
@@ -40,8 +39,8 @@ function TopRow() {
                 </Card.ImgOverlay>
               </Card>
             </Link>
-          </Col>
-          {/* <Col>
+          </div>
+          {/* <div style={{width: "250px", margin: "0px 5px"}}>
             <Link to="/articles">
               <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
                 <Card.Img src="gcb20.png" alt="Card image" variant="bottom"/>
@@ -50,8 +49,8 @@ function TopRow() {
                 </Card.ImgOverlay>
               </Card>
             </Link>
-          </Col>
-          <Col>
+          </div>
+          <div style={{width: "250px", margin: "0px 5px"}}>
             <Link to="/gameplay">
               <Card className="bg-dark text-white text-center" style={{ width: '250px' }}>
                 <Card.Img src="gcb17.png" alt="Card image" variant="bottom"/>
@@ -60,9 +59,8 @@ function TopRow() {
                 </Card.ImgOverlay>
               </Card>
             </Link>
-          </Col> */}
-        </Row>
-      </Container>
+          </div> */}
+      </div>
     </div>
   );
 }

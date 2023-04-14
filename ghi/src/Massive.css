@@ -169,6 +169,7 @@ text-align: center;
 }
 
 .back-to-top {
+  height: 65px;
   position: fixed;
   right: 2rem;
   bottom: 2rem;
@@ -441,10 +442,6 @@ text-align: center;
   align-items: center;
   height: 100px;
 }
-
-/* .social {
-  display: inline;
-} */
 
 .social-icon {
   margin: auto;

@@ -26,25 +26,25 @@ function CardRow() {
 
 
     return(
-        <div>
+        <div className="white-space">
             <Container>
-                <Row xs={1} sm={2} md={3} lg={3} xl={5} className="g-3">
+                <div className="cd-inner">
                     {cards.map((card) => {
                         return (
-                            <Col>
+                            <div style={{width: "230px", margin: "0px 5px"}}>
                                 <NavLink to={`/cards/${card.card_number}`}>
-                                    <Card style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
+                                    <Card style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
                                         <Card.Img title={card.name} src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
                                     </Card>
                                 </NavLink>
-                            </Col>
+                            </div>
                         );
                     })}
-                </Row>
+                </div>
                 <br/>
                 <div className="d-grid gap-2">
                     <NavLink to="/cards">
-                        <Button variant="dark" size="lg" style={{ width: "100.5%" }}>
+                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
                             Browse All Cards
                         </Button>
                     </NavLink>

@@ -1,7 +1,6 @@
 import {
     Container,
     Col,
-    Row,
     Card,
     Button,
 } from "react-bootstrap";
@@ -36,14 +35,14 @@ function DeckRow() {
 
 
     return(
-        <div>
+        <div className="white-space">
             <Container>
-                <Row xs={1} sm={2} md={3} lg={3} xl={5} className="g-3">
+                <div className="cd-inner">
                     {decks.map((deck) => {
                         return (
-                            <Col>
+                            <div style={{width: "230px", margin: "0px 5px"}}>
                                 <NavLink to={`/decks/${deck.id}`}>
-                                    <Card className="text-white text-center" style={{ width: '250px', borderRadius: "12px", overflow: "hidden"}}>
+                                    <Card className="text-white text-center" style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
                                         <Card.Img
                                             title={deck.name}
                                             src={deck.cover_card ? deck.cover_card : "logo4p.png"}
@@ -54,14 +53,14 @@ function DeckRow() {
                                         </Card.ImgOverlay>
                                     </Card>
                                 </NavLink>
-                            </Col>
+                            </div>
                         );
                     })}
-                </Row>
+                </div>
                 <br/>
                 <div className="d-grid gap-2">
                     <NavLink to="/decks">
-                        <Button variant="dark" size="lg" style={{ width: "100.5%" }}>
+                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
                             Browse All Decks
                         </Button>
                     </NavLink>
