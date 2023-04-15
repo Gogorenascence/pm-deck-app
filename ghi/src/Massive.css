@@ -208,7 +208,7 @@ text-align: center;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
   margin-top: 4%;
-  width: 662px;
+  width: 635px;
 }
 
 .Power {
@@ -225,11 +225,11 @@ text-align: center;
   color: aliceblue;
   background: url("./placeh3.png"),rgb(255, 73, 73);
   background-blend-mode: multiply;
-  background-size: 100%;
+  background-size: 70%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
   margin-top: 4%;
-  width: 662px;
+  width: 635px;
 }
 
 .Unity {
@@ -246,11 +246,11 @@ text-align: center;
   color: aliceblue;
   background: url("./placeh3.png"),rgba(50, 132, 255, 0.705);
   background-blend-mode: multiply;
-  background-size: 100%;
+  background-size: 70%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
   margin-top: 4%;
-  width: 662px;
+  width: 635px;
 }
 
 .Canny {
@@ -271,7 +271,7 @@ text-align: center;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
   margin-top: 4%;
-  width: 662px;
+  width: 635px;
 }
 
 .NoClass {
@@ -294,7 +294,7 @@ text-align: center;
   border-radius: 7px;
   font-weight: 500;
   margin-top: 4%;
-  width: 662px;
+  width: 635px;
 }
 
 .dcbsearch-large {
@@ -351,7 +351,7 @@ text-align: center;
 
 .cd-container {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 .cd-container-child {
@@ -361,6 +361,13 @@ text-align: center;
 .cd-inner {
   display: flex;
   justify-content: center;
+}
+
+.cd-inner2{
+  display: grid;
+  /* gap: 0% 1%; */
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
 }
 
 .cd-card {
@@ -380,8 +387,8 @@ text-align: center;
   display: grid;
   gap: 2% 1%;
   grid-template-columns: repeat(3, 1fr);
-  width: 662px;
-  justify-items: center;
+  width: 635px;
+  justify-items: start;
 }
 
 .button100 {
@@ -400,9 +407,16 @@ text-align: center;
   gap: 1rem; /* Add any gap you want between the cards */
 }
 
+.card-list2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: start;
+}
+
 .card-list-card {
-  width: 100%;
-  margin: 20px 5px 0px 5px;
+  width: 300px;
+  margin: 30px 5px 5px 5px;
   border-radius: 4.5%;
   overflow: hidden;
 }
