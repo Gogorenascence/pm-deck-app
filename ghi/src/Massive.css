@@ -395,15 +395,14 @@ text-align: center;
 }
 
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; /* Add any gap you want between the cards */
 }
 
 .card-list-card {
-  width: 300px;
-  margin: 30px 5px 5px 5px;
+  width: 100%;
+  margin: 20px 5px 0px 5px;
   border-radius: 4.5%;
   overflow: hidden;
 }
