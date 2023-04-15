@@ -415,8 +415,8 @@ text-align: center;
 }
 
 .card-list-card {
-  width: 300px;
-  margin: 30px 5px 5px 5px;
+  width: 100%;
+  margin: 20px 3px 0px 3px;
   border-radius: 4.5%;
   overflow: hidden;
 }
