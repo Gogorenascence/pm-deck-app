@@ -129,7 +129,7 @@ function CardDetailPage() {
                         </div>
                     </div>
                 </div>
-                <div className="cd-container-child" style={{width: "50%"}}>
+                <div className="cd-container-child" style={{width: "55%", marginLeft: "3%"}}>
                     <div className="cd-inner2">
                     <h1 >{card.name}</h1>
                         <div>

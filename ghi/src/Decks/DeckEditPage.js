@@ -35,6 +35,8 @@ function DeckEditPage() {
 
     const [cards, setCards] = useState([]);
 
+    const [showMore, setShowMore] = useState(20);
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -84,6 +86,10 @@ function DeckEditPage() {
         console.log(combinedList);
         console.log(uniqueList);
     }, [selectedCard, deck, deck_list]);
+
+    const handleShowMore = (event) => {
+        setShowMore(showMore + 20);
+    };
 
     const handleChange = (event) => {
         setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -311,7 +317,7 @@ function DeckEditPage() {
                         <div className="scrollable">
                             <div style={{marginLeft: "20px"}}>
                                 <Row xs="auto" className="justify-content-start">
-                                    {cards.map((card) => {
+                                    {cards.slice(0, showMore).map((card) => {
                                         return (
                                             <Col style={{padding: "5px"}}>
                                                     <img
@@ -326,6 +332,13 @@ function DeckEditPage() {
                                     })}
                                 </Row>
                             </div>
+                            {showMore < cards.length ?
+                                <Button
+                                    variant="dark"
+                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
+                                    onClick={handleShowMore}>
+                                    Show More Cards ({cards.length - showMore} Remaining)
+                                </Button> : null }
                         </div>
                     </div>
                 </div>
@@ -359,7 +372,7 @@ function DeckEditPage() {
                                     );
                                 })}
                             </Row> :
-                        <h4 className="left">No cards added</h4>}
+                        <h4 className="left no-cards">No cards added</h4>}
                 </div>
                 </div>
 
@@ -394,7 +407,7 @@ function DeckEditPage() {
                                     );
                                 })}
                             </Row> :
-                        <h4 className="left">No cards added</h4>}
+                        <h4 className="left no-cards">No cards added</h4>}
                 </div>
             </div>
         </div>

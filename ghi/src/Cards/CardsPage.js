@@ -24,6 +24,8 @@ function CardsPage() {
 
     const [sortState, setSortState] = useState("none");
 
+    const [showMore, setShowMore] = useState(20);
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -53,11 +55,6 @@ function CardsPage() {
         card_number: { method: (a,b) => a.card_number - b.card_number },
     };
 
-    const handleSort = (event) => {
-        setSortState(event.target.value);
-        getCards();
-    };
-
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
         getCards();
@@ -80,6 +77,27 @@ function CardsPage() {
         getCards();
     };
 
+    const handleSort = (event) => {
+        setSortState(event.target.value);
+        getCards();
+    };
+
+    const handleShowMore = (event) => {
+        setShowMore(showMore + 20);
+    };
+
+    const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
+        .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
+        .filter(card => card.card_number.toString().includes(query.cardNumber))
+        .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
+        .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
+        .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
+        .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
+        .filter(card => card.card_class.includes(query.cardClass))
+        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
+        .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
+        .sort(sortMethods[sortState].method)
 
     return (
         <div className="white-space">
@@ -245,18 +263,7 @@ function CardsPage() {
                 Random Card
             </Button>
             <div className="card-list">
-                {cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
-                .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
-                .filter(card => card.card_number.toString().includes(query.cardNumber))
-                .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
-                .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-                .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
-                .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
-                .filter(card => card.card_class.includes(query.cardClass))
-                .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
-                .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
-                .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
-                .sort(sortMethods[sortState].method).map(card => {
+                {all_cards.slice(0, showMore).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`}>
                                 <img className="card-list-card"
@@ -268,6 +275,13 @@ function CardsPage() {
                     );
                 })}
             </div>
+            {showMore < all_cards.length ?
+                <Button
+                    variant="dark"
+                    style={{ width: "100%", marginTop:"2%"}}
+                    onClick={handleShowMore}>
+                    Show More Cards ({all_cards.length - showMore} Remaining)
+                </Button> : null }
     </div>
     );
 }

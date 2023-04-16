@@ -280,7 +280,7 @@ function DeckDetailPage() {
                                 );
                             })}
                         </Row>:
-                    <h4 className="left">No cards added</h4>}
+                    <h4 className="left no-cards">No cards added</h4>}
                 </div>
             </div>
             <div className="pluckdeck">
@@ -318,7 +318,7 @@ function DeckDetailPage() {
                                 );
                             })}
                         </Row> :
-                    <h4 className="left">No cards added</h4>}
+                    <h4 className="left no-cards">No cards added</h4>}
                 </div>
             </div>
     </div>

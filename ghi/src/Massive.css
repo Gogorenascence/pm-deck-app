@@ -461,3 +461,7 @@ text-align: center;
   width: 30px;
   margin: 2px 4px 6px 6px;
 }
+
+.no-cards {
+  margin-bottom: 20px;
+}

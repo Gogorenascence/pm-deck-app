@@ -215,10 +215,10 @@ function Nav() {
       {/* </div> */}
       </div>
       </div>
-        <Button className="semi-bold-20" variant="outline-warning" size="sm">
+        <Button className="semi-bold-20 button100" variant="outline-warning" size="sm">
           Login
         </Button>
-        <Button className="semi-bold-20" variant="outline-light" size="sm">
+        <Button className="semi-bold-20 button100" variant="outline-light" size="sm">
           Signup
         </Button>
       </div>
