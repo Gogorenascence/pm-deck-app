@@ -258,7 +258,6 @@ function CardCreatePage() {
             <Button
                 className="add-comp-button"
                 variant="dark"
-                size="lg"
                 onClick={handleSubmit}
             >
                     Create
@@ -266,7 +265,6 @@ function CardCreatePage() {
             <Button
                 className="add-comp-button"
                 variant="danger"
-                size="lg"
                 onClick={handleClear}
             >
                     Reset

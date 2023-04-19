@@ -10,7 +10,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 function DBCardSearch() {
 
     return (
-        <div style={{marginLeft: "45px"}}>
+        <div style={{marginLeft: "40px"}}>
             <h2 className="left">Search for cards</h2>
             <input
                 className="left dcbsearch-large"

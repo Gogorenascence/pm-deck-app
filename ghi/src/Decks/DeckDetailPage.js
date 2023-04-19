@@ -160,7 +160,7 @@ function DeckDetailPage() {
                                                         className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}
                                                         title={card.name}
                                                         src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                        alt="Card image"/>
+                                                        alt={card.name}/>
                                                 </Col>
                                             );
                                         })}
@@ -189,7 +189,7 @@ function DeckDetailPage() {
 
                                                     title={ownership.name}
                                                     src={ownership.picture_url ? ownership.picture_url : "logo4p.png"}
-                                                    alt="Card image"
+                                                    alt={ownership.name}
                                                     variant="bottom"/>
 
                                             </Col>
@@ -273,7 +273,7 @@ function DeckDetailPage() {
 
                                                     title={card.name}
                                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                    alt="Card image"
+                                                    alt={card.name}
                                                     variant="bottom"/>
 
                                     </Col>
@@ -311,7 +311,7 @@ function DeckDetailPage() {
 
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                alt="Card image"
+                                                alt={card.name}
                                                 variant="bottom"/>
 
                                     </Col>

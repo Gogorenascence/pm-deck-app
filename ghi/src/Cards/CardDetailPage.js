@@ -10,6 +10,7 @@ import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import CardAddCompModal from "./CardAddCompModal";
 import CardAddToDeckModal from "./CardAddToDeckModal";
+import RelatedCardModal from "./RelatedCardModal";
 
 
 function CardDetailPage() {
@@ -103,7 +104,7 @@ function CardDetailPage() {
                         <div>
                             <h1 className="centered-h1">Related Cards</h1>
                             <div className="cd-inner card-list2" style={{width: "480px"}}>
-                                {relatedCards.map((relatedCard) => {
+                                {relatedCards.slice(0,6).map((relatedCard) => {
                                     return (
                                         <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                 <img
@@ -119,13 +120,16 @@ function CardDetailPage() {
                         </div>
                         <div className="cd-inner">
                             <Button
-                                style={{width: "170px", marginTop: "20px"}}
+                                style={{width: "170px", margin: "20px 2.5px 20px 2.5px"}}
                                 variant="dark"
                                 size="lg"
                                 onClick={getRandomCard}
                             >
                                 Random Card
                             </Button>
+                            {relatedCards.length > 6?
+                                <RelatedCardModal/>: null
+                            }
                         </div>
                     </div>
                 </div>

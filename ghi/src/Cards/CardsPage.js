@@ -57,7 +57,6 @@ function CardsPage() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
-        getCards();
     };
 
     const handleQueryReset = (event) => {
@@ -74,12 +73,10 @@ function CardsPage() {
             reaction: "",
             tag: "",
         });
-        getCards();
     };
 
     const handleSort = (event) => {
         setSortState(event.target.value);
-        getCards();
     };
 
     const handleShowMore = (event) => {
@@ -269,8 +266,7 @@ function CardsPage() {
                                 <img className="card-list-card"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                    alt={card.name}
-                                    variant="bottom"/>
+                                    alt={card.name}/>
                         </NavLink>
                     );
                 })}

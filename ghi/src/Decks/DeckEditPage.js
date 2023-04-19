@@ -1,7 +1,6 @@
 import {
     Col,
     Row,
-    Card,
     Button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
@@ -271,22 +270,30 @@ function DeckEditPage() {
                     </select>
                     <br/>
                     <Button
-                            className="left"
-                            variant="dark"
+                        style={{width: "67px", margin: "5px"}}
+                        variant="dark"
                         onClick={handleSubmit}
                     >
-                            Save Changes
+                            Save
                     </Button>
+                    <NavLink to={`/decks/${deck.id}/`}>
+                        <Button
+                            style={{width: "67px", margin: "5px"}}
+                            variant="dark"
+                            >
+                            Back
+                        </Button>
+                    </NavLink>
                     <Button
-                            className="left"
-                            variant="danger"
+                        className="left"
+                        variant="danger"
                         onClick={clearMain}
                     >
                             Clear Main
                     </Button>
                     <Button
-                            className="left"
-                            variant="danger"
+                        className="left"
+                        variant="danger"
                         onClick={clearPluck}
                     >
                             Clear Pluck

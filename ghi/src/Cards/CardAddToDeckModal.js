@@ -61,7 +61,7 @@ function CardAddToDeckModal() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
-              }
+            }
         })
         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
     };

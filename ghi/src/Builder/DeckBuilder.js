@@ -1,7 +1,6 @@
 import {
     Col,
     Row,
-    Card,
     Button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react';

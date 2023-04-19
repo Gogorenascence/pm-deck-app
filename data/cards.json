@@ -267,7 +267,7 @@
   "enthusiasm": null,
   "effect_text": "Draw 1 Pluck and reveal it; apply the following effects based on the Pluck revealed: <Item> Add 1 Move or MAX VARIABLE from your hand to your play (MAX VARIABLE counts as an Move). <Event> Reset 1 of your Pluck. <Comeback> Add 1 Aura, Move or MAX VARIABLE from the discard pile to your hand.",
   "flavor_text": "string",
-  "illustrator": "layonsin",
+  "illustrator": "layonsin.art",
   "picture_url": "https://kornan.dreamhosters.com/i1b2hf/",
   "file_name": "string",
   "card_type": [
@@ -542,9 +542,7 @@
     "640ce41c5f6730657ad8739f"
   ],
   "extra_effects": [],
-  "reactions": [
-    "6407a0a9c503d0c6f5a33232"
-  ],
+  "reactions": [],
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
@@ -859,7 +857,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    "64079f10b2b376b6cd0454f6"
   ],
   "reactions": [],
   "card_tags": [
@@ -1819,8 +1817,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbm",
   "file_name": "i1b4bbm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238",
-    "64108dee159c81c7afebd104"
+    "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [],
   "reactions": [],
@@ -1942,8 +1939,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb3bw",
   "file_name": "i1cb3bw.png",
   "card_type": [
-    "64108db9159c81c7afebd103",
-    "64108dee159c81c7afebd104"
+    "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
     "64079f5db2b376b6cd0454f7"
@@ -1998,8 +1994,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f",
-    "64124686d762a869c0b2e12d"
+    "641292cf38b70f477bb72e6f"
   ]
 },{
   "_id": {
@@ -2020,7 +2015,9 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [],
-  "reactions": [],
+  "reactions": [
+    "6407ab1c5139f66679d6ac53"
+  ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
   ]
@@ -2068,8 +2065,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52",
-    "64079f10b2b376b6cd0454f6"
+    "6407aaae5139f66679d6ac52"
   ],
   "reactions": [],
   "card_tags": [
@@ -2193,8 +2189,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f",
-    "640ce5e85f6730657ad873cb"
+    "641292cf38b70f477bb72e6f"
   ]
 },{
   "_id": {
@@ -2250,5 +2245,881 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f53632e72274cabf63893"
+  },
+  "name": "Ignition Left!!",
+  "card_class": "Power",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1023,
+  "enthusiasm": null,
+  "effect_text": "<Target> Foe on your left. <1-5> Deal 1 damage. <6-11> Deal 3 piercing damage. <12+> Deal 3 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
+  "second_effect_text": "",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1r2rfm",
+  "file_name": "i1r2rfm",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a29bc503d0c6f5a33234",
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f54b72e72274cabf6389a"
+  },
+  "name": "Big Bang Right!!!",
+  "card_class": "Power",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1024,
+  "enthusiasm": 18,
+  "effect_text": "<Target> Foe on your right. <1-5> Deal 1 damage. Discard 1 card from your hand. <6-11> Deal 1 piercing damage. <12+> Deal 6 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
+  "second_effect_text": "",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1r2rfe",
+  "file_name": "i1r2rfe",
+  "card_type": [
+    "640ce41c5f6730657ad8739f"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a29bc503d0c6f5a33234",
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f54fe2e72274cabf638a1"
+  },
+  "name": "Double Ki Charge!",
+  "card_class": "Power",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1022,
+  "enthusiasm": null,
+  "effect_text": "Add 2 to your Focus and your next Move gains damage plus 1 (that card deals 1 additional damage at the end of its resolution). You can discard 1 Aura from your hand to resolve this effect one more time. \n\n\n",
+  "second_effect_text": "",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1r2rfa",
+  "file_name": "i1r2rfa",
+  "card_type": [
+    "6407bb289b4fb23f5ddab698"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f55642e72274cabf638ae"
+  },
+  "name": "Berserk Transformation!",
+  "card_class": "Power",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1018,
+  "enthusiasm": null,
+  "effect_text": "Deal 2 damage to a random foe and add 2 to your Focus. If you are last to go this round, the next card in your play gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).   ",
+  "second_effect_text": "",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1r1bma",
+  "file_name": "i1r1bma",
+  "card_type": [
+    "6407bb289b4fb23f5ddab698"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f55a42e72274cabf638b5"
+  },
+  "name": "Cinder Crunch!!",
+  "card_class": "Power",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1019,
+  "enthusiasm": null,
+  "effect_text": "Deal 3 piercing damage to a foe who has already gone this round. If this card defeats a Fighter, your Ending gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).",
+  "second_effect_text": "",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1r1bmm",
+  "file_name": "i1r1bmm",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f56612e72274cabf638cc"
+  },
+  "name": "Burning Impact!!!",
+  "card_class": "Power",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1020,
+  "enthusiasm": 6,
+  "effect_text": "<Target> Foe of your choice. If you are last to go this round, ignore the reaction(s) of defending Fighter(s). <1-5> Deal 4 damage. <6-11> Deal 4 piercing damage. <12+> Deal 5 piercing damage and 1 additional piercing damage if they have already gone this round.",
+  "second_effect_text": "",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1r1bme",
+  "file_name": "i1r1bme",
+  "card_type": [
+    "640ce41c5f6730657ad8739f"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a29bc503d0c6f5a33234",
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "643f56dc2e72274cabf638d3"
+  },
+  "name": "Revenge Swipe",
+  "card_class": "",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1111,
+  "enthusiasm": null,
+  "effect_text": "Take 2 damage, then deal 2 damage to a foe.",
+  "second_effect_text": "<Critical> Deal 2 piercing damage to a foe.",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb5bm",
+  "file_name": "i1cb5bm",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643f57342e72274cabf638da"
+  },
+  "name": "Reptilian Super Serum",
+  "card_class": "",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1075,
+  "enthusiasm": null,
+  "effect_text": "Once per round, you can take 2 damage, then your Fighter gains damage plus 1 and is treated as Power for the rest of your turn (that card deals 1 additional damage at the end of its resolution).",
+  "second_effect_text": "",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl05bmi",
+  "file_name": "i1pl05bmi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643f57a82e72274cabf638e1"
+  },
+  "name": "Reverting to Normal",
+  "card_class": "",
+  "hero_id": "BM1",
+  "series_name": "Blast Mouth",
+  "card_number": 1076,
+  "enthusiasm": null,
+  "effect_text": "Add 1 Fighter from the discard pile to your hand.",
+  "second_effect_text": "<Trigger> If your Fighter would be defeated, return it to your hand instead and add a Fighter with a different class from your hand to your play (this does not count as a defeat; you can not defend with another card this round). ",
+  "illustrator": "Znttus",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl05bme",
+  "file_name": "i1pl05bme",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5a152e72274cabf639e6"
+  },
+  "name": "Extra-Dexterous Non-Combat Arms",
+  "card_class": "",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1077,
+  "enthusiasm": null,
+  "effect_text": "If you have a Power Fighter in your play and you discard a card(s) from your hand, you can draw 1 card.",
+  "second_effect_text": "Discard this Item after the third round of use.",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl06rfi",
+  "file_name": "i1pl06rfi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5a7b2e72274cabf639ed"
+  },
+  "name": "Bull in a China Shop",
+  "card_class": "",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1078,
+  "enthusiasm": null,
+  "effect_text": "Draw 3 cards, then discard 1 card from your hand.",
+  "second_effect_text": "<Trigger> At the start of the round or during a player’s turn, deal 1 damage to a random foe each time a card(s) is discarded from your hand or removed from your play this round.\n\n\n",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl06rfe",
+  "file_name": "i1pl06rfe",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5ae22e72274cabf639f7"
+  },
+  "name": "Peaceful Meditation",
+  "card_class": "",
+  "hero_id": "RF1",
+  "series_name": "Red Fist",
+  "card_number": 1112,
+  "enthusiasm": null,
+  "effect_text": "This Comeback counts as a Power card in your play (this does not count towards play size).",
+  "second_effect_text": "<Trigger> Draw 3 cards, then discard 1 card from your hand.\n\n\n",
+  "illustrator": "gmoshiro",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb6rf",
+  "file_name": "i1cb6rf",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5d4f2e72274cabf63ac7"
+  },
+  "name": "Reunion",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1125,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> During a foe’s turn, discard 2 cards from your hand; gain 2 HP.",
+  "second_effect_text": "<Critical> Add 1 Staunch card and 1 Power card from the discard pile to your hand.",
+  "illustrator": "gulacandy",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb19g",
+  "file_name": "i1cb19g",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5dcc2e72274cabf63ace"
+  },
+  "name": "Strength Training Manual",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1104,
+  "enthusiasm": null,
+  "effect_text": "<Limited> This Item counts as a Power card in your play this round (this does not count towards play size).",
+  "second_effect_text": "",
+  "illustrator": "prusin_senpai",
+  "picture_url": "https://kornan.dreamhosters.com/i1plg6i",
+  "file_name": "i1plg6i",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643f5e5d2e72274cabf63ad9"
+  },
+  "name": "First Aid Kit",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1103,
+  "enthusiasm": null,
+  "effect_text": "<Limited> This Item counts as a Staunch card in your play this round (this does not count towards play size).",
+  "second_effect_text": "",
+  "illustrator": "prusin_senpai",
+  "picture_url": "https://kornan.dreamhosters.com/i1plg5i",
+  "file_name": "i1plg5i",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643f612e2e72274cabf63b46"
+  },
+  "name": "“More Training!”",
+  "card_class": "",
+  "hero_id": "BGA",
+  "series_name": "Battle Girl Alice",
+  "card_number": 1114,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> At the start of the round or during a foe's turn, your Fighter gains 1 HP (that card is revealed).",
+  "second_effect_text": "<C.Trigger> At the start of the round or during a foe's turn, your Fighter gains Counter 1 (that card is revealed).\n\n\n",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb8bga",
+  "file_name": "i1cb8bga",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "643f61972e72274cabf63b4d"
+  },
+  "name": "“Battle Greaves!”",
+  "card_class": "",
+  "hero_id": "BGA",
+  "series_name": "Battle Girl Alice",
+  "card_number": 1081,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> At the start of the round or during a foe's turn, your Fighter gains Counter 1 (that card is revealed).",
+  "second_effect_text": "Once per foe's turn, if you have a defending Power Fighter and you are dealt damage, reduce that damage by 1.",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl08bgai",
+  "file_name": "i1pl08bgai",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "643f61e22e72274cabf63b54"
+  },
+  "name": "Menacingly Cute Pose",
+  "card_class": "",
+  "hero_id": "BGA",
+  "series_name": "Battle Girl Alice",
+  "card_number": 1082,
+  "enthusiasm": null,
+  "effect_text": "Foes can not use trigger effects or reactions in response to the effects and reactions of your Fighter(s).",
+  "second_effect_text": "",
+  "illustrator": "mo.moan",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl08bgae",
+  "file_name": "i1pl08bgae",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "644004b62e72274cabf63bdd"
+  },
+  "name": "Clustering!",
+  "card_class": "Unity",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1038,
+  "enthusiasm": null,
+  "effect_text": "Your next Move targets the foes on your left and right instead for its first resolution.",
+  "second_effect_text": "<Trigger> At the start of the round, discard this Aura in your play; draw 2 cards.",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1b2ha",
+  "file_name": "i1b2ha",
+  "card_type": [
+    "6407bb289b4fb23f5ddab698"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "644005292e72274cabf63be4"
+  },
+  "name": "Collection Swarm!!",
+  "card_class": "Unity",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1039,
+  "enthusiasm": null,
+  "effect_text": "Deal 3 damage to a foe, then steal 1 of their Items. Discard the Item at the end of the round or when this card is removed from your play.",
+  "second_effect_text": "",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1b2hm",
+  "file_name": "i1b2hm",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "644005a42e72274cabf63beb"
+  },
+  "name": "Stinger Tornado!!!",
+  "card_class": "Unity",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1040,
+  "enthusiasm": 10,
+  "effect_text": "<Target> 2 foes on your right. <1-5> Deal 1 damage. <6-11> Deal 3 piercing damage. Draw 1 card. <12+> Deal 3 piercing damage. Draw 1 card and resolve 1 random card in your play one more time.",
+  "second_effect_text": "",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1b2he",
+  "file_name": "i1b2he",
+  "card_type": [
+    "640ce41c5f6730657ad8739f"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a29bc503d0c6f5a33234",
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "6440061d2e72274cabf63bf8"
+  },
+  "name": "Self Replicating Mechanical Bees",
+  "card_class": "",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1085,
+  "enthusiasm": null,
+  "effect_text": "<Limited> Deal 1 piercing damage to a random foe.",
+  "second_effect_text": "<Trigger> If you draw a card(s) or Pluck, gain 1 HP.",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl10hi",
+  "file_name": "i1pl10hi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52",
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "644006842e72274cabf63bff"
+  },
+  "name": "Bug in a Cup",
+  "card_class": "",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1086,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> If a foe adds a card(s) to their play, add that card (max of 1) to your play instead and they draw 2 cards. Discard the added card after its resolution. ",
+  "second_effect_text": "",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl10he",
+  "file_name": "i1pl10he",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "644006d82e72274cabf63c06"
+  },
+  "name": "Robbing",
+  "card_class": "",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1116,
+  "enthusiasm": null,
+  "effect_text": "Draw 2 cards, then 2 random foes draw 1 card.",
+  "second_effect_text": "<Critical> Steal 1 Pluck from a foe, then they draw 2 cards. Discard the Pluck at the end of your turn or when this Comeback is removed from your ownership.",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb10h",
+  "file_name": "i1cb10h",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "644008fb2e72274cabf63cd6"
+  },
+  "name": "Personal Pocket Dimension!",
+  "card_class": "Unity",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1042,
+  "enthusiasm": null,
+  "effect_text": "Unfurl cards equal to the number of different classes in your play or equal to the number of Items in your ownership (max of 3). Add any Auras or Moves to your play and discard the other unfurled cards.",
+  "second_effect_text": "",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1b3hsa",
+  "file_name": "i1b3hsa",
+  "card_type": [
+    "6407bb289b4fb23f5ddab698"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "644009582e72274cabf63cdd"
+  },
+  "name": "...And The Kitchen Sink!!",
+  "card_class": "Unity",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1043,
+  "enthusiasm": null,
+  "effect_text": "Deal 2 damage to a foe. If you have 4 or more Items in your ownership, deal 2 additional damage.",
+  "second_effect_text": "<Trigger> At the start of the round, discard this Move in your play; draw 1 Pluck.",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1b3hsm",
+  "file_name": "i1b3hsm",
+  "card_type": [
+    "6407a3bbc503d0c6f5a33238"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "644009d32e72274cabf63ce4"
+  },
+  "name": "Super Heavyweight Drop!!!",
+  "card_class": "Unity",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1044,
+  "enthusiasm": 9,
+  "effect_text": "<Target> Foe of your choice. If you have a Canny card in your play, add 3 to your focus. <1-5> Deal 3 damage and they gain 1 Item. Gain 1 Item. <6-11> Deal 4 damage and they draw 1 Pluck. Gain 1 Item. <12+> Deal 5 damage. Gain 1 Item or add 1 Item from the discard pile to your ownership.",
+  "second_effect_text": "",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1b3hse",
+  "file_name": "i1b3hse",
+  "card_type": [
+    "640ce41c5f6730657ad8739f"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "6407a29bc503d0c6f5a33234",
+    "6407a27fc503d0c6f5a33233"
+  ]
+},{
+  "_id": {
+    "$oid": "64400a342e72274cabf63ceb"
+  },
+  "name": "Infinite Storage Space",
+  "card_class": "",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1087,
+  "enthusiasm": null,
+  "effect_text": "<Limited> Draw 1 Pluck.",
+  "second_effect_text": "",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl11hsi",
+  "file_name": "i1pl11hsi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "64400a8f2e72274cabf63cf2"
+  },
+  "name": "“Port!”",
+  "card_class": "",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1088,
+  "enthusiasm": null,
+  "effect_text": "Unfurl 3 cards; add 1 Warp Family series card and 1 Canny card to your hand. Discard the other unfurled cards.",
+  "second_effect_text": "Add 1 random Warp Family series card or random 1 Canny card from your hand to your play.",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl11hse",
+  "file_name": "i1pl11hse",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "64400ae72e72274cabf63cf9"
+  },
+  "name": "Entering the Inventory",
+  "card_class": "",
+  "hero_id": "HS1",
+  "series_name": "Warp Family",
+  "card_number": 1117,
+  "enthusiasm": null,
+  "effect_text": "Discard 1 card from your hand, then unfurl 2 Pluck. Add 1 Pluck to your ownership and discard the other unfurled Pluck.",
+  "second_effect_text": "<Critical> Draw 1 card and gain 1 Item.",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb11hs",
+  "file_name": "i1cb11hs",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "64400c802e72274cabf63daf"
+  },
+  "name": "An Opening to Their Blindspot",
+  "card_class": "",
+  "hero_id": "P01",
+  "series_name": "Warp Family",
+  "card_number": 1093,
+  "enthusiasm": null,
+  "effect_text": "Once per round, deal 1 bypassing damage to a foe. If you have a Canny Fighter in your play, you can resolve this Item one more time.",
+  "second_effect_text": "",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl14pi",
+  "file_name": "i1pl14pi",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "64400cda2e72274cabf63db6"
+  },
+  "name": "“Hammer!”",
+  "card_class": "",
+  "hero_id": "P01",
+  "series_name": "Warp Family",
+  "card_number": 1094,
+  "enthusiasm": null,
+  "effect_text": "Unfurl 3 cards; add 1 Warp Family series card and 1 Unity card to your hand. Discard the other unfurled cards.",
+  "second_effect_text": "Add 1 random Warp Family series card or 1 random Unity card from your hand to your play.",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1pl14pe",
+  "file_name": "i1pl14pe",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "64400d4c2e72274cabf63dbd"
+  },
+  "name": "Backdoor Exit",
+  "card_class": "",
+  "hero_id": "P01",
+  "series_name": "Warp Family",
+  "card_number": 1120,
+  "enthusiasm": null,
+  "effect_text": "<Trigger> If a card(s) in your play would be sent to the discard pile during this round, return that card (max of 1) to your hand instead. ",
+  "second_effect_text": "<Critical> Discard 1 card from 2 random foes' hands.",
+  "illustrator": "Undeadsushii",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb14p",
+  "file_name": "i1cb14p",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6",
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "644010532e72274cabf63e2a"
+  },
+  "name": "Swiss Army Knife",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1105,
+  "enthusiasm": null,
+  "effect_text": "<Limited> This Item counts as a Unity card in your play this round (this does not count towards play size).",
+  "second_effect_text": "",
+  "illustrator": "prusin_senpai",
+  "picture_url": "https://kornan.dreamhosters.com/i1plg7i",
+  "file_name": "i1plg7i",
+  "card_type": [
+    "64108dee159c81c7afebd104"
+  ],
+  "extra_effects": [
+    "6407aaae5139f66679d6ac52"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "64124686d762a869c0b2e12d"
+  ]
+},{
+  "_id": {
+    "$oid": "6440132e2e72274cabf63e51"
+  },
+  "name": "Surprise Appearance",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1101,
+  "enthusiasm": null,
+  "effect_text": "Unfurl 3 cards; add 1 card to your hand and discard the other unfurled cards. Apply the following effects based on the classes of the added card (you can only apply each effect once): <Power> Deal 1 damage to a foe and add 3 to your Focus. <Unity> Return 1 Aura or 1 Move from the discard pile to the top of the Main deck. <Canny> Deal 2 bypassing damage to a foe.",
+  "second_effect_text": "",
+  "illustrator": "mvthwus",
+  "picture_url": "https://kornan.dreamhosters.com/i1plg3e",
+  "file_name": "i1plg3e",
+  "card_type": [
+    "640ce4bf5f6730657ad873be"
+  ],
+  "extra_effects": [],
+  "reactions": [],
+  "card_tags": [
+    "640ce5e85f6730657ad873cb"
+  ]
+},{
+  "_id": {
+    "$oid": "644015702e72274cabf63e6e"
+  },
+  "name": "The Next Project",
+  "card_class": "",
+  "hero_id": "GEN",
+  "series_name": "n/a",
+  "card_number": 1126,
+  "enthusiasm": null,
+  "effect_text": "Discard 1 card from your hand; discard 1 Item in a random foe’s ownership.",
+  "second_effect_text": "<Critical> Add 1 Item from the discard pile to your ownership.",
+  "illustrator": "NightWong",
+  "picture_url": "https://kornan.dreamhosters.com/i1cb20g",
+  "file_name": "i1cb20g",
+  "card_type": [
+    "64108db9159c81c7afebd103"
+  ],
+  "extra_effects": [
+    "64079f5db2b376b6cd0454f7"
+  ],
+  "reactions": [],
+  "card_tags": [
+    "641292cf38b70f477bb72e6f"
   ]
 }]
