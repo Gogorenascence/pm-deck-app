@@ -75,16 +75,12 @@ function DeckEditPage() {
     useEffect(() => {
         getDeck();
         getDeckList();
+        getCards();
     },[]);
 
     useEffect(() => {
         getExtraData();
-        getCards();
-        console.log(selectedList);
-        console.log(selectedCard);
-        console.log(combinedList);
-        console.log(uniqueList);
-    }, [selectedCard, deck, deck_list]);
+    }, [deck, deck_list, main_list, pluck_list]);
 
     const handleShowMore = (event) => {
         setShowMore(showMore + 20);
@@ -119,6 +115,7 @@ function DeckEditPage() {
             setMainList([...main_list, card]);
             console.log(main_list);
         }
+        getExtraData();
     }
 
     const handleRemoveCard = (card) => {
@@ -141,6 +138,7 @@ function DeckEditPage() {
                 setSelectedCard(null)
             }
         }
+        getExtraData();
     }
 
     const clearMain = async() => {

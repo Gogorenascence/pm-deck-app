@@ -66,7 +66,7 @@
   "hero_id": "GW1",
   "series_name": "Golden Wall",
   "card_number": 1007,
-  "effect_text": "<Target> Foe on your left or right. <1-5> No effect. <6-11> Deal 2 damage. Damage you and your Fighter take this turn is reduced by 1. <12+> Deal 3 damage. Damage you and your Fighter take this turn is reduced by 1.\n\n",
+  "effect_text": "<Target> Foe on your left or right. //<1-5> No effect. //<6-11> Deal 2 damage. Damage you and your Fighter take this turn is reduced by 1. //<12+> Deal 3 damage. Damage you and your Fighter take this turn is reduced by 1.\n\n",
   "flavor_text": "string",
   "illustrator": "Eric Rodrigues",
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwm/",
@@ -210,11 +210,11 @@
   "series_name": "Golden Wall",
   "card_number": 1008,
   "enthusiasm": 7,
-  "effect_text": "<Target> Foes on your left and right. <1-5> Deal 2 damage. <6-11> Deal 3 damage and if either target has a defending Fighter, deal 1 bypassing damage to them. <12+> Deal 3 damage and if either target has a defending Fighter, they both take 1 damage.",
+  "effect_text": "<Target> Foes on your left and right. //<1-5> Deal 2 damage. //<6-11> Deal 3 damage and if either target has a defending Fighter, deal 1 bypassing damage to them. //<12+> Deal 3 damage and if either target has a defending Fighter, they both take 1 damage.",
   "flavor_text": "string",
   "illustrator": "Eric Rodrigues",
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwe/",
-  "file_name": "string",
+  "file_name": "i1g2gwe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -255,33 +255,6 @@
     "641292cf38b70f477bb72e6f"
   ],
   "second_effect_text": "<Critical> Gain 2 HP."
-},{
-  "_id": {
-    "$oid": "640a269cce45290634774874"
-  },
-  "name": "Hive",
-  "card_class": "Unity",
-  "hero_id": "H01",
-  "series_name": "Hive",
-  "card_number": 1037,
-  "enthusiasm": null,
-  "effect_text": "Draw 1 Pluck and reveal it; apply the following effects based on the Pluck revealed: <Item> Add 1 Move or MAX VARIABLE from your hand to your play (MAX VARIABLE counts as an Move). <Event> Reset 1 of your Pluck. <Comeback> Add 1 Aura, Move or MAX VARIABLE from the discard pile to your hand.",
-  "flavor_text": "string",
-  "illustrator": "layonsin.art",
-  "picture_url": "https://kornan.dreamhosters.com/i1b2hf/",
-  "file_name": "string",
-  "card_type": [
-    "64079ed6b2b376b6cd0454f5"
-  ],
-  "extra_effects": [],
-  "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
-  ],
-  "card_tags": [
-    "6407a27fc503d0c6f5a33233"
-  ],
-  "second_effect_text": null
 },{
   "_id": {
     "$oid": "640b9f828e4a61dcf4e46dc3"
@@ -343,7 +316,7 @@
   "series_name": "Bolt Blossom",
   "card_number": 1048,
   "enthusiasm": 12,
-  "effect_text": "Target: Strongest foe. Add 1 to your Focus for each different class in your play. <1-5> Deal 1 damage for each class in your play. <6-11> Deal 2 damage for each class in your play. <12+> Deal 3 damage for each class in your play. Ignore the reaction(s) of defending Fighter(s).",
+  "effect_text": "<Target> Strongest foe. Add 1 to your Focus for each different class in your play. //<1-5> Deal 1 damage for each class in your play. //<6-11> Deal 2 damage for each class in your play. //<12+> Deal 3 damage for each class in your play. Ignore the reaction(s) of defending Fighter(s).",
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbe/",
@@ -367,7 +340,7 @@
   "series_name": "Bolt Blossom",
   "card_number": 1090,
   "enthusiasm": 0,
-  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): <Staunch> Gain 2 HP and add 2 to your Focus. <Power> Deal 2 damage to a foe. <Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round). <Canny> Gain 1 Comeback.",
+  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): //<Staunch> Gain 2 HP and add 2 to your Focus. //<Power> Deal 2 damage to a foe. //<Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round). //<Canny> Gain 1 Comeback.",
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1pl12bbe/",
@@ -390,7 +363,7 @@
   "series_name": "Battle Girl Alice",
   "card_number": 1031,
   "enthusiasm": 0,
-  "effect_text": "<Target> Foe on your right. <1-5> Remove 1 reaction token from your Fighter. <6-11> Deal 2 damage. Your Fighter gains Counter 1. <12+> Deal 2 bypassing damage. Your Fighter gains Counter 1.",
+  "effect_text": "<Target> Foe on your right. //<1-5> Remove 1 reaction token from your Fighter. //<6-11> Deal 2 damage. Your Fighter gains Counter 1. //<12+> Deal 2 bypassing damage. Your Fighter gains Counter 1.",
   "second_effect_text": "",
   "illustrator": "mo.moan",
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgam/",
@@ -414,7 +387,7 @@
   "series_name": "Battle Girl Alice",
   "card_number": 1032,
   "enthusiasm": 19,
-  "effect_text": "<Target> Foe on your left. <1-5> Remove 2 reaction tokens from your Fighter. <6-11> Deal 2 damage. Your Fighter gains Redirect 1. <12+> Deal 2 bypassing damage. Your Fighter gains Redirect 1.",
+  "effect_text": "<Target> Foe on your left. //<1-5> Remove 2 reaction tokens from your Fighter. //<6-11> Deal 2 damage. Your Fighter gains Redirect 1. //<12+> Deal 2 bypassing damage. Your Fighter gains Redirect 1.",
   "second_effect_text": "",
   "illustrator": "mo.moan",
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgae/",
@@ -484,11 +457,11 @@
   "series_name": "Project HERMES",
   "card_number": 1035,
   "enthusiasm": 0,
-  "effect_text": "<Target> Your strongest foe. <1-5> Deal 2 damage. <6-11> Deal 2 damage. Draw 1 card. <12+> Deal 2 damage plus 1 additional damage for each card in your play past 4. Add 1 Unity card from the discard pile to your hand.",
+  "effect_text": "<Target> Your strongest foe. //<1-5> Deal 2 damage. //<6-11> Deal 2 damage. Draw 1 card. //<12+> Deal 2 damage plus 1 additional damage for each card in your play past 4. Add 1 Unity card from the discard pile to your hand.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwm/",
-  "file_name": "",
+  "file_name": "i1b1dwm",
   "card_type": [
     "6407a3bbc503d0c6f5a33238"
   ],
@@ -533,11 +506,11 @@
   "series_name": "Project HERMES",
   "card_number": 1036,
   "enthusiasm": 20,
-  "effect_text": "<Target> Your weakest foe. <1-5> Deal 1 damage. <6-11> Deal 3 damage. <12+> Deal 1 damage for each card in your play. Return 1 other card in your play to your hand.\n\n\n",
+  "effect_text": "<Target> Your weakest foe. //<1-5> Deal 1 damage. //<6-11> Deal 3 damage. //<12+> Deal 1 damage for each card in your play. Return 1 other card in your play to your hand.\n\n\n",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwe/",
-  "file_name": "",
+  "file_name": "i1b1dwe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -582,7 +555,7 @@
   "series_name": "Burst Esper",
   "card_number": 1028,
   "enthusiasm": 13,
-  "effect_text": "<Target> All foes with a larger hand than you (damage is calculated separately for each target). <1-5> Deal 3 damage. <6-11> Deal damage equal to the difference. Draw 1 card. <12+> Deal damage equal to the difference plus 2. Ignore the reaction(s) of defending Fighter(s). Draw 2 cards.",
+  "effect_text": "<Target> All foes with a larger hand than you (damage is calculated separately for each target). //<1-5> Deal 3 damage. //<6-11> Deal damage equal to the difference. Draw 1 card. //<12+> Deal damage equal to the difference plus 2. Ignore the reaction(s) of defending Fighter(s). Draw 2 cards.",
   "second_effect_text": "",
   "illustrator": "mo.moan",
   "picture_url": "https://kornan.dreamhosters.com/i1r3bee",
@@ -701,11 +674,11 @@
   "series_name": "MAX VARIABLE",
   "card_number": 1099,
   "enthusiasm": 0,
-  "effect_text": "                \nOnce per round, if a MAX VARIABLE(s) in any play resolves, roll a die and apply 1 of the following effects based on the result:<1> Gain 1 HP. <2-3> 1 random card in your play gains damage plus 1. <4-5> Discard 1 card from your hand; draw 1 Pluck. <6> Deal 2 damage to all foes, then discard this Item. Discard this Item after the fourth round of use.",
+  "effect_text": "Once per round, if a MAX VARIABLE(s) in any play resolves, roll a die and apply 1 of the following effects based on the result://<1> Gain 1 HP. //<2-3> 1 random card in your play gains damage plus 1. //<4-5> Discard 1 card from your hand; draw 1 Pluck. //<6> Deal 2 damage to all foes, then discard this Item. //Discard this Item after the fourth round of use.",
   "second_effect_text": "",
   "illustrator": "mvthwus",
   "picture_url": "https://kornan.dreamhosters.com/i1plg1i",
-  "file_name": "",
+  "file_name": "i1plg1i",
   "card_type": [
     "64108dee159c81c7afebd104"
   ],
@@ -772,11 +745,11 @@
   "series_name": "PantheraMan",
   "card_number": 1004,
   "enthusiasm": 17,
-  "effect_text": "<Target> Foe who has yet to go this round. <1-5> Deal 1 damage. <6-11> Deal 3 piercing damage. <12+> Deal 4 piercing damage. The next player's Move(s) and Ending(s) gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
+  "effect_text": "<Target> Foe who has yet to go this round. //<1-5> Deal 1 damage. //<6-11> Deal 3 piercing damage. //<12+> Deal 4 piercing damage. The next player's Move(s) and Ending(s) gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g1pme",
-  "file_name": "",
+  "file_name": "i1g1pme",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -873,7 +846,7 @@
   "series_name": "Black Note",
   "card_number": 1052,
   "enthusiasm": 5,
-  "effect_text": "<Target> All foes. If you are at 8 HP or less, add 3 to your Focus. <1-5> Deal 2 piercing damage. Take 4 damage. <6-11> Deal 3 piercing damage. Take 3 damage. <12+> Deal 4 piercing damage and ignore the reaction(s) of defending Fighter(s). Take 2 damage.",
+  "effect_text": "<Target> All foes. If you are at 8 HP or less, add 3 to your Focus. //<1-5> Deal 2 piercing damage. Take 4 damage. //<6-11> Deal 3 piercing damage. Take 3 damage. //<12+> Deal 4 piercing damage and ignore the reaction(s) of defending Fighter(s). Take 2 damage.",
   "second_effect_text": "",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://kornan.dreamhosters.com/i1p1bne",
@@ -973,7 +946,7 @@
   "card_number": 1064,
   "enthusiasm": 14,
   "effect_text": "Reduce the Focus of all foes by 3.",
-  "second_effect_text": "<Target> Foe with Enthusiasm lower than yours. <1-5> No effect. <6-11> Deal 3 damage. <12+> Deal damage equal to the difference (max of 6).",
+  "second_effect_text": "<Target> Foe with Enthusiasm lower than yours. //<1-5> No effect. //<6-11> Deal 3 damage. //<12+> Deal damage equal to the difference (max of 6).",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gee",
   "file_name": "i1p4gee",
@@ -1073,11 +1046,11 @@
   "series_name": "Project HERMES",
   "card_number": 1083,
   "enthusiasm": null,
-  "effect_text": "<Trigger> At the start of the round, discard 1 card from your hand; resolve one of the following effects: <> Add 3 to your Focus this round. <> Add 3 to your Enthusiasm this round.",
+  "effect_text": "<Trigger> At the start of the round, discard 1 card from your hand; resolve one of the following effects: //<> Add 3 to your Focus this round. //<> Add 3 to your Enthusiasm this round.",
   "second_effect_text": "Discard this Item after the third round of use.",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1pl09dwi",
-  "file_name": "",
+  "file_name": "i1pl09dwi",
   "card_type": [
     "64108dee159c81c7afebd104"
   ],
@@ -1098,7 +1071,7 @@
   "series_name": "Project HERMES",
   "card_number": 1084,
   "enthusiasm": null,
-  "effect_text": "Add 1 of the following from their respective discard piles to your hand/ownership: <>Up to 2 cards and 1 Pluck in the Project series except Project HERMES. <>2 Unity cards. <>1 MAX VARIABLE and 1 Item.",
+  "effect_text": "Add 1 of the following from their respective discard piles to your hand/ownership: //<>Up to 2 cards and 1 Pluck in the Project series except Project HERMES. //<>2 Unity cards. //<>1 MAX VARIABLE and 1 Item.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1pl09dwe",
@@ -1372,11 +1345,11 @@
   "series_name": "Ceifeira Preta",
   "card_number": 1057,
   "enthusiasm": null,
-  "effect_text": "Resolve 1 of the following effects: <> Gain 1 Comeback and add 1 Fighter from the discard pile to your hand. <> Discard 2 Comebacks in your ownership; return 3 cards from the discard pile to the top of the Main deck in any order. ",
+  "effect_text": "Resolve 1 of the following effects: //<> Gain 1 Comeback and add 1 Fighter from the discard pile to your hand. //<> Discard 2 Comebacks in your ownership; return 3 cards from the discard pile to the top of the Main deck in any order. ",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpf",
-  "file_name": "",
+  "file_name": "i1p3cpf",
   "card_type": [
     "64079ed6b2b376b6cd0454f5"
   ],
@@ -1445,11 +1418,11 @@
   "series_name": "Ceifeira Preta",
   "card_number": 1060,
   "enthusiasm": 8,
-  "effect_text": "<Target> Your strongest or weakest foe. <1-5> Deal 1 damage. <6-11> Deal 3 damage. Gain 1 Comeback. <12+> Deal 3 damage. Gain 2 Comebacks, then resolve 1 of your Comebacks as if you were at critical HP.",
+  "effect_text": "<Target> Your strongest or weakest foe. //<1-5> Deal 1 damage. //<6-11> Deal 3 damage. Gain 1 Comeback. //<12+> Deal 3 damage. Gain 2 Comebacks, then resolve 1 of your Comebacks as if you were at critical HP.",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpe",
-  "file_name": "",
+  "file_name": "i1p3cpe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -1520,7 +1493,7 @@
   "series_name": "Warp Family",
   "card_number": 1056,
   "enthusiasm": 16,
-  "effect_text": "<Target> Random foe. If you have a Unity card in your play, add 3 to your focus. <1-5> Deal 3 damage. <6-11> Deal 3 damage. Discard 1 card from their hand. <12+> Deal 3 damage. They discard 1 card from their play.",
+  "effect_text": "<Target> Random foe. If you have a Unity card in your play, add 3 to your focus. //<1-5> Deal 3 damage. //<6-11> Deal 3 damage. Discard 1 card from their hand. //<12+> Deal 3 damage. They discard 1 card from their play.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pe",
@@ -1569,7 +1542,7 @@
   "series_name": "Bone Whisperer",
   "card_number": 1010,
   "enthusiasm": null,
-  "effect_text": "<Target> You. <1-5> Draw 1 Pluck, then discard 1 Pluck. <6-11> Draw 1 Pluck. <12+> Gain 1 Event and 2 HP.",
+  "effect_text": "<Target> You. //<1-5> Draw 1 Pluck, then discard 1 Pluck. //<6-11> Draw 1 Pluck. //<12+> Gain 1 Event and 2 HP.",
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwa",
@@ -1616,7 +1589,7 @@
   "series_name": "Bone Whisperer",
   "card_number": 1009,
   "enthusiasm": null,
-  "effect_text": "Resolve 1 of the following effects: <> Discard up to 3 cards from your hand; gain 1 HP for each card discarded. <>Discard 3 cards from your hand; unfurl 3 Pluck (reveal 3 cards from the top of the Pluck deck). Add 2 Pluck to your ownership and discard the other unfurled Pluck.",
+  "effect_text": "Resolve 1 of the following effects: //<> Discard up to 3 cards from your hand; gain 1 HP for each card discarded. //<>Discard 3 cards from your hand; unfurl 3 Pluck (reveal 3 cards from the top of the Pluck deck). Add 2 Pluck to your ownership and discard the other unfurled Pluck.",
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwf",
@@ -1641,7 +1614,7 @@
   "series_name": "Bone Whisperer",
   "card_number": 1012,
   "enthusiasm": 15,
-  "effect_text": "<Target> Random foe. <1-5> No effect. <6-11> Deal 3 damage. Add 1 Event from the discard pile to your ownership. <12+> Deal 3 piercing damage. Add 1 card and 1 Event from their respective discard piles to your hand/ownership.",
+  "effect_text": "<Target> Random foe. //<1-5> No effect. //<6-11> Deal 3 damage. Add 1 Event from the discard pile to your ownership. //<12+> Deal 3 piercing damage. Add 1 card and 1 Event from their respective discard piles to your hand/ownership.",
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwe",
@@ -1665,11 +1638,11 @@
   "series_name": "Flamebell",
   "card_number": 1016,
   "enthusiasm": 11,
-  "effect_text": "<Target> Foe of your choice. All foes with a Power card(s) in their play take 1 damage. <1-5> Deal 2 damage. Gain 2 HP. <6-11> Deal 3 damage. Gain 2 HP. <12+> Deal 4 damage. Gain 2 HP and resolve your Aura one more time.",
+  "effect_text": "<Target> Foe of your choice. All foes with a Power card(s) in their play take 1 damage. //<1-5> Deal 2 damage. Gain 2 HP. //<6-11> Deal 3 damage. Gain 2 HP. //<12+> Deal 4 damage. Gain 2 HP and resolve your Aura one more time.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbe",
-  "file_name": "",
+  "file_name": "i1g4fbe",
   "card_type": [
     "640ce41c5f6730657ad8739f"
   ],
@@ -1737,11 +1710,11 @@
   "series_name": "Ceifeira Preta",
   "card_number": 1096,
   "enthusiasm": null,
-  "effect_text": "<Trigger> If you are targeted for damage, apply each of the following effects for each Comeback in your ownership: <1> Your Fighter is treated as Canny. <2> Discard 1 card in your strongest or weakest foe's hand. <3> You can discard 1 card in your play; you are unaffected by the effect(s) of the card targeting you. <4+> Your next Move and next Ending gain damage plus 1.",
+  "effect_text": "<Trigger> If you are targeted for damage, apply each of the following effects for each Comeback in your ownership: //<1> Your Fighter is treated as Canny. //<2> Discard 1 card in your strongest or weakest foe's hand. //<3> You can discard 1 card in your play; you are unaffected by the effect(s) of the card targeting you. //<4+> Your next Move and next Ending gain damage plus 1.",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://kornan.dreamhosters.com/i1pl15cpe/",
-  "file_name": "",
+  "file_name": "i1pl15cpe",
   "card_type": [
     "640ce4bf5f6730657ad873be"
   ],
@@ -1811,7 +1784,7 @@
   "series_name": "Bolt Blossom",
   "card_number": 1047,
   "enthusiasm": null,
-  "effect_text": "Resolve 1 of the following effects: <> This card copies the text of your Aura. <> Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
+  "effect_text": "Resolve 1 of the following effects: //<> This card copies the text of your Aura. //<> Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
   "second_effect_text": "",
   "illustrator": "Filippo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbm",
@@ -2256,7 +2229,7 @@
   "series_name": "Red Fist",
   "card_number": 1023,
   "enthusiasm": null,
-  "effect_text": "<Target> Foe on your left. <1-5> Deal 1 damage. <6-11> Deal 3 piercing damage. <12+> Deal 3 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
+  "effect_text": "<Target> Foe on your left. //<1-5> Deal 1 damage. //<6-11> Deal 3 piercing damage. //<12+> Deal 3 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfm",
@@ -2280,7 +2253,7 @@
   "series_name": "Red Fist",
   "card_number": 1024,
   "enthusiasm": 18,
-  "effect_text": "<Target> Foe on your right. <1-5> Deal 1 damage. Discard 1 card from your hand. <6-11> Deal 1 piercing damage. <12+> Deal 6 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
+  "effect_text": "<Target> Foe on your right. //<1-5> Deal 1 damage. Discard 1 card from your hand. //<6-11> Deal 1 piercing damage. //<12+> Deal 6 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfe",
@@ -2373,7 +2346,7 @@
   "series_name": "Blast Mouth",
   "card_number": 1020,
   "enthusiasm": 6,
-  "effect_text": "<Target> Foe of your choice. If you are last to go this round, ignore the reaction(s) of defending Fighter(s). <1-5> Deal 4 damage. <6-11> Deal 4 piercing damage. <12+> Deal 5 piercing damage and 1 additional piercing damage if they have already gone this round.",
+  "effect_text": "<Target> Foe of your choice. If you are last to go this round, ignore the reaction(s) of defending Fighter(s). //<1-5> Deal 4 damage. //<6-11> Deal 4 piercing damage. //<12+> Deal 5 piercing damage and 1 additional piercing damage if they have already gone this round.",
   "second_effect_text": "",
   "illustrator": "Znttus",
   "picture_url": "https://kornan.dreamhosters.com/i1r1bme",
@@ -2742,7 +2715,7 @@
   "series_name": "Hive",
   "card_number": 1040,
   "enthusiasm": 10,
-  "effect_text": "<Target> 2 foes on your right. <1-5> Deal 1 damage. <6-11> Deal 3 piercing damage. Draw 1 card. <12+> Deal 3 piercing damage. Draw 1 card and resolve 1 random card in your play one more time.",
+  "effect_text": "<Target> 2 foes on your right. //<1-5> Deal 1 damage. //<6-11> Deal 3 piercing damage. Draw 1 card. //<12+> Deal 3 piercing damage. Draw 1 card and resolve 1 random card in your play one more time.",
   "second_effect_text": "",
   "illustrator": "layonsin.art",
   "picture_url": "https://kornan.dreamhosters.com/i1b2he",
@@ -2890,7 +2863,7 @@
   "series_name": "Warp Family",
   "card_number": 1044,
   "enthusiasm": 9,
-  "effect_text": "<Target> Foe of your choice. If you have a Canny card in your play, add 3 to your focus. <1-5> Deal 3 damage and they gain 1 Item. Gain 1 Item. <6-11> Deal 4 damage and they draw 1 Pluck. Gain 1 Item. <12+> Deal 5 damage. Gain 1 Item or add 1 Item from the discard pile to your ownership.",
+  "effect_text": "<Target> Foe of your choice. If you have a Canny card in your play, add 3 to your focus. //<1-5> Deal 3 damage and they gain 1 Item. Gain 1 Item. //<6-11> Deal 4 damage and they draw 1 Pluck. Gain 1 Item. //<12+> Deal 5 damage. Gain 1 Item or add 1 Item from the discard pile to your ownership.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1b3hse",
@@ -3084,7 +3057,7 @@
   "series_name": "n/a",
   "card_number": 1101,
   "enthusiasm": null,
-  "effect_text": "Unfurl 3 cards; add 1 card to your hand and discard the other unfurled cards. Apply the following effects based on the classes of the added card (you can only apply each effect once): <Power> Deal 1 damage to a foe and add 3 to your Focus. <Unity> Return 1 Aura or 1 Move from the discard pile to the top of the Main deck. <Canny> Deal 2 bypassing damage to a foe.",
+  "effect_text": "Unfurl 3 cards; add 1 card to your hand and discard the other unfurled cards. \nApply the following effects based on the classes of the added card (you can only apply each effect once): \n//<Power> Deal 1 damage to a foe and add 3 to your Focus. \n//<Unity> Return 1 Aura or 1 Move from the discard pile to the top of the Main deck. \n//<Canny> Deal 2 bypassing damage to a foe.",
   "second_effect_text": "",
   "illustrator": "mvthwus",
   "picture_url": "https://kornan.dreamhosters.com/i1plg3e",
@@ -3121,5 +3094,31 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
+  ]
+},{
+  "_id": {
+    "$oid": "6440bfa92e72274cabf64017"
+  },
+  "name": "Hive",
+  "card_class": "Unity",
+  "hero_id": "H01",
+  "series_name": "Hive",
+  "card_number": 1037,
+  "enthusiasm": 0,
+  "effect_text": "\"Draw 1 Pluck and reveal it; apply the following effects based on the Pluck revealed: //<Item> Add 1 Move or MAX VARIABLE from your hand to your play (MAX VARIABLE counts as an Move). //<Event> Reset 1 of your Pluck. //<Comeback> Add 1 Aura, Move or MAX VARIABLE from the discard pile to your hand.\"",
+  "second_effect_text": "",
+  "illustrator": "layonsin.art",
+  "picture_url": "https://kornan.dreamhosters.com/i1b2hf",
+  "file_name": "i1b2hf",
+  "card_type": [
+    "64079ed6b2b376b6cd0454f5"
+  ],
+  "extra_effects": [],
+  "reactions": [
+    "6407a068c503d0c6f5a33231",
+    "6407a068c503d0c6f5a33231"
+  ],
+  "card_tags": [
+    "6407a27fc503d0c6f5a33233"
   ]
 }]

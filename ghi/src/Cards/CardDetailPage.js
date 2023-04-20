@@ -16,7 +16,25 @@ import RelatedCardModal from "./RelatedCardModal";
 function CardDetailPage() {
 
     const {card_number} = useParams();
-    const [card, setCard] = useState("");
+    const [card, setCard] = useState({
+        name: "",
+        card_class: "",
+        hero_id: "",
+        series_name: "",
+        card_number: "",
+        enthusiasm: "",
+        effect_text: "",
+        second_effect_text: "",
+        effectText: [],
+        secondEffectText: [],
+        illustrator: "",
+        picture_url: "",
+        file_name: "",
+        card_type: [],
+        extra_effects: [],
+        reactions: [],
+        card_tags: [],
+    });
     const [relatedCards, setRelatedCards] = useState([]);
     const [card_type, setCardType] = useState("")
     const [extra_effects, setExtraEffects] = useState([])
@@ -28,6 +46,9 @@ function CardDetailPage() {
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
         const cardData = await response.json();
+
+        cardData["effectText"] = cardData.effect_text.split("//")
+        cardData["secondEffectText"] = cardData.second_effect_text.split("//")
 
         setCard(cardData);
     };
@@ -199,11 +220,21 @@ function CardDetailPage() {
                             <div>
                                 <div className={card.card_class ? `big${card.card_class}` : "bigNoClass"}>
                                     <h4 style={{fontWeight: "500", margin: "12px"}}>Card Effect</h4>
-                                    <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5>
+
+                                    {card.effectText.map((line) =>
+                                        <h5 style={{fontWeight: "500", margin: "18px 12px"}}>
+                                            {line}</h5>)}
+
+                                    {/* <h5 style={{fontWeight: "500", margin: "18px 12px"}}>{card.effect_text}</h5> */}
                                     {card.second_effect_text && (
                                         <div className="borderBlack">
-                                            <h5 className="borderBlack"
-                                                style={{fontWeight: "500", margin: "10px 10px 18px 10px"}}>{card.second_effect_text}</h5>
+
+                                        {card.secondEffectText.map((line) =>
+                                            <h5 style={{fontWeight: "500", margin: "18px 12px"}}>
+                                                {line}</h5>)}
+
+                                            {/* <h5 className="borderBlack"
+                                                style={{fontWeight: "500", margin: "18px 10px 18px 10px"}}>{card.second_effect_text}</h5> */}
                                         </div>
                                     )}
                                     {extra_effects.length ? (
