@@ -26,9 +26,7 @@ text-align: center;
 
 .blackfooter2 {
   background: black;
-  height: 40%;
-  display: flex;
-  justify-content: bottom;
+  height: 50%;
   z-index: 1;
   opacity: .80;
 }

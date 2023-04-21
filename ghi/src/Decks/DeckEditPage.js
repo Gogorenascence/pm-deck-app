@@ -45,6 +45,12 @@ function DeckEditPage() {
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
         const deckData = await response.json();
+        if (deckData["pluck"] === null){
+            deckData["pluck"] = []
+        }
+        if (deckData["side"] === null){
+            deckData["side"] = []
+        }
         setDeck(deckData);
     };
 

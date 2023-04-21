@@ -69,6 +69,7 @@ function DeckDetailPage() {
     useEffect(() => {
         getDeck();
         getDeckList();
+        console.log(deck)
     },[]);
 
     const handleMulliganChange = (card) => {
@@ -111,12 +112,6 @@ function DeckDetailPage() {
                     style={{fontWeight: "500", fontSize: "40px"}}>
                         {deck.name}
                 </Card.Header>
-                {/* <Card.ImgOverlay src={deck.cover_card}></Card.ImgOverlay> */}
-                {/* <Card.Body> */}
-                    {/* <Card.Title style={{fontWeight: "350"}}> */}
-                        {/* Strategies: {deck.strategies.join(', ')} */}
-                    {/* </Card.Title> */}
-                {/* </Card.Body> */}
                 <Card.Body>
                     <Card.Title
                     // style={{fontWeight: "340"}}
@@ -131,7 +126,9 @@ function DeckDetailPage() {
             {deck.description ?
             <div>
                 <h3 className="left-h1">Deck Description</h3>
-                <p>{deck.description}</p>
+                <h5 className="left-h1"
+                    style={{marginTop: "0"}}
+                    >{deck.description}</h5>
             </div>:
             null}
             <div style={{display: "flex"}}>

@@ -120,23 +120,19 @@ function DecksPage() {
                                     alt="Card image"
                                     variant="bottom"/>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                    <Card.Title
-                                        className="card-img-overlay d-flex flex-column justify-content-top">
-                                            {deck.name}
-                                    </Card.Title>
-                                        <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
-                                            style={{margin: '0px 0px 70px 0px', fontWeight: "600"}}
+                                        <h5>{deck.name}</h5>
+                                        <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
                                         >
                                             User:
-                                        </Card.Text>
-                                        <Card.Text className="card-img-overlay d-flex flex-column justify-content-end"
-                                            style={{margin: '0px 0px 47px 0px', fontWeight: "600"}}
+                                        </h6>
+                                        <h6
+                                            style={{margin: '0px 0px 0px 0px', fontWeight: "600"}}
                                         >
                                             Strategies: {deck.strategies.join(', ')}
-                                        </Card.Text>
+                                        </h6>
                                         <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"
-                                            style={{margin: '0px 0px 10px 0px', fontWeight: "600"}}
+                                            style={{margin: '0px 0px 0px 0px', fontWeight: "600"}}
                                         >
                                             Views: {deck.views}
                                         </Card.Text>

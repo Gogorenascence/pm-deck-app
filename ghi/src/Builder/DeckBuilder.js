@@ -149,7 +149,8 @@ function DeckBuilder() {
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
             await response.json();
-            const deck_id = await response.json().id;
+            const deck_id = response;
+            console.log(deck_id)
             setDeck({
                 name: "",
                 account_id: "",
@@ -161,7 +162,7 @@ function DeckBuilder() {
                 views: 0,
                 cover_card: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            window.location.href = `${process.env.PUBLIC_URL}/decks/`;
         };
     }
 
@@ -227,22 +228,25 @@ function DeckBuilder() {
                     </select>
                     <br/>
                     <Button
-                            className="left"
-                            variant="dark"
+                        className="left"
+                        variant="dark"
+                        style={{ marginTop: "9px"}}
                         onClick={handleSubmit}
                     >
                             Create Deck
                     </Button>
                     <Button
-                            className="left"
-                            variant="danger"
+                        className="left"
+                        variant="danger"
+                        style={{ marginTop: "9px"}}
                         onClick={clearMain}
                     >
                             Clear Main
                     </Button>
                     <Button
-                            className="left"
-                            variant="danger"
+                        className="left"
+                        variant="danger"
+                        style={{ marginTop: "9px"}}
                         onClick={clearPluck}
                     >
                             Clear Pluck

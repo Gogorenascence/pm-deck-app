@@ -35,6 +35,7 @@ class DeckQueries(Queries):
         props["views"] = 0
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
+        print(props)
         return Deck(**props)
 
     def update_deck(self, id: str, deck: DeckIn) -> DeckOut:
