@@ -21,15 +21,8 @@ function DeckRow() {
         setDecks(data.decks.slice(-5).reverse());
     };
 
-    // const getCoverCard = async() =>{
-    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${id}/cover/`);
-    //     const coverData = await response.json();
-
-    //     setCover(coverData);
-
     useEffect(() => {
         getDecks();
-        // getCoverCard();
     }, []);
 
 

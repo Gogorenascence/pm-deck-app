@@ -56,17 +56,17 @@ function Nav() {
                     </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards">
+                  <NavLink className="dropdown-item" to="/cards/popular">
                     Popular Cards
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards">
+                  <NavLink className="dropdown-item" to="/cards/series">
                     New Series
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards">
+                  <NavLink className="dropdown-item" to="/cards/products">
                     Products
                   </NavLink>
                 </li>

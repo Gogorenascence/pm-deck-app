@@ -463,3 +463,25 @@ text-align: center;
 .no-cards {
   margin-bottom: 20px;
 }
+
+.imgwindow {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+}
+
+.textwindow{
+  padding: 16%;
+}
+
+.undercontext {
+  margin: auto;
+  text-align: center;
+}
+
+.underconimg {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  overflow: hidden;
+}
