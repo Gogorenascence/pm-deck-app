@@ -7,7 +7,7 @@ from models.card_comps import CardTypeOut
 
 from queries.cards import CardQueries
 from fastapi import APIRouter, Depends, Response
-# from authenticator import authenticator
+from authenticator import authenticator
 
 router = APIRouter(tags=["cards"])
 

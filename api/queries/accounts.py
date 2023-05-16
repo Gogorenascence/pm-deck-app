@@ -1,6 +1,6 @@
 from bson.objectid import ObjectId
 from .client import Queries
-from models.accounts import Account, AccountIn, AccountUpdateIn, AccountOut
+from models.accounts import Account, AccountIn, AccountOut
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from typing import Union
@@ -23,9 +23,19 @@ class AccountQueries(Queries):
             accounts.append(AccountOut(**document))
         return accounts
 
+    def get_account(self, username: str) -> AccountOut:
+        props = self.collection.find_one({"username": username})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return AccountOut(**props)
+
+
     def create_account(self, info: AccountIn, hashed_password: str) -> Account:
         props = info.dict()
+        props["unhashed_password"] = props["password"]
         props["password"] = hashed_password
+        props["roles"] = ["member"]
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:
@@ -33,16 +43,11 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-    def get_account(self, username: str) -> Account:
-        props = self.collection.find_one({"username": username})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return Account(**props)
 
-    def update_account(self, id: str, info: AccountUpdateIn, hashed_password: Union[None, str]):
+    def update_account(self, id: str, info: AccountIn, hashed_password: Union[None, str]):
         props = info.dict()
         if hashed_password is not None:
+            props["unhashed_password"] = props["password"]
             props["password"] = hashed_password
 
         try:

@@ -16,10 +16,14 @@ import Footer from "./Footer";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
+import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
+
+
 
 
 function App() {
   return (
+    // <AuthProvider>
     <BrowserRouter>
       <Nav/>
       <BackToTop/>
@@ -45,6 +49,7 @@ function App() {
       </div>
       <Footer/>
     </BrowserRouter>
+    // </AuthProvider>
   );
 }
 

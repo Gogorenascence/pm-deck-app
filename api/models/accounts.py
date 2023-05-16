@@ -22,13 +22,7 @@ class AccountIn(BaseModel):
     password: str
     username: str
     unhashed_password: Optional[str]
-
-
-class AccountUpdateIn(BaseModel):
-    email: Optional[str]
-    password: Optional[str]
-    username: Optional[str]
-    unhashed_password: Optional[str]
+    roles: Optional[List]
 
 
 class Account(AccountIn):
@@ -41,3 +35,4 @@ class AccountOut(BaseModel):
     username: str
     password: str
     unhashed_password: Optional[str]
+    roles: Optional[List]

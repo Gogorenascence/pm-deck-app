@@ -8,10 +8,10 @@ from queries.accounts import AccountQueries
 class Auth(Authenticator):
     async def get_account_data(
         self,
-        username: str,
+        id: str,
         accounts: AccountQueries,
     ):
-        return accounts.get_account(username)
+        return accounts.get_account(id)
 
     def get_account_getter(
         self,

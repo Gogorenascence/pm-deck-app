@@ -5,7 +5,7 @@ from models.card_comps import (
     )
 from queries.reactions import ReactionQueries
 from fastapi import APIRouter, Depends, Response
-# from authenticator import authenticator
+from authenticator import authenticator
 
 router = APIRouter(tags=["reactions"])
 
