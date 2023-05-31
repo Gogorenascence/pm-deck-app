@@ -57,6 +57,7 @@ function CardsPage() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
+        console.log(event.target.value)
     };
 
     const handleQueryReset = (event) => {

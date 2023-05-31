@@ -271,8 +271,6 @@ function CardDetailPage() {
                                             Create
                                         </Button>
                                     </NavLink>
-                                </div>
-                                <div style={{ display: "flex"}}>
                                     <NavLink to="/cards">
                                         <Button
                                             className="button100"
@@ -281,8 +279,10 @@ function CardDetailPage() {
                                             Back
                                         </Button>
                                     </NavLink>
-                                    <CardAddToDeckModal/>
                                 </div>
+                                {/* <div style={{ display: "flex"}}>
+                                    <CardAddToDeckModal/>
+                                </div> */}
                             </Container>
                         </div>
                     </div>

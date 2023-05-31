@@ -24,45 +24,6 @@ function CardCreatePage() {
         card_tags: [],
     });
 
-    const [card_types, setCardTypes] = useState([]);
-    const [extra_effects, setExtraEffects] = useState([]);
-    const [reactions, setReactions] = useState([]);
-    const [card_tags, setCardTags] = useState([]);
-
-    const getCardTypes = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
-        const cardTypeData = await response.json();
-
-        setCardTypes(cardTypeData.card_types);
-    };
-
-    const getExtraEffects = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/`);
-        const extraEffectData = await response.json();
-
-        setExtraEffects(extraEffectData.extra_effects);
-    };
-
-    const getReactions = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/`);
-        const reactionData = await response.json();
-
-        setReactions(reactionData.reactions);
-    };
-
-    const getCardTags = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/`);
-        const cardTagData = await response.json();
-
-        setCardTags(cardTagData.card_tags);
-    };
-
-    useEffect(() => {
-        getCardTypes();
-        getExtraEffects();
-        getReactions();
-        getCardTags();
-    }, []);
 
     const handleChange = (event) => {
         setCard({ ...card, [event.target.name]: event.target.value });

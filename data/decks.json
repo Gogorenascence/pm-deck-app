@@ -344,7 +344,9 @@
   "description": "string",
   "strategies": [],
   "cards": [],
-  "views": 0
+  "views": 0,
+  "pluck": [],
+  "side": []
 },{
   "_id": {
     "$oid": "6407e3a5e41d4a85bb4b7785"

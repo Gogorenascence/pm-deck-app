@@ -1,6 +1,4 @@
 import {
-    Col,
-    Row,
     Card,
     Button,
 } from "react-bootstrap";
@@ -11,11 +9,24 @@ function DecksPage() {
 
     const [decks, setDecks] = useState([]);
 
+    const [deckQuery, setDeckQuery] = useState({
+        deckName: "",
+        description: "",
+        cardNumber: "",
+        strategies: "",
+    });
+
+    const [deckSortState, setDeckSortState] = useState("none");
+
+    const [deckShowMore, setDeckShowMore] = useState(20);
+
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        setDecks(data.decks.reverse());
+        const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
+
+        setDecks(sortedDecks.reverse());
     };
 
     const getRandomDeck = async() =>{
@@ -28,6 +39,51 @@ function DecksPage() {
         getDecks();
     }, []);
 
+    const deckSortMethods = {
+        none: { method: (a,b) => b.id.localeCompare(a.id) },
+        newest: { method: (a,b) => b.id.localeCompare(a.id) },
+        oldest: { method: (a,b) => a.id.localeCompare(b.id) },
+        name: { method: (a,b) => a.name.localeCompare(b.name) },
+    };
+
+    const handleDeckQuery = (event) => {
+        setDeckQuery({ ...deckQuery, [event.target.name]: event.target.value });
+        console.log(event.target.value)
+    };
+
+    const handleDeckQueryReset = (event) => {
+        setDeckQuery({
+            deckName: "",
+            description: "",
+            cardNumber: "",
+            strategy: "",
+        });
+    };
+
+    const handleDeckSort = (event) => {
+        setDeckSortState(event.target.value);
+    };
+
+    const handleDeckShowMore = (event) => {
+        setDeckShowMore(deckShowMore + 20);
+    };
+
+    const all_decks = decks.filter(deck => deck.name.toLowerCase().includes(deckQuery.deckName.toLowerCase()))
+        .filter(deck => (deck.description).toLowerCase().includes(deckQuery.description.toLowerCase()))
+        .filter(deck => {
+            if (deckQuery.cardNumber) {
+                const allCards = deck.cards.concat(deck.pluck);
+                console.log(allCards)
+                const stringifiedCards = allCards.map(card => card.toString());
+                return stringifiedCards.some(card => card.includes(deckQuery.cardNumber));
+            } else {
+                return true;
+            }
+        })
+        .filter(deck => deckQuery.strategy? deck.strategies.some(strategy => strategy.includes(deckQuery.strategy)):deck.strategies)
+        .sort(deckSortMethods[deckSortState].method)
+
+
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Search</h1>
@@ -35,14 +91,20 @@ function DecksPage() {
             <input
                 className="left"
                 type="text"
-                placeholder=" Deck Name"
+                placeholder=" Deck Name Contains..."
+                name="deckName"
+                value={deckQuery.deckName}
+                onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
             <input
                 className="left"
                 type="text"
-                placeholder=" Description"
+                placeholder=" Description Contains..."
+                name="description"
+                value={deckQuery.description}
+                onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
@@ -50,33 +112,39 @@ function DecksPage() {
                 className="left"
                 type="text"
                 placeholder=" Contains Card Number..."
+                name="cardNumber"
+                value={deckQuery.cardNumber}
+                onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
-            <input
+            {/* <input
                 className="left"
                 type="text"
                 placeholder=" Contains Series..."
                 style={{width: "370px", height: "37px"}}>
             </input>
-            <br/>
+            <br/> */}
             <select
                 className="left"
                 type="text"
                 placeholder=" Strategy"
-                style={{width: "116px", height: "37px"}}>
-                <option value="strategy">Strategy</option>
-                <option value="aggro">Aggro</option>
-                <option value="combo">Combo</option>
-                <option value="control">Control</option>
-                <option value="midrange">Midrange</option>
-                <option value="ramp">Ramp</option>
-                <option value="second_wind">Second Wind</option>
-                <option value="stall">Stall</option>
-                <option value="toolbox">Toolbox</option>
+                name="strategy"
+                value={deckQuery.strategy}
+                onChange={handleDeckQuery}
+                style={{width: "180px", height: "37px"}}>
+                <option value="">Strategy</option>
+                <option value="Aggro">Aggro</option>
+                <option value="Combo">Combo</option>
+                <option value="Control">Control</option>
+                <option value="Mid-range">Midrange</option>
+                <option value="Ramp">Ramp</option>
+                <option value="Second_wind">Second Wind</option>
+                <option value="Stall">Stall</option>
+                <option value="Toolbox">Toolbox</option>
                 <option value="other">other</option>
             </select>
-            <select
+            {/* <select
                 className="left"
                 type="text"
                 placeholder=" Class"
@@ -86,20 +154,27 @@ function DecksPage() {
                 <option value="power">Power</option>
                 <option value="unity">Unity</option>
                 <option value="canny">Canny</option>
-            </select>
+            </select> */}
             <select
                 className="left"
                 type="text"
                 placeholder="  Sorted By"
-                style={{width: "116px", height: "37px"}}>
-                <option value="sorted_by">Sorted By</option>
+                value={deckSortState}
+                onChange={handleDeckSort}
+                style={{width: "180px", height: "37px"}}>
+                <option value="none">Sorted By</option>
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
-                <option value="most_views">Popular</option>
             </select>
             <br/>
             <Button className="left" variant="dark">Search Decks</Button>
-            <Button className="left" variant="dark">Reset Filters</Button>
+            <Button
+                className="left"
+                variant="dark"
+                onClick={handleDeckQueryReset}
+                >
+                Reset Filters
+            </Button>
             <Button
                 className="left"
                 variant="dark"
@@ -110,7 +185,7 @@ function DecksPage() {
 
 
             <div className="card-list">
-                {decks.map((deck) => {
+                {all_decks.map((deck) => {
                     return (
                         <NavLink to={`/decks/${deck.id}`}>
                             <Card
@@ -121,28 +196,34 @@ function DecksPage() {
                                     variant="bottom"/>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                                         <h5>{deck.name}</h5>
-                                        <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
+                                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
                                         >
                                             User:
-                                        </h6>
+                                        </h6> */}
                                         <h6
                                             style={{margin: '0px 0px 0px 0px', fontWeight: "600"}}
                                         >
                                             Strategies: {deck.strategies.join(', ')}
                                         </h6>
-                                        <Card.Text
+                                        {/* <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"
                                             style={{margin: '0px 0px 0px 0px', fontWeight: "600"}}
                                         >
                                             Views: {deck.views}
-                                        </Card.Text>
+                                        </Card.Text> */}
                                 </Card.ImgOverlay>
                             </Card>
                         </NavLink>
                     );
                 })}
             </div>
-
+            {deckShowMore < all_decks.length ?
+                <Button
+                    variant="dark"
+                    style={{ width: "100%", marginTop:"2%"}}
+                    onClick={handleDeckShowMore}>
+                    Show More Decks ({all_decks.length - deckShowMore} Remaining)
+                </Button> : null }
         </div>
     );
 }
