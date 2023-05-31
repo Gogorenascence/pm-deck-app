@@ -56,6 +56,11 @@ function Nav() {
                     </NavLink>
                 </li>
                 <li>
+                  <NavLink className="dropdown-item" to="/cards/create">
+                    Card Create
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink className="dropdown-item" to="/cards/popular">
                     Popular Cards
                   </NavLink>
@@ -186,7 +191,7 @@ function Nav() {
             </li>
           </ul> */}
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a href="/#"
@@ -209,18 +214,18 @@ function Nav() {
               </ul>
             </li>
           </ul>
-        </div>
+        </div> */}
       {/* </div> */}
       {/* </div> */}
       {/* </div> */}
       </div>
       </div>
-        <Button className="semi-bold-20 button100" variant="outline-warning" size="sm">
+        {/* <Button className="semi-bold-20 button100" variant="outline-warning" size="sm">
           Login
         </Button>
         <Button className="semi-bold-20 button100" variant="outline-light" size="sm">
           Signup
-        </Button>
+        </Button> */}
       </div>
     </nav>
   );

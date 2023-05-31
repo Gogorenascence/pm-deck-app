@@ -17,7 +17,9 @@ import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
-
+import { useAuthContext } from "./UseToken";
+import { Context } from "./Store";
+import React, { useContext, useEffect } from "react";
 
 
 
