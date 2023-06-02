@@ -41,7 +41,7 @@ class Card(CardIn):
 
 class CardOut(CardIn):
     id: str
-
+    count: Optional[int]
 
 class CardsAll(BaseModel):
     cards: list

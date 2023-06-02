@@ -137,6 +137,49 @@ class DeckQueries(Queries):
         deck_list = [main_deck, pluck_deck, side_deck]
         return deck_list
 
+    def get_counted_deck_list(self, id: str) -> list:
+        deck = self.collection.find_one({"_id": ObjectId(id)})
+        card_list = deck["cards"]
+        pluck_list = deck["pluck"]
+        side_list = deck["side"]
+
+        card_count = {}
+        for item in card_list:
+            if item not in card_count.keys():
+                card_count[item] = 1
+            else:
+                card_count[item] += 1
+
+        pluck_count = {}
+        for item in pluck_list:
+            if item not in pluck_count.keys():
+                pluck_count[item] = 1
+            else:
+                pluck_count[item] += 1
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.cards
+        main_deck = []
+        for card_item, count in card_count.items():
+            card = db.find_one({"card_number": card_item})
+            card["id"] = str(card["_id"])
+            card["count"] = count
+            main_deck.append(CardOut(**card))
+        pluck_deck = []
+        for pluck_item, count in pluck_count.items():
+            pluck = db.find_one({"card_number": pluck_item})
+            pluck["id"] = str(pluck["_id"])
+            pluck["count"] = count
+            pluck_deck.append(CardOut(**pluck))
+        side_deck = []
+        for side_item in side_list:
+            side = db.find_one({"card_number": side_item})
+            side["id"] = str(side["_id"])
+            side_deck.append(CardOut(**side))
+        deck_list = [main_deck, pluck_deck, side_deck]
+        return deck_list
+
     def get_cover_image(self, id: str) -> str:
         props = self.collection.find_one({"_id": ObjectId(id)})
         cards = props["cards"]

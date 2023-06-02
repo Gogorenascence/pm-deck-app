@@ -12,14 +12,15 @@ function DeckDetailPage() {
 
     const {deck_id} = useParams();
     const [deck, setDeck] = useState({ strategies: []});
-    const [deck_list, setDeckList] = useState([]);
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
+    const [countedMainList, setCountedMainList] = useState([]);
+    const [countedPluckList, setCountedPluckList] = useState([]);
     const [shuffledDeck, setShuffledDeck] = useState([]);
     const [ownership, setOwnership] = useState("");
     const [mulliganList, setMulliganList] = useState([]);
 
-    // // const [query, setQuery] = useState("")
+    const [listView, setListView] = useState(false);
 
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
@@ -34,9 +35,17 @@ function DeckDetailPage() {
         const deckListData = await response.json();
         console.log(deckListData[0])
         console.log(deckListData[1])
-        setDeckList(deckListData)
         setMainList(deckListData[0])
         setPluckList(deckListData[1])
+    };
+
+    const getCountedDeckList = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/counted_list/`);
+        const deckListData = await response.json();
+        console.log(deckListData[0])
+        console.log(deckListData[1])
+        setCountedMainList(deckListData[0])
+        setCountedPluckList(deckListData[1])
     };
 
     const getShuffledDeck = async() =>{
@@ -69,7 +78,7 @@ function DeckDetailPage() {
     useEffect(() => {
         getDeck();
         getDeckList();
-        console.log(deck)
+        getCountedDeckList();
     },[]);
 
     const handleMulliganChange = (card) => {
@@ -104,6 +113,10 @@ function DeckDetailPage() {
         setMulliganList([])
         console.log(shuffledDeck)
     }
+
+    const handleListView = (event) => {
+        setListView(!listView);
+    };
 
     return (
         <div className="white-space">
@@ -205,6 +218,21 @@ function DeckDetailPage() {
                         Edit Deck
                 </Button>
             </NavLink>
+            {listView?
+                <Button
+                    className="left"
+                    variant="dark"
+                    onClick={handleListView}
+                >
+                    Image View
+                </Button>:
+                <Button
+                    className="left"
+                    variant="dark"
+                    onClick={handleListView}
+                >
+                    List View
+                </Button>}
             <Button
                     className="left"
                     variant="dark"
@@ -242,26 +270,127 @@ function DeckDetailPage() {
                         Back
                 </Button>
             </NavLink>
-            <div className="maindeck">
-                <div style={{marginLeft: "20px"}}>
-                    <div style={{display: "flex", alignItems: "center"}}>
-                        <h2
-                            className="left"
-                            style={{margin: "1% 0%", fontWeight: "700"}}
-                        >Main Deck</h2>
-                        <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
-                        {main_list.length > 0 ?
-                        <h5
-                            className="left"
-                            style={{margin: "1% 0%", fontWeight: "700"}}
-                        >{main_list.length}</h5>:
-                        null}
+            {listView?
+                        <div className="deck-list">
+                            <div className="maindeck3">
+                            <div style={{marginLeft: "20px"}}>
+                                <div style={{display: "flex", alignItems: "center"}}>
+                                    <h2
+                                        className="left"
+                                        style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                    >Main Deck</h2>
+                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                    {main_list.length > 0 ?
+                                    <h5
+                                        className="left"
+                                        style={{margin: "1% 0%", fontWeight: "700"}}
+                                    >{main_list.length}</h5>:
+                                    null}
+                                </div>
+                                {main_list.length > 0 ?<>
+                                        {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                            return (
+                                                <Col style={{padding: "5px"}}>
+                                                    <h5>{card.name} x {card.count}</h5>
+                                                </Col>
+                                            );
+                                        })}
+                                    </>:
+                                <h4 className="left no-cards">No cards added</h4>}
+                            </div>
+                        </div>
+
+                        <div className="pluckdeck3">
+                            <div style={{marginLeft: "20px"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                    <h2
+                                        className="left"
+                                        style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                    >Pluck Deck</h2>
+                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                    {pluck_list.length > 0 ?
+                                    <h5
+                                        className="left"
+                                        style={{margin: "1% 0%", fontWeight: "700"}}
+                                    >{pluck_list.length}</h5>:
+                                    null}
+                                </div>
+                                {pluck_list.length > 0 ?<>
+                                        {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                            return (
+                                                <Col style={{padding: "5px"}}>
+                                                        <h5>{card.name} x {card.count}</h5>
+                                                </Col>
+                                            );
+                                        })}
+                                    </>:
+                                <h4 className="left no-cards">No cards added</h4>}
+                            </div>
+                        </div>
                     </div>
-                    {main_list.length > 0 ?
-                        <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
-                            {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                return (
-                                    <Col style={{padding: "5px"}}>
+            :<>
+                <div className="maindeck">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Main Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            {main_list.length > 0 ?
+                            <h5
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >{main_list.length}</h5>:
+                            null}
+                        </div>
+                        {main_list.length > 0 ?
+
+                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                                <img
+                                                    style={{ width: '140px',
+                                                            margin: '2.25px 0px',
+                                                            borderRadius: "7px",
+                                                            overflow: "hidden"}}
+
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+
+                                        </Col>
+                                    );
+                                })}
+                            </Row>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                    </div>
+                </div>
+
+
+
+                <div className="pluckdeck">
+                    <div style={{marginLeft: "20px"}}>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Pluck Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            {pluck_list.length > 0 ?
+                            <h5
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >{pluck_list.length}</h5>:
+                            null}
+                        </div>
+                        {pluck_list.length > 0 ?
+                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                                {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
                                             <img
                                                 style={{ width: '140px',
                                                         margin: '2.25px 0px',
@@ -273,51 +402,14 @@ function DeckDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
 
-                                    </Col>
-                                );
-                            })}
-                        </Row>:
-                    <h4 className="left no-cards">No cards added</h4>}
-                </div>
-            </div>
-            <div className="pluckdeck">
-                <div style={{marginLeft: "20px"}}>
-                <div style={{display: "flex", alignItems: "center"}}>
-                        <h2
-                            className="left"
-                            style={{margin: "1% 0%", fontWeight: "700"}}
-                        >Pluck Deck</h2>
-                        <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
-                        {pluck_list.length > 0 ?
-                        <h5
-                            className="left"
-                            style={{margin: "1% 0%", fontWeight: "700"}}
-                        >{pluck_list.length}</h5>:
-                        null}
+                                        </Col>
+                                    );
+                                })}
+                            </Row> :
+                        <h4 className="left no-cards">No cards added</h4>}
                     </div>
-                    {pluck_list.length > 0 ?
-                        <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
-                            {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                return (
-                                    <Col style={{padding: "5px"}}>
-                                        <img
-                                            style={{ width: '140px',
-                                                    margin: '2.25px 0px',
-                                                    borderRadius: "7px",
-                                                    overflow: "hidden"}}
-
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
-
-                                    </Col>
-                                );
-                            })}
-                        </Row> :
-                    <h4 className="left no-cards">No cards added</h4>}
                 </div>
-            </div>
+            </>}
     </div>
     );
 }

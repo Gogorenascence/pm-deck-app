@@ -93,7 +93,6 @@ function CardsPage() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
-        console.log(event.target.value)
         setShowMore(20)
     };
 
@@ -332,7 +331,7 @@ function CardsPage() {
                                             {line}</h6>)}
                                         {card.secondEffectText?
                                         <>{card.secondEffectText.map((line) =>
-                                        <h6 style={{fontWeight: "400", margin: "3px 12px"}}>
+                                        <h6 style={{fontWeight: "400", margin: "12px 12px 3px 12px"}}>
                                             {line}</h6>)}</>
                                         :null}
 

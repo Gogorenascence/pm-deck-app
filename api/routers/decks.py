@@ -111,6 +111,14 @@ async def get_deck_list(
     deck_list = queries.get_deck_list(deck_id)
     return deck_list
 
+@router.get("/api/decks/{deck_id}/counted_list/", response_model=list)
+async def get_counted_deck_list(
+    deck_id: str,
+    queries: DeckQueries = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck_list = queries.get_counted_deck_list(deck_id)
+    return deck_list
 
 @router.get("/decks/{deck_id}/cover/", response_model=str)
 async def get_cover_image(
