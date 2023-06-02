@@ -94,6 +94,7 @@ function CardsPage() {
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
         console.log(event.target.value)
+        setShowMore(20)
     };
 
     const handleQueryReset = (event) => {
@@ -325,13 +326,13 @@ function CardsPage() {
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
                                         <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
-                                        <h6 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h6>
+                                        <h5 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h5>
                                         {card.effectText.map((line) =>
-                                        <h6 style={{fontWeight: "400", margin: "6px 12px"}}>
+                                        <h6 style={{fontWeight: "400", margin: "3px 12px"}}>
                                             {line}</h6>)}
                                         {card.secondEffectText?
                                         <>{card.secondEffectText.map((line) =>
-                                        <h6 style={{fontWeight: "400", margin: "6px 12px"}}>
+                                        <h6 style={{fontWeight: "400", margin: "3px 12px"}}>
                                             {line}</h6>)}</>
                                         :null}
 
