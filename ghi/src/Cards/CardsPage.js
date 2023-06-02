@@ -22,8 +22,8 @@ function CardsPage() {
         tag: "",
     });
 
+    const [listView, setListView] = useState(false);
     const [sortState, setSortState] = useState("none");
-
     const [showMore, setShowMore] = useState(20);
 
     const getCards = async() =>{
@@ -32,7 +32,43 @@ function CardsPage() {
 
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
 
-        setCards(sortedCards);
+        const typedCards = []
+        for (let card of sortedCards){
+            if (card.card_type[0] == "64079ed6b2b376b6cd0454f5") {
+                card["cardType"] = "Fighter"
+            }
+            else if (card.card_type[0] == "6407bb289b4fb23f5ddab698") {
+                card["cardType"] = "Aura"
+            }
+            else if (card.card_type[0] == "6407a3bbc503d0c6f5a33238") {
+                card["cardType"] = "Move"
+            }
+            else if (card.card_type[0] == "640ce41c5f6730657ad8739f") {
+                card["cardType"] = "Ending"
+            }
+            else if (card.card_type[0] == "64108e0e159c81c7afebd105") {
+                card["cardType"] = "Any Type"
+            }
+            else if (card.card_type[0] == "64108dee159c81c7afebd104") {
+                card["cardType"] = "Item"
+            }
+            else if (card.card_type[0] == "640ce4bf5f6730657ad873be") {
+                card["cardType"] = "Event"
+            }
+            else if (card.card_type[0] == "64108db9159c81c7afebd103") {
+                card["cardType"] = "Comeback"
+            }
+
+            card["effectText"] = card.effect_text.split("//")
+
+            if (card.second_effect_text){
+                card["secondEffectText"] = card.second_effect_text.split("//")
+            }
+
+            typedCards.push(card)
+        }
+        setCards(typedCards);
+        console.log(cards)
 
     };
 
@@ -74,6 +110,7 @@ function CardsPage() {
             reaction: "",
             tag: "",
         });
+        setShowMore(20)
     };
 
     const handleSort = (event) => {
@@ -82,6 +119,11 @@ function CardsPage() {
 
     const handleShowMore = (event) => {
         setShowMore(showMore + 20);
+    };
+
+    const handleListView = (event) => {
+        setListView(!listView);
+        setShowMore(20)
     };
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
@@ -96,6 +138,7 @@ function CardsPage() {
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
         .sort(sortMethods[sortState].method)
+
 
     return (
         <div className="white-space">
@@ -260,6 +303,44 @@ function CardsPage() {
                 >
                 Random Card
             </Button>
+            {listView?
+                <Button
+                    className="left"
+                    variant="dark"
+                    onClick={handleListView}
+                >
+                    Image View
+                </Button>:
+                <Button
+                    className="left"
+                    variant="dark"
+                    onClick={handleListView}
+                >
+                    List View
+                </Button>}
+            {listView?
+                <div className="card-list3">
+                    {all_cards.slice(0, showMore).map(card => {
+                        return (
+                            <NavLink to={`/cards/${card.card_number}`} className="nav-link">
+                                    <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
+                                        <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
+                                        <h6 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h6>
+                                        {card.effectText.map((line) =>
+                                        <h6 style={{fontWeight: "400", margin: "6px 12px"}}>
+                                            {line}</h6>)}
+                                        {card.secondEffectText?
+                                        <>{card.secondEffectText.map((line) =>
+                                        <h6 style={{fontWeight: "400", margin: "6px 12px"}}>
+                                            {line}</h6>)}</>
+                                        :null}
+
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>
+            :
             <div className="card-list">
                 {all_cards.slice(0, showMore).map(card => {
                     return (
@@ -272,10 +353,11 @@ function CardsPage() {
                     );
                 })}
             </div>
+            }
             {showMore < all_cards.length ?
                 <Button
                     variant="dark"
-                    style={{ width: "100%", marginTop:"2%"}}
+                    style={{ width: "100%", marginTop:"3%"}}
                     onClick={handleShowMore}>
                     Show More Cards ({all_cards.length - showMore} Remaining)
                 </Button> : null }
