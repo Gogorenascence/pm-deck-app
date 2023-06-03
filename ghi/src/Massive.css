@@ -336,6 +336,39 @@ text-align: center;
   overflow: hidden;
 }
 
+.builder-card2 {
+  width: 140px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.builder-card2:hover {
+  transform: scale(2.5);
+  z-index: 2000;
+  width: 140px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.builder-card3 img{
+  width: 140px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+  display: none;
+}
+
+.builder-card3:hover img{
+  transform: scale(2.5);
+  z-index: 2000;
+  width: 140px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
 .add-comp-button {
   margin: 15px 10px 10px 5px;
   width: 100px;
@@ -444,7 +477,7 @@ text-align: center;
 .logo {
   margin: 2px 4px 4px 5px;
   width: 60px;
-  opacity: 90%;
+  z-index: -1;
 }
 
 .footer {

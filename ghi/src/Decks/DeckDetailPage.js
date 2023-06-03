@@ -167,7 +167,7 @@ function DeckDetailPage() {
                                                             borderRadius: "7px",
                                                             overflow: "hidden"}}
                                                         onClick={() => handleMulliganChange(card)}
-                                                        className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected" : null}
+                                                        className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card2" : "builder-card2"}
                                                         title={card.name}
                                                         src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                         alt={card.name}/>
@@ -192,6 +192,7 @@ function DeckDetailPage() {
                                         <Row xs="auto" className="justify-content-center">
                                             <Col style={{paddingTop: "2px"}}>
                                                 <img
+                                                    className="builder-card2"
                                                     style={{ width: '120px',
                                                     margin: '10px 0px 10px 0px',
                                                     borderRadius: "7px",
@@ -351,6 +352,7 @@ function DeckDetailPage() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                                 <img
+                                                    className="builder-card2"
                                                     style={{ width: '140px',
                                                             margin: '2.25px 0px',
                                                             borderRadius: "7px",
@@ -392,6 +394,7 @@ function DeckDetailPage() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                             <img
+                                            className="builder-card2"
                                                 style={{ width: '140px',
                                                         margin: '2.25px 0px',
                                                         borderRadius: "7px",

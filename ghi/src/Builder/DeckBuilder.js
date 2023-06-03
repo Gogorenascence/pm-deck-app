@@ -618,7 +618,7 @@ function DeckBuilder() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                             <img
-                                                className="builder-card"
+                                                className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
@@ -652,7 +652,7 @@ function DeckBuilder() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                             <img
-                                                className="builder-card"
+                                                className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
