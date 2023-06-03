@@ -352,16 +352,16 @@ text-align: center;
   overflow: hidden;
 }
 
-.builder-card3 img{
-  width: 140px;
-  margin: 2.25px 0px;
+.builder-card3 {
+  width: 120px;
+  margin: 10px 0px;
   border-radius: 7px;
   overflow: hidden;
-  display: none;
+
 }
 
-.builder-card3:hover img{
-  transform: scale(2.5);
+.builder-card3:hover {
+  transform: scale(2.92);
   z-index: 2000;
   width: 140px;
   margin: 2.25px 0px;
