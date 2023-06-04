@@ -433,6 +433,7 @@ text-align: center;
   margin: 2.25px 0px;
   border-radius: 7px;
   overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
 .builder-card2:hover {
@@ -450,7 +451,7 @@ text-align: center;
   margin: 10px 0px;
   border-radius: 7px;
   overflow: hidden;
-
+  transition: transform 0.3s ease-in-out;
 }
 
 .builder-card3:hover {
@@ -570,7 +571,7 @@ text-align: center;
 .logo {
   margin: 2px 4px 4px 5px;
   width: 60px;
-  z-index: -1;
+  z-index: 0;
 }
 
 .footer {
