@@ -167,7 +167,12 @@ function DecksPage() {
                 <option value="oldest">Oldest</option>
             </select>
             <br/>
-            <Button className="left" variant="dark">Search Decks</Button>
+            <NavLink to="/deckbuilder">
+                <Button className="left"
+                    variant="dark">
+                        Create Deck
+                </Button>
+            </NavLink>
             <Button
                 className="left"
                 variant="dark"

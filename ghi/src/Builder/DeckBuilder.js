@@ -534,67 +534,77 @@ function DeckBuilder() {
                     </div>
                 </div>
                 {listView?
-                                <div className="deck-list">
-                                    <div className="maindeck3">
-                                    <div style={{marginLeft: "20px"}}>
-                                        <div style={{display: "flex", alignItems: "center"}}>
-                                            <h2
-                                                className="left"
-                                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                            >Main Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
-                                            {main_list.length > 0 ?
-                                            <h5
-                                                className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700"}}
-                                            >{main_list.length}</h5>:
-                                            null}
-                                        </div>
-                                        {main_list.length > 0 ?<>
-                                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                                    return (
-                                                        <Col style={{padding: "5px"}}>
-                                                            <h5
-                                                                onClick={() => handleRemoveCard(card)}
-                                                            >{card.name}</h5>
-                                                        </Col>
-                                                    );
-                                                })}
-                                            </>:
-                                        <h4 className="left no-cards">No cards added</h4>}
-                                    </div>
-                                </div>
-
-                                <div className="pluckdeck3">
-                                    <div style={{marginLeft: "20px"}}>
-                                    <div style={{display: "flex", alignItems: "center"}}>
-                                            <h2
-                                                className="left"
-                                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                            >Pluck Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
-                                            {pluck_list.length > 0 ?
-                                            <h5
-                                                className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700"}}
-                                            >{pluck_list.length}</h5>:
-                                            null}
-                                        </div>
-                                        {pluck_list.length > 0 ?<>
-                                                {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                                    return (
-                                                        <Col style={{padding: "5px"}}>
-                                                                <h5
-                                                                    onClick={() => handleRemoveCard(card)}
-                                                                >{card.name}</h5>
-                                                        </Col>
-                                                    );
-                                                })}
-                                            </>:
-                                        <h4 className="left no-cards">No cards added</h4>}
-                                    </div>
-                                </div>
+                    <div className="deck-list">
+                        <div className="maindeck3">
+                        <div style={{marginLeft: "20px"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                >Main Deck</h2>
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                {main_list.length > 0 ?
+                                <h5
+                                    className="left"
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                >{main_list.length}</h5>:
+                                null}
                             </div>
+                            {main_list.length > 0 ?<>
+                                    {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                        return (
+                                            <Col style={{padding: "5px"}}>
+                                                <div className="card-container">
+                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </div>
+                                            </Col>
+                                        );
+                                    })}
+                                </>:
+                            <h4 className="left no-cards">No cards added</h4>}
+                        </div>
+                    </div>
+
+                    <div className="pluckdeck3">
+                        <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                >Pluck Deck</h2>
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                {pluck_list.length > 0 ?
+                                <h5
+                                    className="left"
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                >{pluck_list.length}</h5>:
+                                null}
+                            </div>
+                            {pluck_list.length > 0 ?<>
+                                    {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                        return (
+                                            <Col style={{padding: "5px"}}>
+                                                <div className="card-container">
+                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </div>
+                                            </Col>
+                                        );
+                                    })}
+                                </>:
+                            <h4 className="left no-cards">No cards added</h4>}
+                        </div>
+                    </div>
+                </div>
                 :<>
                     <div className="maindeck">
                         <div style={{marginLeft: "20px"}}>

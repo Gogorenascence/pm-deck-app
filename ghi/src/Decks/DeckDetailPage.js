@@ -28,6 +28,7 @@ function DeckDetailPage() {
         console.log(deckData.name);
         console.log(deckData.cards);
         setDeck(deckData);
+        console.log(deckData)
     };
 
     const getDeckList = async() =>{
@@ -292,7 +293,14 @@ function DeckDetailPage() {
                                         {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
                                                 <Col style={{padding: "5px"}}>
-                                                    <h5>{card.name} x {card.count}</h5>
+                                                    <div className="card-container">
+                                                        <h5>{card.name}</h5>
+                                                        <img
+                                                            className="card-image"
+                                                            src={card.picture_url}
+                                                            alt={card.name}
+                                                        />
+                                                    </div>
                                                 </Col>
                                             );
                                         })}
@@ -320,7 +328,14 @@ function DeckDetailPage() {
                                         {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
                                                 <Col style={{padding: "5px"}}>
-                                                        <h5>{card.name} x {card.count}</h5>
+                                                    <div className="card-container">
+                                                        <h5>{card.name}</h5>
+                                                        <img
+                                                            className="card-image"
+                                                            src={card.picture_url}
+                                                            alt={card.name}
+                                                        />
+                                                    </div>
                                                 </Col>
                                             );
                                         })}

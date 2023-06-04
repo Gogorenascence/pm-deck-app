@@ -54,6 +54,7 @@ function DeckEditPage() {
             deckData["side"] = []
         }
         setDeck(deckData);
+        console.log(deckData)
     };
 
     const getDeckList = async() =>{
@@ -322,7 +323,8 @@ function DeckEditPage() {
                         name="description"
                         value={deck.description}>
                     </textarea>
-                    <h5 className="label">Strategies </h5>
+                    <h5 className="label">Strategies</h5>
+                    <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
                     <select
                         className="builder-text"
                         multiple
@@ -330,16 +332,17 @@ function DeckEditPage() {
                         onChange={handleStrategyChange}
                         >
                         <option value="">Strategy</option>
-                        <option value="Aggro">Aggro</option>
-                        <option value="Combo">Combo</option>
-                        <option value="Control">Control</option>
-                        <option value="Mid-range">Mid-range</option>
-                        <option value="Ramp">Ramp</option>
-                        <option value="Second_wind">Second Wind</option>
-                        <option value="Stall">Stall</option>
-                        <option value="Toolbox">Toolbox</option>
-                        <option value="other">other</option>
+                        <option value="Aggro" selected={deck.strategies.includes("Aggro")}>Aggro</option>
+                        <option value="Combo" selected={deck.strategies.includes("Combo")}>Combo</option>
+                        <option value="Control" selected={deck.strategies.includes("Control")}>Control</option>
+                        <option value="Mid-range" selected={deck.strategies.includes("Mid-range")}>Mid-range</option>
+                        <option value="Ramp" selected={deck.strategies.includes("Ramp")}>Ramp</option>
+                        <option value="Second Wind" selected={deck.strategies.includes("Second Wind")}>Second Wind</option>
+                        <option value="Stall" selected={deck.strategies.includes("Stall")}>Stall</option>
+                        <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
+                        <option value="other" selected={deck.strategies.includes("other")}>other</option>
                     </select>
+                    {/* {...deck.strategies.includes("Aggro")? selected:null} */}
                     <br/>
                     <Button
                         style={{width: "67px", margin: "5px"}}
@@ -604,10 +607,16 @@ function DeckEditPage() {
                                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                     return (
                                                         <Col style={{padding: "5px"}}>
-                                                            <h5
-                                                                onClick={() => handleRemoveCard(card)}
-                                                            >{card.name}</h5>
+                                                            <div className="card-container">
+                                                                <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                                <img
+                                                                    className="card-image"
+                                                                    src={card.picture_url}
+                                                                    alt={card.name}
+                                                                />
+                                                            </div>
                                                         </Col>
+
                                                     );
                                                 })}
                                             </>:
@@ -634,9 +643,14 @@ function DeckEditPage() {
                                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                     return (
                                                         <Col style={{padding: "5px"}}>
-                                                                <h5
-                                                                    onClick={() => handleRemoveCard(card)}
-                                                                >{card.name}</h5>
+                                                            <div className="card-container">
+                                                                <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                                <img
+                                                                    className="card-image"
+                                                                    src={card.picture_url}
+                                                                    alt={card.name}
+                                                                />
+                                                            </div>
                                                         </Col>
                                                     );
                                                 })}
