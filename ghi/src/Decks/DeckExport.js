@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { saveAs } from "file-saver";
 
 function DeckExport(props) {
 
@@ -325,6 +326,62 @@ function DeckExport(props) {
   }
   pluckExport["ObjectStates"]["ContainedObjects"] = pluckExportContainedObjects
   console.log(pluckExport)
+
+  // Download image for the first card in main_list
+  //   const mainCardImage = new Image();
+  //   mainCardImage.src = main_list[0].picture_url;
+  //   mainCardImage.onload = () => {
+  //     const canvas = document.createElement("canvas");
+  //     canvas.width = mainCardImage.width;
+  //     canvas.height = mainCardImage.height;
+  //     const ctx = canvas.getContext("2d");
+  //     ctx.drawImage(mainCardImage, 0, 0);
+  //     canvas.toBlob((blob) => {
+  //       const mainCardLink = document.createElement("a");
+  //       mainCardLink.href = URL.createObjectURL(blob);
+  //       mainCardLink.download = `${deck.name} Main.png`;
+  //       mainCardLink.click();
+  //       URL.revokeObjectURL(mainCardLink.href);
+  //     }, "image/png");
+  //   };
+
+
+  // // Download image for the first card in pluck_list
+
+  // const pluckCardImage = new Image();
+  // pluckCardImage.src = pluck_list[0].picture_url;
+  // pluckCardImage.onload = () => {
+  //   const canvas = document.createElement("canvas");
+  //   canvas.width = pluckCardImage.width;
+  //   canvas.height = pluckCardImage.height;
+  //   const ctx = canvas.getContext("2d");
+  //   ctx.drawImage(pluckCardImage, 0, 0);
+  //   canvas.toBlob((blob) => {
+  //     const pluckCardLink = document.createElement("a");
+  //     pluckCardLink.href = URL.createObjectURL(blob);
+  //     pluckCardLink.download = `${deck.name} Pluck.png`;
+  //     pluckCardLink.click();
+  //     URL.revokeObjectURL(pluckCardLink.href);
+  //   }, "image/png");
+  // };
+
+
+  const deckExportBlob = new Blob([JSON.stringify(deckExport)], { type: "application/json" });
+  const deckExportURL = URL.createObjectURL(deckExportBlob);
+  const deckExportLink = document.createElement("a");
+  deckExportLink.href = deckExportURL;
+  deckExportLink.download = `${deck.name} Main.json`;
+  deckExportLink.click();
+  URL.revokeObjectURL(deckExportURL);
+
+  // Create the pluckExport JSON file
+  const pluckExportBlob = new Blob([JSON.stringify(pluckExport)], { type: "application/json" });
+  const pluckExportURL = URL.createObjectURL(pluckExportBlob);
+  const pluckExportLink = document.createElement("a");
+  pluckExportLink.href = pluckExportURL;
+  pluckExportLink.download = `${deck.name} Pluck.json`;
+  pluckExportLink.click();
+  URL.revokeObjectURL(pluckExportURL);
 };
 
   return (
