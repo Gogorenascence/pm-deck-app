@@ -21,7 +21,16 @@ function DeckExport(props) {
     }
   }
 
+  const loadCardImage = (src) =>
+    new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+      image.src = src;
+    });
+
   const exportDeck = async() =>{
+    loadCardImage()
     getDeckIDsMainList()
     let deckExport = {
         "ObjectStates": [
@@ -202,44 +211,7 @@ function DeckExport(props) {
           "Hands": false,
           "SidewaysCard": false,
           "DeckIDs": [],
-          "CustomDeck": {
-            "160": {
-              "FaceURL": "https://kornan.dreamhosters.com/i1b2he",
-              "BackURL": "https://kornan.dreamhosters.com/logo4/",
-              "NumWidth": 1,
-              "NumHeight": 1,
-              "BackIsHidden": true,
-              "UniqueBack": false,
-              "Type": 0
-            },
-            "161": {
-              "FaceURL": "https://kornan.dreamhosters.com/i1b2hm",
-              "BackURL": "https://kornan.dreamhosters.com/logo4/",
-              "NumWidth": 1,
-              "NumHeight": 1,
-              "BackIsHidden": true,
-              "UniqueBack": false,
-              "Type": 0
-            },
-            "162": {
-              "FaceURL": "https://kornan.dreamhosters.com/i1b2ha",
-              "BackURL": "https://kornan.dreamhosters.com/logo4/",
-              "NumWidth": 1,
-              "NumHeight": 1,
-              "BackIsHidden": true,
-              "UniqueBack": false,
-              "Type": 0
-            },
-            "163": {
-              "FaceURL": "https://kornan.dreamhosters.com/i1b2hf",
-              "BackURL": "https://kornan.dreamhosters.com/logo4/",
-              "NumWidth": 1,
-              "NumHeight": 1,
-              "BackIsHidden": true,
-              "UniqueBack": false,
-              "Type": 0
-            }
-          },
+          "CustomDeck": {},
           "LuaScript": "",
           "LuaScriptState": "",
           "XmlUI": "",
@@ -327,8 +299,9 @@ function DeckExport(props) {
   pluckExport["ObjectStates"]["ContainedObjects"] = pluckExportContainedObjects
   console.log(pluckExport)
 
-  // Download image for the first card in main_list
-  //   const mainCardImage = new Image();
+
+  // // Download image for the first card in main_list
+  // const mainCardImage = await loadCardImage("main_back.png");
   //   mainCardImage.src = main_list[0].picture_url;
   //   mainCardImage.onload = () => {
   //     const canvas = document.createElement("canvas");
@@ -347,13 +320,12 @@ function DeckExport(props) {
 
 
   // // Download image for the first card in pluck_list
-
-  // const pluckCardImage = new Image();
+  // const pluckCardImage = await loadCardImage("pluck_back.png");
   // pluckCardImage.src = pluck_list[0].picture_url;
   // pluckCardImage.onload = () => {
   //   const canvas = document.createElement("canvas");
-  //   canvas.width = pluckCardImage.width;
-  //   canvas.height = pluckCardImage.height;
+  //   canvas.width = 256;
+  //   canvas.height = 256;
   //   const ctx = canvas.getContext("2d");
   //   ctx.drawImage(pluckCardImage, 0, 0);
   //   canvas.toBlob((blob) => {
