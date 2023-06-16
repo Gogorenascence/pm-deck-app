@@ -205,10 +205,20 @@ function DecksPage() {
                                         >
                                             User:
                                         </h6> */}
-                                        <h6
-                                            style={{margin: '0px 0px 0px 0px', fontWeight: "600"}}
+                                        <h6 className="left"
+                                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
                                         >
                                             Strategies: {deck.strategies.join(', ')}
+                                        </h6>
+                                        <h6 className="left"
+                                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                                        >
+                                            Main Deck: {deck.cards.length}
+                                        </h6>
+                                        <h6 className="left"
+                                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                                        >
+                                            Pluck Deck: {deck.pluck.length}
                                         </h6>
                                         {/* <Card.Text
                                         className="card-img-overlay container d-flex flex-column justify-content-end"
