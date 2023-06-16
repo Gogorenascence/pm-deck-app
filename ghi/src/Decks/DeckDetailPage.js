@@ -6,6 +6,7 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink, useParams} from 'react-router-dom';
+import DeckExport from "./DeckExport";
 
 
 function DeckDetailPage() {
@@ -25,17 +26,12 @@ function DeckDetailPage() {
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
         const deckData = await response.json();
-        console.log(deckData.name);
-        console.log(deckData.cards);
         setDeck(deckData);
-        console.log(deckData)
     };
 
     const getDeckList = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
         const deckListData = await response.json();
-        console.log(deckListData[0])
-        console.log(deckListData[1])
         setMainList(deckListData[0])
         setPluckList(deckListData[1])
     };
@@ -43,8 +39,6 @@ function DeckDetailPage() {
     const getCountedDeckList = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/counted_list/`);
         const deckListData = await response.json();
-        console.log(deckListData[0])
-        console.log(deckListData[1])
         setCountedMainList(deckListData[0])
         setCountedPluckList(deckListData[1])
     };
@@ -61,13 +55,10 @@ function DeckDetailPage() {
             [shuffledDeck[currentIndex], shuffledDeck[randomIndex]] = [
             shuffledDeck[randomIndex], shuffledDeck[currentIndex]];
         }
-        console.log(shuffledDeck)
         setShuffledDeck(shuffledDeck);
-        console.log(shuffledDeck)
 
         const randomPluckIndex = Math.floor(Math.random() * pluck_list.length);
         setOwnership(pluck_list[randomPluckIndex]);
-        console.log(ownership)
     }
 
     const clearShuffledDeck = async() =>{
@@ -89,11 +80,8 @@ function DeckDetailPage() {
             const newMulliganList = [...mulliganList];
             newMulliganList.splice(mulliganIndex, 1);
             setMulliganList(newMulliganList);
-            console.log(mulliganList)
         }else{
-            console.log(card)
             setMulliganList([...mulliganList, deckIndex]);
-            console.log(mulliganList)
         }
     }
 
@@ -112,7 +100,6 @@ function DeckDetailPage() {
         }
         setShuffledDeck(shuffledDeck.slice(0))
         setMulliganList([])
-        console.log(shuffledDeck)
     }
 
     const handleListView = (event) => {
@@ -211,11 +198,12 @@ function DeckDetailPage() {
                     </div>:
                     null}
             </div>
+            <div style={{ display: "flex" }}>
             <NavLink to={`/decks/${deck.id}/edit`}>
                 <Button
-                        className="left"
+                        className="left heightNorm button100"
                         variant="danger"
-                        style={{marginLeft: ".5%"}}
+                        style={{marginLeft: ".5%", marginRight: "7px"}}
                         >
                         Edit Deck
                 </Button>
@@ -263,6 +251,7 @@ function DeckDetailPage() {
                     </Button>
                 </>:
             null}
+            <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
             <NavLink to="/decks/">
                 <Button
                         className="left button100"
@@ -272,6 +261,7 @@ function DeckDetailPage() {
                         Back
                 </Button>
             </NavLink>
+            </div>
             {listView?
                         <div className="deck-list">
                             <div className="maindeck3">

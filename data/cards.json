@@ -993,11 +993,11 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1068,
   "enthusiasm": null,
-  "effect_text": "Your Fighter(s) gains damage plus 1 if it deals damage to a defending Fighter (that card deals 1 additional damage at the end of its resolution).",
+  "effect_text": "<Trigger> At the start of the round or during a foe's turn, resolve the main effect of 1 Fighter in your play.",
   "second_effect_text": "<C.Trigger> At the start of the round, you go first.",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1pl01pme",
-  "file_name": "",
+  "file_name": "i1pl01pme",
   "card_type": [
     "640ce4bf5f6730657ad873be"
   ],

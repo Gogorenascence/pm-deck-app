@@ -45,6 +45,7 @@ function RelatedCardModal() {
                 size="xl"
                 onHide={handleClose}
                 keyboard={false}
+                className="topbar"
             >
                 <Modal.Body closeButton>
                 <h1 className="centered-h1">Related Cards</h1>

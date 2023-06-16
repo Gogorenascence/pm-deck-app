@@ -734,3 +734,8 @@ text-align: center;
   display: none;
   transform: translate(10%, -80%);
 }
+
+.heightNorm{
+  height: 38px;
+  text-align: center;
+}

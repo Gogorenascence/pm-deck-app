@@ -133,6 +133,7 @@ function CardEditModal() {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
+                className="topbar"
             >
                 <Modal.Header closeButton>
                     <h1 className="label" style={{marginLeft: "10.5%"}}>Card Edit</h1>
