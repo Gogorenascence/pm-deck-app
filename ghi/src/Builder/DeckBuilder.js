@@ -276,6 +276,7 @@ function DeckBuilder() {
                         value={deck.description}>
                     </textarea>
                     <h5 className="label">Strategies </h5>
+                    <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
                     <select
                         className="builder-text"
                         multiple

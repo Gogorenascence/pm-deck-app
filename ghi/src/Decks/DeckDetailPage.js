@@ -284,7 +284,7 @@ function DeckDetailPage() {
                                             return (
                                                 <Col style={{padding: "5px"}}>
                                                     <div className="card-container">
-                                                        <h5>{card.name}</h5>
+                                                    <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
                                                             className="card-image"
                                                             src={card.picture_url}
@@ -319,7 +319,7 @@ function DeckDetailPage() {
                                             return (
                                                 <Col style={{padding: "5px"}}>
                                                     <div className="card-container">
-                                                        <h5>{card.name}</h5>
+                                                    <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
                                                             className="card-image"
                                                             src={card.picture_url}
