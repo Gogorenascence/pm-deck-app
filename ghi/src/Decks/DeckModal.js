@@ -59,15 +59,15 @@ function DeckDetail() {
                 type="text"
                 placeholder=" Strategy"
                 style={{width: "116px", height: "37px"}}>
-                <option value="strategy">Strategy</option>
-                <option value="aggro">Aggro</option>
-                <option value="combo">Combo</option>
-                <option value="control">Control</option>
-                <option value="midrange">Midrange</option>
-                <option value="ramp">Ramp</option>
-                <option value="second_wind">Second Wind</option>
-                <option value="stall">Stall</option>
-                <option value="toolbox">Toolbox</option>
+                <option value="">Strategy</option>
+                <option value="Aggro">Aggro</option>
+                <option value="Combo">Combo</option>
+                <option value="Control">Control</option>
+                <option value="Mid-range">Midrange</option>
+                <option value="Ramp">Ramp</option>
+                <option value="Second Wind">Second Wind</option>
+                <option value="Stall">Stall</option>
+                <option value="Toolbox">Toolbox</option>
                 <option value="other">other</option>
             </select>
             <select

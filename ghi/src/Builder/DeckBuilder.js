@@ -289,7 +289,7 @@ function DeckBuilder() {
                         <option value="Control">Control</option>
                         <option value="Mid-range">Mid-range</option>
                         <option value="Ramp">Ramp</option>
-                        <option value="Second_wind">Second Wind</option>
+                        <option value="Second Wind">Second Wind</option>
                         <option value="Stall">Stall</option>
                         <option value="Toolbox">Toolbox</option>
                         <option value="other">other</option>
