@@ -14,7 +14,6 @@ class AccountQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "accounts"
 
-
     def get_all_accounts(self) -> list[AccountOut]:
         db = self.collection.find()
         accounts = []
@@ -30,7 +29,6 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-
     def create_account(self, info: AccountIn, hashed_password: str) -> Account:
         props = info.dict()
         props["unhashed_password"] = props["password"]
@@ -43,8 +41,11 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-
-    def update_account(self, id: str, info: AccountIn, hashed_password: Union[None, str]):
+    def update_account(
+            self,
+            id: str,
+            info: AccountIn,
+            hashed_password: Union[None, str]):
         props = info.dict()
         if hashed_password is not None:
             props["unhashed_password"] = props["password"]

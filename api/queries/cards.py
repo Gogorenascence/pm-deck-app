@@ -66,7 +66,6 @@ class CardQueries(Queries):
     def delete_card(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
-
     def add_card_type(self, id: str, card_type_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         card_type = props["card_type"]
@@ -100,7 +99,6 @@ class CardQueries(Queries):
         card_type = db.find_one({"_id": ObjectId(card_type_id)})
         card_type["id"] = str(card_type["_id"])
         return card_type
-
 
     def add_extra_effect(self, id: str, extra_effect_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
@@ -138,7 +136,6 @@ class CardQueries(Queries):
             extra_effect["id"] = str(extra_effect["_id"])
             extra_effects.append(ExtraEffectOut(**extra_effect))
         return extra_effects
-
 
     def add_reaction(self, id: str, reaction_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
@@ -183,7 +180,6 @@ class CardQueries(Queries):
             reaction["count"] = b
             reactions.append(ReactionOut(**reaction))
         return reactions
-
 
     def add_tag(self, id: str, tag_id: str) -> CardOut:
         props = self.collection.find_one({"_id": ObjectId(id)})

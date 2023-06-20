@@ -23,12 +23,14 @@ class DeckQueries(Queries):
             decks.append(DeckOut(**document))
         return decks
 
+
     def get_deck(self, id) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         if not props:
             return None
         props["id"] = str(props["_id"])
         return DeckOut(**props)
+
 
     def create_deck(self, deck: DeckIn) -> Deck:
         props = deck.dict()
@@ -37,6 +39,7 @@ class DeckQueries(Queries):
         props["id"] = str(props["_id"])
         print(props)
         return Deck(**props)
+
 
     def update_deck(self, id: str, deck: DeckIn) -> DeckOut:
         props = deck.dict()
@@ -49,7 +52,6 @@ class DeckQueries(Queries):
 
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
-
 
 
     def add_card(self, id: str, card_number: int) -> DeckOut:
@@ -83,6 +85,7 @@ class DeckQueries(Queries):
 
         return DeckOut(**props, id=id)
 
+
     def remove_card(self, id: str, card_number: int) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         cards = props["cards"]
@@ -100,6 +103,7 @@ class DeckQueries(Queries):
         )
         return DeckOut(**props, id=id)
 
+
     def clear_deck(self, id: str) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         props["cards"] = []
@@ -109,6 +113,7 @@ class DeckQueries(Queries):
             return_document=ReturnDocument.AFTER,
         )
         return DeckOut(**props, id=id)
+
 
     def get_deck_list(self, id: str) -> list:
         deck = self.collection.find_one({"_id": ObjectId(id)})
@@ -136,6 +141,7 @@ class DeckQueries(Queries):
             side_deck.append(CardOut(**side))
         deck_list = [main_deck, pluck_deck, side_deck]
         return deck_list
+
 
     def get_counted_deck_list(self, id: str) -> list:
         deck = self.collection.find_one({"_id": ObjectId(id)})
@@ -179,6 +185,7 @@ class DeckQueries(Queries):
             side_deck.append(CardOut(**side))
         deck_list = [main_deck, pluck_deck, side_deck]
         return deck_list
+
 
     def get_cover_image(self, id: str) -> str:
         props = self.collection.find_one({"_id": ObjectId(id)})

@@ -1,7 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import card_types, extra_effects, reactions, card_tags, cards, decks, accounts
+from routers import (
+    card_types,
+    extra_effects,
+    reactions,
+    card_tags,
+    cards,
+    decks,
+    accounts,
+)
 from authenticator import authenticator
 import os
 

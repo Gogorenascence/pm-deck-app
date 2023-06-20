@@ -47,7 +47,7 @@ function DeckDetailPage() {
         const shuffledDeck = main_list.slice(0)
         let currentIndex = shuffledDeck.length,  randomIndex;
         // While there remain elements to shuffle.
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
             // Pick a remaining element.
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
@@ -94,7 +94,7 @@ function DeckDetailPage() {
         }
         for (let card of shuffledDeck.slice(0)){
             const removeIndex = shuffledDeck.indexOf(card)
-            if (card == "Gone"){
+            if (card === "Gone"){
                 shuffledDeck.splice(removeIndex, 1)
             }
         }
@@ -271,7 +271,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Main Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                     {main_list.length > 0 ?
                                     <h5
                                         className="left"
@@ -306,7 +306,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Pluck Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                     {pluck_list.length > 0 ?
                                     <h5
                                         className="left"
@@ -342,7 +342,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Main Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                             {main_list.length > 0 ?
                             <h5
                                 className="left"
@@ -385,7 +385,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Pluck Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                             {pluck_list.length > 0 ?
                             <h5
                                 className="left"

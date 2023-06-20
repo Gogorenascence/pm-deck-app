@@ -7,20 +7,12 @@ import DeckEditPage from "./Decks/DeckEditPage";
 import CardsPage from "./Cards/CardsPage"
 import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
-import ArticlesPage from "./Articles/ArticlesPage"
-import GamePlayPage from "./GamePlay/GamePlayPage"
-import ForumPage from "./Forum/ForumPage"
 import UnderConstruction from "./display/UnderConstruction";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
-import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
-import { useAuthContext } from "./UseToken";
-import { Context } from "./Store";
-import React, { useContext, useEffect } from "react";
-
 
 
 function App() {

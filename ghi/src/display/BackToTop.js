@@ -33,6 +33,7 @@ function BackToTop() {
             <img
                 className={`back-to-top ${showButton ? null : "hidden"}`}
                 src="https://i.imgur.com/8VVXzFI.png"
+                alt="back to top button"
                 onClick={goToTop}>
             </img>
         </div>

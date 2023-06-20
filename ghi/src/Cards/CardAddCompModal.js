@@ -1,13 +1,10 @@
 import {
-    Col,
-    Row,
-    Card,
     Button,
     Container,
     Modal,
 } from "react-bootstrap";
-import { useLocation, useParams} from 'react-router-dom';
-import React, { useState, useEffect, useContext } from 'react'
+import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
 
 
 function CardAddCompModal() {

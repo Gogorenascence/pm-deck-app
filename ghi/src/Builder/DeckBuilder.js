@@ -129,9 +129,9 @@ function DeckBuilder() {
 
     const handleClick = (card) => {
         console.log(card)
-        if (card.card_type[0] == '64108dee159c81c7afebd104' ||
-            card.card_type[0] == '640ce4bf5f6730657ad873be' ||
-            card.card_type[0] == '64108db9159c81c7afebd103'){
+        if (card.card_type[0] === '64108dee159c81c7afebd104' ||
+            card.card_type[0] === '640ce4bf5f6730657ad873be' ||
+            card.card_type[0] === '64108db9159c81c7afebd103'){
             setPluckList([...pluck_list, card]);
             console.log(pluck_list);
         }else{
@@ -141,14 +141,14 @@ function DeckBuilder() {
     }
 
     const handleRemoveCard = (card) => {
-        if (card.card_type[0] == '64108dee159c81c7afebd104' ||
-            card.card_type[0] == '640ce4bf5f6730657ad873be' ||
-            card.card_type[0] == '64108db9159c81c7afebd103'){
+        if (card.card_type[0] === '64108dee159c81c7afebd104' ||
+            card.card_type[0] === '640ce4bf5f6730657ad873be' ||
+            card.card_type[0] === '64108db9159c81c7afebd103'){
                 const pluckIndex = pluck_list.indexOf(card);
                 const newPluckList = [...pluck_list];
                 newPluckList.splice(pluckIndex, 1);
                 setPluckList(newPluckList);
-                if (card.picture_url == selectedCard){
+                if (card.picture_url === selectedCard){
                     setSelectedCard(null)
                 }
         }else{
@@ -156,7 +156,7 @@ function DeckBuilder() {
             const newMainList = [...main_list];
             newMainList.splice(mainIndex, 1);
             setMainList(newMainList);
-            if (card.picture_url == selectedCard){
+            if (card.picture_url === selectedCard){
                 setSelectedCard(null)
             }
         }
@@ -333,7 +333,7 @@ function DeckBuilder() {
                         <img
                             className="cover-card"
                             src={"logo4p.png"}
-                            alt="Card Image"
+                            alt="Card"
                             variant="bottom"/>)}
                 </div>
 
@@ -543,7 +543,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                 >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -578,7 +578,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                 >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -614,7 +614,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -649,7 +649,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" />
+                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"

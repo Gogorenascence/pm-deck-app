@@ -1,7 +1,5 @@
 import {
     Container,
-    Col,
-    Row,
     Card,
     Button,
 } from "react-bootstrap";

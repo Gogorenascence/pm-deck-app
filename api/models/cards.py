@@ -1,6 +1,7 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
 from bson.objectid import ObjectId
+
 
 class PydanticObjectId(ObjectId):
     @classmethod
@@ -42,6 +43,7 @@ class Card(CardIn):
 class CardOut(CardIn):
     id: str
     count: Optional[int]
+
 
 class CardsAll(BaseModel):
     cards: list
