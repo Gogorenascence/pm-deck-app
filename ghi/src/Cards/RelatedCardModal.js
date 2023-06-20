@@ -3,7 +3,7 @@ import {
     Modal,
 } from "react-bootstrap";
 import { useParams, NavLink} from 'react-router-dom';
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 function RelatedCardModal() {
