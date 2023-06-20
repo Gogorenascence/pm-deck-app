@@ -108,6 +108,7 @@ function CardDetailPage() {
         getReactions();
         getCardTags();
         getCards();
+    // eslint-disable-next-line
     }, [card_number]);
 
     return (
@@ -117,7 +118,7 @@ function CardDetailPage() {
                     <div className="cd-inner">
                         <img
                             className="cd-card"
-                            src={card?.picture_url ?? "logo4p.png"}/>
+                            src={card?.picture_url ?? "logo4p.png"} alt={card.name}/>
                     </div>
                     <div style={{margin: "5% 0%"}}>
                         <div>
@@ -130,7 +131,7 @@ function CardDetailPage() {
                                                     className="cd-related-card"
                                                     title={relatedCard.name}
                                                     src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                                    alt="Related Card image"
+                                                    alt={relatedCard.name}
                                                     variant="bottom"/>
                                         </NavLink>
                                     );
@@ -190,7 +191,7 @@ function CardDetailPage() {
                                                 <h5 title={card_tag.rules}
                                                     style={{fontWeight: "400", margin: "18px 12px"}}>
                                                         {
-                                                            card_tag.id == "641292cf38b70f477bb72e6f" ?
+                                                            card_tag.id === "641292cf38b70f477bb72e6f" ?
                                                             card_tag.name : card_tag.name + " *"}
                                                 </h5>
                                             );

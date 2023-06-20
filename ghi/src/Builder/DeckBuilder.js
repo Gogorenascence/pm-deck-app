@@ -57,6 +57,7 @@ function DeckBuilder() {
 
     useEffect(() => {
         getCards();
+    // eslint-disable-next-line
     },[]);
 
     const sortMethods = {

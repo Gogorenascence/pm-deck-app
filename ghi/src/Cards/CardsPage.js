@@ -34,28 +34,28 @@ function CardsPage() {
 
         const typedCards = []
         for (let card of sortedCards){
-            if (card.card_type[0] == "64079ed6b2b376b6cd0454f5") {
+            if (card.card_type[0] === "64079ed6b2b376b6cd0454f5") {
                 card["cardType"] = "Fighter"
             }
-            else if (card.card_type[0] == "6407bb289b4fb23f5ddab698") {
+            else if (card.card_type[0] === "6407bb289b4fb23f5ddab698") {
                 card["cardType"] = "Aura"
             }
-            else if (card.card_type[0] == "6407a3bbc503d0c6f5a33238") {
+            else if (card.card_type[0] === "6407a3bbc503d0c6f5a33238") {
                 card["cardType"] = "Move"
             }
-            else if (card.card_type[0] == "640ce41c5f6730657ad8739f") {
+            else if (card.card_type[0] === "640ce41c5f6730657ad8739f") {
                 card["cardType"] = "Ending"
             }
-            else if (card.card_type[0] == "64108e0e159c81c7afebd105") {
+            else if (card.card_type[0] === "64108e0e159c81c7afebd105") {
                 card["cardType"] = "Any Type"
             }
-            else if (card.card_type[0] == "64108dee159c81c7afebd104") {
+            else if (card.card_type[0] === "64108dee159c81c7afebd104") {
                 card["cardType"] = "Item"
             }
-            else if (card.card_type[0] == "640ce4bf5f6730657ad873be") {
+            else if (card.card_type[0] === "640ce4bf5f6730657ad873be") {
                 card["cardType"] = "Event"
             }
-            else if (card.card_type[0] == "64108db9159c81c7afebd103") {
+            else if (card.card_type[0] === "64108db9159c81c7afebd103") {
                 card["cardType"] = "Comeback"
             }
 
@@ -81,6 +81,7 @@ function CardsPage() {
 
     useEffect(() => {
         getCards();
+    // eslint-disable-next-line
     },[]);
 
     const sortMethods = {

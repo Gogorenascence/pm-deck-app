@@ -37,6 +37,7 @@ function DecksPage() {
 
     useEffect(() => {
         getDecks();
+    // eslint-disable-next-line
     }, []);
 
     const deckSortMethods = {

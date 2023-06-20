@@ -26,6 +26,7 @@ function RelatedCardModal() {
 
     useEffect(() => {
         getRelatedCards();
+    // eslint-disable-next-line
     }, []);
 
 
@@ -58,7 +59,7 @@ function RelatedCardModal() {
                                         style={{marginRight: "5px"}}
                                         title={relatedCard.name}
                                         src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                        alt="Related Card image"
+                                        alt={relatedCard.name}
                                         variant="bottom"/>
                             </NavLink>
                         );

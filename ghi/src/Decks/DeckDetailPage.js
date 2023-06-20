@@ -71,6 +71,7 @@ function DeckDetailPage() {
         getDeck();
         getDeckList();
         getCountedDeckList();
+    // eslint-disable-next-line
     },[]);
 
     const handleMulliganChange = (card) => {

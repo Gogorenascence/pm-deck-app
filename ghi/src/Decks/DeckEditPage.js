@@ -101,10 +101,12 @@ function DeckEditPage() {
         getDeck();
         getDeckList();
         getCards();
+    // eslint-disable-next-line
     },[]);
 
     useEffect(() => {
         getExtraData();
+    // eslint-disable-next-line
     }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {

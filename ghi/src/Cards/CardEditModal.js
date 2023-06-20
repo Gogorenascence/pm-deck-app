@@ -1,13 +1,10 @@
 import {
-    Col,
-    Row,
-    Card,
     Button,
     Container,
     Modal,
 } from "react-bootstrap";
 import { useParams} from 'react-router-dom';
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 function CardEditModal() {
@@ -46,6 +43,7 @@ function CardEditModal() {
 
     useEffect(() => {
         getCard();
+    // eslint-disable-next-line
     }, [card_number]);
 
     const handleChange = (event) => {

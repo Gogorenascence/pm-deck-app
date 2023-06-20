@@ -84,6 +84,7 @@ function CardAddCompModal() {
         getExtraEffects();
         getReactions();
         getCardTags();
+    // eslint-disable-next-line
     }, []);
 
     const handleTypeChange = (event) => {
