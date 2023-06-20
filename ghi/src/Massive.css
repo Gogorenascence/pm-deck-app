@@ -536,7 +536,7 @@ text-align: center;
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .card-list-card {
