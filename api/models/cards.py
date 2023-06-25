@@ -34,6 +34,8 @@ class CardIn(BaseModel):
     extra_effects: list
     reactions: list
     card_tags: Optional[list]
+    created_on: Optional[dict]
+    updated_on: Optional[dict]
 
 
 class Card(CardIn):

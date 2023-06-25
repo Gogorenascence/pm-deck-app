@@ -14,6 +14,7 @@ from models.card_comps import (
     TagOut
 )
 import os
+from datetime import datetime
 
 
 class CardQueries(Queries):
@@ -50,12 +51,30 @@ class CardQueries(Queries):
 
     def create_card(self, card: CardIn) -> Card:
         props = card.dict()
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": datetime.now()
+        }
+        props["created_on"] = time_dict
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Card(**props)
 
     def update_card(self, id: str, card: CardIn) -> CardOut:
         props = card.dict()
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": datetime.now()
+        }
+        props["updated_on"] = time_dict
         self.collection.find_one_and_update(
             {"_id": ObjectId(id)},
             {"$set": props},

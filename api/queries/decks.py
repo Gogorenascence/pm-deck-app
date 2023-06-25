@@ -9,6 +9,7 @@ from models.decks import (
 )
 from models.cards import CardOut
 import os
+from datetime import datetime
 
 
 class DeckQueries(Queries):
@@ -29,26 +30,45 @@ class DeckQueries(Queries):
         if not props:
             return None
         props["id"] = str(props["_id"])
+        print(props)
         return DeckOut(**props)
 
 
     def create_deck(self, deck: DeckIn) -> Deck:
         props = deck.dict()
         props["views"] = 0
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": datetime.now()
+        }
+        props["created_on"] = time_dict
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
-        print(props)
         return Deck(**props)
 
 
     def update_deck(self, id: str, deck: DeckIn) -> DeckOut:
         props = deck.dict()
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": datetime.now()
+        }
+        props["updated_on"] = time_dict
         self.collection.find_one_and_update(
             {"_id": ObjectId(id)},
             {"$set": props},
             return_document=ReturnDocument.AFTER,
         )
         return DeckOut(**props, id=id)
+
 
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})

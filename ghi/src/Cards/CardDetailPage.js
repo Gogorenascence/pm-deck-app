@@ -46,8 +46,9 @@ function CardDetailPage() {
 
         cardData["seriesNames"] = cardData.series_name.split("//")
         cardData["effectText"] = cardData.effect_text.split("//")
-        cardData["secondEffectText"] = cardData.second_effect_text.split("//")
-
+        if (cardData.second_effect_text){
+            cardData["secondEffectText"] = cardData.second_effect_text.split("//")
+        }
         setCard(cardData);
     };
 

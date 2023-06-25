@@ -24,7 +24,17 @@
     "6407a27fc503d0c6f5a33233"
   ],
   "enthusiasm": 0,
-  "second_effect_text": null
+  "second_effect_text": null,
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:42",
+    "full_time": {
+      "$date": "2023-06-25T18:42:32.929Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6407a305c503d0c6f5a33236"
@@ -54,7 +64,17 @@
     "6407a27fc503d0c6f5a33233"
   ],
   "enthusiasm": null,
-  "second_effect_text": "<Trigger> At the start of the round or when this card is revealed, all Power cards gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions)."
+  "second_effect_text": "<Trigger> At the start of the round or when this card is revealed, all Power cards gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:44",
+    "full_time": {
+      "$date": "2023-06-25T18:44:06.985Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6407a351c503d0c6f5a33237"
@@ -82,7 +102,17 @@
     "6407a27fc503d0c6f5a33233"
   ],
   "enthusiasm": 0,
-  "second_effect_text": "<Trigger> If you are targeted for damage, resolve this Move in your play."
+  "second_effect_text": "<Trigger> If you are targeted for damage, resolve this Move in your play.",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:45",
+    "full_time": {
+      "$date": "2023-06-25T18:45:13.925Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6407ad1b5139f66679d6ac55"
@@ -109,7 +139,17 @@
     "6407a27fc503d0c6f5a33233"
   ],
   "enthusiasm": 0,
-  "second_effect_text": "<Trigger> If you are targeted for damage, your Fighter gains Block 1 (that card is revealed)."
+  "second_effect_text": "<Trigger> If you are targeted for damage, your Fighter gains Block 1 (that card is revealed).",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:45",
+    "full_time": {
+      "$date": "2023-06-25T18:45:24.573Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6407d2c3a777df7381b6d87a"
@@ -139,7 +179,17 @@
     "6407a27fc503d0c6f5a33233"
   ],
   "enthusiasm": 0,
-  "second_effect_text": "<Trigger> If you defend with this card, Counter damage this card deals is treated as bypassing damage (once only)."
+  "second_effect_text": "<Trigger> If you defend with this card, Counter damage this card deals is treated as bypassing damage (once only).",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:45",
+    "full_time": {
+      "$date": "2023-06-25T18:45:34.425Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640935736b4d5881ee5633dc"
@@ -169,7 +219,17 @@
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
   ],
-  "second_effect_text": "<Critical> You can 1 damage to a random foe each time you resolve a Staunch card or defend with this card this round."
+  "second_effect_text": "<Critical> You can 1 damage to a random foe each time you resolve a Staunch card or defend with this card this round.",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:45",
+    "full_time": {
+      "$date": "2023-06-25T18:45:54.655Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640935786b4d5881ee5633dd"
@@ -197,7 +257,17 @@
   "card_tags": [
     "64124686d762a869c0b2e12d"
   ],
-  "second_effect_text": "<Trigger> If you resolve the trigger effect of a Staunch card in your play, deal 2 damage to a random foe."
+  "second_effect_text": "<Trigger> If you resolve the trigger effect of a Staunch card in your play, deal 2 damage to a random foe.",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:00.980Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6409357e6b4d5881ee5633de"
@@ -225,7 +295,17 @@
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
   ],
-  "second_effect_text": "<Trigger> If this card is discarded from your hand or play,  your Fighter gains 2 HP (that card is revealed)."
+  "second_effect_text": "<Trigger> If this card is discarded from your hand or play,  your Fighter gains 2 HP (that card is revealed).",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:07.445Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640935836b4d5881ee5633df"
@@ -253,7 +333,17 @@
   "card_tags": [
     "641292cf38b70f477bb72e6f"
   ],
-  "second_effect_text": "<Critical> Gain 2 HP."
+  "second_effect_text": "<Critical> Gain 2 HP.",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:12.648Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640b9f828e4a61dcf4e46dc3"
@@ -279,7 +369,17 @@
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
   ],
-  "second_effect_text": "<Trigger> If this card is discarded from your hand or play, deal 2 damage to a random foe."
+  "second_effect_text": "<Trigger> If this card is discarded from your hand or play, deal 2 damage to a random foe.",
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:18.074Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640cd72b5f6730657ad87285"
@@ -304,7 +404,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:24.877Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640ce3485f6730657ad8738d"
@@ -328,7 +438,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:30.435Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640ce5705f6730657ad873bf"
@@ -351,7 +471,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:36.225Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640fa56627a3b154a88df42b"
@@ -375,7 +505,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:22.412Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "640fa9ec27a3b154a88df432"
@@ -399,7 +539,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:30.307Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641098bd159c81c7afebd106"
@@ -422,7 +572,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:46",
+    "full_time": {
+      "$date": "2023-06-25T18:46:56.712Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64109f06159c81c7afebd119"
@@ -445,7 +605,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:36.168Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6410a48cb100cf99372ee885"
@@ -469,7 +639,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:44.576Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6410a5fabaeb0bbfb51492b3"
@@ -494,7 +674,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:49.451Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6410aaa0baeb0bbfb51492ba"
@@ -543,7 +733,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:52",
+    "full_time": {
+      "$date": "2023-06-25T18:52:34.717Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6412232fd762a869c0b2e0b5"
@@ -567,7 +767,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:52",
+    "full_time": {
+      "$date": "2023-06-25T18:52:40.224Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6412927438b70f477bb72e68"
@@ -593,7 +803,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:52",
+    "full_time": {
+      "$date": "2023-06-25T18:52:47.394Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64130de7b00a31a52c1b98bf"
@@ -616,7 +836,17 @@
   "reactions": [],
   "card_tags": [
     "6407ac305139f66679d6ac54"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:52",
+    "full_time": {
+      "$date": "2023-06-25T18:52:52.346Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64130eabb00a31a52c1b98d6"
@@ -639,7 +869,17 @@
   "reactions": [],
   "card_tags": [
     "6407ac305139f66679d6ac54"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:52",
+    "full_time": {
+      "$date": "2023-06-25T18:52:57.066Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641312a7b00a31a52c1b9943"
@@ -662,7 +902,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:53",
+    "full_time": {
+      "$date": "2023-06-25T18:53:03.750Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64133bbbb00a31a52c1b9ad0"
@@ -685,7 +935,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:53",
+    "full_time": {
+      "$date": "2023-06-25T18:53:09.084Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413a629b00a31a52c1b9b13"
@@ -710,7 +970,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:54",
+    "full_time": {
+      "$date": "2023-06-25T18:54:34.381Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413a6a7b00a31a52c1b9b32"
@@ -733,7 +1003,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:54",
+    "full_time": {
+      "$date": "2023-06-25T18:54:40.320Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413a730b00a31a52c1b9b47"
@@ -757,7 +1037,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:54",
+    "full_time": {
+      "$date": "2023-06-25T18:54:45.184Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413a82fb00a31a52c1b9b6e"
@@ -786,7 +1076,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:54",
+    "full_time": {
+      "$date": "2023-06-25T18:54:49.794Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413aa1bb00a31a52c1b9bb1"
@@ -809,7 +1109,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:54",
+    "full_time": {
+      "$date": "2023-06-25T18:54:56.208Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413aa91b00a31a52c1b9bc8"
@@ -834,7 +1144,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:01.747Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413ab47b00a31a52c1b9be7"
@@ -858,7 +1178,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:06.804Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413ac2fb00a31a52c1b9c06"
@@ -885,7 +1215,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:12.534Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413ad2bb00a31a52c1b9c3d"
@@ -910,7 +1250,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:17.184Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413adb6b00a31a52c1b9c58"
@@ -933,7 +1283,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:22.118Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413b79db00a31a52c1b9c77"
@@ -957,7 +1317,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:27.350Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413b968b00a31a52c1b9c96"
@@ -982,7 +1352,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:32.090Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413ba34b00a31a52c1b9cbf"
@@ -1008,7 +1388,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:49.525Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bac7b00a31a52c1b9ce6"
@@ -1034,7 +1424,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:55",
+    "full_time": {
+      "$date": "2023-06-25T18:55:55.121Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bba6b00a31a52c1b9d09"
@@ -1059,7 +1459,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:56",
+    "full_time": {
+      "$date": "2023-06-25T18:56:00.410Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bc36b00a31a52c1b9d24"
@@ -1082,7 +1492,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:56",
+    "full_time": {
+      "$date": "2023-06-25T18:56:05.808Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bcb1b00a31a52c1b9d3b"
@@ -1107,7 +1527,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:56",
+    "full_time": {
+      "$date": "2023-06-25T18:56:12.953Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bd2cb00a31a52c1b9d5a"
@@ -1132,7 +1562,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:19.806Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bdabb00a31a52c1b9d79"
@@ -1157,7 +1597,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:24.796Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413be4fb00a31a52c1b9d98"
@@ -1182,7 +1632,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:29.459Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bee1b00a31a52c1b9db7"
@@ -1208,7 +1668,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:34.918Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bf79b00a31a52c1b9de4"
@@ -1233,7 +1703,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:40.098Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413bffeb00a31a52c1b9e03"
@@ -1259,7 +1739,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:45.089Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413c0c4b00a31a52c1b9e32"
@@ -1285,7 +1775,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:49.285Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413c161b00a31a52c1b9e59"
@@ -1310,7 +1810,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:57",
+    "full_time": {
+      "$date": "2023-06-25T18:57:54.535Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413c1d3b00a31a52c1b9e74"
@@ -1333,7 +1843,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:01.846Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413c2dcb00a31a52c1b9e8b"
@@ -1358,7 +1878,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:07.789Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6413c34cb00a31a52c1b9eaa"
@@ -1381,7 +1911,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:12.089Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641419bfb00a31a52c1b9ec1"
@@ -1406,7 +1946,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:16.692Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64141a6ab00a31a52c1b9ee0"
@@ -1430,7 +1980,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:25.121Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64141bb5b00a31a52c1b9eff"
@@ -1456,7 +2016,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:29.643Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64141c68b00a31a52c1b9f26"
@@ -1481,7 +2051,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:34.802Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64141dadb00a31a52c1b9f55"
@@ -1505,7 +2085,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:58",
+    "full_time": {
+      "$date": "2023-06-25T18:58:39.540Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64141e41b00a31a52c1b9f74"
@@ -1530,7 +2120,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:33.350Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6414200db00a31a52c1b9fc3"
@@ -1555,7 +2155,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:39.910Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641420a2b00a31a52c1b9fe2"
@@ -1578,7 +2188,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:46.747Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6414212cb00a31a52c1b9ff9"
@@ -1603,7 +2223,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:52.534Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6414223fb00a31a52c1ba01e"
@@ -1627,7 +2257,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:58.859Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64142354b00a31a52c1ba03d"
@@ -1651,7 +2291,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:03.135Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641423bdb00a31a52c1ba05c"
@@ -1674,7 +2324,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:07.158Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "641425ffb00a31a52c1ba073"
@@ -1699,7 +2359,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:11.835Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64169cb10673ac355a739f21"
@@ -1724,7 +2394,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:18.581Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6431be08b87f22f9450ff544"
@@ -1750,7 +2430,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:23.163Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6439559c3d6559427fc5845f"
@@ -1773,7 +2463,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:09",
+    "full_time": {
+      "$date": "2023-06-25T19:09:28.245Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643956423d6559427fc58466"
@@ -1796,7 +2496,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:07",
+    "full_time": {
+      "$date": "2023-06-25T19:07:37.171Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643956e33d6559427fc5846d"
@@ -1821,7 +2531,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:07",
+    "full_time": {
+      "$date": "2023-06-25T19:07:41.514Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6439583c3d6559427fc584dc"
@@ -1847,7 +2567,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:07",
+    "full_time": {
+      "$date": "2023-06-25T19:07:47.834Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643959963d6559427fc5852b"
@@ -1870,7 +2600,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:07",
+    "full_time": {
+      "$date": "2023-06-25T19:07:53.925Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395a0b3d6559427fc58532"
@@ -1895,7 +2635,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:01.274Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395a903d6559427fc58539"
@@ -1920,7 +2670,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:07.721Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395bc43d6559427fc585a2"
@@ -1943,7 +2703,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:12.623Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395c473d6559427fc585a9"
@@ -1968,7 +2738,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:19.042Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395cf53d6559427fc585f1"
@@ -1993,7 +2773,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:08",
+    "full_time": {
+      "$date": "2023-06-25T19:08:25.988Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395d643d6559427fc585f8"
@@ -2018,7 +2808,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:58.963Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64395ea73d6559427fc585ff"
@@ -2043,7 +2843,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:03.569Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643961c93d6559427fc58618"
@@ -2066,7 +2876,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:09.077Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643962953d6559427fc58635"
@@ -2092,7 +2912,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:13.733Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643976ef3d6559427fc5879c"
@@ -2117,7 +2947,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:19.516Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643977593d6559427fc587a3"
@@ -2140,7 +2980,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:24.834Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643977cc3d6559427fc587aa"
@@ -2165,7 +3015,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:13",
+    "full_time": {
+      "$date": "2023-06-25T19:13:30.886Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64397afc3d6559427fc58825"
@@ -2194,7 +3054,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:11",
+    "full_time": {
+      "$date": "2023-06-25T19:11:44.354Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64397b773d6559427fc5885c"
@@ -2220,7 +3090,17 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:11",
+    "full_time": {
+      "$date": "2023-06-25T19:11:49.370Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f53632e72274cabf63893"
@@ -2244,7 +3124,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:11",
+    "full_time": {
+      "$date": "2023-06-25T19:11:54.452Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f54b72e72274cabf6389a"
@@ -2268,7 +3158,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:11",
+    "full_time": {
+      "$date": "2023-06-25T19:11:59.782Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f54fe2e72274cabf638a1"
@@ -2291,7 +3191,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:05.753Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f55642e72274cabf638ae"
@@ -2314,7 +3224,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:12.268Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f55a42e72274cabf638b5"
@@ -2337,7 +3257,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:18.514Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f56612e72274cabf638cc"
@@ -2361,7 +3291,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:24.353Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f56dc2e72274cabf638d3"
@@ -2386,7 +3326,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:29.419Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f57342e72274cabf638da"
@@ -2409,7 +3359,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:35.283Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f57a82e72274cabf638e1"
@@ -2434,7 +3394,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:41.563Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5a152e72274cabf639e6"
@@ -2457,7 +3427,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:47.279Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5a7b2e72274cabf639ed"
@@ -2482,7 +3462,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:12",
+    "full_time": {
+      "$date": "2023-06-25T19:12:53.579Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5ae22e72274cabf639f7"
@@ -2494,7 +3484,7 @@
   "card_number": 1084,
   "enthusiasm": null,
   "effect_text": "This Comeback counts as a Power card in your play (this does not count towards play size).",
-  "second_effect_text": "<Trigger> Draw 3 cards, then discard 1 card from your hand.\n\n\n",
+  "second_effect_text": "<Trigger> Draw 3 cards, then discard 1 card from your hand.",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1cb6rf",
   "file_name": "i1cb6rf",
@@ -2507,7 +3497,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:29.871Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5d4f2e72274cabf63ac7"
@@ -2533,7 +3533,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:35.348Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5dcc2e72274cabf63ace"
@@ -2558,7 +3568,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:39.634Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f5e5d2e72274cabf63ad9"
@@ -2583,7 +3603,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:44.466Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f612e2e72274cabf63b46"
@@ -2609,7 +3639,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:50.352Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f61972e72274cabf63b4d"
@@ -2635,7 +3675,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:19",
+    "full_time": {
+      "$date": "2023-06-25T19:19:55.272Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "643f61e22e72274cabf63b54"
@@ -2658,7 +3708,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:00.729Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644004b62e72274cabf63bdd"
@@ -2683,7 +3743,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:05.610Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644005292e72274cabf63be4"
@@ -2706,7 +3776,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:10.620Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644005a42e72274cabf63beb"
@@ -2730,7 +3810,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:14.831Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6440061d2e72274cabf63bf8"
@@ -2756,7 +3846,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:20.017Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644006842e72274cabf63bff"
@@ -2781,7 +3881,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:24.061Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644006d82e72274cabf63c06"
@@ -2806,7 +3916,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:28.752Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644008fb2e72274cabf63cd6"
@@ -2829,7 +3949,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:35.844Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644009582e72274cabf63cdd"
@@ -2854,7 +3984,17 @@
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:52.218Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644009d32e72274cabf63ce4"
@@ -2878,7 +4018,17 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:20",
+    "full_time": {
+      "$date": "2023-06-25T19:20:57.391Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400a342e72274cabf63ceb"
@@ -2903,7 +4053,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:02.140Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400a8f2e72274cabf63cf2"
@@ -2926,7 +4086,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:07.437Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400ae72e72274cabf63cf9"
@@ -2951,7 +4121,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:12.570Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400c802e72274cabf63daf"
@@ -2974,7 +4154,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:17.627Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400cda2e72274cabf63db6"
@@ -2997,7 +4187,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:21.895Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "64400d4c2e72274cabf63dbd"
@@ -3023,7 +4223,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:27.609Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644010532e72274cabf63e2a"
@@ -3048,7 +4258,17 @@
   "reactions": [],
   "card_tags": [
     "64124686d762a869c0b2e12d"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:32.631Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6440132e2e72274cabf63e51"
@@ -3071,7 +4291,17 @@
   "reactions": [],
   "card_tags": [
     "640ce5e85f6730657ad873cb"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:39.801Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "644015702e72274cabf63e6e"
@@ -3096,7 +4326,17 @@
   "reactions": [],
   "card_tags": [
     "641292cf38b70f477bb72e6f"
-  ]
+  ],
+  "created_on": null,
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:44.633Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6440bfa92e72274cabf64017"
@@ -3122,5 +4362,21 @@
   ],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:09",
+    "full_time": "2023-06-25T18:09:54.986000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "19:21",
+    "full_time": {
+      "$date": "2023-06-25T19:21:51.382Z"
+    }
+  }
 }]
