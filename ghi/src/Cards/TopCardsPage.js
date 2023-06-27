@@ -17,6 +17,8 @@ function TopCardsPage() {
     //     none: { method: (a,b) => b.count.localeCompare(a.count) },
     // };
 
+    const limit = 126
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_popular_cards/`);
         const data = await response.json();
@@ -107,7 +109,7 @@ function TopCardsPage() {
                 </Button>}
             {listView?
                 <div className="card-list3">
-                    {cards.slice(0, 50).slice(0, showMore).map(card => {
+                    {cards.slice(0, limit).slice(0, showMore).map(card => {
                         return (
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
@@ -131,7 +133,7 @@ function TopCardsPage() {
                 </div>
             :
             <div className="card-list5">
-                {cards.slice(0, 50).slice(0, showMore).map(card => {
+                {cards.slice(0, limit).slice(0, showMore).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                 <img className="card-list-card2"
@@ -147,12 +149,12 @@ function TopCardsPage() {
                 })}
             </div>
             }
-            {showMore < 50 ?
+            {showMore < limit ?
                 <Button
                     variant="dark"
                     style={{ width: "100%", marginTop:"3%"}}
                     onClick={handleShowMore}>
-                    Show More Cards ({50 - showMore} Remaining)
+                    Show More Cards ({limit - showMore} Remaining)
                 </Button> : null }
     </div>
     );
