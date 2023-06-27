@@ -207,6 +207,36 @@ class DeckQueries(Queries):
         return deck_list
 
 
+    def get_popular_cards(self) -> list:
+        print("cat")
+        deck_count = {}
+        all_cards_lists = []
+        db = self.collection.find()
+        for document in db:
+            cards_list = list(set(document["cards"] + document["pluck"]))
+            all_cards_lists += cards_list
+        for card in all_cards_lists:
+            if card not in deck_count.keys():
+                deck_count[card] = 1
+            else:
+                deck_count[card] += 1
+        deck_count.pop(1065)
+        deck_count.pop(1066)
+        print(deck_count)
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.cards
+
+        popular_cards = []
+        for card_number,count in deck_count.items():
+            card = db.find_one({"card_number": card_number })
+            card["id"] = str(card["_id"])
+            card["count"] = count
+            popular_cards.append(CardOut(**card))
+        return popular_cards
+
+
     def get_cover_image(self, id: str) -> str:
         props = self.collection.find_one({"_id": ObjectId(id)})
         cards = props["cards"]

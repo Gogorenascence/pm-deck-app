@@ -120,6 +120,13 @@ async def get_counted_deck_list(
     deck_list = queries.get_counted_deck_list(deck_id)
     return deck_list
 
+
+@router.get("/api/decks/get_popular_cards/", response_model=list)
+async def get_popular_cards(queries: DeckQueries = Depends()):
+    popular_cards = queries.get_popular_cards()
+    return popular_cards
+
+
 @router.get("/decks/{deck_id}/cover/", response_model=str)
 async def get_cover_image(
     deck_id: str,

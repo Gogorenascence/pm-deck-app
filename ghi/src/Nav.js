@@ -61,8 +61,8 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/popular">
-                    Popular Cards
+                  <NavLink className="dropdown-item" to="/cards/topcards">
+                    Top Cards
                   </NavLink>
                 </li>
                 <li>

@@ -7,6 +7,7 @@ import DeckEditPage from "./Decks/DeckEditPage";
 import CardsPage from "./Cards/CardsPage"
 import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
+import TopCardsPage from "./Cards/TopCardsPage";
 import UnderConstruction from "./display/UnderConstruction";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -32,7 +33,7 @@ function App() {
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/cards/create" element={<CardCreatePage />} />
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
-          <Route path="/cards/popular" element={<UnderConstruction />} />
+          <Route path="/cards/topcards" element={<TopCardsPage />} />
           <Route path="/cards/series" element={<UnderConstruction />} />
           <Route path="/cards/products" element={<UnderConstruction />} />
           <Route path="/articles" element={<UnderConstruction />} />
