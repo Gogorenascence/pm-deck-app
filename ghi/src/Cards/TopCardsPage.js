@@ -121,7 +121,7 @@ function TopCardsPage() {
                                         <h6 style={{fontWeight: "400", margin: "12px 12px 3px 12px"}}>
                                             {line}</h6>)}</>
                                         :null} */}
-                                        <h4 style={{fontWeight: "600", margin: "24px 12px 0px 12px"}}>
+                                        <h4 style={{fontWeight: "600", margin: "12px 12px 0px 12px"}}>
                                             {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
                                         </h4>
                                     </div>
