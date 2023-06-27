@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 function TopCardsPage() {
 
     const [cards, setCards] = useState([]);
+    const [decks, setDecks] = useState([]);
 
     const [listView, setListView] = useState(false);
     // const [sortState, setSortState] = useState("none");
@@ -62,9 +63,15 @@ function TopCardsPage() {
 
     };
 
+    const getDecks = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
+        const data = await response.json();
+        setDecks(data.decks);
+    };
 
     useEffect(() => {
         getCards();
+        getDecks();
     // eslint-disable-next-line
     },[]);
 
@@ -109,7 +116,9 @@ function TopCardsPage() {
                                         <h6 style={{fontWeight: "400", margin: "12px 12px 3px 12px"}}>
                                             {line}</h6>)}</>
                                         :null}
-
+                                        <h4 style={{fontWeight: "600", margin: "24px 12px 0px 12px"}}>
+                                            In {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
+                                        </h4>
                                     </div>
                             </NavLink>
                         );
@@ -119,11 +128,15 @@ function TopCardsPage() {
             <div className="card-list">
                 {cards.slice(0, 20).map(card => {
                     return (
-                        <NavLink to={`/cards/${card.card_number}`}>
+                        <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                 <img className="card-list-card"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                     alt={card.name}/>
+                                <h5 className="centered-h5"> {card.name} </h5>
+                                <h6 className="centered-h5-2">
+                                    In {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
+                                </h6>
                         </NavLink>
                     );
                 })}
