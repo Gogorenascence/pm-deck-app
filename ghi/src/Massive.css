@@ -117,10 +117,10 @@ text-align: center;
 }
 
 .blackfooter2 {
-  background: black;
+  /* background: black; */
   height: 100%;
-  z-index: 1;
-  opacity: .70;
+  z-index: 2;
+  /* opacity: .70; */
 }
 
 .left-h1{
@@ -868,8 +868,23 @@ text-align: center;
   background-color: black; /* Adjust the background color if needed */
 }
 
+.card-image-clip2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: -25%;
+  height: 50%; /* Adjust this value to show the desired portion of the image */
+  background-color: black; /* Adjust the background color if needed */
+}
+
 .card-image2 {
   width: 100%;
   height: auto;
   object-fit: cover;
+  filter: brightness(20%);
+}
+
+.deck-list-background {
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust the background color and opacity as desired */
 }

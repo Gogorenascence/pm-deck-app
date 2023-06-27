@@ -20,6 +20,8 @@ function DeckDetailPage() {
     const [shuffledDeck, setShuffledDeck] = useState([]);
     const [ownership, setOwnership] = useState("");
     const [mulliganList, setMulliganList] = useState([]);
+    const [createdAgo, setCreatedAgo] = useState("");
+    const [updatedAgo, setUpdatedAgo] = useState("");
 
     const [listView, setListView] = useState(false);
 
@@ -27,7 +29,17 @@ function DeckDetailPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
         const deckData = await response.json();
         setDeck(deckData);
+        console.log(deck)
     };
+
+    const getAgos = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_time_ago/${deck_id}/`);
+        const timeData = await response.json();
+        console.log(timeData)
+        setCreatedAgo(timeData.created);
+        setUpdatedAgo(timeData.updated);
+    }
+
 
     const getDeckList = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
@@ -66,13 +78,14 @@ function DeckDetailPage() {
         setOwnership("");
     }
 
-
     useEffect(() => {
         getDeck();
         getDeckList();
         getCountedDeckList();
-    // eslint-disable-next-line
-    },[]);
+        getAgos();
+        console.log(createdAgo)
+        console.log(updatedAgo )
+    },[createdAgo, updatedAgo]);
 
     const handleMulliganChange = (card) => {
         const deckIndex = shuffledDeck.indexOf(card)
@@ -110,19 +123,48 @@ function DeckDetailPage() {
     return (
         <div className="white-space">
             <Card bg="dark" text="white" style={{margin: "2% 0%"}}>
-                <Card.Header
-                    style={{fontWeight: "500", fontSize: "40px"}}>
-                        {deck.name}
-                </Card.Header>
-                <Card.Body>
-                    <Card.Title
-                    // style={{fontWeight: "340"}}
-                    >
-                        {deck.strategies.length > 1 ?
-                            (<><strong>Strategies: </strong>{deck.strategies.join(', ')}</>):
-                            (<><strong>Strategy: </strong>{deck.strategies}</>)}
-                    </Card.Title>
-                </Card.Body>
+                <div className="card-image-wrapper">
+                    <div className="card-image-clip2">
+                        <Card.Img
+                            src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                            alt="Card image"
+                            className="card-image2"
+                            variant="bottom"/>
+                    </div>
+                </div>
+                <Card.ImgOverlay className="blackfooter2 mt-auto">
+                        <h3 className="left cd-container-child">{deck.name}</h3>
+                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
+                        >
+                            User:
+                        </h6> */}
+                        <h6 className="left"
+                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                        >
+                            Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                        </h6>
+                        <h6 className="left"
+                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                        >
+                            Main Deck: {main_list.length} &nbsp; Pluck Deck: {pluck_list.length}
+                        </h6>
+                        <div style={{ display: "flex" }}>
+                            <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
+                            <h6
+                            className="left justify-content-end"
+                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                            >
+                                {createdAgo} &nbsp; &nbsp;
+                            </h6>
+                            <img className="logo2" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
+                            <h6
+                            className="left justify-content-end"
+                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                            >
+                                {updatedAgo}
+                            </h6>
+                        </div>
+                </Card.ImgOverlay>
             </Card>
 
             {deck.description ?

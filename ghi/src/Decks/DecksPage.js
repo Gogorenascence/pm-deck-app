@@ -41,7 +41,6 @@ function DecksPage() {
             ago -= hours * 3600000;
             const minutes = Math.floor(ago / 60000);
             ago -= minutes * 60000;
-            const seconds = Math.floor(ago / 1000);
             // Format the time difference
             if (years > 0) {
             deck["created_on"]["ago"] = `${years} year ago`;
@@ -71,7 +70,6 @@ function DecksPage() {
             updateAgo -= updateHours * 3600000;
             const updateMinutes = Math.floor(updateAgo / 60000);
             updateAgo -= updateMinutes * 60000;
-            const updateSeconds = Math.floor(updateAgo / 1000);
             // Format the time difference
             if (updateYears > 0) {
             deck["updated_on"]["ago"] = `${updateYears} year ago`;
@@ -259,11 +257,11 @@ function DecksPage() {
                             <Card className="text-white text-center card-list-card3">
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">
-                                    <Card.Img
-                                        src={deck.cover_card ? deck.cover_card : "logo4p.png"}
-                                        alt="Card image"
-                                        className="card-image2"
-                                        variant="bottom"/>
+                                        <Card.Img
+                                            src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                                            alt="Card image"
+                                            className="card-image2"
+                                            variant="bottom"/>
                                     </div>
                                 </div>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">

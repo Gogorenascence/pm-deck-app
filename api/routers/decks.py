@@ -127,6 +127,15 @@ async def get_popular_cards(queries: DeckQueries = Depends()):
     return popular_cards
 
 
+@router.get("/get_time_ago/{deck_id}/", response_model=dict)
+async def get_times(
+    deck_id: str,
+    queries: DeckQueries = Depends(),
+):
+    times = queries.get_times(deck_id)
+    return times
+
+
 @router.get("/decks/{deck_id}/cover/", response_model=str)
 async def get_cover_image(
     deck_id: str,

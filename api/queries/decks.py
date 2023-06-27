@@ -226,14 +226,65 @@ class DeckQueries(Queries):
         db = conn.cards.cards
 
         popular_cards = []
-        for card_number,count in deck_count.items():
-            card = db.find_one({"card_number": card_number })
+        for card_number, count in deck_count.items():
+            card = db.find_one({"card_number":card_number})
             card["id"] = str(card["_id"])
             card["count"] = count
             popular_cards.append(CardOut(**card))
         print(popular_cards)
         return popular_cards
 
+    def get_times(self, id) -> dict:
+        time_ago = {}
+        props = self.collection.find_one({"_id": ObjectId(id)})
+        created = props["created_on"]["full_time"]
+        updated = props["updated_on"]["full_time"]
+
+        time_now = datetime.utcnow()
+
+        created_ago = time_now - created
+
+        days_created = created_ago.days
+        years_created, days_created = divmod(days_created, 365.25)
+        months_created, days_created = divmod(days_created, 30.44)
+        hours_created, remainder_created = divmod(created_ago.seconds, 3600)
+        minutes_created, seconds_created = divmod(remainder_created, 60)
+
+        if years_created > 0:
+            time_ago["created"] = f"{int(years_created)} year{'s' if int(years_created) > 1 else ''} ago"
+        elif months_created > 0:
+            time_ago["created"] = f"{int(months_created)} month{'s' if int(months_created) > 1 else ''} ago"
+        elif days_created > 0:
+            time_ago["created"] = f"{int(days_created)} day{'s' if days_created > 1 else ''} and {int(hours_created)} hours ago"
+        elif hours_created > 0:
+            time_ago["created"] = f"{int(hours_created)} hour{'s' if hours_created > 1 else ''} and {int(minutes_created)} minutes ago"
+        elif minutes_created > 0:
+            time_ago["created"] = f"{int(minutes_created)} minute{'s' if minutes_created > 1 else ''} ago"
+        else:
+            time_ago["created"] = "A few seconds ago"
+
+        updated_ago = time_now - updated
+
+        days_updated = updated_ago.days
+        years_updated, days_updated = divmod(days_updated, 365.25)
+        months_updated, days_updated = divmod(days_updated, 30.44)
+        hours_updated, remainder_updated = divmod(updated_ago.seconds, 3600)
+        minutes_updated, seconds_updated = divmod(remainder_updated, 60)
+
+        if years_updated > 0:
+            time_ago["updated"] = f"{int(years_updated)} year{'s' if years_updated > 1 else ''} ago"
+        elif months_updated > 0:
+            time_ago["updated"] = f"{int(months_updated)} month{'s' if months_updated > 1 else ''} ago"
+        elif days_updated > 0:
+            time_ago["updated"] = f"{int(days_updated)} day{'s' if days_updated > 1 else ''} and {int(hours_updated)} hours ago"
+        elif hours_updated > 0:
+            time_ago["updated"] = f"{int(hours_updated)} hour{'s' if hours_updated > 1 else ''} and {int(minutes_updated)} minutes ago"
+        elif minutes_updated > 0:
+            time_ago["updated"] = f"{int(minutes_updated)} minute{'s' if minutes_updated > 1 else ''} ago"
+        else:
+            time_ago["updated"] = "A few seconds ago"
+
+        return time_ago
 
     def get_cover_image(self, id: str) -> str:
         props = self.collection.find_one({"_id": ObjectId(id)})
