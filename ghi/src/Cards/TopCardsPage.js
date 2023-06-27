@@ -9,14 +9,19 @@ function TopCardsPage() {
     const [cards, setCards] = useState([]);
 
     const [listView, setListView] = useState(false);
-    const [sortState, setSortState] = useState("none");
+    // const [sortState, setSortState] = useState("none");
+
+    // const sortMethods = {
+    //     none: { method: (a,b) => b.count.localeCompare(a.count) },
+    // };
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/get_popular_cards/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_popular_cards/`);
         const data = await response.json();
 
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+        const sortedCards = data.sort((a,b) => b.count - a.count);
 
+        console.log(sortedCards)
         const typedCards = []
         for (let card of sortedCards){
             if (card.card_type[0] === "64079ed6b2b376b6cd0454f5") {
@@ -63,15 +68,10 @@ function TopCardsPage() {
     // eslint-disable-next-line
     },[]);
 
-    const sortMethods = {
-        none: { method: (a,b) => b.count.localeCompare(a.count) },
-    };
 
     const handleListView = (event) => {
         setListView(!listView);
     };
-
-    const all_cards = cards.sort(sortMethods[sortState].method)
 
 
     return (
@@ -95,7 +95,7 @@ function TopCardsPage() {
                 </Button>}
             {listView?
                 <div className="card-list3">
-                    {all_cards.slice(0, 20).map(card => {
+                    {cards.slice(0, 20).map(card => {
                         return (
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
@@ -117,7 +117,7 @@ function TopCardsPage() {
                 </div>
             :
             <div className="card-list">
-                {all_cards.slice(0, 20).map(card => {
+                {cards.slice(0, 20).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`}>
                                 <img className="card-list-card"

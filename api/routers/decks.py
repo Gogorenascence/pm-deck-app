@@ -121,7 +121,7 @@ async def get_counted_deck_list(
     return deck_list
 
 
-@router.get("/api/decks/get_popular_cards/", response_model=list)
+@router.get("/get_popular_cards/", response_model=list)
 async def get_popular_cards(queries: DeckQueries = Depends()):
     popular_cards = queries.get_popular_cards()
     return popular_cards

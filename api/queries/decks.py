@@ -222,7 +222,6 @@ class DeckQueries(Queries):
                 deck_count[card] += 1
         deck_count.pop(1065)
         deck_count.pop(1066)
-        print(deck_count)
 
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
@@ -234,6 +233,7 @@ class DeckQueries(Queries):
             card["id"] = str(card["_id"])
             card["count"] = count
             popular_cards.append(CardOut(**card))
+        print(popular_cards)
         return popular_cards
 
 
