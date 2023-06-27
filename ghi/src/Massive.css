@@ -138,6 +138,11 @@ text-align: center;
   margin: 5px;
 }
 
+.left-top-card {
+  text-align: left;
+  margin: 15px 5px 15px 17px;
+}
+
 .white-space {
   max-width: 80%;
   margin: auto;
@@ -554,9 +559,28 @@ text-align: center;
   justify-content: flex-start;
 }
 
+.card-list3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .25rem; /* Add any gap you want between the cards */
+}
+
+.card-list5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .25rem; /* Add any gap you want between the cards */
+}
+
 .card-list-card {
   width: 100%;
   margin: 20px 3px 0px 3px;
+  border-radius: 4.5%;
+  overflow: hidden;
+}
+
+.card-list-card2 {
+  width: 100%;
+  margin: 0px 3px 0px 3px;
   border-radius: 4.5%;
   overflow: hidden;
 }
@@ -629,7 +653,7 @@ text-align: center;
   overflow: hidden;
 }
 
-.card-list3 {
+.card-list-pairs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem; /* Add any gap you want between the cards */
@@ -753,4 +777,71 @@ text-align: center;
 .heightNorm{
   height: 38px;
   text-align: center;
+}
+
+.bigStaunch3 {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(0, 158, 92, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(3, 131, 78);
+  border-radius: 7px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.bigPower3 {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(255, 31, 31);
+  border-radius: 7px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.bigUnity3 {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(50, 132, 255, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(28, 40, 78);
+  border-radius: 7px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.bigCanny3 {
+  color: aliceblue;
+  background: url("./placeh3.png"),rgba(116, 43, 150, 0.705);
+  background-blend-mode: multiply;
+  background-size: 70%;
+  border: 7px solid rgb(68, 28, 78);
+  border-radius: 7px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.bigNoClass3 {
+  color: aliceblue;
+  background: url("./placeh5.png"),#4d475e49;
+  background-blend-mode: overlay;
+  background-size: 100%;
+  border: 7px solid #4D475E;
+  border-radius: 7px;
+  font-weight: 500;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }

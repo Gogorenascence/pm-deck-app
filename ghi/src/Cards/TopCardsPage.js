@@ -8,6 +8,7 @@ function TopCardsPage() {
 
     const [cards, setCards] = useState([]);
     const [decks, setDecks] = useState([]);
+    const [showMore, setShowMore] = useState(20);
 
     const [listView, setListView] = useState(false);
     // const [sortState, setSortState] = useState("none");
@@ -75,26 +76,30 @@ function TopCardsPage() {
     // eslint-disable-next-line
     },[]);
 
+    const handleShowMore = (event) => {
+        setShowMore(showMore + 10);
+    };
 
     const handleListView = (event) => {
         setListView(!listView);
+        setShowMore(20)
     };
 
 
     return (
         <div className="white-space">
             <h1 className="left-h1">Top Cards</h1>
-            <h2 className="left">Most Commonly Used Cards - Excluding MAX VARIABLE!!</h2>
+            <h2 className="left">Most Commonly Used Cards - Excluding MAX VARIABLE</h2>
             {listView?
                 <Button
-                    className="left"
+                    className="left-top-card"
                     variant="dark"
                     onClick={handleListView}
                 >
                     Image View
                 </Button>:
                 <Button
-                    className="left"
+                    className="left-top-card"
                     variant="dark"
                     onClick={handleListView}
                 >
@@ -102,22 +107,22 @@ function TopCardsPage() {
                 </Button>}
             {listView?
                 <div className="card-list3">
-                    {cards.slice(0, 20).map(card => {
+                    {cards.slice(0, 50).slice(0, showMore).map(card => {
                         return (
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
                                         <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
                                         <h5 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h5>
-                                        {card.effectText.map((line) =>
+                                        {/* {card.effectText.map((line) =>
                                         <h6 style={{fontWeight: "400", margin: "3px 12px"}}>
                                             {line}</h6>)}
                                         {card.secondEffectText?
                                         <>{card.secondEffectText.map((line) =>
                                         <h6 style={{fontWeight: "400", margin: "12px 12px 3px 12px"}}>
                                             {line}</h6>)}</>
-                                        :null}
+                                        :null} */}
                                         <h4 style={{fontWeight: "600", margin: "24px 12px 0px 12px"}}>
-                                            In {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
+                                            {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
                                         </h4>
                                     </div>
                             </NavLink>
@@ -125,23 +130,30 @@ function TopCardsPage() {
                     })}
                 </div>
             :
-            <div className="card-list">
-                {cards.slice(0, 20).map(card => {
+            <div className="card-list5">
+                {cards.slice(0, 50).slice(0, showMore).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`} className="nav-link">
-                                <img className="card-list-card"
+                                <img className="card-list-card2"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "logo4p.png"}
                                     alt={card.name}/>
                                 <h5 className="centered-h5"> {card.name} </h5>
                                 <h6 className="centered-h5-2">
-                                    In {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
+                                    {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
                                 </h6>
                         </NavLink>
                     );
                 })}
             </div>
             }
+            {showMore < 50 ?
+                <Button
+                    variant="dark"
+                    style={{ width: "100%", marginTop:"3%"}}
+                    onClick={handleShowMore}>
+                    Show More Cards ({50 - showMore} Remaining)
+                </Button> : null }
     </div>
     );
 }
