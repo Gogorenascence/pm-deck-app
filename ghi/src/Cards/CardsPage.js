@@ -320,7 +320,7 @@ function CardsPage() {
                     List View
                 </Button>}
             {listView?
-                <div className="card-list-pairs">
+                <div className="card-list2">
                     {all_cards.slice(0, showMore).map(card => {
                         return (
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link">
