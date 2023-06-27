@@ -17,7 +17,7 @@ function TopCardsPage() {
     //     none: { method: (a,b) => b.count.localeCompare(a.count) },
     // };
 
-    const limit = 126
+    const limit = 50
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_popular_cards/`);
