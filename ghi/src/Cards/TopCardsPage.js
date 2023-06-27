@@ -89,7 +89,7 @@ function TopCardsPage() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Top Cards</h1>
-            <h2 className="left">Most Commonly Used Cards - Excluding MAX VARIABLE</h2>
+            <h2 className="left">Most Commonly Used Cards Across All Decks</h2>
             {listView?
                 <Button
                     className="left-top-card"
