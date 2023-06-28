@@ -249,16 +249,22 @@ class DeckQueries(Queries):
         hours_created, remainder_created = divmod(created_ago.seconds, 3600)
         minutes_created, seconds_created = divmod(remainder_created, 60)
 
+        plural_year_c = 's' if years_created > 1 else ''
+        plural_month_c = 's' if months_created > 1 else ''
+        plural_day_c = 's' if days_created > 1 else ''
+        plural_hour_c = 's' if hours_created > 1 else ''
+        plural_minute_c = 's' if minutes_created > 1 else ''
+
         if years_created > 0:
-            time_ago["created"] = f"{int(years_created)} year{'s' if int(years_created) > 1 else ''} ago"
+            time_ago["created"] = f"{int(years_created)} year{plural_year_c} ago"
         elif months_created > 0:
-            time_ago["created"] = f"{int(months_created)} month{'s' if int(months_created) > 1 else ''} ago"
+            time_ago["created"] = f"{int(months_created)} month{plural_month_c} ago"
         elif days_created > 0:
-            time_ago["created"] = f"{int(days_created)} day{'s' if days_created > 1 else ''} and {int(hours_created)} hours ago"
+            time_ago["created"] = f"{int(days_created)} day{plural_day_c} and {int(hours_created)} hour{plural_hour_c} ago"
         elif hours_created > 0:
-            time_ago["created"] = f"{int(hours_created)} hour{'s' if hours_created > 1 else ''} and {int(minutes_created)} minutes ago"
+            time_ago["created"] = f"{int(hours_created)} hour{plural_hour_c} and {int(minutes_created)} minute{plural_minute_c} ago"
         elif minutes_created > 0:
-            time_ago["created"] = f"{int(minutes_created)} minute{'s' if minutes_created > 1 else ''} ago"
+            time_ago["created"] = f"{int(minutes_created)} minute{plural_minute_c} ago"
         else:
             time_ago["created"] = "A few seconds ago"
 
@@ -270,16 +276,22 @@ class DeckQueries(Queries):
         hours_updated, remainder_updated = divmod(updated_ago.seconds, 3600)
         minutes_updated, seconds_updated = divmod(remainder_updated, 60)
 
+        plural_year_u = 's' if years_updated > 1 else ''
+        plural_month_u = 's' if months_updated > 1 else ''
+        plural_day_u = 's' if days_updated > 1 else ''
+        plural_hour_u = 's' if hours_updated > 1 else ''
+        plural_minute_u = 's' if minutes_updated > 1 else ''
+
         if years_updated > 0:
-            time_ago["updated"] = f"{int(years_updated)} year{'s' if years_updated > 1 else ''} ago"
+            time_ago["updated"] = f"{int(years_updated)} year{plural_year_u} ago"
         elif months_updated > 0:
-            time_ago["updated"] = f"{int(months_updated)} month{'s' if months_updated > 1 else ''} ago"
+            time_ago["updated"] = f"{int(months_updated)} month{plural_month_u} ago"
         elif days_updated > 0:
-            time_ago["updated"] = f"{int(days_updated)} day{'s' if days_updated > 1 else ''} and {int(hours_updated)} hours ago"
+            time_ago["updated"] = f"{int(days_updated)} day{plural_day_u} and {int(hours_updated)} hour{plural_hour_u} ago"
         elif hours_updated > 0:
-            time_ago["updated"] = f"{int(hours_updated)} hour{'s' if hours_updated > 1 else ''} and {int(minutes_updated)} minutes ago"
+            time_ago["updated"] = f"{int(hours_updated)} hour{plural_hour_u} and {int(minutes_updated)} minute{plural_minute_u} ago"
         elif minutes_updated > 0:
-            time_ago["updated"] = f"{int(minutes_updated)} minute{'s' if minutes_updated > 1 else ''} ago"
+            time_ago["updated"] = f"{int(minutes_updated)} minute{plural_minute_u} ago"
         else:
             time_ago["updated"] = "A few seconds ago"
 
