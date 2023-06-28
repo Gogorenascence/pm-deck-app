@@ -30,7 +30,6 @@ class DeckQueries(Queries):
         if not props:
             return None
         props["id"] = str(props["_id"])
-        print(props)
         return DeckOut(**props)
 
 
@@ -208,7 +207,6 @@ class DeckQueries(Queries):
 
 
     def get_popular_cards(self) -> list:
-        print("cat")
         deck_count = {}
         all_cards_lists = []
         db = self.collection.find()
@@ -231,7 +229,6 @@ class DeckQueries(Queries):
             card["id"] = str(card["_id"])
             card["count"] = count
             popular_cards.append(CardOut(**card))
-        print(popular_cards)
         return popular_cards
 
     def get_times(self, id) -> dict:
