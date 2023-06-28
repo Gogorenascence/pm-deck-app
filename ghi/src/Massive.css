@@ -236,7 +236,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(0, 0, 0, 0.315);
   border: 2px solid rgb(24, 24, 24);
-  border-radius: 10px;
+  border-radius: 5px;
   height: 70vh;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
@@ -245,7 +245,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(163, 26, 26, 0.315);
   border: 2px solid rgb(173, 41, 41);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -253,7 +253,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(26, 63, 163, 0.315);
   border: 2px solid rgb(41, 50, 173);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -261,7 +261,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(0, 0, 0, 0.315);
   border: 2px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -269,7 +269,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(0, 0, 0, 0.315);
   border: 2px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -551,7 +551,28 @@ text-align: center;
   gap: 1rem; /* Add any gap you want between the cards */
 }
 
+.cards-page-card-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; /* Add any gap you want between the cards */
+}
+
 .card-list2 {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; /* Add any gap you want between the cards */
+}
+
+.decks-page-card-list2 {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; /* Add any gap you want between the cards */
+}
+
+.deck-row-card-list2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem; /* Add any gap you want between the cards */
@@ -585,7 +606,7 @@ text-align: center;
 
 .card-list-card3 {
   width: 100%;
-  margin: 20px 3px 0px 3px;
+  /* margin: 20px 3px 0px 3px; */
   border-radius: 7px;
   overflow: hidden;
 }
@@ -754,7 +775,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(163, 26, 26, 0.315);
   border: 2px solid rgb(173, 41, 41);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -762,7 +783,7 @@ text-align: center;
   margin: 2% 0%;
   background-color: rgba(26, 63, 163, 0.315);
   border: 2px solid rgb(41, 50, 173);
-  border-radius: 10px;
+  border-radius: 5px;
   /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
@@ -895,4 +916,8 @@ text-align: center;
 
 .deck-list-background {
   background-color: rgba(0, 0, 0, 0.7); /* Adjust the background color and opacity as desired */
+}
+
+.margin-top-20 {
+  margin-top: 20px;
 }

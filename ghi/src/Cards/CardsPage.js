@@ -342,7 +342,7 @@ function CardsPage() {
                     })}
                 </div>
             :
-            <div className="card-list">
+            <div className="cards-page-card-list">
                 {all_cards.slice(0, showMore).map(card => {
                     return (
                         <NavLink to={`/cards/${card.card_number}`}>

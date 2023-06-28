@@ -15,13 +15,13 @@ function MainPage() {
           <TopRow/>
         </div>
         <br/>
-          <h1>Latest Decks</h1>
+          <h1 className="margin-top-20">Latest Decks</h1>
         <br/>
         <div>
           <DeckRow/>
         </div>
         <br/>
-          <h1>Latest Cards</h1>
+          <h1 className="margin-top-20">Latest Cards</h1>
         <br/>
         <div>
           <CardRow/>

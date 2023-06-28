@@ -9,7 +9,7 @@ from models.decks import (
 )
 from models.cards import CardOut
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class DeckQueries(Queries):
@@ -237,9 +237,11 @@ class DeckQueries(Queries):
         created = props["created_on"]["full_time"]
         updated = props["updated_on"]["full_time"]
 
-        time_now = datetime.utcnow()
+        time_now = datetime.now() - timedelta(hours=5)
+
 
         created_ago = time_now - created
+        print(created_ago.days)
 
         days_created = created_ago.days
         years_created, days_created = divmod(days_created, 365.25)

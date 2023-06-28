@@ -250,7 +250,7 @@ function DecksPage() {
             </Button>
 
 
-            <div className="card-list2">
+            <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {
                     return (
                         <NavLink to={`/decks/${deck.id}`}>
