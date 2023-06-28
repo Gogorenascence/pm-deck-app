@@ -45,7 +45,8 @@ class CardQueries(Queries):
         cards = []
         for document in db:
             document["id"] = str(document["_id"])
-            if (document["hero_id"] == hero_id) and (document["card_number"] != card_number):
+            if ((document["hero_id"] == hero_id) and
+                (document["card_number"] != card_number)):
                 cards.append(CardOut(**document))
         return cards
 

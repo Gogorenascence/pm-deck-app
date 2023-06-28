@@ -122,9 +122,9 @@ function CardDetailPage() {
                             src={card?.picture_url ?? "logo4p.png"} alt={card.name}/>
                     </div>
                     <div style={{margin: "5% 0%"}}>
-                        <div>
                             <h1 className="centered-h1">Related Cards</h1>
-                            <div className="cd-inner card-list2" style={{width: "480px"}}>
+                        <div className="cd-inner">
+                            <div className="cd-inner card-list3" style={{width: "480px"}}>
                                 {relatedCards.slice(0,6).map((relatedCard) => {
                                     return (
                                         <NavLink to={`/cards/${relatedCard.card_number}`}>
