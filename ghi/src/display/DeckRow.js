@@ -39,9 +39,9 @@ function DeckRow() {
             } else if (months > 0) {
             deck["created_on"]["ago"] = `${months} month${months > 1 ? 's' : ''} ago`;
             } else if (days > 0) {
-            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} and ${hours} hour${hours > 1 ? 's' : ''} ago`;
+            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ${hours > 1 ? ' and ' + hours + 'hours ago' : 'ago'}`;
             } else if (hours > 0) {
-            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} and ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} and ${minutes} minutes${minutes > 1 ? 's' : ''} ago`;
             } else if (minutes > 0) {
             deck["created_on"]["ago"] = `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             } else {
@@ -68,17 +68,14 @@ function DeckRow() {
             } else if (updateMonths > 0) {
             deck["updated_on"]["ago"] = `${updateMonths} month${updateMonths > 1 ? 's' : ''} ago`;
             } else if (updateDays > 0) {
-            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} and ${updateHours} hour${updateHours > 1 ? 's' : ''} ago`;
+            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ${updateHours > 1 ? ' and ' + updateHours + 'hours ago' : 'ago'}`;
             } else if (updateHours > 0) {
-            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} and ${updateMinutes} minute${updateMinutes > 1 ? 's' : ''} ago`;
+            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} ${updateMinutes > 1 ? ' and ' + updateMinutes + 'minutes ago' : 'ago'}`;
             } else if (updateMinutes > 0) {
             deck["updated_on"]["ago"] = `${updateMinutes} minute${updateMinutes > 1 ? 's' : ''} ago`;
             } else {
             deck["updated_on"]["ago"] = "a few seconds ago";
             }
-            console.log(deck.name)
-            console.log("date ,", date)
-            console.log("update date ,", updateDate)
         }
         setDecks(deckData);
         console.log(decks)

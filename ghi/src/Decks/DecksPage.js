@@ -47,9 +47,9 @@ function DecksPage() {
             } else if (months > 0) {
             deck["created_on"]["ago"] = `${months} month${months > 1 ? 's' : ''} ago`;
             } else if (days > 0) {
-            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} and ${hours} hour${hours > 1 ? 's' : ''} ago`;
+            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ${hours > 1 ? ' and ' + hours + 'hours ago' : 'ago'}`;
             } else if (hours > 0) {
-            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} and ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} and ${minutes} minutes${minutes > 1 ? 's' : ''} ago`;
             } else if (minutes > 0) {
             deck["created_on"]["ago"] = `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             } else {
@@ -76,9 +76,9 @@ function DecksPage() {
             } else if (updateMonths > 0) {
             deck["updated_on"]["ago"] = `${updateMonths} month${updateMonths > 1 ? 's' : ''} ago`;
             } else if (updateDays > 0) {
-            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} and ${updateHours} hour${updateHours > 1 ? 's' : ''} ago`;
+            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ${updateHours > 1 ? ' and ' + updateHours + 'hours ago' : 'ago'}`;
             } else if (updateHours > 0) {
-            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} and ${updateMinutes} minute${updateMinutes > 1 ? 's' : ''} ago`;
+            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} ${updateMinutes > 1 ? ' and ' + updateMinutes + 'minutes ago' : 'ago'}`;
             } else if (updateMinutes > 0) {
             deck["updated_on"]["ago"] = `${updateMinutes} minute${updateMinutes > 1 ? 's' : ''} ago`;
             } else {
@@ -105,6 +105,7 @@ function DecksPage() {
         newest: { method: (a,b) => b.id.localeCompare(a.id) },
         oldest: { method: (a,b) => a.id.localeCompare(b.id) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
+        updated: { method: (a,b) => a.updated_on.full_time - b.updated_on.full_time },
     };
 
     const handleDeckQuery = (event) => {
@@ -226,6 +227,8 @@ function DecksPage() {
                 <option value="none">Sorted By</option>
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
+                <option value="updated">Last Updated</option>
+                <option value="name">A-Z</option>
             </select>
             <br/>
             <NavLink to="/deckbuilder">

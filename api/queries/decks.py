@@ -61,11 +61,14 @@ class DeckQueries(Queries):
             "full_time": datetime.now()
         }
         props["updated_on"] = time_dict
+        date_string = props["created_on"]["full_time"]
+        props["created_on"]["full_time"] = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")
         self.collection.find_one_and_update(
             {"_id": ObjectId(id)},
             {"$set": props},
             return_document=ReturnDocument.AFTER,
         )
+        print((props["created_on"]["full_time"]))
         return DeckOut(**props, id=id)
 
 
@@ -255,14 +258,18 @@ class DeckQueries(Queries):
         plural_hour_c = 's' if hours_created > 1 else ''
         plural_minute_c = 's' if minutes_created > 1 else ''
 
+        hour_c_end = ' and ' + str(int(hours_created)) + ' hours ago' if hours_created > 1 else ' ago'
+        minute_c_end = ' and ' + str(int(minutes_created)) + ' minutes ago' if minutes_created > 1 else ' ago'
+
         if years_created > 0:
             time_ago["created"] = f"{int(years_created)} year{plural_year_c} ago"
         elif months_created > 0:
             time_ago["created"] = f"{int(months_created)} month{plural_month_c} ago"
         elif days_created > 0:
             time_ago["created"] = f"{int(days_created)} day{plural_day_c} and {int(hours_created)} hour{plural_hour_c} ago"
+            time_ago["created"] = f"{int(days_created)} day{plural_day_c} {hour_c_end}"
         elif hours_created > 0:
-            time_ago["created"] = f"{int(hours_created)} hour{plural_hour_c} and {int(minutes_created)} minute{plural_minute_c} ago"
+            time_ago["created"] = f"{int(hours_created)} hour{plural_hour_c} {minute_c_end}"
         elif minutes_created > 0:
             time_ago["created"] = f"{int(minutes_created)} minute{plural_minute_c} ago"
         else:
@@ -282,14 +289,17 @@ class DeckQueries(Queries):
         plural_hour_u = 's' if hours_updated > 1 else ''
         plural_minute_u = 's' if minutes_updated > 1 else ''
 
+        hour_u_end = ' and ' + str(int(hours_updated)) + ' hours ago' if hours_updated > 1 else ' ago'
+        minute_u_end = ' and ' + str(int(minutes_updated)) + ' minutes ago' if minutes_updated > 1 else ' ago'
+
         if years_updated > 0:
             time_ago["updated"] = f"{int(years_updated)} year{plural_year_u} ago"
         elif months_updated > 0:
             time_ago["updated"] = f"{int(months_updated)} month{plural_month_u} ago"
         elif days_updated > 0:
-            time_ago["updated"] = f"{int(days_updated)} day{plural_day_u} and {int(hours_updated)} hour{plural_hour_u} ago"
+            time_ago["updated"] = f"{int(days_updated)} day{plural_day_u} {hour_u_end}"
         elif hours_updated > 0:
-            time_ago["updated"] = f"{int(hours_updated)} hour{plural_hour_u} and {int(minutes_updated)} minute{plural_minute_u} ago"
+            time_ago["updated"] = f"{int(hours_updated)} hour{plural_hour_u} {minute_u_end}"
         elif minutes_updated > 0:
             time_ago["updated"] = f"{int(minutes_updated)} minute{plural_minute_u} ago"
         else:
