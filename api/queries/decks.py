@@ -45,6 +45,7 @@ class DeckQueries(Queries):
             "full_time": datetime.now()
         }
         props["created_on"] = time_dict
+        props["updated_on"] = time_dict
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Deck(**props)
@@ -240,11 +241,9 @@ class DeckQueries(Queries):
         created = props["created_on"]["full_time"]
         updated = props["updated_on"]["full_time"]
 
-        time_now = datetime.now() - timedelta(hours=5)
+        time_now = datetime.now()
 
-
-        created_ago = time_now - created
-        print(created_ago.days)
+        created_ago = abs(time_now - created)
 
         days_created = created_ago.days
         years_created, days_created = divmod(days_created, 365.25)
@@ -275,7 +274,7 @@ class DeckQueries(Queries):
         else:
             time_ago["created"] = "A few seconds ago"
 
-        updated_ago = time_now - updated
+        updated_ago = abs(time_now - updated)
 
         days_updated = updated_ago.days
         years_updated, days_updated = divmod(days_updated, 365.25)

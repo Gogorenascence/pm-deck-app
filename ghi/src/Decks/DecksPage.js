@@ -28,7 +28,8 @@ function DecksPage() {
 
         for (let deck of sortedDecks){
             const date = new Date(deck["created_on"]["full_time"])
-            const time_now = new Date()
+            const time_now = new Date();
+            time_now.setHours(time_now.getHours() + 5);
             // Calculate years, months, days, hours, minutes, and seconds
             let ago = Math.abs(time_now - date);
             const years = Math.floor(ago / 31557600000);
@@ -47,9 +48,9 @@ function DecksPage() {
             } else if (months > 0) {
             deck["created_on"]["ago"] = `${months} month${months > 1 ? 's' : ''} ago`;
             } else if (days > 0) {
-            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ${hours > 1 ? ' and ' + hours + 'hours ago' : 'ago'}`;
+            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ${hours > 1 ? ' and ' + hours + ' hours ago' : ' ago'}`;
             } else if (hours > 0) {
-            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} and ${minutes} minutes${minutes > 1 ? 's' : ''} ago`;
+            deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} ${minutes > 1 ? ' and ' + minutes + ' minutes ago' : ' ago'}`;
             } else if (minutes > 0) {
             deck["created_on"]["ago"] = `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             } else {
@@ -76,9 +77,9 @@ function DecksPage() {
             } else if (updateMonths > 0) {
             deck["updated_on"]["ago"] = `${updateMonths} month${updateMonths > 1 ? 's' : ''} ago`;
             } else if (updateDays > 0) {
-            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ${updateHours > 1 ? ' and ' + updateHours + 'hours ago' : 'ago'}`;
+            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ${updateHours > 1 ? ' and ' + updateHours + ' hours ago' : ' ago'}`;
             } else if (updateHours > 0) {
-            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} ${updateMinutes > 1 ? ' and ' + updateMinutes + 'minutes ago' : 'ago'}`;
+            deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} ${updateMinutes > 1 ? ' and ' + updateMinutes + ' minutes ago' : ' ago'}`;
             } else if (updateMinutes > 0) {
             deck["updated_on"]["ago"] = `${updateMinutes} minute${updateMinutes > 1 ? 's' : ''} ago`;
             } else {
@@ -261,7 +262,7 @@ function DecksPage() {
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">
                                         <Card.Img
-                                            src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                                            src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4w/"}
                                             alt="Card image"
                                             className="card-image2"
                                             variant="bottom"/>

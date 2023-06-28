@@ -15,7 +15,7 @@ function DeckBuilder() {
         pluck: [],
         side: [],
         views: 0,
-        cover_card: "",
+        cover_card: null,
     });
 
     const [main_list, setMainList] = useState([]);
@@ -333,7 +333,7 @@ function DeckBuilder() {
                             ):(
                         <img
                             className="cover-card"
-                            src={"logo4p.png"}
+                            src={"https://kornan.dreamhosters.com/logo4/"}
                             alt="Card"
                             variant="bottom"/>)}
                 </div>
@@ -517,7 +517,7 @@ function DeckBuilder() {
                                                     onClick={() => handleClick(card)}
                                                     className={uniqueList.includes(card) ? "selected builder-card" : "builder-card"}
                                                     title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                    src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                     alt={card.name}
                                                     variant="bottom"/>
                                         </Col>
@@ -548,7 +548,7 @@ function DeckBuilder() {
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{main_list.length}</h5>:
                                 null}
                             </div>
@@ -583,7 +583,7 @@ function DeckBuilder() {
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{pluck_list.length}</h5>:
                                 null}
                             </div>
@@ -619,7 +619,7 @@ function DeckBuilder() {
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{main_list.length}</h5>:
                                 null}
                             </div>
@@ -633,7 +633,7 @@ function DeckBuilder() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                 alt={card.name}/>
                                         </Col>
                                     );
@@ -654,7 +654,7 @@ function DeckBuilder() {
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{pluck_list.length}</h5>:
                                 null}
                             </div>
@@ -667,7 +667,7 @@ function DeckBuilder() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                 alt={card.name}
                                                 variant="bottom"/>
                                         </Col>

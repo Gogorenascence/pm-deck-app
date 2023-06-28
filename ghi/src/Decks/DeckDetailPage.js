@@ -126,7 +126,7 @@ function DeckDetailPage() {
                 <div className="card-image-wrapper">
                     <div className="card-image-clip2">
                         <Card.Img
-                            src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+                            src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4w/"}
                             alt="Card image"
                             className="card-image2"
                             variant="bottom"/>
@@ -200,7 +200,7 @@ function DeckDetailPage() {
                                                         onClick={() => handleMulliganChange(card)}
                                                         className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card3" : "builder-card3"}
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                         alt={card.name}/>
                                                 </Col>
                                             );
@@ -230,7 +230,7 @@ function DeckDetailPage() {
                                                     overflow: "hidden"}}
 
                                                     title={ownership.name}
-                                                    src={ownership.picture_url ? ownership.picture_url : "logo4p.png"}
+                                                    src={ownership.picture_url ? ownership.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                     alt={ownership.name}
                                                     variant="bottom"/>
 
@@ -318,7 +318,7 @@ function DeckDetailPage() {
                                     {main_list.length > 0 ?
                                     <h5
                                         className="left"
-                                        style={{margin: "1% 0%", fontWeight: "700"}}
+                                        style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                     >{main_list.length}</h5>:
                                     null}
                                 </div>
@@ -353,7 +353,7 @@ function DeckDetailPage() {
                                     {pluck_list.length > 0 ?
                                     <h5
                                         className="left"
-                                        style={{margin: "1% 0%", fontWeight: "700"}}
+                                        style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                     >{pluck_list.length}</h5>:
                                     null}
                                 </div>
@@ -389,7 +389,7 @@ function DeckDetailPage() {
                             {main_list.length > 0 ?
                             <h5
                                 className="left"
-                                style={{margin: "1% 0%", fontWeight: "700"}}
+                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                             >{main_list.length}</h5>:
                             null}
                         </div>
@@ -407,7 +407,7 @@ function DeckDetailPage() {
                                                             overflow: "hidden"}}
 
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                         alt={card.name}
                                                         variant="bottom"/>
 
@@ -432,7 +432,7 @@ function DeckDetailPage() {
                             {pluck_list.length > 0 ?
                             <h5
                                 className="left"
-                                style={{margin: "1% 0%", fontWeight: "700"}}
+                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                             >{pluck_list.length}</h5>:
                             null}
                         </div>
@@ -449,7 +449,7 @@ function DeckDetailPage() {
                                                         overflow: "hidden"}}
 
                                                     title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                                    src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                     alt={card.name}
                                                     variant="bottom"/>
 
