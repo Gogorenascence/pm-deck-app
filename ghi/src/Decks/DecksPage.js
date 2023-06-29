@@ -106,7 +106,7 @@ function DecksPage() {
         newest: { method: (a,b) => b.id.localeCompare(a.id) },
         oldest: { method: (a,b) => a.id.localeCompare(b.id) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
-        updated: { method: (a,b) => a.updated_on.full_time - b.updated_on.full_time },
+        updated: { method: (a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time) },
     };
 
     const handleDeckQuery = (event) => {
