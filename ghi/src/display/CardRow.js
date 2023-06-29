@@ -32,7 +32,7 @@ function CardRow() {
                             <div style={{width: "230px", margin: "0px 5px"}}>
                                 <NavLink to={`/cards/${card.card_number}`}>
                                     <Card style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
-                                        <Card.Img title={card.name} src={card.picture_url ? card.picture_url : "logo4p.png"} alt="Card image" variant="bottom"/>
+                                        <Card.Img title={card.name} src={card.picture_url ? card.picture_url : ""} alt="Card image" variant="bottom"/>
                                     </Card>
                                 </NavLink>
                             </div>

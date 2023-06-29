@@ -104,7 +104,7 @@ function DeckDetail() {
                             <Card
                                 className="bg-dark text-white text-center"
                                 style={{ width: '370px', margin: '37px 5px 5px 5px'}}>
-                                <Card.Img src="logo4p.png" alt="Card image" variant="bottom"/>
+                                <Card.Img src="" alt="Card image" variant="bottom"/>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                                     <Card.Title
                                         className="card-img-overlay d-flex flex-column justify-content-top">

@@ -119,7 +119,7 @@ function CardDetailPage() {
                     <div className="cd-inner">
                         <img
                             className="cd-card"
-                            src={card?.picture_url ?? "logo4p.png"} alt={card.name}/>
+                            src={card?.picture_url ?? ""} alt={card.name}/>
                     </div>
                     <div style={{margin: "5% 0%"}}>
                             <h1 className="centered-h1">Related Cards</h1>
@@ -131,7 +131,7 @@ function CardDetailPage() {
                                                 <img
                                                     className="cd-related-card"
                                                     title={relatedCard.name}
-                                                    src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                                    src={relatedCard.picture_url ? relatedCard.picture_url : ""}
                                                     alt={relatedCard.name}
                                                     variant="bottom"/>
                                         </NavLink>

@@ -58,7 +58,7 @@ function RelatedCardModal() {
                                         className="cd-related-card"
                                         style={{marginRight: "5px"}}
                                         title={relatedCard.name}
-                                        src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                        src={relatedCard.picture_url ? relatedCard.picture_url : ""}
                                         alt={relatedCard.name}
                                         variant="bottom"/>
                             </NavLink>

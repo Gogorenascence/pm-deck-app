@@ -887,10 +887,10 @@
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 26,
-    "time": "16:22",
+    "day": 28,
+    "time": "23:59",
     "full_time": {
-      "$date": "2023-06-26T16:22:39.681Z"
+      "$date": "2023-06-28T23:59:16.479Z"
     }
   }
 },{
@@ -1495,10 +1495,10 @@
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 26,
-    "time": "16:20",
+    "day": 28,
+    "time": "23:53",
     "full_time": {
-      "$date": "2023-06-26T16:20:38.443Z"
+      "$date": "2023-06-28T23:53:37.834Z"
     }
   }
 },{
@@ -2002,4 +2002,97 @@
       "$date": "2023-06-25T18:16:38.644Z"
     }
   }
+},{
+  "_id": {
+    "$oid": "649cb5f79fda342120c39c6b"
+  },
+  "name": "Limited",
+  "account_id": "",
+  "description": "",
+  "strategies": [],
+  "cards": [],
+  "pluck": [],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 28,
+    "time": "22:36",
+    "full_time": {
+      "$date": "2023-06-28T22:36:39.441Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 28,
+    "time": "23:42",
+    "full_time": {
+      "$date": "2023-06-28T23:42:35.549Z"
+    }
+  },
+  "cover_card": ""
+},{
+  "_id": {
+    "$oid": "649cb68c9fda342120c39c72"
+  },
+  "name": "Side Step Counter",
+  "account_id": "",
+  "description": "",
+  "strategies": [],
+  "cards": [],
+  "pluck": [],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 28,
+    "time": "22:39",
+    "full_time": {
+      "$date": "2023-06-28T22:39:08.184Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 29,
+    "time": "00:22",
+    "full_time": {
+      "$date": "2023-06-29T00:22:52.823Z"
+    }
+  },
+  "cover_card": null
+},{
+  "_id": {
+    "$oid": "649ccd68545cf7d825b861b9"
+  },
+  "name": "test",
+  "account_id": "",
+  "description": "",
+  "strategies": [],
+  "cards": [],
+  "pluck": [],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 29,
+    "time": "00:16",
+    "full_time": {
+      "$date": "2023-06-29T00:16:40.726Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 29,
+    "time": "00:16",
+    "full_time": {
+      "$date": "2023-06-29T00:16:40.726Z"
+    }
+  },
+  "cover_card": null
 }]

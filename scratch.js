@@ -51,7 +51,7 @@ if (years > 0) {
   <div className="card-image-wrapper">
     <div className="card-image-clip">
       <Card.Img
-        src={deck.cover_card ? deck.cover_card : "logo4p.png"}
+        src={deck.cover_card ? deck.cover_card : ""}
         alt="Card image"
         variant="bottom"
         className="card-image"

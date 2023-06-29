@@ -15,7 +15,7 @@ services:
       WAIT_TIMEOUT: 60
       SIGNING_KEY: 80f21f5e48acbc32a55hj26pabafb2d4d57f5be921a487484d014147bfd96115d7ddbe8f26219rsds227b343d7f4b9p00p9dd1249e1ec892baf73572353666a97e
     ports:
-      - "8000:8000"
+      - "8100:8000"
     volumes:
       - ./api:/app
   mongo:
@@ -35,7 +35,7 @@ services:
     volumes:
       - ./ghi:/app
     ports:
-      - "3000:3000"
+      - "3100:3000"
     environment:
       HOST_OS: ${OS}
       NODE_ENV: development
