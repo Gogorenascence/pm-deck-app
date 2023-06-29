@@ -570,7 +570,7 @@ function DeckEditPage() {
                                                         onClick={() => handleClick(card)}
                                                         className={combinedList.includes(card) ? "selected builder-card" : "builder-card"}
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : ""}
+                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                         alt={card.name}
                                                         variant="bottom"/>
                                             </Col>
@@ -687,7 +687,7 @@ function DeckEditPage() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : ""}
+                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                 alt={card.name}/>
                                         </Col>
                                     );
@@ -721,7 +721,7 @@ function DeckEditPage() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : ""}
+                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
                                                 alt={card.name}
                                                 variant="bottom"/>
                                         </Col>
