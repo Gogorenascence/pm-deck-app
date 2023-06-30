@@ -213,11 +213,11 @@ text-align: center;
   margin: 15px 5px 0px 5px;
 }
 
-.opacity-95 {
-  opacity: 92%;
+.edit-modal {
+  opacity: 0%;
 }
 
-.opacity-100 {
+.edit-modal:hover {
   opacity: 100%;
 }
 

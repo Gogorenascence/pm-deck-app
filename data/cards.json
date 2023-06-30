@@ -555,7 +555,7 @@
   "series_name": "Bolt Blossom//Nature//Energy",
   "card_number": 1101,
   "enthusiasm": 0,
-  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): //<Staunch> Gain 2 HP and add 2 to your Focus. //<Power> Deal 2 damage to a foe. //<Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round). //<Canny> Gain 1 Comeback.",
+  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): //<Staunch> Gain 2 HP and draw 1 card. //<Power> Deal 2 damage to a foe or add 2 to your Focus. //<Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round). //<Canny> Gain 1 Comeback.",
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://kornan.dreamhosters.com/i1pl12bbe/",
@@ -573,17 +573,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:46",
+    "day": 30,
+    "time": "00:11",
     "full_time": {
-      "$date": "2023-06-25T18:46:36.225Z"
+      "$date": "2023-06-30T00:11:15.158Z"
     }
   }
 },{
@@ -871,8 +869,8 @@
   "series_name": "Flamebell//Magic//Quest",
   "card_number": 1015,
   "enthusiasm": 0,
-  "effect_text": "Deal 3 damage to a foe.",
-  "second_effect_text": "<Trigger>  If you take damage, gain 2 HP and deal 3 damage to all foes with a Power card(s) in their play.\n\n",
+  "effect_text": "Gain 2 HP.",
+  "second_effect_text": "<Trigger>  If you take damage, deal 3 damage to all foes with a Power card(s) in their play.\n\n",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbm",
   "file_name": "",
@@ -891,17 +889,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:52",
+    "day": 29,
+    "time": "23:35",
     "full_time": {
-      "$date": "2023-06-25T18:52:34.717Z"
+      "$date": "2023-06-29T23:35:49.836Z"
     }
   }
 },{
@@ -1207,7 +1203,7 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1003,
   "enthusiasm": 0,
-  "effect_text": "Deal 2 damage to a foe and gain 1 HP. If you are first to go this round or have the highest Enthusiasm, deal 2 additional damage and gain 1 HP.",
+  "effect_text": "Deal 3 damage to a foe. If you are first to go this round or have the highest Enthusiasm, gain 2 HP.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g1pmm",
@@ -1225,17 +1221,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:54",
+    "day": 29,
+    "time": "23:27",
     "full_time": {
-      "$date": "2023-06-25T18:54:40.320Z"
+      "$date": "2023-06-29T23:27:11.470Z"
     }
   }
 },{
@@ -1508,8 +1502,8 @@
   "series_name": "Gravity Enforcer//Cosmic//Tactical",
   "card_number": 1062,
   "enthusiasm": 0,
-  "effect_text": "All foes with Enthusiasm lower than yours take 1 damage after resolving the effect of their Move(s).",
-  "second_effect_text": "<Trigger> At the start of the round, lower the Enthusiasm of all foes by 4.",
+  "effect_text": "Foes with Enthusiasm lower than yours take 1 damage after resolving the effect of their Move(s) or if they draw a card(s).",
+  "second_effect_text": "<Trigger> At the start of the round, lower the Enthusiasm of all foes by 4 and resolve this Aura in your play.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1p4gea",
   "file_name": "i1p4gea",
@@ -1528,17 +1522,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:55",
+    "day": 29,
+    "time": "23:55",
     "full_time": {
-      "$date": "2023-06-25T18:55:17.184Z"
+      "$date": "2023-06-29T23:55:11.148Z"
     }
   }
 },{
@@ -2065,7 +2057,7 @@
   "series_name": "Gravity Enforcer//Cosmic//Tactical",
   "card_number": 1113,
   "enthusiasm": null,
-  "effect_text": "All foes take 1 damage each time they resolve a trigger effect as long as they have Enthusiasm lower than yours.",
+  "effect_text": "Reduce the focus of all foes by 2. If they have Enthusiasm lower than yours, reduce it by 4 instead.",
   "second_effect_text": "<Trigger> At the start of the round, lower the Enthusiasm of all foes by 2, then resolve this Event in your ownership.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1pl16gee",
@@ -2085,17 +2077,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:57",
+    "day": 29,
+    "time": "23:57",
     "full_time": {
-      "$date": "2023-06-25T18:57:40.098Z"
+      "$date": "2023-06-29T23:57:59.577Z"
     }
   }
 },{
@@ -2323,7 +2313,7 @@
   "series_name": "Ceifeira Preta//Mystic//Quest",
   "card_number": 1058,
   "enthusiasm": null,
-  "effect_text": "Gain 1 Comeback. Discard 1 card from your strongest or weakest foe's hand  for each Comeback in your ownership (max of 3), then they draw 1 card for each Comeback in their ownership plus 1 (max of 3).",
+  "effect_text": "This card cannot target the same foe twice.// Discard 1 card from your strongest or weakest foe's hand  for each Comeback in your ownership (max of 3), then they draw 1 card for each Comeback in their ownership plus 1 (max of 3).",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpa",
@@ -2341,17 +2331,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:58",
+    "day": 29,
+    "time": "23:53",
     "full_time": {
-      "$date": "2023-06-25T18:58:12.089Z"
+      "$date": "2023-06-29T23:53:14.316Z"
     }
   }
 },{
@@ -2364,7 +2352,7 @@
   "series_name": "Ceifeira Preta//Mystic//Quest",
   "card_number": 1059,
   "enthusiasm": null,
-  "effect_text": "Take 2 damage, then resolve 1 Comeback in your ownership one more time as if you were at critical HP.",
+  "effect_text": "Take 2 damage, then resolve 1 Comeback in your ownership as if you were at critical HP.",
   "second_effect_text": "<Trigger> If a card(s) is discarded from your hand or play, gain 1 Comeback and resolve this Move in your play.",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpm",
@@ -2384,17 +2372,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:58",
+    "day": 29,
+    "time": "23:53",
     "full_time": {
-      "$date": "2023-06-25T18:58:16.692Z"
+      "$date": "2023-06-29T23:53:47.645Z"
     }
   }
 },{
@@ -2449,7 +2435,7 @@
   "series_name": "Warp Family//Cosmic//Cyber",
   "card_number": 1053,
   "enthusiasm": 0,
-  "effect_text": "Portal                 \n\n\nDeal 2 bypassing damage to a foe. If you have a Unity card in your play, deal 1 bypassing damage to a random foe.\n\n\n",
+  "effect_text": "Look at a random foe's hand, then discard 1 card from their hand. That foe draws 1 card.//\nIf you have a Unity card in your play, resolve this card one more time.\n\n\n",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pf",
@@ -2470,17 +2456,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "18:58",
+    "day": 29,
+    "time": "23:50",
     "full_time": {
-      "$date": "2023-06-25T18:58:29.643Z"
+      "$date": "2023-06-29T23:50:57.642Z"
     }
   }
 },{
@@ -2790,7 +2774,7 @@
   "series_name": "Flamebell//Magic//Quest",
   "card_number": 1016,
   "enthusiasm": 11,
-  "effect_text": "<Target> Foe of your choice. All foes with a Power card(s) in their play take 1 damage. //<1-5> Deal 2 damage. Gain 2 HP. //<6-11> Deal 3 damage. Gain 2 HP. //<12+> Deal 4 damage. Gain 2 HP and resolve your Aura one more time.",
+  "effect_text": "<Target> Foe of your choice. All foes with a Power card(s) in their play take 1 damage. //<1-5> Deal 3 damage. //<6-11> Deal 3 damage. Gain 1 HP. //<12+> Deal 4 damage. Gain 2 HP and resolve your Aura one more time.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbe",
@@ -2809,17 +2793,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:09",
+    "day": 29,
+    "time": "23:36",
     "full_time": {
-      "$date": "2023-06-25T19:09:03.135Z"
+      "$date": "2023-06-29T23:36:43.986Z"
     }
   }
 },{
@@ -2832,7 +2814,7 @@
   "series_name": "Flamebell//Magic//Quest",
   "card_number": 1014,
   "enthusiasm": null,
-  "effect_text": "Add 1 card from the discard pile to your hand. If the card added was Staunch or Power, gain 2 HP and add 1 Aura from the discard pile to your hand.",
+  "effect_text": "Add 1 card from the discard pile to your hand. If the card added was Staunch or Power, gain 2 HP.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1g4fba",
@@ -2850,17 +2832,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:09",
+    "day": 29,
+    "time": "23:33",
     "full_time": {
-      "$date": "2023-06-25T19:09:07.158Z"
+      "$date": "2023-06-29T23:33:15.972Z"
     }
   }
 },{
@@ -2959,7 +2939,7 @@
   "series_name": "Blast Mouth//Altered//Nature",
   "card_number": 1017,
   "enthusiasm": null,
-  "effect_text": "Deal 2 damage to a foe who has already gone this round. \n \nIf you are last to go this round or have the lowest Enthusiasm, deal 2 additional damage and draw 1 Pluck.",
+  "effect_text": "Deal 2 damage to a foe. \n \nIf you are last to go this round or have the lowest Enthusiasm, deal 1 additional damage and draw 1 Pluck.",
   "second_effect_text": "",
   "illustrator": "Znttus",
   "picture_url": "https://kornan.dreamhosters.com/i1r1bmf",
@@ -2980,17 +2960,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:09",
+    "day": 29,
+    "time": "23:38",
     "full_time": {
-      "$date": "2023-06-25T19:09:23.163Z"
+      "$date": "2023-06-29T23:38:25.821Z"
     }
   }
 },{
@@ -3426,7 +3404,7 @@
   "series_name": "Burst Esper//Psychic//Energy",
   "card_number": 1027,
   "enthusiasm": null,
-  "effect_text": "Discard up to 3 cards from your hand, then deal 1 damage to 2 random foes for each card discarded. If you discarded 3 cards, ignore the reaction(s) of defending Fighter(s).",
+  "effect_text": "Discard up to 3 cards from your hand, then deal 1 damage to all foes for each card discarded. If you discarded 3 cards, ignore the reaction(s) of defending Fighter(s).",
   "second_effect_text": "<Trigger> If this card is discarded from your hand or play, deal 2 damage to a random foe.",
   "illustrator": "mo.moan",
   "picture_url": "https://kornan.dreamhosters.com/i1r3bem",
@@ -3446,17 +3424,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:12",
+    "day": 29,
+    "time": "23:45",
     "full_time": {
-      "$date": "2023-06-25T19:12:58.963Z"
+      "$date": "2023-06-29T23:45:01.592Z"
     }
   }
 },{
@@ -3597,7 +3573,7 @@
   "series_name": "Flamebell//Magic//Quest",
   "card_number": 1076,
   "enthusiasm": null,
-  "effect_text": "Each time you resolve the effect of an Aura, gain 1 HP.",
+  "effect_text": "One per round, if you resolve an Aura, gain 1 HP.",
   "second_effect_text": "<Trigger> If your Fighter would be defeated or removed from your play, discard this Item; your Fighter gains Endure 1 (that card is revealed).",
   "illustrator": "XIOLI",
   "picture_url": "https://kornan.dreamhosters.com/i1pl04fbi",
@@ -3617,17 +3593,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:13",
+    "day": 29,
+    "time": "23:37",
     "full_time": {
-      "$date": "2023-06-25T19:13:19.516Z"
+      "$date": "2023-06-29T23:37:39.719Z"
     }
   }
 },{
@@ -3724,8 +3698,8 @@
   "series_name": "Red Fist//Tech//Brawler",
   "card_number": 1021,
   "enthusiasm": null,
-  "effect_text": "Deal 3 damage to your strongest foe, then discard 2 cards from your hand.",
-  "second_effect_text": "<Trigger> Just before using this card’s reaction(s), remove 2 Counter tokens from this card; draw 3 cards.",
+  "effect_text": "Deal 3 damage to your strongest foe, then discard 3 cards from your hand.",
+  "second_effect_text": "<Trigger> Just before using this card’s reaction(s), remove 3 Counter tokens from this card; draw 3 cards.",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rff",
   "file_name": "i1r2rff",
@@ -3748,17 +3722,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:11",
+    "day": 29,
+    "time": "23:44",
     "full_time": {
-      "$date": "2023-06-25T19:11:44.354Z"
+      "$date": "2023-06-29T23:44:32.879Z"
     }
   }
 },{
@@ -3857,7 +3829,7 @@
   "series_name": "Red Fist//Tech//Brawler",
   "card_number": 1024,
   "enthusiasm": 18,
-  "effect_text": "<Target> Foe on your right. //<1-5> Deal 1 damage. Discard 1 card from your hand. //<6-11> Deal 1 piercing damage. //<12+> Deal 6 piercing damage. Ignore the reaction(s) of defending Fighter(s) and draw 1 card.",
+  "effect_text": "<Target> Foe on your right. //<1-5> Discard 1 card from your hand.  //<6-11> Discard 1 card from your hand. //<12+> Deal 6 piercing damage. If your hand has 6 or more cards, ignore the reaction(s) of defending Fighter(s).",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfe",
@@ -3876,17 +3848,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:11",
+    "day": 29,
+    "time": "23:42",
     "full_time": {
-      "$date": "2023-06-25T19:11:59.782Z"
+      "$date": "2023-06-29T23:42:03.989Z"
     }
   }
 },{
@@ -3899,7 +3869,7 @@
   "series_name": "Red Fist//Tech//Brawler",
   "card_number": 1022,
   "enthusiasm": null,
-  "effect_text": "Add 2 to your Focus and your next Move gains damage plus 1 (that card deals 1 additional damage at the end of its resolution). You can discard 1 Aura from your hand to resolve this effect one more time. \n\n\n",
+  "effect_text": "Add 2 to your Focus and your Fighter gains 1 HP.  You can discard 1 Aura from your hand to resolve this effect one more time and your next Move gains damage plus 1.\n\n",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfa",
@@ -3917,17 +3887,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:12",
+    "day": 29,
+    "time": "23:40",
     "full_time": {
-      "$date": "2023-06-25T19:12:05.753Z"
+      "$date": "2023-06-29T23:40:23.964Z"
     }
   }
 },{
@@ -3940,8 +3908,8 @@
   "series_name": "Blast Mouth//Altered//Nature//Transformation",
   "card_number": 1018,
   "enthusiasm": null,
-  "effect_text": "Deal 2 damage to a random foe and add 2 to your Focus. If you are last to go this round, the next card in your play gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).   ",
-  "second_effect_text": "",
+  "effect_text": "The next card in your play gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).   ",
+  "second_effect_text": "<Trigger> If you take damage, resolve 1 other random card in your play. If the resolved card targets a foe(s), the target is now 1 random foe.",
   "illustrator": "Znttus",
   "picture_url": "https://kornan.dreamhosters.com/i1r1bma",
   "file_name": "i1r1bma",
@@ -3958,17 +3926,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:12",
+    "day": 30,
+    "time": "03:54",
     "full_time": {
-      "$date": "2023-06-25T19:12:12.268Z"
+      "$date": "2023-06-30T03:54:29.067Z"
     }
   }
 },{
@@ -4833,7 +4799,7 @@
   "series_name": "Warp Family//Cosmic//Cyber",
   "card_number": 1042,
   "enthusiasm": null,
-  "effect_text": "Apply each of the following effects for each Item in your Active Pluck or for each different class in your play://1: Draw 1 Pluck.//2: Add 1 random Aura from your hand to your play.//3+: Add 1 Move from the discard pile to your play.",
+  "effect_text": "Resolve 1 of the following effects for each Item in your Active Pluck or for each different class in your play://1+: Draw 1 Pluck.//2+: Add 1 Aura from your hand to your play.//3+: Add 1 Move from the discard pile to your play.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1b3hsa",
@@ -4851,17 +4817,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
-    "day": 25,
-    "time": "19:20",
+    "day": 29,
+    "time": "23:48",
     "full_time": {
-      "$date": "2023-06-25T19:20:35.844Z"
+      "$date": "2023-06-29T23:48:48.906Z"
     }
   }
 },{
