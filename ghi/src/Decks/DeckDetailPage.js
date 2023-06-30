@@ -24,6 +24,8 @@ function DeckDetailPage() {
     const [updatedAgo, setUpdatedAgo] = useState("");
 
     const [listView, setListView] = useState(false);
+    const [showMain, setShowMain] = useState(true);
+    const [showPluck, setShowPluck] = useState(true);
 
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
@@ -118,6 +120,16 @@ function DeckDetailPage() {
 
     const handleListView = (event) => {
         setListView(!listView);
+    };
+
+    const handleShowMain = (event) => {
+        setShowMain(!showMain);
+        console.log(showMain)
+    };
+
+    const handleShowPluck = (event) => {
+        setShowPluck(!showPluck);
+        console.log(showPluck)
     };
 
     return (
@@ -317,8 +329,7 @@ function DeckDetailPage() {
                                     <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                     {main_list.length > 0 ?
                                     <h5
-                                        className="left"
-                                        style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                        className="left db-main-count"
                                     >{main_list.length}</h5>:
                                     null}
                                 </div>
@@ -352,8 +363,7 @@ function DeckDetailPage() {
                                     <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                                     {pluck_list.length > 0 ?
                                     <h5
-                                        className="left"
-                                        style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                        className="left db-pluck-count"
                                     >{pluck_list.length}</h5>:
                                     null}
                                 </div>
@@ -388,14 +398,22 @@ function DeckDetailPage() {
                             <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                             {main_list.length > 0 ?
                             <h5
-                                className="left"
-                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                className="left db-main-count"
                             >{main_list.length}</h5>:
                             null}
+                            { showMain ?
+                                <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowMain()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowMain()}>
+                                    &nbsp;[Show]
+                                </h5>}
                         </div>
                         {main_list.length > 0 ?
 
-                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
@@ -431,13 +449,23 @@ function DeckDetailPage() {
                             <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                             {pluck_list.length > 0 ?
                             <h5
-                                className="left"
-                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                className="left db-pluck-count"
                             >{pluck_list.length}</h5>:
                             null}
+                            { showPluck ?
+                                <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
+                                    onClick={handleShowPluck}
+                                >
+                                    &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
+                                    onClick={handleShowPluck}
+                                >
+                                    &nbsp;[Show]
+                                </h5>}
                         </div>
                         {pluck_list.length > 0 ?
-                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>

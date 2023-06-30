@@ -3916,7 +3916,9 @@
   "card_type": [
     "6407bb289b4fb23f5ddab698"
   ],
-  "extra_effects": [],
+  "extra_effects": [
+    "64079f10b2b376b6cd0454f6"
+  ],
   "reactions": [],
   "card_tags": [
     "6407a27fc503d0c6f5a33233"

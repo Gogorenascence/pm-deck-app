@@ -31,6 +31,10 @@ function DeckBuilder() {
     const [showMore, setShowMore] = useState(20);
     const [listView, setListView] = useState(false);
 
+    const [showPool, setShowPool] = useState(true);
+    const [showMain, setShowMain] = useState(true);
+    const [showPluck, setShowPluck] = useState(true);
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -232,6 +236,21 @@ function DeckBuilder() {
 
     const handleListView = (event) => {
         setListView(!listView);
+    };
+
+    const handleShowPool = (event) => {
+        setShowPool(!showPool);
+        console.log(showPool)
+    };
+
+    const handleShowMain = (event) => {
+        setShowMain(!showMain);
+        console.log(showMain)
+    };
+
+    const handleShowPluck = (event) => {
+        setShowPluck(!showPluck);
+        console.log(showPluck)
     };
 
     return (
@@ -501,13 +520,30 @@ function DeckBuilder() {
                 </div>
 
                 </Row>
-                <div className="cardpool">
+                <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div style={{marginLeft: "0px"}}>
-                        <h2
-                            className="left"
-                            style={{margin: "1% 20px", fontWeight: "700"}}
-                        >Card Pool</h2>
-                        <div className="scrollable">
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
+                            >Card Pool</h2>
+                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                            {all_cards.length > 0 ?
+                            <h5
+                                className="left db-pool-count"
+                            >{all_cards.length}</h5>:
+                            null}
+                            { showPool ?
+                                <h5 className="left db-pool-count"
+                                    onClick={() => handleShowPool()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className="left db-pool-count"
+                                    onClick={() => handleShowPool()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{marginLeft: "20px"}}>
                             <Row xs="auto" className="justify-content-start">
                                 {all_cards.slice(0, showMore).map((card) => {
@@ -610,7 +646,7 @@ function DeckBuilder() {
                 :<>
                     <div className="maindeck">
                         <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -622,10 +658,19 @@ function DeckBuilder() {
                                     style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{main_list.length}</h5>:
                                 null}
+                                { showMain ?
+                                    <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
+                                        onClick={() => handleShowMain()}>
+                                            &nbsp;[Hide]
+                                    </h5> :
+                                    <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
+                                        onClick={() => handleShowMain()}>
+                                        &nbsp;[Show]
+                                    </h5>}
                             </div>
 
                             {main_list.length > 0 ?
-                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
@@ -657,9 +702,20 @@ function DeckBuilder() {
                                     style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
                                 >{pluck_list.length}</h5>:
                                 null}
+                                { showPluck ?
+                                    <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
+                                        onClick={handleShowPluck}
+                                    >
+                                        &nbsp;[Hide]
+                                    </h5> :
+                                    <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
+                                        onClick={handleShowPluck}
+                                    >
+                                        &nbsp;[Show]
+                                    </h5>}
                             </div>
                             {pluck_list.length > 0 ?
-                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
