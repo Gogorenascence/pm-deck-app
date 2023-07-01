@@ -85,3 +85,14 @@ if (years > 0) {
 //     height: auto;
 //     object-fit: cover;
 //   }
+
+// .filter(deck => {
+//   if (deckQuery.cardNumber) {
+//       const allCards = deck.cards.concat(deck.pluck);
+//       console.log(allCards)
+//       const stringifiedCards = allCards.map(card => card.toString());
+//       return stringifiedCards.some(card => card.includes(deckQuery.cardNumber));
+//   } else {
+//       return true;
+//   }
+// })

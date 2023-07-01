@@ -320,16 +320,22 @@ class DeckQueries(Queries):
             conn = MongoClient(DATABASE_URL)
             db = conn.cards.cards
 
+            card_names = []
             series_names = []
             for card_item in card_list:
                 card = db.find_one({"card_number": card_item})
+                card_name = card["name"]
+                card_names.append(card_name)
                 series_name = card["series_name"]
                 series_names.append(series_name)
 
             for pluck_item in pluck_list:
                 pluck = db.find_one({"card_number": pluck_item})
+                card_name = card["name"]
+                card_names.append(card_name)
                 series_name = pluck["series_name"]
                 series_names.append(series_name)
+            deck["card_names"] = card_names
             deck["series_names"] = series_names
             decks.append(deck)
         return decks

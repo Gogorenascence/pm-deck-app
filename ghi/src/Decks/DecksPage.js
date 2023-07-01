@@ -12,7 +12,7 @@ function DecksPage() {
     const [deckQuery, setDeckQuery] = useState({
         deckName: "",
         description: "",
-        cardNumber: "",
+        cardName: "",
         strategies: "",
         seriesName: "",
     });
@@ -117,7 +117,7 @@ function DecksPage() {
         setDeckQuery({
             deckName: "",
             description: "",
-            cardNumber: "",
+            cardName: "",
             strategy: "",
             seriesName: "",
         });
@@ -133,16 +133,7 @@ function DecksPage() {
 
     const all_decks = decks.filter(deck => deck.name.toLowerCase().includes(deckQuery.deckName.toLowerCase()))
         .filter(deck => (deck.description).toLowerCase().includes(deckQuery.description.toLowerCase()))
-        .filter(deck => {
-            if (deckQuery.cardNumber) {
-                const allCards = deck.cards.concat(deck.pluck);
-                console.log(allCards)
-                const stringifiedCards = allCards.map(card => card.toString());
-                return stringifiedCards.some(card => card.includes(deckQuery.cardNumber));
-            } else {
-                return true;
-            }
-        })
+        .filter(deck => deckQuery.cardName ? (deck.card_names && deck.card_names.length > 0 ? deck.card_names.some(name => name.toLowerCase().includes(deckQuery.cardName.toLowerCase())) : false) : true)
         .filter(deck => deckQuery.strategy? deck.strategies.some(strategy => strategy.includes(deckQuery.strategy)):deck.strategies)
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
@@ -175,9 +166,9 @@ function DecksPage() {
             <input
                 className="left"
                 type="text"
-                placeholder=" Contains Card Number..."
-                name="cardNumber"
-                value={deckQuery.cardNumber}
+                placeholder=" Contains Card Named..."
+                name="cardName"
+                value={deckQuery.cardName}
                 onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
@@ -185,7 +176,7 @@ function DecksPage() {
             <input
                 className="left"
                 type="text"
-                placeholder=" Contains Series..."
+                placeholder=" Contains Series Named..."
                 name="seriesName"
                 value={deckQuery.seriesName}
                 onChange={handleDeckQuery}
