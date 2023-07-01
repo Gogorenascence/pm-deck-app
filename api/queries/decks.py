@@ -331,8 +331,8 @@ class DeckQueries(Queries):
 
             for pluck_item in pluck_list:
                 pluck = db.find_one({"card_number": pluck_item})
-                card_name = card["name"]
-                card_names.append(card_name)
+                pluck_name = pluck["name"]
+                card_names.append(pluck_name)
                 series_name = pluck["series_name"]
                 series_names.append(series_name)
             deck["card_names"] = card_names
