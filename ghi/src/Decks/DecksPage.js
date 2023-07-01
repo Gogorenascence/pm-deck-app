@@ -14,6 +14,7 @@ function DecksPage() {
         description: "",
         cardNumber: "",
         strategies: "",
+        seriesName: "",
     });
 
     const [deckSortState, setDeckSortState] = useState("none");
@@ -21,7 +22,7 @@ function DecksPage() {
     const [deckShowMore, setDeckShowMore] = useState(20);
 
     const getDecks = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
         const data = await response.json();
 
         const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
@@ -60,7 +61,6 @@ function DecksPage() {
             const updateDate = new Date(deck["updated_on"]["full_time"])
             // Calculate years, months, days, hours, minutes, and seconds
             let updateAgo = Math.abs(time_now - updateDate);
-            console.log(updateAgo)
             const updateYears = Math.floor(updateAgo / 31557600000);
             updateAgo -= updateYears * 31557600000;
             const updateMonths = Math.floor(updateAgo / 2630016000);
@@ -87,7 +87,6 @@ function DecksPage() {
             }
         }
         setDecks(sortedDecks.reverse());
-        console.log(decks)
     };
 
     const getRandomDeck = async() =>{
@@ -98,6 +97,7 @@ function DecksPage() {
 
     useEffect(() => {
         getDecks();
+        console.log(decks)
     // eslint-disable-next-line
     }, []);
 
@@ -111,7 +111,6 @@ function DecksPage() {
 
     const handleDeckQuery = (event) => {
         setDeckQuery({ ...deckQuery, [event.target.name]: event.target.value });
-        console.log(event.target.value)
     };
 
     const handleDeckQueryReset = (event) => {
@@ -120,6 +119,7 @@ function DecksPage() {
             description: "",
             cardNumber: "",
             strategy: "",
+            seriesName: "",
         });
     };
 
@@ -144,6 +144,7 @@ function DecksPage() {
             }
         })
         .filter(deck => deckQuery.strategy? deck.strategies.some(strategy => strategy.includes(deckQuery.strategy)):deck.strategies)
+        .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
 
 
@@ -181,13 +182,16 @@ function DecksPage() {
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
-            {/* <input
+            <input
                 className="left"
                 type="text"
                 placeholder=" Contains Series..."
+                name="seriesName"
+                value={deckQuery.seriesName}
+                onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
-            <br/> */}
+            <br/>
             <select
                 className="left"
                 type="text"
@@ -200,7 +204,7 @@ function DecksPage() {
                 <option value="Aggro">Aggro</option>
                 <option value="Combo">Combo</option>
                 <option value="Control">Control</option>
-                <option value="Mid-range">Midrange</option>
+                <option value="Mid-range">Mid-range</option>
                 <option value="Ramp">Ramp</option>
                 <option value="Second Wind">Second Wind</option>
                 <option value="Stall">Stall</option>

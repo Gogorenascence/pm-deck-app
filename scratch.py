@@ -147,3 +147,35 @@ created = "2023-06-25T18:16:38.644000"
 updated = "2023-06-2T18:16:38.644000"
 result = get_times(created, updated)
 print(result)
+
+
+    def get_all_full_decks(self) -> list:
+        db = self.collection.find()
+        decks = []
+        for deck in db:
+            deck["id"] = str(deck["_id"])
+            deck.pop("_id")
+            card_list = deck["cards"]
+            pluck_list = deck["pluck"]
+
+            DATABASE_URL = os.environ["DATABASE_URL"]
+            conn = MongoClient(DATABASE_URL)
+            db = conn.cards.cards
+
+            main_deck = []
+            for card_item in card_list:
+                card = db.find_one({"card_number": card_item})
+                card["id"] = str(card["_id"])
+                card.pop("_id")
+                main_deck.append(card)
+            pluck_deck = []
+
+            for pluck_item in pluck_list:
+                pluck = db.find_one({"card_number": pluck_item})
+                pluck["id"] = str(pluck["_id"])
+                pluck.pop("_id")
+                pluck_deck.append(pluck)
+            deck["full_card_list"] = main_deck
+            deck["full_pluck_list"] = pluck_deck
+            decks.append(deck)
+        return decks

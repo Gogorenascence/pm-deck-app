@@ -529,10 +529,10 @@ function DeckBuilder() {
                             >Card Pool</h2>
                             <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
                             {all_cards.length > 0 ?
-                            <h5
-                                className="left db-pool-count"
-                            >{all_cards.length}</h5>:
-                            null}
+                                <h5
+                                    className="left db-pool-count"
+                                >{all_cards.length}</h5>:
+                                null}
                             { showPool ?
                                 <h5 className="left db-pool-count"
                                     onClick={() => handleShowPool()}>

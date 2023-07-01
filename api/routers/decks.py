@@ -148,3 +148,8 @@ async def get_cover_image(
         response.status_code = 404
     else:
         return deck
+
+@router.get("/api/full_decks/", response_model=dict)
+async def get_all_full_decks(queries: DeckQueries = Depends()):
+    full_deck_list = queries.get_all_full_decks()
+    return {"decks": full_deck_list}

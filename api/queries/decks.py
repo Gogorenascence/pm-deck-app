@@ -24,14 +24,12 @@ class DeckQueries(Queries):
             decks.append(DeckOut(**document))
         return decks
 
-
     def get_deck(self, id) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         if not props:
             return None
         props["id"] = str(props["_id"])
         return DeckOut(**props)
-
 
     def create_deck(self, deck: DeckIn) -> Deck:
         props = deck.dict()
@@ -49,7 +47,6 @@ class DeckQueries(Queries):
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Deck(**props)
-
 
     def update_deck(self, id: str, deck: DeckIn) -> DeckOut:
         props = deck.dict()
@@ -72,10 +69,8 @@ class DeckQueries(Queries):
         print((props["created_on"]["full_time"]))
         return DeckOut(**props, id=id)
 
-
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
-
 
     def add_card(self, id: str, card_number: int) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
@@ -92,7 +87,6 @@ class DeckQueries(Queries):
         card_type = db.find_one({"_id": ObjectId(card_type)})
         deck_type = card_type["deck_type"]
 
-
         if deck_type == "Main" and cards.count(card_number) < 2:
             self.collection.find_one_and_update(
                 {"_id": ObjectId(id)},
@@ -107,7 +101,6 @@ class DeckQueries(Queries):
             )
 
         return DeckOut(**props, id=id)
-
 
     def remove_card(self, id: str, card_number: int) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
@@ -126,7 +119,6 @@ class DeckQueries(Queries):
         )
         return DeckOut(**props, id=id)
 
-
     def clear_deck(self, id: str) -> DeckOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         props["cards"] = []
@@ -136,7 +128,6 @@ class DeckQueries(Queries):
             return_document=ReturnDocument.AFTER,
         )
         return DeckOut(**props, id=id)
-
 
     def get_deck_list(self, id: str) -> list:
         deck = self.collection.find_one({"_id": ObjectId(id)})
@@ -164,7 +155,6 @@ class DeckQueries(Queries):
             side_deck.append(CardOut(**side))
         deck_list = [main_deck, pluck_deck, side_deck]
         return deck_list
-
 
     def get_counted_deck_list(self, id: str) -> list:
         deck = self.collection.find_one({"_id": ObjectId(id)})
@@ -208,7 +198,6 @@ class DeckQueries(Queries):
             side_deck.append(CardOut(**side))
         deck_list = [main_deck, pluck_deck, side_deck]
         return deck_list
-
 
     def get_popular_cards(self) -> list:
         deck_count = {}
@@ -317,3 +306,30 @@ class DeckQueries(Queries):
             card = db.find_one({"card_number": first})
             cover_image = card["picture_url"]
         return cover_image
+
+    def get_all_full_decks(self) -> list:
+        db = self.collection.find()
+        decks = []
+        for deck in db:
+            deck["id"] = str(deck["_id"])
+            deck.pop("_id")
+            card_list = set(deck["cards"])
+            pluck_list = set(deck["pluck"])
+
+            DATABASE_URL = os.environ["DATABASE_URL"]
+            conn = MongoClient(DATABASE_URL)
+            db = conn.cards.cards
+
+            series_names = []
+            for card_item in card_list:
+                card = db.find_one({"card_number": card_item})
+                series_name = card["series_name"]
+                series_names.append(series_name)
+
+            for pluck_item in pluck_list:
+                pluck = db.find_one({"card_number": pluck_item})
+                series_name = pluck["series_name"]
+                series_names.append(series_name)
+            deck["series_names"] = series_names
+            decks.append(deck)
+        return decks
