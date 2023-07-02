@@ -274,9 +274,76 @@
 #     rm -rf /var/lib/apt/lists/*
 
 # # Load the data into the MongoDB database
+
 # CMD mongoimport --host mongodb --db cards --collection card_tags --file /data/card_tags.json --jsonArray && \
 #     mongoimport --host mongodb --db cards --collection card_types --file /data/card_types.json --jsonArray && \
 #     mongoimport --host mongodb --db cards --collection cards --file /data/cards.json --jsonArray && \
 #     mongoimport --host mongodb --db cards --collection decks --file /data/decks.json --jsonArray && \
 #     mongoimport --host mongodb --db cards --collection extra_effects --file /data/extra_effects.json --jsonArray && \
 #     mongoimport --host mongodb --db cards --collection reactions --file /data/reactions.json --jsonArray
+
+
+# stages:
+#   - build
+#   - deploy
+
+# services:
+#   - docker:dind
+
+# build-cards-image:
+#   stage: build
+#   image: docker:git
+#   variables:
+#     GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/cards_image
+#   before_script:
+#     # $CI_JOB_TOKEN is variable automatically added by Gitlab: see https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#variables-reference
+#     - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
+#   script:
+#     - docker build --tag $GITLAB_IMAGE:latest api
+#     - docker push $GITLAB_IMAGE:latest
+#   only:
+#     - main
+
+
+# deploy-cards-image:
+#   stage: deploy
+#   image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
+#   script:
+#     - glv-cloud-cli reset -a ${SBFC_API} -t ${CIRRUS_TOKEN}
+#   only:
+#     - main
+
+# # # Build the React/JavaScript front-end
+# build-front-end-job:
+#   stage: build
+#   image: node:lts-bullseye
+#   variables:
+#     # If either of these variables is defined in the GitLab
+#     # CI/CD variables, that value will override the value here.
+#     # You need to substitute in your real values for
+#     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
+#     PUBLIC_URL: https://jothplaymaker.com
+#     REACT_APP_API_HOST: https://pm-deckapp.project.com
+#   script:
+#     - cd ghi
+#     - npm install
+#     - npm run build
+#     - cp build/index.html build/404.html
+#   artifacts:
+#     paths:
+#       - ghi/build/
+
+# # # Deploy the React/JavaScript front-end to GitLab pages
+# pages:
+#   stage: deploy
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#   dependencies:
+#     - build-front-end-job
+#   needs:
+#     - build-front-end-job
+#   script:
+#     - mv ghi/build/ public
+#   artifacts:
+#     paths:
+#       - public
