@@ -30,6 +30,7 @@ class DeckIn(BaseModel):
     created_on: Optional[dict]
     updated_on: Optional[dict]
     cover_card: Optional[str]
+    parent_id: Optional[str]
 
 
 class Deck(DeckIn):

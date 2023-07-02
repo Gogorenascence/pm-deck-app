@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useParams} from 'react-router-dom';
 
 
-function DeckEditPage() {
+function DeckCopyPage() {
     const [deck, setDeck] = useState({
         name: "",
         account_id: "",
@@ -75,10 +75,8 @@ function DeckEditPage() {
         setSelectedCard(deck.cover_card)
         const id_list = []
         const newList = []
-        console.log(newList)
         for (let card of combinedList){
             if (!id_list.includes(card.id)){
-                console.log(card)
                 id_list.push(card.id)
                 newList.push(card)
             }
@@ -106,6 +104,7 @@ function DeckEditPage() {
         getDeck();
         getDeckList();
         getCards();
+        console.log(deck)
     // eslint-disable-next-line
     },[]);
 
@@ -255,11 +254,14 @@ function DeckEditPage() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
+        data["parent_id"] = deck_id
+        delete data["id"]
+        // delete data["_id"]
         console.log(data)
 
-        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
+        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
         const fetchConfig = {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -279,6 +281,7 @@ function DeckEditPage() {
                 side: [],
                 views: 0,
                 cover_card: "",
+                parent_id: "",
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
@@ -305,7 +308,7 @@ function DeckEditPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Deck Edit</h1>
+            <h1 className="left-h1">Deck Copy</h1>
             <Row xs={3} sm={3} md={3} lg={3}>
                 <form
                     style={{marginBottom: "45px", width: "435px"}}
@@ -364,6 +367,7 @@ function DeckEditPage() {
                         <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
                         <option value="other" selected={deck.strategies.includes("other")}>other</option>
                     </select>
+                    {/* {...deck.strategies.includes("Aggro")? selected:null} */}
                     <br/>
                     <Button
                         style={{width: "67px", margin: "5px"}}
@@ -793,4 +797,4 @@ function DeckEditPage() {
 }
 
 
-export default DeckEditPage;
+export default DeckCopyPage;

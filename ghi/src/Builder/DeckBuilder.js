@@ -16,6 +16,7 @@ function DeckBuilder() {
         side: [],
         views: 0,
         cover_card: null,
+        parent_id: "",
     });
 
     const [main_list, setMainList] = useState([]);
@@ -216,8 +217,8 @@ function DeckBuilder() {
 
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
-            await response.json();
-            const deck_id = response;
+            const responseData = await response.json();
+            const deck_id = responseData.id;
             console.log(deck_id)
             setDeck({
                 name: "",
@@ -229,8 +230,9 @@ function DeckBuilder() {
                 side: [],
                 views: 0,
                 cover_card: "",
+                parent_id: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/`;
+            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
     }
 

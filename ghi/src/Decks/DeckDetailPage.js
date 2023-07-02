@@ -42,7 +42,6 @@ function DeckDetailPage() {
         setUpdatedAgo(timeData.updated);
     }
 
-
     const getDeckList = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
         const deckListData = await response.json();
@@ -307,11 +306,20 @@ function DeckDetailPage() {
                 </>:
             null}
             <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
+            <NavLink to={`/decks/${deck.id}/copy`}>
+                <Button
+                        className="left"
+                        variant="dark"
+                        style={{marginLeft: ".5%", width: "105px", textAlign: "center"}}
+                        >
+                        Copy Deck
+                </Button>
+            </NavLink>
             <NavLink to="/decks/">
                 <Button
                         className="left button100"
                         variant="dark"
-                        style={{marginLeft: ".5%", textAlign: "center"}}
+                        style={{marginLeft: "5%", textAlign: "center"}}
                         >
                         Back
                 </Button>

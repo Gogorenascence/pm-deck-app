@@ -4,6 +4,7 @@ import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
 import DeckDetailPage from "./Decks/DeckDetailPage";
 import DeckEditPage from "./Decks/DeckEditPage";
+import DeckCopyPage from "./Builder/DeckCopyPage";
 import CardsPage from "./Cards/CardsPage"
 import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/decks" element={<DecksPage />} />
           <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
           <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
+          <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/cards/create" element={<CardCreatePage />} />
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
