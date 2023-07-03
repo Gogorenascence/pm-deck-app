@@ -203,13 +203,13 @@ function CardAddCompModal() {
     return (
 
         <div>
-            <Button
-                className="button225"
+            <button
+                className="button225 red"
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
                 Change Components
-            </Button>
+            </button>
 
             <Modal
                 show={show}
@@ -240,22 +240,22 @@ function CardAddCompModal() {
                                         ))}
                                 </select>
                                 <br/>
-                                <Button
+                                <button
                                     className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddTypeSubmit}
                                 >
                                         Add
-                                </Button>
-                                <Button
-                                    className="add-comp-button"
+                                </button>
+                                <button
+                                    className="add-comp-button red"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveTypeSubmit}
                                 >
                                         Remove
-                                </Button>
+                                </button>
                             </Container>
                     </Modal.Body>
                     <Modal.Body>
@@ -273,22 +273,22 @@ function CardAddCompModal() {
                                         ))}
                                 </select>
                                 <br/>
-                                <Button
+                                <button
                                     className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddEffectSubmit}
                                 >
                                         Add
-                                </Button>
-                                <Button
-                                    className="add-comp-button"
+                                </button>
+                                <button
+                                    className="add-comp-button red"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveEffectSubmit}
                                 >
                                         Remove
-                                </Button>
+                                </button>
                             </Container>
 
                     </Modal.Body>
@@ -307,22 +307,22 @@ function CardAddCompModal() {
                                         ))}
                                 </select>
                                 <br/>
-                                <Button
+                                <button
                                     className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddReactionSubmit}
                                 >
                                         Add
-                                </Button>
-                                <Button
-                                    className="add-comp-button"
+                                </button>
+                                <button
+                                    className="add-comp-button red"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveReactionSubmit}
                                 >
                                         Remove
-                                </Button>
+                                </button>
                             </Container>
                     </Modal.Body>
                     <Modal.Body>
@@ -340,22 +340,22 @@ function CardAddCompModal() {
                                         ))}
                                 </select>
                                 <br/>
-                                <Button
+                                <button
                                     className="add-comp-button"
                                     variant="dark"
                                     size="lg"
                                     onClick={handleAddTagSubmit}
                                 >
                                         Add
-                                </Button>
-                                <Button
-                                    className="add-comp-button"
+                                </button>
+                                <button
+                                    className="add-comp-button red"
                                     variant="danger"
                                     size="lg"
                                     onClick={handleRemoveTagSubmit}
                                 >
                                         Remove
-                                </Button>
+                                </button>
                             </Container>
 
                     </Modal.Body>

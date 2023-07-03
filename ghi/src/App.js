@@ -12,6 +12,7 @@ import TopCardsPage from "./Cards/TopCardsPage";
 import UnderConstruction from "./display/UnderConstruction";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import LightSwitch from "./display/LightSwitch";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
@@ -22,6 +23,7 @@ function App() {
     // <AuthProvider>
     <BrowserRouter>
       <Nav/>
+      <LightSwitch/>
       <BackToTop/>
       <div className="App">
 

@@ -1,5 +1,3 @@
-import { Button } from "react-bootstrap";
-
 function DeckExport(props) {
 
   let deck_id = props.deck_id
@@ -357,14 +355,14 @@ function DeckExport(props) {
 
   return (
     <div>
-      <Button
-        className="left"
+      <button
+        className="left heightNorm"
         variant="dark"
         style={{marginRight: "10px"}}
         onClick={exportDeck}
       >
         Export Decks
-      </Button>
+      </button>
 </div>
 );
 }

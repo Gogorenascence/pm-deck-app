@@ -1,7 +1,6 @@
 import {
     Col,
     Row,
-    Button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react';
 
@@ -62,6 +61,10 @@ function DeckBuilder() {
 
     useEffect(() => {
         getCards();
+        document.title = "Deck Builder - PM CardBase"
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     },[]);
 
@@ -317,30 +320,27 @@ function DeckBuilder() {
                         <option value="other">other</option>
                     </select>
                     <br/>
-                    <Button
+                    <button
                         className="left"
-                        variant="dark"
                         style={{ marginTop: "9px"}}
                         onClick={handleSubmit}
                     >
                             Create Deck
-                    </Button>
-                    <Button
-                        className="left"
-                        variant="danger"
+                    </button>
+                    <button
+                        className="left red"
                         style={{ marginTop: "9px"}}
                         onClick={clearMain}
                     >
                             Clear Main
-                    </Button>
-                    <Button
-                        className="left"
-                        variant="danger"
+                    </button>
+                    <button
+                        className="left red"
                         style={{ marginTop: "9px"}}
                         onClick={clearPluck}
                     >
                             Clear Pluck
-                    </Button>
+                    </button>
                     <br/>
                 </form>
                 <div style={{ width: "350px"}}>
@@ -496,28 +496,28 @@ function DeckBuilder() {
                         <option value="card_number">Card Number</option>
                     </select>
                     <br/>
-                    <Button
+                    <button
                         className="left"
                         variant="dark"
                         onClick={handleQueryReset}
                         >
                         Reset Filters
-                    </Button>
+                    </button>
                     {listView?
-                        <Button
+                        <button
                             className="left"
                             variant="dark"
                             onClick={handleListView}
                         >
                             Deck Image View
-                        </Button>:
-                        <Button
+                        </button>:
+                        <button
                             className="left"
                             variant="dark"
                             onClick={handleListView}
                         >
                             Deck List View
-                        </Button>}
+                        </button>}
                     <br/>
                 </div>
 
@@ -564,12 +564,11 @@ function DeckBuilder() {
                             </Row>
                             </div>
                             {showMore < all_cards.length ?
-                                <Button
-                                    variant="dark"
+                                <button
                                     style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
                                     onClick={handleShowMore}>
                                     Show More Cards ({all_cards.length - showMore} Remaining)
-                                </Button> : null }
+                                </button> : null }
                         </div>
                     </div>
                 </div>

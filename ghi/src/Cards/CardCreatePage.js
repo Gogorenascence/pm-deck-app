@@ -2,7 +2,7 @@ import {
     Button,
     Container,
 } from "react-bootstrap";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 function CardCreatePage() {
@@ -24,6 +24,13 @@ function CardCreatePage() {
         card_tags: [],
     });
 
+    useEffect(() => {
+        document.title = "Card Create - PM CardBase"
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
+    // eslint-disable-next-line
+    },[]);
 
     const handleChange = (event) => {
         setCard({ ...card, [event.target.name]: event.target.value });

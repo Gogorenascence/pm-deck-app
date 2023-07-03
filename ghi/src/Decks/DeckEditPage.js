@@ -1,7 +1,7 @@
 import {
     Col,
     Row,
-    Button,
+    button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
 import { NavLink, useParams} from 'react-router-dom';
@@ -106,6 +106,10 @@ function DeckEditPage() {
         getDeck();
         getDeckList();
         getCards();
+        document.title = `Editing ${deck.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     },[]);
 
@@ -365,35 +369,33 @@ function DeckEditPage() {
                         <option value="other" selected={deck.strategies.includes("other")}>other</option>
                     </select>
                     <br/>
-                    <Button
+                    <button
                         style={{width: "67px", margin: "5px"}}
-                        variant="dark"
                         onClick={handleSubmit}
+                        className="heightNorm"
                     >
                             Save
-                    </Button>
+                    </button>
                     <NavLink to={`/decks/${deck.id}/`}>
-                        <Button
+                        <button
                             style={{width: "67px", margin: "5px"}}
-                            variant="dark"
+                            className="heightNorm"
                             >
                             Back
-                        </Button>
+                        </button>
                     </NavLink>
-                    <Button
-                        className="left"
-                        variant="danger"
+                    <button
+                        className="left red heightNorm"
                         onClick={clearMain}
                     >
                             Clear Main
-                    </Button>
-                    <Button
-                        className="left"
-                        variant="danger"
+                    </button>
+                    <button
+                        className="left red heightNorm"
                         onClick={clearPluck}
                     >
                             Clear Pluck
-                    </Button>
+                    </button>
                     <br/>
                 </form>
                 <div style={{ width: "350px"}}>
@@ -547,28 +549,25 @@ function DeckEditPage() {
                         <option value="card_number">Card Number</option>
                     </select>
                     <br/>
-                    <Button
-                        className="left"
-                        variant="dark"
+                    <button
+                        className="left heightNorm"
                         onClick={handleQueryReset}
                         >
                         Reset Filters
-                    </Button>
+                    </button>
                     {listView?
-                        <Button
-                            className="left"
-                            variant="dark"
+                        <button
+                            className="left heightNorm"
                             onClick={handleListView}
                         >
                             Deck Image View
-                        </Button>:
-                        <Button
-                            className="left"
-                            variant="dark"
+                        </button>:
+                        <button
+                            className="left heightNorm"
                             onClick={handleListView}
                         >
                             Deck List View
-                        </Button>}
+                        </button>}
                     <br/>
                 </div>
 
@@ -615,12 +614,12 @@ function DeckEditPage() {
                                 </Row>
                             </div>
                             {showMore < all_cards.length ?
-                                <Button
-                                    variant="dark"
+                                <button
+                                    className="heightNorm"
                                     style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
                                     onClick={handleShowMore}>
                                     Show More Cards ({all_cards.length - showMore} Remaining)
-                                </Button> : null }
+                                </button> : null }
                         </div>
                     </div>
                 </div>

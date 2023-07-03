@@ -1,5 +1,4 @@
 import {
-    Button,
     Container,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -109,6 +108,10 @@ function CardDetailPage() {
         getReactions();
         getCardTags();
         getCards();
+        document.title = `${card.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     }, [card_number]);
 
@@ -140,14 +143,14 @@ function CardDetailPage() {
                             </div>
                         </div>
                         <div className="cd-inner">
-                            <Button
+                            <button
                                 style={{width: "170px", margin: "20px 2.5px 20px 2.5px"}}
                                 variant="dark"
                                 size="lg"
                                 onClick={getRandomCard}
                             >
                                 Random Card
-                            </Button>
+                            </button>
                             {relatedCards.length > 6?
                                 <RelatedCardModal/>: null
                             }
@@ -265,20 +268,20 @@ function CardDetailPage() {
                                     <CardAddCompModal/>
 
                                     <NavLink to="/cards/create">
-                                        <Button
+                                        <button
                                             className="button100"
                                             variant="danger"
                                             size="lg">
                                             Create
-                                        </Button>
+                                        </button>
                                     </NavLink>
                                     <NavLink to="/cards">
-                                        <Button
+                                        <button
                                             className="button100"
                                             variant="dark"
                                             size="lg">
                                             Back
-                                        </Button>
+                                        </button>
                                     </NavLink>
                                 </div>
                                 {/* <div style={{ display: "flex"}}>

@@ -1,7 +1,6 @@
 import {
     Container,
     Card,
-    Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
@@ -173,9 +172,9 @@ function DeckRow() {
                 <br/>
                 <div className="d-grid gap-2">
                     <NavLink to="/decks">
-                        <Button variant="dark" size="lg" style={{ width: "100%" }}>
+                        <button variant="dark" size="lg" style={{ width: "100%" }}>
                             Browse All Decks
-                        </Button>
+                        </button>
                     </NavLink>
                 </div>
             </Container>

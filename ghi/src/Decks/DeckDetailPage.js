@@ -2,7 +2,6 @@ import {
     Col,
     Row,
     Card,
-    Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink, useParams} from 'react-router-dom';
@@ -84,8 +83,10 @@ function DeckDetailPage() {
         getDeckList();
         getCountedDeckList();
         getAgos();
-        console.log(createdAgo)
-        console.log(updatedAgo )
+        document.title = `${deck.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     },[createdAgo, updatedAgo]);
 
     const handleMulliganChange = (card) => {
@@ -133,7 +134,7 @@ function DeckDetailPage() {
 
     return (
         <div className="white-space">
-            <Card bg="dark" text="white" style={{margin: "2% 0%"}}>
+            <Card className="text-white text-center card-list-card3" style={{margin: "2% 0%" }}>
                 <div className="card-image-wrapper">
                     <div className="card-image-clip2">
                         <Card.Img
@@ -188,7 +189,7 @@ function DeckDetailPage() {
             null}
             <div style={{display: "flex"}}>
                         {shuffledDeck.length > 0 ?
-                <div className="maindeck2" style={{width: "90%"}}>
+                <div className="maindeck" style={{width: "90%"}}>
                     <div style={{marginLeft: "10px"}}>
 
                                 <h4
@@ -224,7 +225,7 @@ function DeckDetailPage() {
                         null}
                     {ownership ?
 
-                    <div className="pluckdeck2" style={{marginLeft: ".5%"}}>
+                    <div className="pluckdeck" style={{marginLeft: ".5%"}}>
 
                                         <h4
                                             className="left"
@@ -254,75 +255,75 @@ function DeckDetailPage() {
             </div>
             <div style={{ display: "flex" }}>
             <NavLink to={`/decks/${deck.id}/edit`}>
-                <Button
-                        className="left heightNorm button100"
+                <button
+                        className="left heightNorm button100 red"
                         variant="danger"
                         style={{marginLeft: ".5%", marginRight: "7px"}}
                         >
                         Edit Deck
-                </Button>
+                </button>
             </NavLink>
             {listView?
-                <Button
+                <button
                     className="left"
                     variant="dark"
                     onClick={handleListView}
                 >
                     Image View
-                </Button>:
-                <Button
+                </button>:
+                <button
                     className="left"
                     variant="dark"
                     onClick={handleListView}
                 >
                     List View
-                </Button>}
-            <Button
+                </button>}
+            <button
                     className="left"
                     variant="dark"
                     onClick={getShuffledDeck}
                     style={{marginLeft: ".5%"}}
                     >
                     Test Hand
-            </Button>
+            </button>
             {shuffledDeck.length > 0 ?
                 <>
-                    <Button
+                    <button
                             className="left"
                             variant="dark"
                             onClick={mulligan}
                             style={{marginLeft: ".5%"}}
                             >
                             Mulligan
-                    </Button>
-                    <Button
+                    </button>
+                    <button
                             className="left"
                             variant="dark"
                             onClick={clearShuffledDeck}
                             style={{marginLeft: ".5%", width: '102px', textAlign: "center"}}
                             >
                             Hide Hand
-                    </Button>
+                    </button>
                 </>:
             null}
             <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
             <NavLink to={`/decks/${deck.id}/copy`}>
-                <Button
-                        className="left"
+                <button
+                        className="left heightNorm"
                         variant="dark"
-                        style={{marginLeft: ".5%", width: "105px", textAlign: "center"}}
+                        style={{marginLeft: ".5%", width: "108px", textAlign: "center"}}
                         >
                         Copy Deck
-                </Button>
+                </button>
             </NavLink>
             <NavLink to="/decks/">
-                <Button
-                        className="left button100"
+                <button
+                        className="left button100 heightNorm"
                         variant="dark"
                         style={{marginLeft: "5%", textAlign: "center"}}
                         >
                         Back
-                </Button>
+                </button>
             </NavLink>
             </div>
             {listView?

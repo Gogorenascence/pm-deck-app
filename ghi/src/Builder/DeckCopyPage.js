@@ -1,7 +1,6 @@
 import {
     Col,
     Row,
-    Button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
 import { NavLink, useParams} from 'react-router-dom';
@@ -104,13 +103,15 @@ function DeckCopyPage() {
         getDeck();
         getDeckList();
         getCards();
-        console.log(deck)
+        document.title = `Copying ${deck.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     },[]);
 
     useEffect(() => {
         getExtraData();
-    // eslint-disable-next-line
     }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {
@@ -369,35 +370,35 @@ function DeckCopyPage() {
                     </select>
                     {/* {...deck.strategies.includes("Aggro")? selected:null} */}
                     <br/>
-                    <Button
+                    <button
                         style={{width: "67px", margin: "5px"}}
                         variant="dark"
                         onClick={handleSubmit}
                     >
                             Save
-                    </Button>
+                    </button>
                     <NavLink to={`/decks/${deck.id}/`}>
-                        <Button
+                        <button
                             style={{width: "67px", margin: "5px"}}
                             variant="dark"
                             >
                             Back
-                        </Button>
+                        </button>
                     </NavLink>
-                    <Button
-                        className="left"
+                    <button
+                        className="left red"
                         variant="danger"
                         onClick={clearMain}
                     >
                             Clear Main
-                    </Button>
-                    <Button
-                        className="left"
+                    </button>
+                    <button
+                        className="left red"
                         variant="danger"
                         onClick={clearPluck}
                     >
                             Clear Pluck
-                    </Button>
+                    </button>
                     <br/>
                 </form>
                 <div style={{ width: "350px"}}>
@@ -551,28 +552,28 @@ function DeckCopyPage() {
                         <option value="card_number">Card Number</option>
                     </select>
                     <br/>
-                    <Button
+                    <button
                         className="left"
                         variant="dark"
                         onClick={handleQueryReset}
                         >
                         Reset Filters
-                    </Button>
+                    </button>
                     {listView?
-                        <Button
+                        <button
                             className="left"
                             variant="dark"
                             onClick={handleListView}
                         >
                             Deck Image View
-                        </Button>:
-                        <Button
+                        </button>:
+                        <button
                             className="left"
                             variant="dark"
                             onClick={handleListView}
                         >
                             Deck List View
-                        </Button>}
+                        </button>}
                     <br/>
                 </div>
 
@@ -619,12 +620,12 @@ function DeckCopyPage() {
                                 </Row>
                             </div>
                             {showMore < all_cards.length ?
-                                <Button
+                                <button
                                     variant="dark"
                                     style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
                                     onClick={handleShowMore}>
                                     Show More Cards ({all_cards.length - showMore} Remaining)
-                                </Button> : null }
+                                </button> : null }
                         </div>
                     </div>
                 </div>

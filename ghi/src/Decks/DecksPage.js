@@ -1,6 +1,5 @@
 import {
     Card,
-    Button,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
@@ -97,7 +96,10 @@ function DecksPage() {
 
     useEffect(() => {
         getDecks();
-        console.log(decks)
+        document.title = "Decks - PM CardBase"
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     }, []);
 
@@ -202,17 +204,6 @@ function DecksPage() {
                 <option value="Toolbox">Toolbox</option>
                 <option value="other">other</option>
             </select>
-            {/* <select
-                className="left"
-                type="text"
-                placeholder=" Class"
-                style={{width: "116px", height: "37px"}}>
-                <option value="class">Class</option>
-                <option value="staunch">Staunch</option>
-                <option value="power">Power</option>
-                <option value="unity">Unity</option>
-                <option value="canny">Canny</option>
-            </select> */}
             <select
                 className="left"
                 type="text"
@@ -228,25 +219,25 @@ function DecksPage() {
             </select>
             <br/>
             <NavLink to="/deckbuilder">
-                <Button className="left"
+                <button className="left"
                     variant="dark">
                         Create Deck
-                </Button>
+                </button>
             </NavLink>
-            <Button
+            <button
                 className="left"
                 variant="dark"
                 onClick={handleDeckQueryReset}
                 >
                 Reset Filters
-            </Button>
-            <Button
+            </button>
+            <button
                 className="left"
                 variant="dark"
                 onClick={getRandomDeck}
                 >
                 Random Deck
-            </Button>
+            </button>
 
 
             <div className="decks-page-card-list2">
@@ -302,12 +293,12 @@ function DecksPage() {
                 })}
             </div>
             {deckShowMore < all_decks.length ?
-                <Button
+                <button
                     variant="dark"
                     style={{ width: "100%", marginTop:"2%"}}
                     onClick={handleDeckShowMore}>
                     Show More Decks ({all_decks.length - deckShowMore} Remaining)
-                </Button> : null }
+                </button> : null }
         </div>
     );
 }

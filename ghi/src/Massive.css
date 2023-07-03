@@ -19,14 +19,6 @@ body {
   z-index: -1,-100;
 }
 
-h1 {
-  font-weight: bold;
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
-}
 body::after {
   content: "";
   position: fixed;
@@ -73,6 +65,82 @@ body::after {
   }
 }
 
+body.dark {
+  margin-bottom: 200px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(16, 14, 22, 0.849), rgba(17, 0, 54, 0.849)), url("./backg.png");
+  background-size: 100%, 60%;
+  background-repeat: no-repeat, repeat;
+  background-position: center center, center center;
+  background-attachment: fixed, fixed;
+  z-index: -1,-100;
+}
+
+body.dark::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-size: 125px;
+  background-image: url("./frame2.png");
+  background-repeat: repeat;
+  animation: scroll 3400s linear infinite;
+  opacity: .1;
+  z-index: -20;
+  margin-bottom: 200px;
+}
+@keyframes scroll {
+  0% {
+    background-position: -3000px 3000px;
+  }
+  12.5% {
+    background-position: 0px -3000px;
+  }
+  25% {
+    background-position: -3000px 0px;
+  }
+  37.5% {
+    background-position: 0px 3000px;
+  }
+  50% {
+    background-position: -3000px 3000px;
+  }
+  62.5% {
+    background-position: 0px -3000px;
+  }
+  75% {
+    background-position: -3000px 0px;
+  }
+  87.5% {
+    background-position: 0px 3000px;
+  }
+  100% {
+    background-position: -3000px 3000px;
+  }
+}
+
+h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -105,6 +173,21 @@ p1 {
 margin: 200px, 200px;
 font-weight: bold;
 text-align: center;
+}
+
+button {
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
+  background-color: rgb(44, 41, 56);
+  border-radius: 4px;
+  height: 38px;
+  text-align: center;
+  font-size: large;
+  padding: 0px 10px;
+}
+
+.red {
+  background-color: rgb(209, 54, 54);
 }
 
 .blackfooter {
@@ -196,7 +279,15 @@ text-align: center;
 .centered-h5 {
   text-align: center;
   font-weight: 750;
-  color: black;
+  color: var(--color-body);
+  margin-top: 4%;
+  margin-bottom: 0;
+}
+
+.centered-h5.dark {
+  text-align: center;
+  font-weight: 750;
+  color: var(--color-body);
   margin-top: 4%;
   margin-bottom: 0;
 }
@@ -204,7 +295,14 @@ text-align: center;
 .centered-h5-2 {
   text-align: center;
   font-weight: 750;
-  color: black;
+  color: var(--color-body);
+  margin-top: 1%;
+}
+
+.centered-h5-2.dark {
+  text-align: center;
+  font-weight: 750;
+  color: rgb(255, 255, 255);
   margin-top: 1%;
 }
 
@@ -215,6 +313,7 @@ text-align: center;
 
 .edit-modal {
   opacity: 0%;
+  color: black;
 }
 
 .edit-modal:hover {
@@ -230,47 +329,47 @@ text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.212);
   background-color: rgba(15, 0, 50, 0.315);
   border-radius: 2px;
+  outline: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .cardpool {
   margin: 2% 0%;
-  background-color: rgba(30, 0, 100, 0.315);
-  border: 2px solid rgb(24, 24, 24);
+  background-color: rgba(80, 42, 170, 0.315);
+  border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
   height: 70vh;
-  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+  outline: 1px solid white;
 }
 
 .no-cardpool {
   margin: 2% 0%;
-  background-color: rgba(30, 0, 100, 0.315);
-  border: 2px solid rgb(24, 24, 24);
+  background-color: rgba(117, 90, 182, 0.315);
+  border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+  outline: 1px solid white;
 }
 
 .maindeck {
   margin: 2% 0%;
-  background-color: rgba(163, 26, 26, 0.315);
+  background-color: rgba(173, 73, 73, 0.315);
   border: 2px solid rgb(173, 41, 41);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
+  outline: 1px solid white;
 }
 
 .pluckdeck {
   margin: 2% 0%;
-  background-color: rgba(26, 63, 163, 0.315);
-  border: 2px solid rgb(41, 50, 173);
+  background-color: rgba(70, 115, 238, 0.315);
+  border: 2px solid rgb(30, 41, 199);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
+  outline: 1px solid white;
 }
 
-.maindeck2 {
+/* .maindeck2 {
   margin: 2% 0%;
   background-color: rgba(30, 1, 100, 0.315);
   border: 2px solid rgb(0, 0, 0);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .pluckdeck2 {
@@ -278,12 +377,7 @@ text-align: center;
   background-color: rgba(30, 2, 100, 0.315);
   border: 2px solid rgb(0, 0, 0);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
-}
-
-.selected {
-  outline: 7px solid rgb(255, 0, 0);
-}
+} */
 
 .back-to-top {
   height: 65px;
@@ -315,6 +409,7 @@ text-align: center;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
   width: 207px;
+  outline: 1px solid white;
 }
 
 .bigStaunch {
@@ -326,6 +421,7 @@ text-align: center;
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
+  outline: 1px solid white;
 }
 
 .Power {
@@ -336,6 +432,7 @@ text-align: center;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
   width: 207px;
+  outline: 1px solid white;
 }
 
 .bigPower {
@@ -347,6 +444,7 @@ text-align: center;
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
+  outline: 1px solid white;
 }
 
 .Unity {
@@ -357,6 +455,8 @@ text-align: center;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
   width: 207px;
+  outline: 1px solid white;
+  outline: 1px solid white;
 }
 
 .bigUnity {
@@ -368,6 +468,8 @@ text-align: center;
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
+  outline: 1px solid white;
+  outline: 1px solid white;
 }
 
 .Canny {
@@ -378,6 +480,7 @@ text-align: center;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
   width: 207px;
+  outline: 1px solid white;
 }
 
 .bigCanny {
@@ -389,6 +492,7 @@ text-align: center;
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
+  outline: 1px solid white;
 }
 
 .NoClass {
@@ -400,6 +504,7 @@ text-align: center;
   border-radius: 7px;
   font-weight: 500;
   width: 207px;
+  outline: 1px solid white;
 }
 
 .bigNoClass {
@@ -412,6 +517,7 @@ text-align: center;
   font-weight: 500;
   margin-top: 4%;
   width: 635px;
+  outline: 1px solid white;
 }
 
 .dcbsearch-large {
@@ -446,6 +552,7 @@ text-align: center;
   margin: 2.5% 0px 0px 0%;
   border-radius: 17px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .builder-card {
@@ -453,6 +560,7 @@ text-align: center;
   margin: 2.25px 0px;
   border-radius: 7px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .builder-card2 {
@@ -461,6 +569,7 @@ text-align: center;
   border-radius: 7px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .builder-card2:hover {
@@ -479,6 +588,7 @@ text-align: center;
   border-radius: 7px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .builder-card3:hover {
@@ -488,6 +598,11 @@ text-align: center;
   margin: 2.25px 0px;
   border-radius: 7px;
   overflow: hidden;
+}
+
+.selected {
+  outline: 7px solid rgb(255, 0, 0);
+  border: none;
 }
 
 .add-comp-button {
@@ -526,6 +641,7 @@ text-align: center;
   width: 480px;
   border-radius: 4%;
   overflow: hidden;
+  border: 2px solid white;
 }
 
 .cd-related-card {
@@ -533,6 +649,7 @@ text-align: center;
   border-radius: 4%;
   overflow: hidden;
   margin: 0px 10px 10px 10px;
+  border: 1.5px solid white;
 }
 
 .cd-info {
@@ -603,6 +720,7 @@ text-align: center;
   margin: 20px 3px 0px 3px;
   border-radius: 4.5%;
   overflow: hidden;
+  border: 1.5px solid white;
 }
 
 .card-list-card2 {
@@ -610,6 +728,7 @@ text-align: center;
   margin: 0px 3px 0px 3px;
   border-radius: 4.5%;
   overflow: hidden;
+  outline: 1.5px solid rgba(255, 255, 255, 0.425);
 }
 
 .card-list-card3 {
@@ -713,6 +832,7 @@ text-align: center;
   margin-bottom: 2%;
   width: 100%;
   height: 100%;
+  outline: 1px solid white;
 }
 
 .bigPower2 {
@@ -726,6 +846,7 @@ text-align: center;
   margin-bottom: 2%;
   width: 100%;
   height: 100%;
+  outline: 1px solid white;
 }
 
 .bigUnity2 {
@@ -739,6 +860,7 @@ text-align: center;
   margin-bottom: 2%;
   width: 100%;
   height: 100%;
+  outline: 1px solid white;
 }
 
 .bigCanny2 {
@@ -752,6 +874,7 @@ text-align: center;
   margin-bottom: 2%;
   width: 100%;
   height: 100%;
+  outline: 1px solid white;
 }
 
 .bigNoClass2 {
@@ -767,6 +890,7 @@ text-align: center;
   width: 100%;
   height: 100%;
   text-decoration: none;
+  outline: 1px solid white;
 }
 
 .nav-link {
@@ -784,7 +908,6 @@ text-align: center;
   background-color: rgba(163, 26, 26, 0.315);
   border: 2px solid rgb(173, 41, 41);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(151, 9, 9, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .pluckdeck3 {
@@ -792,7 +915,6 @@ text-align: center;
   background-color: rgba(26, 63, 163, 0.315);
   border: 2px solid rgb(41, 50, 173);
   border-radius: 5px;
-  /* background-image: linear-gradient(to right, rgba(72, 46, 145, 0.6), rgba(255, 255, 255, 0.082)); */
 }
 
 .card-container {
@@ -815,6 +937,7 @@ text-align: center;
   left: 100%;
   display: none;
   transform: translate(10%, -80%);
+  border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .heightNorm{
@@ -933,17 +1056,36 @@ text-align: center;
 .db-pool-count {
   margin: 1% 0%;
   font-weight: 700;
-  color: #09001F;
+  /* color: #09001F; */
 }
 
 .db-main-count {
   margin: 1% 0%;
   font-weight: 700;
-  color: #330808;
+  /* color: #330808; */
 }
 
 .db-pluck-count {
   margin: 1% 0%;
   font-weight: 700;
-  color: #081433;
+  /* color: #081433; */
+}
+
+.light-dark {
+  height: 65px;
+  position: fixed;
+  right: 2rem;
+  bottom: 37.5rem;
+  cursor: pointer;
+  opacity: 30%;
+  transition: opacity 0.5s;
+}
+
+.light-dark:hover {
+  height: 65px;
+  position: fixed;
+  right: 2rem;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 0.5s;
 }

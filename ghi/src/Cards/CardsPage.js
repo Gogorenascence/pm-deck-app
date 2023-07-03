@@ -1,6 +1,3 @@
-import {
-    Button,
-} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 
@@ -81,6 +78,10 @@ function CardsPage() {
 
     useEffect(() => {
         getCards();
+        document.title = "Cards - PM CardBase"
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     },[]);
 
@@ -290,35 +291,35 @@ function CardsPage() {
                 <option value="card_number">Card Number</option>
             </select>
             <br/>
-            <Button
+            <button
                 className="left"
                 variant="dark"
                 onClick={handleQueryReset}
                 >
                 Reset Filters
-            </Button>
-            <Button
+            </button>
+            <button
                 className="left"
                 variant="dark"
                 onClick={getRandomCard}
                 >
                 Random Card
-            </Button>
+            </button>
             {listView?
-                <Button
+                <button
                     className="left"
                     variant="dark"
                     onClick={handleListView}
                 >
                     Image View
-                </Button>:
-                <Button
+                </button>:
+                <button
                     className="left"
                     variant="dark"
                     onClick={handleListView}
                 >
                     List View
-                </Button>}
+                </button>}
             {listView?
                 <div className="card-list2">
                     {all_cards.slice(0, showMore).map(card => {
@@ -356,12 +357,12 @@ function CardsPage() {
             </div>
             }
             {showMore < all_cards.length ?
-                <Button
+                <button
                     variant="dark"
                     style={{ width: "100%", marginTop:"3%"}}
                     onClick={handleShowMore}>
                     Show More Cards ({all_cards.length - showMore} Remaining)
-                </Button> : null }
+                </button> : null }
     </div>
     );
 }

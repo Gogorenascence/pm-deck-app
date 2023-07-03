@@ -75,6 +75,10 @@ function TopCardsPage() {
     useEffect(() => {
         getCards();
         getDecks();
+        document.title = "Top Cards - PM CardBase"
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     },[]);
 
@@ -93,20 +97,20 @@ function TopCardsPage() {
             <h1 className="left-h1">Top Cards</h1>
             <h2 className="left">Most Commonly Used Cards Across All Decks</h2>
             {listView?
-                <Button
+                <button
                     className="left-top-card"
                     variant="dark"
                     onClick={handleListView}
                 >
                     Image View
-                </Button>:
-                <Button
+                </button>:
+                <button
                     className="left-top-card"
                     variant="dark"
                     onClick={handleListView}
                 >
                     List View
-                </Button>}
+                </button>}
             {listView?
                 <div className="card-list3">
                     {cards.slice(0, limit).slice(0, showMore).map(card => {
@@ -150,12 +154,12 @@ function TopCardsPage() {
             </div>
             }
             {showMore < limit ?
-                <Button
+                <button
                     variant="dark"
                     style={{ width: "100%", marginTop:"3%"}}
                     onClick={handleShowMore}>
                     Show More Cards ({limit - showMore} Remaining)
-                </Button> : null }
+                </button> : null }
     </div>
     );
 }

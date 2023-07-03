@@ -117,13 +117,13 @@ function CardEditModal() {
     return (
 
         <div>
-            <Button
-                className="button100"
+            <button
+                className="button100 red"
                 onClick={handleShow}
                 variant="danger"
                 size="lg">
                 Edit
-            </Button>
+            </button>
 
             <Modal
                 show={show}
@@ -213,22 +213,23 @@ function CardEditModal() {
                                 value={card.file_name}>
                             </input>
                             <br/>
-                            <Button
+                            <button
                                 style={{margin: "4% 2% 2% 1%", width: "100px"}}
                                 variant="dark"
                                 size="lg"
                                 onClick={handleSubmit}
                             >
                                     Save
-                            </Button>
-                            <Button
+                            </button>
+                            <button
+                                className="red"
                                 style={{margin: "4% 2% 2% 1%", width: "100px"}}
                                 variant="danger"
                                 size="lg"
                                 onClick={handleClear}
                             >
                                     Reset
-                            </Button>
+                            </button>
                         </Container>
                         <Container style={{margin: "0% 0% 5% 9%"  }}>
                             <h5 className="label">Card Class </h5>
