@@ -110,7 +110,7 @@ function DeckRow() {
                                         <div className="card-image-wrapper">
                                             <div className="card-image-clip">
                                                 <Card.Img
-                                                    src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4w/"}
+                                                    src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
                                                     alt="Card image"
                                                     className="card-image2"
                                                     variant="bottom"/>
@@ -157,7 +157,7 @@ function DeckRow() {
                             //         <Card className="text-white text-center" style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
                             //             <Card.Img
                             //                 title={deck.name}
-                            //                 src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4/"}
+                            //                 src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/krY25iI.png"}
                             //                 alt="Card image"
                             //                 variant="bottom"/>
                             //             <Card.ImgOverlay className="blackfooter mt-auto">

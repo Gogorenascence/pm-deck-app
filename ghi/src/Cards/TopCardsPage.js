@@ -143,7 +143,7 @@ function TopCardsPage() {
                                 <NavLink to={`/cards/${card.card_number}`} className="nav-link">
                                     <img className="card-list-card2"
                                         title={card.name}
-                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                         alt={card.name}/>
                                 </NavLink>
                                 <h5 className="centered-h5"> {card.name} </h5>

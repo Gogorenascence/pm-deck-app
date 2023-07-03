@@ -248,7 +248,7 @@ function DecksPage() {
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">
                                         <Card.Img
-                                            src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4w/"}
+                                            src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
                                             alt="Card image"
                                             className="card-image2"
                                             variant="bottom"/>

@@ -18,11 +18,11 @@ function Footer() {
                         alt="instagram">
                     </img>
                 </NavLink>
-                <NavLink to="https://twitter.com/jothplaymaker">
+                <NavLink to="https://www.twitch.tv/playmakersccg">
                     <img
                         className="social-icon"
-                        src="https://i.imgur.com/h72khiX.png"
-                        alt="twitter">
+                        src="https://i.imgur.com/QJUUtwL.png"
+                        alt="twitch">
                     </img>
                 </NavLink>
                 <NavLink to="https://www.youtube.com/channel/UCGyH2iJdgKFnm2vEdoZ88Og?ref=jothplaymaker.com">
@@ -30,6 +30,13 @@ function Footer() {
                         className="social-icon"
                         src="https://i.imgur.com/Qk0npzS.png"
                         alt="youtube">
+                    </img>
+                </NavLink>
+                <NavLink to="https://twitter.com/jothplaymaker">
+                    <img
+                        className="social-icon"
+                        src="https://i.imgur.com/h72khiX.png"
+                        alt="twitter">
                     </img>
                 </NavLink>
             </div>

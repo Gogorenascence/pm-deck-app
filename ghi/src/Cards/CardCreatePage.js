@@ -223,20 +223,20 @@ function CardCreatePage() {
                 value={card.second_effect_text}>
             </textarea>
             <br/>
-            <Button
+            <button
                 className="add-comp-button"
                 variant="dark"
                 onClick={handleSubmit}
             >
                     Create
-            </Button>
-            <Button
-                className="add-comp-button"
+            </button>
+            <button
+                className="add-comp-button red"
                 variant="danger"
                 onClick={handleClear}
             >
                     Reset
-            </Button>
+            </button>
         </Container>
 
         </form>

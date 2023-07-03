@@ -13,7 +13,7 @@ function CardModal() {
             {/* <section className={`img-modal ${show ? null : "hidden2"}`}>
                 <img
                     className="modal-card"
-                    src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                     alt="Card image"/>
             </section> */}
         </div>

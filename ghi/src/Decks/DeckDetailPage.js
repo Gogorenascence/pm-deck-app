@@ -138,7 +138,7 @@ function DeckDetailPage() {
                 <div className="card-image-wrapper">
                     <div className="card-image-clip2">
                         <Card.Img
-                            src={deck.cover_card ? deck.cover_card : "https://kornan.dreamhosters.com/logo4w/"}
+                            src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
                             alt="Card image"
                             className="card-image2"
                             variant="bottom"/>
@@ -212,7 +212,7 @@ function DeckDetailPage() {
                                                         onClick={() => handleMulliganChange(card)}
                                                         className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card3" : "builder-card3"}
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}/>
                                                 </Col>
                                             );
@@ -242,7 +242,7 @@ function DeckDetailPage() {
                                                     overflow: "hidden"}}
 
                                                     title={ownership.name}
-                                                    src={ownership.picture_url ? ownership.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                    src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={ownership.name}
                                                     variant="bottom"/>
 
@@ -300,7 +300,7 @@ function DeckDetailPage() {
                             className="left"
                             variant="dark"
                             onClick={clearShuffledDeck}
-                            style={{marginLeft: ".5%", width: '102px', textAlign: "center"}}
+                            style={{marginLeft: ".5%", width: '108px', textAlign: "center"}}
                             >
                             Hide Hand
                     </button>
@@ -335,7 +335,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Main Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                    <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                     {main_list.length > 0 ?
                                     <h5
                                         className="left db-main-count"
@@ -369,7 +369,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Pluck Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                    <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                     {pluck_list.length > 0 ?
                                     <h5
                                         className="left db-pluck-count"
@@ -404,7 +404,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Main Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                             {main_list.length > 0 ?
                             <h5
                                 className="left db-main-count"
@@ -434,7 +434,7 @@ function DeckDetailPage() {
                                                             overflow: "hidden"}}
 
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
                                                         variant="bottom"/>
 
@@ -455,7 +455,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Pluck Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                             {pluck_list.length > 0 ?
                             <h5
                                 className="left db-pluck-count"
@@ -486,7 +486,7 @@ function DeckDetailPage() {
                                                         overflow: "hidden"}}
 
                                                     title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={card.name}
                                                     variant="bottom"/>
 

@@ -5,49 +5,40 @@ function LightSwitch() {
 
     const handleDark = (event) => {
         setIsDark(!isDark);
-        console.log(isDark)
     }
 
     useEffect(() => {
-        // const queries = ".centered-h5, .centered-h5-2"
-        // const elements = document.querySelectorAll(queries);
-        if (isDark) {
-            document.body.classList.add('dark');
-        } else {
-            document.body.classList.remove('dark');
+        // Retrieve the dark mode state from local storage
+        const savedDarkMode = localStorage.getItem("darkMode");
+
+        // If the dark mode state exists in local storage, use it to set the initial state
+        if (savedDarkMode) {
+            setIsDark(JSON.parse(savedDarkMode));
+            document.body.classList.toggle("dark", JSON.parse(savedDarkMode));
         }
+    }, []);
 
+    useEffect(() => {
+        // Update the dark mode state in local storage whenever it changes
+        localStorage.setItem("darkMode", JSON.stringify(isDark));
 
-        // if (isDark) {
-        //     elements.forEach((element) => {
-        //         element.classList.add("dark");
-        //     });
-        // } else {
-        //     elements.forEach((element) => {
-        //         element.classList.remove("dark");
-        //     });
-        // }
-        }, [isDark]);
+        document.body.classList.toggle("dark", isDark);
+    }, [isDark]);
 
     return (
         <div>
-            { isDark?
-                <>
-                    <img
-                        className="light-dark"
-                        src="https://i.imgur.com/bL1Lcll.png"
-                        alt="light"
-                        onClick={handleDark}>
-                    </img>
-                </> :
-                <>
-                    <img
-                        className="light-dark"
-                        src="https://i.imgur.com/aC79zoE.png"
-                        alt="dark"
-                        onClick={handleDark}>
-                    </img>
-                </>
+            {isDark?
+                <img
+                    className="light-dark"
+                    src="https://i.imgur.com/bL1Lcll.png"
+                    alt="light"
+                    onClick={handleDark}/>
+                :
+                <img
+                    className="light-dark"
+                    src="https://i.imgur.com/aC79zoE.png"
+                    alt="dark"
+                    onClick={handleDark}/>
             }
         </div>
 

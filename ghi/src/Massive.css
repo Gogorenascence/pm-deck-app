@@ -79,7 +79,7 @@ body.dark {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to right, rgba(16, 14, 22, 0.849), rgba(17, 0, 54, 0.849)), url("./backg.png");
+  background-image: linear-gradient(to right, rgba(16, 14, 22, 0.5), rgba(17, 0, 54, 0.4)), url("./backg.png");
   background-size: 100%, 60%;
   background-repeat: no-repeat, repeat;
   background-position: center center, center center;
@@ -99,7 +99,7 @@ body.dark::after {
   background-image: url("./frame2.png");
   background-repeat: repeat;
   animation: scroll 5000s linear infinite;
-  opacity: .1;
+  opacity: .15;
   z-index: -20;
   margin-bottom: 200px;
 }
@@ -641,7 +641,7 @@ button {
   width: 480px;
   border-radius: 4%;
   overflow: hidden;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .cd-related-card {
@@ -649,7 +649,7 @@ button {
   border-radius: 4%;
   overflow: hidden;
   margin: 0px 10px 10px 10px;
-  border: 1.5px solid white;
+  border: 1px solid white;
 }
 
 .cd-info {
@@ -720,7 +720,7 @@ button {
   margin: 20px 3px 0px 3px;
   border-radius: 4.5%;
   overflow: hidden;
-  border: 1.5px solid white;
+  border: 1px solid white;
 }
 
 .card-list-card2 {
@@ -728,7 +728,7 @@ button {
   margin: 0px 3px 0px 0px;
   border-radius: 4.5%;
   overflow: hidden;
-  outline: 1.5px solid white;
+  outline: 1px solid white;
 }
 
 .card-list-card3 {

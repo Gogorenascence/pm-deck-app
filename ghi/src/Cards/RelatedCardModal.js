@@ -33,13 +33,13 @@ function RelatedCardModal() {
     return (
 
         <div>
-            <Button
+            <button
                 style={{width: "170px", margin: "20px 2.5px 20px 2.5px"}}
                 onClick={handleShow}
                 variant="dark"
                 size="lg">
                 Show all Cards
-            </Button>
+            </button>
 
             <Modal
                 show={show}

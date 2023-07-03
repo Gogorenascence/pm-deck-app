@@ -88,7 +88,7 @@ function DeckExport(props) {
     for (let card of main_list){
       deckExport["ObjectStates"][0]["CustomDeck"][card.card_number.toString()] = {
         "FaceURL": "",
-        "BackURL": "https://kornan.dreamhosters.com/logo4/",
+        "BackURL": "https://i.imgur.com/krY25iI.png",
         "NumWidth": 1,
         "NumHeight": 1,
         "BackIsHidden": true,
@@ -149,7 +149,7 @@ function DeckExport(props) {
       cardToAdd["GUID"] = card.id.slice(0,6)
       cardToAdd[card.card_number] = {
         "FaceURL": "",
-        "BackURL": "https://kornan.dreamhosters.com/logo4/",
+        "BackURL": "https://i.imgur.com/krY25iI.png",
         "NumWidth": 1,
         "NumHeight": 1,
         "BackIsHidden": true,

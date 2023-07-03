@@ -411,7 +411,7 @@ function DeckCopyPage() {
                             ):(
                         <img
                             className="cover-card"
-                            src={"https://kornan.dreamhosters.com/logo4/"}
+                            src={"https://i.imgur.com/krY25iI.png"}
                             alt="card"/>)}
                 </div>
 
@@ -585,7 +585,7 @@ function DeckCopyPage() {
                                 className="left"
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
                             >Card Pool</h2>
-                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                             {all_cards.length > 0 ?
                                 <h5
                                     className="left db-pool-count"
@@ -611,7 +611,7 @@ function DeckCopyPage() {
                                                         onClick={() => handleClick(card)}
                                                         className={combinedList.includes(card) ? "selected builder-card" : "builder-card"}
                                                         title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
                                                         variant="bottom"/>
                                             </Col>
@@ -638,7 +638,7 @@ function DeckCopyPage() {
                                                 className="left"
                                                 style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                             >Main Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                             {main_list.length > 0 ?
                                             <h5
                                                 className="left"
@@ -674,7 +674,7 @@ function DeckCopyPage() {
                                                 className="left"
                                                 style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                             >Pluck Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                             {pluck_list.length > 0 ?
                                             <h5
                                                 className="left"
@@ -710,7 +710,7 @@ function DeckCopyPage() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -737,7 +737,7 @@ function DeckCopyPage() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}/>
                                         </Col>
                                     );
@@ -754,7 +754,7 @@ function DeckCopyPage() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/C2Pxj3s.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -782,7 +782,7 @@ function DeckCopyPage() {
                                                 className="builder-card2"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}
                                                 variant="bottom"/>
                                         </Col>
