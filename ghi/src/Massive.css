@@ -98,7 +98,7 @@ body.dark::after {
   background-size: 125px;
   background-image: url("./frame2.png");
   background-repeat: repeat;
-  animation: scroll 3400s linear infinite;
+  animation: scroll 5000s linear infinite;
   opacity: .1;
   z-index: -20;
   margin-bottom: 200px;
@@ -329,7 +329,7 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.212);
   background-color: rgba(15, 0, 50, 0.315);
   border-radius: 2px;
-  outline: 1px solid rgba(255, 255, 255, 0.25);
+  outline: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cardpool {
@@ -552,7 +552,7 @@ button {
   margin: 2.5% 0px 0px 0%;
   border-radius: 17px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  border: 1px solid white;
 }
 
 .builder-card {
@@ -560,7 +560,7 @@ button {
   margin: 2.25px 0px;
   border-radius: 7px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  border: 1px solid white;
 }
 
 .builder-card2 {
@@ -569,7 +569,7 @@ button {
   border-radius: 7px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  border: 1px solid white;
 }
 
 .builder-card2:hover {
@@ -588,7 +588,7 @@ button {
   border-radius: 7px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  border: 1px solid white;
 }
 
 .builder-card3:hover {
@@ -725,10 +725,10 @@ button {
 
 .card-list-card2 {
   width: 100%;
-  margin: 0px 3px 0px 3px;
+  margin: 0px 3px 0px 0px;
   border-radius: 4.5%;
   overflow: hidden;
-  outline: 1.5px solid rgba(255, 255, 255, 0.425);
+  outline: 1.5px solid white;
 }
 
 .card-list-card3 {
@@ -937,7 +937,7 @@ button {
   left: 100%;
   display: none;
   transform: translate(10%, -80%);
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  border: 1px solid white;
 }
 
 .heightNorm{
@@ -1088,4 +1088,10 @@ button {
   cursor: pointer;
   opacity: 100%;
   transition: opacity 0.5s;
+}
+
+.aligned {
+  text-align: center;
+  align-items: center;
+  padding: 0;
 }

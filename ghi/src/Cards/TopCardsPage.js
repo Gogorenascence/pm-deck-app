@@ -139,16 +139,18 @@ function TopCardsPage() {
             <div className="card-list5">
                 {cards.slice(0, limit).slice(0, showMore).map(card => {
                     return (
-                        <NavLink to={`/cards/${card.card_number}`} className="nav-link">
-                                <img className="card-list-card2"
-                                    title={card.name}
-                                    src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
-                                    alt={card.name}/>
+                            <div className="aligned">
+                                <NavLink to={`/cards/${card.card_number}`} className="nav-link">
+                                    <img className="card-list-card2"
+                                        title={card.name}
+                                        src={card.picture_url ? card.picture_url : "https://kornan.dreamhosters.com/logo4/"}
+                                        alt={card.name}/>
+                                </NavLink>
                                 <h5 className="centered-h5"> {card.name} </h5>
                                 <h6 className="centered-h5-2">
                                     {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
                                 </h6>
-                        </NavLink>
+                            </div>
                     );
                 })}
             </div>
