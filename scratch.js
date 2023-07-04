@@ -229,3 +229,234 @@
 // }
 
 // export default LightSwitch;
+
+
+// import React from "react";
+
+// function Modal() {
+//   return (
+//     <div className="modal">
+//       <div className="modal-content">
+//         <h2>Modal Title</h2>
+//         <p>Modal content goes here...</p>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Modal;
+
+
+// .modal {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 9999;
+// }
+
+// .modal-content {
+//   background-color: #fff;
+//   padding: 20px;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+// }
+
+
+// import React, { useState } from "react";
+// import Modal from "./Modal";
+
+// function App() {
+//   const [showModal, setShowModal] = useState(false);
+
+//   const toggleModal = () => {
+//     setShowModal(!showModal);
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={toggleModal}>Open Modal</button>
+//       {showModal && <Modal />}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+// import React from "react";
+
+// function Navbar() {
+//   return (
+//     <nav>
+//       <ul className="navbar-menu">
+//         <li className="navbar-item">
+//           <a href="#">Home</a>
+//         </li>
+//         <li className="navbar-item dropdown">
+//           <a href="#">Dropdown</a>
+//           <ul className="dropdown-menu">
+//             <li>
+//               <a href="#">Item 1</a>
+//             </li>
+//             <li>
+//               <a href="#">Item 2</a>
+//             </li>
+//             <li>
+//               <a href="#">Item 3</a>
+//             </li>
+//           </ul>
+//         </li>
+//         <li className="navbar-item">
+//           <a href="#">About</a>
+//         </li>
+//         <li className="navbar-item">
+//           <a href="#">Contact</a>
+//         </li>
+//       </ul>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+
+// .navbar-menu {
+//   list-style: none;
+//   display: flex;
+//   justify-content: space-between;
+//   background-color: #f0f0f0;
+//   padding: 10px;
+// }
+
+// .navbar-item {
+//   margin-right: 10px;
+// }
+
+// .dropdown {
+//   position: relative;
+// }
+
+// .dropdown-menu {
+//   position: absolute;
+//   top: 100%;
+//   left: 0;
+//   background-color: #f0f0f0;
+//   display: none;
+//   padding: 10px;
+// }
+
+// .dropdown:hover .dropdown-menu {
+//   display: block;
+// }
+
+
+// import React, { useState } from "react";
+
+// function Navbar() {
+//   const [showDropdown, setShowDropdown] = useState(false);
+
+//   const toggleDropdown = () => {
+//     setShowDropdown(!showDropdown);
+//   };
+
+//   return (
+//     <nav>
+//       <ul className="navbar-menu">
+//         <li className="navbar-item">
+//           <a href="#">Home</a>
+//         </li>
+//         <li className="navbar-item dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+//           <a href="#">Dropdown</a>
+//           {showDropdown && (
+//             <ul className="dropdown-menu">
+//               <li>
+//                 <a href="#">Item 1</a>
+//               </li>
+//               <li>
+//                 <a href="#">Item 2</a>
+//               </li>
+//               <li>
+//                 <a href="#">Item 3</a>
+//               </li>
+//             </ul>
+//           )}
+//         </li>
+//         <li className="navbar-item">
+//           <a href="#">About</a>
+//         </li>
+//         <li className="navbar-item">
+//           <a href="#">Contact</a>
+//         </li>
+//       </ul>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+
+// const [cardType, setCardType] = useState([]);
+// const [extraEffects, setExtraEffects] = useState([]);
+// const [reactions, setReactions] = useState([]);
+// const [cardTags, setCardTags] = useState([]);
+
+// const [cardTypeInput, setCardTypeInput] = useState("");
+// const [extraEffectsInput, setExtraEffectsInput] = useState("");
+// const [reactionsInput, setReactionsInput] = useState("");
+// const [cardTagsInput, setCardTagsInput] = useState("");
+
+// // Inside the JSX
+// <input
+//   className="builder-input"
+//   type="text"
+//   placeholder="Card Type"
+//   value={cardTypeInput}
+//   onChange={(e) => setCardTypeInput(e.target.value)}
+// />
+// <button onClick={handleAddCardType}>Add</button>
+
+
+// const handleAddCardType = () => {
+//   if (cardTypeInput) {
+//     setCardType([...cardType, cardTypeInput]);
+//     setCardTypeInput("");
+//   }
+// };
+
+// const handleAddExtraEffect = () => {
+//   if (extraEffectsInput) {
+//     setExtraEffects([...extraEffects, extraEffectsInput]);
+//     setExtraEffectsInput("");
+//   }
+// };
+
+// // Repeat similar functions for reactions and cardTags
+// <div>
+//   {cardType.map((item, index) => (
+//     <div key={index}>
+//       {item}
+//       <button onClick={() => handleRemoveCardType(index)}>Remove</button>
+//     </div>
+//   ))}
+// </div>
+
+// const handleRemoveCardType = (index) => {
+//   const updatedCardType = [...cardType];
+//   updatedCardType.splice(index, 1);
+//   setCardType(updatedCardType);
+// };
+
+// const handleRemoveExtraEffect = (index) => {
+//   const updatedExtraEffects = [...extraEffects];
+//   updatedExtraEffects.splice(index, 1);
+//   setExtraEffects(updatedExtraEffects);
+// };
+
+// // Repeat similar functions for reactions and cardTags
