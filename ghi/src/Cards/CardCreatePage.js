@@ -24,7 +24,55 @@ function CardCreatePage() {
         card_tags: [],
     });
 
+    const [card_type, setCardType] = useState([]);
+    const [extra_effects, setExtraEffects] = useState([]);
+    const [reactions, setReactions] = useState([]);
+    const [card_tags, setCardTags] = useState([]);
+
+    const [cardTypeList, setCardTypeList] = useState([]);
+    const [extraEffectList, setExtraEffectList] = useState([]);
+    const [reactionList, setReactionList] = useState([]);
+    const [cardTagsList, setCardTagList] = useState([]);
+
+    const [cardTypeInput, setCardTypeInput] = useState("");
+    const [extraEffectsInput, setExtraEffectsInput] = useState("");
+    const [reactionsInput, setReactionsInput] = useState("");
+    const [cardTagsInput, setCardTagsInput] = useState("");
+
+    const getCardTypes = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
+        const cardTypeData = await response.json();
+
+        setCardTypeList(cardTypeData.card_types.sort((a,b) => a.type_number - b.type_number));
+    };
+
+    const getExtraEffects = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/`);
+        const extraEffectData = await response.json();
+
+        setExtraEffectList(extraEffectData.extra_effects.sort((a,b) => a.effect_number - b.effect_number));
+    };
+
+    const getReactions = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/`);
+        const reactionData = await response.json();
+
+        setReactionList(reactionData.reactions.sort((a,b) => a.reaction_number - b.reaction_number));
+    };
+
+    const getCardTags = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/`);
+        const cardTagData = await response.json();
+
+        setCardTagList(cardTagData.card_tags.sort((a,b) => a.tag_number - b.tag_number));
+    };
+
     useEffect(() => {
+        getCardTypes();
+        getExtraEffects();
+        getReactions();
+        getCardTags();
+
         document.title = "Card Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -42,6 +90,10 @@ function CardCreatePage() {
         data["card_number"] = parseInt(card["card_number"], 10);
         data["enthusiasm"] = parseInt(card["enthusiasm"], 10);
         console.log(data)
+        data["card_type"] = card_type
+        data["extra_effects"] = extra_effects
+        data["reactions"] = reactions
+        data["card_tag"] = card_tags
         const card_number = data["card_number"]
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`;
