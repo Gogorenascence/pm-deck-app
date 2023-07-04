@@ -529,7 +529,7 @@ function DeckBuilder() {
                                 className="left"
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
                             >Card Pool</h2>
-                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                             {all_cards.length > 0 ?
                                 <h5
                                     className="left db-pool-count"
@@ -581,7 +581,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                 >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -616,7 +616,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                 >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -652,7 +652,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
@@ -696,7 +696,7 @@ function DeckBuilder() {
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"

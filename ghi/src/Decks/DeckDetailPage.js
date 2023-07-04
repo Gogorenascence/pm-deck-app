@@ -335,7 +335,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Main Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                    <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                     {main_list.length > 0 ?
                                     <h5
                                         className="left db-main-count"
@@ -369,7 +369,7 @@ function DeckDetailPage() {
                                         className="left"
                                         style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
                                     >Pluck Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                                    <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                                     {pluck_list.length > 0 ?
                                     <h5
                                         className="left db-pluck-count"
@@ -404,7 +404,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Main Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                             {main_list.length > 0 ?
                             <h5
                                 className="left db-main-count"
@@ -455,7 +455,7 @@ function DeckDetailPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >Pluck Deck</h2>
-                            <img className="logo" src="https://i.imgur.com/7zEiwPu.png" alt="cards icon"/>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                             {pluck_list.length > 0 ?
                             <h5
                                 className="left db-pluck-count"
