@@ -1,48 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function LightSwitch() {
-    const [isDark, setIsDark] = useState(false);
-
-    const handleDark = (event) => {
-        setIsDark(!isDark);
-    }
-
-    useEffect(() => {
-        // Retrieve the dark mode state from local storage
+    const [isDark, setIsDark] = useState(() => {
         const savedDarkMode = localStorage.getItem("darkMode");
+        return savedDarkMode ? JSON.parse(savedDarkMode) : false;
+    });
 
-        // If the dark mode state exists in local storage, use it to set the initial state
-        if (savedDarkMode) {
-            setIsDark(JSON.parse(savedDarkMode));
-            document.body.classList.toggle("dark", JSON.parse(savedDarkMode));
-        }
-    }, []);
+    const handleDark = () => {
+        setIsDark(!isDark);
+        localStorage.setItem("darkMode", JSON.stringify(!isDark));
+    };
 
-    useEffect(() => {
-        // Update the dark mode state in local storage whenever it changes
-        localStorage.setItem("darkMode", JSON.stringify(isDark));
-
-        document.body.classList.toggle("dark", isDark);
-    }, [isDark]);
+    if (isDark) {
+        document.body.classList.add("dark");
+    } else {
+        document.body.classList.remove("dark");
+    }
 
     return (
         <div>
-            {isDark?
-                <img
-                    className="light-dark"
-                    src="https://i.imgur.com/bL1Lcll.png"
-                    alt="light"
-                    onClick={handleDark}/>
-                :
-                <img
-                    className="light-dark"
-                    src="https://i.imgur.com/aC79zoE.png"
-                    alt="dark"
-                    onClick={handleDark}/>
-            }
+        {isDark ? (
+            <img
+            className="light-dark"
+            src="https://i.imgur.com/aC79zoE.png"
+            alt="dark"
+            onClick={handleDark}
+            />
+        ) : (
+            <img
+            className="light-dark"
+            src="https://i.imgur.com/bL1Lcll.png"
+            alt="light"
+            onClick={handleDark}
+            />
+        )}
         </div>
-
-);
+    );
 }
 
 export default LightSwitch;
