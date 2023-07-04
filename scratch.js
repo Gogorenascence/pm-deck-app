@@ -1,68 +1,68 @@
-const then = "2022-06-26T16:23:23.488Z";
+// const then = "2022-06-26T16:23:23.488Z";
 
-// Convert the string to a Date object
-const thenDate = new Date(then);
+// // Convert the string to a Date object
+// const thenDate = new Date(then);
 
-// Get the current time
-const timeNow = new Date();
+// // Get the current time
+// const timeNow = new Date();
 
-// Calculate the time difference
-const timeDifference = timeNow - thenDate;
+// // Calculate the time difference
+// const timeDifference = timeNow - thenDate;
 
-// Define time units
-const oneMinute = 60 * 1000; // milliseconds
-const oneHour = oneMinute * 60;
-const oneDay = oneHour * 24;
-const oneMonth = oneDay * 30.44;
-const oneYear = oneDay * 365.25;
+// // Define time units
+// const oneMinute = 60 * 1000; // milliseconds
+// const oneHour = oneMinute * 60;
+// const oneDay = oneHour * 24;
+// const oneMonth = oneDay * 30.44;
+// const oneYear = oneDay * 365.25;
 
-// Calculate years, months, days, hours, minutes, and seconds
-let ago = Math.abs(timeDifference);
-const years = Math.floor(ago / oneYear);
-ago -= years * oneYear;
-const months = Math.floor(ago / oneMonth);
-ago -= months * oneMonth;
-const days = Math.floor(ago / oneDay);
-ago -= days * oneDay;
-const hours = Math.floor(ago / oneHour);
-ago -= hours * oneHour;
-const minutes = Math.floor(ago / oneMinute);
-ago -= minutes * oneMinute;
-const seconds = Math.floor(ago / 1000);
+// // Calculate years, months, days, hours, minutes, and seconds
+// let ago = Math.abs(timeDifference);
+// const years = Math.floor(ago / oneYear);
+// ago -= years * oneYear;
+// const months = Math.floor(ago / oneMonth);
+// ago -= months * oneMonth;
+// const days = Math.floor(ago / oneDay);
+// ago -= days * oneDay;
+// const hours = Math.floor(ago / oneHour);
+// ago -= hours * oneHour;
+// const minutes = Math.floor(ago / oneMinute);
+// ago -= minutes * oneMinute;
+// const seconds = Math.floor(ago / 1000);
 
-// Format the time difference
-if (years > 0) {
-  console.log(`${years} year${years > 1 ? 's' : ''}, ${months} month${months > 1 ? 's' : ''} ago`);
-} else if (months > 0) {
-  console.log(`${months} month${months > 1 ? 's' : ''}, ${hours} hours, ${minutes} minutes, and ${seconds} seconds ago`);
-} else if (days > 0) {
-  console.log(`${days} day${days > 1 ? 's' : ''}, ${hours} hours, ${minutes} minutes, and ${seconds} seconds ago`);
-} else if (hours > 0) {
-  console.log(`${hours} hour${hours > 1 ? 's' : ''}, ${minutes} minutes, and ${seconds} seconds ago`);
-} else if (minutes > 0) {
-  console.log(`${minutes} minute${minutes > 1 ? 's' : ''} and ${seconds} seconds ago`);
-} else {
-  console.log(`${seconds} seconds ago`);
-}
+// // Format the time difference
+// if (years > 0) {
+//   console.log(`${years} year${years > 1 ? 's' : ''}, ${months} month${months > 1 ? 's' : ''} ago`);
+// } else if (months > 0) {
+//   console.log(`${months} month${months > 1 ? 's' : ''}, ${hours} hours, ${minutes} minutes, and ${seconds} seconds ago`);
+// } else if (days > 0) {
+//   console.log(`${days} day${days > 1 ? 's' : ''}, ${hours} hours, ${minutes} minutes, and ${seconds} seconds ago`);
+// } else if (hours > 0) {
+//   console.log(`${hours} hour${hours > 1 ? 's' : ''}, ${minutes} minutes, and ${seconds} seconds ago`);
+// } else if (minutes > 0) {
+//   console.log(`${minutes} minute${minutes > 1 ? 's' : ''} and ${seconds} seconds ago`);
+// } else {
+//   console.log(`${seconds} seconds ago`);
+// }
 
 
 
-<Card className="text-white text-center card-list-card">
-  <div className="card-image-wrapper">
-    <div className="card-image-clip">
-      <Card.Img
-        src={deck.cover_card ? deck.cover_card : ""}
-        alt="Card image"
-        variant="bottom"
-        className="card-image"
-      />
-    </div>
-  </div>
-  <Card.ImgOverlay className="blackfooter2 mt-auto">
-    <h5>{deck.name}</h5>
-    {/* Other card content */}
-  </Card.ImgOverlay>
-</Card>
+// <Card className="text-white text-center card-list-card">
+//   <div className="card-image-wrapper">
+//     <div className="card-image-clip">
+//       <Card.Img
+//         src={deck.cover_card ? deck.cover_card : ""}
+//         alt="Card image"
+//         variant="bottom"
+//         className="card-image"
+//       />
+//     </div>
+//   </div>
+//   <Card.ImgOverlay className="blackfooter2 mt-auto">
+//     <h5>{deck.name}</h5>
+//     {/* Other card content */}
+//   </Card.ImgOverlay>
+// </Card>
 
 
 // .card-image-wrapper {
@@ -175,3 +175,57 @@ if (years > 0) {
 //     background-position: -3000px 3000px;
 //   }
 // }
+
+// import React, { useEffect, useState } from "react";
+
+// function LightSwitch() {
+//     const [isDark, setIsDark] = useState(false);
+
+//     const handleDark = (event) => {
+//         setIsDark(!isDark);
+//         localStorage.setItem("darkMode", JSON.stringify(isDark));
+//     }
+
+//     useEffect(() => {
+//         // Retrieve the dark mode state from local storage
+//         const savedDarkMode = localStorage.getItem("darkMode");
+
+//         // If the dark mode state exists in local storage, use it to set the initial state
+//         if (savedDarkMode) {
+//             setIsDark(JSON.parse(savedDarkMode));
+//             document.body.classList.toggle("dark", JSON.parse(savedDarkMode));
+//         } else {
+//             // If no dark mode state exists in local storage, check the user's preferred color scheme
+//             const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//             setIsDark(prefersDarkMode);
+//         }
+//     }, []);
+
+//     useEffect(() => {
+//         // Update the dark mode state in local storage whenever it changes
+//         localStorage.setItem("darkMode", JSON.stringify(isDark));
+
+//         document.body.classList.toggle("dark", isDark);
+//     }, [isDark]);
+
+//     return (
+//         <div>
+//             {isDark?
+//                 <img
+//                     className="light-dark"
+//                     src="https://i.imgur.com/bL1Lcll.png"
+//                     alt="light"
+//                     onClick={handleDark}/>
+//                 :
+//                 <img
+//                     className="light-dark"
+//                     src="https://i.imgur.com/aC79zoE.png"
+//                     alt="dark"
+//                     onClick={handleDark}/>
+//             }
+//         </div>
+
+// );
+// }
+
+// export default LightSwitch;
