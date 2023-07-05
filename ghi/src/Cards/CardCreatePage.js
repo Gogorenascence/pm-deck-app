@@ -32,12 +32,12 @@ function CardCreatePage() {
     const [cardTypeList, setCardTypeList] = useState([]);
     const [extraEffectList, setExtraEffectList] = useState([]);
     const [reactionList, setReactionList] = useState([]);
-    const [cardTagsList, setCardTagList] = useState([]);
+    const [cardTagList, setCardTagList] = useState([]);
 
     const [cardTypeInput, setCardTypeInput] = useState("");
-    const [extraEffectsInput, setExtraEffectsInput] = useState("");
-    const [reactionsInput, setReactionsInput] = useState("");
-    const [cardTagsInput, setCardTagsInput] = useState("");
+    const [extraEffectInput, setExtraEffectInput] = useState("");
+    const [reactionInput, setReactionInput] = useState("");
+    const [cardTagInput, setCardTagInput] = useState("");
 
     const getCardTypes = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
@@ -245,18 +245,18 @@ function CardCreatePage() {
             <br/>
         </Container>
         <Container style={{margin:"3.5% 0% 2.5% 10%"}}>
-            {/* <h5 className="label">Card Type </h5>
+            <h5 className="label">Card Type </h5>
                 <select
                     className="builder-input"
                     type="text"
-                    onChange={handleTypeChange}
+                    // onChange={handleTypeChange}
                     name="card_type"
                     value={cardTypeInput}>
                     <option value="">Card Type</option>
                     {cardTypeList.map((card_type) => (
                         <option value={card_type.id}>{card_type.name}</option>
                         ))}
-                </select> */}
+                </select>
             <h5 className="label">Card Class </h5>
             <select
                 className="builder-input"
@@ -300,6 +300,45 @@ function CardCreatePage() {
                 name="second_effect_text"
                 value={card.second_effect_text}>
             </textarea>
+            <br/>
+            <h5 className="label">Extra Effect </h5>
+                <select
+                    className="builder-input"
+                    type="text"
+                    // onChange={handleEffectChange}
+                    name="extra_effect"
+                    value={extraEffectInput}>
+                    <option value="">Extra Effect</option>
+                    {extraEffectList.map((extra_effect) => (
+                        <option value={extra_effect.id}>{extra_effect.name}</option>
+                        ))}
+                </select>
+            <br/>
+            <h5 className="label">Reaction </h5>
+                <select
+                    className="builder-input"
+                    type="text"
+                    // onChange={handleReactionChange}
+                    name="reaction"
+                    value={reactionInput}>
+                    <option value="">Reaction</option>
+                    {reactionList.map((reaction) => (
+                        <option value={reaction.id}>{reaction.name}</option>
+                        ))}
+                </select>
+            <br/>
+            <h5 className="label">Tag </h5>
+                <select
+                    className="builder-input"
+                    type="text"
+                    // onChange={handleTagChange}
+                    name="card_tag"
+                    value={cardTagInput}>
+                    <option value="">Tag</option>
+                    {cardTagList.map((card_tag) => (
+                        <option value={card_tag.id}>{card_tag.name}</option>
+                        ))}
+                </select>
             <br/>
             <button
                 className="add-comp-button"
