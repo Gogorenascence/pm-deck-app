@@ -205,7 +205,7 @@ function DeckDetailPage() {
                                                     style={{padding: "2px 5px 8px 5px"}}>
                                                     <img
                                                         style={{
-                                                            width: '120px',
+                                                            width: '115px',
                                                             margin: '10px 0px 10px 0px',
                                                             borderRadius: "7px",
                                                             overflow: "hidden"}}
@@ -236,7 +236,7 @@ function DeckDetailPage() {
                                             <Col style={{paddingTop: "2px"}}>
                                                 <img
                                                     className="builder-card3"
-                                                    style={{ width: '120px',
+                                                    style={{ width: '115px',
                                                     margin: '10px 0px 10px 0px',
                                                     borderRadius: "7px",
                                                     overflow: "hidden"}}
