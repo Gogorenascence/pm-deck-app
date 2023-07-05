@@ -349,7 +349,7 @@ function CardsPage() {
                         <NavLink to={`/cards/${card.card_number}`}>
                                 <img className="card-list-card"
                                     title={card.name}
-                                    src={card.picture_url ? card.picture_url : ""}
+                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                     alt={card.name}/>
                         </NavLink>
                     );

@@ -311,9 +311,8 @@ function DeckCopyPage() {
         <div className="white-space">
             <h1 className="left-h1">Deck Copy</h1>
             <Row xs={3} sm={3} md={3} lg={3}>
-                <form
+                <div
                     style={{marginBottom: "45px", width: "435px"}}
-                    onSubmit={handleSubmit}
                     id="create-deck-page">
                     <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
@@ -400,7 +399,7 @@ function DeckCopyPage() {
                             Clear Pluck
                     </button>
                     <br/>
-                </form>
+                </div>
                 <div style={{ width: "350px"}}>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (

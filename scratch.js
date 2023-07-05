@@ -438,20 +438,20 @@
 // };
 
 // // Repeat similar functions for reactions and cardTags
-// <div>
-//   {cardType.map((item, index) => (
-//     <div key={index}>
-//       {item}
-//       <button onClick={() => handleRemoveCardType(index)}>Remove</button>
-//     </div>
-//   ))}
-// </div>
+{/* <div>
+  {cardType.map((item, index) => (
+    <div key={index}>
+      {item}
+      <button onClick={() => handleRemoveCardType(index)}>Remove</button>
+    </div>
+  ))}
+</div>
 
-// const handleRemoveCardType = (index) => {
-//   const updatedCardType = [...cardType];
-//   updatedCardType.splice(index, 1);
-//   setCardType(updatedCardType);
-// };
+const handleRemoveCardType = (index) => {
+  const updatedCardType = [...cardType];
+  updatedCardType.splice(index, 1);
+  setCardType(updatedCardType);
+}; */}
 
 // const handleRemoveExtraEffect = (index) => {
 //   const updatedExtraEffects = [...extraEffects];
@@ -460,3 +460,6 @@
 // };
 
 // // Repeat similar functions for reactions and cardTags
+
+
+// clicking any button in a form will sumbit the form

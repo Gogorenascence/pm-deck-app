@@ -122,7 +122,8 @@ function CardDetailPage() {
                     <div className="cd-inner">
                         <img
                             className="cd-card"
-                            src={card?.picture_url ?? ""} alt={card.name}/>
+                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                            alt={card.name}/>
                     </div>
                     <div style={{margin: "5% 0%"}}>
                             <h1 className="centered-h1">Related Cards</h1>
@@ -134,7 +135,7 @@ function CardDetailPage() {
                                                 <img
                                                     className="cd-related-card"
                                                     title={relatedCard.name}
-                                                    src={relatedCard.picture_url ? relatedCard.picture_url : ""}
+                                                    src={relatedCard.picture_url ? relatedCard.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={relatedCard.name}
                                                     variant="bottom"/>
                                         </NavLink>
@@ -264,8 +265,6 @@ function CardDetailPage() {
                             <Container style={{margin: "2% 0%", width: "662px"}}>
                                 <div style={{display: "flex", marginBottom: ".75%"}}>
                                     <CardEditModal/>
-
-                                    <CardAddCompModal/>
 
                                     <NavLink to="/cards/create">
                                         <button
