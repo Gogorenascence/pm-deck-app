@@ -143,11 +143,10 @@ function CardDetailPage() {
                                 })}
                             </div>
                         </div>
-                        <div className="cd-inner">
+                        <div className="cd-inner" style={{marginTop: "3%"}}>
                             <button
-                                style={{width: "170px", margin: "20px 2.5px 20px 2.5px"}}
-                                variant="dark"
-                                size="lg"
+                                className="left button100 heightNorm"
+                                style={{ textAlign: "center", width: "135px"}}
                                 onClick={getRandomCard}
                             >
                                 Random Card
@@ -266,19 +265,12 @@ function CardDetailPage() {
                                 <div style={{display: "flex", marginBottom: ".75%"}}>
                                     <CardEditModal/>
 
-                                    <NavLink to="/cards/create">
-                                        <button
-                                            className="button100"
-                                            variant="danger"
-                                            size="lg">
-                                            Create
-                                        </button>
-                                    </NavLink>
                                     <NavLink to="/cards">
                                         <button
-                                            className="button100"
+                                            className="left button100 heightNorm"
                                             variant="dark"
-                                            size="lg">
+                                            style={{marginLeft: "5%", textAlign: "center"}}
+                                        >
                                             Back
                                         </button>
                                     </NavLink>

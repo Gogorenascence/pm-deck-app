@@ -34,11 +34,10 @@ function RelatedCardModal() {
 
         <div>
             <button
-                style={{width: "170px", margin: "20px 2.5px 20px 2.5px"}}
-                onClick={handleShow}
-                variant="dark"
-                size="lg">
-                Show all Cards
+                className="left button100 heightNorm"
+                style={{ textAlign: "center", width: "140px"}}
+                    onClick={handleShow}>
+                    Show all Cards
             </button>
 
             <Modal

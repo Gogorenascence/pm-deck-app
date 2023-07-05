@@ -298,12 +298,8 @@ function CardEditModal() {
     return (
 
         <div>
-            <button
-                className="button100 red"
-                onClick={handleShow}
-                variant="danger"
-                size="lg">
-                Edit
+            <button className="left red">
+                Edit Card
             </button>
 
             <Modal

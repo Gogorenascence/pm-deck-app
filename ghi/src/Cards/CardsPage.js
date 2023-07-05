@@ -291,6 +291,13 @@ function CardsPage() {
                 <option value="card_number">Card Number</option>
             </select>
             <br/>
+
+            <NavLink to="/cards/create">
+                <button
+                    className="left">
+                    Create
+                </button>
+            </NavLink>
             <button
                 className="left"
                 variant="dark"
