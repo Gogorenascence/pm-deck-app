@@ -564,14 +564,21 @@ function CardEditModal() {
                         variant="dark"
                         onClick={handleSubmit}
                     >
-                            Create
+                            Save
+                    </button>
+                    <button
+                        className="add-comp-button"
+                        variant="dark"
+                        onClick={getCard}
+                    >
+                            Reset
                     </button>
                     <button
                         className="add-comp-button red"
                         variant="danger"
                         onClick={handleClear}
                     >
-                            Reset
+                            Clear
                     </button>
                 </div>
             </div>
