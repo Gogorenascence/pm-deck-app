@@ -84,6 +84,20 @@ function CardCreatePage() {
         setCard({ ...card, [event.target.name]: event.target.value });
     };
 
+    // const handleAddCardType = () => {
+    //     if (cardTypeInput) {
+    //         setCardType([...cardType, cardTypeInput]);
+    //         setCardTypeInput("");
+    //     }
+    // };
+
+    // const handleAddExtraEffect = () => {
+    //     if (extraEffectsInput) {
+    //         setExtraEffects([...extraEffects, extraEffectsInput]);
+    //         setExtraEffectsInput("");
+    //     }
+    // };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...card};
@@ -231,6 +245,18 @@ function CardCreatePage() {
             <br/>
         </Container>
         <Container style={{margin:"3.5% 0% 2.5% 10%"}}>
+            {/* <h5 className="label">Card Type </h5>
+                <select
+                    className="builder-input"
+                    type="text"
+                    onChange={handleTypeChange}
+                    name="card_type"
+                    value={cardTypeInput}>
+                    <option value="">Card Type</option>
+                    {cardTypeList.map((card_type) => (
+                        <option value={card_type.id}>{card_type.name}</option>
+                        ))}
+                </select> */}
             <h5 className="label">Card Class </h5>
             <select
                 className="builder-input"
