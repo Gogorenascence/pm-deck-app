@@ -108,11 +108,10 @@ function CardDetailPage() {
         getReactions();
         getCardTags();
         getCards();
-        document.title = `${card.name} - PM CardBase`
+        document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
-    // eslint-disable-next-line
     }, [card_number]);
 
     return (
