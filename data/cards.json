@@ -858,7 +858,25 @@
   "card_tags": [
     "6407a29bc503d0c6f5a33234",
     "6407a27fc503d0c6f5a33233"
-  ]
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:44",
+    "full_time": {
+      "$date": "2023-06-25T18:44:06.985Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 6,
+    "day": 25,
+    "time": "18:51",
+    "full_time": {
+      "$date": "2023-06-25T18:51:49.451Z"
+    }
+  }
 },{
   "_id": {
     "$oid": "6410c90e478149e0847e243b"
@@ -2143,7 +2161,7 @@
   "card_number": 1123,
   "enthusiasm": null,
   "effect_text": "<Trigger> At the start of a round, gain 1 HP and add 2 to your Enthusiasm.",
-  "second_effect_text": "<Critical> The foe with the lowest enthusiasm discards 2 cards from their hand.",
+  "second_effect_text": "<C.Trigger> At the start of a foe's turn, deal 1 damage to that foe if they have Enthusiasm lower than yours.",
   "illustrator": "betomirandaart2",
   "picture_url": "https://kornan.dreamhosters.com/i1cb17g",
   "file_name": "i1cb17g",
@@ -2163,17 +2181,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:57",
+    "month": 7,
+    "day": 1,
+    "time": "19:31",
     "full_time": {
-      "$date": "2023-06-25T18:57:49.285Z"
+      "$date": "2023-07-01T19:31:56.769Z"
     }
   }
 },{
@@ -2435,7 +2451,7 @@
   "series_name": "Warp Family//Cosmic//Cyber",
   "card_number": 1053,
   "enthusiasm": 0,
-  "effect_text": "Look at a random foe's hand, then discard 1 card from their hand. That foe draws 1 card.//\nIf you have a Unity card in your play, resolve this card one more time.\n\n\n",
+  "effect_text": "Look at a random foe's hand, then discard 1 card from their hand. That foe draws 1 card.//\nIf you have a Unity card in your play, resolve this card one more time, but the target foe draws 2 cards instead.\n\n\n",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1p2pf",
@@ -2460,11 +2476,11 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "23:50",
+    "month": 7,
+    "day": 9,
+    "time": "14:45",
     "full_time": {
-      "$date": "2023-06-29T23:50:57.642Z"
+      "$date": "2023-07-09T14:45:45.336Z"
     }
   }
 },{
@@ -3829,7 +3845,7 @@
   "series_name": "Red Fist//Tech//Brawler",
   "card_number": 1024,
   "enthusiasm": 18,
-  "effect_text": "<Target> Foe on your right. //<1-5> Discard 1 card from your hand.  //<6-11> Discard 1 card from your hand. //<12+> Deal 6 piercing damage. If your hand has 6 or more cards, ignore the reaction(s) of defending Fighter(s).",
+  "effect_text": "<Target> Foe on your right. //<1-5> Discard 1 card from your hand.  //<6-11> Discard 1 card from your hand. //<12+>  If your hand has 6 or more cards, deal 6 piercing damage. Ignore the reaction(s) of defending Fighter(s).",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfe",
@@ -3852,11 +3868,11 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "23:42",
+    "month": 7,
+    "day": 9,
+    "time": "14:41",
     "full_time": {
-      "$date": "2023-06-29T23:42:03.989Z"
+      "$date": "2023-07-09T14:41:16.186Z"
     }
   }
 },{
@@ -5282,17 +5298,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:21",
+    "month": 7,
+    "day": 6,
+    "time": "15:15",
     "full_time": {
-      "$date": "2023-06-25T19:21:44.633Z"
+      "$date": "2023-07-06T15:15:30.734Z"
     }
   }
 },{

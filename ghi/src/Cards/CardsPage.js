@@ -86,7 +86,7 @@ function CardsPage() {
     },[]);
 
     const sortMethods = {
-        none: { method: (a,b) => b.id.localeCompare(a.id) },
+        none: { method: (a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time) },
         newest: { method: (a,b) => b.id.localeCompare(a.id) },
         oldest: { method: (a,b) => a.id.localeCompare(b.id) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },

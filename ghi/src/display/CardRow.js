@@ -14,7 +14,7 @@ function CardRow() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
 
-        setCards(data.cards.slice(-5).reverse());
+        setCards(data.cards.sort((a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time)).slice(0, 5));
     };
 
     useEffect(() => {
