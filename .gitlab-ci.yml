@@ -1,10 +1,33 @@
-build laptop:
-    image: alpine
-    script:
-        - echo "Building a laptop"
-        - mkdir build
-        - touch build/computer.txt
-        - echo "Mainboard" >> build/computer.txt
-        - cat build/computer.txt
-        - echo "Keyboard" >> build/computer.txt
-        - cat build/computer.txt
+stages:
+  - build
+  - deploy
+
+build_api:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t api:latest ./api
+  artifacts:
+    paths:
+      - api/Dockerfile.dev
+
+build_ghi:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t ghi:latest ./ghi
+  artifacts:
+    paths:
+      - ghi/run.sh
+
+deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker-compose up -d
