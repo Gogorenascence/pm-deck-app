@@ -28,28 +28,28 @@ function TopCardsPage() {
         console.log(sortedCards)
         const typedCards = []
         for (let card of sortedCards){
-            if (card.card_type[0] === "64079ed6b2b376b6cd0454f5") {
+            if (card.card_type[0] === 1001) {
                 card["cardType"] = "Fighter"
             }
-            else if (card.card_type[0] === "6407bb289b4fb23f5ddab698") {
+            else if (card.card_type[0] === 1002) {
                 card["cardType"] = "Aura"
             }
-            else if (card.card_type[0] === "6407a3bbc503d0c6f5a33238") {
+            else if (card.card_type[0] === 1003) {
                 card["cardType"] = "Move"
             }
-            else if (card.card_type[0] === "640ce41c5f6730657ad8739f") {
+            else if (card.card_type[0] === 1004) {
                 card["cardType"] = "Ending"
             }
-            else if (card.card_type[0] === "64108e0e159c81c7afebd105") {
+            else if (card.card_type[0] === 1005) {
                 card["cardType"] = "Any Type"
             }
-            else if (card.card_type[0] === "64108dee159c81c7afebd104") {
+            else if (card.card_type[0] === 1006) {
                 card["cardType"] = "Item"
             }
-            else if (card.card_type[0] === "640ce4bf5f6730657ad873be") {
+            else if (card.card_type[0] === 1007) {
                 card["cardType"] = "Event"
             }
-            else if (card.card_type[0] === "64108db9159c81c7afebd103") {
+            else if (card.card_type[0] === 1008) {
                 card["cardType"] = "Comeback"
             }
 
@@ -119,14 +119,6 @@ function TopCardsPage() {
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
                                         <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
                                         <h5 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h5>
-                                        {/* {card.effectText.map((line) =>
-                                        <h6 style={{fontWeight: "400", margin: "3px 12px"}}>
-                                            {line}</h6>)}
-                                        {card.secondEffectText?
-                                        <>{card.secondEffectText.map((line) =>
-                                        <h6 style={{fontWeight: "400", margin: "12px 12px 3px 12px"}}>
-                                            {line}</h6>)}</>
-                                        :null} */}
                                         <h4 style={{fontWeight: "600", margin: "12px 12px 0px 12px"}}>
                                             {card.count} Decks - {((card.count)*100 / decks.length).toFixed(2)}%
                                         </h4>

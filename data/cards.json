@@ -14,14 +14,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g1pmf/",
   "file_name": "i1g1pmf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a0a9c503d0c6f5a33232"
+    1003
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "enthusiasm": 0,
   "second_effect_text": null,
@@ -59,17 +59,17 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbf/",
   "file_name": "i1g4fbf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a0a9c503d0c6f5a33232"
+    1002,
+    1003
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "enthusiasm": null,
   "second_effect_text": "<Trigger> At the start of the round or when this card is revealed, all Power cards gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
@@ -107,15 +107,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwm/",
   "file_name": "i1g2gwm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "enthusiasm": 0,
   "second_effect_text": "<Trigger> If you are targeted for damage, resolve this Move in your play.",
@@ -153,14 +153,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwa/",
   "file_name": "i1g2gwa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "enthusiasm": 0,
   "second_effect_text": "<Trigger> If you are targeted for damage, your Fighter gains Block 1 (that card is revealed).",
@@ -198,17 +198,17 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgaf/",
   "file_name": "i1r4bgaf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
+    1002,
+    1002
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "enthusiasm": 0,
   "second_effect_text": "<Trigger> If you defend with this card, Counter damage this card deals is treated as bypassing damage (once only).",
@@ -247,17 +247,17 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwf/",
   "file_name": "i1g2gwf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001,
     1002
   ],
   "reactions": [
-    "64079f9fb2b376b6cd0454f8"
+    1001
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "second_effect_text": "<Critical> You can 1 damage to a random foe each time you resolve a Staunch card or defend with this card this round.",
   "created_on": {
@@ -295,7 +295,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl02gwi/",
   "file_name": "i1pl02gwi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1001,
@@ -303,7 +303,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "second_effect_text": "<Trigger> If you resolve the trigger effect of a Staunch card in your play, deal 2 damage to a random foe.",
   "created_on": {
@@ -341,15 +341,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g2gwe/",
   "file_name": "i1g2gwe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "second_effect_text": "<Trigger> If this card is discarded from your hand or play,  your Fighter gains 2 HP (that card is revealed).",
   "created_on": {
@@ -387,7 +387,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb2gw/",
   "file_name": "i1cb2gw",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -395,7 +395,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "second_effect_text": "<Critical> Gain 2 HP.",
   "created_on": {
@@ -432,14 +432,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r3bea",
   "file_name": "i1r3bea",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "second_effect_text": "<Trigger> If this card is discarded from your hand or play, deal 2 damage to a random foe.",
   "created_on": {
@@ -476,14 +476,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbf/",
   "file_name": "i1b4bbf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a0a9c503d0c6f5a33232"
+    1003
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -519,13 +519,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbe/",
   "file_name": "i1b4bbe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -561,12 +561,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl12bbe/",
   "file_name": "i1pl12bbe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -600,13 +600,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgam/",
   "file_name": "",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -642,13 +642,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgae/",
   "file_name": "",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -684,12 +684,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r4bgaa/",
   "file_name": "i1r4bgaa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -725,12 +725,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwa/",
   "file_name": "i1b1dwa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -766,13 +766,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwm/",
   "file_name": "i1b1dwm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -808,14 +808,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwf/",
   "file_name": "i1b1dwf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a0a9c503d0c6f5a33232"
+    1003
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -851,13 +851,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwe/",
   "file_name": "i1b1dwe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -893,14 +893,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbm",
   "file_name": "",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -934,13 +934,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r3bee",
   "file_name": "i1r3bee",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -976,7 +976,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl02gwe/",
   "file_name": "",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001,
@@ -984,7 +984,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -1020,12 +1020,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1rb1mv/",
   "file_name": "",
   "card_type": [
-    "64108e0e159c81c7afebd105"
+    1005
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407ac305139f66679d6ac54"
+    1003
   ],
   "created_on": {
     "year": 2023,
@@ -1061,12 +1061,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1rb1mvn2/",
   "file_name": "",
   "card_type": [
-    "64108e0e159c81c7afebd105"
+    1005
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407ac305139f66679d6ac54"
+    1003
   ],
   "created_on": {
     "year": 2023,
@@ -1102,12 +1102,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg2eb",
   "file_name": "",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -1143,12 +1143,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg1i",
   "file_name": "i1plg1i",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -1184,14 +1184,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g1pma",
   "file_name": "",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1227,12 +1227,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g1pmm",
   "file_name": "",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1266,13 +1266,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g1pme",
   "file_name": "i1g1pme",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1308,18 +1308,18 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p1bnf",
   "file_name": "i1p1bnf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001,
     1002
   ],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
+    1002,
+    1002
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1355,12 +1355,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p1bna",
   "file_name": "i1p1bna",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1396,14 +1396,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p1bnm",
   "file_name": "i1p1bnm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1439,13 +1439,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p1bne",
   "file_name": "i1p1bne",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1481,16 +1481,16 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p4gef",
   "file_name": "i1p4gef",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [
-    "64079f9fb2b376b6cd0454f8"
+    1001
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1526,14 +1526,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p4gea",
   "file_name": "i1p4gea",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1567,12 +1567,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p4gem",
   "file_name": "i1p4gem",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1608,13 +1608,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p4gee",
   "file_name": "i1p4gee",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -1650,14 +1650,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl01pmi",
   "file_name": "",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -1693,7 +1693,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl01pme",
   "file_name": "i1pl01pme",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001,
@@ -1701,7 +1701,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -1737,7 +1737,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb1pm",
   "file_name": "",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -1745,7 +1745,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -1781,14 +1781,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl09dwi",
   "file_name": "i1pl09dwi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -1824,12 +1824,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl09dwe",
   "file_name": "i1pl09dwe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -1865,14 +1865,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb9dw",
   "file_name": "i1cb9dw",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -1908,14 +1908,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl13bni",
   "file_name": "i1pl13bni",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -1951,14 +1951,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl13bne",
   "file_name": "i1pl13bne",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -1994,14 +1994,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb13bn",
   "file_name": "i1cb13bn",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -2037,7 +2037,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl16gei",
   "file_name": "i1pl16gei",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1001,
@@ -2045,7 +2045,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -2081,14 +2081,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl16gee",
   "file_name": "i1pl16gee",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -2122,7 +2122,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb16ge",
   "file_name": "i1cb16ge",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -2130,7 +2130,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -2166,7 +2166,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb17g",
   "file_name": "i1cb17g",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -2174,7 +2174,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -2208,14 +2208,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg8i",
   "file_name": "i1plg8i",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -2251,12 +2251,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg4e",
   "file_name": "i1plg4e",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -2292,14 +2292,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpf",
   "file_name": "i1p3cpf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407ab1c5139f66679d6ac53"
+    1004
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2335,12 +2335,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpa",
   "file_name": "i1p3cpa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2374,14 +2374,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpm",
   "file_name": "i1p3cpm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2415,13 +2415,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p3cpe",
   "file_name": "i1p3cpe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2457,15 +2457,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p2pf",
   "file_name": "i1p2pf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407ab1c5139f66679d6ac53"
+    1002,
+    1004
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2499,14 +2499,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p2pa",
   "file_name": "",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2542,13 +2542,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p2pe",
   "file_name": "i1p2pe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2584,14 +2584,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1p2pm",
   "file_name": "i1p2pm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2627,14 +2627,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwa",
   "file_name": "i1g3bwa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2670,12 +2670,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwm",
   "file_name": "i1g3bwm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2711,14 +2711,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwf",
   "file_name": "i1g3bwf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "64079f9fb2b376b6cd0454f8"
+    1001
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2754,13 +2754,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g3bwe",
   "file_name": "i1g3bwe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2796,13 +2796,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g4fbe",
   "file_name": "i1g4fbe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2836,12 +2836,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1g4fba",
   "file_name": "",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -2875,14 +2875,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb12bb",
   "file_name": "i1cb12bb",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -2918,14 +2918,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl15cpe/",
   "file_name": "i1pl15cpe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -2961,15 +2961,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r1bmf",
   "file_name": "",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
+    1002,
+    1002
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3003,12 +3003,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b4bba",
   "file_name": "i1b4bba",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3044,12 +3044,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b4bbm",
   "file_name": "i1b4bbm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3085,14 +3085,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl12bbi",
   "file_name": "i1pl12bbi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -3128,7 +3128,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb18g",
   "file_name": "i1cb18g",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -3136,7 +3136,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -3172,12 +3172,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl03bwe",
   "file_name": "i1pl03bwe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -3213,14 +3213,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl03bwi",
   "file_name": "i1pl03bwi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -3256,14 +3256,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb3bw",
   "file_name": "i1cb3bw",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -3299,12 +3299,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl15cpi",
   "file_name": "i1pl15cpi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -3340,14 +3340,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb15cp",
   "file_name": "i1cb15cp",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -3383,14 +3383,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r3bef",
   "file_name": "i1r3bef",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407ab1c5139f66679d6ac53"
+    1004
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3426,14 +3426,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r3bem",
   "file_name": "i1r3bem",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3467,14 +3467,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl07bei",
   "file_name": "i1pl07bei",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -3510,12 +3510,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl07bee",
   "file_name": "i1pl07bee",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -3551,7 +3551,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb7be",
   "file_name": "i1cb7be",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -3559,7 +3559,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -3595,14 +3595,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl04fbi",
   "file_name": "i1pl04fbi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -3636,12 +3636,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl04fbe",
   "file_name": "i1pl04fbe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -3677,14 +3677,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb4fb",
   "file_name": "i1cb4fb",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -3720,18 +3720,18 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r2rff",
   "file_name": "i1r2rff",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
+    1002,
+    1002,
+    1002
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3765,15 +3765,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b3hsf",
   "file_name": "i1b3hsf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407ab1c5139f66679d6ac53"
+    1002,
+    1004
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3809,13 +3809,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfm",
   "file_name": "i1r2rfm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3851,13 +3851,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfe",
   "file_name": "i1r2rfe",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3891,12 +3891,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r2rfa",
   "file_name": "i1r2rfa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3930,14 +3930,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r1bma",
   "file_name": "i1r1bma",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -3971,12 +3971,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r1bmm",
   "file_name": "i1r1bmm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4012,13 +4012,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1r1bme",
   "file_name": "i1r1bme",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4054,14 +4054,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb5bm",
   "file_name": "i1cb5bm",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -4097,12 +4097,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl05bmi",
   "file_name": "i1pl05bmi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4138,14 +4138,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl05bme",
   "file_name": "i1pl05bme",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -4181,12 +4181,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl06rfi",
   "file_name": "i1pl06rfi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4222,14 +4222,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl06rfe",
   "file_name": "i1pl06rfe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -4265,14 +4265,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb6rf",
   "file_name": "i1cb6rf",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -4308,7 +4308,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb19g",
   "file_name": "i1cb19g",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -4316,7 +4316,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -4352,14 +4352,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg6i",
   "file_name": "i1plg6i",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4395,14 +4395,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg5i",
   "file_name": "i1plg5i",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4438,7 +4438,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb8bga",
   "file_name": "i1cb8bga",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -4446,7 +4446,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -4482,7 +4482,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl08bgai",
   "file_name": "i1pl08bgai",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1001,
@@ -4490,7 +4490,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4526,12 +4526,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl08bgae",
   "file_name": "i1pl08bgae",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -4567,14 +4567,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b2ha",
   "file_name": "i1b2ha",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4610,12 +4610,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b2hm",
   "file_name": "i1b2hm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4651,13 +4651,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b2he",
   "file_name": "i1b2he",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4693,7 +4693,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl10hi",
   "file_name": "i1pl10hi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003,
@@ -4701,7 +4701,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4737,14 +4737,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl10he",
   "file_name": "i1pl10he",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -4780,14 +4780,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb10h",
   "file_name": "i1cb10h",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -4823,12 +4823,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b3hsa",
   "file_name": "i1b3hsa",
   "card_type": [
-    "6407bb289b4fb23f5ddab698"
+    1002
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4862,14 +4862,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b3hsm",
   "file_name": "i1b3hsm",
   "card_type": [
-    "6407a3bbc503d0c6f5a33238"
+    1003
   ],
   "extra_effects": [
     1001
   ],
   "reactions": [],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4905,13 +4905,13 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b3hse",
   "file_name": "i1b3hse",
   "card_type": [
-    "640ce41c5f6730657ad8739f"
+    1004
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "6407a29bc503d0c6f5a33234",
-    "6407a27fc503d0c6f5a33233"
+    1002,
+    1001
   ],
   "created_on": {
     "year": 2023,
@@ -4947,14 +4947,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl11hsi",
   "file_name": "i1pl11hsi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -4990,12 +4990,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl11hse",
   "file_name": "i1pl11hse",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -5031,14 +5031,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb11hs",
   "file_name": "i1cb11hs",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -5074,12 +5074,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl14pi",
   "file_name": "i1pl14pi",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -5115,12 +5115,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1pl14pe",
   "file_name": "i1pl14pe",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -5156,7 +5156,7 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb14p",
   "file_name": "i1cb14p",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1001,
@@ -5164,7 +5164,7 @@
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -5200,14 +5200,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg7i",
   "file_name": "i1plg7i",
   "card_type": [
-    "64108dee159c81c7afebd104"
+    1006
   ],
   "extra_effects": [
     1003
   ],
   "reactions": [],
   "card_tags": [
-    "64124686d762a869c0b2e12d"
+    1004
   ],
   "created_on": {
     "year": 2023,
@@ -5243,12 +5243,12 @@
   "picture_url": "https://kornan.dreamhosters.com/i1plg3e",
   "file_name": "i1plg3e",
   "card_type": [
-    "640ce4bf5f6730657ad873be"
+    1007
   ],
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    "640ce5e85f6730657ad873cb"
+    1005
   ],
   "created_on": {
     "year": 2023,
@@ -5284,14 +5284,14 @@
   "picture_url": "https://kornan.dreamhosters.com/i1cb20g",
   "file_name": "i1cb20g",
   "card_type": [
-    "64108db9159c81c7afebd103"
+    1008
   ],
   "extra_effects": [
     1002
   ],
   "reactions": [],
   "card_tags": [
-    "641292cf38b70f477bb72e6f"
+    1000
   ],
   "created_on": {
     "year": 2023,
@@ -5325,15 +5325,15 @@
   "picture_url": "https://kornan.dreamhosters.com/i1b2hf",
   "file_name": "i1b2hf",
   "card_type": [
-    "64079ed6b2b376b6cd0454f5"
+    1001
   ],
   "extra_effects": [],
   "reactions": [
-    "6407a068c503d0c6f5a33231",
-    "6407a068c503d0c6f5a33231"
+    1002,
+    1002
   ],
   "card_tags": [
-    "6407a27fc503d0c6f5a33233"
+    1001
   ],
   "created_on": {
     "year": 2023,

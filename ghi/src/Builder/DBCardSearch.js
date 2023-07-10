@@ -78,7 +78,7 @@ function DBCardSearch() {
         .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
-        .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
         .sort(sortMethods[sortState].method)
 
@@ -188,10 +188,10 @@ function DBCardSearch() {
                 value={query.reaction}
                 onChange={handleQuery}>
                 <option value="">Reaction</option>
-                <option value="64079f9fb2b376b6cd0454f8">Block</option>
-                <option value="6407a068c503d0c6f5a33231">Counter</option>
-                <option value="6407a0a9c503d0c6f5a33232">Endure</option>
-                <option value="6407ab1c5139f66679d6ac53">Redirect</option>
+                <option value="1001">Block</option>
+                <option value="1002">Counter</option>
+                <option value="1003">Endure</option>
+                <option value="1004">Redirect</option>
             </select>
             <select
                 className="left dcbsearch-small"

@@ -4,7 +4,6 @@ import {
 import { useState, useEffect } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
-import CardAddCompModal from "./CardAddCompModal";
 import RelatedCardModal from "./RelatedCardModal";
 
 

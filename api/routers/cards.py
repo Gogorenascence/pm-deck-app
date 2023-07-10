@@ -69,33 +69,6 @@ async def delete_card(
     else:
         return True
 
-
-@router.put("/api/cards/{card_id}/add_type/{card_type_id}/", response_model=CardOut | str)
-async def add_card_type(
-    card_id: str,
-    card_type_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.add_card_type(card_id, card_type_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
-@router.put("/api/cards/{card_id}/remove_type/{card_type_id}/", response_model=CardOut | str)
-async def remove_card_type(
-    card_id: str,
-    card_type_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.remove_card_type(card_id, card_type_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
 @router.get("/api/cards/{card_number}/get_card_type/", response_model=CardTypeOut)
 async def get_card_type(
     card_number: int,
@@ -108,33 +81,6 @@ async def get_card_type(
         response.status_code = 404
     else:
         return card_type
-
-
-@router.put("/api/cards/{card_id}/add_extra/{extra_effect_id}/", response_model=CardOut | str)
-async def add_extra_effect(
-    card_id: str,
-    extra_effect_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.add_extra_effect(card_id, extra_effect_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
-@router.put("/api/cards/{card_id}/remove_extra/{extra_effect_id}/", response_model=CardOut | str)
-async def remove_extra_effect(
-    card_id: str,
-    extra_effect_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.remove_extra_effect(card_id, extra_effect_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
 
 @router.get("/api/cards/{card_number}/get_extra_effects/", response_model=list)
 async def get_extra_effects(
@@ -149,33 +95,6 @@ async def get_extra_effects(
     else:
         return extra_effects
 
-
-@router.put("/api/cards/{card_id}/add_reaction/{reaction_id}/", response_model=CardOut | str)
-async def add_reaction(
-    card_id: str,
-    reaction_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.add_reaction(card_id, reaction_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
-@router.put("/api/cards/{card_id}/remove_reaction/{reaction_id}/", response_model=CardOut | str)
-async def remove_reaction(
-    card_id: str,
-    reaction_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.remove_reaction(card_id, reaction_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
 @router.get("/api/cards/{card_number}/get_reactions/", response_model=list)
 async def get_reactions(
     card_number: int,
@@ -188,34 +107,6 @@ async def get_reactions(
         response.status_code = 404
     else:
         return reactions
-
-
-@router.put("/api/cards/{card_id}/add_tag/{tag_id}/", response_model=CardOut | str)
-async def add_tag(
-    card_id: str,
-    tag_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.add_tag(card_id, tag_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
-
-
-@router.put("/api/cards/{card_id}/remove_tag/{tag_id}/", response_model=CardOut | str)
-async def remove_tag(
-    card_id: str,
-    tag_id: str,
-    response: Response,
-    queries: CardQueries = Depends(),
-):
-    card = queries.remove_tag(card_id, tag_id)
-    if card is None:
-        response.status_code = 404
-    else:
-        return card
 
 @router.get("/api/cards/{card_number}/get_tags/", response_model=list)
 async def get_tags(
@@ -241,3 +132,7 @@ async def get_full_card(
         response.status_code = 404
     else:
         return card
+
+@router.get("/api/full_cards/", response_model=CardsAll)
+async def get_all_full_cards(queries: CardQueries = Depends()):
+    return CardsAll(cards=queries.get_all_full_cards())

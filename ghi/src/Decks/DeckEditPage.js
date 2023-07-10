@@ -157,11 +157,11 @@ function DeckEditPage() {
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
         .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
-        .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
+        .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
-        .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
-        .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
+        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
@@ -188,9 +188,9 @@ function DeckEditPage() {
 
     const handleClick = (card) => {
         console.log(card)
-        if (card.card_type[0] === '64108dee159c81c7afebd104' ||
-            card.card_type[0] === '640ce4bf5f6730657ad873be' ||
-            card.card_type[0] === '64108db9159c81c7afebd103'){
+        if (card.card_type[0] === 1006 ||
+            card.card_type[0] === 1007 ||
+            card.card_type[0] === 1008){
             setPluckList([...pluck_list, card]);
             console.log(pluck_list);
         }else{
@@ -201,9 +201,9 @@ function DeckEditPage() {
     }
 
     const handleRemoveCard = (card) => {
-        if (card.card_type[0] === '64108dee159c81c7afebd104' ||
-            card.card_type[0] === '640ce4bf5f6730657ad873be' ||
-            card.card_type[0] === '64108db9159c81c7afebd103'){
+        if (card.card_type[0] === 1006 ||
+            card.card_type[0] === 1007 ||
+            card.card_type[0] === 1008){
                 const pluckIndex = pluck_list.indexOf(card);
                 const newPluckList = [...pluck_list];
                 newPluckList.splice(pluckIndex, 1);
@@ -473,14 +473,14 @@ function DeckEditPage() {
                         value={query.type}
                         onChange={handleQuery}>
                         <option value="">Type</option>
-                        <option value="64079ed6b2b376b6cd0454f5">Fighter</option>
-                        <option value="6407bb289b4fb23f5ddab698">Aura</option>
-                        <option value="6407a3bbc503d0c6f5a33238">Move</option>
-                        <option value="640ce41c5f6730657ad8739f">Ending</option>
-                        <option value="64108e0e159c81c7afebd105">Any Type</option>
-                        <option value="64108dee159c81c7afebd104">Item</option>
-                        <option value="640ce4bf5f6730657ad873be">Event</option>
-                        <option value="64108db9159c81c7afebd103">Comeback</option>
+                        <option value="1001">Fighter</option>
+                        <option value="1002">Aura</option>
+                        <option value="1003">Move</option>
+                        <option value="1004">Ending</option>
+                        <option value="1005">Any Type</option>
+                        <option value="1006">Item</option>
+                        <option value="1007">Event</option>
+                        <option value="1008">Comeback</option>
                     </select>
                     <select
                         className="left dcbsearch-small"
@@ -516,10 +516,10 @@ function DeckEditPage() {
                         value={query.reaction}
                         onChange={handleQuery}>
                         <option value="">Reaction</option>
-                        <option value="64079f9fb2b376b6cd0454f8">Block</option>
-                        <option value="6407a068c503d0c6f5a33231">Counter</option>
-                        <option value="6407a0a9c503d0c6f5a33232">Endure</option>
-                        <option value="6407ab1c5139f66679d6ac53">Redirect</option>
+                        <option value="1001">Block</option>
+                        <option value="1002">Counter</option>
+                        <option value="1003">Endure</option>
+                        <option value="1004">Redirect</option>
                     </select>
                     <select
                         className="left dcbsearch-small"
@@ -529,11 +529,11 @@ function DeckEditPage() {
                         value={query.tag}
                         onChange={handleQuery}>
                         <option value="">Tag</option>
-                        <option value="6407a27fc503d0c6f5a33233">5 HP</option>
-                        <option value="6407a29bc503d0c6f5a33234">Focus</option>
-                        <option value="6407ac305139f66679d6ac54">Auto</option>
-                        <option value="64124686d762a869c0b2e12d">Stay</option>
-                        <option value="640ce5e85f6730657ad873cb">Max</option>
+                        <option value="1001">5 HP</option>
+                        <option value="1002">Focus</option>
+                        <option value="1003">Auto</option>
+                        <option value="1004">Stay</option>
+                        <option value="1005">Max</option>
                     </select>
                     <select
                         className="left dcbsearch-small"

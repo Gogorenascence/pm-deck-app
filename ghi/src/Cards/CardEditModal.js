@@ -110,28 +110,28 @@ function CardEditModal() {
 
     const handleAddCardType = () => {
         if (cardTypeInput) {
-            setCardType([...card_type, cardTypeInput]);
+            setCardType([...card_type, parseInt(cardTypeInput, 10)]);
             setCardTypeInput("");
             console.log(card_type)
         }
     };
 
     const nameCardType = (cardType) => {
-        if (cardType === "64079ed6b2b376b6cd0454f5") {
+        if (cardType === 1001) {
             return "Fighter";
-        } else if (cardType === "6407bb289b4fb23f5ddab698") {
+        } else if (cardType === 1002) {
             return "Aura";
-        } else if (cardType === "6407a3bbc503d0c6f5a33238") {
+        } else if (cardType === 1003) {
             return "Move";
-        } else if (cardType === "640ce41c5f6730657ad8739f") {
+        } else if (cardType === 1004) {
             return "Ending";
-        } else if (cardType === "64108e0e159c81c7afebd105") {
+        } else if (cardType === 1005) {
             return "Any Type";
-        } else if (cardType === "64108dee159c81c7afebd104") {
+        } else if (cardType === 1006) {
             return "Item";
-        } else if (cardType === "640ce4bf5f6730657ad873be") {
+        } else if (cardType === 1007) {
             return "Event";
-        } else if (cardType === "64108db9159c81c7afebd103") {
+        } else if (cardType === 1008) {
             return "Comeback";
         }
     }
@@ -144,18 +144,18 @@ function CardEditModal() {
 
     const handleAddExtraEffect = () => {
         if (extraEffectInput) {
-            setExtraEffects([...extra_effects, extraEffectInput]);
+            setExtraEffects([...extra_effects, parseInt(extraEffectInput, 10)]);
             setExtraEffectInput("");
             console.log(extra_effects)
         }
     };
 
     const nameExtraEffect = (effectEffect) => {
-        if (effectEffect === "64079f10b2b376b6cd0454f6") {
+        if (effectEffect === 1001) {
             return "Trigger";
-        } else if (effectEffect === "64079f5db2b376b6cd0454f7") {
+        } else if (effectEffect === 1002) {
             return "Critical";
-        } else if (effectEffect === "6407aaae5139f66679d6ac52") {
+        } else if (effectEffect === 1003) {
             return "Limited";
         }
     }
@@ -168,20 +168,20 @@ function CardEditModal() {
 
     const handleAddReaction = () => {
         if (reactionInput) {
-            setReactions([...reactions, reactionInput]);
+            setReactions([...reactions, parseInt(reactionInput, 10)]);
             setReactionInput("");
             console.log(reactions)
         }
     };
 
     const nameReaction = (reaction) => {
-        if (reaction === "64079f9fb2b376b6cd0454f8") {
+        if (reaction === 1001) {
             return "Block";
-        } else if (reaction === "6407a068c503d0c6f5a33231") {
+        } else if (reaction === 1002) {
             return "Counter";
-        } else if (reaction === "6407a0a9c503d0c6f5a33232") {
+        } else if (reaction === 1003) {
             return "Endure";
-        } else if (reaction === "6407ab1c5139f66679d6ac53") {
+        } else if (reaction === 1004) {
             return "Redirect";
         }
     }
@@ -194,24 +194,24 @@ function CardEditModal() {
 
     const handleAddCardTag = () => {
         if (cardTagInput) {
-            setCardTags([...card_tags, cardTagInput]);
+            setCardTags([...card_tags, parseInt(cardTagInput, 10)]);
             setCardTagInput("");
             console.log(card_tags)
         }
     };
 
     const nameCardTag = (cardTag) => {
-        if (cardTag === "6407a27fc503d0c6f5a33233") {
+        if (cardTag === 1001) {
             return "5 HP";
-        } else if (cardTag === "6407a29bc503d0c6f5a33234") {
+        } else if (cardTag === 1002) {
             return "Focus";
-        } else if (cardTag === "6407ac305139f66679d6ac54") {
+        } else if (cardTag === 1003) {
             return "Auto";
-        } else if (cardTag === "640ce5e85f6730657ad873cb") {
-            return "Max 1";
-        } else if (cardTag === "64124686d762a869c0b2e12d") {
+        } else if (cardTag === 1004) {
             return "Stay";
-        } else if (cardTag === "641292cf38b70f477bb72e6f") {
+        } else if (cardTag === 1005) {
+            return "Max 1";
+        } else if (cardTag === 1000) {
             return "n/a";
         }
     }
@@ -470,7 +470,7 @@ function CardEditModal() {
                                 value={cardTypeInput}>
                                 <option value="">Card Type</option>
                                 {cardTypeList.map((card_type) => (
-                                    <option value={card_type.id}>{card_type.name}</option>
+                                    <option value={card_type.type_number}>{card_type.name}</option>
                                     ))}
                             </select>
                             <button onClick={handleAddCardType}>Add</button>
@@ -492,7 +492,7 @@ function CardEditModal() {
                                 value={extraEffectInput}>
                                 <option value="">Extra Effect</option>
                                 {extraEffectList.map((extra_effect) => (
-                                    <option value={extra_effect.id}>{extra_effect.name}</option>
+                                    <option value={extra_effect.effect_number}>{extra_effect.name}</option>
                                     ))}
                             </select>
                             <button onClick={handleAddExtraEffect}>Add</button>
@@ -516,7 +516,7 @@ function CardEditModal() {
                                 value={reactionInput}>
                                 <option value="">Reaction</option>
                                 {reactionList.map((reaction) => (
-                                    <option value={reaction.id}>{reaction.name}</option>
+                                    <option value={reaction.reaction_number}>{reaction.name}</option>
                                     ))}
                             </select>
                             <button onClick={handleAddReaction}>Add</button>
@@ -538,7 +538,7 @@ function CardEditModal() {
                                 value={cardTagInput}>
                                 <option value="">Tag</option>
                                 {cardTagList.map((card_tag) => (
-                                    <option value={card_tag.id}>{card_tag.name}</option>
+                                    <option value={card_tag.tag_number}>{card_tag.name}</option>
                                     ))}
                             </select>
                             <button onClick={handleAddCardTag}>Add</button>
