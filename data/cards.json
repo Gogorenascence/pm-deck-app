@@ -62,7 +62,7 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [
     "6407a068c503d0c6f5a33231",
@@ -110,7 +110,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -156,7 +156,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -201,7 +201,7 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [
     "6407a068c503d0c6f5a33231",
@@ -250,8 +250,8 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [
     "64079f9fb2b376b6cd0454f8"
@@ -298,8 +298,8 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -344,7 +344,7 @@
     "640ce41c5f6730657ad8739f"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -390,8 +390,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -435,7 +435,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -896,7 +896,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -979,8 +979,8 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -1187,7 +1187,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -1311,8 +1311,8 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [
     "6407a068c503d0c6f5a33231",
@@ -1399,7 +1399,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -1484,7 +1484,7 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [
     "64079f9fb2b376b6cd0454f8"
@@ -1529,7 +1529,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -1653,7 +1653,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -1696,8 +1696,8 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -1740,8 +1740,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -1784,7 +1784,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -1868,7 +1868,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -1911,7 +1911,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -1954,7 +1954,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -1997,7 +1997,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -2040,8 +2040,8 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "6407aaae5139f66679d6ac52"
+    1001,
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -2084,7 +2084,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -2125,8 +2125,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -2169,8 +2169,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -2211,7 +2211,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -2377,7 +2377,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -2502,7 +2502,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -2587,7 +2587,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -2630,7 +2630,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -2878,7 +2878,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -2921,7 +2921,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -3088,7 +3088,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -3131,8 +3131,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -3216,7 +3216,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -3259,7 +3259,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -3343,7 +3343,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -3429,7 +3429,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -3470,7 +3470,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -3554,8 +3554,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -3598,7 +3598,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -3680,7 +3680,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -3723,7 +3723,7 @@
     "64079ed6b2b376b6cd0454f5"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [
     "6407a068c503d0c6f5a33231",
@@ -3933,7 +3933,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4057,7 +4057,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -4141,7 +4141,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4225,7 +4225,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4268,7 +4268,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -4311,8 +4311,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -4355,7 +4355,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -4398,7 +4398,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -4441,8 +4441,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -4485,8 +4485,8 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "6407aaae5139f66679d6ac52"
+    1001,
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -4570,7 +4570,7 @@
     "6407bb289b4fb23f5ddab698"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4696,8 +4696,8 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52",
-    "64079f10b2b376b6cd0454f6"
+    1003,
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4740,7 +4740,7 @@
     "640ce4bf5f6730657ad873be"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4783,7 +4783,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -4865,7 +4865,7 @@
     "6407a3bbc503d0c6f5a33238"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6"
+    1001
   ],
   "reactions": [],
   "card_tags": [
@@ -4950,7 +4950,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -5034,7 +5034,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -5159,8 +5159,8 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f10b2b376b6cd0454f6",
-    "64079f5db2b376b6cd0454f7"
+    1001,
+    1002
   ],
   "reactions": [],
   "card_tags": [
@@ -5203,7 +5203,7 @@
     "64108dee159c81c7afebd104"
   ],
   "extra_effects": [
-    "6407aaae5139f66679d6ac52"
+    1003
   ],
   "reactions": [],
   "card_tags": [
@@ -5287,7 +5287,7 @@
     "64108db9159c81c7afebd103"
   ],
   "extra_effects": [
-    "64079f5db2b376b6cd0454f7"
+    1002
   ],
   "reactions": [],
   "card_tags": [

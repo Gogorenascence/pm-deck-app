@@ -77,7 +77,7 @@ function DBCardSearch() {
         .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
         .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
-        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
+        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.includes(query.reaction)):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.includes(query.tag)):card.card_tags)
         .sort(sortMethods[sortState].method)
@@ -175,9 +175,9 @@ function DBCardSearch() {
                 value={query.extraEffect}
                 onChange={handleQuery}>
                 <option value="">Extra Effect</option>
-                <option value="64079f10b2b376b6cd0454f6">Trigger</option>
-                <option value="6407aaae5139f66679d6ac52">Limited</option>
-                <option value="64079f5db2b376b6cd0454f7">Critical</option>
+                <option value="1001">Trigger</option>
+                <option value="1003">Limited</option>
+                <option value="1002">Critical</option>
             </select>
             <br/>
             <select

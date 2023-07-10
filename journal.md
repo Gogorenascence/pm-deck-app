@@ -61,7 +61,7 @@ export default BackToTop;
 
 
 
-.filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
+.filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
 
 
 4/13
@@ -119,7 +119,7 @@ had issues with extra_effects because it was a list, so used the some() method f
 then had issues with displaying cards that had an empty array for extra_effects.
 Created a ternary that would look for a non-default in query.extraEffect; filter if present, show all if not present.
 
-.filter(card => query.extraEffect? card.extra_effects.some(effect => effect.includes(query.extraEffect)):card.extra_effects)
+.filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
 
 
 4/14

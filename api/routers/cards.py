@@ -229,3 +229,15 @@ async def get_tags(
         response.status_code = 404
     else:
         return card_tags
+
+@router.get("/api/full_cards/{card_number}/", response_model=CardOut)
+async def get_full_card(
+    card_number: int,
+    response: Response,
+    queries: CardQueries = Depends(),
+):
+    card = queries.get_full_card(card_number)
+    if card is None:
+        response.status_code = 404
+    else:
+        return card
