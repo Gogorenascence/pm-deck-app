@@ -128,12 +128,12 @@ function CardCreatePage() {
         }
     };
 
-    const nameExtraEffect = (effectEffect) => {
-        if (effectEffect === 1001) {
+    const nameExtraEffect = (extra_effect) => {
+        if (extra_effect === 1001) {
             return "Trigger";
-        } else if (effectEffect === 1002) {
+        } else if (extra_effect === 1002) {
             return "Critical";
-        } else if (effectEffect === 1003) {
+        } else if (extra_effect === 1003) {
             return "Limited";
         }
     }
