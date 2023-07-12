@@ -635,7 +635,7 @@ function DeckEditPage() {
                                             {main_list.length > 0 ?
                                             <h5
                                                 className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                                style={{margin: "1% 0%", fontWeight: "700"}}
                                             >{main_list.length}</h5>:
                                             null}
                                         </div>
@@ -671,7 +671,7 @@ function DeckEditPage() {
                                             {pluck_list.length > 0 ?
                                             <h5
                                                 className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                                style={{margin: "1% 0%", fontWeight: "700"}}
                                             >{pluck_list.length}</h5>:
                                             null}
                                         </div>
@@ -707,7 +707,7 @@ function DeckEditPage() {
                                 {main_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
                                 >{main_list.length}</h5>:
                                 null}
                                 { showMain ?
@@ -751,7 +751,7 @@ function DeckEditPage() {
                                 {pluck_list.length > 0 ?
                                 <h5
                                     className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700", zIndex: "-1"}}
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
                                 >{pluck_list.length}</h5>:
                                 null}
                                 { showPluck ?
