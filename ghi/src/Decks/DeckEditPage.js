@@ -124,6 +124,8 @@ function DeckEditPage() {
         oldest: { method: (a,b) => a.id.localeCompare(b.id) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
         card_number: { method: (a,b) => a.card_number - b.card_number },
+        enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
+        enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
     const handleQuery = (event) => {
@@ -546,6 +548,8 @@ function DeckEditPage() {
                         <option value="oldest">Oldest</option>
                         <option value="name">A-Z</option>
                         <option value="card_number">Card Number</option>
+                        <option value="enthusiasm_highest">Enth (High)</option>
+                        <option value="enthusiasm_lowest">Enth (Low)</option>
                     </select>
                     <br/>
                     <button

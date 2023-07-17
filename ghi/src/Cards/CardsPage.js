@@ -24,7 +24,7 @@ function CardsPage() {
     const [showMore, setShowMore] = useState(20);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
         const data = await response.json();
 
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
@@ -91,10 +91,13 @@ function CardsPage() {
         oldest: { method: (a,b) => a.id.localeCompare(b.id) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
         card_number: { method: (a,b) => a.card_number - b.card_number },
+        enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
+        enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
+        console.log(query)
         setShowMore(20)
     };
 
@@ -134,11 +137,11 @@ function CardsPage() {
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
         .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
-        .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
+        .filter(card => query.type? card.card_type.some(type => type.type_number.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
-        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
-        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
-        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.effect_number.toString() == query.extraEffect):card.extra_effects)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.reaction_number.toString() == query.reaction):card.reactions)
+        .filter(card => query.tag? card.card_tags.some(tag => tag.tag_number.toString() == query.tag):card.card_tags)
         .sort(sortMethods[sortState].method)
 
 
@@ -289,6 +292,8 @@ function CardsPage() {
                 <option value="oldest">Oldest</option>
                 <option value="name">A-Z</option>
                 <option value="card_number">Card Number</option>
+                <option value="enthusiasm_highest">Enth (High)</option>
+                <option value="enthusiasm_lowest">Enth (Low)</option>
             </select>
             <br/>
 
