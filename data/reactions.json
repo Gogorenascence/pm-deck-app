@@ -3,7 +3,7 @@
     "$oid": "64079f9fb2b376b6cd0454f8"
   },
   "name": "Block",
-  "rules": "string",
+  "rules": "When you are targeted for damage, no damage is taken. \nThe number of available activations is equal to the number of Block tokens on this card. \nCan be triggered without defending. \n",
   "count": 0,
   "reaction_number": 1001
 },{
@@ -11,7 +11,7 @@
     "$oid": "6407a068c503d0c6f5a33231"
   },
   "name": "Counter",
-  "rules": "string",
+  "rules": "When you are targeted for damage, the player targeting you is \ndealt X damage on after the resolution of their card. \nWhere \"X\" is equal to the number of reaction tokens on this card. \nCan not be used in response to another Counter.",
   "count": 0,
   "reaction_number": 1002
 },{
@@ -19,7 +19,7 @@
     "$oid": "6407a0a9c503d0c6f5a33232"
   },
   "name": "Endure",
-  "rules": "string",
+  "rules": "If your card would be defeated, their HP is reduced to 1 instead. \nIf a card effect would discard or remove a card in your play, Endure can be used to prevent that removal. \nThe number of available activations is equal to the number of Endure tokens on this card. \nCan be triggered without defending. \n",
   "count": 0,
   "reaction_number": 1003
 },{
@@ -27,7 +27,7 @@
     "$oid": "6407ab1c5139f66679d6ac53"
   },
   "name": "Redirect",
-  "rules": "string",
+  "rules": "When you are targeted for damage, an adjacent foe other than the targeting player becomes the new target. \nThe number of available activations is equal to the number of Redirect tokens on this card. \nCan not be used in response to another Redirect.",
   "count": 0,
   "reaction_number": 1004
 }]
