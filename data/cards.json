@@ -800,7 +800,7 @@
   "series_name": "Project HERMES//Tech//Tactical//Team",
   "card_number": 1033,
   "enthusiasm": 0,
-  "effect_text": "Add 1 Move from your hand to your play. Draw 1 card and reveal it; if the card is a Move or MAX VARIABLE, add it to your play (MAX VARIABLE counts as a Move).\n\n\n",
+  "effect_text": "Add 1 Move or MAX VARIABLE from your hand to your play (MAX VARIABLE counts as a Move).\n\n\n",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://kornan.dreamhosters.com/i1b1dwf/",
@@ -820,17 +820,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:51",
+    "month": 7,
+    "day": 17,
+    "time": "17:22",
     "full_time": {
-      "$date": "2023-06-25T18:51:49.451Z"
+      "$date": "2023-07-17T17:22:39.536Z"
     }
   }
 },{

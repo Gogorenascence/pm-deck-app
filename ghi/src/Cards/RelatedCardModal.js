@@ -48,7 +48,8 @@ function RelatedCardModal() {
                 className="topbar"
             >
                 <Modal.Body closeButton>
-                <h1 className="centered-h1">Related Cards</h1>
+                <h1 className="centered-h1"
+                    style={{color: "black"}}>Related Cards</h1>
                 <div style={{margin: "5px"}}>
                     {relatedCards.map((relatedCard) => {
                         return (

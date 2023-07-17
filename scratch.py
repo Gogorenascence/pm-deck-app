@@ -364,7 +364,11 @@
 
 # is_pangram(string)
 
-lst = []
-y = {"x": 100}
-lst += ([y] * 5)
-print(lst)
+# lst = []
+# y = {"x": 100}
+# lst += ([y] * 5)
+# print(lst)
+
+
+x = "abced"
+print(x[2])

@@ -652,6 +652,16 @@ button {
   border: 1px solid white;
 }
 
+.cd-related-card:hover {
+  position: relative;
+  transform: scale(2.5);
+  z-index: 2000;
+  width: 140px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+
 .cd-info {
   display: grid;
   gap: 2% 1%;
