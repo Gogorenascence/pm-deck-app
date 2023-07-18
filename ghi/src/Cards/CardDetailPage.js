@@ -74,7 +74,9 @@ function CardDetailPage() {
     const getReactions = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/get_reactions/`);
         const reactionData = await response.json();
+        reactionData.map(reaction => reaction["rules"] = reaction["rules"].replace("{count}", reaction["count"].toString()))
 
+        console.log(reactionData)
         setReactions(reactionData);
     };
 
@@ -107,6 +109,7 @@ function CardDetailPage() {
         getReactions();
         getCardTags();
         getCards();
+        console.log(card)
         document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
