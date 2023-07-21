@@ -65,8 +65,6 @@ function CardsPage() {
             typedCards.push(card)
         }
         setCards(typedCards);
-        console.log(cards)
-
     };
 
     const getRandomCard = async() =>{
@@ -78,6 +76,7 @@ function CardsPage() {
 
     useEffect(() => {
         getCards();
+        console.log(cards)
         document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -336,7 +335,7 @@ function CardsPage() {
                 <div className="card-list2">
                     {all_cards.slice(0, showMore).map(card => {
                         return (
-                            <NavLink to={`/cards/${card.card_number}`} className="nav-link">
+                            <NavLink to={`/cards/${card.card_number}`} className="nav-link" key={card.name}>
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
                                         <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
                                         <h5 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h5>
@@ -358,7 +357,7 @@ function CardsPage() {
             <div className="cards-page-card-list">
                 {all_cards.slice(0, showMore).map(card => {
                     return (
-                        <NavLink to={`/cards/${card.card_number}`}>
+                        <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                 <img className="card-list-card"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
