@@ -32,13 +32,6 @@ function Footer() {
                         alt="youtube">
                     </img>
                 </NavLink>
-                <NavLink to="https://twitter.com/jothplaymaker">
-                    <img
-                        className="social-icon"
-                        src="https://i.imgur.com/h72khiX.png"
-                        alt="twitter">
-                    </img>
-                </NavLink>
             </div>
         </div>
     );
