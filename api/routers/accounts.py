@@ -43,10 +43,10 @@ async def get_all_accounts(repo: AccountQueries = Depends()):
 
 @router.get("/api/accounts/{account_id}", response_model=AccountOut)
 async def get_account(
-    username: str,
+    account_id: str,
     repo: AccountQueries = Depends(),
 ):
-    account = repo.get_account(username)
+    account = repo.get_account(account_id)
     return account
 
 
@@ -57,7 +57,6 @@ async def create_account(
     response: Response,
     repo: AccountQueries = Depends(),
 ):
-
     hashed_password = authenticator.hash_password(info.password)
     try:
         account = repo.create_account(info, hashed_password)
@@ -67,7 +66,7 @@ async def create_account(
             detail="Cannot Create An Account With Those Credentials",
         )
 
-    form = AccountForm(username=info.username, password=info.password)
+    form = AccountForm(username=info.email, password=info.password)
 
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())

@@ -269,6 +269,7 @@ function CardEditModal() {
             console.error("Error in updating card");
         }
     };
+
     const handleClear = (async (event) => {
         event.preventDefault();
         setCard({

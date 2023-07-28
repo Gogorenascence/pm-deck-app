@@ -104,7 +104,8 @@
       "$date": "2023-06-26T16:23:23.488Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6407e173e41d4a85bb4b7781"
   },
@@ -201,7 +202,8 @@
       "$date": "2023-06-26T16:23:18.230Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6407e18ee41d4a85bb4b7782"
   },
@@ -294,7 +296,8 @@
       "$date": "2023-06-26T16:23:13.933Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6407e19be41d4a85bb4b7783"
   },
@@ -397,7 +400,8 @@
       "$date": "2023-06-26T16:23:08.051Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6407e391e41d4a85bb4b7784"
   },
@@ -495,7 +499,8 @@
       "$date": "2023-06-26T16:23:03.178Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6407e3a5e41d4a85bb4b7785"
   },
@@ -592,7 +597,8 @@
       "$date": "2023-06-26T16:22:56.991Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6426443a60e6bc76953b0d44"
   },
@@ -695,7 +701,8 @@
       "$date": "2023-06-26T16:22:49.475Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "6442d279e484cfa510066621"
   },
@@ -703,7 +710,8 @@
   "account_id": "",
   "description": "",
   "strategies": [
-    "Aggro"
+    "Aggro",
+    "Mid-range"
   ],
   "cards": [
     1005,
@@ -781,7 +789,7 @@
   ],
   "side": [],
   "views": 0,
-  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g4fbf.png",
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bmf.png",
   "created_on": {
     "year": 2023,
     "month": 6,
@@ -793,14 +801,16 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 26,
-    "time": "16:22",
+    "month": 7,
+    "day": 27,
+    "time": "21:46",
     "full_time": {
-      "$date": "2023-06-26T16:22:44.228Z"
+      "$date": "2023-07-27T21:46:24.394Z"
     }
-  }
-},{
+  },
+  "parent_id": null
+},
+{
   "_id": {
     "$oid": "648cc178c67359b740e555e4"
   },
@@ -893,7 +903,8 @@
       "$date": "2023-06-28T23:59:16.479Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648cc2b6c67359b740e555e9"
   },
@@ -1000,7 +1011,8 @@
       "$date": "2023-06-26T16:22:34.910Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648ccb4ac67359b740e5562a"
   },
@@ -1103,7 +1115,8 @@
       "$date": "2023-06-26T16:21:40.966Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648cccf3c67359b740e5562b"
   },
@@ -1200,7 +1213,8 @@
       "$date": "2023-06-26T16:21:33.902Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648cce16c67359b740e5562c"
   },
@@ -1297,7 +1311,8 @@
       "$date": "2023-06-26T16:21:28.436Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648cd005c67359b740e5562d"
   },
@@ -1405,7 +1420,8 @@
       "$date": "2023-06-26T16:21:20.134Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648cd1ffc67359b740e55650"
   },
@@ -1501,7 +1517,8 @@
       "$date": "2023-06-28T23:53:37.834Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648f2be0c67359b740e556b7"
   },
@@ -1603,7 +1620,8 @@
       "$date": "2023-06-26T16:20:28.155Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648f312dc67359b740e556c2"
   },
@@ -1705,7 +1723,8 @@
       "$date": "2023-06-26T16:20:20.259Z"
     }
   }
-},{
+},
+{
   "_id": {
     "$oid": "648f33c4c67359b740e556c7"
   },
@@ -2002,100 +2021,8 @@
       "$date": "2023-06-25T18:16:38.644Z"
     }
   }
-},{
-  "_id": {
-    "$oid": "649cb5f79fda342120c39c6b"
-  },
-  "name": "Limited",
-  "account_id": "",
-  "description": "",
-  "strategies": [],
-  "cards": [],
-  "pluck": [],
-  "side": [],
-  "views": 0,
-  "created_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 28,
-    "time": "22:36",
-    "full_time": {
-      "$date": "2023-06-28T22:36:39.441Z"
-    }
-  },
-  "updated_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 28,
-    "time": "23:42",
-    "full_time": {
-      "$date": "2023-06-28T23:42:35.549Z"
-    }
-  },
-  "cover_card": ""
-},{
-  "_id": {
-    "$oid": "649cb68c9fda342120c39c72"
-  },
-  "name": "Side Step Counter",
-  "account_id": "",
-  "description": "",
-  "strategies": [],
-  "cards": [],
-  "pluck": [],
-  "side": [],
-  "views": 0,
-  "created_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 28,
-    "time": "22:39",
-    "full_time": {
-      "$date": "2023-06-28T22:39:08.184Z"
-    }
-  },
-  "updated_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "00:22",
-    "full_time": {
-      "$date": "2023-06-29T00:22:52.823Z"
-    }
-  },
-  "cover_card": null
-},{
-  "_id": {
-    "$oid": "649ccd68545cf7d825b861b9"
-  },
-  "name": "test",
-  "account_id": "",
-  "description": "",
-  "strategies": [],
-  "cards": [],
-  "pluck": [],
-  "side": [],
-  "views": 0,
-  "created_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "00:16",
-    "full_time": {
-      "$date": "2023-06-29T00:16:40.726Z"
-    }
-  },
-  "updated_on": {
-    "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "00:16",
-    "full_time": {
-      "$date": "2023-06-29T00:16:40.726Z"
-    }
-  },
-  "cover_card": null
-},{
+},
+{
   "_id": {
     "$oid": "64a18342021ee801d52f43a8"
   },
@@ -2201,7 +2128,8 @@
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b2hf.png"
-},{
+},
+{
   "_id": {
     "$oid": "64a18533021ee801d52f4457"
   },
@@ -2307,7 +2235,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r2rff.png",
   "parent_id": null
-},{
+},
+{
   "_id": {
     "$oid": "64a379eabdfcda9852d1a5b5"
   },
@@ -2405,7 +2334,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a37ff5bdfcda9852d1a5ec"
   },
@@ -2508,7 +2438,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a3836ebdfcda9852d1a625"
   },
@@ -2616,7 +2547,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g3bwf.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a38831bdfcda9852d1a69c"
   },
@@ -2713,7 +2645,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p4gef.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a38a91bdfcda9852d1a6e1"
   },
@@ -2815,7 +2748,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b1dwf.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a3910abdfcda9852d1a730"
   },
@@ -2913,7 +2847,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r2rff.png",
   "parent_id": ""
-},{
+},
+{
   "_id": {
     "$oid": "64a71d6b77a1110b1f3da496"
   },
@@ -3011,7 +2946,8 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r2rff.png",
   "parent_id": "64a3910abdfcda9852d1a730"
-},{
+},
+{
   "_id": {
     "$oid": "64b93d8d48e02a537710706a"
   },
@@ -3118,5 +3054,114 @@
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p1bnf.png",
+  "parent_id": ""
+},
+{
+  "_id": {
+    "$oid": "64c1a38d420a66885477b166"
+  },
+  "name": "Comeback Turbo",
+  "account_id": "",
+  "description": "",
+  "strategies": [
+    "Mid-range",
+    "Second Wind",
+    "Toolbox"
+  ],
+  "cards": [
+    1009,
+    1009,
+    1010,
+    1010,
+    1011,
+    1012,
+    1017,
+    1018,
+    1019,
+    1020,
+    1037,
+    1037,
+    1038,
+    1038,
+    1039,
+    1040,
+    1040,
+    1041,
+    1042,
+    1043,
+    1044,
+    1053,
+    1054,
+    1055,
+    1056,
+    1057,
+    1057,
+    1058,
+    1058,
+    1059,
+    1059,
+    1060,
+    1060,
+    1065,
+    1065,
+    1065,
+    1066,
+    1066,
+    1066,
+    1066
+  ],
+  "pluck": [
+    1073,
+    1074,
+    1075,
+    1075,
+    1081,
+    1081,
+    1094,
+    1094,
+    1096,
+    1097,
+    1097,
+    1098,
+    1098,
+    1099,
+    1099,
+    1106,
+    1107,
+    1107,
+    1108,
+    1109,
+    1109,
+    1110,
+    1110,
+    1111,
+    1111,
+    1121,
+    1124,
+    1124,
+    1126,
+    1126
+  ],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 7,
+    "day": 26,
+    "time": "22:51",
+    "full_time": {
+      "$date": "2023-07-26T22:51:57.892Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 7,
+    "day": 26,
+    "time": "23:00",
+    "full_time": {
+      "$date": "2023-07-26T23:00:01.735Z"
+    }
+  },
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p3cpf.png",
   "parent_id": ""
 }]

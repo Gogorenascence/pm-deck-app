@@ -237,7 +237,9 @@ function DeckBuilder() {
                 parent_id: "",
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
-        };
+        } else {
+            console.error("Error in creating card");
+        }
     }
 
     const handleListView = (event) => {

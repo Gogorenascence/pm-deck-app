@@ -22,8 +22,8 @@ class AccountQueries(Queries):
             accounts.append(AccountOut(**document))
         return accounts
 
-    def get_account(self, username: str) -> AccountOut:
-        props = self.collection.find_one({"username": username})
+    def get_account(self, id: str) -> AccountOut:
+        props = self.collection.find_one({"_id": ObjectId(id)})
         if not props:
             return None
         props["id"] = str(props["_id"])

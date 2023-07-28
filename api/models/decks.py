@@ -27,8 +27,8 @@ class DeckIn(BaseModel):
     pluck: Optional[list]
     side: Optional[list]
     views: Optional[int]
-    created_on: Optional[dict]
-    updated_on: Optional[dict]
+    created_on: dict
+    updated_on: dict
     cover_card: Optional[str]
     parent_id: Optional[str]
 

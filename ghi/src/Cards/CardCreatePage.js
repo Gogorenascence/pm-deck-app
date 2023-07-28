@@ -241,9 +241,12 @@ function CardCreatePage() {
                 reactions: [],
                 card_tags: [],
             });
-        };
             window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
+        } else {
+            console.error("Error in creating card");
+        }
     };
+
     const handleClear = (async (event) => {
         event.preventDefault();
         setCard({
