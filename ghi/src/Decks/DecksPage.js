@@ -20,9 +20,14 @@ function DecksPage() {
 
     const [deckShowMore, setDeckShowMore] = useState(20);
 
+    const [noDecks, setNoDecks] = useState(false);
+
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
         const data = await response.json();
+        if (data.decks.length == 0 ) {
+            setNoDecks(true)
+        }
 
         const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
 
@@ -240,7 +245,7 @@ function DecksPage() {
                 Random Deck
             </button>
 
-            { all_decks.length == 0 && isQueryEmpty ?
+            { all_decks.length == 0 && isQueryEmpty && !noDecks ?
                 <div className="loading-container">
                     <div className="loading-spinner"></div>
                 </div> :

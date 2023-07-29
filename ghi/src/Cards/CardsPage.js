@@ -23,9 +23,15 @@ function CardsPage() {
     const [sortState, setSortState] = useState("none");
     const [showMore, setShowMore] = useState(20);
 
+    const [noCards, setNoCards] = useState(false);
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
         const data = await response.json();
+
+        if (data.cards.length == 0 ) {
+            setNoCards(true)
+        }
 
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
 
@@ -334,7 +340,7 @@ function CardsPage() {
                     List View
                 </button>}
 
-                { all_cards.length == 0 && isQueryEmpty ?
+                { all_cards.length == 0 && isQueryEmpty && !noCards?
                     <div className="loading-container">
                         <div className="loading-spinner"></div>
                     </div> :
