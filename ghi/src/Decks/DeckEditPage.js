@@ -309,6 +309,10 @@ function DeckEditPage() {
         console.log(showPluck)
     };
 
+    const preprocessText = (text) => {
+        return text.split("//").join("\n");
+    };
+
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Edit</h1>
@@ -607,7 +611,7 @@ function DeckEditPage() {
                                                     <img
                                                         onClick={() => handleClick(card)}
                                                         className={combinedList.includes(card) ? "selected builder-card" : "builder-card"}
-                                                        title={card.name}
+                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
                                                         variant="bottom"/>

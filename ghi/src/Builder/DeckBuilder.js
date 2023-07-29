@@ -238,7 +238,7 @@ function DeckBuilder() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         } else {
-            console.error("Error in creating card");
+            console.error("Error in creating deck");
         }
     }
 
@@ -259,6 +259,10 @@ function DeckBuilder() {
     const handleShowPluck = (event) => {
         setShowPluck(!showPluck);
         console.log(showPluck)
+    };
+
+    const preprocessText = (text) => {
+        return text.split("//").join("\n");
     };
 
     return (
@@ -558,7 +562,7 @@ function DeckBuilder() {
                                                 <img
                                                     onClick={() => handleClick(card)}
                                                     className={uniqueList.includes(card) ? "selected builder-card" : "builder-card"}
-                                                    title={card.name}
+                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={card.name}
                                                     variant="bottom"/>
