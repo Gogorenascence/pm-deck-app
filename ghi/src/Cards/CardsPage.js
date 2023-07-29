@@ -84,6 +84,7 @@ function CardsPage() {
     // eslint-disable-next-line
     },[]);
 
+
     const sortMethods = {
         none: { method: (a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time) },
         newest: { method: (a,b) => b.id.localeCompare(a.id) },
@@ -143,6 +144,7 @@ function CardsPage() {
         .filter(card => query.tag? card.card_tags.some(tag => tag.tag_number.toString() == query.tag):card.card_tags)
         .sort(sortMethods[sortState].method)
 
+        const isQueryEmpty = Object.values(query).every((value) => value === "");
 
     return (
         <div className="white-space">
@@ -331,6 +333,13 @@ function CardsPage() {
                 >
                     List View
                 </button>}
+
+                { all_cards.length == 0 && isQueryEmpty ?
+                    <div className="loading-container">
+                        <div className="loading-spinner"></div>
+                    </div> :
+                null}
+
             {listView?
                 <div className="card-list2">
                     {all_cards.slice(0, showMore).map(card => {
@@ -361,7 +370,8 @@ function CardsPage() {
                                 <img className="card-list-card"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={card.name}/>
+                                    alt={card.name}
+                                    loading="lazy"/>
                         </NavLink>
                     );
                 })}

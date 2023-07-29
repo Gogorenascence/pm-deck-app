@@ -140,6 +140,7 @@ function DecksPage() {
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
 
+    const isQueryEmpty = Object.values(deckQuery).every((value) => value === "");
 
     return (
         <div className="white-space">
@@ -239,6 +240,11 @@ function DecksPage() {
                 Random Deck
             </button>
 
+            { all_decks.length == 0 && isQueryEmpty ?
+                <div className="loading-container">
+                    <div className="loading-spinner"></div>
+                </div> :
+            null}
 
             <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {
