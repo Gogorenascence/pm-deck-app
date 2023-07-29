@@ -11,6 +11,8 @@ function TopCardsPage() {
     const [showMore, setShowMore] = useState(20);
 
     const [listView, setListView] = useState(false);
+
+    const [noCards, setNoCards] = useState(false);
     // const [sortState, setSortState] = useState("none");
 
     // const sortMethods = {
@@ -22,6 +24,10 @@ function TopCardsPage() {
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_popular_cards/`);
         const data = await response.json();
+
+        if (data.length == 0 ) {
+            setNoCards(true)
+        }
 
         const sortedCards = data.sort((a,b) => b.count - a.count);
 
@@ -111,6 +117,13 @@ function TopCardsPage() {
                 >
                     List View
                 </button>}
+
+                { cards.length == 0 && !noCards?
+                    <div className="loading-container">
+                        <div className="loading-spinner"></div>
+                    </div> :
+                null}
+
             {listView?
                 <div className="card-list3">
                     {cards.slice(0, limit).slice(0, showMore).map(card => {
