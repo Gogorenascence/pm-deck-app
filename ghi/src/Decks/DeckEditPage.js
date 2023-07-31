@@ -5,6 +5,7 @@ import {
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
 import { NavLink, useParams} from 'react-router-dom';
+import BackButton from "../display/BackButton";
 
 
 function DeckEditPage() {
@@ -41,9 +42,16 @@ function DeckEditPage() {
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
+    const [noCards, setNoCards] = useState(false);
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
+
+        if (data.cards.length == 0 ) {
+            setNoCards(true)
+        }
+
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
 
         setCards(sortedCards);
@@ -313,6 +321,8 @@ function DeckEditPage() {
         return text.split("//").join("\n");
     };
 
+    const isQueryEmpty = Object.values(query).every((value) => value === "");
+
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Edit</h1>
@@ -381,14 +391,7 @@ function DeckEditPage() {
                     >
                             Save
                     </button>
-                    <NavLink to={`/decks/${deck.id}/`}>
-                        <button
-                            style={{width: "67px", margin: "5px"}}
-                            className="heightNorm"
-                            >
-                            Back
-                        </button>
-                    </NavLink>
+                    <BackButton/>
                     <button
                         className="left red heightNorm"
                         onClick={clearMain}
@@ -604,13 +607,20 @@ function DeckEditPage() {
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{marginLeft: "20px"}}>
+
+                                { all_cards.length == 0 && isQueryEmpty && !noCards?
+                                    <div className="loading-container">
+                                        <div className="loading-spinner"></div>
+                                    </div> :
+                                null}
+
                                 <Row xs="auto" className="justify-content-start">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
                                             <Col style={{padding: "5px"}}>
                                                     <img
                                                         onClick={() => handleClick(card)}
-                                                        className={combinedList.includes(card) ? "selected builder-card" : "builder-card"}
+                                                        className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
                                                         title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
@@ -651,7 +661,7 @@ function DeckEditPage() {
                                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                     return (
                                                         <Col style={{padding: "5px"}}>
-                                                            <div className="card-container">
+                                                            <div className="card-container pointer">
                                                                 <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                                                 <img
                                                                     className="card-image"
@@ -687,7 +697,7 @@ function DeckEditPage() {
                                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                     return (
                                                         <Col style={{padding: "5px"}}>
-                                                            <div className="card-container">
+                                                            <div className="card-container pointer">
                                                                 <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                                                 <img
                                                                     className="card-image"
@@ -735,7 +745,7 @@ function DeckEditPage() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                             <img
-                                                className="builder-card2"
+                                                className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -780,7 +790,7 @@ function DeckEditPage() {
                                     return (
                                         <Col style={{padding: "5px"}}>
                                             <img
-                                                className="builder-card2"
+                                                className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}

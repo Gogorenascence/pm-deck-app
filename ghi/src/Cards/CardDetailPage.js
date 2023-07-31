@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
+import BackButton from "../display/BackButton";
 
 
 function CardDetailPage() {
@@ -265,16 +266,10 @@ function CardDetailPage() {
                             <Container style={{margin: "2% 0%", width: "662px"}}>
                                 <div style={{display: "flex", marginBottom: ".75%"}}>
                                     <CardEditModal/>
-
-                                    <NavLink to="/cards">
-                                        <button
-                                            className="left button100 heightNorm"
-                                            variant="dark"
-                                            style={{marginLeft: "5%", textAlign: "center"}}
-                                        >
-                                            Back
-                                        </button>
-                                    </NavLink>
+                                    <BackButton
+                                        className="left button100 heightNorm"
+                                        style={{marginLeft: "5%", textAlign: "center"}}
+                                    />
                                 </div>
                                 {/* <div style={{ display: "flex"}}>
                                     <CardAddToDeckModal/>

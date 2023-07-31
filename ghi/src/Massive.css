@@ -1075,18 +1075,21 @@ button {
 .db-pool-count {
   margin: 1% 0%;
   font-weight: 700;
+  cursor: pointer;
   /* color: #09001F; */
 }
 
 .db-main-count {
   margin: 1% 0%;
   font-weight: 700;
+  cursor: pointer;
   /* color: #330808; */
 }
 
 .db-pluck-count {
   margin: 1% 0%;
   font-weight: 700;
+  cursor: pointer;
   /* color: #081433; */
 }
 
@@ -1139,8 +1142,11 @@ button {
   animation: spin 2s linear infinite;
 }
 
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.pointer {
+  cursor: pointer;
 }

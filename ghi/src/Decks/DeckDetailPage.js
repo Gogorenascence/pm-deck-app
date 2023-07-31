@@ -6,6 +6,7 @@ import {
 import { useState, useEffect } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import DeckExport from "./DeckExport";
+import BackButton from "../display/BackButton";
 
 
 function DeckDetailPage() {
@@ -316,15 +317,7 @@ function DeckDetailPage() {
                         Copy Deck
                 </button>
             </NavLink>
-            <NavLink to="/decks/">
-                <button
-                        className="left button100 heightNorm"
-                        variant="dark"
-                        style={{marginLeft: "5%", textAlign: "center"}}
-                        >
-                        Back
-                </button>
-            </NavLink>
+            <BackButton/>
             </div>
             {listView?
                         <div className="deck-list">
