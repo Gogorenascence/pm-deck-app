@@ -3,8 +3,9 @@ import {
     Row,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import BackButton from "../display/BackButton";
+import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 
 function DeckCopyPage() {

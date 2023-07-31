@@ -3,6 +3,7 @@ import {
     Row,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react';
+import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 function DeckBuilder() {
     const [deck, setDeck] = useState({

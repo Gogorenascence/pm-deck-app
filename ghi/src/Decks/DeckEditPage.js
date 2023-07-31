@@ -4,8 +4,9 @@ import {
     button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
-import { NavLink, useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import BackButton from "../display/BackButton";
+import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 
 function DeckEditPage() {

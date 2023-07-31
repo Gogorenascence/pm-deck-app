@@ -4,6 +4,7 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
+import ImageWithoutRightClick from "./ImageWithoutRightClick";
 
 
 function CardRow() {
@@ -30,9 +31,11 @@ function CardRow() {
                         return (
                             <div style={{width: "230px", margin: "0px 5px"}}>
                                 <NavLink to={`/cards/${card.card_number}`}>
-                                    <Card style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
-                                        <Card.Img title={card.name} src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"} alt="Card image" variant="bottom"/>
-                                    </Card>
+                                        <img
+                                            className="card-row"
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
                                 </NavLink>
                             </div>
                         );

@@ -6,6 +6,7 @@ import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../display/BackButton";
+import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 
 function CardDetailPage() {
@@ -138,8 +139,7 @@ function CardDetailPage() {
                                                     className="cd-related-card"
                                                     title={relatedCard.name}
                                                     src={relatedCard.picture_url ? relatedCard.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={relatedCard.name}
-                                                    variant="bottom"/>
+                                                    alt={relatedCard.name}/>
                                         </NavLink>
                                     );
                                 })}

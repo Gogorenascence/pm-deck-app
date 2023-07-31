@@ -478,7 +478,7 @@ function CardEditModal() {
                         </div>
                         <div>
                             {card_type.map((item, index) => (
-                                <h5 key={index} onClick={() => handleRemoveCardType(index)}>
+                                <h5 key={index} className="pointer" onClick={() => handleRemoveCardType(index)}>
                                 {nameCardType(item)}
                                 </h5>
                             ))}
@@ -500,7 +500,7 @@ function CardEditModal() {
                         </div>
                         <div>
                             {extra_effects.map((item, index) => (
-                                <h5 key={index} onClick={() => handleRemoveExtraEffect(index)}>
+                                <h5 key={index} className="pointer" onClick={() => handleRemoveExtraEffect(index)}>
                                 {nameExtraEffect(item)}
                                 </h5>
                             ))}
@@ -524,7 +524,7 @@ function CardEditModal() {
                         </div>
                         <div>
                             {reactions.map((item, index) => (
-                                <h5 key={index} onClick={() => handleRemoveReaction(index)}>
+                                <h5 key={index} className="pointer" onClick={() => handleRemoveReaction(index)}>
                                 {nameReaction(item)}
                                 </h5>
                             ))}
@@ -546,7 +546,7 @@ function CardEditModal() {
                         </div>
                         <div>
                             {card_tags.map((item, index) => (
-                                <h5 key={index} onClick={() => handleRemoveCardTag(index)}>
+                                <h5 key={index} className="pointer" onClick={() => handleRemoveCardTag(index)}>
                                 {nameCardTag(item)}
                                 </h5>
                             ))}
