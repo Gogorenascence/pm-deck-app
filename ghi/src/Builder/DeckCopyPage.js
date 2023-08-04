@@ -297,7 +297,7 @@ function DeckCopyPage() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         } else {
-            console.error("Error in copying deck");
+            alert("Error in copying deck");
         }
     }
 

@@ -1,6 +1,6 @@
 from bson.objectid import ObjectId
 from .client import Queries
-from models.accounts import Account, AccountIn, AccountOut
+from models.accounts import AccountIn, AccountOut
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from typing import Union
@@ -22,6 +22,13 @@ class AccountQueries(Queries):
             accounts.append(AccountOut(**document))
         return accounts
 
+    def get(self, username: str) -> AccountOut:
+        props = self.collection.find_one({"username": username})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return AccountOut(**props)
+
     def get_account(self, id: str) -> AccountOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         if not props:
@@ -29,15 +36,15 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-    def create_account(self, info: AccountIn, hashed_password: str) -> Account:
+    def create_account(self, info: AccountIn, hashed_password: str) -> AccountOut:
         props = info.dict()
         props["unhashed_password"] = props["password"]
         props["password"] = hashed_password
         props["roles"] = ["member"]
-        try:
-            self.collection.insert_one(props)
-        except DuplicateKeyError:
+
+        if self.collection.find_one({"email": props["email"]}):
             raise DuplicateAccountError()
+        self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 

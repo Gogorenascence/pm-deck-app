@@ -266,7 +266,7 @@ function CardEditModal() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
         } else {
-            console.error("Error in updating card");
+            alert("Error in editing card");
         }
     };
 
