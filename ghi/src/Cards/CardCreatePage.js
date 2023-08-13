@@ -243,7 +243,7 @@ function CardCreatePage() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
         } else {
-            alert("Error in creating card");
+            console.error("Error in creating card");
         }
     };
 

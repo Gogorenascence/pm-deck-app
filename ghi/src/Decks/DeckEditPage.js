@@ -297,7 +297,6 @@ function DeckEditPage() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         };
-        alert("Error in editing deck")
     }
 
     const handleListView = (event) => {

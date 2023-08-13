@@ -15,7 +15,7 @@ from queries.accounts import (
 )
 from models.accounts import (
     AccountIn,
-    # Account,
+    Account,
     AccountOut
     )
 
@@ -50,23 +50,25 @@ async def get_account(
     return account
 
 
-@router.post("/api/accounts", response_model=AccountToken | HttpError)
+@router.post("/api/accounts/", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
     request: Request,
     response: Response,
-    accounts: AccountQueries = Depends(),
+    repo: AccountQueries = Depends(),
 ):
     hashed_password = authenticator.hash_password(info.password)
     try:
-        account = accounts.create_account(info, hashed_password)
+        account = repo.create_account(info, hashed_password)
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot create an account with those credentials",
+            detail="Cannot Create An Account With Those Credentials",
         )
+
     form = AccountForm(username=info.email, password=info.password)
-    token = await authenticator.login(response, request, form, accounts)
+
+    token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
 
@@ -115,7 +117,7 @@ async def delete_account(
 @router.get("/api/token/", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: AccountOut = Depends(authenticator.try_get_current_account_data),
+    account: Account = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if authenticator.cookie_name in request.cookies:
         token_data = {
