@@ -419,18 +419,12 @@ function DeckDetailPage() {
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
-                                                <img
-                                                    className="builder-card2"
-                                                    style={{ width: '140px',
-                                                            margin: '2.25px 0px',
-                                                            borderRadius: "7px",
-                                                            overflow: "hidden"}}
-
-                                                        title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                        alt={card.name}
-                                                        variant="bottom"/>
-
+                                            <img
+                                                className="builder-card2"
+                                                title={card.name}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}
+                                                variant="bottom"/>
                                         </Col>
                                     );
                                 })}
@@ -473,16 +467,10 @@ function DeckDetailPage() {
                                         <Col style={{padding: "5px"}}>
                                             <img
                                             className="builder-card2"
-                                                style={{ width: '140px',
-                                                        margin: '2.25px 0px',
-                                                        borderRadius: "7px",
-                                                        overflow: "hidden"}}
-
-                                                    title={card.name}
-                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={card.name}
-                                                    variant="bottom"/>
-
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}
+                                            variant="bottom"/>
                                         </Col>
                                     );
                                 })}

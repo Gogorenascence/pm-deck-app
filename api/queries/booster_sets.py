@@ -40,7 +40,8 @@ class BoosterSetQueries(Queries):
             "month": int(date[5:7]),
             "day": int(date[8:10]),
             "time": date[11:16],
-            "full_time": datetime.now()
+            "full_time": datetime.now(),
+            "date_created": f"{int(date[5:7])}-{int(date[8:10])}-{int(date[:4])}"
         }
         props["created_on"] = time_dict
         props["updated_on"] = time_dict
@@ -56,7 +57,8 @@ class BoosterSetQueries(Queries):
             "month": int(date[5:7]),
             "day": int(date[8:10]),
             "time": date[11:16],
-            "full_time": datetime.now()
+            "full_time": datetime.now(),
+            "date_updated": f"{int(date[5:7])}-{int(date[8:10])}-{int(date[:4])}"
         }
         props["updated_on"] = time_dict
         date_string = props["created_on"]["full_time"]
@@ -72,8 +74,15 @@ class BoosterSetQueries(Queries):
     def delete_booster_set(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
-    def get_booster_set_list(self, id: str) -> list:
+    def get_booster_set_list(self, id: str) -> dict:
         booster_set = self.collection.find_one({"_id": ObjectId(id)})
+        card_lists = {
+            "max_variables": [],
+            "normals": [],
+            "rares": [],
+            "super_rares": [],
+            "ultra_rares": [],
+        }
         mv = booster_set["mv"]
         normals = booster_set["normals"]
         rares = booster_set["rares"]
@@ -83,33 +92,27 @@ class BoosterSetQueries(Queries):
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
         db = conn.cards.cards
-        max_variables = []
         for card_item in mv:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
-            max_variables.append(CardOut(**card))
-        normals_cards = []
+            card_lists["max_variables"].append(CardOut(**card))
         for card_item in normals:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
-            normals_cards.append(CardOut(**card))
-        rare_cards = []
+            card_lists["normals"].append(CardOut(**card))
         for card_item in rares:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
-            rare_cards.append(CardOut(**card))
-        super_rare_cards = []
+            card_lists["rares"].append(CardOut(**card))
         for card_item in super_rares:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
-            super_rare_cards.append(CardOut(**card))
-        ultra_rare_cards = []
+            card_lists["super_rares"].append(CardOut(**card))
         for card_item in ultra_rares:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
-            ultra_rare_cards.append(CardOut(**card))
-        booster_set_list = [max_variables, normals_cards, rare_cards, super_rare_cards, ultra_rare_cards]
-        return booster_set_list
+            card_lists["ultra_rares"].append(CardOut(**card))
+        return card_lists
 
     def open_booster_pack(self, id: str) -> dict:
         booster_set = self.collection.find_one({"_id": ObjectId(id)})
@@ -150,11 +153,12 @@ class BoosterSetQueries(Queries):
 
     def open_booster_packs(self, id: str, num: int) -> dict:
         opened_packs = {
+            "pulls": [],
             "full_pull_list": [],
         }
         for i in range(num):
-            opened_pack =self.open_booster_pack(id)
+            opened_pack = self.open_booster_pack(id)
             pull_list = opened_pack["pull_list"]
             opened_packs["full_pull_list"] += pull_list
-            opened_packs[i] = opened_pack
+            opened_packs["pulls"].append(opened_pack)
         return opened_packs

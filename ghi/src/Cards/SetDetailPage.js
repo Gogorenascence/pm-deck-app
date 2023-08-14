@@ -10,126 +10,72 @@ import BackButton from "../display/BackButton";
 
 function SetDetailPage() {
 
-    const {deck_id} = useParams();
-    const [deck, setDeck] = useState({ strategies: []});
-    const [main_list, setMainList] = useState([]);
-    const [pluck_list, setPluckList] = useState([]);
-    const [countedMainList, setCountedMainList] = useState([]);
-    const [countedPluckList, setCountedPluckList] = useState([]);
-    const [shuffledDeck, setShuffledDeck] = useState([]);
-    const [ownership, setOwnership] = useState("");
-    const [mulliganList, setMulliganList] = useState([]);
-    const [createdAgo, setCreatedAgo] = useState("");
-    const [updatedAgo, setUpdatedAgo] = useState("");
+    const {card_set_id} = useParams();
+    const [boosterSet, setBoosterSet] = useState("");
+    const [maxVariables, setMaxVariables] = useState([]);
+    const [normals, setNormals] = useState([]);
+    const [rares, setRares] = useState([]);
+    const [superRares, setSuperRares] = useState([]);
+    const [ultraRares, setUltraRares] = useState([]);
+    const [date_created, setDateCreated] = useState([])
 
     const [listView, setListView] = useState(false);
-    const [showMain, setShowMain] = useState(true);
-    const [showPluck, setShowPluck] = useState(true);
+    const [showMaxVariables, setShowMaxVariables] = useState(false);
+    const [showNormals, setShowNormals] = useState(false);
+    const [showRares, setShowRares] = useState(false);
+    const [showSuperRares, setShowSuperRares] = useState(false);
+    const [showUltraRares, setShowUltraRares] = useState(false);
 
-    const getDeck = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
-        const deckData = await response.json();
-        setDeck(deckData);
-        console.log(deck)
+    const getBoosterSet = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
+        const boosterSetData = await response.json();
+        console.log(boosterSetData.created_on.date_created)
+        setDateCreated(boosterSetData.created_on.date_created)
+        setBoosterSet(boosterSetData);
     };
 
-    const getAgos = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_time_ago/${deck_id}/`);
-        const timeData = await response.json();
-        console.log(timeData)
-        setCreatedAgo(timeData.created);
-        setUpdatedAgo(timeData.updated);
-    }
-
-    const getDeckList = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
-        const deckListData = await response.json();
-        setMainList(deckListData[0])
-        setPluckList(deckListData[1])
-    };
-
-    const getCountedDeckList = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/counted_list/`);
-        const deckListData = await response.json();
-        setCountedMainList(deckListData[0])
-        setCountedPluckList(deckListData[1])
-    };
-
-    const getShuffledDeck = async() =>{
-        const shuffledDeck = main_list.slice(0)
-        let currentIndex = shuffledDeck.length,  randomIndex;
-        // While there remain elements to shuffle.
-        while (currentIndex !== 0) {
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            // And swap it with the current element.
-            [shuffledDeck[currentIndex], shuffledDeck[randomIndex]] = [
-            shuffledDeck[randomIndex], shuffledDeck[currentIndex]];
-        }
-        setShuffledDeck(shuffledDeck);
-
-        const randomPluckIndex = Math.floor(Math.random() * pluck_list.length);
-        setOwnership(pluck_list[randomPluckIndex]);
-    }
-
-    const clearShuffledDeck = async() =>{
-        setShuffledDeck([]);
-        setOwnership("");
+    const getCardLists = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/list`);
+        const listData = await response.json();
+        setMaxVariables(listData.max_variables)
+        setNormals(listData.normals)
+        setRares(listData.rares)
+        setSuperRares(listData.super_rares)
+        setUltraRares(listData.ultra_rares)
     }
 
     useEffect(() => {
-        getDeck();
-        getDeckList();
-        getCountedDeckList();
-        getAgos();
-        document.title = `${deck.name} - PM CardBase`
+        getBoosterSet();
+        getCardLists();
+        console.log(normals)
+        document.title = `${boosterSet.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
-    },[createdAgo, updatedAgo]);
-
-    const handleMulliganChange = (card) => {
-        const deckIndex = shuffledDeck.indexOf(card)
-        if (mulliganList.includes(deckIndex)){
-            const mulliganIndex = mulliganList.indexOf(deckIndex);
-            const newMulliganList = [...mulliganList];
-            newMulliganList.splice(mulliganIndex, 1);
-            setMulliganList(newMulliganList);
-        }else{
-            setMulliganList([...mulliganList, deckIndex]);
-        }
-    }
-
-    const mulligan = async() => {
-        for (let card of shuffledDeck){
-            const cardIndex = shuffledDeck.indexOf(card)
-            if (mulliganList.includes(cardIndex)){
-                shuffledDeck[cardIndex] = "Gone"
-            }
-        }
-        for (let card of shuffledDeck.slice(0)){
-            const removeIndex = shuffledDeck.indexOf(card)
-            if (card === "Gone"){
-                shuffledDeck.splice(removeIndex, 1)
-            }
-        }
-        setShuffledDeck(shuffledDeck.slice(0))
-        setMulliganList([])
-    }
+    },[]);
 
     const handleListView = (event) => {
         setListView(!listView);
     };
 
-    const handleShowMain = (event) => {
-        setShowMain(!showMain);
-        console.log(showMain)
+    const handleShowMaxVariables = (event) => {
+        setShowMaxVariables(!showMaxVariables);
     };
 
-    const handleShowPluck = (event) => {
-        setShowPluck(!showPluck);
-        console.log(showPluck)
+    const handleShowNormals = (event) => {
+        setShowNormals(!showNormals);
+    };
+
+    const handleShowRares = (event) => {
+        setShowRares(!showRares);
+    };
+
+    const handleShowSuperRares = (event) => {
+        setShowSuperRares(!showSuperRares);
+    };
+
+    const handleShowUltraRares = (event) => {
+        setShowUltraRares(!showUltraRares);
     };
 
     return (
@@ -138,27 +84,19 @@ function SetDetailPage() {
                 <div className="card-image-wrapper">
                     <div className="card-image-clip2">
                         <Card.Img
-                            src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
-                            alt="Card image"
+                            src={boosterSet.cover_image ? boosterSet.cover_image : "https://i.imgur.com/8wqd1sD.png"}
+                            alt={boosterSet.name}
                             className="card-image2"
                             variant="bottom"/>
                     </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                        <h3 className="left cd-container-child">{deck.name}</h3>
-                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
-                        >
-                            User:
-                        </h6> */}
-                        <h6 className="left"
-                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
-                        >
-                            Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
-                        </h6>
+                        <h3 className="left cd-container-child">{boosterSet.name}</h3>
                         <h6 className="left"
                             style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
                         >
-                            Main Deck: {main_list.length} &nbsp; Pluck Deck: {pluck_list.length}
+                            Ultra Rares: {ultraRares.length} &nbsp; Super Rares: {superRares.length} &nbsp;
+                            Rares: {rares.length} &nbsp; Normals: {normals.length} &nbsp; Max Variables: {maxVariables.length}
                         </h6>
                         <div style={{ display: "flex" }}>
                             <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
@@ -166,159 +104,56 @@ function SetDetailPage() {
                             className="left justify-content-end"
                                 style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                             >
-                                {createdAgo} &nbsp; &nbsp;
-                            </h6>
-                            <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
-                            <h6
-                            className="left justify-content-end"
-                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                            >
-                                {updatedAgo}
+                                {date_created}
                             </h6>
                         </div>
                 </Card.ImgOverlay>
             </Card>
 
-            {deck.description ?
+            {boosterSet.description ?
             <div>
-                <h3 className="left-h1">Deck Description</h3>
                 <h5 className="left-h1"
                     style={{marginTop: "0"}}
-                    >{deck.description}</h5>
+                    >{boosterSet.description}</h5>
             </div>:
             null}
-            <div style={{display: "flex"}}>
-                        {shuffledDeck.length > 0 ?
-                <div className="maindeck" style={{width: "90%"}}>
-                    <div style={{marginLeft: "10px"}}>
 
-                                <h4
-                                    className="left"
-                                    style={{margin: "10px 10px", fontWeight: "700"}}
-                                    >Test Hand
-                                </h4>
-                                <div style={{width: "95%", marginLeft: "20px"}}>
-                                    <Row xs="auto" className="justify-content-start">
-                                        {shuffledDeck.slice(0,8).map((card) => {
-                                            return (
-                                                <Col
-                                                    style={{padding: "2px 5px 8px 5px"}}>
-                                                    <img
-                                                        style={{
-                                                            width: '115px',
-                                                            margin: '10px 0px 10px 0px',
-                                                            borderRadius: "7px",
-                                                            overflow: "hidden"}}
-                                                        onClick={() => handleMulliganChange(card)}
-                                                        className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card3" : "builder-card3"}
-                                                        title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                        alt={card.name}/>
-                                                </Col>
-                                            );
-                                        })}
-                                    </Row>
-                                </div>
-
-                    </div>
-                </div>:
-                        null}
-                    {ownership ?
-
-                    <div className="pluckdeck" style={{marginLeft: ".5%"}}>
-
-                                        <h4
-                                            className="left"
-                                            style={{margin: "10px 10px", fontWeight: "700"}}
-                                            >Ownwership
-                                        </h4>
-                                        <Row xs="auto" className="justify-content-center">
-                                            <Col style={{paddingTop: "2px"}}>
-                                                <img
-                                                    className="builder-card3"
-                                                    style={{ width: '115px',
-                                                    margin: '10px 0px 10px 0px',
-                                                    borderRadius: "7px",
-                                                    overflow: "hidden"}}
-
-                                                    title={ownership.name}
-                                                    src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={ownership.name}
-                                                    variant="bottom"/>
-
-                                            </Col>
-                                        </Row>
-
-
-                    </div>:
-                    null}
-            </div>
             <div style={{ display: "flex" }}>
-            <NavLink to={`/decks/${deck.id}/edit`}>
-                <button
-                        className="left heightNorm button100 red"
-                        variant="danger"
-                        style={{marginLeft: ".5%", marginRight: "7px"}}
-                        >
-                        Edit Deck
-                </button>
-            </NavLink>
-            {listView?
-                <button
-                    className="left"
-                    variant="dark"
-                    onClick={handleListView}
-                >
-                    Image View
-                </button>:
-                <button
-                    className="left"
-                    variant="dark"
-                    onClick={handleListView}
-                >
-                    List View
-                </button>}
-            <button
-                    className="left"
-                    variant="dark"
-                    onClick={getShuffledDeck}
-                    style={{marginLeft: ".5%"}}
+                <NavLink to={`/cards_sets/${boosterSet.id}/edit`}>
+                    <button
+                            className="left heightNorm button100 red"
+                            variant="danger"
+                            style={{marginLeft: ".5%", marginRight: "7px"}}
+                            >
+                            Edit Set
+                    </button>
+                </NavLink>
+                {listView?
+                    <button
+                        className="left"
+                        onClick={handleListView}
                     >
-                    Test Hand
-            </button>
-            {shuffledDeck.length > 0 ?
-                <>
+                        Image View
+                    </button>:
                     <button
-                            className="left"
-                            variant="dark"
-                            onClick={mulligan}
-                            style={{marginLeft: ".5%"}}
-                            >
-                            Mulligan
-                    </button>
+                        className="left"
+                        onClick={handleListView}
+                    >
+                        List View
+                    </button>}
+                    <NavLink to={`/cards/card_sets/${boosterSet.id}/pulls`}>
                     <button
-                            className="left"
-                            variant="dark"
-                            onClick={clearShuffledDeck}
-                            style={{marginLeft: ".5%", width: '108px', textAlign: "center"}}
+                            className="left heightNorm"
+                            variant="danger"
+                            style={{marginLeft: ".5%", marginRight: "7px", width:"120px"}}
                             >
-                            Hide Hand
+                            Open Packs
                     </button>
-                </>:
-            null}
-            {/* <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/> */}
-            <NavLink to={`/decks/${deck.id}/copy`}>
-                <button
-                        className="left heightNorm"
-                        variant="dark"
-                        style={{marginLeft: ".5%", width: "108px", textAlign: "center"}}
-                        >
-                        Copy Deck
-                </button>
-            </NavLink>
-            <BackButton/>
+                </NavLink>
+                <BackButton/>
             </div>
-            {listView?
+
+            {/* {listView?
                         <div className="deck-list">
                             <div className="maindeck3">
                             <div style={{marginLeft: "20px"}}>
@@ -388,48 +223,45 @@ function SetDetailPage() {
                             </div>
                         </div>
                     </div>
-            :<>
-                <div className="maindeck">
+            :<> */}
+                <div className="rarities">
                     <div style={{marginLeft: "20px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
-                            >Main Deck</h2>
+                            >Ultra Rares</h2>
                             <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                            {main_list.length > 0 ?
+                            {ultraRares.length > 0 ?
                             <h5
                                 className="left db-main-count"
-                            >{main_list.length}</h5>:
+                            >{ultraRares.length}</h5>:
                             null}
-                            { showMain ?
-                                <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
-                                    onClick={() => handleShowMain()}>
+                            { showUltraRares ?
+                                <h5 className={ultraRares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowUltraRares()}>
                                         &nbsp;[Hide]
                                 </h5> :
-                                <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
-                                    onClick={() => handleShowMain()}>
+                                <h5 className={ultraRares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowUltraRares()}>
                                     &nbsp;[Show]
                                 </h5>}
                         </div>
-                        {main_list.length > 0 ?
-
-                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
-                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                        {ultraRares.length > 0 ?
+                            <Row xs="auto" className={showUltraRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                                {ultraRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
-                                                <img
-                                                    className="builder-card2"
-                                                    style={{ width: '140px',
-                                                            margin: '2.25px 0px',
-                                                            borderRadius: "7px",
-                                                            overflow: "hidden"}}
-
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                <div className="ultra">
+                                                    <img
+                                                        className="builder-card4"
                                                         title={card.name}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
                                                         variant="bottom"/>
-
+                                                </div>
+                                            </NavLink>
                                         </Col>
                                     );
                                 })}
@@ -438,9 +270,186 @@ function SetDetailPage() {
                     </div>
                 </div>
 
+                <div className="rarities">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Super Rares</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {superRares.length > 0 ?
+                            <h5
+                                className="left db-main-count"
+                            >{superRares.length}</h5>:
+                            null}
+                            { showSuperRares ?
+                                <h5 className={superRares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowSuperRares()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={superRares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowSuperRares()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        {superRares.length > 0 ?
 
+                            <Row xs="auto" className={showSuperRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                                {superRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                <img
+                                                    className="builder-card2"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                    </div>
+                </div>
 
-                <div className="pluckdeck">
+                <div className="rarities">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Rares</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {rares.length > 0 ?
+                            <h5
+                                className="left db-main-count"
+                            >{rares.length}</h5>:
+                            null}
+                            { showRares ?
+                                <h5 className={rares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowRares()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={rares.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowRares()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        {rares.length > 0 ?
+
+                            <Row xs="auto" className={showRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                                {rares.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                <img
+                                                    className="builder-card2"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                    </div>
+                </div>
+
+                <div className="rarities">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Normals</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {normals.length > 0 ?
+                            <h5
+                                className="left db-main-count"
+                            >{normals.length}</h5>:
+                            null}
+                            { showNormals ?
+                                <h5 className={normals.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowNormals()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={normals.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowNormals()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        {normals.length > 0 ?
+
+                            <Row xs="auto" className={showNormals ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                                {normals.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                <img
+                                                    className="builder-card2"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                    </div>
+                </div>
+
+                <div className="rarities">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >Max Variables</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {maxVariables.length > 0 ?
+                            <h5
+                                className="left db-main-count"
+                            >{maxVariables.length}</h5>:
+                            null}
+                            { showMaxVariables ?
+                                <h5 className={maxVariables.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowMaxVariables()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className={maxVariables.length > 0 ? "left db-main-count" : "hidden2"}
+                                    onClick={() => handleShowMaxVariables()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        {maxVariables.length > 0 ?
+
+                            <Row xs="auto" className={showMaxVariables ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                                {maxVariables.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                <img
+                                                    className="builder-card2"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                    </div>
+                </div>
+                {/* <div className="pluckdeck">
                     <div style={{marginLeft: "20px"}}>
                     <div style={{display: "flex", alignItems: "center"}}>
                             <h2
@@ -488,8 +497,8 @@ function SetDetailPage() {
                             </Row> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
-                </div>
-            </>}
+                </div> */}
+            {/* </>} */}
     </div>
     );
 }

@@ -61,14 +61,14 @@ async def delete_booster_set(
     else:
         return True
 
-@router.get("/api/booster_sets/{booster_set_id}/list/", response_model=list)
+@router.get("/api/booster_sets/{booster_set_id}/list/", response_model=dict)
 async def get_booster_set_list(
     booster_set_id: str,
     queries: BoosterSetQueries= Depends(),
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    booster_set_list = queries.get_booster_set_list(booster_set_id)
-    return booster_set_list
+    card_lists = queries.get_booster_set_list(booster_set_id)
+    return card_lists
 
 @router.get("/api/booster_sets/{booster_set_id}/open/", response_model=dict)
 async def open_booster_pack(

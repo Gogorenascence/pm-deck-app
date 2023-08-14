@@ -246,7 +246,7 @@ function DeckBuilder() {
             });
             window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
         } else {
-            console.error("Error in creating deck");
+            alert("Error in creating deck");
         }
     }
 

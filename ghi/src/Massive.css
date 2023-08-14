@@ -311,6 +311,11 @@ button {
   margin: 15px 5px 0px 5px;
 }
 
+.label2{
+  text-align: left;
+  margin: 10px 5px 0px 5px;
+}
+
 .edit-modal {
   opacity: 0%;
   color: black;
@@ -1156,4 +1161,82 @@ button {
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid white;
+}
+
+.rarities {
+  margin: 2% 0%;
+  background-color: rgba(40, 34, 70, 0.315);
+  border: 2px solid rgb(40, 34, 70);
+  border-radius: 5px;
+  outline: 1px solid white;
+}
+
+.ultra {
+  --angle: 0deg;
+  display: flex;
+  background-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
+  border-radius: 8px;
+  width: 140px;
+  height: 197px;
+  margin-top: 2.5px;
+  overflow: hidden;
+  animation: 3s rotate linear infinite;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  z-index: 900;
+}
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+.ultra:hover {
+  position: relative;
+  transform: scale(2.5);
+  z-index: 999;
+  border-radius: 8px;
+  width: 140px;
+  height: 197px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.builder-card4 {
+  width: 136px;
+  height: 193px;
+  border-radius: 7px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.rainbow {
+  text-align: center;
+  text-decoration: underline;
+}
+.rainbow_text_animated {
+  background: linear-gradient(to right, red, yellow, lime, aqua, blue, magenta, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+  0%,100% {
+      background-position: 0 0;
+  }
+
+  50% {
+      background-position: 100% 0;
+  }
 }
