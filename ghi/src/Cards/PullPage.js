@@ -21,6 +21,7 @@ function PullPage() {
     const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
     const [pulls, setPulls] = useState([]);
+    const [ultrasFound, setUltrasFound] = useState(0)
 
     const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
@@ -81,11 +82,13 @@ function PullPage() {
     };
 
     const findUltra = (pull) => {
+        const ultras = []
         for (let card of pull) {
             if (ultraRares.includes(card.card_number)) {
-                return true
+                ultras.push(card)
             }
         }
+        return ultras
     }
 
     const getAllCards = (pulls) => {
@@ -193,12 +196,17 @@ function PullPage() {
                                     <h2
                                         className="left"
                                         style={{margin: "1% 0%", fontWeight: "700"}}
-                                    > Pull {pullIndex + 1}</h2>
-                                { findUltra(pull) === true ?
+                                    > Pull {pullIndex + 1} &nbsp; </h2>
+                                { findUltra(pull).length > 0 ?
                                         <h2
                                             className="rainbow rainbow_text_animated"
                                             style={{margin: "1% 0%", fontWeight: "700"}}
-                                        >&nbsp; Ultra Rare Detected!!</h2>:
+                                        >
+                                            { findUltra(pull).length > 1 ?
+                                                ` ${findUltra(pull).length} Ultra Rares Detected!!`:
+                                                ` 1 Ultra Rare Detected!!`
+                                            }
+                                        </h2>:
                                         null
                                 }
                                 </div>
@@ -239,12 +247,17 @@ function PullPage() {
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
-                            >All Pulls</h2>
-                            { findUltra(getAllCards(pulls)) === true ?
+                            >All Pulls &nbsp;</h2>
+                            { findUltra(getAllCards(pulls)).length > 0 ?
                                 <h2
                                     className="rainbow rainbow_text_animated"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
-                                >&nbsp; Ultra Rare Detected!!</h2>:
+                                >
+                                    { findUltra(getAllCards(pulls)).length > 1 ?
+                                        ` ${findUltra(getAllCards(pulls)).length} Ultra Rares Detected!!`:
+                                        ` 1 Ultra Rare Detected!!`
+                                    }
+                                </h2>:
                                 null
                             }
                         </div>
