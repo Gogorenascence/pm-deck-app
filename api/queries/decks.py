@@ -9,7 +9,7 @@ from models.decks import (
 )
 from models.cards import CardOut
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class DeckQueries(Queries):

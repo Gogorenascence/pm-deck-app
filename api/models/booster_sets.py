@@ -22,6 +22,7 @@ class BoosterSetIn(BaseModel):
     name: str
     description: Optional[str]
     ratio: dict
+    mv: list
     normals: list
     rares: list
     super_rares: list
@@ -37,3 +38,7 @@ class BoosterSet(BoosterSetIn):
 
 class BoosterSetOut(BoosterSetIn):
     id: str
+
+
+class BoosterSetsAll(BaseModel):
+    booster_sets: List

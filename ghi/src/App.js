@@ -9,6 +9,8 @@ import CardsPage from "./Cards/CardsPage"
 import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
 import TopCardsPage from "./Cards/TopCardsPage";
+import SetsPage from "./Cards/SetsPage";
+import SetDetailPage from "./Cards/SetDetailPage";
 import UnderConstruction from "./display/UnderConstruction";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -39,7 +41,8 @@ function App() {
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
           <Route path="/cards/topcards" element={<TopCardsPage />} />
           <Route path="/cards/series" element={<UnderConstruction />} />
-          <Route path="/cards/products" element={<UnderConstruction />} />
+          <Route path="/cards/card_sets" element={<SetsPage />} />
+          <Route path="/cards/card_sets/:card_set_number" element={<SetDetailPage />} />
           <Route path="/articles" element={<UnderConstruction />} />
           <Route path="/gameplay" element={<UnderConstruction />} />
           <Route path="/forum" element={<UnderConstruction />} />

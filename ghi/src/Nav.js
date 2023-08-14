@@ -74,8 +74,8 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/products">
-                    Products
+                  <NavLink className="dropdown-item" to="/cards/card_sets">
+                    Card Sets
                   </NavLink>
                 </li>
               </ul>
