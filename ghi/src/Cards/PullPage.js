@@ -18,20 +18,25 @@ function PullPage() {
     const [superRares, setSuperRares] = useState([]);
     const [ultraRares, setUltraRares] = useState([]);
     const [date_created, setDateCreated] = useState([]);
+    const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
     const [pulls, setPulls] = useState([]);
 
     const [listView, setListView] = useState(false);
+    const [fullView, setFullView] = useState(false)
 
     const getBoosterSet = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
         const boosterSetData = await response.json();
+        const ratio = boosterSetData.ratio
+        const perPack = ratio.normals + ratio.rares + ratio.supers + ratio.mv
         setDateCreated(boosterSetData.created_on.date_created)
         setUltraRares(boosterSetData.ultra_rares)
         setSuperRares(boosterSetData.super_rares)
         setRares(boosterSetData.rares)
         setNormals(boosterSetData.normals)
         setMaxVariables(boosterSetData.mv)
+        setPerPack(perPack)
         setBoosterSet(boosterSetData);
     };
 
@@ -58,6 +63,10 @@ function PullPage() {
         setListView(!listView);
     };
 
+    const handleFullView = (event) => {
+        setFullView(!fullView);
+    };
+
     const handleChangeNum = (event) => {
         setNum(event.target.value)
     };
@@ -79,6 +88,16 @@ function PullPage() {
         }
     }
 
+    const getAllCards = (pulls) => {
+        const all_cards = []
+        for (let pull of pulls) {
+            for (let card of pull) {
+                all_cards.push(card)
+            }
+        }
+        return all_cards
+    }
+
     return (
         <div className="white-space">
             <Card className="text-white text-center card-list-card3" style={{margin: "2% 0%" }}>
@@ -98,6 +117,11 @@ function PullPage() {
                         >
                             Ultra Rares: {ultraRares.length} &nbsp; Super Rares: {superRares.length} &nbsp;
                             Rares: {rares.length} &nbsp; Normals: {normals.length} &nbsp; Max Variables: {maxVariables.length}
+                        </h6>
+                        <h6 className="left"
+                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                        >
+                            {perPack} Cards Per Pack
                         </h6>
                         <div style={{ display: "flex" }}>
                             <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
@@ -132,7 +156,7 @@ function PullPage() {
                     onClick={handleSubmit}>
                         Open
                 </button>
-                {listView?
+                {/* {listView?
                     <button
                         className="left"
                         onClick={handleListView}
@@ -144,56 +168,114 @@ function PullPage() {
                         onClick={handleListView}
                     >
                         List View
+                    </button>} */}
+                {fullView?
+                    <button
+                        className="left"
+                        onClick={handleFullView}
+                    >
+                        Multiple View
+                    </button>:
+                    <button
+                        className="left"
+                        onClick={handleFullView}
+                    >
+                        Single View
                     </button>}
                 <BackButton/>
             </div>
-
-            { pulls.map((pull, pullIndex) => {
-                return (
-                    <div className="rarities">
-                        <div style={{marginLeft: "20px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                > Pull {pullIndex + 1}</h2>
-                            { findUltra(pull) === true ?
+            {!fullView ?
+                (pulls.map((pull, pullIndex) => {
+                    return (
+                        <div className="rarities">
+                            <div style={{marginLeft: "20px"}}>
+                                <div style={{display: "flex", alignItems: "center"}}>
                                     <h2
-                                        className="rainbow rainbow_text_animated"
+                                        className="left"
                                         style={{margin: "1% 0%", fontWeight: "700"}}
-                                    >&nbsp; Ultra Rare Detected!!</h2>:
-                                    null
-                            }
-                            </div>
-                                <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
-                                    {pull.map((card) => {
-                                        return (
-                                            <Col style={{padding: "5px"}}>
-                                                <NavLink to={`/cards/${card.card_number}`} key={card.name}>
-                                                    {ultraRares.includes(card.card_number) ?
-                                                        <div className="ultra">
+                                    > Pull {pullIndex + 1}</h2>
+                                { findUltra(pull) === true ?
+                                        <h2
+                                            className="rainbow rainbow_text_animated"
+                                            style={{margin: "1% 0%", fontWeight: "700"}}
+                                        >&nbsp; Ultra Rare Detected!!</h2>:
+                                        null
+                                }
+                                </div>
+                                    <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                                        {pull.map((card) => {
+                                            return (
+                                                <Col style={{padding: "5px"}}>
+                                                    <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                        {ultraRares.includes(card.card_number) ?
+                                                            <div className="ultra">
+                                                                <img
+                                                                    className="builder-card4"
+                                                                    title={card.name}
+                                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                                    alt={card.name}
+                                                                    variant="bottom"/>
+                                                            </div>:
                                                             <img
-                                                                className="builder-card4"
+                                                                className="builder-card2"
                                                                 title={card.name}
                                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                                 alt={card.name}
                                                                 variant="bottom"/>
-                                                        </div>:
+                                                        }
+                                                    </NavLink>
+                                                </Col>
+                                            );
+                                        })}
+                                    </Row>
+                            </div>
+                        </div>
+                    )})
+                )
+                :
+                <div className="rarities">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0%", fontWeight: "700"}}
+                            >All Pulls</h2>
+                            { findUltra(getAllCards(pulls)) === true ?
+                                <h2
+                                    className="rainbow rainbow_text_animated"
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                >&nbsp; Ultra Rare Detected!!</h2>:
+                                null
+                            }
+                        </div>
+                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                                {getAllCards(pulls).sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                                                {ultraRares.includes(card.card_number) ?
+                                                    <div className="ultra">
                                                         <img
-                                                            className="builder-card2"
+                                                            className="builder-card4"
                                                             title={card.name}
                                                             src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                             alt={card.name}
                                                             variant="bottom"/>
-                                                    }
-                                                </NavLink>
-                                            </Col>
-                                        );
-                                    })}
-                                </Row>
-                        </div>
+                                                    </div>:
+                                                    <img
+                                                        className="builder-card2"
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                                }
+                                            </NavLink>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
                     </div>
-                )})
+            </div>
             }
         </div>
     )

@@ -26,11 +26,15 @@ function SetDetailPage() {
     const [showSuperRares, setShowSuperRares] = useState(false);
     const [showUltraRares, setShowUltraRares] = useState(false);
 
+    const [perPack, setPerPack] = useState(0)
+
     const getBoosterSet = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
         const boosterSetData = await response.json();
-        console.log(boosterSetData.created_on.date_created)
+        const ratio = boosterSetData.ratio
+        const perPack = ratio.normals + ratio.rares + ratio.supers + ratio.mv
         setDateCreated(boosterSetData.created_on.date_created)
+        setPerPack(perPack)
         setBoosterSet(boosterSetData);
     };
 
@@ -48,7 +52,7 @@ function SetDetailPage() {
         getBoosterSet();
         getCardLists();
         console.log(normals)
-        document.title = `${boosterSet.name} - PM CardBase`
+        document.title = `Card Sets - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -98,6 +102,11 @@ function SetDetailPage() {
                             Ultra Rares: {ultraRares.length} &nbsp; Super Rares: {superRares.length} &nbsp;
                             Rares: {rares.length} &nbsp; Normals: {normals.length} &nbsp; Max Variables: {maxVariables.length}
                         </h6>
+                        <h6 className="left"
+                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                        >
+                            {perPack} Cards Per Pack
+                        </h6>
                         <div style={{ display: "flex" }}>
                             <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
                             <h6
@@ -119,7 +128,7 @@ function SetDetailPage() {
             null}
 
             <div style={{ display: "flex" }}>
-                <NavLink to={`/cards_sets/${boosterSet.id}/edit`}>
+                {/* <NavLink to={`/cards_sets/${boosterSet.id}/edit`}>
                     <button
                             className="left heightNorm button100 red"
                             variant="danger"
@@ -140,7 +149,7 @@ function SetDetailPage() {
                         onClick={handleListView}
                     >
                         List View
-                    </button>}
+                    </button>} */}
                     <NavLink to={`/cards/card_sets/${boosterSet.id}/pulls`}>
                     <button
                             className="left heightNorm"
