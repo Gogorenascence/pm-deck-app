@@ -121,8 +121,11 @@ class BoosterSetQueries(Queries):
         rares = booster_set["rares"]
         super_rares = booster_set["super_rares"]
         ultra_rares = booster_set["ultra_rares"]
-        supers = super_rares + super_rares + ultra_rares
         ratio = booster_set["ratio"]
+
+        normal_pool = normals*8 + rares*4 + super_rares*2 + ultra_rares
+        rare_pool = rares*4 + super_rares*2 + ultra_rares
+        super_rare_pool = super_rares*2 + ultra_rares
 
         opened_pack = {
             "pull_list": [],
@@ -132,14 +135,14 @@ class BoosterSetQueries(Queries):
             random_idx = random.randint(0, len(max_variables) - 1)
             opened_pack["pull_list"].append(max_variables[random_idx])
         for i in range(ratio["normals"]):
-            random_idx = random.randint(0, len(normals) - 1)
-            opened_pack["pull_list"].append(normals[random_idx])
+            random_idx = random.randint(0, len(normal_pool) - 1)
+            opened_pack["pull_list"].append(normal_pool[random_idx])
         for i in range(ratio["rares"]):
-            random_idx = random.randint(0, len(rares) - 1)
-            opened_pack["pull_list"].append(rares[random_idx])
+            random_idx = random.randint(0, len(rare_pool) - 1)
+            opened_pack["pull_list"].append(rare_pool[random_idx])
         for i in range(ratio["supers"]):
-            random_idx = random.randint(0, len(supers) - 1)
-            opened_pack["pull_list"].append(supers[random_idx])
+            random_idx = random.randint(0, len(super_rare_pool) - 1)
+            opened_pack["pull_list"].append(super_rare_pool[random_idx])
 
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)

@@ -21,7 +21,6 @@ function PullPage() {
     const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
     const [pulls, setPulls] = useState([]);
-    const [ultrasFound, setUltrasFound] = useState(0)
 
     const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
@@ -54,7 +53,7 @@ function PullPage() {
 
     useEffect(() => {
         getBoosterSet();
-        document.title = `${boosterSet.name} - PM CardBase`
+        document.title = `Pack Openings - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -293,8 +292,6 @@ function PullPage() {
         </div>
     )
 }
-
-
 
 
 export default PullPage;
