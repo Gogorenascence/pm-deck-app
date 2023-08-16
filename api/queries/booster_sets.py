@@ -131,6 +131,7 @@ class BoosterSetQueries(Queries):
             "pull_list": [],
             "pulled_cards": []
         }
+
         for i in range(ratio["mv"]):
             random_idx = random.randint(0, len(max_variables) - 1)
             opened_pack["pull_list"].append(max_variables[random_idx])

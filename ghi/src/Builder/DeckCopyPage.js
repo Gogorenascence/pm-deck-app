@@ -189,7 +189,7 @@ function DeckCopyPage() {
     const handleStrategyChange = e => {
         let { options } = e.target;
         options = Array.apply(null, options)
-        const selectedValues = options.filter(x => x.selected).map(x => x.value);
+        const selectedValues = options.filter(function(x){return x.selected}).map(x => x.value);
         setSelectedList(selectedValues);
         console.log(selectedValues)
     }

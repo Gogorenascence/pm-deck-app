@@ -3,9 +3,10 @@ import {
     Row,
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import BackButton from "../display/BackButton";
+import ScrollToBottom from "../display/ScrollToBottom";
 
 
 function PullPage() {
@@ -20,7 +21,9 @@ function PullPage() {
     const [date_created, setDateCreated] = useState([]);
     const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
+    const [savedPulls, setSavedPulls] = useState([]);
     const [pulls, setPulls] = useState([]);
+    const [transferables, setTransferables] = useState([])
 
     const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
@@ -43,12 +46,15 @@ function PullPage() {
     const getPulls = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/open/${num}`);
         const pullData = await response.json();
-        console.log(pullData.pulls)
-        const pulls = []
+        setTransferables(pullData.full_pull_list)
+        const newPulls = []
         for (let pull of pullData.pulls) {
-            pulls.push(pull.pulled_cards)
+            newPulls.push(pull.pulled_cards)
         }
-        setPulls(pulls)
+        const allPulls = savedPulls.concat(newPulls)
+        console.log(allPulls)
+        setPulls(allPulls)
+
     }
 
     useEffect(() => {
@@ -74,31 +80,59 @@ function PullPage() {
     const handleSubmit = (event) => {
         if (num) {
             getPulls();
-            console.log(pulls)
+            if (!fullView && savedPulls) {
+                ScrollToBottom()
+            }
         } else {
             alert("No number of packs selected")
         }
     };
 
+    // const findUltra = (pull) => {
+    //     const ultras = []
+    //     for (let card of pull) {
+    //         if (ultraRares.includes(card.card_number)) {
+    //             ultras.push(card)
+    //         }
+    //     }
+    //     return ultras
+    // }
+
     const findUltra = (pull) => {
-        const ultras = []
-        for (let card of pull) {
+        return pull.reduce(function(ultras, card, index, arr) {
             if (ultraRares.includes(card.card_number)) {
-                ultras.push(card)
+                ultras.push(card);
             }
-        }
-        return ultras
+            return ultras;
+        }, []);
+    };
+
+    const savePulls = (event) => {
+        setSavedPulls(pulls)
+        console.log(savedPulls)
     }
 
+    // const getAllCards = (pulls) => {
+    //     const all_cards = []
+    //     for (let pull of pulls) {
+    //         for (let card of pull) {
+    //             all_cards.push(card)
+    //         }
+    //     }
+    //     return all_cards
+    // }
+
+
+    // const getAllCards = (pulls) => {
+        //     return pulls.reduce(function(all_cards, pull, index, arr){
+            //         return all_cards.concat(pull)
+            //     }, [])
+            // }
+
     const getAllCards = (pulls) => {
-        const all_cards = []
-        for (let pull of pulls) {
-            for (let card of pull) {
-                all_cards.push(card)
-            }
-        }
-        return all_cards
+        return pulls.reduce((all_cards, pull) => all_cards.concat(pull))
     }
+
 
     return (
         <div className="white-space">
@@ -184,9 +218,12 @@ function PullPage() {
                     >
                         Single View
                     </button>}
+                <button onClick={savePulls} className="left">
+                    Save Pulls
+                </button>
                 <BackButton/>
             </div>
-            {!fullView ?
+            {!fullView && pulls.length > 0?
                 (pulls.map((pull, pullIndex) => {
                     return (
                         <div className="rarities">
@@ -238,8 +275,9 @@ function PullPage() {
                             </div>
                         </div>
                     )})
-                )
-                :
+                ):null
+            }
+            {fullView && pulls.length > 0?
                 <div className="rarities">
                     <div style={{marginLeft: "20px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
@@ -287,7 +325,7 @@ function PullPage() {
                                 })}
                             </Row>
                     </div>
-            </div>
+                </div>:null
             }
         </div>
     )

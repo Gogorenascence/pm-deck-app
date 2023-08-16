@@ -302,9 +302,9 @@ function DeckBuilder() {
                         name="cover_card"
                         value={deck.cover_card}>
                         <option value="">Cover Card</option>
-                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map((card) => (
-                            <option value={card.picture_url}>{card.name}</option>
-                            ))}
+                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
+                        {return( <option value={card.picture_url}>{card.name}</option>)}
+                            )}
                     </select>
                     <br/>
                     <h5 className="label"> Description </h5>

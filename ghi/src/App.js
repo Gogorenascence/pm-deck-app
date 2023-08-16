@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { useContext } from "react";
 import MainPage from "./MainPage";
 import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
@@ -22,8 +23,9 @@ import "./Massive.css"
 
 
 function App() {
+
   return (
-    // <AuthProvider>
+
     <BrowserRouter>
       <Nav/>
       <LightSwitch/>
@@ -53,7 +55,7 @@ function App() {
       </div>
       <Footer/>
     </BrowserRouter>
-    // </AuthProvider>
+
   );
 }
 

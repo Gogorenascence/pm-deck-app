@@ -139,10 +139,10 @@ function CardsPage() {
     };
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
-        .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
+        .filter((card, index, arr) => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
-        .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
+        .filter((card, index, arr) => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
         .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
         .filter(card => query.type? card.card_type.some(type => type.type_number.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
@@ -349,7 +349,7 @@ function CardsPage() {
 
             {listView?
                 <div className="card-list2">
-                    {all_cards.slice(0, showMore).map(card => {
+                    {all_cards.slice(0, showMore).map(function(card, index, arr) {
                         return (
                             <NavLink to={`/cards/${card.card_number}`} className="nav-link" key={card.name}>
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
