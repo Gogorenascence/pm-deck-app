@@ -6,7 +6,6 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import BackButton from "../display/BackButton";
-import ScrollToBottom from "../display/ScrollToBottom";
 
 
 function PullPage() {
@@ -77,18 +76,21 @@ function PullPage() {
         setNum(event.target.value)
     };
 
+    const lastSavedPullRef = useRef(null);
+
     const handleSubmit = (event) => {
         if (num) {
             getPulls();
-            if (!fullView && savedPulls) {
-                ScrollToBottom()
+            if (lastSavedPullRef.current) {
+                lastSavedPullRef.current.scrollIntoView({ behavior: 'smooth' });
             }
+            findUltras()
         } else {
             alert("No number of packs selected")
         }
     };
 
-    // const findUltra = (pull) => {
+    // const findUltras = (pull) => {
     //     const ultras = []
     //     for (let card of pull) {
     //         if (ultraRares.includes(card.card_number)) {
@@ -98,7 +100,7 @@ function PullPage() {
     //     return ultras
     // }
 
-    const findUltra = (pull) => {
+    const findUltras = (pull) => {
         return pull.reduce(function(ultras, card, index, arr) {
             if (ultraRares.includes(card.card_number)) {
                 ultras.push(card);
@@ -107,9 +109,14 @@ function PullPage() {
         }, []);
     };
 
-    const savePulls = (event) => {
+    const handleSavePulls= (event) => {
         setSavedPulls(pulls)
-        console.log(savedPulls)
+        findUltras()
+    }
+
+    const handleClearPulls = (event) => {
+        setPulls([])
+        setSavedPulls([])
     }
 
     // const getAllCards = (pulls) => {
@@ -218,28 +225,31 @@ function PullPage() {
                     >
                         Single View
                     </button>}
-                <button onClick={savePulls} className="left">
+                <button onClick={handleSavePulls} className="left">
                     Save Pulls
+                </button>
+                <button onClick={handleClearPulls} className="left">
+                    Clear Pulls
                 </button>
                 <BackButton/>
             </div>
             {!fullView && pulls.length > 0?
                 (pulls.map((pull, pullIndex) => {
                     return (
-                        <div className="rarities">
+                        <div className="rarities" ref={pullIndex === savedPulls.length - 1 ? lastSavedPullRef : null}>
                             <div style={{marginLeft: "20px"}}>
                                 <div style={{display: "flex", alignItems: "center"}}>
                                     <h2
                                         className="left"
                                         style={{margin: "1% 0%", fontWeight: "700"}}
                                     > Pull {pullIndex + 1} &nbsp; </h2>
-                                { findUltra(pull).length > 0 ?
+                                { findUltras(pull).length > 0 ?
                                         <h2
                                             className="rainbow rainbow_text_animated"
                                             style={{margin: "1% 0%", fontWeight: "700"}}
                                         >
-                                            { findUltra(pull).length > 1 ?
-                                                ` ${findUltra(pull).length} Ultra Rares Detected!!`:
+                                            { findUltras(pull).length > 1 ?
+                                                ` ${findUltras(pull).length} Ultra Rares Detected!!`:
                                                 ` 1 Ultra Rare Detected!!`
                                             }
                                         </h2>:
@@ -285,13 +295,13 @@ function PullPage() {
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
                             >All Pulls &nbsp;</h2>
-                            { findUltra(getAllCards(pulls)).length > 0 ?
+                            { findUltras(getAllCards(pulls)).length > 0 ?
                                 <h2
                                     className="rainbow rainbow_text_animated"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
                                 >
-                                    { findUltra(getAllCards(pulls)).length > 1 ?
-                                        ` ${findUltra(getAllCards(pulls)).length} Ultra Rares Detected!!`:
+                                    { findUltras(getAllCards(pulls)).length > 1 ?
+                                        ` ${findUltras(getAllCards(pulls)).length} Ultra Rares Detected!!`:
                                         ` 1 Ultra Rare Detected!!`
                                     }
                                 </h2>:

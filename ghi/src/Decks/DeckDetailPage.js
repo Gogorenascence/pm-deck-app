@@ -200,7 +200,7 @@ function DeckDetailPage() {
                                 </h4>
                                 <div style={{width: "95%", marginLeft: "20px"}}>
                                     <Row xs="auto" className="justify-content-start">
-                                        {shuffledDeck.slice(0,8).map((card) => {
+                                        {shuffledDeck.slice(0,6).map((card) => {
                                             return (
                                                 <Col
                                                     style={{padding: "2px 5px 8px 5px"}}>

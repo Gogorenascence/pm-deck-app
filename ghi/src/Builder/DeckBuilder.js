@@ -231,7 +231,6 @@ function DeckBuilder() {
         if (response.ok) {
             const responseData = await response.json();
             const deck_id = responseData.id;
-            console.log(deck_id)
             setDeck({
                 name: "",
                 account_id: "",

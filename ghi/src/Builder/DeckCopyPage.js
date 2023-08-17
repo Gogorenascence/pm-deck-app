@@ -282,7 +282,8 @@ function DeckCopyPage() {
 
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
-            await response.json();
+            const responseData = await response.json();
+            const child_deck_id = responseData.id;
             setDeck({
                 name: "",
                 account_id: "",
@@ -295,7 +296,7 @@ function DeckCopyPage() {
                 cover_card: "",
                 parent_id: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            window.location.href = `${process.env.PUBLIC_URL}/decks/${child_deck_id}`;
         } else {
             alert("Error in copying deck");
         }

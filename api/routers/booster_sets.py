@@ -88,3 +88,13 @@ async def open_booster_packs(
 ):
     opened_packs = queries.open_booster_packs(booster_set_id, num)
     return opened_packs
+
+@router.get("/api/rarity_stats/{set_id}/{deck_id}", response_model=dict)
+async def get_rarity_stats(
+    set_id: str,
+    deck_id: str,
+    queries: BoosterSetQueries= Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    deck_rarities = queries.get_rarity_stats(set_id, deck_id)
+    return deck_rarities

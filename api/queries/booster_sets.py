@@ -11,6 +11,7 @@ from models.cards import CardOut
 import os
 from datetime import datetime
 import random
+import math
 
 
 class BoosterSetQueries(Queries):
@@ -166,3 +167,68 @@ class BoosterSetQueries(Queries):
             opened_packs["full_pull_list"] += pull_list
             opened_packs["pulls"].append(opened_pack)
         return opened_packs
+
+    def get_rarity_stats(self, set_id, deck_id) -> dict:
+        deck_rarities = {
+            "set_name": "",
+            "deck_name": "",
+            "max_variables": 0,
+            "normals": 0,
+            "rares": 0,
+            "super_rares": 0,
+            "ultra_rares": 0,
+            "rating": 0
+        }
+
+        props = self.collection.find_one({"_id": ObjectId(set_id)})
+        deck_rarities["set_name"] = props["name"]
+        max_variables = props["mv"]
+        normals = props["normals"]
+        rares = props["rares"]
+        super_rares = props["super_rares"]
+        ultra_rares = props["ultra_rares"]
+
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.decks
+
+        deck = db.find_one({"_id": ObjectId(deck_id)})
+        deck_rarities["deck_name"] = deck["name"]
+        main_deck = deck["cards"]
+        pluck_deck = deck["pluck"]
+
+        for card in main_deck:
+            if card in max_variables:
+                deck_rarities["max_variables"] += 1
+            elif card in normals:
+                deck_rarities["normals"] += 1
+                deck_rarities["rating"] += 2
+            elif card in rares:
+                deck_rarities["rares"] += 1
+                deck_rarities["rating"] += 4
+            elif card in super_rares:
+                deck_rarities["super_rares"] += 1
+                deck_rarities["rating"] += 8
+            else:
+                deck_rarities["ultra_rares"] += 1
+                deck_rarities["rating"] += 16
+
+        for card in pluck_deck:
+            if card in max_variables:
+                deck_rarities["max_variables"] += 1
+            elif card in normals:
+                deck_rarities["normals"] += 1
+                deck_rarities["rating"] += 2
+            elif card in rares:
+                deck_rarities["rares"] += 1
+                deck_rarities["rating"] += 4
+            elif card in super_rares:
+                deck_rarities["super_rares"] += 1
+                deck_rarities["rating"] += 8
+            else:
+                deck_rarities["ultra_rares"] += 1
+                deck_rarities["rating"] += 16
+
+        deck_rarities["rating"] = deck_rarities["rating"]/(len(main_deck) + len(pluck_deck))
+        deck_rarities["rating"] = round(deck_rarities["rating"], 2)
+        return deck_rarities
