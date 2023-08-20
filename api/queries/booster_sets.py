@@ -115,22 +115,97 @@ class BoosterSetQueries(Queries):
             card_lists["ultra_rares"].append(CardOut(**card))
         return card_lists
 
+    def get_pull_rarities(self, set_id, cards) -> dict:
+        pull_stats = {
+            "set_name": "",
+            "max_variables": 0,
+            "normals": 0,
+            "rares": 0,
+            "super_rares": 0,
+            "ultra_rares": 0,
+        }
+
+        props = self.collection.find_one({"_id": ObjectId(set_id)})
+        pull_stats["set_name"] = props["name"]
+        max_variables = props["mv"]
+        normals = props["normals"]
+        rares = props["rares"]
+        super_rares = props["super_rares"]
+
+        for card in cards:
+            if card in max_variables:
+                pull_stats["max_variables"] += 1
+            elif card in normals:
+                pull_stats["normals"] += 1
+            elif card in rares:
+                pull_stats["rares"] += 1
+            elif card in super_rares:
+                pull_stats["super_rares"] += 1
+            else:
+                pull_stats["ultra_rares"] += 1
+        return pull_stats
+
+    def get_pull_types(self, cards) -> dict:
+        types = {
+            "fighters": 0,
+            "auras": 0,
+            "moves": 0,
+            "endings": 0,
+            "max_variables": 0,
+            "items": 0,
+            "events": 0,
+            "comebacks": 0,
+            "main_deck_cards": 0,
+            "pluck_deck_cards": 0
+        }
+
+        for card in cards:
+            if card.card_type[0] == 1001:
+                types["fighters"] += 1
+                types["main_deck_cards"] += 1
+            elif card.card_type[0] == 1002:
+                types["auras"] += 1
+                types["main_deck_cards"] += 1
+            elif card.card_type[0] == 1003:
+                types["moves"] += 1
+                types["main_deck_cards"] += 1
+            elif card.card_type[0] == 1004:
+                types["endings"] += 1
+                types["main_deck_cards"] += 1
+            elif card.card_type[0] == 1006:
+                types["items"] += 1
+                types["pluck_deck_cards"] += 1
+            elif card.card_type[0] == 1007:
+                types["events"] += 1
+                types["pluck_deck_cards"] += 1
+            elif card.card_type[0] == 1008:
+                types["comebacks"] += 1
+                types["pluck_deck_cards"] += 1
+            else:
+                types["max_variables"] += 1
+                types["main_deck_cards"] += 1
+        return types
+
     def open_booster_pack(self, id: str) -> dict:
         booster_set = self.collection.find_one({"_id": ObjectId(id)})
         max_variables = booster_set["mv"]
-        normals = booster_set["normals"]
-        rares = booster_set["rares"]
-        super_rares = booster_set["super_rares"]
-        ultra_rares = booster_set["ultra_rares"]
-        ratio = booster_set["ratio"]
+        normal_pool = booster_set["normals"]
+        rare_pool = booster_set["rares"]
 
-        normal_pool = normals*8 + rares*4 + super_rares*2 + ultra_rares
-        rare_pool = rares*4 + super_rares*2 + ultra_rares
-        super_rare_pool = super_rares*2 + ultra_rares
+        super_rares_cards = booster_set["super_rares"]
+        ultra_rares_cards = booster_set["ultra_rares"]
+
+        super_rares = super_rares_cards * (500 // len(super_rares_cards))
+        ultra_rares = ultra_rares_cards * (100 // len(ultra_rares_cards))
+        super_rare_pool = super_rares + ultra_rares
+
+        ratio = booster_set["ratio"]
 
         opened_pack = {
             "pull_list": [],
-            "pulled_cards": []
+            "pulled_cards": [],
+            "pull_stats": {},
+            "pulled_card_types": {}
         }
 
         for i in range(ratio["mv"]):
@@ -149,23 +224,59 @@ class BoosterSetQueries(Queries):
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
         db = conn.cards.cards
-        pull = []
         for card_item in opened_pack["pull_list"]:
             card = db.find_one({"card_number": card_item})
             card["id"] = str(card["_id"])
             opened_pack["pulled_cards"].append(CardOut(**card))
+        pull_list = opened_pack["pull_list"]
+        pulled_card_types = opened_pack["pulled_cards"]
+        opened_pack["pull_stats"] = self.get_pull_rarities(id, pull_list)
+        opened_pack["pulled_card_types"] = self.get_pull_types(pulled_card_types)
         return opened_pack
 
     def open_booster_packs(self, id: str, num: int) -> dict:
         opened_packs = {
             "pulls": [],
             "full_pull_list": [],
+            "full_pull_stats": {},
+            "full_pull_card_types": {
+                "fighters": 0,
+                "auras": 0,
+                "moves": 0,
+                "endings": 0,
+                "max_variables": 0,
+                "items": 0,
+                "events": 0,
+                "comebacks": 0,
+                "main_deck_cards": 0,
+                "pluck_deck_cards": 0
+            }
         }
+
         for i in range(num):
+            full_pull_list = opened_packs["full_pull_list"]
             opened_pack = self.open_booster_pack(id)
             pull_list = opened_pack["pull_list"]
-            opened_packs["full_pull_list"] += pull_list
+            full_pull_list += pull_list
             opened_packs["pulls"].append(opened_pack)
+        opened_packs["full_pull_stats"] = self.get_pull_rarities(id, full_pull_list)
+        print(opened_packs["full_pull_stats"])
+
+        for pull in opened_packs["pulls"]:
+            card_types = pull["pulled_card_types"]
+            full_card_types = opened_packs["full_pull_card_types"]
+
+            full_card_types["fighters"] += card_types["fighters"]
+            full_card_types["auras"] += card_types["auras"]
+            full_card_types["moves"] += card_types["moves"]
+            full_card_types["endings"] += card_types["endings"]
+            full_card_types["items"] += card_types["items"]
+            full_card_types["events"] += card_types["events"]
+            full_card_types["comebacks"] += card_types["comebacks"]
+            full_card_types["max_variables"] += card_types["max_variables"]
+            full_card_types["main_deck_cards"] += card_types["main_deck_cards"]
+            full_card_types["pluck_deck_cards"] += card_types["pluck_deck_cards"]
+        print(full_card_types)
         return opened_packs
 
     def get_rarity_stats(self, set_id, deck_id) -> dict:
@@ -186,7 +297,6 @@ class BoosterSetQueries(Queries):
         normals = props["normals"]
         rares = props["rares"]
         super_rares = props["super_rares"]
-        ultra_rares = props["ultra_rares"]
 
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)

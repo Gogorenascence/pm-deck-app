@@ -70,7 +70,7 @@ function Nav() {
                 </li>
                 <li>
                   <NavLink className="dropdown-item" to="/cards/series">
-                    New Series
+                    Series
                   </NavLink>
                 </li>
                 <li>
