@@ -133,7 +133,16 @@ class DeckQueries(Queries):
         deck = self.collection.find_one({"_id": ObjectId(id)})
         card_list = deck["cards"]
         pluck_list = deck["pluck"]
-        side_list = deck["side"]
+        types = {
+            "fighters": 0,
+            "auras": 0,
+            "moves": 0,
+            "endings": 0,
+            "max_variables": 0,
+            "items": 0,
+            "events": 0,
+            "comebacks": 0,
+        }
 
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
@@ -148,12 +157,25 @@ class DeckQueries(Queries):
             pluck = db.find_one({"card_number": pluck_item})
             pluck["id"] = str(pluck["_id"])
             pluck_deck.append(CardOut(**pluck))
-        side_deck = []
-        for side_item in side_list:
-            side = db.find_one({"card_number": side_item})
-            side["id"] = str(side["_id"])
-            side_deck.append(CardOut(**side))
-        deck_list = [main_deck, pluck_deck, side_deck]
+        full_list = main_deck + pluck_deck
+        for card in full_list:
+            if card.card_type[0] == 1001:
+                types["fighters"] += 1
+            elif card.card_type[0] == 1002:
+                types["auras"] += 1
+            elif card.card_type[0] == 1003:
+                types["moves"] += 1
+            elif card.card_type[0] == 1004:
+                types["endings"] += 1
+            elif card.card_type[0] == 1006:
+                types["items"] += 1
+            elif card.card_type[0] == 1007:
+                types["events"] += 1
+            elif card.card_type[0] == 1008:
+                types["comebacks"] += 1
+            else:
+                types["max_variables"] += 1
+        deck_list = [main_deck, pluck_deck, types]
         return deck_list
 
     def get_counted_deck_list(self, id: str) -> list:
