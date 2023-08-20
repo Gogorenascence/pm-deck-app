@@ -3393,7 +3393,7 @@
   "_id": {
     "$oid": "64395c473d6559427fc585a9"
   },
-  "name": "Returning Souls              ",
+  "name": "Returning Souls",
   "card_class": "",
   "hero_id": "CP1",
   "series_name": "Ceifeira Preta//Mystic//Quest",
@@ -3443,7 +3443,7 @@
   "series_name": "Burst Esper//Psychic//Energy",
   "card_number": 1025,
   "enthusiasm": 0,
-  "effect_text": "Deal 2 damage to a random foe and add 2 to your Focus. That foe draws 2 cards. You can resolve this effect one more time.",
+  "effect_text": "Deal 2 damage to 2 random foes and add 2 to your Focus. Those targeted foes draws 2 cards.",
   "second_effect_text": "",
   "illustrator": "mo.moan",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r3bef.png",
@@ -3463,17 +3463,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:08",
+    "month": 8,
+    "day": 20,
+    "time": "23:06",
     "full_time": {
-      "$date": "2023-06-25T19:08:25.988Z"
+      "$date": "2023-08-20T23:06:14.820Z"
     }
   }
 },
@@ -5166,7 +5164,7 @@
   "series_name": "Warp Family//Cosmic//Psychic",
   "card_number": 1106,
   "enthusiasm": 0,
-  "effect_text": "Once per round, deal 1 bypassing damage to a foe. If you have a Canny Fighter in your play, you can resolve this Item one more time.",
+  "effect_text": "<Limited> If you have a Canny Fighter in your play, deal 1 bypassing damage to a foe.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl14pi.png",
@@ -5174,7 +5172,9 @@
   "card_type": [
     1006
   ],
-  "extra_effects": [],
+  "extra_effects": [
+    1003
+  ],
   "reactions": [],
   "card_tags": [
     1004
@@ -5184,17 +5184,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:21",
+    "month": 8,
+    "day": 20,
+    "time": "23:14",
     "full_time": {
-      "$date": "2023-06-25T19:21:17.627Z"
+      "$date": "2023-08-20T23:14:44.076Z"
     }
   }
 },
