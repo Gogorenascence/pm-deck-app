@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
-// import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+
 
 function Nav() {
+  const [showModal, setShowModal] = useState(false)
+  const [token, setToken] = useState(true)
+
+  const handleShowModal =(event) => {
+    setShowModal(!showModal)
+  }
+
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top topbar">
@@ -223,12 +231,27 @@ function Nav() {
       {/* </div> */}
       </div>
       </div>
-        {/* <Button className="semi-bold-20 button100" variant="outline-warning" size="sm">
-          Login
-        </Button>
-        <Button className="semi-bold-20 button100" variant="outline-light" size="sm">
-          Signup
-        </Button> */}
+{ !token?<>
+          <button className="button100"
+            onClick={handleShowModal}>
+            Login
+          </button>
+          <button className="button100">
+            Signup
+          </button>
+        </>
+
+          :
+        <>
+          <button className="button100"
+            onClick={handleShowModal}>
+            Logout
+          </button>
+          <button className="button100">
+            Account
+          </button>
+        </>
+}
       </div>
     </nav>
   );

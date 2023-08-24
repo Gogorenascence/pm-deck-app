@@ -186,6 +186,10 @@ button {
   padding: 0px 10px;
 }
 
+button:hover {
+  filter: brightness(1.5);
+}
+
 .red {
   background-color: rgb(209, 54, 54);
 }
