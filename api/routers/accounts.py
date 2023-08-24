@@ -46,7 +46,7 @@ async def get_account(
     account_id: str,
     repo: AccountQueries = Depends(),
 ):
-    account = repo.get_account(account_id)
+    account = repo.get_account_by_id(account_id)
     return account
 
 
@@ -66,7 +66,7 @@ async def create_account(
             detail="Cannot Create An Account With Those Credentials",
         )
 
-    form = AccountForm(username=info.email, password=info.password)
+    form = AccountForm(username=info.username, password=info.password)
 
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
@@ -101,7 +101,7 @@ async def update_account(
             detail="Cannot Create An Account With Those Credentials",
         )
 
-    form = AccountForm(username=info.email, password=info.password)
+    form = AccountForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
