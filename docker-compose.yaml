@@ -7,7 +7,7 @@ services:
       context: ./api
       dockerfile: Dockerfile.dev
     environment:
-      CORS_HOST: http://localhost:3100
+      CORS_HOST: http://localhost:3000
       DATABASE_URL: mongodb://root:password@mongo
       DATABASE_NAME: cards
       WAIT_HOSTS: mongo:27017
@@ -15,7 +15,7 @@ services:
       WAIT_TIMEOUT: 60
       SIGNING_KEY: 80f21f5e48acbc32a55hj26pabafb2d4d57f5be921a487484d014147bfd96115d7ddbe8f26219rsds227b343d7f4b9p00p9dd1249e1ec892baf73572353666a97e
     ports:
-      - "8100:8000"
+      - "8000:8000"
     volumes:
       - ./api:/app
   mongo:
@@ -27,7 +27,7 @@ services:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: password
     ports:
-      - 27117:27017
+      - 27017:27017
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -35,10 +35,10 @@ services:
     volumes:
       - ./ghi:/app
     ports:
-      - "3100:3000"
+      - "3000:3000"
     environment:
       HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
-      PUBLIC_URL: http://localhost:3100
-      REACT_APP_FASTAPI_SERVICE_API_HOST: http://localhost:8100
+      PUBLIC_URL: http://localhost:3000
+      REACT_APP_FASTAPI_SERVICE_API_HOST: http://localhost:8000

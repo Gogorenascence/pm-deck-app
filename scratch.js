@@ -522,3 +522,5 @@ const handleRemoveCardType = (index) => {
 // 		background-position: 0% 50%;
 // 	}
 // }
+
+print(ord(a))

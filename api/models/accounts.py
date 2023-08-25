@@ -23,6 +23,9 @@ class AccountIn(BaseModel):
     password: str
     username: str
     unhashed_password: Optional[str]
+    collection: Optional[List]
+    wishlist: Optional[List]
+    decks:Optional[List]
     roles: Optional[List]
 
 
@@ -33,7 +36,10 @@ class Account(AccountIn):
 class AccountOut(BaseModel):
     id: str
     email: str
-    username: str
     password: str
+    username: str
     unhashed_password: Optional[str]
+    collection: Optional[List]
+    wishlist: Optional[List]
+    decks:Optional[List]
     roles: Optional[List]
