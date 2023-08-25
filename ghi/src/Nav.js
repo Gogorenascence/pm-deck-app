@@ -364,91 +364,88 @@ function Nav() {
       </div>
 
       { showSignUpModal?
-        <div className="medium-modal">
-        <h2 className="label black">  Create Account </h2>
-        <div style={{margin: "20px 20px 20px 20px"}}>
-            <h5 className="label black">Email </h5>
-            <input
-                className="builder-input"
-                type="text"
-                placeholder=" Email"
-                onChange={handleRegisterChange}
-                name="email"
-                value={register.email}>
-            </input>
+        <>
+          <div className="medium-modal">
+            <h2 className="label black">  Create Account </h2>
+            <div style={{margin: "20px 20px 20px 20px"}}>
+                <h5 className="label black">Email </h5>
+                <input
+                    className="builder-input"
+                    type="text"
+                    placeholder=" Email"
+                    onChange={handleRegisterChange}
+                    name="email"
+                    value={register.email}>
+                </input>
 
-            <h5 className="label black">Username </h5>
-            <input
-                className="builder-input"
-                type="text"
-                placeholder=" Username"
-                onChange={handleRegisterChange}
-                name="username"
-                value={register.username}>
-            </input>
+                <h5 className="label black">Username </h5>
+                <input
+                    className="builder-input"
+                    type="text"
+                    placeholder=" Username"
+                    onChange={handleRegisterChange}
+                    name="username"
+                    value={register.username}>
+                </input>
 
-            <h5 className="label black">Password </h5>
-            <input
-                className="builder-input"
-                type="password"
-                placeholder=" Password"
-                onChange={handleRegisterChange}
-                name="password"
-                value={register.password}>
-            </input>
+                <h5 className="label black">Password </h5>
+                <input
+                    className="builder-input"
+                    type="password"
+                    placeholder=" Password"
+                    onChange={handleRegisterChange}
+                    name="password"
+                    value={register.password}>
+                </input>
 
-            <h5 className="label black">Password </h5>
-            <input
-                className="builder-input"
-                type="password"
-                placeholder=" Confirm Password"
-                onChange={handlePasswordConChange}
-                value={passwordCon}>
-            </input>
-        </div>
-        <button onClick={handleSignUp}>Signup</button>
-        <button onClick={handleShowSignUpModal}>Close</button>
-        </div>:
+                <h5 className="label black">Password </h5>
+                <input
+                    className="builder-input"
+                    type="password"
+                    placeholder=" Confirm Password"
+                    onChange={handlePasswordConChange}
+                    value={passwordCon}>
+                </input>
+            </div>
+            <button onClick={handleSignUp}>Signup</button>
+            <button onClick={handleShowSignUpModal}>Close</button>
+          </div>
+          <div className="blackSpace"></div>
+        </>:
         null
       }
 
       { showLoginModal?
-        <div className="medium-modal">
-        <h2 className="label black">  User Login </h2>
-        <div style={{margin: "20px 20px 20px 20px"}}>
-            <h5 className="label black">Username </h5>
-            <input
-                className="builder-input"
-                type="text"
-                placeholder=" Username"
-                onChange={handleLoginCredChange}
-                name="username"
-                value={loginCred.username}>
-            </input>
+        <>
+          <div className="medium-modal">
+            <h2 className="label black">  User Login </h2>
+            <div style={{margin: "20px 20px 20px 20px"}}>
+                <h5 className="label black">Username </h5>
+                <input
+                    className="builder-input"
+                    type="text"
+                    placeholder=" Username"
+                    onChange={handleLoginCredChange}
+                    name="username"
+                    value={loginCred.username}>
+                </input>
 
-            <h5 className="label black">Password </h5>
-            <input
-                className="builder-input"
-                type="password"
-                placeholder=" Password"
-                onChange={handleLoginCredChange}
-                name="password"
-                value={loginCred.password}>
-            </input>
-
-            <h5 className="label black">Password </h5>
-            <input
-                className="builder-input"
-                type="password"
-                placeholder=" Confirm Password"
-                onChange={handlePasswordConChange}
-                value={passwordCon}>
-            </input>
-        </div>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleShowLoginModal}>Close</button>
-      </div>:
-      null
+                <h5 className="label black">Password </h5>
+                <input
+                    className="builder-input"
+                    type="password"
+                    placeholder=" Password"
+                    onChange={handleLoginCredChange}
+                    name="password"
+                    value={loginCred.password}>
+                </input>
+            </div>
+            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleShowLoginModal}>Close</button>
+          </div>
+          <div className="blackSpace"></div>
+        </>:
+        null
       }
 
       </div>
