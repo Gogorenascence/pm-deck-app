@@ -3,9 +3,10 @@ import {
     Row,
     Card,
 } from "react-bootstrap";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import BackButton from "../display/BackButton";
+import { PullsContext } from "../context/PullsContext";
 
 
 function PullPage() {
@@ -21,7 +22,7 @@ function PullPage() {
     const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
     const [savedPulls, setSavedPulls] = useState([]);
-    const [pulls, setPulls] = useState([]);
+    const {pulls, setPulls}= useContext(PullsContext);
     const [transferables, setTransferables] = useState([])
 
     const [listView, setListView] = useState(false);
@@ -59,6 +60,7 @@ function PullPage() {
     useEffect(() => {
         getBoosterSet();
         document.title = `Pack Openings - PM CardBase`
+        console.log(pulls)
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -157,20 +159,20 @@ function PullPage() {
                         <h3 className="left cd-container-child">{boosterSet.name}</h3>
                         <h6 className="left"
                             style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
-                        >
+                            >
                             Ultra Rares: {ultraRares.length} &nbsp; Super Rares: {superRares.length} &nbsp;
                             Rares: {rares.length} &nbsp; Normals: {normals.length} &nbsp; Max Variables: {maxVariables.length}
                         </h6>
                         <h6 className="left"
                             style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
-                        >
+                            >
                             {perPack} Cards Per Pack
                         </h6>
                         <div style={{ display: "flex" }}>
                             <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
                             <h6
                             className="left justify-content-end"
-                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                             >
                                 {date_created}
                             </h6>
@@ -201,13 +203,13 @@ function PullPage() {
                 </button>
                 {/* {listView?
                     <button
-                        className="left"
-                        onClick={handleListView}
+                    className="left"
+                    onClick={handleListView}
                     >
-                        Image View
+                    Image View
                     </button>:
                     <button
-                        className="left"
+                    className="left"
                         onClick={handleListView}
                     >
                         List View
@@ -231,6 +233,12 @@ function PullPage() {
                 <button onClick={handleClearPulls} className="left">
                     Clear Pulls
                 </button>
+                <NavLink to={`/cards/card_sets/${card_set_id}/pulls/deckbuilder`}>
+                <button
+                    className="left">
+                    Create Deck
+                </button>
+                </NavLink>
                 <BackButton/>
             </div>
             {!fullView && pulls.length > 0?

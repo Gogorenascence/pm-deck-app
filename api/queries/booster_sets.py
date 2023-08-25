@@ -195,7 +195,7 @@ class BoosterSetQueries(Queries):
         super_rares_cards = booster_set["super_rares"]
         ultra_rares_cards = booster_set["ultra_rares"]
 
-        super_rares = super_rares_cards * (600 // len(super_rares_cards))
+        super_rares = super_rares_cards * (500 // len(super_rares_cards))
         ultra_rares = ultra_rares_cards * (100 // len(ultra_rares_cards))
         super_rare_pool = super_rares + ultra_rares
 

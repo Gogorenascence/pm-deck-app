@@ -2,10 +2,12 @@ import {
     Col,
     Row,
 } from "react-bootstrap";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { PullsContext } from "../context/PullsContext";
+
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
-function DeckBuilder() {
+function PullsDeckBuilder() {
     const [deck, setDeck] = useState({
         name: "",
         account_id: "",
@@ -28,6 +30,7 @@ function DeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
+    const {pulls, setPulls}= useContext(PullsContext);
 
     const [showMore, setShowMore] = useState(20);
     const [listView, setListView] = useState(false);
@@ -39,14 +42,15 @@ function DeckBuilder() {
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
-
-        if (data.cards.length == 0 ) {
+        if (pulls.length == 0 ) {
             setNoCards(true)
         }
-
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+        const pulledCards = [];
+        for (let pull of pulls) {
+            pulledCards.push(...pull);
+        }
+        const sortedCards = [...pulledCards].sort(sortMethods[sortState].method);
+        console.log(pulledCards)
 
         setCards(sortedCards);
     };
@@ -69,8 +73,8 @@ function DeckBuilder() {
 
     useEffect(() => {
         getCards();
-        console.log(typeof cards)
         document.title = "Deck Builder - PM CardBase"
+        console.log(typeof pulls)
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -540,7 +544,65 @@ function DeckBuilder() {
                 </div>
 
                 </Row>
-                <div className={showPool ? "cardpool" : "no-cardpool"}>
+                {all_cards.length?
+                    <div className={showPool ? "cardpool" : "no-cardpool"}>
+                        <div style={{marginLeft: "0px"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
+                                >Card Pool</h2>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                                {all_cards.length > 0 ?
+                                    <h5
+                                        className="left db-pool-count"
+                                    >{all_cards.length}</h5>:
+                                    null}
+                                { showPool ?
+                                    <h5 className="left db-pool-count"
+                                        onClick={() => handleShowPool()}>
+                                            &nbsp;[Hide]
+                                    </h5> :
+                                    <h5 className="left db-pool-count"
+                                        onClick={() => handleShowPool()}>
+                                        &nbsp;[Show]
+                                    </h5>}
+                            </div>
+                            <div className={showPool ? "scrollable" : "hidden2"}>
+                                <div style={{marginLeft: "20px"}}>
+
+                                { all_cards.length == 0 && isQueryEmpty && !noCards?
+                                    <div className="loading-container">
+                                        <div className="loading-spinner"></div>
+                                    </div> :
+                                null}
+
+                                <Row xs="auto" className="justify-content-start">
+                                    {all_cards.slice(0, showMore).map((card) => {
+                                        return (
+                                            <Col style={{padding: "5px"}}>
+                                                    <img
+                                                        onClick={() => handleClick(card)}
+                                                        className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                                </div>
+                                {showMore < all_cards.length ?
+                                    <button
+                                        style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
+                                        onClick={handleShowMore}>
+                                        Show More Cards ({all_cards.length - showMore} Remaining)
+                                    </button> : null }
+                            </div>
+                        </div>
+                    </div>:
+                    <div className="no-cardpool">
                     <div style={{marginLeft: "0px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
                             <h2
@@ -548,55 +610,16 @@ function DeckBuilder() {
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
                             >Card Pool</h2>
                             <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                            {all_cards.length > 0 ?
-                                <h5
-                                    className="left db-pool-count"
-                                >{all_cards.length}</h5>:
-                                null}
-                            { showPool ?
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                        &nbsp;[Hide]
-                                </h5> :
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                    &nbsp;[Show]
-                                </h5>}
+
                         </div>
-                        <div className={showPool ? "scrollable" : "hidden2"}>
+
                             <div style={{marginLeft: "20px"}}>
-
-                            { all_cards.length == 0 && isQueryEmpty && !noCards?
-                                <div className="loading-container">
-                                    <div className="loading-spinner"></div>
-                                </div> :
-                            null}
-
-                            <Row xs="auto" className="justify-content-start">
-                                {all_cards.slice(0, showMore).map((card) => {
-                                    return (
-                                        <Col style={{padding: "5px"}}>
-                                                <img
-                                                    onClick={() => handleClick(card)}
-                                                    className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
-                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={card.name}
-                                                    variant="bottom"/>
-                                        </Col>
-                                    );
-                                })}
-                            </Row>
+                            <h4 className="left no-cards">No cards added</h4>
                             </div>
-                            {showMore < all_cards.length ?
-                                <button
-                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
-                                    onClick={handleShowMore}>
-                                    Show More Cards ({all_cards.length - showMore} Remaining)
-                                </button> : null }
-                        </div>
+
                     </div>
                 </div>
+                    }
                 {listView?
                     <div className="deck-list">
                         <div className="maindeck3">
@@ -765,4 +788,4 @@ function DeckBuilder() {
 }
 
 
-export default DeckBuilder;
+export default PullsDeckBuilder;

@@ -20,11 +20,15 @@ import LightSwitch from "./display/LightSwitch";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
+import { PullsContextProvider } from "./context/PullsContext";
+import PullsDeckBuilder from "./Decks/PullsDeckBuilder";
 
 
 function App() {
 
   return (
+
+    <PullsContextProvider>
 
     <BrowserRouter>
       <Nav/>
@@ -47,6 +51,7 @@ function App() {
           <Route path="/cards/card_sets" element={<SetsPage />} />
           <Route path="/cards/card_sets/:card_set_id" element={<SetDetailPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls" element={<PullPage />} />
+          <Route path="/cards/card_sets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
           <Route path="/articles" element={<UnderConstruction />} />
           <Route path="/gameplay" element={<UnderConstruction />} />
           <Route path="/forum" element={<UnderConstruction />} />
@@ -56,6 +61,7 @@ function App() {
       <Footer/>
     </BrowserRouter>
 
+    </PullsContextProvider>
   );
 }
 
