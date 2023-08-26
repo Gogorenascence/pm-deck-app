@@ -23,7 +23,6 @@ function PullPage() {
     const [num, setNum] = useState("");
     const [savedPulls, setSavedPulls] = useState([]);
     const {pulls, setPulls}= useContext(PullsContext);
-    const [transferables, setTransferables] = useState([])
 
     const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
@@ -46,7 +45,6 @@ function PullPage() {
     const getPulls = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/open/${num}`);
         const pullData = await response.json();
-        setTransferables(pullData.full_pull_list)
         const newPulls = []
         for (let pull of pullData.pulls) {
             newPulls.push(pull.pulled_cards)

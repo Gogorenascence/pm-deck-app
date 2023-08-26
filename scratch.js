@@ -523,4 +523,20 @@ const handleRemoveCardType = (index) => {
 // 	}
 // }
 
-print(ord(a))
+// import { PullsContext } from "./AppProvider"; // Adjust the import path to match your project structure
+
+// function YourComponent() {
+//   // Access the PullsContext
+//   const { pulls, setPulls } = useContext(PullsContext);
+
+//   // Now you can use pulls and setPulls in your component
+//   // ...
+
+//   return (
+//     <div>
+//       {/* Your component JSX */}
+//     </div>
+//   );
+// }
+
+// export default YourComponent;
