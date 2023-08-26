@@ -32,7 +32,7 @@ function PullsDeckBuilder() {
     const [cards, setCards] = useState([]);
     const {pulls, setPulls}= useContext(PullsContext);
 
-    const [showMore, setShowMore] = useState(20);
+    const [showMore, setShowMore] = useState(50);
     const [listView, setListView] = useState(false);
 
     const [showPool, setShowPool] = useState(true);
@@ -93,7 +93,7 @@ function PullsDeckBuilder() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
-        setShowMore(20)
+        setShowMore(50)
     };
 
     const handleQueryReset = (event) => {
@@ -130,7 +130,7 @@ function PullsDeckBuilder() {
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 20);
+        setShowMore(showMore + 50);
     };
 
     const handleChange = (event) => {

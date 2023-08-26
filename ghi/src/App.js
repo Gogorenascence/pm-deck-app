@@ -20,7 +20,7 @@ import LightSwitch from "./display/LightSwitch";
 import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
-import { PullsContextProvider } from "./context/PullsContext";
+import AppProvider from "./context/AppProvider";
 import PullsDeckBuilder from "./Decks/PullsDeckBuilder";
 
 
@@ -28,7 +28,7 @@ function App() {
 
   return (
 
-    <PullsContextProvider>
+    <AppProvider>
 
     <BrowserRouter>
       <Nav/>
@@ -61,7 +61,7 @@ function App() {
       <Footer/>
     </BrowserRouter>
 
-    </PullsContextProvider>
+    </AppProvider>
   );
 }
 
