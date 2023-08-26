@@ -948,6 +948,10 @@ button:hover {
   display: inline-block;
 }
 
+.card-container:hover div {
+  display: inline-block;
+}
+
 .card-image {
   position: absolute;
   z-index: 200;
@@ -1237,6 +1241,15 @@ button:hover {
   background-size: 400% 100%;
 }
 
+.rainbow_text_animated2 {
+  background: linear-gradient(to right, red,  lime,  blue, yellow, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
 @keyframes rainbow_animation {
   0%,100% {
       background-position: 0 0;
@@ -1316,3 +1329,29 @@ button:hover {
   height: 100vh;
   z-index: 900;
 }
+
+.ultra2 {
+  --angle: 0deg;
+  display: flex;
+  background-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
+  border-radius: 8px;
+  width: 140px;
+  height: 197px;
+  margin-top: 2.5px;
+  overflow: hidden;
+  animation: 3s rotate linear infinite;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }

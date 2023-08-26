@@ -3,6 +3,7 @@ import {
     Row,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from 'react';
+import { useParams } from "react-router-dom";
 import { PullsContext } from "../context/PullsContext";
 
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
@@ -21,6 +22,8 @@ function PullsDeckBuilder() {
         parent_id: "",
     });
 
+    const {card_set_id} = useParams();
+
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
     const combinedList = main_list.concat(pluck_list);
@@ -38,6 +41,8 @@ function PullsDeckBuilder() {
     const [showPool, setShowPool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
+
+    const [ultraRares, setUltraRares] = useState([]);
 
     const [noCards, setNoCards] = useState(false);
 
@@ -69,10 +74,18 @@ function PullsDeckBuilder() {
         tag: "",
     });
 
+    const getUltrasRares = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
+        const boosterSetData = await response.json();
+        setUltraRares(boosterSetData.ultra_rares)
+    };
+
     const [sortState, setSortState] = useState("none");
 
     useEffect(() => {
         getCards();
+        console.log(card_set_id)
+        getUltrasRares();
         document.title = "Deck Builder - PM CardBase"
         console.log(typeof pulls)
         return () => {
@@ -581,13 +594,25 @@ function PullsDeckBuilder() {
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
                                             <Col style={{padding: "5px"}}>
-                                                    <img
-                                                        onClick={() => handleClick(card)}
-                                                        className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
-                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                        alt={card.name}
-                                                        variant="bottom"/>
+
+                                                    {ultraRares.includes(card.card_number) ?
+                                                        <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}>
+                                                            <img
+                                                                onClick={() => handleClick(card)}
+                                                                className="builder-card4 pointer"
+                                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                                alt={card.name}/>
+                                                        </div>:
+                                                        <img
+                                                            onClick={() => handleClick(card)}
+                                                            className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                            alt={card.name}
+                                                            variant="bottom"/>
+                                                    }
+
                                             </Col>
                                         );
                                     })}
@@ -723,12 +748,24 @@ function PullsDeckBuilder() {
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
+                                            {ultraRares.includes(card.card_number) ?
+                                                <div className="ultra">
+                                                    <img
+                                                        onClick={() => handleRemoveCard(card)}
+                                                        className="builder-card4 pointer"
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                                </div>:
+                                                <img
+                                                    onClick={() => handleRemoveCard(card)}
+                                                    className="builder-card2 pointer"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            }
                                         </Col>
                                     );
                                 })}
@@ -768,13 +805,24 @@ function PullsDeckBuilder() {
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <Col style={{padding: "5px"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
+                                            {ultraRares.includes(card.card_number) ?
+                                                <div className="ultra">
+                                                    <img
+                                                        onClick={() => handleRemoveCard(card)}
+                                                        className="builder-card4 pointer"
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                                </div>:
+                                                <img
+                                                    onClick={() => handleRemoveCard(card)}
+                                                    className="builder-card2 pointer"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            }
                                         </Col>
                                     );
                                 })}

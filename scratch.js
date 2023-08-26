@@ -540,3 +540,89 @@ const handleRemoveCardType = (index) => {
 // }
 
 // export default YourComponent;
+// .ultra3 {
+//   --angle: 0deg;
+//   display: flex;
+//   background-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
+//   position: absolute;
+//   z-index: 200;
+//   width: 350px;
+//   height: 487px;
+//   margin: 6px 0px 0px 0px;
+//   border-radius: 17px;
+//   overflow: hidden;
+//   top: 100%;
+//   left: 100%;
+//   display: none;
+//   transform: translate(10%, -80%);
+//   animation: 3s rotate linear infinite;
+//   transition: transform 0.3s ease-in-out;
+
+// }
+
+//     @keyframes rotate {
+//       to {
+//         --angle: 360deg;
+//       }
+//     }
+
+//     @property --angle {
+//       syntax: '<angle>';
+//       initial-value: 0deg;
+//       inherits: false;
+//     }
+
+//  .ultr::after .img {
+//     display: inline-block;
+//   }
+
+//   /* .card-container:hover .ultra3 {
+//     display: inline-block;
+
+//   } */
+
+// .card-image3 {
+//   position: absolute;
+//   z-index: 200;
+//   width: 338px;
+//   margin: 2.5% 0px 0px 0%;
+//   border-radius: 17px;
+//   overflow: hidden;
+//   top: 100%;
+//   left: 100%;
+//   display: none;
+//   transform: translate(10%, -80%);
+// }
+
+// <h5 onClick={() => handleRemoveCard(card)}
+// className="rainbow rainbow_text_animated"
+// style={{fontWeight: "700"}}
+// >{card.name}</h5>
+// <div className="ultra3">
+// </div>
+
+// <img
+
+// className="card-image3"
+
+// src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+// alt={card.name}
+
+// <div className="card-container pointer">
+// <h5 onClick={() => handleRemoveCard(card)}
+//     className="rainbow rainbow_text_animated2"
+//     style={{fontWeight: "700"}}
+// >{card.name}</h5>
+// <img
+//     className="card-image"
+//     src={card.picture_url}
+//     alt={card.name}
+// />
+// </div> :
+// <div className="card-container pointer">
+// <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+// <img
+//     className="card-image"
+//     src={card.picture_url}
+//     alt={card.name}
+// />
