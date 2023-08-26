@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { QueryContext } from "../context/QueryContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 function CardsPage() {
 
     const [cards, setCards] = useState([]);
 
-    const [query, setQuery] = useState({
-        cardName: "",
-        cardText: "",
-        cardNumber: "",
-        heroID: "",
-        series: "",
-        illustrator: "",
-        type: "",
-        cardClass: "",
-        extraEffect: "",
-        reaction: "",
-        tag: "",
-    });
+    const {query, setQuery} = useContext(QueryContext);
 
     const [listView, setListView] = useState(false);
     const [sortState, setSortState] = useState("none");
@@ -27,7 +16,7 @@ function CardsPage() {
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
 
         if (data.cards.length == 0 ) {
@@ -71,6 +60,7 @@ function CardsPage() {
 
             typedCards.push(card)
         }
+        console.log(typedCards)
         setCards(typedCards);
     };
 
@@ -104,7 +94,6 @@ function CardsPage() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
-        console.log(query)
         setShowMore(20)
     };
 
@@ -144,11 +133,11 @@ function CardsPage() {
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter((card, index, arr) => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
         .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
-        .filter(card => query.type? card.card_type.some(type => type.type_number.toString() == query.type):card.card_type)
+        .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
-        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.effect_number.toString() == query.extraEffect):card.extra_effects)
-        .filter(card => query.reaction? card.reactions.some(reaction => reaction.reaction_number.toString() == query.reaction):card.reactions)
-        .filter(card => query.tag? card.card_tags.some(tag => tag.tag_number.toString() == query.tag):card.card_tags)
+        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
+        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
         .sort(sortMethods[sortState].method)
 
         const isQueryEmpty = Object.values(query).every((value) => value === "");
