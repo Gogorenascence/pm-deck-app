@@ -257,6 +257,7 @@ function DeckBuilder() {
     const handleShowPool = (event) => {
         setShowPool(!showPool);
         console.log(showPool)
+        console.log("uniqueList ", uniqueList )
     };
 
     const handleShowMain = (event) => {

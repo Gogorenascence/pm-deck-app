@@ -2,16 +2,19 @@ import React from "react";
 import { PullsContextProvider } from "./PullsContext";
 import { QueryContextProvider } from "./QueryContext";
 import { DeckQueryContextProvider } from "./DeckQueryContext";
+import { AuthContextProvider } from "./AuthContext";
 
 const AppProvider = ({ children }) => {
     return (
-        <PullsContextProvider>
-            <QueryContextProvider>
-                <DeckQueryContextProvider>
-                    {children}
-                </DeckQueryContextProvider>
-            </QueryContextProvider>
-        </PullsContextProvider>
+        <AuthContextProvider>
+            <PullsContextProvider>
+                <QueryContextProvider>
+                    <DeckQueryContextProvider>
+                        {children}
+                    </DeckQueryContextProvider>
+                </QueryContextProvider>
+            </PullsContextProvider>
+        </AuthContextProvider>
     );
 };
 

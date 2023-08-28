@@ -1,55 +1,97 @@
-import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import { Await, NavLink } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import useToken from "@galvanize-inc/jwtdown-for-react";
+import { AuthContext } from "./context/AuthContext";
 
 
 function Nav() {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSignUpModal, setShowSignUpModal] = useState(false)
-  const [token, setToken] = useState(false)
+  const {token, setToken} = useContext(AuthContext)
   const [loginCred, setLoginCred] = useState({
     username: "",
     password: "",
   })
-  const [register, setRegister] = useState({
+  const [signUpCred, setSignUpCred] = useState({
     email: "",
     username: "",
     password: "",
   })
   const [passwordCon, setPasswordCon] = useState("")
+  const baseUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}`
+  const { login, register } = useToken();
+
+  const getToken = async (baseUrl) => {
+    return fetch(`${baseUrl}/token`, {
+      credentials: "include",
+    })
+    .then((response) => response.json())
+    .then((data) => data?.access_token ?? null)
+    .catch(console.error);
+
+  };
 
   const handleShowLoginModal = (event) => {
     setShowLoginModal(!showLoginModal)
-    document.body.classList.add("no-scroll")
     if (showLoginModal === false) {
       resetLoginCred()
-      document.body.classList.remove("no-scroll")
     }
     setShowSignUpModal(false)
-    resetRegister()
+    resetSignUpCred()
     console.log(showLoginModal)
   }
 
-  const handleShowSignUpModal = (event) => {
+  const handleShowSignUpModal = async (event) => {
     setShowSignUpModal(!showSignUpModal)
     if (showSignUpModal === false) {
-      resetRegister()
+      resetSignUpCred()
     }
     setShowLoginModal(false)
     resetLoginCred()
-    console.log(showSignUpModal)
   }
 
-  const handleLogin = (event) => {
-    setShowLoginModal(false)
-    resetLoginCred()
-    setToken(true)
+  const Signup = async (event) => {
+    if (signUpCred.password === passwordCon) {
+      register(
+        signUpCred,
+        `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`
+      );
+      setLoginCred({
+        username: signUpCred.username,
+        password: signUpCred.password,
+      })
+        console.log(loginCred)
+      login(signUpCred.username, signUpCred.password)
+        // setShowSignUpModal(false)
+        // resetSignUpCred()
+      } else {
+      alert("Password Must Match")
+    }
   }
 
-  const handleSignUp = (event) => {
-    setShowSignUpModal(false)
-    resetRegister()
-    setToken(true)
-  }
+  const Login = async (event) => {
+    event.preventDefault();
+    const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
+    const form = new FormData();
+    form.append("username", loginCred.username);
+    form.append("password", loginCred.password);
+    fetch(url, {
+      method: "post",
+      credentials: "include",
+      body: form,
+    })
+      .then(() => getToken(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api`))
+      .then((token) => {
+        if (token) {
+          setToken(token);
+          resetLoginCred()
+          setShowLoginModal(false)
+        } else {
+          throw new Error(`Failed to get token after login. Got ${token}`);
+        }
+      })
+      .catch(console.error);
+  };
 
   const handleLogout = (event) => {
     alert("You have logged out.")
@@ -60,8 +102,8 @@ function Nav() {
     alert("You are going to your account page.")
   }
 
-  const handleRegisterChange = (event) => {
-      setRegister({ ...register, [event.target.name]: event.target.value });
+  const handleSignUpCredChange = (event) => {
+      setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
   };
 
   const handlePasswordConChange = (event) => {
@@ -72,57 +114,18 @@ function Nav() {
     setLoginCred({ ...loginCred, [event.target.name]: event.target.value });
   };
 
-  // const registerCheck = (register) => {
+  // const signUpCredCheck = (signUpCred) => {
   //   const check = []
   //   const specialChar = ["!","@","#","$","%","^","&","*","+","~"]
-  //   if (allUsers.some(username => username === register.username)) {
+  //   if (allUsers.some(username => username === signUpCred.username)) {
   //     check.push("Username is already used")
   //   }
 
   // }
 
-  // const handleRegisterSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const data = {...register};
-  //   if (data.password === passwordCon) {
-  //     const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`;
-  //     const fetchConfig = {
-  //       method: "POST",
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //           "Content-Type": "application/json",
-  //       },
-  //     };
 
-  //     const response = await fetch(cardUrl, fetchConfig);
-  //     if (response.ok) {
-  //         await response.json();
-  //         setCard({
-  //             name: "",
-  //             card_class: "",
-  //             hero_id: "",
-  //             series_name: "",
-  //             card_number: "",
-  //             enthusiasm: "",
-  //             effect_text: "",
-  //             second_effect_text: "",
-  //             illustrator: "",
-  //             picture_url: "",
-  //             file_name: "",
-  //             card_type: [],
-  //             extra_effects: [],
-  //             reactions: [],
-  //             card_tags: [],
-  //         });
-  //         window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
-  //     } else {
-  //         alert("Error in creating card");
-  //     }
-  //   }
-  // };
-
-  const resetRegister = (event) => {
-    setRegister({
+  const resetSignUpCred = (event) => {
+    setSignUpCred({
       email: "",
       username: "",
       password: "",
@@ -362,7 +365,7 @@ function Nav() {
       {/* </div> */}
       {/* </div> */}
         </div>
-
+        <button onClick={() => console.log(token)}>token</button>
         { showSignUpModal?
           <>
             <div className="medium-modal">
@@ -373,9 +376,9 @@ function Nav() {
                       className="builder-input"
                       type="text"
                       placeholder=" Email"
-                      onChange={handleRegisterChange}
+                      onChange={handleSignUpCredChange}
                       name="email"
-                      value={register.email}>
+                      value={signUpCred.email}>
                   </input>
 
                   <h5 className="label black">Username </h5>
@@ -383,9 +386,9 @@ function Nav() {
                       className="builder-input"
                       type="text"
                       placeholder=" Username"
-                      onChange={handleRegisterChange}
+                      onChange={handleSignUpCredChange}
                       name="username"
-                      value={register.username}>
+                      value={signUpCred.username}>
                   </input>
 
                   <h5 className="label black">Password </h5>
@@ -393,9 +396,9 @@ function Nav() {
                       className="builder-input"
                       type="password"
                       placeholder=" Password"
-                      onChange={handleRegisterChange}
+                      onChange={handleSignUpCredChange}
                       name="password"
-                      value={register.password}>
+                      value={signUpCred.password}>
                   </input>
 
                   <h5 className="label black">Password </h5>
@@ -407,7 +410,7 @@ function Nav() {
                       value={passwordCon}>
                   </input>
               </div>
-              <button onClick={handleSignUp}>Signup</button>
+              <button onClick={Signup}>Signup</button>
               <button onClick={handleShowSignUpModal}>Close</button>
             </div>
             <div className="blackSpace"></div>
@@ -440,7 +443,7 @@ function Nav() {
                       value={loginCred.password}>
                   </input>
               </div>
-              <button onClick={handleLogin}>Login</button>
+              <button onClick={Login}>Login</button>
               <button onClick={handleShowLoginModal}>Close</button>
             </div>
             <div className="blackSpace"></div>

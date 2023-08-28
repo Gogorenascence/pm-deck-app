@@ -31,6 +31,8 @@ class DeckIn(BaseModel):
     updated_on: Optional[dict]
     cover_card: Optional[str]
     parent_id: Optional[str]
+    card_names: Optional[list]
+    series_names: Optional[list]
 
 
 class Deck(DeckIn):

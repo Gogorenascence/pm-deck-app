@@ -103,7 +103,7 @@ export function useToken() {
     }
 
     async function signup(username, password, email) {
-        const url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/accounts/`;
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`;
         const response = await fetch(url, {
             method: "post",
             body: JSON.stringify({
