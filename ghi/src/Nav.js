@@ -1,34 +1,24 @@
-import { Await, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useState, useContext } from "react";
-import useToken from "@galvanize-inc/jwtdown-for-react";
 import { AuthContext } from "./context/AuthContext";
 
 
 function Nav() {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSignUpModal, setShowSignUpModal] = useState(false)
-  const {token, setToken} = useContext(AuthContext)
-  const [loginCred, setLoginCred] = useState({
-    username: "",
-    password: "",
-  })
-  const [signUpCred, setSignUpCred] = useState({
-    email: "",
-    username: "",
-    password: "",
-  })
-  const [passwordCon, setPasswordCon] = useState("")
-  const { login, register } = useToken();
+  const {
+    token,
+    setToken,
+    signUpCred,
+    setSignUpCred,
+    loginCred,
+    setLoginCred,
+    signup,
+    login,
+    logout,
+  } = useContext(AuthContext)
 
-  const getToken = async (event) => {
-    console.log()
-    return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`, {
-      credentials: "include",
-    })
-    .then((response) => response.json())
-    .then((data) => data?.access_token ?? null)
-    .catch(console.error);
-  };
+  const [passwordCon, setPasswordCon] = useState("")
 
   const handleShowLoginModal = (event) => {
     setShowLoginModal(!showLoginModal)
@@ -50,40 +40,17 @@ function Nav() {
   }
 
   const Signup = async (event) => {
-    console.log(loginCred)
-    const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`
-    fetch(url, {
-      method: "post",
-      body: JSON.stringify(signUpCred),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => Login())
-      .catch(console.error);
+    signup()
+    resetSignUpCred()
+    resetPasswordCon()
+    resetLoginCred()
+    setShowSignUpModal(false)
   };
 
   const Login = async (event) => {
-    const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
-    const form = new FormData();
-    form.append("username", loginCred.username);
-    form.append("password", loginCred.password);
-    fetch(url, {
-      method: "post",
-      credentials: "include",
-      body: form,
-    })
-      .then(() => getToken())
-      .then((token) => {
-        if (token) {
-          setToken(token);
-          resetLoginCred()
-          setShowLoginModal(false)
-        } else {
-          throw new Error(`Failed to get token after login. Got ${token}`);
-        }
-      })
-      .catch(console.error);
+    login(loginCred)
+    resetLoginCred()
+    setShowLoginModal(false)
   };
 
   const handleLogout = (event) => {
@@ -462,7 +429,7 @@ function Nav() {
           :
         <>
           <button className="button100"
-            onClick={handleLogout}>
+            onClick={logout}>
             Logout
           </button>
           <button className="button100"
