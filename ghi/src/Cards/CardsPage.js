@@ -7,10 +7,14 @@ function CardsPage() {
 
     const [cards, setCards] = useState([]);
 
-    const {query, setQuery} = useContext(QueryContext);
+    const {
+        query,
+        setQuery,
+        sortState,
+        setSortState
+    } = useContext(QueryContext);
 
     const [listView, setListView] = useState(false);
-    const [sortState, setSortState] = useState("none");
     const [showMore, setShowMore] = useState(20);
 
     const [noCards, setNoCards] = useState(false);
@@ -112,6 +116,7 @@ function CardsPage() {
             tag: "",
         });
         setShowMore(20)
+        setSortState("none")
     };
 
     const handleSort = (event) => {
@@ -336,7 +341,7 @@ function CardsPage() {
                     </div> :
                 null}
 
-<h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5>
+            <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5>
 
             {listView?
                 <div className="card-list2">

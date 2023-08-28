@@ -17,9 +17,15 @@ const QueryContextProvider = ({ children }) => {
         reaction: "",
         tag: "",
     });
+    const [sortState, setSortState] = useState("none");
 
     return (
-        <QueryContext.Provider value={{ query, setQuery }}>
+        <QueryContext.Provider value={{
+            query,
+            setQuery,
+            sortState,
+            setSortState,
+            }}>
             {children}
         </QueryContext.Provider>
     );

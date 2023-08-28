@@ -12,9 +12,15 @@ const DeckQueryContextProvider = ({ children }) => {
         strategies: "",
         seriesName: "",
     });
+    const [deckSortState, setDeckSortState] = useState("none");
 
     return (
-        <DeckQueryContext.Provider value={{ deckQuery, setDeckQuery }}>
+        <DeckQueryContext.Provider value={{
+            deckQuery,
+            setDeckQuery,
+            deckSortState,
+            setDeckSortState,
+            }}>
             {children}
         </DeckQueryContext.Provider>
     );

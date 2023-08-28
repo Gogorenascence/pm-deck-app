@@ -8,19 +8,21 @@ import { DeckQueryContext } from "../context/DeckQueryContext";
 function DecksPage() {
 
     const [decks, setDecks] = useState([]);
-    const [deckSortState, setDeckSortState] = useState("none");
+
     const [deckShowMore, setDeckShowMore] = useState(20);
-    const {deckQuery, setDeckQuery} = useContext(DeckQueryContext)
-    // const [noDecks, setNoDecks] = useState(false);
+    const {
+        deckQuery,
+        setDeckQuery,
+        deckSortState,
+        setDeckSortState,
+    } = useContext(DeckQueryContext)
+
     const [loading, setLoading] = useState(false)
 
     const getDecks = async() =>{
         setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
         const data = await response.json();
-        // if (data.decks.length == 0 ) {
-        //     setNoDecks(true)
-        // }
 
         const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
 
@@ -122,6 +124,7 @@ function DecksPage() {
             strategy: "",
             seriesName: "",
         });
+        setDeckSortState("none")
     };
 
     const handleDeckSort = (event) => {
