@@ -336,6 +336,8 @@ function CardsPage() {
                     </div> :
                 null}
 
+<h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5>
+
             {listView?
                 <div className="card-list2">
                     {all_cards.slice(0, showMore).map(function(card, index, arr) {

@@ -245,6 +245,8 @@ function DecksPage() {
                 </div> :
             null}
 
+            <h5 className="left-h3">Showing Results 1 - {all_decks.slice(0, deckShowMore).length} of {all_decks.length}</h5>
+
             <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {
                     return (

@@ -220,10 +220,16 @@ button:hover {
   margin: 4% 5px 20px 5px;
 }
 
+.left-h3{
+  text-align: left;
+  margin: 45px 5px 0px 5px;
+}
+
 .left {
   text-align: left;
   margin: 5px;
 }
+
 .left-top-card {
   text-align: left;
   margin: 15px 5px 15px 17px;
@@ -697,7 +703,6 @@ button:hover {
 }
 
 .cards-page-card-list {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem; /* Add any gap you want between the cards */
@@ -711,7 +716,7 @@ button:hover {
 }
 
 .decks-page-card-list2 {
-  margin-top: 40px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem; /* Add any gap you want between the cards */
