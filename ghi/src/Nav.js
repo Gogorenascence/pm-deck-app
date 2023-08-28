@@ -18,17 +18,16 @@ function Nav() {
     password: "",
   })
   const [passwordCon, setPasswordCon] = useState("")
-  const baseUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}`
   const { login, register } = useToken();
 
-  const getToken = async (baseUrl) => {
-    return fetch(`${baseUrl}/token`, {
+  const getToken = async (event) => {
+    console.log()
+    return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`, {
       credentials: "include",
     })
     .then((response) => response.json())
     .then((data) => data?.access_token ?? null)
     .catch(console.error);
-
   };
 
   const handleShowLoginModal = (event) => {
@@ -51,26 +50,20 @@ function Nav() {
   }
 
   const Signup = async (event) => {
-    if (signUpCred.password === passwordCon) {
-      register(
-        signUpCred,
-        `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`
-      );
-      setLoginCred({
-        username: signUpCred.username,
-        password: signUpCred.password,
-      })
-        console.log(loginCred)
-      login(signUpCred.username, signUpCred.password)
-        // setShowSignUpModal(false)
-        // resetSignUpCred()
-      } else {
-      alert("Password Must Match")
-    }
-  }
+    console.log(loginCred)
+    const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`
+    fetch(url, {
+      method: "post",
+      body: JSON.stringify(signUpCred),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => Login())
+      .catch(console.error);
+  };
 
   const Login = async (event) => {
-    event.preventDefault();
     const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
     const form = new FormData();
     form.append("username", loginCred.username);
@@ -80,7 +73,7 @@ function Nav() {
       credentials: "include",
       body: form,
     })
-      .then(() => getToken(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api`))
+      .then(() => getToken())
       .then((token) => {
         if (token) {
           setToken(token);
@@ -104,6 +97,9 @@ function Nav() {
 
   const handleSignUpCredChange = (event) => {
       setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
+      setLoginCred({...loginCred, [event.target.name]: event.target.value})
+      console.log(loginCred)
+      console.log(event.target)
   };
 
   const handlePasswordConChange = (event) => {

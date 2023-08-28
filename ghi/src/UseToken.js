@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 let internalToken = null;
+
 
 export function getToken() {
     return internalToken;
@@ -42,25 +44,8 @@ function handleErrorMessage(error) {
     return error;
 }
 
-export const AuthContext = createContext({
-    token: null,
-    setToken: () => null,
-});
-
-export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(null);
-
-    return (
-        <AuthContext.Provider value={{ token, setToken }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
-export const useAuthContext = () => useContext(AuthContext);
-
 export function useToken() {
-    const { token, setToken } = useAuthContext();
+    const {token, setToken} = useContext(AuthContext)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -83,11 +68,11 @@ export function useToken() {
         }
     }
 
-    async function login(username, password) {
-        const url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/login/`;
+    const login = async (loginCred) => {
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
         const form = new FormData();
-        form.append("username", username);
-        form.append("password", password);
+        form.append("username", loginCred.username);
+        form.append("password", loginCred.password);
         const response = await fetch(url, {
             method: "post",
             credentials: "include",
