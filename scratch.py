@@ -5456,8 +5456,14 @@
 
 # print(convertNumtoLetters2(701))
 
-def plusOne(digits):
-    num = int("".join(map(str,digits))) + 1
-    return [int(num) for num in str(num)]
+# def plusOne(digits):
+#     num = int("".join(map(str,digits))) + 1
+#     return [int(num) for num in str(num)]
 
-print(plusOne([1,2,9]))
+# print(plusOne([1,2,9]))
+
+token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1ZWEwNWNiNC05NzFjLTRkZGMtYmM2Mi0yNzQ5Mjg3ZWI0YWEiLCJleHAiOjE2OTMyNDg5ODYsInN1YiI6ImpvZ2dlcjgiLCJhY2NvdW50Ijp7ImlkIjoiNjRlYzNiODM4MmM1NzI5ZjBiMzZlMTU1IiwiZW1haWwiOiJqb2dzMm11Y2hAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTIkbzlZTW1DdmJFd21PZnQveXlPbEhrT0lVQ3RydzZhTWRnUmJmZ0R0SEVWZnhVSzFDM2NHZVciLCJ1c2VybmFtZSI6ImpvZ2dlcjgiLCJ1bmhhc2hlZF9wYXNzd29yZCI6InBhc3MiLCJjb2xsZWN0aW9uIjpudWxsLCJ3aXNobGlzdCI6bnVsbCwiZGVja3MiOm51bGwsInJvbGVzIjpbIm1lbWJlciJdfX0.d653wgIohKnMaziIDLfVbrNcmms-EJSs_oQ7pmh261I"
+token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjc2YTJiMS1jODYzLTRiOWYtODNjMi05ODc1ZGQzOTBmODYiLCJleHAiOjE2OTMyNDkwODQsInN1YiI6ImpvZ2dlcjgiLCJhY2NvdW50Ijp7ImlkIjoiNjRlYzNiODM4MmM1NzI5ZjBiMzZlMTU1IiwiZW1haWwiOiJqb2dzMm11Y2hAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTIkbzlZTW1DdmJFd21PZnQveXlPbEhrT0lVQ3RydzZhTWRnUmJmZ0R0SEVWZnhVSzFDM2NHZVciLCJ1c2VybmFtZSI6ImpvZ2dlcjgiLCJ1bmhhc2hlZF9wYXNzd29yZCI6InBhc3MiLCJjb2xsZWN0aW9uIjpudWxsLCJ3aXNobGlzdCI6bnVsbCwiZGVja3MiOm51bGwsInJvbGVzIjpbIm1lbWJlciJdfX0.pkAVfjhhcuMqBmZWxJUT9i8_6rqux7sGP-PmKw93hHo",
+
+
+print(token1 == token2)

@@ -4,6 +4,12 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
+    const [loginError, setLoginError] = useState("")
+
+    const [signUpError, setSignUpError] = useState("")
+
+    const [account, setAccount] = useState("")
+
     const [token, setToken] = useState(null);
 
     const [loginCred, setLoginCred] = useState({
@@ -53,7 +59,10 @@ const AuthContextProvider = ({ children }) => {
             .then((token) => {
                 if (token) {
                 setToken(token);
+                setLoginError("")
+                getAccountData()
                 } else {
+                setLoginError("Incorrect Username/Password");
                 throw new Error(`Failed to get token after login. Got ${token}`);
                 }
             })
@@ -74,9 +83,30 @@ const AuthContextProvider = ({ children }) => {
         }
     };
 
+    const getAccountData = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`,
+        {credentials: "include"})
+        const data = await response.json()
+        setAccount(data.account)
+        console.log(account)
+    };
+
+      // const signUpCredCheck = (signUpCred) => {
+  //   const check = []
+  //   const specialChar = ["!","@","#","$","%","^","&","*","+","~"]
+  //   if (allUsers.some(username => username === signUpCred.username)) {
+  //     check.push("Username is already used")
+  //   }
+
+  // }
 
     return (
         <AuthContext.Provider value={{
+            signUpError,
+            setSignUpError,
+            loginError,
+            setLoginError,
+            getToken,
             token,
             setToken,
             signUpCred,
@@ -86,6 +116,8 @@ const AuthContextProvider = ({ children }) => {
             signup,
             login,
             logout,
+            getAccountData,
+            account,
         }}>
             {children}
         </AuthContext.Provider>

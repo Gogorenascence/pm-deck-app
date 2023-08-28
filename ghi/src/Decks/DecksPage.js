@@ -1,33 +1,26 @@
 import {
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { DeckQueryContext } from "../context/DeckQueryContext";
 
 function DecksPage() {
 
     const [decks, setDecks] = useState([]);
-
-    const [deckQuery, setDeckQuery] = useState({
-        deckName: "",
-        description: "",
-        cardName: "",
-        strategies: "",
-        seriesName: "",
-    });
-
     const [deckSortState, setDeckSortState] = useState("none");
-
     const [deckShowMore, setDeckShowMore] = useState(20);
-
-    const [noDecks, setNoDecks] = useState(false);
+    const {deckQuery, setDeckQuery} = useContext(DeckQueryContext)
+    // const [noDecks, setNoDecks] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const getDecks = async() =>{
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
         const data = await response.json();
-        if (data.decks.length == 0 ) {
-            setNoDecks(true)
-        }
+        // if (data.decks.length == 0 ) {
+        //     setNoDecks(true)
+        // }
 
         const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
 
@@ -90,6 +83,7 @@ function DecksPage() {
             deck["updated_on"]["ago"] = "a few seconds ago";
             }
         }
+        setLoading(false)
         setDecks(sortedDecks.reverse());
     };
 
@@ -245,7 +239,7 @@ function DecksPage() {
                 Random Deck
             </button>
 
-            { all_decks.length == 0 && isQueryEmpty && !noDecks ?
+            { loading ?
                 <div className="loading-container">
                     <div className="loading-spinner"></div>
                 </div> :

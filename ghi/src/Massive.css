@@ -1355,3 +1355,9 @@ button:hover {
     initial-value: 0deg;
     inherits: false;
   }
+
+  .error {
+    color: red;
+    margin-top: 15px;
+    text-align: center;
+  }

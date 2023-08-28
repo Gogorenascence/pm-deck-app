@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "64ec3b8382c5729f0b36e155"
+  },
+  "email": "jogs2much@gmail.com",
+  "password": "$2b$12$o9YMmCvbEwmOft/yyOlHkOIUCtrw6aMdgRbfgDtHEVfxUK1C3cGeW",
+  "username": "jogger8",
+  "unhashed_password": "pass",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64ec43f682c5729f0b36e156"
+  },
+  "email": "nantahkl@gmail.com",
+  "password": "$2b$12$Iw1usD4ARaKCE/k9JKG05eVd6bpn2RT0iQqHCUPlg7FJ/RPJDXuvG",
+  "username": "gogorenascence",
+  "unhashed_password": "123",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64ecc30f82c5729f0b36e158"
+  },
+  "email": "nantahkl@gmail.com",
+  "password": "$2b$12$xlBgC4aWcASI67JtonF9MuEY0qha1Ce0eCXv4O9yiuxqhCIB3TwU6",
+  "username": "TeamPlayMaker",
+  "unhashed_password": "CompAdminPower#12",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member"
+  ]
+}]

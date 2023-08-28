@@ -24,6 +24,8 @@ function PullPage() {
     const [savedPulls, setSavedPulls] = useState([]);
     const {pulls, setPulls}= useContext(PullsContext);
 
+    const [loading, setLoading] = useState(false)
+
     const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
 
@@ -43,14 +45,17 @@ function PullPage() {
     };
 
     const getPulls = async() =>{
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/open/${num}`);
         const pullData = await response.json();
+
         const newPulls = []
         for (let pull of pullData.pulls) {
             newPulls.push(pull.pulled_cards)
         }
         const allPulls = savedPulls.concat(newPulls)
         console.log(allPulls)
+        setLoading(false)
         setPulls(allPulls)
 
     }
@@ -239,6 +244,13 @@ function PullPage() {
                 </NavLink>
                 <BackButton/>
             </div>
+
+            { loading ?
+                    <div className="loading-container">
+                        <div className="loading-spinner"></div>
+                    </div> :
+                null}
+
             {!fullView && pulls.length > 0?
                 (pulls.map((pull, pullIndex) => {
                     return (

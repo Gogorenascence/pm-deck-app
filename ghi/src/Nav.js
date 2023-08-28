@@ -1,14 +1,21 @@
 import { NavLink } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 
 function Nav() {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSignUpModal, setShowSignUpModal] = useState(false)
+  const [viewPass, setViewPass] = useState(false)
+
   const {
+    signUpError,
+    setSignUpError,
+    loginError,
+    setLoginError,
     token,
     setToken,
+    getToken,
     signUpCred,
     setSignUpCred,
     loginCred,
@@ -16,9 +23,21 @@ function Nav() {
     signup,
     login,
     logout,
+    getAccountData,
+    account
   } = useContext(AuthContext)
 
   const [passwordCon, setPasswordCon] = useState("")
+
+  useEffect(() => {
+    getAccountData()
+    getToken()
+    .then((token) => {
+      if (token) {
+      setToken(token);
+      }
+    })
+  },[]);
 
   const handleShowLoginModal = (event) => {
     setShowLoginModal(!showLoginModal)
@@ -26,8 +45,10 @@ function Nav() {
       resetLoginCred()
     }
     setShowSignUpModal(false)
+    setSignUpError("")
+    setLoginError("")
+    setViewPass(false)
     resetSignUpCred()
-    console.log(showLoginModal)
   }
 
   const handleShowSignUpModal = async (event) => {
@@ -36,27 +57,35 @@ function Nav() {
       resetSignUpCred()
     }
     setShowLoginModal(false)
+    setSignUpError("")
+    setLoginError("")
+    setViewPass(false)
     resetLoginCred()
   }
 
   const Signup = async (event) => {
-    signup()
-    resetSignUpCred()
-    resetPasswordCon()
-    resetLoginCred()
-    setShowSignUpModal(false)
+    if (passwordCon === signUpCred.password) {
+      signup()
+      resetSignUpCred()
+      setPasswordCon("")
+      resetLoginCred()
+      setShowSignUpModal(false)
+    } else {
+      setSignUpError("Passwords Must Match")
+    }
   };
 
   const Login = async (event) => {
-    login(loginCred)
-    resetLoginCred()
-    setShowLoginModal(false)
+    try {
+      await login(loginCred);
+      if (!loginError) {
+        resetLoginCred();
+        setShowLoginModal(false);
+      }
+    } catch (error) {
+      console.log("Couldn't catch the token, sorry")
+    }
   };
-
-  const handleLogout = (event) => {
-    alert("You have logged out.")
-    setToken(false)
-  }
 
   const handleGoToAccount = (event) => {
     alert("You are going to your account page.")
@@ -65,8 +94,6 @@ function Nav() {
   const handleSignUpCredChange = (event) => {
       setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
       setLoginCred({...loginCred, [event.target.name]: event.target.value})
-      console.log(loginCred)
-      console.log(event.target)
   };
 
   const handlePasswordConChange = (event) => {
@@ -77,23 +104,13 @@ function Nav() {
     setLoginCred({ ...loginCred, [event.target.name]: event.target.value });
   };
 
-  // const signUpCredCheck = (signUpCred) => {
-  //   const check = []
-  //   const specialChar = ["!","@","#","$","%","^","&","*","+","~"]
-  //   if (allUsers.some(username => username === signUpCred.username)) {
-  //     check.push("Username is already used")
-  //   }
-
-  // }
-
-
   const resetSignUpCred = (event) => {
     setSignUpCred({
       email: "",
       username: "",
       password: "",
     });
-    resetPasswordCon()
+    setPasswordCon("")
   };
 
   const resetLoginCred = (event) => {
@@ -101,12 +118,20 @@ function Nav() {
       username: "",
       password: "",
     });
-    resetPasswordCon()
+    setPasswordCon("")
   };
 
-  const resetPasswordCon = (event) => {
-    setPasswordCon("");
+  const handleViewPass = (event) => {
+    const pass = document.getElementById("pass");
+    if (pass.type === "password") {
+      pass.type = "text";
+      setViewPass(true)
+    } else {
+      pass.type = "password";
+      setViewPass(false)
+    }
   };
+
 
 
   return (
@@ -328,7 +353,6 @@ function Nav() {
       {/* </div> */}
       {/* </div> */}
         </div>
-        <button onClick={() => console.log(token)}>token</button>
         { showSignUpModal?
           <>
             <div className="medium-modal">
@@ -357,6 +381,7 @@ function Nav() {
                   <h5 className="label black">Password </h5>
                   <input
                       className="builder-input"
+                      id="pass"
                       type="password"
                       placeholder=" Password"
                       onChange={handleSignUpCredChange}
@@ -364,14 +389,47 @@ function Nav() {
                       value={signUpCred.password}>
                   </input>
 
-                  <h5 className="label black">Password </h5>
+                  { !viewPass?
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/MfNqq8S.png"
+                      onClick={handleViewPass}
+                    />:
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/w8oag0B.png"
+                      onClick={handleViewPass}
+                    />
+                  }
+
+                  <h5 className="label black">Confirm Password </h5>
                   <input
                       className="builder-input"
+                      id="pass"
                       type="password"
                       placeholder=" Confirm Password"
                       onChange={handlePasswordConChange}
                       value={passwordCon}>
                   </input>
+
+                  { !viewPass?
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/MfNqq8S.png"
+                      onClick={handleViewPass}
+                    />:
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/w8oag0B.png"
+                      onClick={handleViewPass}
+                    />
+                  }
+
+                  { signUpError?
+                    <p className="error">{signUpError}</p>:
+                    null
+                  }
+
               </div>
               <button onClick={Signup}>Signup</button>
               <button onClick={handleShowSignUpModal}>Close</button>
@@ -399,12 +457,32 @@ function Nav() {
                   <h5 className="label black">Password </h5>
                   <input
                       className="builder-input"
+                      id="pass"
                       type="password"
                       placeholder=" Password"
                       onChange={handleLoginCredChange}
                       name="password"
                       value={loginCred.password}>
                   </input>
+
+                  { !viewPass?
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/MfNqq8S.png"
+                      onClick={handleViewPass}
+                    />:
+                    <img
+                      className="logo2 pointer"
+                      src="https://i.imgur.com/w8oag0B.png"
+                      onClick={handleViewPass}
+                    />
+                  }
+
+                  { loginError?
+                    <p className="error">{loginError}</p>:
+                    null
+                  }
+
               </div>
               <button onClick={Login}>Login</button>
               <button onClick={handleShowLoginModal}>Close</button>
@@ -414,7 +492,6 @@ function Nav() {
           null
         }
       </div>
-
       { !token?
         <>
           <button className="button100"
