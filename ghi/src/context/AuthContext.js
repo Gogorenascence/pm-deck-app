@@ -81,6 +81,7 @@ const AuthContextProvider = ({ children }) => {
                 })
                 .catch(console.error);
         }
+        window.location.reload(false);
     };
 
     const getAccountData = async () => {

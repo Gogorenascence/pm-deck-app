@@ -805,6 +805,13 @@ button:hover {
   z-index: 0;
 }
 
+.logo4 {
+  margin: 45px 4px 4px 5px;
+  width: 27px;
+  height: 27px;
+  z-index: 0;
+}
+
 
 .footer {
   display: flex;
@@ -1365,4 +1372,24 @@ button:hover {
     color: red;
     margin-top: 15px;
     text-align: center;
+  }
+
+  .account-split{
+    display: flex;
+  }
+
+  .account-info-container {
+    min-width: 50%;
+  }
+
+  .account-option-container {
+    width: 50%;
+  }
+
+  .account-option-items {
+    margin-top: 20px;
+    display: grid;
+    /* width: ; */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem; /* Add any gap you want between the cards */
   }

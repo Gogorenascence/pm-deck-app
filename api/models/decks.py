@@ -33,6 +33,7 @@ class DeckIn(BaseModel):
     parent_id: Optional[str]
     card_names: Optional[list]
     series_names: Optional[list]
+    private: Optional[bool]
 
 
 class Deck(DeckIn):

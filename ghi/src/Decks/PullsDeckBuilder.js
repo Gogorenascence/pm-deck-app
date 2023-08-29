@@ -5,6 +5,7 @@ import {
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import { PullsContext } from "../context/PullsContext";
+import { AuthContext } from "../context/AuthContext";
 
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
@@ -20,9 +21,11 @@ function PullsDeckBuilder() {
         views: 0,
         cover_card: null,
         parent_id: "",
+        private: false,
     });
 
     const {card_set_id} = useParams();
+    const {account} = useContext(AuthContext)
 
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
@@ -150,6 +153,11 @@ function PullsDeckBuilder() {
         setDeck({ ...deck, [event.target.name]: event.target.value });
     };
 
+    const handleCheck = (event) => {
+        setDeck({ ...deck, [event.target.name]: event.target.checked });
+        console.log(deck.private)
+    };
+
     const handleCoverCardChange = (event) => {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -234,6 +242,7 @@ function PullsDeckBuilder() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
+        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
@@ -352,6 +361,20 @@ function PullsDeckBuilder() {
                         <option value="Toolbox">Toolbox</option>
                         <option value="other">other</option>
                     </select>
+                    <br/>
+                    <input
+                        style={{margin: "20px 8px 15px 5px"}}
+                        id="private"
+                        type="checkbox"
+                        onChange={handleCheck}
+                        name="private"
+                        checked={deck.private}>
+                    </input>
+                    <label for="private"
+                        className="bold"
+                    >
+                        Make my deck private
+                    </label>
                     <br/>
                     <button
                         className="left"

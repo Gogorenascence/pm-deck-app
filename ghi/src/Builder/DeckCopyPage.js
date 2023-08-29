@@ -2,10 +2,11 @@ import {
     Col,
     Row,
 } from "react-bootstrap";
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { AuthContext } from "../context/AuthContext";
 
 
 function DeckCopyPage() {
@@ -20,6 +21,7 @@ function DeckCopyPage() {
         views: 0,
         cover_card: null,
         parent_id: "",
+        private: true,
     });
 
     const {deck_id} = useParams();
@@ -43,6 +45,8 @@ function DeckCopyPage() {
     const [showPluck, setShowPluck] = useState(true);
 
     const [noCards, setNoCards] = useState(false);
+
+    const {account} = useContext(AuthContext)
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -180,6 +184,11 @@ function DeckCopyPage() {
         setDeck({ ...deck, [event.target.name]: event.target.value });
     };
 
+    const handleCheck = (event) => {
+        setDeck({ ...deck, [event.target.name]: event.target.checked });
+        console.log(deck.private)
+    };
+
     const handleCoverCardChange = (event) => {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -267,6 +276,7 @@ function DeckCopyPage() {
         data["pluck"] = pluck;
         data["strategies"] = selectedList
         data["parent_id"] = deck_id
+        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         delete data["id"]
         // delete data["_id"]
         console.log(data)
@@ -387,7 +397,20 @@ function DeckCopyPage() {
                         <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
                         <option value="other" selected={deck.strategies.includes("other")}>other</option>
                     </select>
-                    {/* {...deck.strategies.includes("Aggro")? selected:null} */}
+                    <br/>
+                    <input
+                        style={{margin: "20px 8px 15px 5px"}}
+                        id="private"
+                        type="checkbox"
+                        onChange={handleCheck}
+                        name="private"
+                        checked={deck.private}>
+                    </input>
+                    <label for="private"
+                        className="bold"
+                    >
+                        Make my deck private
+                    </label>
                     <br/>
                     <button
                         style={{width: "67px", margin: "5px"}}

@@ -3,10 +3,11 @@ import {
     Row,
     button,
 } from "react-bootstrap";
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { AuthContext } from "../context/AuthContext";
 
 
 function DeckEditPage() {
@@ -21,9 +22,11 @@ function DeckEditPage() {
         views: 0,
         cover_card: null,
         parent_id: "",
+        private: false,
     });
 
     const {deck_id} = useParams();
+    const {account} = useContext(AuthContext)
 
     const [deck_list, setDeckList] = useState([]);
     const [main_list, setMainList] = useState([]);
@@ -183,6 +186,11 @@ function DeckEditPage() {
         setDeck({ ...deck, [event.target.name]: event.target.value });
     };
 
+    const handleCheck = (event) => {
+        setDeck({ ...deck, [event.target.name]: event.target.checked });
+        console.log(deck.private)
+    };
+
     const handleCoverCardChange = (event) => {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -270,6 +278,7 @@ function DeckEditPage() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
+        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
@@ -384,6 +393,20 @@ function DeckEditPage() {
                         <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
                         <option value="other" selected={deck.strategies.includes("other")}>other</option>
                     </select>
+                    <br/>
+                    <input
+                        style={{margin: "20px 8px 15px 5px"}}
+                        id="private"
+                        type="checkbox"
+                        onChange={handleCheck}
+                        name="private"
+                        checked={deck.private}>
+                    </input>
+                    <label for="private"
+                        className="bold"
+                    >
+                        Make my deck private
+                    </label>
                     <br/>
                     <button
                         style={{width: "67px", margin: "5px"}}

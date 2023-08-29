@@ -24,7 +24,6 @@ function Nav() {
     login,
     logout,
     getAccountData,
-    account
   } = useContext(AuthContext)
 
   const [passwordCon, setPasswordCon] = useState("")
@@ -86,10 +85,6 @@ function Nav() {
       console.log("Couldn't catch the token, sorry")
     }
   };
-
-  const handleGoToAccount = (event) => {
-    alert("You are going to your account page.")
-  }
 
   const handleSignUpCredChange = (event) => {
       setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
@@ -509,10 +504,11 @@ function Nav() {
             onClick={logout}>
             Logout
           </button>
-          <button className="button100"
-            onClick={handleGoToAccount}>
-            Account
-          </button>
+          <NavLink to="/account">
+            <button className="button100">
+              Account
+            </button>
+          </NavLink>
         </>
       }
       </div>

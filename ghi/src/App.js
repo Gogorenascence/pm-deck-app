@@ -22,6 +22,7 @@ import "./index.css"
 import "./Massive.css"
 import AppProvider from "./context/AppProvider";
 import PullsDeckBuilder from "./Decks/PullsDeckBuilder";
+import AccountPage from "./Accounts/AccountPage";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/cards/card_sets/:card_set_id" element={<SetDetailPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls" element={<PullPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/articles" element={<UnderConstruction />} />
           <Route path="/gameplay" element={<UnderConstruction />} />
           <Route path="/forum" element={<UnderConstruction />} />
