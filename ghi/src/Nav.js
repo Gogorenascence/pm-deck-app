@@ -351,7 +351,7 @@ function Nav() {
         </div>
         { showSignUpModal?
           <>
-            <div className="medium-modal">
+            <form onSubmit={Signup} className="medium-modal">
               <h2 className="label black">  Create Account </h2>
               <div style={{margin: "20px 20px 20px 20px"}}>
                   <h5 className="label black">Email </h5>
@@ -390,11 +390,13 @@ function Nav() {
                       className="logo2 pointer"
                       src="https://i.imgur.com/MfNqq8S.png"
                       onClick={handleViewPass}
+                      title="view password"
                     />:
                     <img
                       className="logo2 pointer"
                       src="https://i.imgur.com/w8oag0B.png"
                       onClick={handleViewPass}
+                      title="hide password"
                     />
                   }
 
@@ -413,11 +415,13 @@ function Nav() {
                       className="logo2 pointer"
                       src="https://i.imgur.com/MfNqq8S.png"
                       onClick={handleViewPass}
+                      title="view password"
                     />:
                     <img
                       className="logo2 pointer"
                       src="https://i.imgur.com/w8oag0B.png"
                       onClick={handleViewPass}
+                      title="hide password"
                     />
                   }
 
@@ -427,9 +431,9 @@ function Nav() {
                   }
 
               </div>
-              <button onClick={Signup}>Signup</button>
+              <button type="submit">Signup</button>
               <button onClick={handleShowSignUpModal}>Close</button>
-            </div>
+            </form>
             <div className="blackSpace"></div>
           </>:
           null
@@ -437,7 +441,7 @@ function Nav() {
 
         { showLoginModal?
           <>
-            <div className="medium-modal">
+            <form onSubmit={Login} className="medium-modal">
               <h2 className="label black">  User Login </h2>
               <div style={{margin: "20px 20px 20px 20px"}}>
                   <h5 className="label black">Username </h5>
@@ -466,11 +470,13 @@ function Nav() {
                       className="logo2 pointer"
                       src="https://i.imgur.com/MfNqq8S.png"
                       onClick={handleViewPass}
+                      title="view password"
                     />:
                     <img
                       className="logo2 pointer"
                       src="https://i.imgur.com/w8oag0B.png"
                       onClick={handleViewPass}
+                      title="hide password"
                     />
                   }
 
@@ -480,9 +486,9 @@ function Nav() {
                   }
 
               </div>
-              <button onClick={Login}>Login</button>
+              <button type="submit">Login</button>
               <button onClick={handleShowLoginModal}>Close</button>
-            </div>
+            </form>
             <div className="blackSpace"></div>
           </>:
           null
@@ -501,7 +507,6 @@ function Nav() {
         </>
           :
         <>
-          {/* <h3>{account.username}</h3> */}
           <NavLink to="/account">
             <button className="button100">
               {account.username}
