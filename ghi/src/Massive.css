@@ -687,7 +687,7 @@ button:hover {
 }
 
 .button100 {
-  width: 100px;
+  min-width: 100px;
   margin-right: 3px;
 }
 
@@ -1392,4 +1392,10 @@ button:hover {
     /* width: ; */
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem; /* Add any gap you want between the cards */
+  }
+
+  .username {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
   }

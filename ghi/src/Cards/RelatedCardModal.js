@@ -35,7 +35,7 @@ function RelatedCardModal() {
         <div>
             <button
                 className="left button100 heightNorm"
-                style={{ textAlign: "center", width: "140px"}}
+                style={{ textAlign: "center"}}
                     onClick={handleShow}>
                     Show all Cards
             </button>

@@ -81,7 +81,7 @@ const AuthContextProvider = ({ children }) => {
                 })
                 .catch(console.error);
         }
-        window.location.reload(false);
+        window.location.href = `${process.env.PUBLIC_URL}/`
     };
 
     const getAccountData = async () => {

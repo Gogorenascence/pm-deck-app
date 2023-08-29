@@ -148,7 +148,7 @@ function CardDetailPage() {
                         <div className="cd-inner" style={{marginTop: "3%"}}>
                             <button
                                 className="left button100 heightNorm"
-                                style={{ textAlign: "center", width: "135px"}}
+                                style={{ textAlign: "center"}}
                                 onClick={getRandomCard}
                             >
                                 Random Card

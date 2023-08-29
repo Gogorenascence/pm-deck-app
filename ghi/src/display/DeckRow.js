@@ -2,8 +2,9 @@ import {
     Container,
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 
 
 function DeckRow() {
@@ -12,11 +13,13 @@ function DeckRow() {
     // const [cover, setCover] = useState("");
     // const [deckId, setDeckId] = useState("");
 
+    const {account} = useContext(AuthContext)
+
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        const deckData = data.decks.slice(-4).reverse()
+        const deckData = data.decks
         for (let deck of deckData){
             const date = new Date(deck["created_on"]["full_time"])
 
@@ -83,6 +86,8 @@ function DeckRow() {
         console.log(decks)
     };
 
+    const all_decks = decks.filter(deck => deck.private ? deck.private === false | deck.account_id === account.id : true)
+    .slice(-4).reverse()
 
     // const getDecks = async() =>{
     //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -101,7 +106,7 @@ function DeckRow() {
         <div className="white-space">
             <Container>
                 <div className="deck-row-card-list2">
-                    {decks.map((deck) => {
+                    {all_decks.map((deck) => {
                         return (
                             // <div style={{width: "230px", margin: "0px 5px"}}>
 

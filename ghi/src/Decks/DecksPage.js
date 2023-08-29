@@ -146,7 +146,6 @@ function DecksPage() {
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
 
-    const isQueryEmpty = Object.values(deckQuery).every((value) => value === "");
 
     return (
         <div className="white-space">

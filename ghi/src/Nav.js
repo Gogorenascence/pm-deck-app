@@ -23,6 +23,7 @@ function Nav() {
     signup,
     login,
     logout,
+    account,
     getAccountData,
   } = useContext(AuthContext)
 
@@ -500,15 +501,16 @@ function Nav() {
         </>
           :
         <>
+          {/* <h3>{account.username}</h3> */}
+          <NavLink to="/account">
+            <button className="button100">
+              {account.username}
+            </button>
+          </NavLink>
           <button className="button100"
             onClick={logout}>
             Logout
           </button>
-          <NavLink to="/account">
-            <button className="button100">
-              Account
-            </button>
-          </NavLink>
         </>
       }
       </div>
