@@ -45,28 +45,34 @@ const AuthContextProvider = ({ children }) => {
         .catch(console.error);
     };
 
-    const login = async (event) => {
-        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
-        const form = new FormData();
-        form.append("username", loginCred.username);
-        form.append("password", loginCred.password);
-        fetch(url, {
-            method: "post",
-            credentials: "include",
-            body: form,
-            })
-            .then(() => getToken())
-            .then((token) => {
+    const login = async () => {
+        try {
+            const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
+            const form = new FormData();
+            form.append("username", loginCred.username);
+            form.append("password", loginCred.password);
+            const response = await fetch(url, {
+                method: "post",
+                credentials: "include",
+                body: form,
+            });
+            if (response.ok) {
+                const token = await getToken();
                 if (token) {
-                setToken(token);
-                setLoginError("")
-                getAccountData()
+                    setToken(token);
+                    setLoginError("");
+                    getAccountData();
+                    return token;
                 } else {
-                setLoginError("Incorrect Username/Password");
-                throw new Error(`Failed to get token after login. Got ${token}`);
+                    throw new Error("Failed to get token after login.");
                 }
-            })
-            .catch(console.error);
+            } else {
+                setLoginError("Incorrect Username/Password");
+                throw new Error("Login failed.");
+            }
+        } catch (error) {
+          throw error; // Re-throw the error for handling in the calling function.
+        }
     };
 
     const logout = async () => {

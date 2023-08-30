@@ -64,6 +64,7 @@ function Nav() {
   }
 
   const Signup = async (event) => {
+    event.preventDefault();
     if (passwordCon === signUpCred.password) {
       signup()
       resetSignUpCred()
@@ -76,14 +77,11 @@ function Nav() {
   };
 
   const Login = async (event) => {
-    try {
-      await login(loginCred);
-      if (!loginError) {
-        resetLoginCred();
-        setShowLoginModal(false);
-      }
-    } catch (error) {
-      console.log("Couldn't catch the token, sorry")
+    event.preventDefault();
+    const token = await login(loginCred);
+    if (token) {
+      resetLoginCred();
+      setShowLoginModal(false);
     }
   };
 
@@ -119,11 +117,19 @@ function Nav() {
 
   const handleViewPass = (event) => {
     const pass = document.getElementById("pass");
+    const passConf = document.getElementById("passConf");
     if (pass.type === "password") {
       pass.type = "text";
       setViewPass(true)
     } else {
       pass.type = "password";
+      setViewPass(false)
+    }
+    if (passConf.type === "password") {
+      passConf.type = "text";
+      setViewPass(true)
+    } else {
+      passConf.type = "password";
       setViewPass(false)
     }
   };
@@ -403,7 +409,7 @@ function Nav() {
                   <h5 className="label black">Confirm Password </h5>
                   <input
                       className="builder-input"
-                      id="pass"
+                      id="passConf"
                       type="password"
                       placeholder=" Confirm Password"
                       onChange={handlePasswordConChange}

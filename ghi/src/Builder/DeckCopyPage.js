@@ -51,14 +51,10 @@ function DeckCopyPage() {
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
-
         if (data.cards.length == 0 ) {
             setNoCards(true)
         }
-
-
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
-
         setCards(sortedCards);
     };
 
@@ -71,6 +67,7 @@ function DeckCopyPage() {
         if (deckData["side"] === null){
             deckData["side"] = []
         }
+        deckData["private"] = true
         setDeck(deckData);
         console.log(deckData)
     };
