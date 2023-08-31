@@ -8,7 +8,7 @@
   "hero_id": "PM1",
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1001,
-  "effect_text": "Deal 2 damage to a foe who has yet to go this round. If you are first to go this round or you have the highest Enthusiasm, draw 1 Pluck and gain 2 HP.",
+  "effect_text": "Deal 2 damage to a foe who has yet to go this round. If you are first to go this round or you have the highest Enthusiasm, draw 1 Pluck and gain 1 HP.",
   "flavor_text": "string",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
@@ -30,17 +30,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:42",
+    "month": 8,
+    "day": 31,
+    "time": "17:43",
     "full_time": {
-      "$date": "2023-06-25T18:42:32.929Z"
+      "$date": "2023-08-31T17:43:16.884Z"
     }
   }
 },
@@ -1242,7 +1240,7 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1003,
   "enthusiasm": 0,
-  "effect_text": "Deal 3 damage to a foe. If you are first to go this round or have the highest Enthusiasm, gain 2 HP.",
+  "effect_text": "Deal 3 piercing damage to a foe. If you are first to go this round or have the highest Enthusiasm, gain 1 HP.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmm.png",
@@ -1264,11 +1262,11 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 29,
-    "time": "23:27",
+    "month": 8,
+    "day": 31,
+    "time": "17:42",
     "full_time": {
-      "$date": "2023-06-29T23:27:11.470Z"
+      "$date": "2023-08-31T17:42:57.639Z"
     }
   }
 },
@@ -1675,8 +1673,8 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1067,
   "enthusiasm": 0,
-  "effect_text": "<Limited> Gain 2 HP.",
-  "second_effect_text": "Discard this item; deal 2 piercing damage to a foe who has yet to go this round.",
+  "effect_text": "<Limited> If you have no Moves in your play, deal 2 piercing damage to a foe who has yet to go this round. You can not add Moves to your play this round.",
+  "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl01pmi.png",
   "file_name": "",
@@ -1695,17 +1693,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:55",
+    "month": 8,
+    "day": 31,
+    "time": "17:42",
     "full_time": {
-      "$date": "2023-06-25T18:55:32.090Z"
+      "$date": "2023-08-31T17:42:28.674Z"
     }
   }
 },
@@ -3742,7 +3738,7 @@
   "series_name": "Flamebell//Magic//Quest",
   "card_number": 1078,
   "enthusiasm": 0,
-  "effect_text": "Gain 2 HP.",
+  "effect_text": "If a player(s) has a Power card(s) in their play, gain 2 HP.",
   "second_effect_text": "<Critical> Resolve your Aura one more time.",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb4fb.png",
@@ -3762,17 +3758,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:13",
+    "month": 8,
+    "day": 31,
+    "time": "17:46",
     "full_time": {
-      "$date": "2023-06-25T19:13:30.886Z"
+      "$date": "2023-08-31T17:46:07.901Z"
     }
   }
 },
@@ -4259,7 +4253,7 @@
   "card_number": 1082,
   "enthusiasm": 0,
   "effect_text": "If you have a Power Fighter in your play and you discard a card(s) from your hand, you can draw 1 card.",
-  "second_effect_text": "Discard this Item after the third round of use.",
+  "second_effect_text": "Discard this Item after drawing 3 cards by this effect.",
   "illustrator": "gmoshiro",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl06rfi.png",
   "file_name": "i1pl06rfi",
@@ -4276,17 +4270,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:12",
+    "month": 8,
+    "day": 31,
+    "time": "17:40",
     "full_time": {
-      "$date": "2023-06-25T19:12:47.279Z"
+      "$date": "2023-08-31T17:40:32.224Z"
     }
   }
 },

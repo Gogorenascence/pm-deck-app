@@ -16,10 +16,15 @@ function Nav() {
     token,
     setToken,
     getToken,
+    getUsers,
+    users,
     signUpCred,
     setSignUpCred,
     loginCred,
     setLoginCred,
+    signUpCredCheck,
+    passwordCon,
+    setPasswordCon,
     signup,
     login,
     logout,
@@ -27,11 +32,12 @@ function Nav() {
     getAccountData,
   } = useContext(AuthContext)
 
-  const [passwordCon, setPasswordCon] = useState("")
+
 
   useEffect(() => {
     getAccountData()
     getToken()
+    getUsers()
     .then((token) => {
       if (token) {
       setToken(token);
@@ -61,19 +67,20 @@ function Nav() {
     setLoginError("")
     setViewPass(false)
     resetLoginCred()
+
   }
 
   const Signup = async (event) => {
     event.preventDefault();
-    if (passwordCon === signUpCred.password) {
+    const check = await signUpCredCheck(signUpCred)
+    if (check.length === 0) {
       signup()
       resetSignUpCred()
       setPasswordCon("")
       resetLoginCred()
       setShowSignUpModal(false)
-    } else {
-      setSignUpError("Passwords Must Match")
     }
+    console(signUpError)
   };
 
   const Login = async (event) => {
@@ -214,152 +221,13 @@ function Nav() {
               </ul>
             </li>
           </ul>
-
-        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a href="/#"
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Articles
-              </a>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <NavLink className="dropdown-item" to="/articles">
-                    Search Articles
-                    </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/articles">
-                    Strategy Guides
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/articles">
-                    Series Lore
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-          </ul> */}
-
-        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a href="/#"
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Game Play
-              </a>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    Search Game Play
-                    </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    How To Play
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    Game Modes
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    Formats
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    Mechanics
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/gameplay">
-                    Restricted Lists
-                    </NavLink>
-                </li>
-              </ul>
-            </li>
-          </ul> */}
-
-        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a href="/#"
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Community
-              </a>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <NavLink className="dropdown-item" to="/forum">
-                    Forum
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/forum">
-                    Users
-                    </NavLink>
-                </li>
-              </ul>
-            </li>
-          </ul> */}
-
-        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a href="/#"
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Admin
-              </a>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <NavLink className="dropdown-item" to="/cards/create">
-                    Card Create
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div> */}
-      {/* </div> */}
-      {/* </div> */}
-      {/* </div> */}
         </div>
         { showSignUpModal?
           <>
             <form onSubmit={Signup} className="medium-modal">
-              <h2 className="label black">  Create Account </h2>
-              <div style={{margin: "20px 20px 20px 20px"}}>
+              <h2 className="label-center black">Create Account </h2>
+              <div style={{ margin: "20px 20px 20px 20px"}}>
+
                   <h5 className="label black">Email </h5>
                   <input
                       className="builder-input"
@@ -430,15 +298,27 @@ function Nav() {
                       title="hide password"
                     />
                   }
-
-                  { signUpError?
-                    <p className="error">{signUpError}</p>:
-                    null
-                  }
+                </div>
+                <div style={{margin: "20px 0px 20px 0px"}}>
+                  { signUpError? (
+                    signUpError.map((error) =>
+                      (
+                        <>
+                          <p className="error">{error}</p>
+                        </>
+                      ))): null
+                    }
 
               </div>
-              <button type="submit">Signup</button>
-              <button onClick={handleShowSignUpModal}>Close</button>
+
+              <div className="aligned">
+                <button type="submit">Signup</button>
+                <button onClick={handleShowSignUpModal}>Close</button>
+                <p onClick={handleShowLoginModal}
+                  className="black pointer label-center">
+                    Already have an account? Log in!
+                </p>
+              </div>
             </form>
             <div className="blackSpace"></div>
           </>:
@@ -448,7 +328,7 @@ function Nav() {
         { showLoginModal?
           <>
             <form onSubmit={Login} className="medium-modal">
-              <h2 className="label black">  User Login </h2>
+              <h2 className="label-center black">User Login </h2>
               <div style={{margin: "20px 20px 20px 20px"}}>
                   <h5 className="label black">Username </h5>
                   <input
@@ -492,8 +372,14 @@ function Nav() {
                   }
 
               </div>
-              <button type="submit">Login</button>
-              <button onClick={handleShowLoginModal}>Close</button>
+              <div className="aligned">
+                <button type="submit">Login</button>
+                <button onClick={handleShowLoginModal}>Close</button>
+                <p onClick={handleShowSignUpModal}
+                  className="black pointer label-center">
+                    New here? Sign Up!
+                </p>
+              </div>
             </form>
             <div className="blackSpace"></div>
           </>:

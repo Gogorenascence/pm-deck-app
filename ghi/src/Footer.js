@@ -2,11 +2,12 @@ function Footer() {
     const openInNewTab = (url) => {
         window.open(url, "_blank", "noreferrer");
     };
+    const current_year = new Date().getFullYear()
 
     return (
         <div className="white-space">
             <div className="footer">
-
+                <p className="footer-copy-right">&copy;{current_year} JotH: PlayMaker &nbsp;</p>
                 <img
                     title="https://discord.gg/hVfTNEZG9p"
                     onClick={() => openInNewTab("https://discord.gg/hVfTNEZG9p")}

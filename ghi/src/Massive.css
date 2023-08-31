@@ -326,6 +326,11 @@ button:hover {
   margin: 10px 5px 0px 5px;
 }
 
+.label-center{
+  text-align: center;
+  margin: 15px 5px 0px 5px;
+}
+
 .edit-modal {
   opacity: 0%;
   color: black;
@@ -1370,7 +1375,9 @@ button:hover {
 
   .error {
     color: red;
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0;
     text-align: center;
   }
 
@@ -1398,4 +1405,9 @@ button:hover {
     color: white;
     text-decoration: none;
     margin-right: 15px;
+  }
+
+  .footer-copy-right {
+    font-weight: 500;
+    margin-top: 12px;
   }

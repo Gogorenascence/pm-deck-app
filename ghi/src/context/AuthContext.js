@@ -5,23 +5,20 @@ const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
     const [loginError, setLoginError] = useState("")
-
-    const [signUpError, setSignUpError] = useState("")
-
+    const [signUpError, setSignUpError] = useState([])
     const [account, setAccount] = useState("")
-
     const [token, setToken] = useState(null);
-
+    const [users, setUsers] = useState([])
     const [loginCred, setLoginCred] = useState({
         username: "",
         password: "",
         })
-
     const [signUpCred, setSignUpCred] = useState({
         email: "",
         username: "",
         password: "",
         })
+    const [passwordCon, setPasswordCon] = useState("")
 
     const getToken = async (event) => {
         return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`, {
@@ -98,14 +95,70 @@ const AuthContextProvider = ({ children }) => {
         console.log(account)
     };
 
-      // const signUpCredCheck = (signUpCred) => {
-  //   const check = []
-  //   const specialChar = ["!","@","#","$","%","^","&","*","+","~"]
-  //   if (allUsers.some(username => username === signUpCred.username)) {
-  //     check.push("Username is already used")
-  //   }
+    const getUsers = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/`);
+        const data = await response.json();
+        setUsers(data)
+    }
 
-  // }
+    const signUpCredCheck = async(signUpCred) => {
+        const check = []
+        const specialChar = ["!","@","$","&","+","~"]
+        if (users.some(account => account.username === signUpCred.username)) {
+            check.push("An account with this username already exists")
+        }
+        console.log("1, ",check)
+        if (users.some(account => account.email === signUpCred.email)) {
+            check.push("An account with this email already exists")
+        }
+        console.log("2, ",check)
+        const password = signUpCred.password
+        const checkSpec = password.split('').filter(char => specialChar.includes(char))
+        if (checkSpec.length === 0) {
+            check.push("Password must contain at least 1 special character (!, $, &, + or ~)")
+        }
+        console.log("3, ",check)
+        const checkUpper = password.split('').filter(char => /[A-Z]/.test(char))
+        if (checkUpper.length === 0) {
+            check.push("Password must contain atleast 1 Uppercase letter")
+        }
+        console.log("4, ",check)
+        const checkLower = password.split('').filter(char => /[a-z]/.test(char))
+        if (checkLower.length === 0) {
+            check.push("Password must contain atleast 1 Lowercase letter")
+        }
+        console.log("5, ",check)
+        if (password !== passwordCon) {
+            check.push("Passwords must match")
+        }
+        if (check.length > 0) {
+            setSignUpError(check)
+            return check
+        }
+        return check
+    }
+
+    const allContext = [signUpError,
+        setSignUpError,
+        loginError,
+        setLoginError,
+        getToken,
+        getUsers,
+        users,
+        token,
+        setToken,
+        signUpCred,
+        setSignUpCred,
+        passwordCon,
+        setPasswordCon,
+        loginCred,
+        setLoginCred,
+        signUpCredCheck,
+        signup,
+        login,
+        logout,
+        getAccountData,
+        account,]
 
     return (
         <AuthContext.Provider value={{
@@ -114,12 +167,17 @@ const AuthContextProvider = ({ children }) => {
             loginError,
             setLoginError,
             getToken,
+            getUsers,
+            users,
             token,
             setToken,
             signUpCred,
             setSignUpCred,
+            passwordCon,
+            setPasswordCon,
             loginCred,
             setLoginCred,
+            signUpCredCheck,
             signup,
             login,
             logout,

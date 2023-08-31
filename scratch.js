@@ -626,3 +626,144 @@ const handleRemoveCardType = (index) => {
 //     src={card.picture_url}
 //     alt={card.name}
 // />
+
+//Navbar elements to add before modal later
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Articles
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/articles">
+                    Search Articles
+                    </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/articles">
+                    Strategy Guides
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/articles">
+                    Series Lore
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul> */}
+
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Game Play
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Search Game Play
+                    </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    How To Play
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Game Modes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Formats
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Mechanics
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    Restricted Lists
+                    </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul> */}
+
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Community
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/forum">
+                    Forum
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/forum">
+                    Users
+                    </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul> */}
+
+        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <a href="/#"
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Admin
+              </a>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/cards/create">
+                    Card Create
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div> */}
+      {/* </div> */}
+      {/* </div> */}
+      {/* </div> */}
