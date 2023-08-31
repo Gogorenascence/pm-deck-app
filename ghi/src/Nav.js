@@ -17,7 +17,6 @@ function Nav() {
     setToken,
     getToken,
     getUsers,
-    users,
     signUpCred,
     setSignUpCred,
     loginCred,

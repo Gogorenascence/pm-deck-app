@@ -138,28 +138,6 @@ const AuthContextProvider = ({ children }) => {
         return check
     }
 
-    const allContext = [signUpError,
-        setSignUpError,
-        loginError,
-        setLoginError,
-        getToken,
-        getUsers,
-        users,
-        token,
-        setToken,
-        signUpCred,
-        setSignUpCred,
-        passwordCon,
-        setPasswordCon,
-        loginCred,
-        setLoginCred,
-        signUpCredCheck,
-        signup,
-        login,
-        logout,
-        getAccountData,
-        account,]
-
     return (
         <AuthContext.Provider value={{
             signUpError,
