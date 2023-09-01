@@ -521,7 +521,7 @@
   "series_name": "Bolt Blossom//Nature//Energy",
   "card_number": 1048,
   "enthusiasm": 12,
-  "effect_text": "<Target> Strongest foe. //Add 1 to your Focus for each non-Unity class in your play. //<1-5> Deal 1 damage for each non-Unity class in your play. //<6-11> Deal 2 damage for each non-Unity class in your play. //<12+> Deal 3 damage for each non-Unity class in your play. Ignore the reaction(s) of defending Fighter(s).",
+  "effect_text": "<Target> Strongest foe. //Add 1 to your Focus for each non-Unity class in your play. //<1-5> Deal 1 damage for each non-Unity class in your play. //<6-11> Deal 2 damage for each different class in your play. //<12+> Deal 3 damage for each different class in your play. Ignore the reaction(s) of defending Fighter(s).",
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b4bbe.png",
@@ -544,11 +544,11 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 7,
-    "day": 17,
-    "time": "05:30",
+    "month": 9,
+    "day": 1,
+    "time": "14:43",
     "full_time": {
-      "$date": "2023-07-17T05:30:00.648Z"
+      "$date": "2023-09-01T14:43:13.916Z"
     }
   }
 },
@@ -562,7 +562,7 @@
   "series_name": "Bolt Blossom//Nature//Energy",
   "card_number": 1101,
   "enthusiasm": 0,
-  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): //<Staunch> Gain 2 HP and draw 1 card. //<Power> Deal 2 damage to a foe or add 2 to your Focus. //<Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round). //<Canny> Gain 1 Comeback.",
+  "effect_text": "Apply the following effects based on each different class in your play (you can only apply each effect once): //<Staunch> Gain 2 HP and draw 1 card. //<Power> Deal 2 damage to a foe or add 2 to your Focus. //<Unity> Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time). //<Canny> Gain 1 Comeback.",
   "second_effect_text": "",
   "illustrator": "Fililppo Scalisi",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl12bbe.png",
@@ -584,11 +584,11 @@
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 30,
-    "time": "00:11",
+    "month": 9,
+    "day": 1,
+    "time": "14:34",
     "full_time": {
-      "$date": "2023-06-30T00:11:15.158Z"
+      "$date": "2023-09-01T14:34:03.767Z"
     }
   }
 },
@@ -1280,7 +1280,7 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1004,
   "enthusiasm": 17,
-  "effect_text": "<Target> Foe who has yet to go this round. //<1-5> Deal 1 damage. //<6-11> Deal 3 piercing damage. //<12+> Deal 4 piercing damage. The next player's Move(s) and Ending(s) gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
+  "effect_text": "<Target> Foe who has yet to go this round. //<1-5> Deal 2 piercing damage. //<6-11> Deal 3 piercing damage. //<12+> Deal 4 piercing damage. The next player's Move(s) and Ending(s) gain damage minus 1 (damage dealt by those cards is reduced by 1 at the end of their resolutions).",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pme.png",
@@ -1299,17 +1299,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:54",
+    "month": 9,
+    "day": 1,
+    "time": "14:44",
     "full_time": {
-      "$date": "2023-06-25T18:54:45.184Z"
+      "$date": "2023-09-01T14:44:00.216Z"
     }
   }
 },
@@ -1630,8 +1628,8 @@
   "series_name": "Gravity Enforcer//Cosmic//Tactical",
   "card_number": 1064,
   "enthusiasm": 14,
-  "effect_text": "Reduce the Focus of all foes by 3.",
-  "second_effect_text": "<Target> Foe with Enthusiasm lower than yours. //<1-5> No effect. //<6-11> Deal 3 damage. //<12+> Deal damage equal to the difference (max of 6).",
+  "effect_text": "Reduce the Focus of all foes by 4.",
+  "second_effect_text": "<Target> Foe with Enthusiasm lower than yours. //<1-5> No effect. //<6-11> Deal 4 damage. //<12+> Deal damage equal to the difference (max of 7).",
   "illustrator": "betomirandaart2",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p4gee.png",
   "file_name": "i1p4gee",
@@ -1649,17 +1647,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:55",
+    "month": 9,
+    "day": 1,
+    "time": "14:44",
     "full_time": {
-      "$date": "2023-06-25T18:55:27.350Z"
+      "$date": "2023-09-01T14:44:40.405Z"
     }
   }
 },
@@ -3094,7 +3090,7 @@
   "series_name": "Bolt Blossom//Nature//Energy",
   "card_number": 1047,
   "enthusiasm": 0,
-  "effect_text": "Resolve 1 of the following effects: //<> This card copies the text of your Aura. //<> Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
+  "effect_text": "Resolve 1 of the following effects: //<> This card copies the text of your Aura. //<> Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).",
   "second_effect_text": "",
   "illustrator": "Filippo Scalisi",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b4bbm.png",
@@ -3112,17 +3108,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:07",
+    "month": 9,
+    "day": 1,
+    "time": "14:34",
     "full_time": {
-      "$date": "2023-06-25T19:07:37.171Z"
+      "$date": "2023-09-01T14:34:20.127Z"
     }
   }
 },
@@ -3826,7 +3820,7 @@
   "series_name": "Warp Family//Cosmic//Psychic",
   "card_number": 1041,
   "enthusiasm": 0,
-  "effect_text": "Draw 1 card and gain 1 Item. \nIf you have a Canny card in your play, reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time this round).",
+  "effect_text": "Draw 1 card and gain 1 Item. \nIf you have a Canny card in your play, reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b3hsf.png",
@@ -3847,17 +3841,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:11",
+    "month": 9,
+    "day": 1,
+    "time": "14:33",
     "full_time": {
-      "$date": "2023-06-25T19:11:49.370Z"
+      "$date": "2023-09-01T14:33:48.477Z"
     }
   }
 },

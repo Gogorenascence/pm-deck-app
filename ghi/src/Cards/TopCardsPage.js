@@ -17,7 +17,7 @@ function TopCardsPage() {
     //     none: { method: (a,b) => b.count.localeCompare(a.count) },
     // };
 
-    const limit = 50
+    const limit = 100
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_popular_cards/`);
@@ -87,7 +87,7 @@ function TopCardsPage() {
     },[]);
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 10);
+        setShowMore(showMore + 20);
     };
 
     const handleListView = (event) => {
