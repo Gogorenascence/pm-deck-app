@@ -568,7 +568,8 @@ button:hover {
 }
 
 .cover-card {
-  width: 338px;
+  min-width: 338px;
+  width: 20vw;
   margin: 2.5% 0px 0px 0%;
   border-radius: 17px;
   overflow: hidden;
@@ -1410,4 +1411,19 @@ button:hover {
   .footer-copy-right {
     font-weight: 500;
     margin-top: 12px;
+  }
+
+  .card-pool-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 10px;
+    grid-auto-flow: dense;
+  }
+
+  .card-pool-fill2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    grid-auto-flow: dense;
+    margin-right: 15px;
   }

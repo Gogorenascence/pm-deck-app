@@ -290,283 +290,285 @@ function DeckBuilder() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Builder</h1>
-            <Row xs={3} sm={3} md={3} lg={3}>
-                <div
-                    style={{marginBottom: "45px", width: "435px"}}
-                    id="create-deck-page">
-                    <h2 className="left">Deck Details</h2>
+            {/* <Row xs={3} sm={3} md={3} lg={3}> */}
+                <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <div
+                        // style={{marginBottom: "45px", width: "435px"}}
+                        id="create-deck-page">
+                        <h2 className="left">Deck Details</h2>
 
-                    <h5 className="label">Name </h5>
-                    <input
-                        className="builder-input"
-                        type="text"
-                        placeholder=" Deck Name"
-                        onChange={handleChange}
-                        name="name"
-                        value={deck.name}>
-                    </input>
-                    <br/>
-                    <h5 className="label">Cover Card</h5>
-                    <select
-                        className="builder-input"
-                        type="text"
-                        placeholder=" Cover Card"
-                        onChange={handleCoverCardChange}
-                        name="cover_card"
-                        value={deck.cover_card}>
-                        <option value="">Cover Card</option>
-                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
-                        {return( <option value={card.picture_url}>{card.name}</option>)}
-                            )}
-                    </select>
-                    <br/>
-                    <h5 className="label"> Description </h5>
-                    <textarea
-                        className="builder-text"
-                        type="text"
-                        placeholder=" Deck Description"
-                        onChange={handleChange}
-                        name="description"
-                        value={deck.description}>
-                    </textarea>
-                    <h5 className="label">Strategies </h5>
-                    <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
-                    <select
-                        className="builder-text"
-                        multiple
-                        name="strategies"
-                        onChange={handleStrategyChange}
+                        <h5 className="label">Name </h5>
+                        <input
+                            className="builder-input"
+                            type="text"
+                            placeholder=" Deck Name"
+                            onChange={handleChange}
+                            name="name"
+                            value={deck.name}>
+                        </input>
+                        <br/>
+                        <h5 className="label">Cover Card</h5>
+                        <select
+                            className="builder-input"
+                            type="text"
+                            placeholder=" Cover Card"
+                            onChange={handleCoverCardChange}
+                            name="cover_card"
+                            value={deck.cover_card}>
+                            <option value="">Cover Card</option>
+                            {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
+                            {return( <option value={card.picture_url}>{card.name}</option>)}
+                                )}
+                        </select>
+                        <br/>
+                        <h5 className="label"> Description </h5>
+                        <textarea
+                            className="builder-text"
+                            type="text"
+                            placeholder=" Deck Description"
+                            onChange={handleChange}
+                            name="description"
+                            value={deck.description}>
+                        </textarea>
+                        <h5 className="label">Strategies </h5>
+                        <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
+                        <br/>
+                        <select
+                            className="builder-text"
+                            multiple
+                            name="strategies"
+                            onChange={handleStrategyChange}
+                            >
+                            <option value="">Strategy</option>
+                            <option value="Aggro">Aggro</option>
+                            <option value="Combo">Combo</option>
+                            <option value="Control">Control</option>
+                            <option value="Mid-range">Mid-range</option>
+                            <option value="Ramp">Ramp</option>
+                            <option value="Second Wind">Second Wind</option>
+                            <option value="Stall">Stall</option>
+                            <option value="Toolbox">Toolbox</option>
+                            <option value="other">other</option>
+                        </select>
+                        <br/>
+                        <input
+                            style={{margin: "20px 8px 15px 5px"}}
+                            id="private"
+                            type="checkbox"
+                            onChange={handleCheck}
+                            name="private"
+                            checked={deck.private}>
+                        </input>
+                        <label for="private"
+                            className="bold"
                         >
-                        <option value="">Strategy</option>
-                        <option value="Aggro">Aggro</option>
-                        <option value="Combo">Combo</option>
-                        <option value="Control">Control</option>
-                        <option value="Mid-range">Mid-range</option>
-                        <option value="Ramp">Ramp</option>
-                        <option value="Second Wind">Second Wind</option>
-                        <option value="Stall">Stall</option>
-                        <option value="Toolbox">Toolbox</option>
-                        <option value="other">other</option>
-                    </select>
-                    <br/>
-                    <input
-                        style={{margin: "20px 8px 15px 5px"}}
-                        id="private"
-                        type="checkbox"
-                        onChange={handleCheck}
-                        name="private"
-                        checked={deck.private}>
-                    </input>
-                    <label for="private"
-                        className="bold"
-                    >
-                        Make my deck private
-                    </label>
-                    <br/>
-                    <button
-                        className="left"
-                        style={{ marginTop: "9px"}}
-                        onClick={handleSubmit}
-                    >
-                            Create Deck
-                    </button>
-                    <button
-                        className="left red"
-                        style={{ marginTop: "9px"}}
-                        onClick={clearMain}
-                    >
-                            Clear Main
-                    </button>
-                    <button
-                        className="left red"
-                        style={{ marginTop: "9px"}}
-                        onClick={clearPluck}
-                    >
-                            Clear Pluck
-                    </button>
-                    <br/>
-                </div>
-                <div style={{ width: "350px"}}>
-                    <h2 className="left">Cover Card</h2>
-                    {selectedCard ? (
-                        <img
-                            className="cover-card"
-                            src={selectedCard}
-                            alt={selectedCard.name}
-                            variant="bottom"/>
-                            ):(
-                        <img
-                            className="cover-card"
-                            src={"https://i.imgur.com/krY25iI.png"}
-                            alt="Card"
-                            variant="bottom"/>)}
-                </div>
+                            Make my deck private
+                        </label>
+                        <br/>
+                        <button
+                            className="left"
+                            style={{ marginTop: "9px"}}
+                            onClick={handleSubmit}
+                        >
+                                Create Deck
+                        </button>
+                        <button
+                            className="left red"
+                            style={{ marginTop: "9px"}}
+                            onClick={clearMain}
+                        >
+                                Clear Main
+                        </button>
+                        <button
+                            className="left red"
+                            style={{ marginTop: "9px"}}
+                            onClick={clearPluck}
+                        >
+                                Clear Pluck
+                        </button>
+                        <br/>
+                    </div>
+                    <div>
+                        <h2 className="left">Cover Card</h2>
+                        {selectedCard ? (
+                            <img
+                                className="cover-card"
+                                src={selectedCard}
+                                alt={selectedCard.name}
+                                variant="bottom"/>
+                                ):(
+                            <img
+                                className="cover-card"
+                                src={"https://i.imgur.com/krY25iI.png"}
+                                alt="Card"
+                                variant="bottom"/>)}
+                    </div>
 
-                <div style={{marginLeft: "40px"}}>
-                    <h2 className="left">Search for cards</h2>
-                    <input
-                        className="left dcbsearch-large"
-                        type="text"
-                        placeholder=" Card Name Contains..."
-                        name="cardName"
-                        value={query.cardName}
-                        onChange={handleQuery}>
-                    </input>
-                    <br/>
-                    <input
-                        className="left dcbsearch-large"
-                        type="text"
-                        placeholder=" Card Text Contains..."
-                        name="cardText"
-                        value={query.cardText}
-                        onChange={handleQuery}>
-                    </input>
-                    <br/>
-                    <input
-                        className="left dcbsearch-medium"
-                        type="text"
-                        placeholder=" Card Number"
-                        name="cardNumber"
-                        value={query.cardNumber}
-                        onChange={handleQuery}>
-                    </input>
-                    <input
-                        className="left dcbsearch-medium"
-                        type="text"
-                        placeholder=" Hero ID"
-                        name="heroID"
-                        value={query.heroID}
-                        onChange={handleQuery}>
-                    </input>
-                    <br/>
-                    <input
-                        className="left dcbsearch-medium"
-                        type="text"
-                        placeholder=" Series"
-                        name="series"
-                        value={query.series}
-                        onChange={handleQuery}>
-                    </input>
-                    <input
-                        className="left dcbsearch-medium"
-                        type="text"
-                        placeholder=" Illustrator"
-                        name="illustrator"
-                        value={query.illustrator}
-                        onChange={handleQuery}>
-                    </input>
-                    <br/>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Type"
-                        name="type"
-                        value={query.type}
-                        onChange={handleQuery}>
-                        <option value="">Type</option>
-                        <option value="1001">Fighter</option>
-                        <option value="1002">Aura</option>
-                        <option value="1003">Move</option>
-                        <option value="1004">Ending</option>
-                        <option value="1005">Any Type</option>
-                        <option value="1006">Item</option>
-                        <option value="1007">Event</option>
-                        <option value="1008">Comeback</option>
-                    </select>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Class"
-                        name="cardClass"
-                        value={query.cardClass}
-                        onChange={handleQuery}>
-                        <option value="">Class</option>
-                        <option value="Staunch">Staunch</option>
-                        <option value="Power">Power</option>
-                        <option value="Unity">Unity</option>
-                        <option value="Canny">Canny</option>
-                    </select>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Extra Effect"
-                        name="extraEffect"
-                        value={query.extraEffect}
-                        onChange={handleQuery}>
-                        <option value="">Extra Effect</option>
-                        <option value="1001">Trigger</option>
-                        <option value="1003">Limited</option>
-                        <option value="1002">Critical</option>
-                    </select>
-                    <br/>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Reaction"
-                        name="reaction"
-                        value={query.reaction}
-                        onChange={handleQuery}>
-                        <option value="">Reaction</option>
-                        <option value="1001">Block</option>
-                        <option value="1002">Counter</option>
-                        <option value="1003">Endure</option>
-                        <option value="1004">Redirect</option>
-                    </select>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Tag"
-                        name="tag"
-                        value={query.tag}
-                        onChange={handleQuery}>
-                        <option value="">Tag</option>
-                        <option value="1001">5 HP</option>
-                        <option value="1002">Focus</option>
-                        <option value="1003">Auto</option>
-                        <option value="1004">Stay</option>
-                        <option value="1005">Max</option>
-                    </select>
-                    <select
-                        className="left dcbsearch-small"
-                        type="text"
-                        placeholder=" Sorted By"
-                        value={sortState}
-                        onChange={handleSort}>
-                        <option value="none">Sorted By</option>
-                        <option value="newest">Newest</option>
-                        <option value="oldest">Oldest</option>
-                        <option value="name">A-Z</option>
-                        <option value="card_number">Card Number</option>
-                        <option value="enthusiasm_highest">Enth (High)</option>
-                        <option value="enthusiasm_lowest">Enth (Low)</option>
-                    </select>
-                    <br/>
-                    <button
-                        className="left"
-                        variant="dark"
-                        onClick={handleQueryReset}
-                        >
-                        Reset Filters
-                    </button>
-                    {listView?
+                    <div>
+                        <h2 className="left">Search for cards</h2>
+                        <input
+                            className="left dcbsearch-large"
+                            type="text"
+                            placeholder=" Card Name Contains..."
+                            name="cardName"
+                            value={query.cardName}
+                            onChange={handleQuery}>
+                        </input>
+                        <br/>
+                        <input
+                            className="left dcbsearch-large"
+                            type="text"
+                            placeholder=" Card Text Contains..."
+                            name="cardText"
+                            value={query.cardText}
+                            onChange={handleQuery}>
+                        </input>
+                        <br/>
+                        <input
+                            className="left dcbsearch-medium"
+                            type="text"
+                            placeholder=" Card Number"
+                            name="cardNumber"
+                            value={query.cardNumber}
+                            onChange={handleQuery}>
+                        </input>
+                        <input
+                            className="left dcbsearch-medium"
+                            type="text"
+                            placeholder=" Hero ID"
+                            name="heroID"
+                            value={query.heroID}
+                            onChange={handleQuery}>
+                        </input>
+                        <br/>
+                        <input
+                            className="left dcbsearch-medium"
+                            type="text"
+                            placeholder=" Series"
+                            name="series"
+                            value={query.series}
+                            onChange={handleQuery}>
+                        </input>
+                        <input
+                            className="left dcbsearch-medium"
+                            type="text"
+                            placeholder=" Illustrator"
+                            name="illustrator"
+                            value={query.illustrator}
+                            onChange={handleQuery}>
+                        </input>
+                        <br/>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Type"
+                            name="type"
+                            value={query.type}
+                            onChange={handleQuery}>
+                            <option value="">Type</option>
+                            <option value="1001">Fighter</option>
+                            <option value="1002">Aura</option>
+                            <option value="1003">Move</option>
+                            <option value="1004">Ending</option>
+                            <option value="1005">Any Type</option>
+                            <option value="1006">Item</option>
+                            <option value="1007">Event</option>
+                            <option value="1008">Comeback</option>
+                        </select>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Class"
+                            name="cardClass"
+                            value={query.cardClass}
+                            onChange={handleQuery}>
+                            <option value="">Class</option>
+                            <option value="Staunch">Staunch</option>
+                            <option value="Power">Power</option>
+                            <option value="Unity">Unity</option>
+                            <option value="Canny">Canny</option>
+                        </select>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Extra Effect"
+                            name="extraEffect"
+                            value={query.extraEffect}
+                            onChange={handleQuery}>
+                            <option value="">Extra Effect</option>
+                            <option value="1001">Trigger</option>
+                            <option value="1003">Limited</option>
+                            <option value="1002">Critical</option>
+                        </select>
+                        <br/>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Reaction"
+                            name="reaction"
+                            value={query.reaction}
+                            onChange={handleQuery}>
+                            <option value="">Reaction</option>
+                            <option value="1001">Block</option>
+                            <option value="1002">Counter</option>
+                            <option value="1003">Endure</option>
+                            <option value="1004">Redirect</option>
+                        </select>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Tag"
+                            name="tag"
+                            value={query.tag}
+                            onChange={handleQuery}>
+                            <option value="">Tag</option>
+                            <option value="1001">5 HP</option>
+                            <option value="1002">Focus</option>
+                            <option value="1003">Auto</option>
+                            <option value="1004">Stay</option>
+                            <option value="1005">Max</option>
+                        </select>
+                        <select
+                            className="left dcbsearch-small"
+                            type="text"
+                            placeholder=" Sorted By"
+                            value={sortState}
+                            onChange={handleSort}>
+                            <option value="none">Sorted By</option>
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="name">A-Z</option>
+                            <option value="card_number">Card Number</option>
+                            <option value="enthusiasm_highest">Enth (High)</option>
+                            <option value="enthusiasm_lowest">Enth (Low)</option>
+                        </select>
+                        <br/>
                         <button
                             className="left"
                             variant="dark"
-                            onClick={handleListView}
-                        >
-                            Deck Image View
-                        </button>:
-                        <button
-                            className="left"
-                            variant="dark"
-                            onClick={handleListView}
-                        >
-                            Deck List View
-                        </button>}
-                    <br/>
+                            onClick={handleQueryReset}
+                            >
+                            Reset Filters
+                        </button>
+                        {listView?
+                            <button
+                                className="left"
+                                variant="dark"
+                                onClick={handleListView}
+                            >
+                                Deck Image View
+                            </button>:
+                            <button
+                                className="left"
+                                variant="dark"
+                                onClick={handleListView}
+                            >
+                                Deck List View
+                            </button>}
+                        <br/>
+                    </div>
                 </div>
-
-                </Row>
+                {/* </Row> */}
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div style={{marginLeft: "0px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
@@ -599,21 +601,21 @@ function DeckBuilder() {
                                 </div> :
                             null}
 
-                            <Row xs="auto" className="justify-content-start">
+                            <div className="card-pool-fill">
                                 {all_cards.slice(0, showMore).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
-                                                <img
-                                                    onClick={() => handleClick(card)}
-                                                    className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
-                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={card.name}
-                                                    variant="bottom"/>
-                                        </Col>
+                                        <div>
+                                            <img
+                                                onClick={() => handleClick(card)}
+                                                className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}
+                                                variant="bottom"/>
+                                        </div>
                                     );
                                 })}
-                            </Row>
+                            </div>
                             </div>
                             {showMore < all_cards.length ?
                                 <button
@@ -723,20 +725,20 @@ function DeckBuilder() {
                             </div>
 
                             {main_list.length > 0 ?
-                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
-                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                    return (
-                                        <Col style={{padding: "5px"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                        </Col>
-                                    );
-                                })}
-                            </Row> :
+                            <div className="card-pool-fill2">
+                            {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                return (
+                                    <div style={{padding: "5px"}}>
+                                        <img
+                                            className="builder-card2 pointer"
+                                            onClick={() => handleRemoveCard(card)}
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    </div>
+                                );
+                            })}
+                        </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                     </div>
@@ -768,21 +770,21 @@ function DeckBuilder() {
                                     </h5>}
                             </div>
                             {pluck_list.length > 0 ?
-                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
-                                {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                    return (
-                                        <Col style={{padding: "5px"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
-                                        </Col>
-                                    );
-                                })}
-                            </Row> :
+                            <div className="card-pool-fill2">
+                            {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                return (
+                                    <div style={{padding: "5px"}}>
+                                        <img
+                                            className="builder-card2 pointer"
+                                            onClick={() => handleRemoveCard(card)}
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}
+                                            variant="bottom"/>
+                                    </div>
+                                );
+                            })}
+                        </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>

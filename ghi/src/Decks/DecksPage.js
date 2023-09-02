@@ -249,9 +249,9 @@ function DecksPage() {
                 <div className="loading-container">
                     <div className="loading-spinner"></div>
                 </div> :
-            null}
+                <h4 className="left-h3">Showing Results 1 - {all_decks.slice(0, deckShowMore).length} of {all_decks.length}</h4>}
 
-            <h5 className="left-h3">Showing Results 1 - {all_decks.slice(0, deckShowMore).length} of {all_decks.length}</h5>
+
 
             <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {

@@ -337,7 +337,7 @@ function DeckCopyPage() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Copy</h1>
-            <Row xs={3} sm={3} md={3} lg={3}>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
                     style={{marginBottom: "45px", width: "435px"}}
                     id="create-deck-page">
@@ -611,7 +611,7 @@ function DeckCopyPage() {
                     <br/>
                 </div>
 
-                </Row>
+            </div>
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div style={{marginLeft: "0px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
@@ -644,10 +644,10 @@ function DeckCopyPage() {
                                     </div> :
                                 null}
 
-                                <Row xs="auto" className="justify-content-start">
+                                <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
-                                            <Col style={{padding: "5px"}}>
+                                            <div style={{padding: "5px"}}>
                                                     <img
                                                         onClick={() => handleClick(card)}
                                                         className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
@@ -655,10 +655,10 @@ function DeckCopyPage() {
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}
                                                         variant="bottom"/>
-                                            </Col>
+                                            </div>
                                         );
                                     })}
-                                </Row>
+                                </div>
                             </div>
                             {showMore < all_cards.length ?
                                 <button
@@ -770,20 +770,20 @@ function DeckCopyPage() {
                             </div>
 
                             {main_list.length > 0 ?
-                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <img
                                                 className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}/>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row> :
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                     </div>
@@ -815,10 +815,10 @@ function DeckCopyPage() {
                                     </h5>}
                             </div>
                             {pluck_list.length > 0 ?
-                            <Row xs="auto" className={showPluck ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <img
                                                 className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}
@@ -826,10 +826,10 @@ function DeckCopyPage() {
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}
                                                 variant="bottom"/>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row> :
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>

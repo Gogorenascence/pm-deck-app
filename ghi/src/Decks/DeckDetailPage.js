@@ -420,20 +420,20 @@ function DeckDetailPage() {
                         </div>
                         {main_list.length > 0 ?
 
-                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <img
                                                 className="builder-card2"
                                                 title={card.name}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}
                                                 variant="bottom"/>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -466,20 +466,20 @@ function DeckDetailPage() {
                                 </h5>}
                         </div>
                         {pluck_list.length > 0 ?
-                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <img
                                             className="builder-card2"
                                             title={card.name}
                                             src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                             alt={card.name}
                                             variant="bottom"/>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row> :
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>

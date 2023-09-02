@@ -304,9 +304,8 @@ function PullsDeckBuilder() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Builder</h1>
-            <Row xs={3} sm={3} md={3} lg={3}>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
-                    style={{marginBottom: "45px", width: "435px"}}
                     id="create-deck-page">
                     <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
@@ -344,6 +343,7 @@ function PullsDeckBuilder() {
                     </textarea>
                     <h5 className="label">Strategies </h5>
                     <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
+                    <br/>
                     <select
                         className="builder-text"
                         multiple
@@ -579,7 +579,7 @@ function PullsDeckBuilder() {
                     <br/>
                 </div>
 
-                </Row>
+                </div>
                 {all_cards.length?
                     <div className={showPool ? "cardpool" : "no-cardpool"}>
                         <div style={{marginLeft: "0px"}}>
@@ -613,10 +613,10 @@ function PullsDeckBuilder() {
                                     </div> :
                                 null}
 
-                                <Row xs="auto" className="justify-content-start">
+                                <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
-                                            <Col style={{padding: "5px"}}>
+                                            <div>
 
                                                     {ultraRares.includes(card.card_number) ?
                                                         <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}>
@@ -636,10 +636,10 @@ function PullsDeckBuilder() {
                                                             variant="bottom"/>
                                                     }
 
-                                            </Col>
+                                            </div>
                                         );
                                     })}
-                                </Row>
+                                </div>
                                 </div>
                                 {showMore < all_cards.length ?
                                     <button
@@ -767,10 +767,10 @@ function PullsDeckBuilder() {
                             </div>
 
                             {main_list.length > 0 ?
-                            <Row xs="auto" className={showMain ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             {ultraRares.includes(card.card_number) ?
                                                 <div className="ultra">
                                                     <img
@@ -789,10 +789,10 @@ function PullsDeckBuilder() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             }
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row> :
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                     </div>
@@ -824,10 +824,10 @@ function PullsDeckBuilder() {
                                     </h5>}
                             </div>
                             {pluck_list.length > 0 ?
-                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             {ultraRares.includes(card.card_number) ?
                                                 <div className="ultra">
                                                     <img
@@ -846,10 +846,10 @@ function PullsDeckBuilder() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             }
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row> :
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
