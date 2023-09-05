@@ -7,11 +7,37 @@ function CardsPage() {
 
     const [cards, setCards] = useState([]);
 
+    const [boosterSets, setBoosterSets] = useState([]);
+
+    const getBoosterSets = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
+        const data = await response.json();
+        setBoosterSets(data.booster_sets);
+    };
+
+    const handleBoosterSetChange = (event) => {
+        setBoosterSetId(event.target.value)
+        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
+        setBoosterSet(selectedBoosterSet)
+        console.log(boosterSet[rarity])
+    };
+
+    const handleRarityChange = (event) => {
+        setRarity(event.target.value);
+        console.log(rarity)
+    };
+
     const {
         query,
         setQuery,
         sortState,
-        setSortState
+        setSortState,
+        boosterSet,
+        setBoosterSet,
+        boosterSetId,
+        setBoosterSetId,
+        rarity,
+        setRarity
     } = useContext(QueryContext);
 
     const [listView, setListView] = useState(false);
@@ -77,6 +103,7 @@ function CardsPage() {
 
     useEffect(() => {
         getCards();
+        getBoosterSets();
         console.log(cards)
         document.title = "Cards - PM CardBase"
         return () => {
@@ -117,6 +144,9 @@ function CardsPage() {
         });
         setShowMore(20)
         setSortState("none")
+        setBoosterSetId("")
+        setBoosterSet("");
+        setRarity("")
     };
 
     const handleSort = (event) => {
@@ -143,6 +173,8 @@ function CardsPage() {
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
+        .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
         const isQueryEmpty = Object.values(query).every((value) => value === "");
@@ -170,6 +202,33 @@ function CardsPage() {
                 value={query.cardText}
                 onChange={handleQuery}>
             </input>
+            <br/>
+            <select
+                className="left dcbsearch-x-large"
+                type="text"
+                placeholder=" Card Set"
+                onChange={handleBoosterSetChange}
+                name="boosterSet"
+                value={boosterSetId}>
+                <option value="">Card Set</option>
+                {boosterSets.map(function(boosterSet)
+                {return( <option value={boosterSet.id}>{boosterSet.name}</option>)}
+                    )}
+            </select>
+            <select
+                className="left dcbsearch-medium"
+                type="text"
+                placeholder=" Rarity"
+                onChange={handleRarityChange}
+                name="rarity"
+                value={rarity}>
+                <option value="">Rarity</option>
+                <option value="mv">Max Variables</option>
+                <option value="normals">Normals</option>
+                <option value="rares">Rares</option>
+                <option value="super_rares">Super Rares</option>
+                <option value="ultra_rares">Ultra Rares</option>
+            </select>
             <br/>
             <input
                 className="left"
@@ -301,7 +360,7 @@ function CardsPage() {
 
             <NavLink to="/cards/create">
                 <button
-                    className="left">
+                    className="left red">
                     Create
                 </button>
             </NavLink>

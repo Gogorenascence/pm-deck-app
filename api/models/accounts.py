@@ -25,7 +25,8 @@ class AccountIn(BaseModel):
     unhashed_password: Optional[str]
     collection: Optional[List]
     wishlist: Optional[List]
-    decks:Optional[List]
+    decks: Optional[List]
+    favorited_decks: Optional[List]
     roles: Optional[List]
 
 
@@ -33,13 +34,5 @@ class Account(AccountIn):
     id: PydanticObjectId
 
 
-class AccountOut(BaseModel):
+class AccountOut(AccountIn):
     id: str
-    email: str
-    password: str
-    username: str
-    unhashed_password: Optional[str]
-    collection: Optional[List]
-    wishlist: Optional[List]
-    decks:Optional[List]
-    roles: Optional[List]

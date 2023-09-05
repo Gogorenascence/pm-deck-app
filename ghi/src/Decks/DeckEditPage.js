@@ -74,6 +74,29 @@ function DeckEditPage() {
         console.log(deckData)
     };
 
+    const [boosterSets, setBoosterSets] = useState([]);
+    const [boosterSetId, setBoosterSetId] = useState("");
+    const [boosterSet, setBoosterSet] = useState("");
+    const [rarity, setRarity] = useState("");
+
+    const getBoosterSets = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
+        const data = await response.json();
+        setBoosterSets(data.booster_sets);
+    };
+
+    const handleBoosterSetChange = (event) => {
+        setBoosterSetId(event.target.value)
+        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
+        setBoosterSet(selectedBoosterSet)
+        console.log(boosterSet[rarity])
+    };
+
+    const handleRarityChange = (event) => {
+        setRarity(event.target.value);
+        console.log(rarity)
+    };
+
     const getDeckList = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
         const deckListData = await response.json();
@@ -118,6 +141,7 @@ function DeckEditPage() {
         getDeck();
         getDeckList();
         getCards();
+        getBoosterSets();
         document.title = `Editing ${deck.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
@@ -159,6 +183,9 @@ function DeckEditPage() {
             reaction: "",
             tag: "",
         });
+        setBoosterSetId("")
+        setBoosterSet("");
+        setRarity("")
     };
 
     const handleSort = (event) => {
@@ -176,6 +203,8 @@ function DeckEditPage() {
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
+        .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
@@ -581,6 +610,35 @@ function DeckEditPage() {
                         <option value="card_number">Card Number</option>
                         <option value="enthusiasm_highest">Enth (High)</option>
                         <option value="enthusiasm_lowest">Enth (Low)</option>
+                        </select>
+                    <br/>
+                    <br/>
+                    <h5 className="left">Search by Rarity</h5>
+                    <select
+                        className="left dcbsearch-medium"
+                        type="text"
+                        placeholder=" Card Set"
+                        onChange={handleBoosterSetChange}
+                        name="boosterSet"
+                        value={boosterSetId}>
+                        <option value="">Card Set</option>
+                        {boosterSets.map(function(boosterSet)
+                        {return( <option value={boosterSet.id}>{boosterSet.name}</option>)}
+                            )}
+                    </select>
+                    <select
+                        className="left dcbsearch-medium"
+                        type="text"
+                        placeholder=" Rarity"
+                        onChange={handleRarityChange}
+                        name="rarity"
+                        value={rarity}>
+                        <option value="">Rarity</option>
+                        <option value="mv">Max Variables</option>
+                        <option value="normals">Normals</option>
+                        <option value="rares">Rares</option>
+                        <option value="super_rares">Super Rares</option>
+                        <option value="ultra_rares">Ultra Rares</option>
                     </select>
                     <br/>
                     <button

@@ -1,5 +1,5 @@
 import {
-    Col,
+    div,
     Row,
     Card,
 } from "react-bootstrap";
@@ -181,7 +181,7 @@ function SetDetailPage() {
                                 {main_list.length > 0 ?<>
                                         {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
-                                                <Col style={{padding: "5px"}}>
+                                                <div style={{padding: "5px"}}>
                                                     <div className="card-container">
                                                     <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
@@ -190,7 +190,7 @@ function SetDetailPage() {
                                                             alt={card.name}
                                                         />
                                                     </div>
-                                                </Col>
+                                                </div>
                                             );
                                         })}
                                     </>:
@@ -215,7 +215,7 @@ function SetDetailPage() {
                                 {pluck_list.length > 0 ?<>
                                         {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
-                                                <Col style={{padding: "5px"}}>
+                                                <div style={{padding: "5px"}}>
                                                     <div className="card-container">
                                                     <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
@@ -224,7 +224,7 @@ function SetDetailPage() {
                                                             alt={card.name}
                                                         />
                                                     </div>
-                                                </Col>
+                                                </div>
                                             );
                                         })}
                                     </>:
@@ -257,10 +257,10 @@ function SetDetailPage() {
                                 </h5>}
                         </div>
                         {ultraRares.length > 0 ?
-                            <Row xs="auto" className={showUltraRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showUltraRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {ultraRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <div className="ultra">
                                                     <img
@@ -271,10 +271,10 @@ function SetDetailPage() {
                                                         variant="bottom"/>
                                                 </div>
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -304,10 +304,10 @@ function SetDetailPage() {
                         </div>
                         {superRares.length > 0 ?
 
-                            <Row xs="auto" className={showSuperRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showSuperRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {superRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -316,10 +316,10 @@ function SetDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -349,10 +349,10 @@ function SetDetailPage() {
                         </div>
                         {rares.length > 0 ?
 
-                            <Row xs="auto" className={showRares ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {rares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -361,10 +361,10 @@ function SetDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -394,10 +394,10 @@ function SetDetailPage() {
                         </div>
                         {normals.length > 0 ?
 
-                            <Row xs="auto" className={showNormals ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showNormals ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {normals.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -406,10 +406,10 @@ function SetDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -439,10 +439,10 @@ function SetDetailPage() {
                         </div>
                         {maxVariables.length > 0 ?
 
-                            <Row xs="auto" className={showMaxVariables ? "justify-content-start" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showMaxVariables ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
                                 {maxVariables.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -451,10 +451,10 @@ function SetDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>:
+                            </div>:
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
@@ -484,10 +484,10 @@ function SetDetailPage() {
                                 </h5>}
                         </div>
                         {pluck_list.length > 0 ?
-                            <Row xs="auto" className={showPluck ? "justify-content-start": "hidden2"} style={{marginBottom: "8px"}}>
+                            <Row className={showPluck ? "card-pool-fill2": "hidden2"} style={{marginBottom: "8px"}}>
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{padding: "5px"}}>
                                             <img
                                             className="builder-card2"
                                                 style={{ width: '140px',
@@ -500,7 +500,7 @@ function SetDetailPage() {
                                                     alt={card.name}
                                                     variant="bottom"/>
 
-                                        </Col>
+                                        </div>
                                     );
                                 })}
                             </Row> :

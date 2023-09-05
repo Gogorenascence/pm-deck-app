@@ -36,7 +36,7 @@ function PullsDeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
-    const {pulls, setPulls}= useContext(PullsContext);
+    const {pulls}= useContext(PullsContext);
 
     const [showMore, setShowMore] = useState(50);
     const [listView, setListView] = useState(false);
@@ -45,7 +45,11 @@ function PullsDeckBuilder() {
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
+    const [boosterSet, setBoosterSet] = useState("");
     const [ultraRares, setUltraRares] = useState([]);
+    const [rarity, setRarity] = useState("");
+
+
 
     const [noCards, setNoCards] = useState(false);
 
@@ -77,10 +81,12 @@ function PullsDeckBuilder() {
         tag: "",
     });
 
-    const getUltrasRares = async() =>{
+    const getBoosterSet = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
         const boosterSetData = await response.json();
+        setBoosterSet(boosterSetData)
         setUltraRares(boosterSetData.ultra_rares)
+
     };
 
     const [sortState, setSortState] = useState("none");
@@ -88,7 +94,7 @@ function PullsDeckBuilder() {
     useEffect(() => {
         getCards();
         console.log(card_set_id)
-        getUltrasRares();
+        getBoosterSet();
         document.title = "Deck Builder - PM CardBase"
         console.log(typeof pulls)
         return () => {
@@ -112,6 +118,11 @@ function PullsDeckBuilder() {
         setShowMore(50)
     };
 
+    const handleRarityChange = (event) => {
+        setRarity(event.target.value);
+        console.log(rarity)
+    };
+
     const handleQueryReset = (event) => {
         setQuery({
             cardName: "",
@@ -126,6 +137,7 @@ function PullsDeckBuilder() {
             reaction: "",
             tag: "",
         });
+        setRarity("")
     };
 
     const handleSort = (event) => {
@@ -143,6 +155,7 @@ function PullsDeckBuilder() {
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
@@ -552,6 +565,29 @@ function PullsDeckBuilder() {
                         <option value="card_number">Card Number</option>
                         <option value="enthusiasm_highest">Enth (High)</option>
                         <option value="enthusiasm_lowest">Enth (Low)</option>
+                        </select>
+                    <br/>
+                    <br/>
+                    <h5 className="left">Search by Rarity</h5>
+                    <select
+                        className="left dcbsearch-medium"
+                        type="text"
+                        name="boosterSet">
+                        <option value={boosterSet.id}>{boosterSet.name}</option>
+                    </select>
+                    <select
+                        className="left dcbsearch-medium"
+                        type="text"
+                        placeholder=" Rarity"
+                        onChange={handleRarityChange}
+                        name="rarity"
+                        value={rarity}>
+                        <option value="">Rarity</option>
+                        <option value="mv">Max Variables</option>
+                        <option value="normals">Normals</option>
+                        <option value="rares">Rares</option>
+                        <option value="super_rares">Super Rares</option>
+                        <option value="ultra_rares">Ultra Rares</option>
                     </select>
                     <br/>
                     <button

@@ -540,6 +540,11 @@ button:hover {
   outline: 1px solid white;
 }
 
+.dcbsearch-x-large {
+  width: 551px;
+  height: 37px;
+}
+
 .dcbsearch-large {
   width: 366px;
   height: 37px;

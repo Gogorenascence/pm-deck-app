@@ -18,6 +18,9 @@ const QueryContextProvider = ({ children }) => {
         tag: "",
     });
     const [sortState, setSortState] = useState("none");
+    const [boosterSetId, setBoosterSetId] = useState("");
+    const [boosterSet, setBoosterSet] = useState("");
+    const [rarity, setRarity] = useState("");
 
     return (
         <QueryContext.Provider value={{
@@ -25,6 +28,12 @@ const QueryContextProvider = ({ children }) => {
             setQuery,
             sortState,
             setSortState,
+            boosterSet,
+            setBoosterSet,
+            boosterSetId,
+            setBoosterSetId,
+            rarity,
+            setRarity
             }}>
             {children}
         </QueryContext.Provider>

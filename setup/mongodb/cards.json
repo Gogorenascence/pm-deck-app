@@ -1070,7 +1070,7 @@
   "series_name": "MAX VARIABLE",
   "card_number": 1066,
   "enthusiasm": 0,
-  "effect_text": "\nUnfurl 2 cards (reveal 2 cards from the top of the Main deck). Add 1 to your play and discard the other. If the added card matches the type MAX VARIABLE is replacing, draw 1 Pluck. Discard MAX VARIABLE.",
+  "effect_text": "\nUnfurl 2 cards (reveal 2 cards from the top of the Main deck). Add 1 card to your play and discard the other card. If the added card matches the type MAX VARIABLE is replacing, draw 1 Pluck. Discard MAX VARIABLE.",
   "second_effect_text": "",
   "illustrator": "Dalfovo",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1rb1mvn2.png",
@@ -1088,17 +1088,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:52",
+    "month": 9,
+    "day": 4,
+    "time": "22:46",
     "full_time": {
-      "$date": "2023-06-25T18:52:57.066Z"
+      "$date": "2023-09-04T22:46:57.415Z"
     }
   }
 },
@@ -2707,7 +2705,7 @@
   "series_name": "Bone Whisperer//Mystic//Nature",
   "card_number": 1011,
   "enthusiasm": 0,
-  "effect_text": "You can resolve one additional Event this round.// Deal 1 piercing damage for each Event in your ownership (max of 4) to a random foe, then gain 2 HP.",
+  "effect_text": "You can resolve one additional Event this round.// Deal 1 piercing damage for each Event in your ownership (max of 4) to a random foe, then gain 1 HP.",
   "second_effect_text": "",
   "illustrator": "Ranbutam",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g3bwm.png",
@@ -2725,17 +2723,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:08",
+    "month": 9,
+    "day": 4,
+    "time": "22:45",
     "full_time": {
-      "$date": "2023-06-25T19:08:46.747Z"
+      "$date": "2023-09-04T22:45:34.815Z"
     }
   }
 },
