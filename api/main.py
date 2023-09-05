@@ -10,6 +10,7 @@ from routers import (
     decks,
     booster_sets,
     accounts,
+    password_resets
 )
 from authenticator import authenticator
 import os
@@ -33,6 +34,7 @@ app.include_router(cards.router, tags=["cards"])
 app.include_router(decks.router, tags=["decks"])
 app.include_router(booster_sets.router, tags=["booster_sets"])
 app.include_router(accounts.router, tags=["accounts"])
+app.include_router(password_resets.router, tags=["password_resets"])
 app.include_router(authenticator.router, tags=["authenticator"])
 
 

@@ -767,3 +767,27 @@ const handleRemoveCardType = (index) => {
       {/* </div> */}
       {/* </div> */}
       {/* </div> */}
+
+
+
+//       // Include the Email.js library in your HTML file
+// <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+// // Initialize Email.js with your API keys
+// emailjs.init("YOUR_USER_ID");
+
+// // Create a function to send an email
+// function sendEmail() {
+//   const templateParams = {
+//     to_email: "recipient@example.com",
+//     from_name: "Your Name",
+//     message: "Hello, this is a test email."
+//   };
+
+//   emailjs.send("YOUR_EMAIL_SERVICE_ID", "YOUR_EMAIL_TEMPLATE_ID", templateParams)
+//     .then(function(response) {
+//       console.log("Email sent successfully:", response);
+//     }, function(error) {
+//       console.error("Email sending failed:", error);
+//     });
+// }

@@ -21,14 +21,8 @@ class PydanticObjectId(ObjectId):
 
 class PasswordResetIn(BaseModel):
     email: str
-    password: str
     username: str
-    unhashed_password: Optional[str]
-    collection: Optional[List]
-    wishlist: Optional[List]
-    decks:Optional[List]
-    roles: Optional[List]
-    confirmation_code: str
+    account_id: str
 
 
 class PasswordReset(PasswordResetIn):

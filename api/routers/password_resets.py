@@ -42,14 +42,7 @@ async def create_password_reset(
     info: PasswordResetIn,
     repo: PasswordResetQueries = Depends(),
 ):
-    hashed_password = authenticator.hash_password(info.password)
-    try:
-        password_reset = repo.create_password_reset(info, hashed_password)
-    except DuplicatePasswordResetError:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot Create An PasswordReset With Those Credentials",
-        )
+    password_reset = repo.create_password_reset(info)
     return password_reset
 
 

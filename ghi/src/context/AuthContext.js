@@ -18,6 +18,19 @@ const AuthContextProvider = ({ children }) => {
         username: "",
         password: "",
         })
+    const [accountId, setAccountId] = useState("")
+    const [updateCred, setUpdateCred] = useState({
+        email: "",
+        password: "",
+        username: "",
+        unhashed_password: "",
+        collection: [],
+        wishlist: [],
+        decks: [],
+        favorited_decks: [],
+        roles: [],
+        created_on: {},
+        })
     const [passwordCon, setPasswordCon] = useState("")
 
     const getToken = async (event) => {
@@ -39,6 +52,19 @@ const AuthContextProvider = ({ children }) => {
             },
         })
         .then(() => login())
+        .catch(console.error);
+    };
+
+    const update = async (event) => {
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${accountId}`
+        fetch(url, {
+            method: "put",
+            body: JSON.stringify(updateCred),
+            headers: {
+            "Content-Type": "application/json",
+            },
+        })
+        .then(() => getAccountData())
         .catch(console.error);
     };
 
@@ -151,6 +177,11 @@ const AuthContextProvider = ({ children }) => {
             setToken,
             signUpCred,
             setSignUpCred,
+            updateCred,
+            setUpdateCred,
+            accountId,
+            setAccountId,
+            update,
             passwordCon,
             setPasswordCon,
             loginCred,

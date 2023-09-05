@@ -55,7 +55,7 @@ function App() {
           <Route path="/cards/card_sets/:card_set_id/pulls" element={<PullPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
           <Route path="/account" element={<AccountPage />} />
-          <Route path="/reset/:processed_account_id" element={<ResetPassword />} />
+          <Route path="/reset/:reset_id" element={<ResetPassword />} />
           <Route path="/articles" element={<UnderConstruction />} />
           <Route path="/gameplay" element={<UnderConstruction />} />
           <Route path="/forum" element={<UnderConstruction />} />

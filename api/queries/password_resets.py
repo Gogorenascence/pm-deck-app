@@ -29,15 +29,9 @@ class PasswordResetQueries(Queries):
         props["id"] = str(props["_id"])
         return PasswordResetOut(**props)
 
-    def create_password_reset(self, info: PasswordResetIn, hashed_password: str) -> PasswordReset:
+    def create_password_reset(self, info: PasswordResetIn) -> PasswordReset:
         props = info.dict()
-        props["unhashed_password"] = props["password"]
-        props["password"] = hashed_password
-        props["roles"] = ["member"]
-        try:
-            self.collection.insert_one(props)
-        except DuplicateKeyError:
-            raise DuplicatePasswordResetError()
+        self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return PasswordResetOut(**props)
 
