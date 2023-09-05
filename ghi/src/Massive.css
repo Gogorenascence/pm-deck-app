@@ -1190,8 +1190,9 @@ button:hover {
 }
 
 .card-row {
-  width: 230px;
-  border-radius: 10px;
+  width: 15vw;
+  min-width: 200px;
+  border-radius: 13px;
   overflow: hidden;
   border: 1px solid white;
 }

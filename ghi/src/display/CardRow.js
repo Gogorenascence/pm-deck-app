@@ -25,33 +25,28 @@ function CardRow() {
 
     return(
         <div className="white-space">
-            <Container>
-                <div className="cd-inner">
-                    {cards.map((card) => {
-                        return (
-                            <div style={{width: "230px", margin: "0px 5px"}}>
-                                <NavLink to={`/cards/${card.card_number}`}>
-                                        <img
-                                            className="card-row"
-                                            title={card.name}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}/>
-                                </NavLink>
-                            </div>
-                        );
-                    })}
-                </div>
-                <br/>
-                <div className="d-grid gap-2">
-                    <NavLink to="/cards">
-                        <button variant="dark" size="lg" style={{ width: "100%" }}>
-                            Browse All Cards
-                        </button>
-                    </NavLink>
-                </div>
-            </Container>
+            <div className="cd-inner">
+                {cards.map((card) => {
+                    return (
+                        <div style={{width: "15vw", margin: "0px 5px"}}>
+                            <NavLink to={`/cards/${card.card_number}`}>
+                                    <img
+                                        className="card-row"
+                                        title={card.name}
+                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                        alt={card.name}/>
+                            </NavLink>
+                        </div>
+                    );
+                })}
+            </div>
+            <br/>
+            <NavLink to="/cards">
+                <button style={{ width: "100%" }}>
+                    Browse All Cards
+                </button>
+            </NavLink>
         </div>
-
     );
 }
 

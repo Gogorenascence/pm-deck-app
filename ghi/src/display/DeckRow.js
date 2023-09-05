@@ -1,5 +1,4 @@
 import {
-    Container,
     Card,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
@@ -10,8 +9,6 @@ import { AuthContext } from "../context/AuthContext";
 function DeckRow() {
 
     const [decks, setDecks] = useState([]);
-    // const [cover, setCover] = useState("");
-    // const [deckId, setDeckId] = useState("");
 
     const {account} = useContext(AuthContext)
 
@@ -89,13 +86,6 @@ function DeckRow() {
     const all_decks = decks.filter(deck => deck.private ? deck.private === false | deck.account_id === account.id : true)
     .slice(-4).reverse()
 
-    // const getDecks = async() =>{
-    //     const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
-    //     const data = await response.json();
-
-    //     setDecks(data.decks.slice(-5).reverse());
-    // };
-
     useEffect(() => {
         getDecks();
     }, []);
@@ -104,87 +94,67 @@ function DeckRow() {
 
     return(
         <div className="white-space">
-            <Container>
-                <div className="deck-row-card-list2">
-                    {all_decks.map((deck) => {
-                        return (
-                            // <div style={{width: "230px", margin: "0px 5px"}}>
-
-                                <NavLink to={`/decks/${deck.id}`}>
-                                    <Card className="text-white text-center card-list-card3">
-                                        <div className="card-image-wrapper">
-                                            <div className="card-image-clip">
-                                                <Card.Img
-                                                    src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
-                                                    alt="Card image"
-                                                    className="card-image2"
-                                                    variant="bottom"/>
-                                            </div>
+            <div className="deck-row-card-list2">
+                {all_decks.map((deck) => {
+                    return (
+                        <NavLink to={`/decks/${deck.id}`}>
+                            <Card className="text-white text-center card-list-card3">
+                                <div className="card-image-wrapper">
+                                    <div className="card-image-clip">
+                                        <Card.Img
+                                            src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
+                                            alt="Card image"
+                                            className="card-image2"
+                                            variant="bottom"/>
+                                    </div>
+                                </div>
+                                <Card.ImgOverlay className="blackfooter2 mt-auto">
+                                        <h3 className="left cd-container-child">{deck.name}</h3>
+                                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
+                                        >
+                                            User:
+                                        </h6> */}
+                                        <h6 className="left"
+                                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                                        >
+                                            Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                                        </h6>
+                                        <h6 className="left"
+                                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                                        >
+                                            Main Deck: {deck.cards.length} &nbsp; Pluck Deck: {deck.pluck.length}
+                                        </h6>
+                                        <div style={{ display: "flex" }}>
+                                            <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
+                                            <h6
+                                            className="left justify-content-end"
+                                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                                            >
+                                                {deck.created_on.ago} &nbsp; &nbsp;
+                                            </h6>
+                                            <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
+                                            <h6
+                                            className="left justify-content-end"
+                                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                                            >
+                                                {deck.updated_on.ago}
+                                            </h6>
                                         </div>
-                                        <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                                <h3 className="left cd-container-child">{deck.name}</h3>
-                                                {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
-                                                >
-                                                    User:
-                                                </h6> */}
-                                                <h6 className="left"
-                                                    style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
-                                                >
-                                                    Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
-                                                </h6>
-                                                <h6 className="left"
-                                                    style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
-                                                >
-                                                    Main Deck: {deck.cards.length} &nbsp; Pluck Deck: {deck.pluck.length}
-                                                </h6>
-                                                <div style={{ display: "flex" }}>
-                                                    <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
-                                                    <h6
-                                                    className="left justify-content-end"
-                                                        style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                                                    >
-                                                        {deck.created_on.ago} &nbsp; &nbsp;
-                                                    </h6>
-                                                    <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
-                                                    <h6
-                                                    className="left justify-content-end"
-                                                        style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                                                    >
-                                                        {deck.updated_on.ago}
-                                                    </h6>
-                                                </div>
-                                        </Card.ImgOverlay>
-                                    </Card>
-                                </NavLink>
-
-
-                            //     <NavLink to={`/decks/${deck.id}`}>
-                            //         <Card className="text-white text-center" style={{ width: '230px', borderRadius: "10px", overflow: "hidden"}}>
-                            //             <Card.Img
-                            //                 title={deck.name}
-                            //                 src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/krY25iI.png"}
-                            //                 alt="Card image"
-                            //                 variant="bottom"/>
-                            //             <Card.ImgOverlay className="blackfooter mt-auto">
-                            //                 <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">{deck.name}</Card.Title>
-                            //             </Card.ImgOverlay>
-                            //         </Card>
-                            //     </NavLink>
-                            // </div>
-                        );
-                    })}
-                </div>
-                <br/>
-                <div className="d-grid gap-2">
-                    <NavLink to="/decks">
-                        <button variant="dark" size="lg" style={{ width: "100%" }}>
-                            Browse All Decks
-                        </button>
-                    </NavLink>
-                </div>
-            </Container>
+                                </Card.ImgOverlay>
+                            </Card>
+                        </NavLink>
+                    );
+                })}
+            </div>
+            <br/>
+            <div className="d-grid gap-2">
+                <NavLink to="/decks">
+                    <button variant="dark" size="lg" style={{ width: "100%" }}>
+                        Browse All Decks
+                    </button>
+                </NavLink>
+            </div>
         </div>
-
     );
 }
 
