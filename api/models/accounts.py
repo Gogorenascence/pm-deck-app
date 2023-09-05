@@ -28,6 +28,7 @@ class AccountIn(BaseModel):
     decks: Optional[List]
     favorited_decks: Optional[List]
     roles: Optional[List]
+    created_on: Optional[dict]
 
 
 class Account(AccountIn):

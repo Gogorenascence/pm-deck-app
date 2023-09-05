@@ -4,6 +4,7 @@ from models.accounts import Account, AccountIn, AccountOut
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from typing import Union
+from datetime import datetime
 
 
 class DuplicateAccountError(ValueError):
@@ -41,12 +42,21 @@ class AccountQueries(Queries):
         props["unhashed_password"] = props["password"]
         props["password"] = hashed_password
         props["roles"] = ["member"]
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": date
+        }
+        props["created_on"] = time_dict
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:
             raise DuplicateAccountError()
         props["id"] = str(props["_id"])
-        return AccountOut(**props)
+        return Account(**props)
 
     def update_account(
             self,

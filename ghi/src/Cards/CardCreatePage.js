@@ -18,6 +18,8 @@ function CardCreatePage() {
         extra_effects: [],
         reactions: [],
         card_tags: [],
+        created_on: {},
+        updated_on: {},
     });
 
     const [card_type, setCardType] = useState([]);
