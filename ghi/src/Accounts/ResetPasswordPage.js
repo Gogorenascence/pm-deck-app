@@ -1,6 +1,7 @@
 import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import emailjs from "@emailjs/browser";
 
 
 function ResetPassword() {
@@ -64,14 +65,33 @@ function ResetPassword() {
     useEffect(() => {
         getPasswordReset()
         getAccountInfo()
+        emailjs.init("deGtSFC4mncNpm_4n");
         console.log(passwordReset)
     },[]);
+
+    function sendEmail() {
+        const templateParams = {
+            to_email: "nantahkl@gmail.com",
+            from_name: "Team CardBase",
+            message: "Here's the reset link: ",
+            // reset_link: `http://localhost:3000/reset/${passwordReset.id}`
+            reset_link: "http://localhost:3000/reset/64f6a25e07273674a7a1375d"
+            };
+
+        emailjs.send("service_5y7llwl", "template_58fwghk", templateParams)
+        .then(function(response) {
+            console.log("Email sent successfully:", response);
+        }, function(error) {
+            console.error("Email sending failed:", error);
+        });
+    }
 
     return (
         <div className="whitespace">
             <button onClick={getPasswordReset}>Password Reset</button>
             <button onClick={getAccountInfo}>Account</button>
             <button onClick={Update}>Update</button>
+            <button onClick={sendEmail}>Send Email</button>
         </div>
     );
 }
