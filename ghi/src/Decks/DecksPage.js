@@ -138,7 +138,7 @@ function DecksPage() {
         setDeckShowMore(deckShowMore + 20);
     };
 
-    const all_decks = decks.filter(deck => deck.private ? deck.private === false | deck.account_id === account.id : true)
+    const all_decks = decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
         .filter(deck => deck.name.toLowerCase().includes(deckQuery.deckName.toLowerCase()))
         .filter(deck => (deck.description).toLowerCase().includes(deckQuery.description.toLowerCase()))
         .filter(deck => deckQuery.cardName ? (deck.card_names && deck.card_names.length > 0 ? deck.card_names.some(name => name.toLowerCase().includes(deckQuery.cardName.toLowerCase())) : false) : true)

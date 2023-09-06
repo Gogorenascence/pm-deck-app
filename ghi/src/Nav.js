@@ -387,7 +387,7 @@ function Nav() {
           null
         }
       </div>
-      { !token?
+      { !account?
         <>
           <button className="button100"
             onClick={handleShowLoginModal}>
