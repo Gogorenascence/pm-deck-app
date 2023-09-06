@@ -99,17 +99,19 @@ const AuthContextProvider = ({ children }) => {
     };
 
     const logout = async () => {
-        if (token) {
+        if (account) {
             const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`;
             fetch(url, { method: "delete", credentials: "include" })
                 .then(() => {
                 setToken(null);
                 // Delete old token
+                console.log("logged out")
                 document.cookie =
-                    "fastapi_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                "fastapi_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 })
                 .catch(console.error);
         }
+        console.log("not logged out")
         window.location.href = `${process.env.PUBLIC_URL}/`
     };
 
