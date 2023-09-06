@@ -46,11 +46,11 @@ function App() {
           <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
           <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
           <Route path="/cards" element={<CardsPage />} />
-          <Route path="/cards/create" element={<CardCreatePage />} />
+          <Route path="/card_create" element={<CardCreatePage />} />
           <Route path="/cards/:card_number" element={<CardDetailPage />} />
-          <Route path="/cards/topcards" element={<TopCardsPage />} />
-          <Route path="/cards/series" element={<UnderConstruction />} />
-          <Route path="/cards/card_sets" element={<SetsPage />} />
+          <Route path="/topcards" element={<TopCardsPage />} />
+          <Route path="/series" element={<UnderConstruction />} />
+          <Route path="/card_sets" element={<SetsPage />} />
           <Route path="/cards/card_sets/:card_set_id" element={<SetDetailPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls" element={<PullPage />} />
           <Route path="/cards/card_sets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />

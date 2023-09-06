@@ -358,7 +358,7 @@ function CardsPage() {
             </select>
             <br/>
 
-            <NavLink to="/cards/create">
+            <NavLink to="/card_create">
                 <button
                     className="left red">
                     Create

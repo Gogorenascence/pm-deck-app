@@ -193,27 +193,27 @@ function Nav() {
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/cards">
+                  <NavLink className="dropdown-item" to="/cards" exact={true}>
                     Search Cards
                     </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/create">
+                  <NavLink className="dropdown-item" to="/card_create" exact={true}>
                     Card Create
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/topcards">
+                  <NavLink className="dropdown-item" to="/topcards" exact={true}>
                     Top Cards
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/series">
+                  <NavLink className="dropdown-item" to="/series" exact={true}>
                     Series
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cards/card_sets">
+                  <NavLink className="dropdown-item" to="/card_sets" exact={true}>
                     Card Sets
                   </NavLink>
                 </li>
