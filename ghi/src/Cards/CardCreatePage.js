@@ -277,7 +277,9 @@ function CardCreatePage() {
     });
 
     return (
-        <div className="white-space">
+        <div>
+        { account && account.roles.includes("admin")?
+            <div className="white-space">
             <h1 className='margin-top-40'>Card Create</h1>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <div className="create-section">
@@ -520,15 +522,13 @@ function CardCreatePage() {
             </div>
             <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <div>
-                    { account && account.roles.includes("admin")?
-                        <button
-                            className="add-comp-button"
-                            variant="dark"
-                            onClick={handleSubmit}
-                        >
-                            Create
-                        </button>:
-                    null}
+                    <button
+                        className="add-comp-button"
+                        variant="dark"
+                        onClick={handleSubmit}
+                    >
+                        Create
+                    </button>
                     <button
                         className="add-comp-button red"
                         variant="danger"
@@ -538,6 +538,12 @@ function CardCreatePage() {
                     </button>
                 </div>
             </div>
+            </div>:
+
+                <div className="textwindow">
+                    <h1 className="undercontext">This Feature Is For Admins Only</h1>
+                    <h3 className="undercontext">Sorry About That</h3>
+                </div>}
         </div>
     )
 }
