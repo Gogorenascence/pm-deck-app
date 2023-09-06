@@ -367,7 +367,6 @@ function DeckEditPage() {
             <h1 className="left-h1">Deck Edit</h1>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
-                    style={{marginBottom: "45px", width: "435px"}}
                     id="create-deck-page">
                     <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
@@ -405,6 +404,7 @@ function DeckEditPage() {
                     </textarea>
                     <h5 className="label">Strategies</h5>
                     <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
+                    <br/>
                     <select
                         className="builder-text"
                         multiple
@@ -437,25 +437,27 @@ function DeckEditPage() {
                         Make my deck private
                     </label>
                     <br/>
-                    <button
-                        style={{width: "67px", margin: "5px"}}
-                        onClick={handleSubmit}
-                        className="heightNorm"
-                    >
+                    { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
+                        <button
+                            style={{width: "67px", margin: "5px"}}
+                            onClick={handleSubmit}
+                            className="heightNorm"
+                        >
                             Save
-                    </button>
+                        </button>:
+                    null}
                     <BackButton/>
                     <button
                         className="left red heightNorm"
                         onClick={clearMain}
                     >
-                            Clear Main
+                        Clear Main
                     </button>
                     <button
                         className="left red heightNorm"
                         onClick={clearPluck}
                     >
-                            Clear Pluck
+                        Clear Pluck
                     </button>
                     <br/>
                 </div>

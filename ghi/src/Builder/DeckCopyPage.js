@@ -368,7 +368,6 @@ function DeckCopyPage() {
             <h1 className="left-h1">Deck Copy</h1>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
-                    style={{marginBottom: "45px", width: "435px"}}
                     id="create-deck-page">
                     <h2 className="left">Deck Details</h2>
                     <h5 className="label">Name </h5>
@@ -406,6 +405,7 @@ function DeckCopyPage() {
                     </textarea>
                     <h5 className="label">Strategies</h5>
                     <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
+                    <br/>
                     <select
                         className="builder-text"
                         multiple
@@ -438,31 +438,43 @@ function DeckCopyPage() {
                         Make my deck private
                     </label>
                     <br/>
-                    <button
+                    {account?
+                        <button
+                            style={{width: "67px", margin: "5px"}}
+                            variant="dark"
+                            onClick={handleSubmit}
+                        >
+                            Save
+                        </button>:
+                        <button
                         style={{width: "67px", margin: "5px"}}
                         variant="dark"
-                        onClick={handleSubmit}
-                    >
+                        >
                             Save
-                    </button>
+                        </button>
+                    }
                     <BackButton/>
                     <button
                         className="left red"
                         variant="danger"
                         onClick={clearMain}
                     >
-                            Clear Main
+                        Clear Main
                     </button>
                     <button
                         className="left red"
                         variant="danger"
                         onClick={clearPluck}
                     >
-                            Clear Pluck
+                        Clear Pluck
                     </button>
                     <br/>
+                    { !account?
+                        <h6 className="error">You must be logged in to copy a deck</h6>:
+                    null
+                    }
                 </div>
-                <div style={{ width: "350px"}}>
+                <div>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img

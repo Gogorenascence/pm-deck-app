@@ -389,29 +389,41 @@ function PullsDeckBuilder() {
                         Make my deck private
                     </label>
                     <br/>
-                    <button
+                    {account?
+                        <button
+                            className="left"
+                            style={{ marginTop: "9px"}}
+                            onClick={handleSubmit}
+                        >
+                            Create Deck
+                        </button>:
+                        <button
                         className="left"
                         style={{ marginTop: "9px"}}
-                        onClick={handleSubmit}
-                    >
+                        >
                             Create Deck
-                    </button>
+                        </button>
+                    }
                     <button
                         className="left red"
                         style={{ marginTop: "9px"}}
                         onClick={clearMain}
                     >
-                            Clear Main
+                        Clear Main
                     </button>
                     <button
                         className="left red"
                         style={{ marginTop: "9px"}}
                         onClick={clearPluck}
                     >
-                            Clear Pluck
+                        Clear Pluck
                     </button>
                     <br/>
-                </div>
+                    { !account?
+                        <h6 className="error">You must be logged in to create a deck</h6>:
+                    null
+                    }
+                    </div>
                 <div style={{ width: "350px"}}>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (

@@ -236,7 +236,7 @@ function PullPage() {
                 <button onClick={handleClearPulls} className="left">
                     Clear Pulls
                 </button>
-                <NavLink to={`/cards/card_sets/${card_set_id}/pulls/deckbuilder`}>
+                <NavLink to={`/cardsets/${card_set_id}/pulls/deckbuilder`}>
                 <button
                     className="left">
                     Create Deck

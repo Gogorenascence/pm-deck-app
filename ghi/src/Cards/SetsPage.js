@@ -131,7 +131,7 @@ function SetsPage() {
             <div className="decks-page-card-list2">
                 {all_booster_sets.slice(0, boosterSetShowMore).map((boosterSet) => {
                     return (
-                        <NavLink to={`/cards/card_sets/${boosterSet.id}`}>
+                        <NavLink to={`/cardsets/${boosterSet.id}`}>
                             <Card className="text-white text-center card-list-card3">
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">

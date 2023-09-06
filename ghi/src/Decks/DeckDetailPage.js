@@ -3,10 +3,11 @@ import {
     Row,
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
+import { AuthContext } from "../context/AuthContext";
 
 
 function DeckDetailPage() {
@@ -26,6 +27,8 @@ function DeckDetailPage() {
     const [listView, setListView] = useState(false);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
+
+    const {account} = useContext(AuthContext)
 
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
@@ -260,15 +263,17 @@ function DeckDetailPage() {
                     null}
             </div>
             <div style={{ display: "flex" }}>
-            <NavLink to={`/decks/${deck.id}/edit`}>
-                <button
-                        className="left heightNorm button100 red"
-                        variant="danger"
-                        style={{marginLeft: ".5%", marginRight: "7px"}}
-                        >
-                        Edit Deck
-                </button>
-            </NavLink>
+            { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
+                <NavLink to={`/decks/${deck.id}/edit`}>
+                    <button
+                            className="left heightNorm button100 red"
+                            variant="danger"
+                            style={{marginLeft: ".5%", marginRight: "7px"}}
+                            >
+                            Edit Deck
+                    </button>
+                </NavLink>:
+            null}
             {listView?
                 <button
                     className="left"

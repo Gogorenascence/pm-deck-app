@@ -1,11 +1,12 @@
 import {
     Container,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../display/BackButton";
+import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 
@@ -39,6 +40,8 @@ function CardDetailPage() {
     const [card_tags, setCardTags] = useState([])
 
     const [cards, setCards] = useState([]);
+
+    const { account } = useContext(AuthContext)
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
@@ -156,6 +159,13 @@ function CardDetailPage() {
                             {relatedCards.length > 6?
                                 <RelatedCardModal/>: null
                             }
+                            { account && account.roles.includes("admin")?
+                                null:
+                                <BackButton
+                                    className="left button100 heightNorm"
+                                    style={{marginLeft: "5%", textAlign: "center"}}
+                                />
+                            }
                         </div>
                     </div>
                 </div>
@@ -263,18 +273,17 @@ function CardDetailPage() {
                             </div>
                         </div>
                         <div>
-                            <Container style={{margin: "2% 0%", width: "662px"}}>
-                                <div style={{display: "flex", marginBottom: ".75%"}}>
-                                    <CardEditModal/>
-                                    <BackButton
-                                        className="left button100 heightNorm"
-                                        style={{marginLeft: "5%", textAlign: "center"}}
-                                    />
-                                </div>
-                                {/* <div style={{ display: "flex"}}>
-                                    <CardAddToDeckModal/>
-                                </div> */}
-                            </Container>
+                            { account && account.roles.includes("admin")?
+                                <Container style={{margin: "2% 0%", width: "662px"}}>
+                                    <div style={{display: "flex", marginBottom: ".75%"}}>
+                                        <CardEditModal/>
+                                        <BackButton
+                                            className="left button100 heightNorm"
+                                            style={{marginLeft: "5%", textAlign: "center"}}
+                                        />
+                                    </div>
+                                </Container>:
+                            null}
                         </div>
                     </div>
                 </div>

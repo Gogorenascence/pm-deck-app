@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
 import { QueryContext } from "../context/QueryContext";
+import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
 function CardsPage() {
@@ -26,6 +27,8 @@ function CardsPage() {
         setRarity(event.target.value);
         console.log(rarity)
     };
+
+    const { account } = useContext(AuthContext)
 
     const {
         query,
@@ -358,12 +361,14 @@ function CardsPage() {
             </select>
             <br/>
 
-            <NavLink to="/card_create">
-                <button
-                    className="left red">
-                    Create
-                </button>
-            </NavLink>
+            { account && account.roles.includes("admin")?
+                <NavLink to="/cardcreate">
+                    <button
+                        className="left red">
+                        Create
+                    </button>
+                </NavLink>:
+            null}
             <button
                 className="left"
                 variant="dark"

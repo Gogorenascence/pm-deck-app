@@ -197,11 +197,13 @@ function Nav() {
                     Search Cards
                     </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/card_create" exact={true}>
-                    Card Create
-                  </NavLink>
-                </li>
+                { account && account.roles.includes("admin")?
+                  <li>
+                      <NavLink className="dropdown-item" to="/cardcreate" exact={true}>
+                        Card Create
+                      </NavLink>
+                    </li>:
+                null}
                 <li>
                   <NavLink className="dropdown-item" to="/topcards" exact={true}>
                     Top Cards
@@ -213,7 +215,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/card_sets" exact={true}>
+                  <NavLink className="dropdown-item" to="/cardsets" exact={true}>
                     Card Sets
                   </NavLink>
                 </li>

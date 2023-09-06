@@ -92,6 +92,9 @@ function ResetPassword() {
             <button onClick={getAccountInfo}>Account</button>
             <button onClick={Update}>Update</button>
             <button onClick={sendEmail}>Send Email</button>
+
+
+
         </div>
     );
 }

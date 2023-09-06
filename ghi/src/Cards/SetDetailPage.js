@@ -1,6 +1,4 @@
 import {
-    div,
-    Row,
     Card,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -150,7 +148,7 @@ function SetDetailPage() {
                     >
                         List View
                     </button>} */}
-                    <NavLink to={`/cards/card_sets/${boosterSet.id}/pulls`}>
+                    <NavLink to={`/cardsets/${boosterSet.id}/pulls`}>
                     <button
                             className="left heightNorm"
                             variant="danger"
