@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/AuthContext';
 
 
 function CardCreatePage() {
@@ -38,6 +39,7 @@ function CardCreatePage() {
     const [cardTagInput, setCardTagInput] = useState("");
 
     const [showComps, setShowComps] = useState(false);
+    const {account} = useContext(AuthContext)
 
     const getCardTypes = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
@@ -518,19 +520,21 @@ function CardCreatePage() {
             </div>
             <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <div>
-                    <button
-                        className="add-comp-button"
-                        variant="dark"
-                        onClick={handleSubmit}
-                    >
+                    { account && account.roles.includes("admin")?
+                        <button
+                            className="add-comp-button"
+                            variant="dark"
+                            onClick={handleSubmit}
+                        >
                             Create
-                    </button>
+                        </button>:
+                    null}
                     <button
                         className="add-comp-button red"
                         variant="danger"
                         onClick={handleClear}
                     >
-                            Reset
+                        Reset
                     </button>
                 </div>
             </div>
