@@ -3996,13 +3996,10 @@
   "_id": {
     "$oid": "64f80471525e01063274aa35"
   },
-  "name": "Training: First Strike",
-  "account_id": "64ecc30f82c5729f0b36e158",
+  "name": "Demo Deck",
+  "account_id": "",
   "description": "",
-  "strategies": [
-    "Aggro",
-    "Combo"
-  ],
+  "strategies": [],
   "cards": [
     1001,
     1001,
@@ -4051,13 +4048,13 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 7,
+    "day": 6,
     "time": "04:47",
     "full_time": {
-      "$date": "2023-09-07T04:47:50.505Z"
+      "$date": "2023-09-06T04:47:45.225Z"
     }
   },
-  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl01pme.png",
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
   "parent_id": "",
   "card_names": null,
   "series_names": null,
@@ -4067,8 +4064,8 @@
   "_id": {
     "$oid": "64f80500525e01063274aa88"
   },
-  "name": "Training: Last Act",
-  "account_id": "64ecc30f82c5729f0b36e158",
+  "name": "Demo Deck 2",
+  "account_id": "",
   "description": "",
   "strategies": [],
   "cards": [
@@ -4119,13 +4116,13 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 7,
-    "time": "04:48",
+    "day": 6,
+    "time": "04:50",
     "full_time": {
-      "$date": "2023-09-07T04:48:57.224Z"
+      "$date": "2023-09-06T04:50:42.233Z"
     }
   },
-  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bme.png",
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bmf.png",
   "parent_id": "",
   "card_names": null,
   "series_names": null,
@@ -4135,13 +4132,10 @@
   "_id": {
     "$oid": "64f8073c525e01063274aae5"
   },
-  "name": "Training: Bonds of Sisters",
-  "account_id": "64ecc30f82c5729f0b36e158",
+  "name": "Demo Deck 3",
+  "account_id": "",
   "description": "",
-  "strategies": [
-    "Combo",
-    "Ramp"
-  ],
+  "strategies": [],
   "cards": [
     1039,
     1041,
@@ -4190,13 +4184,13 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 7,
-    "time": "04:50",
+    "day": 6,
+    "time": "04:59",
     "full_time": {
-      "$date": "2023-09-07T04:50:18.643Z"
+      "$date": "2023-09-06T04:59:40.649Z"
     }
   },
-  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl11hse.png",
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b3hsf.png",
   "parent_id": "",
   "card_names": null,
   "series_names": null,
@@ -4206,14 +4200,10 @@
   "_id": {
     "$oid": "64f80d35525e01063274ab8c"
   },
-  "name": "Training: Strong Counterblow",
-  "account_id": "64ecc30f82c5729f0b36e158",
+  "name": "Demo Deck 4",
+  "account_id": "",
   "description": "",
-  "strategies": [
-    "Aggro",
-    "Combo",
-    "Ramp"
-  ],
+  "strategies": [],
   "cards": [
     1021,
     1022,
@@ -4262,10 +4252,10 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 7,
-    "time": "04:52",
+    "day": 6,
+    "time": "05:25",
     "full_time": {
-      "$date": "2023-09-07T04:52:07.524Z"
+      "$date": "2023-09-06T05:25:09.411Z"
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r4bgaf.png",

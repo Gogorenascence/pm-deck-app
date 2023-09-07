@@ -111,7 +111,6 @@ const AuthContextProvider = ({ children }) => {
                 })
                 .catch(console.error);
         }
-        console.log("not logged out")
         window.location.href = `${process.env.PUBLIC_URL}/`
     };
 
