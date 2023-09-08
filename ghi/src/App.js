@@ -33,36 +33,38 @@ function App() {
     <AppProvider>
 
     <BrowserRouter>
-      <Nav/>
-      <LightSwitch/>
-      <BackToTop/>
-      <div className="App">
+        <div className="content">
+          <Nav/>
+          <LightSwitch/>
+          <BackToTop/>
+          <div className="App">
 
-        <Routes>
-          <Route index element={<MainPage />} />
-          <Route path="/deckbuilder" element={<DeckBuilder />} />
-          <Route path="/decks" element={<DecksPage />} />
-          <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
-          <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
-          <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
-          <Route path="/cards" element={<CardsPage />} />
-          <Route path="/cardcreate" element={<CardCreatePage />} />
-          <Route path="/cards/:card_number" element={<CardDetailPage />} />
-          <Route path="/topcards" element={<TopCardsPage />} />
-          <Route path="/series" element={<UnderConstruction />} />
-          <Route path="/cardsets" element={<SetsPage />} />
-          <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
-          <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
-          <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
-          <Route path="/account" element={<AccountPage />} />
-          <Route path="/reset/:reset_id" element={<ResetPassword />} />
-          <Route path="/articles" element={<UnderConstruction />} />
-          <Route path="/gameplay" element={<UnderConstruction />} />
-          <Route path="/forum" element={<UnderConstruction />} />
-        </Routes>
+            <Routes>
+              <Route index element={<MainPage />} />
+              <Route path="/deckbuilder" element={<DeckBuilder />} />
+              <Route path="/decks" element={<DecksPage />} />
+              <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
+              <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
+              <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
+              <Route path="/cards" element={<CardsPage />} />
+              <Route path="/cardcreate" element={<CardCreatePage />} />
+              <Route path="/cards/:card_number" element={<CardDetailPage />} />
+              <Route path="/topcards" element={<TopCardsPage />} />
+              <Route path="/series" element={<UnderConstruction />} />
+              <Route path="/cardsets" element={<SetsPage />} />
+              <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
+              <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
+              <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/reset/:reset_id" element={<ResetPassword />} />
+              <Route path="/articles" element={<UnderConstruction />} />
+              <Route path="/gameplay" element={<UnderConstruction />} />
+              <Route path="/forum" element={<UnderConstruction />} />
+            </Routes>
 
-      </div>
-      <Footer/>
+          </div>
+        </div>
+        <Footer/>
     </BrowserRouter>
 
     </AppProvider>

@@ -83,7 +83,7 @@ function DeckRow() {
         console.log(decks)
     };
 
-    const all_decks = decks.filter(deck => deck.private ? deck.private === false | deck.account_id === account.id : true)
+    const all_decks = decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
     .slice(-4).reverse()
 
     const createdBy = (deck) => {
