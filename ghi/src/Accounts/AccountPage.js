@@ -2,7 +2,7 @@ import {
     Card,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { DeckQueryContext } from "../context/DeckQueryContext";
 import { AuthContext } from "../context/AuthContext";
 
@@ -23,6 +23,7 @@ function AccountPage() {
     } = useContext(DeckQueryContext)
 
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const getDecks = async() =>{
         setLoading(true)
@@ -97,7 +98,7 @@ function AccountPage() {
     const getRandomDeck = async() =>{
         const randomIndex = Math.floor(Math.random() * decks.length);
         const randomDeck = decks[randomIndex].id;
-        window.location.href = `${process.env.PUBLIC_URL}/decks/${randomDeck}`;
+        navigate(`/decks/${randomDeck}`);
     }
 
     useEffect(() => {

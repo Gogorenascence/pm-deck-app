@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { QueryContext } from "../context/QueryContext";
 import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
@@ -97,11 +97,13 @@ function CardsPage() {
         setCards(typedCards);
     };
 
+    const navigate = useNavigate()
+
     const getRandomCard = async() =>{
         const randomIndex = Math.floor(Math.random() * cards.length);
         const randomCard = cards[randomIndex].card_number;
         console.log(randomCard.card_number)
-        window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
+        navigate(`/cards/${randomCard}`)
     }
 
     useEffect(() => {

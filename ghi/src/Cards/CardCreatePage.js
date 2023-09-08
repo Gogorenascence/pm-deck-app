@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 function CardCreatePage() {
@@ -40,6 +41,7 @@ function CardCreatePage() {
 
     const [showComps, setShowComps] = useState(false);
     const {account} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const getCardTypes = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`);
@@ -245,7 +247,7 @@ function CardCreatePage() {
                 reactions: [],
                 card_tags: [],
             });
-            window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
+            navigate(`/cards/${card_number}`);
         } else {
             alert("Error in creating card");
         }

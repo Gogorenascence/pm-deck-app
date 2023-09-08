@@ -3,7 +3,7 @@ import {
     Row,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { PullsContext } from "../context/PullsContext";
 import { AuthContext } from "../context/AuthContext";
 
@@ -241,6 +241,8 @@ function PullsDeckBuilder() {
         }
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...deck};
@@ -283,7 +285,7 @@ function PullsDeckBuilder() {
                 cover_card: "",
                 parent_id: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            navigate(`/decks/${deck_id}`);
         } else {
             alert("Error in creating deck");
         }

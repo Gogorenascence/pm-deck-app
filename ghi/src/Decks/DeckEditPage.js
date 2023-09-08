@@ -4,7 +4,7 @@ import {
     button,
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
@@ -293,6 +293,8 @@ function DeckEditPage() {
         }
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...deck};
@@ -307,7 +309,6 @@ function DeckEditPage() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
-        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
@@ -333,7 +334,7 @@ function DeckEditPage() {
                 views: 0,
                 cover_card: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            navigate(`/decks/${deck_id}`)
         };
     }
 

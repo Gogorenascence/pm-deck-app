@@ -2,7 +2,7 @@ import {
     Container,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useParams} from 'react-router-dom';
+import { NavLink, useParams, useNavigate} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../display/BackButton";
@@ -99,11 +99,13 @@ function CardDetailPage() {
         setCards(data.cards.reverse());
     };
 
+    const navigate = useNavigate()
+
     const getRandomCard = async() =>{
         const randomIndex = Math.floor(Math.random() * cards.length);
         const randomCard = cards[randomIndex].card_number;
         console.log(randomCard.card_number)
-        window.location.href = `${process.env.PUBLIC_URL}/cards/${randomCard}`;
+        navigate(`/cards/${randomCard}`);
     }
 
     useEffect(() => {

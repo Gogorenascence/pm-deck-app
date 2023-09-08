@@ -3,6 +3,7 @@ import {
     Row,
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
 
@@ -242,6 +243,8 @@ function DeckBuilder() {
         }
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...deck};
@@ -284,7 +287,7 @@ function DeckBuilder() {
                 cover_card: "",
                 parent_id: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${deck_id}`;
+            navigate(`/decks/${deck_id}`);
         } else {
             alert("Error in creating deck");
         }

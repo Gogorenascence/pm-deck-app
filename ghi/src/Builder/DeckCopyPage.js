@@ -3,7 +3,7 @@ import {
     Row,
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
@@ -287,6 +287,8 @@ function DeckCopyPage() {
         }
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...deck};
@@ -332,7 +334,7 @@ function DeckCopyPage() {
                 cover_card: "",
                 parent_id: "",
             });
-            window.location.href = `${process.env.PUBLIC_URL}/decks/${child_deck_id}`;
+            navigate(`/decks/${child_deck_id}`)
         } else {
             alert("Error in copying deck");
         }

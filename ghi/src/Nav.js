@@ -79,7 +79,7 @@ function Nav() {
       resetLoginCred()
       setShowSignUpModal(false)
     }
-    console(signUpError)
+    console.log(signUpError)
   };
 
   const Login = async (event) => {

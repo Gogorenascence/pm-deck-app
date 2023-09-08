@@ -3,7 +3,7 @@ import {
     Container,
     Modal,
 } from "react-bootstrap";
-import { useParams} from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 
 
@@ -222,6 +222,7 @@ function CardEditModal() {
         setCardTags(updatedCardTags);
     };
 
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -264,7 +265,7 @@ function CardEditModal() {
                 reactions: [],
                 card_tags: [],
             });
-            window.location.href = `${process.env.PUBLIC_URL}/cards/${card_number}`;
+            navigate(`/cards/${card_number}`)
         } else {
             alert("Error in updating card");
         }

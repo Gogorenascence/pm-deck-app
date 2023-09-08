@@ -28,12 +28,6 @@ function SetsPage() {
         setBoosterSets(sortedBoosterSets.reverse());
     };
 
-    // const getRandomDeck = async() =>{
-    //     const randomIndex = Math.floor(Math.random() * decks.length);
-    //     const randomDeck = decks[randomIndex].id;
-    //     window.location.href = `${process.env.PUBLIC_URL}/decks/${randomDeck}`;
-    // }
-
     useEffect(() => {
         getBoosterSets();
         document.title = "Card Sets - PM CardBase"
