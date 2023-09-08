@@ -33,13 +33,78 @@
     "$oid": "64ecc30f82c5729f0b36e158"
   },
   "email": "nantahkl@gmail.com",
-  "password": "$2b$12$xlBgC4aWcASI67JtonF9MuEY0qha1Ce0eCXv4O9yiuxqhCIB3TwU6",
+  "password": "$2b$12$43MhfHLteI.uN.WlP8bjc.NBznXo9TyIxwkSiRyhgw4U4cdHHnwxi",
   "username": "TeamPlayMaker",
   "unhashed_password": "CompAdminPower#12",
   "collection": null,
   "wishlist": null,
   "decks": null,
   "roles": [
+    "member",
+    "admin"
+  ],
+  "created_on": null,
+  "favorited_decks": null
+},
+{
+  "_id": {
+    "$oid": "64f0c885b2d3aa9e7e7d16fc"
+  },
+  "email": "string@gmail.com",
+  "password": "$2b$12$lasOahz/k7uaGX4iPXA0HO8t3eGndA54EKzTQ2WXS1E2v7d1yx4xy",
+  "username": "jogger8000",
+  "unhashed_password": "password",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
     "member"
-  ]
+  ],
+  "favorited_decks": null
+},
+{
+  "_id": {
+    "$oid": "64f69854879b29f8b4dd51cd"
+  },
+  "email": "waterslug10@gmail.com",
+  "password": "$2b$12$B5KYvsMTKqAqKcq1rOV3l.1zzM3Fy00zFF93/sObbDglQ90I1l0HS",
+  "username": "wawasluggy",
+  "unhashed_password": "password",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "favorited_decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 5,
+    "time": "02:54",
+    "full_time": "2023-09-05T02:54:12.111252"
+  }
+},
+{
+  "_id": {
+    "$oid": "64fb54e2fa55ac14231ef408"
+  },
+  "email": "346eggeggegg@cake.com",
+  "password": "$2b$12$wSYUZChRejdr/GZSCd0AU.bR2/ZKoCEl/h7MDbrt0j3ZhL4rJj78m",
+  "username": "cllaad",
+  "unhashed_password": "burningMushroomTree3&",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "favorited_decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:07",
+    "full_time": "2023-09-08T17:07:46.388804"
+  }
 }]

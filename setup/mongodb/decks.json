@@ -4333,10 +4333,10 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 6,
-    "time": "16:58",
+    "day": 8,
+    "time": "05:12",
     "full_time": {
-      "$date": "2023-09-06T16:58:27.622Z"
+      "$date": "2023-09-08T05:12:22.390Z"
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bmf.png",
@@ -4477,6 +4477,185 @@
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r4bgaf.png",
   "parent_id": "64f80d35525e01063274ab8c",
+  "card_names": null,
+  "series_names": null,
+  "private": true
+},
+{
+  "_id": {
+    "$oid": "64fb5519fa55ac14231ef469"
+  },
+  "name": "Serena by cllaad",
+  "account_id": "64fb54e2fa55ac14231ef408",
+  "description": "",
+  "strategies": [
+    "Combo",
+    "Mid-range",
+    "Ramp",
+    "Toolbox"
+  ],
+  "cards": [
+    1009,
+    1009,
+    1010,
+    1010,
+    1011,
+    1011,
+    1012,
+    1012,
+    1037,
+    1037,
+    1038,
+    1038,
+    1039,
+    1039,
+    1040,
+    1040,
+    1041,
+    1041,
+    1042,
+    1042,
+    1043,
+    1043,
+    1044,
+    1044,
+    1057,
+    1057,
+    1058,
+    1058,
+    1059,
+    1059,
+    1060,
+    1060,
+    1065,
+    1065,
+    1065,
+    1065,
+    1066,
+    1066,
+    1066,
+    1066
+  ],
+  "pluck": [
+    1073,
+    1073,
+    1074,
+    1074,
+    1075,
+    1075,
+    1094,
+    1095,
+    1095,
+    1096,
+    1096,
+    1097,
+    1097,
+    1098,
+    1099,
+    1099,
+    1109,
+    1110,
+    1111,
+    1111,
+    1119,
+    1120,
+    1121,
+    1121,
+    1126
+  ],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:08",
+    "full_time": {
+      "$date": "2023-09-08T17:08:41.728Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:08",
+    "full_time": {
+      "$date": "2023-09-08T17:08:41.728Z"
+    }
+  },
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g3bwf.png",
+  "parent_id": "648ccb4ac67359b740e5562a",
+  "card_names": null,
+  "series_names": null,
+  "private": false
+},
+{
+  "_id": {
+    "$oid": "64fb55d9fa55ac14231ef4da"
+  },
+  "name": "Training: Bonds of Sisters",
+  "account_id": "64fb54e2fa55ac14231ef408",
+  "description": "",
+  "strategies": [
+    "Combo",
+    "Ramp"
+  ],
+  "cards": [
+    1039,
+    1041,
+    1041,
+    1042,
+    1042,
+    1043,
+    1044,
+    1044,
+    1051,
+    1053,
+    1053,
+    1054,
+    1054,
+    1055,
+    1056,
+    1056,
+    1066,
+    1066,
+    1066,
+    1066
+  ],
+  "pluck": [
+    1097,
+    1097,
+    1098,
+    1099,
+    1099,
+    1106,
+    1107,
+    1108,
+    1119,
+    1120
+  ],
+  "side": [],
+  "views": 0,
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:11",
+    "full_time": {
+      "$date": "2023-09-08T17:11:53.491Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:11",
+    "full_time": {
+      "$date": "2023-09-08T17:11:53.491Z"
+    }
+  },
+  "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl11hse.png",
+  "parent_id": "64f8073c525e01063274aae5",
   "card_names": null,
   "series_names": null,
   "private": true
