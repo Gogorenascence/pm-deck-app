@@ -28,7 +28,7 @@ function DeckDetailPage() {
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
-    const {account} = useContext(AuthContext)
+    const {account, users} = useContext(AuthContext)
 
     const getDeck = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
@@ -81,6 +81,11 @@ function DeckDetailPage() {
         setShuffledDeck([]);
         setOwnership("");
     }
+
+    const createdBy = (deck) => {
+        const account = deck.account_id? users.find(user => user.id === deck.account_id): null
+        return account? account.username : "TeamPlayMaker"
+    };
 
     useEffect(() => {
         getDeck();
@@ -182,7 +187,14 @@ function DeckDetailPage() {
                             className="left justify-content-end"
                                 style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                             >
-                                {updatedAgo}
+                                {updatedAgo} &nbsp; &nbsp;
+                            </h6>
+                            <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
+                            <h6
+                            className="left justify-content-end"
+                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                            >
+                                {createdBy(deck)}
                             </h6>
                         </div>
                 </Card.ImgOverlay>

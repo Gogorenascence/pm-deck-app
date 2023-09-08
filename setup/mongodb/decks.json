@@ -3,7 +3,7 @@
     "$oid": "6407c0495ba5ce1f64fbc4f6"
   },
   "name": "Priority Sweepers",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [
     "Aggro",
@@ -110,7 +110,7 @@
     "$oid": "6407e173e41d4a85bb4b7781"
   },
   "name": "Frenzied Rainbow",
-  "account_id": "string",
+  "account_id": "",
   "description": "string",
   "strategies": [
     "Combo",
@@ -208,7 +208,7 @@
     "$oid": "6407e18ee41d4a85bb4b7782"
   },
   "name": "Zero Burst",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [],
   "cards": [
@@ -406,7 +406,7 @@
     "$oid": "6407e391e41d4a85bb4b7784"
   },
   "name": "New Zero Burst",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [],
   "cards": [
@@ -505,7 +505,7 @@
     "$oid": "6407e3a5e41d4a85bb4b7785"
   },
   "name": "Guard Break",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [
     "Aggro",
@@ -2027,7 +2027,7 @@
     "$oid": "64a18342021ee801d52f43a8"
   },
   "name": "Item Storm 2",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [
     "Mid-range",
@@ -3281,7 +3281,7 @@
     "$oid": "64dd786ef442e2ec71643aa4"
   },
   "name": "Starter Deck 1",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [
     "Aggro",
@@ -3379,7 +3379,7 @@
     "$oid": "64dd7e85f442e2ec71643b8d"
   },
   "name": "Starter Deck 2",
-  "account_id": "string",
+  "account_id": "",
   "description": "",
   "strategies": [],
   "cards": [
@@ -4070,7 +4070,10 @@
   "name": "Training: Last Act",
   "account_id": "64ecc30f82c5729f0b36e158",
   "description": "",
-  "strategies": [],
+  "strategies": [
+    "Aggro",
+    "Second Wind"
+  ],
   "cards": [
     1017,
     1017,
@@ -4119,10 +4122,10 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 7,
-    "time": "04:48",
+    "day": 8,
+    "time": "04:17",
     "full_time": {
-      "$date": "2023-09-07T04:48:57.224Z"
+      "$date": "2023-09-08T04:17:07.702Z"
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bme.png",
@@ -4466,10 +4469,10 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 6,
-    "time": "18:08",
+    "day": 8,
+    "time": "04:09",
     "full_time": {
-      "$date": "2023-09-06T18:08:41.227Z"
+      "$date": "2023-09-08T04:09:34.172Z"
     }
   },
   "cover_card": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r4bgaf.png",

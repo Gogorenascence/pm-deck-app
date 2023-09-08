@@ -10,7 +10,7 @@ function DeckRow() {
 
     const [decks, setDecks] = useState([]);
 
-    const {account} = useContext(AuthContext)
+    const {account, users} = useContext(AuthContext)
 
     const getDecks = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
@@ -41,7 +41,7 @@ function DeckRow() {
             } else if (months > 0) {
             deck["created_on"]["ago"] = `${months} month${months > 1 ? 's' : ''} ago`;
             } else if (days > 0) {
-            deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ${hours > 1 ? ' and ' + hours + ' hours ago' : ' ago'}`;
+                deck["created_on"]["ago"] = `${days} day${days > 1 ? 's' : ''} ago`;
             } else if (hours > 0) {
             deck["created_on"]["ago"] = `${hours} hour${hours > 1 ? 's' : ''} ${minutes > 1 ? ' and ' + minutes + ' minutes ago' : ' ago'}`;
             } else if (minutes > 0) {
@@ -70,7 +70,7 @@ function DeckRow() {
             } else if (updateMonths > 0) {
             deck["updated_on"]["ago"] = `${updateMonths} month${updateMonths > 1 ? 's' : ''} ago`;
             } else if (updateDays > 0) {
-            deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ${updateHours > 1 ? ' and ' + updateHours + ' hours ago' : ' ago'}`;
+                deck["updated_on"]["ago"] = `${updateDays} day${updateDays > 1 ? 's' : ''} ago`;
             } else if (updateHours > 0) {
             deck["updated_on"]["ago"] = `${updateHours} hour${updateHours > 1 ? 's' : ''} ${updateMinutes > 1 ? ' and ' + updateMinutes + ' minutes ago' : ' ago'}`;
             } else if (updateMinutes > 0) {
@@ -85,6 +85,11 @@ function DeckRow() {
 
     const all_decks = decks.filter(deck => deck.private ? deck.private === false | deck.account_id === account.id : true)
     .slice(-4).reverse()
+
+    const createdBy = (deck) => {
+        const account = deck.account_id? users.find(user => user.id === deck.account_id): null
+        return account? account.username : "TeamPlayMaker"
+    };
 
     useEffect(() => {
         getDecks();
@@ -109,37 +114,48 @@ function DeckRow() {
                                     </div>
                                 </div>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                        <h3 className="left cd-container-child">{deck.name}</h3>
-                                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
+                                    <div style={{display: "flex"}}>
+                                        <h3 className="left cd-container-child"
+                                        >{deck.name}</h3>
+                                        { deck.private && deck.private === true ?
+                                            <img className="logo4"
+                                                src="https://i.imgur.com/V3uOVpD.png"
+                                                alt="private" />:null
+                                        }
+                                    </div>
+                                    <h6 className="left"
+                                        style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                                    >
+                                        Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                                    </h6>
+                                    <h6 className="left"
+                                        style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                                    >
+                                        Main Deck: {deck.cards.length} &nbsp; Pluck Deck: {deck.pluck.length}
+                                    </h6>
+                                    <div style={{ display: "flex" }}>
+                                        <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
+                                        <h6
+                                        className="left justify-content-end"
+                                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            User:
-                                        </h6> */}
-                                        <h6 className="left"
-                                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
-                                        >
-                                            Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                                            {deck.created_on.ago} &nbsp; &nbsp;
                                         </h6>
-                                        <h6 className="left"
-                                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                                        <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
+                                        <h6
+                                        className="left justify-content-end"
+                                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            Main Deck: {deck.cards.length} &nbsp; Pluck Deck: {deck.pluck.length}
+                                            {deck.updated_on.ago} &nbsp; &nbsp;
                                         </h6>
-                                        <div style={{ display: "flex" }}>
-                                            <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
-                                            <h6
-                                            className="left justify-content-end"
-                                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                                            >
-                                                {deck.created_on.ago} &nbsp; &nbsp;
-                                            </h6>
-                                            <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
-                                            <h6
-                                            className="left justify-content-end"
-                                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                                            >
-                                                {deck.updated_on.ago}
-                                            </h6>
-                                        </div>
+                                        <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
+                                        <h6
+                                        className="left justify-content-end"
+                                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                                        >
+                                            {createdBy(deck)}
+                                        </h6>
+                                    </div>
                                 </Card.ImgOverlay>
                             </Card>
                         </NavLink>
