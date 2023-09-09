@@ -793,3 +793,39 @@ function sendEmail() {
       console.error("Email sending failed:", error);
     });
 } */}
+
+// const shouldRedirect = true; // Replace with your specific condition
+
+// if (shouldRedirect) {
+//   let countdown = 5; // 5 seconds
+
+//   // Function to update and display the countdown
+//   function updateCountdown() {
+//     if (countdown === 0) {
+//       // Redirect to a new URL when the countdown reaches zero
+//       window.location.href = 'https://example.com/newpage'; // Replace with your desired URL
+//     } else {
+//       // Update and display the countdown
+//       document.getElementById('countdown').textContent = countdown;
+//       countdown--;
+//       setTimeout(updateCountdown, 1000); // Update every 1 second (1000 milliseconds)
+//     }
+//   }
+
+//   // Start the countdown initially
+//   updateCountdown();
+// }
+// In this code:
+
+// We start with a countdown variable set to 5, representing 5 seconds.
+
+// The updateCountdown function updates and displays the countdown. If the countdown reaches zero, it performs the redirection; otherwise, it schedules itself to run again after 1 second (1000 milliseconds).
+
+// We start the countdown initially by calling updateCountdown().
+
+// You can display the countdown value in your HTML, for example, in a <span> element with an id of countdown:
+
+// html
+// Copy code
+// <p>Redirecting in <span id="countdown">5</span> seconds...</p>
+// With this code, the countdown will be displayed and decremented every second until it reaches zero, at which point the redirection will occur. Make sure to replace the redirection URL with your desired URL.

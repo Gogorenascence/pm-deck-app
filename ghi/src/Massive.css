@@ -135,6 +135,7 @@ body.dark::after {
 
 :root {
   --window-height: calc(100vh - 100px);
+  --window-height-account: calc(100vh - 270px);
 }
 
 
@@ -538,6 +539,19 @@ button:hover {
   background-blend-mode: overlay;
   background-size: 100%;
   border: 7px solid #4D475E;
+  border-radius: 7px;
+  font-weight: 500;
+  margin-top: 4%;
+  width: 635px;
+  outline: 1px solid white;
+}
+
+.bigFaith {
+  color: aliceblue;
+  background: url("./placeh5.png"),#ffbb006c;
+  background-blend-mode: overlay;
+  background-size: 100%;
+  border: 7px solid #f0be1c;
   border-radius: 7px;
   font-weight: 500;
   margin-top: 4%;
@@ -1092,6 +1106,16 @@ button:hover {
   background-color: black; /* Adjust the background color if needed */
 }
 
+.card-image-clip3 {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; */
+  margin-top: -20%;
+  height: 50%; /* Adjust this value to show the desired portion of the image */
+  background-color: black; /* Adjust the background color if needed */
+}
+
 .card-image2 {
   width: 100%;
   height: auto;
@@ -1407,6 +1431,7 @@ button:hover {
 
   .account-option-items {
     margin-top: 20px;
+    width: 40vw;
     display: grid;
     /* width: ; */
     grid-template-columns: repeat(1, 1fr);
@@ -1446,5 +1471,23 @@ button:hover {
 
   .content {
     min-height: var(--window-height);
-    /* padding-bottom: 100px; */
+  }
+
+  .account-scrollable {
+    margin: 0% 0% 0% .5%;
+    height: var(--window-height-account);
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    background-color: rgba(15, 0, 50, 0.315);
+    border-radius: 2px;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .half {
+    opacity: 60%;
+  }
+
+  .selected2 {
+    outline: 5px solid rgb(255, 255, 255);
   }

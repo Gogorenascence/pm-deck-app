@@ -278,6 +278,12 @@ function CardCreatePage() {
         setCardTags([]);
     });
 
+    if (!(account && account.roles.includes("admin"))) {
+        setTimeout(function() {
+            window.location.href = `${process.env.PUBLIC_URL}/`
+        }, 3000);
+    }
+
     return (
         <div>
             { account && account.roles.includes("admin")?
@@ -543,7 +549,7 @@ function CardCreatePage() {
                 </div>:
                 <div className="textwindow">
                     <h1 className="undercontext">This Feature Is For Admins Only</h1>
-                    <h3 className="undercontext">Sorry About That</h3>
+                    <h3 className="undercontext">Redirecting in 3 Seconds</h3>
                 </div>
             }
         </div>
