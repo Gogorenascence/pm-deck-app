@@ -162,7 +162,10 @@ function AccountFavoriteDecks(props) {
         <div>
             {option === "favoriteDecks"?
                 <div className="account-options-container">
-                    <h1 className="left-h1">My Favorited Decks</h1>
+                    <span style={{display: "flex"}}>
+                        <h1 className="left-h1">My Favorited Decks</h1>
+                        <h4 className="left-h3">&nbsp; &nbsp; Showing 1 - {my_decks.slice(0, deckShowMore).length} of {my_decks.length}</h4>
+                    </span>
                     { loading ?
                         <div className="loading-container">
                             <div className="loading-spinner"></div>

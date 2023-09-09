@@ -482,7 +482,6 @@ button:hover {
   border-radius: 7px;
   width: 207px;
   outline: 1px solid white;
-  outline: 1px solid white;
 }
 
 .bigUnity {
@@ -494,7 +493,6 @@ button:hover {
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
-  outline: 1px solid white;
   outline: 1px solid white;
 }
 
@@ -539,19 +537,6 @@ button:hover {
   background-blend-mode: overlay;
   background-size: 100%;
   border: 7px solid #4D475E;
-  border-radius: 7px;
-  font-weight: 500;
-  margin-top: 4%;
-  width: 635px;
-  outline: 1px solid white;
-}
-
-.bigFaith {
-  color: aliceblue;
-  background: url("./placeh5.png"),#ffbb006c;
-  background-blend-mode: overlay;
-  background-size: 100%;
-  border: 7px solid #f0be1c;
   border-radius: 7px;
   font-weight: 500;
   margin-top: 4%;
@@ -1020,10 +1005,9 @@ button:hover {
   background-size: 70%;
   border: 7px solid rgb(3, 131, 78);
   border-radius: 7px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
+  margin-top: 4%;
+  width: 90%;
+  outline: 1px solid white;
 }
 
 .bigPower3 {
@@ -1033,10 +1017,9 @@ button:hover {
   background-size: 70%;
   border: 7px solid rgb(255, 31, 31);
   border-radius: 7px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
+  margin-top: 4%;
+  width: 90%;
+  outline: 1px solid white;
 }
 
 .bigUnity3 {
@@ -1046,10 +1029,9 @@ button:hover {
   background-size: 70%;
   border: 7px solid rgb(28, 40, 78);
   border-radius: 7px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
+  margin-top: 4%;
+  width: 90%;
+  outline: 1px solid white;
 }
 
 .bigCanny3 {
@@ -1059,10 +1041,9 @@ button:hover {
   background-size: 70%;
   border: 7px solid rgb(68, 28, 78);
   border-radius: 7px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
+  margin-top: 4%;
+  width: 90%;
+  outline: 1px solid white;
 }
 
 .bigNoClass3 {
@@ -1073,11 +1054,23 @@ button:hover {
   border: 7px solid #4D475E;
   border-radius: 7px;
   font-weight: 500;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
+  margin-top: 4%;
+  width: 90%;
   text-decoration: none;
+  outline: 1px solid white;
+}
+
+.bigFaith {
+  color: aliceblue;
+  background: url("./placeh5.png"),#ffbb006c;
+  background-blend-mode: overlay;
+  background-size: 100%;
+  border: 7px solid #f0be1c;
+  border-radius: 7px;
+  font-weight: 500;
+  margin-top: 4%;
+  width: 90%;
+  outline: 1px solid white;
 }
 
 .card-image-wrapper {
@@ -1422,16 +1415,16 @@ button:hover {
   }
 
   .account-info-container {
-    min-width: 50%;
+    min-width: 40%;
   }
 
   .account-option-container {
-    width: 50%;
+    width: 55%;
   }
 
   .account-option-items {
     margin-top: 20px;
-    width: 40vw;
+    width: 47.5vw;
     display: grid;
     /* width: ; */
     grid-template-columns: repeat(1, 1fr);
