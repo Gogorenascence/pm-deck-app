@@ -157,7 +157,9 @@ function DeckDetailPage() {
                             { deck.private && deck.private === true ?
                                 <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                             }
-                            <FavoriteDeck deck={deck}/>
+                            {account?
+                                <FavoriteDeck deck={deck}/>: null
+                            }
                         </div>
                         <h6 className="left"
                             style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}

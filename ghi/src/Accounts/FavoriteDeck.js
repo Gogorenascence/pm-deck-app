@@ -99,6 +99,7 @@ function FavoriteDeck(props) {
                     src="https://i.imgur.com/cecWS0L.png"
                     alt="favorited"
                     onClick={favorite}
+                    title="Favorited"
                 />
             }
         </div>

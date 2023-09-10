@@ -135,7 +135,7 @@ body.dark::after {
 
 :root {
   --window-height: calc(100vh - 100px);
-  --window-height-account: calc(100vh - 270px);
+  --window-height-account: calc(100vh - 180px);
 }
 
 
