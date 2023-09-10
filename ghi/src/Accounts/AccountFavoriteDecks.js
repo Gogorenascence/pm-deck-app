@@ -11,9 +11,9 @@ function AccountFavoriteDecks(props) {
     const [decks, setDecks] = useState([]);
     const {
         account,
-        users,
-        getAccountData,
+        users
     } = useContext(AuthContext)
+    const [favorites, setFavorites] = useState([])
     const [deckShowMore, setDeckShowMore] = useState(20);
     const {
         deckQuery,
@@ -97,15 +97,23 @@ function AccountFavoriteDecks(props) {
         setDecks(sortedDecks.reverse());
     };
 
-    const getRandomDeck = async() =>{
-        const randomIndex = Math.floor(Math.random() * decks.length);
-        const randomDeck = decks[randomIndex].id;
-        navigate(`/decks/${randomDeck}`);
+    const getFavorites = async() => {
+        if (account) {
+            const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}`);
+            const accountData = await response.json();
+            setFavorites(accountData.favorited_decks? accountData.favorited_decks: [])
+        } else {
+            const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token/`, {
+                credentials: "include",
+            })
+            const tokenData = await response.json();
+            setFavorites(tokenData.favorited_decks? tokenData.favorited_decks: [])
+        }
     }
 
     useEffect(() => {
         getDecks();
-        getAccountData();
+        getFavorites();
         document.title = "Account Info - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -151,7 +159,7 @@ function AccountFavoriteDecks(props) {
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
 
-    const my_decks = all_decks.filter(deck => account && deck.account_id && deck.account_id === account.id)
+    const my_favorite_decks = all_decks.filter(deck => favorites? favorites.includes(deck.id): false)
 
     const createdBy = (deck) => {
         const account = deck.account_id? users.find(user => user.id === deck.account_id): null
@@ -164,7 +172,7 @@ function AccountFavoriteDecks(props) {
                 <div className="account-options-container">
                     <span style={{display: "flex"}}>
                         <h1 className="left-h1">My Favorited Decks</h1>
-                        <h4 className="left-h3">&nbsp; &nbsp; Showing 1 - {my_decks.slice(0, deckShowMore).length} of {my_decks.length}</h4>
+                        <h4 className="left-h3">&nbsp; &nbsp; Showing 1 - {my_favorite_decks.slice(0, deckShowMore).length} of {my_favorite_decks.length}</h4>
                     </span>
                     { loading ?
                         <div className="loading-container">
@@ -173,7 +181,7 @@ function AccountFavoriteDecks(props) {
                     null}
                     {!loading ?
                         <div className="account-option-items account-scrollable">
-                            {my_decks.slice(0, deckShowMore).map((deck) => {
+                            {my_favorite_decks.slice(0, deckShowMore).map((deck) => {
                                 return (
                                     <NavLink to={`/decks/${deck.id}`}>
                                         <Card className="text-white text-center card-list-card3">
@@ -235,7 +243,7 @@ function AccountFavoriteDecks(props) {
                                     </NavLink>
                                 );
                             })}
-                        {deckShowMore < my_decks.length ?
+                        {deckShowMore < my_favorite_decks.length ?
                             <button
                             variant="dark"
                             style={{ width: "100%", marginTop:"2%"}}

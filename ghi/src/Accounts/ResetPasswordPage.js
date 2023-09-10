@@ -28,8 +28,6 @@ function ResetPassword() {
         account,
         setAccount,
         getAccountData,
-        accountId,
-        setAccountId,
         update,
         updateCred,
         setUpdateCred
@@ -43,7 +41,6 @@ function ResetPassword() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/password_resets/${reset_id}/`);
         const resetData = await response.json();
         setPasswordReset(resetData);
-        console.log(passwordReset)
     };
 
     const getAccountInfo = async() =>{
@@ -51,10 +48,8 @@ function ResetPassword() {
         const accountData = await response.json();
         accountData["password"] = "password"
         setAccountInfo(accountData);
-        setAccountId(passwordReset.account_id)
         setUpdateCred(accountData)
         console.log(accountData)
-        console.log(accountId)
         console.log(updateCred)
     };
 

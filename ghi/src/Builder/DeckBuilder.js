@@ -71,12 +71,10 @@ function DeckBuilder() {
         setBoosterSetId(event.target.value)
         const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
         setBoosterSet(selectedBoosterSet)
-        console.log(boosterSet[rarity])
     };
 
     const handleRarityChange = (event) => {
         setRarity(event.target.value);
-        console.log(rarity)
     };
 
     const [query, setQuery] = useState({
@@ -97,8 +95,8 @@ function DeckBuilder() {
 
     useEffect(() => {
         getCards();
+        console.log(account)
         getBoosterSets();
-        console.log(boosterSets)
         document.title = "Deck Builder - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -165,18 +163,15 @@ function DeckBuilder() {
 
     const handleChange = (event) => {
         setDeck({ ...deck, [event.target.name]: event.target.value });
-        console.log(deck.private)
     };
 
     const handleCheck = (event) => {
         setDeck({ ...deck, [event.target.name]: event.target.checked });
-        console.log(deck.private)
     };
 
     const handleCoverCardChange = (event) => {
         setSelectedCard( event.target.value );
         setDeck({ ...deck, [event.target.name]: event.target.value });
-        console.log(selectedCard)
     };
 
     const handleStrategyChange = e => {
@@ -184,7 +179,6 @@ function DeckBuilder() {
         options = Array.apply(null, options)
         const selectedValues = options.filter(x => x.selected).map(x => x.value);
         setSelectedList(selectedValues);
-        console.log(selectedValues)
     }
 
     const handleClick = (card) => {
@@ -192,10 +186,8 @@ function DeckBuilder() {
             card.card_type[0] === 1007 ||
             card.card_type[0] === 1008){
             setPluckList([...pluck_list, card]);
-            console.log(pluck_list);
         }else{
             setMainList([...main_list, card]);
-            console.log(main_list);
         }
     }
 
@@ -260,7 +252,6 @@ function DeckBuilder() {
         data["pluck"] = pluck;
         data["strategies"] = selectedList
         account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
-        console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
         const fetchConfig = {
@@ -299,18 +290,14 @@ function DeckBuilder() {
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);
-        console.log(showPool)
-        console.log("uniqueList ", uniqueList )
     };
 
     const handleShowMain = (event) => {
         setShowMain(!showMain);
-        console.log(showMain)
     };
 
     const handleShowPluck = (event) => {
         setShowPluck(!showPluck);
-        console.log(showPluck)
     };
 
     const preprocessText = (text) => {

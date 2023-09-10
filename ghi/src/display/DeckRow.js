@@ -53,7 +53,6 @@ function DeckRow() {
             const updateDate = new Date(deck["updated_on"]["full_time"])
             // Calculate years, months, days, hours, minutes, and seconds
             let updateAgo = Math.abs(time_now - updateDate);
-            console.log(updateAgo)
             const updateYears = Math.floor(updateAgo / 31557600000);
             updateAgo -= updateYears * 31557600000;
             const updateMonths = Math.floor(updateAgo / 2630016000);
@@ -102,7 +101,7 @@ function DeckRow() {
             <div className="deck-row-card-list2">
                 {all_decks.map((deck) => {
                     return (
-                        <NavLink to={`/decks/${deck.id}`}>
+                        <NavLink to={`/decks/${deck.id}`} key={deck.name}>
                             <Card className="text-white text-center card-list-card3">
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">

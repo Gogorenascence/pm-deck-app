@@ -13,7 +13,6 @@ function Nav() {
     setSignUpError,
     loginError,
     setLoginError,
-    token,
     setToken,
     getToken,
     getUsers,
@@ -42,7 +41,7 @@ function Nav() {
       setToken(token);
       }
     })
-  },[]);
+  },[signUpCred]);
 
   const handleShowLoginModal = (event) => {
     setShowLoginModal(!showLoginModal)
@@ -79,7 +78,6 @@ function Nav() {
       resetLoginCred()
       setShowSignUpModal(false)
     }
-    console.log(signUpError)
   };
 
   const Login = async (event) => {
@@ -94,6 +92,8 @@ function Nav() {
   const handleSignUpCredChange = (event) => {
       setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
       setLoginCred({...loginCred, [event.target.name]: event.target.value})
+      console.log(signUpCred)
+
   };
 
   const handlePasswordConChange = (event) => {
@@ -109,7 +109,13 @@ function Nav() {
       email: "",
       username: "",
       password: "",
-    });
+      collection: [],
+      wishlist: [],
+      decks: [],
+      favorited_decks: [],
+      roles: [],
+      created_on: {},
+      });
     setPasswordCon("")
   };
 
@@ -193,29 +199,29 @@ function Nav() {
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/cards" exact={true}>
+                  <NavLink className="dropdown-item" to="/cards">
                     Search Cards
                     </NavLink>
                 </li>
                 { account && account.roles.includes("admin")?
                   <li>
-                      <NavLink className="dropdown-item" to="/cardcreate" exact={true}>
+                      <NavLink className="dropdown-item" to="/cardcreate">
                         Card Create
                       </NavLink>
                     </li>:
                 null}
                 <li>
-                  <NavLink className="dropdown-item" to="/topcards" exact={true}>
+                  <NavLink className="dropdown-item" to="/topcards">
                     Top Cards
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/series" exact={true}>
+                  <NavLink className="dropdown-item" to="/series">
                     Series
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/cardsets" exact={true}>
+                  <NavLink className="dropdown-item" to="/cardsets">
                     Card Sets
                   </NavLink>
                 </li>

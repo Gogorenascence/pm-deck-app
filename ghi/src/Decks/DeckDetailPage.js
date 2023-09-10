@@ -8,6 +8,7 @@ import { NavLink, useParams} from 'react-router-dom';
 import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
+import FavoriteDeck from "../Accounts/FavoriteDeck";
 
 
 function DeckDetailPage() {
@@ -34,13 +35,11 @@ function DeckDetailPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
         const deckData = await response.json();
         setDeck(deckData);
-        console.log(deck)
     };
 
     const getAgos = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/get_time_ago/${deck_id}/`);
         const timeData = await response.json();
-        console.log(timeData)
         setCreatedAgo(timeData.created);
         setUpdatedAgo(timeData.updated);
     }
@@ -92,6 +91,7 @@ function DeckDetailPage() {
         getDeckList();
         getCountedDeckList();
         getAgos();
+        console.log("Deck Details: ", deck)
         document.title = `${deck.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
@@ -133,12 +133,10 @@ function DeckDetailPage() {
 
     const handleShowMain = (event) => {
         setShowMain(!showMain);
-        console.log(showMain)
     };
 
     const handleShowPluck = (event) => {
         setShowPluck(!showPluck);
-        console.log(showPluck)
     };
 
     return (
@@ -159,11 +157,8 @@ function DeckDetailPage() {
                             { deck.private && deck.private === true ?
                                 <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                             }
+                            <FavoriteDeck deck={deck}/>
                         </div>
-                        {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
-                        >
-                            User:
-                        </h6> */}
                         <h6 className="left"
                             style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
                         >

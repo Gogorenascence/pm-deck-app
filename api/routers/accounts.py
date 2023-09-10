@@ -105,6 +105,18 @@ async def update_account(
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
+@router.put(
+    "/api/accounts/{account_id}/without",
+    response_model=AccountOut,
+)
+async def update_with_out_password(
+    account_id: str,
+    info: AccountIn,
+    repo: AccountQueries = Depends(),
+):
+    account = repo.update_with_out_password(account_id, info)
+    return account
+
 @router.delete("/api/accounts/{account_id}", response_model=bool)
 async def delete_account(
     username: str,

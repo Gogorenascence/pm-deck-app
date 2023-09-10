@@ -110,6 +110,7 @@ function CardsPage() {
         getCards();
         getBoosterSets();
         console.log(cards)
+        console.log(account)
         document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -131,6 +132,7 @@ function CardsPage() {
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
         setShowMore(20)
+        console.log(query)
     };
 
     const handleQueryReset = (event) => {

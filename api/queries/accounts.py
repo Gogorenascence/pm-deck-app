@@ -79,5 +79,14 @@ class AccountQueries(Queries):
 
         return AccountOut(**props, id=id)
 
+    def update_with_out_password(self, id: str, account: AccountIn) -> AccountOut:
+        props = account.dict()
+        updated_account = self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": props},
+            return_document=ReturnDocument.AFTER,
+        )
+        return AccountOut(**updated_account, id=id)
+
     def delete_account(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})

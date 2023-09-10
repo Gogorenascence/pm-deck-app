@@ -17,12 +17,17 @@ const AuthContextProvider = ({ children }) => {
         email: "",
         username: "",
         password: "",
+        collection: [],
+        wishlist: [],
+        decks: [],
+        favorited_decks: [],
+        roles: [],
+        created_on: {},
         })
-    const [accountId, setAccountId] = useState("")
     const [updateCred, setUpdateCred] = useState({
         email: "",
-        password: "",
         username: "",
+        password: "",
         unhashed_password: "",
         collection: [],
         wishlist: [],
@@ -34,7 +39,7 @@ const AuthContextProvider = ({ children }) => {
     const [passwordCon, setPasswordCon] = useState("")
 
     const getToken = async (event) => {
-        return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`, {
+        return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token/`, {
             credentials: "include",
         })
         .then((response) => response.json())
@@ -43,7 +48,8 @@ const AuthContextProvider = ({ children }) => {
     };
 
     const signup = async (event) => {
-        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts`
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/`
+        console.log(signUpCred)
         fetch(url, {
             method: "post",
             body: JSON.stringify(signUpCred),
@@ -56,7 +62,22 @@ const AuthContextProvider = ({ children }) => {
     };
 
     const update = async (event) => {
-        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${accountId}`
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}`
+        fetch(url, {
+            method: "put",
+            body: JSON.stringify(updateCred),
+            headers: {
+            "Content-Type": "application/json",
+            },
+        })
+        .then(() => getAccountData())
+        .catch(console.error);
+    };
+
+    const updateWithOutPass = async (event) => {
+        const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}/without`
+        console.log(url)
+        console.log(updateCred)
         fetch(url, {
             method: "put",
             body: JSON.stringify(updateCred),
@@ -115,10 +136,11 @@ const AuthContextProvider = ({ children }) => {
     };
 
     const getAccountData = async () => {
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token`,
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token/`,
         {credentials: "include"})
         const data = await response.json()
         setAccount(data.account)
+        console.log(account)
     };
 
     const getUsers = async() =>{
@@ -179,9 +201,8 @@ const AuthContextProvider = ({ children }) => {
             setSignUpCred,
             updateCred,
             setUpdateCred,
-            accountId,
-            setAccountId,
             update,
+            updateWithOutPass,
             passwordCon,
             setPasswordCon,
             loginCred,

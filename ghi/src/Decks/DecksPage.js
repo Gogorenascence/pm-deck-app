@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { DeckQueryContext } from "../context/DeckQueryContext";
 import { AuthContext } from "../context/AuthContext";
+import FavoriteDeck from "../Accounts/FavoriteDeck";
 
 function DecksPage() {
 
@@ -263,7 +264,7 @@ function DecksPage() {
             <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {
                     return (
-                        <NavLink to={`/decks/${deck.id}`}>
+                        <NavLink to={`/decks/${deck.id}`}  key={deck.id}>
                             <Card className="text-white text-center card-list-card3">
                                 <div className="card-image-wrapper">
                                     <div className="card-image-clip">
@@ -280,6 +281,7 @@ function DecksPage() {
                                         { deck.private && deck.private === true ?
                                             <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                                         }
+                                        <FavoriteDeck deck={deck}/>
                                     </div>
                                     {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
                                     >

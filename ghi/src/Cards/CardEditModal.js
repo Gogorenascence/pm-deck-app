@@ -102,6 +102,7 @@ function CardEditModal() {
 
     const handleChange = (event) => {
         setCard({ ...card, [event.target.name]: event.target.value });
+        console.log(card)
     };
 
     const handleShowComps = (event) => {

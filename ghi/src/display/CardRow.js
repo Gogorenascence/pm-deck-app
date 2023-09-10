@@ -28,7 +28,7 @@ function CardRow() {
             <div className="cd-inner">
                 {cards.map((card) => {
                     return (
-                        <div style={{width: "15vw", margin: "0px 5px"}}>
+                        <div style={{width: "15vw", margin: "0px 5px"}} key={card.name}>
                             <NavLink to={`/cards/${card.card_number}`}>
                                     <img
                                         className="card-row"
