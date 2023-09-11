@@ -4,7 +4,7 @@ import MainPage from "./MainPage";
 import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
 import DeckDetailPage from "./Decks/DeckDetailPage";
-import DeckEditPage from "./Decks/DeckEditPage";
+import DeckEditPage from "./Builder/DeckEditPage";
 import DeckCopyPage from "./Builder/DeckCopyPage";
 import CardsPage from "./Cards/CardsPage"
 import CardCreatePage from "./Cards/CardCreatePage";
@@ -21,7 +21,7 @@ import BackToTop from "./display/BackToTop";
 import "./index.css"
 import "./Massive.css"
 import AppProvider from "./context/AppProvider";
-import PullsDeckBuilder from "./Decks/PullsDeckBuilder";
+import PullsDeckBuilder from "./Builder/PullsDeckBuilder";
 import AccountPage from "./Accounts/AccountPage";
 import ResetPassword from "./Accounts/ResetPasswordPage";
 

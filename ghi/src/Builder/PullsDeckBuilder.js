@@ -1,16 +1,14 @@
 import {
     Col,
     Row,
-    button,
 } from "react-bootstrap";
-import React, { useState, useEffect, useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
-import BackButton from "../display/BackButton";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { PullsContext } from "../context/PullsContext";
 import { AuthContext } from "../context/AuthContext";
+import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 
-
-function DeckEditPage() {
+function PullsDeckBuilder() {
     const [deck, setDeck] = useState({
         name: "",
         account_id: "",
@@ -25,101 +23,48 @@ function DeckEditPage() {
         private: false,
     });
 
-    const {deck_id} = useParams();
+    const {card_set_id} = useParams();
     const {account} = useContext(AuthContext)
 
-    const [deck_list, setDeckList] = useState([]);
     const [main_list, setMainList] = useState([]);
     const [pluck_list, setPluckList] = useState([]);
     const combinedList = main_list.concat(pluck_list);
-    const [uniqueList, setUniqueList] = useState([]);
+    const uniqueList = [...new Set(combinedList)];
 
     const [selectedList, setSelectedList] = useState([]);
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
+    const {pulls}= useContext(PullsContext);
 
-    const [showMore, setShowMore] = useState(20);
+    const [showMore, setShowMore] = useState(50);
     const [listView, setListView] = useState(false);
 
     const [showPool, setShowPool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
+    const [boosterSet, setBoosterSet] = useState("");
+    const [ultraRares, setUltraRares] = useState([]);
+    const [rarity, setRarity] = useState("");
+
+
+
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
-
-        if (data.cards.length == 0 ) {
+        if (pulls.length == 0 ) {
             setNoCards(true)
         }
-
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+        const pulledCards = [];
+        for (let pull of pulls) {
+            pulledCards.push(...pull);
+        }
+        const sortedCards = [...pulledCards].sort(sortMethods[sortState].method);
+        console.log(pulledCards)
 
         setCards(sortedCards);
     };
-
-    const getDeck = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`);
-        const deckData = await response.json();
-        if (deckData["pluck"] === null){
-            deckData["pluck"] = []
-        }
-        if (deckData["side"] === null){
-            deckData["side"] = []
-        }
-        setDeck(deckData);
-        console.log(deckData)
-    };
-
-    const [boosterSets, setBoosterSets] = useState([]);
-    const [boosterSetId, setBoosterSetId] = useState("");
-    const [boosterSet, setBoosterSet] = useState("");
-    const [rarity, setRarity] = useState("");
-
-    const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        setBoosterSets(data.booster_sets);
-    };
-
-    const handleBoosterSetChange = (event) => {
-        setBoosterSetId(event.target.value)
-        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
-        setBoosterSet(selectedBoosterSet)
-        console.log(boosterSet[rarity])
-    };
-
-    const handleRarityChange = (event) => {
-        setRarity(event.target.value);
-        console.log(rarity)
-    };
-
-    const getDeckList = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/list/`);
-        const deckListData = await response.json();
-        setDeckList(deckListData)
-        setMainList(deckListData[0])
-        setPluckList(deckListData[1])
-    };
-
-    const getExtraData = async() =>{
-        setSelectedList(deck.strategies)
-        setSelectedCard(deck.cover_card)
-        const id_list = []
-        const newList = []
-        console.log(newList)
-        for (let card of combinedList){
-            if (!id_list.includes(card.id)){
-                console.log(card)
-                id_list.push(card.id)
-                newList.push(card)
-            }
-        }
-        setUniqueList(newList);
-    }
 
     const [query, setQuery] = useState({
         cardName: "",
@@ -135,24 +80,27 @@ function DeckEditPage() {
         tag: "",
     });
 
+    const getBoosterSet = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
+        const boosterSetData = await response.json();
+        setBoosterSet(boosterSetData)
+        setUltraRares(boosterSetData.ultra_rares)
+
+    };
+
     const [sortState, setSortState] = useState("none");
 
     useEffect(() => {
-        getDeck();
-        getDeckList();
         getCards();
-        getBoosterSets();
-        document.title = `Editing ${deck.name} - PM CardBase`
+        console.log(card_set_id)
+        getBoosterSet();
+        document.title = "Deck Builder - PM CardBase"
+        console.log(typeof pulls)
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
     },[]);
-
-    useEffect(() => {
-        getExtraData();
-    // eslint-disable-next-line
-    }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },
@@ -166,7 +114,12 @@ function DeckEditPage() {
 
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
-        setShowMore(20)
+        setShowMore(50)
+    };
+
+    const handleRarityChange = (event) => {
+        setRarity(event.target.value);
+        console.log(rarity)
     };
 
     const handleQueryReset = (event) => {
@@ -183,8 +136,6 @@ function DeckEditPage() {
             reaction: "",
             tag: "",
         });
-        setBoosterSetId("")
-        setBoosterSet("");
         setRarity("")
     };
 
@@ -203,12 +154,11 @@ function DeckEditPage() {
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
-        .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
         .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 20);
+        setShowMore(showMore + 50);
     };
 
     const handleChange = (event) => {
@@ -235,7 +185,6 @@ function DeckEditPage() {
     }
 
     const handleClick = (card) => {
-        console.log(card)
         if (card.card_type[0] === 1006 ||
             card.card_type[0] === 1007 ||
             card.card_type[0] === 1008){
@@ -245,7 +194,6 @@ function DeckEditPage() {
             setMainList([...main_list, card]);
             console.log(main_list);
         }
-        getExtraData();
     }
 
     const handleRemoveCard = (card) => {
@@ -268,7 +216,6 @@ function DeckEditPage() {
                 setSelectedCard(null)
             }
         }
-        getExtraData();
     }
 
     const clearMain = async() => {
@@ -309,11 +256,12 @@ function DeckEditPage() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
+        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         console.log(data)
 
-        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
+        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
         const fetchConfig = {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -322,7 +270,8 @@ function DeckEditPage() {
 
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
-            await response.json();
+            const responseData = await response.json();
+            const deck_id = responseData.id;
             setDeck({
                 name: "",
                 account_id: "",
@@ -333,9 +282,12 @@ function DeckEditPage() {
                 side: [],
                 views: 0,
                 cover_card: "",
+                parent_id: "",
             });
-            navigate(`/decks/${deck_id}`)
-        };
+            navigate(`/decks/${deck_id}`);
+        } else {
+            alert("Error in creating deck");
+        }
     }
 
     const handleListView = (event) => {
@@ -365,7 +317,7 @@ function DeckEditPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Deck Edit</h1>
+            <h1 className="left-h1">Deck Builder</h1>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
                     id="create-deck-page">
@@ -389,9 +341,9 @@ function DeckEditPage() {
                         name="cover_card"
                         value={deck.cover_card}>
                         <option value="">Cover Card</option>
-                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map((card) => (
-                            <option value={card.picture_url}>{card.name}</option>
-                            ))}
+                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
+                        {return( <option value={card.picture_url}>{card.name}</option>)}
+                            )}
                     </select>
                     <br/>
                     <h5 className="label"> Description </h5>
@@ -403,7 +355,7 @@ function DeckEditPage() {
                         name="description"
                         value={deck.description}>
                     </textarea>
-                    <h5 className="label">Strategies</h5>
+                    <h5 className="label">Strategies </h5>
                     <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
                     <br/>
                     <select
@@ -413,15 +365,15 @@ function DeckEditPage() {
                         onChange={handleStrategyChange}
                         >
                         <option value="">Strategy</option>
-                        <option value="Aggro" selected={deck.strategies.includes("Aggro")}>Aggro</option>
-                        <option value="Combo" selected={deck.strategies.includes("Combo")}>Combo</option>
-                        <option value="Control" selected={deck.strategies.includes("Control")}>Control</option>
-                        <option value="Mid-range" selected={deck.strategies.includes("Mid-range")}>Mid-range</option>
-                        <option value="Ramp" selected={deck.strategies.includes("Ramp")}>Ramp</option>
-                        <option value="Second Wind" selected={deck.strategies.includes("Second Wind")}>Second Wind</option>
-                        <option value="Stall" selected={deck.strategies.includes("Stall")}>Stall</option>
-                        <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
-                        <option value="other" selected={deck.strategies.includes("other")}>other</option>
+                        <option value="Aggro">Aggro</option>
+                        <option value="Combo">Combo</option>
+                        <option value="Control">Control</option>
+                        <option value="Mid-range">Mid-range</option>
+                        <option value="Ramp">Ramp</option>
+                        <option value="Second Wind">Second Wind</option>
+                        <option value="Stall">Stall</option>
+                        <option value="Toolbox">Toolbox</option>
+                        <option value="other">other</option>
                     </select>
                     <br/>
                     <input
@@ -438,45 +390,58 @@ function DeckEditPage() {
                         Make my deck private
                     </label>
                     <br/>
-                    { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
+                    {account?
                         <button
-                            style={{width: "67px", margin: "5px"}}
+                            className="left"
+                            style={{ marginTop: "9px"}}
                             onClick={handleSubmit}
-                            className="heightNorm"
                         >
-                            Save
+                            Create Deck
                         </button>:
-                    null}
-                    <BackButton/>
+                        <button
+                        className="left"
+                        style={{ marginTop: "9px"}}
+                        >
+                            Create Deck
+                        </button>
+                    }
                     <button
-                        className="left red heightNorm"
+                        className="left red"
+                        style={{ marginTop: "9px"}}
                         onClick={clearMain}
                     >
                         Clear Main
                     </button>
                     <button
-                        className="left red heightNorm"
+                        className="left red"
+                        style={{ marginTop: "9px"}}
                         onClick={clearPluck}
                     >
                         Clear Pluck
                     </button>
                     <br/>
-                </div>
-                <div style={{ width: "350px"}}>
+                    { !account?
+                        <h6 className="error">You must be logged in to create a deck</h6>:
+                    null
+                    }
+                    </div>
+                <div>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
                             className="cover-card"
                             src={selectedCard}
-                            alt={selectedCard.name}/>
+                            alt={selectedCard.name}
+                            variant="bottom"/>
                             ):(
                         <img
                             className="cover-card"
                             src={"https://i.imgur.com/krY25iI.png"}
-                            alt="card"/>)}
+                            alt="Card"
+                            variant="bottom"/>)}
                 </div>
 
-                <div style={{marginLeft: "40px"}}>
+                <div>
                     <h2 className="left">Search for cards</h2>
                     <input
                         className="left dcbsearch-large"
@@ -620,14 +585,8 @@ function DeckEditPage() {
                     <select
                         className="left dcbsearch-medium"
                         type="text"
-                        placeholder=" Card Set"
-                        onChange={handleBoosterSetChange}
-                        name="boosterSet"
-                        value={boosterSetId}>
-                        <option value="">Card Set</option>
-                        {boosterSets.map(function(boosterSet)
-                        {return( <option value={boosterSet.id}>{boosterSet.name}</option>)}
-                            )}
+                        name="boosterSet">
+                        <option value={boosterSet.id}>{boosterSet.name}</option>
                     </select>
                     <select
                         className="left dcbsearch-medium"
@@ -645,20 +604,23 @@ function DeckEditPage() {
                     </select>
                     <br/>
                     <button
-                        className="left heightNorm"
+                        className="left"
+                        variant="dark"
                         onClick={handleQueryReset}
                         >
                         Reset Filters
                     </button>
                     {listView?
                         <button
-                            className="left heightNorm"
+                            className="left"
+                            variant="dark"
                             onClick={handleListView}
                         >
                             Deck Image View
                         </button>:
                         <button
-                            className="left heightNorm"
+                            className="left"
+                            variant="dark"
                             onClick={handleListView}
                         >
                             Deck List View
@@ -667,61 +629,92 @@ function DeckEditPage() {
                 </div>
 
                 </div>
-                <div className={showPool ? "cardpool" : "no-cardpool"}>
-                    <div>
+                {all_cards.length?
+                    <div className={showPool ? "cardpool" : "no-cardpool"}>
+                        <div style={{marginLeft: "0px"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
+                                >Card Pool</h2>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                                {all_cards.length > 0 ?
+                                    <h5
+                                        className="left db-pool-count"
+                                    >{all_cards.length}</h5>:
+                                    null}
+                                { showPool ?
+                                    <h5 className="left db-pool-count"
+                                        onClick={() => handleShowPool()}>
+                                            &nbsp;[Hide]
+                                    </h5> :
+                                    <h5 className="left db-pool-count"
+                                        onClick={() => handleShowPool()}>
+                                        &nbsp;[Show]
+                                    </h5>}
+                            </div>
+                            <div className={showPool ? "scrollable" : "hidden2"}>
+                                <div style={{margin: "8px"}}>
+
+                                { all_cards.length == 0 && isQueryEmpty && !noCards?
+                                    <div className="loading-container">
+                                        <div className="loading-spinner"></div>
+                                    </div> :
+                                null}
+
+                                <div className="card-pool-fill">
+                                    {all_cards.slice(0, showMore).map((card) => {
+                                        return (
+                                            <div>
+                                                {ultraRares.includes(card.card_number) ?
+                                                    <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}
+                                                    style={{display: "flex", justifyContent: "center"}}>
+                                                        <img
+                                                            onClick={() => handleClick(card)}
+                                                            className="builder-card4 pointer"
+                                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                            alt={card.name}/>
+                                                    </div>:
+                                                    <img
+                                                        onClick={() => handleClick(card)}
+                                                        className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}/>
+                                                }
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                </div>
+                                {showMore < all_cards.length ?
+                                    <button
+                                        style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
+                                        onClick={handleShowMore}>
+                                        Show More Cards ({all_cards.length - showMore} Remaining)
+                                    </button> : null }
+                            </div>
+                        </div>
+                    </div>:
+                    <div className="no-cardpool">
+                    <div style={{marginLeft: "0px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
                             >Card Pool</h2>
                             <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                            {all_cards.length > 0 ?
-                                <h5
-                                    className="left db-pool-count"
-                                >{all_cards.length}</h5>:
-                                null}
-                            { showPool ?
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                        &nbsp;[Hide]
-                                </h5> :
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                    &nbsp;[Show]
-                                </h5>}
+
                         </div>
-                        <div className={showPool ? "scrollable" : "hidden2"}>
-                            <div style={{margin: "8px"}}>
-                                { all_cards.length == 0 && isQueryEmpty && !noCards?
-                                    <div className="loading-container">
-                                        <div className="loading-spinner"></div>
-                                    </div> :
-                                null}
-                                <div className="card-pool-fill">
-                                    {all_cards.slice(0, showMore).map((card) => {
-                                        return (
-                                            <div style={{display: "flex", justifyContent: "center"}}>
-                                                <img
-                                                    onClick={() => handleClick(card)}
-                                                    className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
-                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={card.name}/>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+
+                            <div style={{marginLeft: "20px"}}>
+                            <h4 className="left no-cards">No cards added</h4>
                             </div>
-                            {showMore < all_cards.length ?
-                                <button
-                                    className="heightNorm"
-                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
-                                    onClick={handleShowMore}>
-                                    Show More Cards ({all_cards.length - showMore} Remaining)
-                                </button> : null }
-                        </div>
+
                     </div>
                 </div>
+                    }
                 {listView?
                     <div className="deck-list">
                         <div className="maindeck3">
@@ -752,7 +745,6 @@ function DeckEditPage() {
                                                     />
                                                 </div>
                                             </Col>
-
                                         );
                                     })}
                                 </>:
@@ -823,19 +815,31 @@ function DeckEditPage() {
 
                             {main_list.length > 0 ?
                             <div className="card-pool-fill2">
-                            {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                return (
-                                    <div style={{display: "flex", justifyContent: "center"}}>
-                                        <img
-                                            className="builder-card2 pointer"
-                                            onClick={() => handleRemoveCard(card)}
-                                            title={card.name}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}/>
-                                    </div>
-                                );
-                            })}
-                        </div> :
+                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <div style={{display: "flex", justifyContent: "center"}}>
+                                            {ultraRares.includes(card.card_number) ?
+                                                <div className="ultra">
+                                                    <img
+                                                        onClick={() => handleRemoveCard(card)}
+                                                        className="builder-card4 pointer"
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                                </div>:
+                                                <img
+                                                    onClick={() => handleRemoveCard(card)}
+                                                    className="builder-card2 pointer"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            }
+                                        </div>
+                                    );
+                                })}
+                            </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                     </div>
@@ -871,13 +875,24 @@ function DeckEditPage() {
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
+                                            {ultraRares.includes(card.card_number) ?
+                                                <div className="ultra">
+                                                    <img
+                                                        onClick={() => handleRemoveCard(card)}
+                                                        className="builder-card4 pointer"
+                                                        title={card.name}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}
+                                                        variant="bottom"/>
+                                                </div>:
+                                                <img
+                                                    onClick={() => handleRemoveCard(card)}
+                                                    className="builder-card2 pointer"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}
+                                                    variant="bottom"/>
+                                            }
                                         </div>
                                     );
                                 })}
@@ -891,4 +906,4 @@ function DeckEditPage() {
 }
 
 
-export default DeckEditPage;
+export default PullsDeckBuilder;

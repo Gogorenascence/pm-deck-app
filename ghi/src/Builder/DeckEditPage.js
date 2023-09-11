@@ -1,6 +1,5 @@
 import {
     Col,
-    Row,
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
@@ -11,7 +10,7 @@ import { BuilderQueryContext } from "../context/BuilderQueryContext";
 import BuilderCardSearch from "./BuilderCardSearch";
 
 
-function DeckCopyPage() {
+function DeckEditPage() {
     const [deck, setDeck] = useState({
         name: "",
         account_id: "",
@@ -23,11 +22,12 @@ function DeckCopyPage() {
         views: 0,
         cover_card: null,
         parent_id: "",
-        private: true,
+        private: false,
     });
 
     const {deck_id} = useParams();
     const {account} = useContext(AuthContext)
+
     const {query,
         setQuery,
         sortState,
@@ -62,33 +62,17 @@ function DeckCopyPage() {
 
     const [noCards, setNoCards] = useState(false);
 
-
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
+
         if (data.cards.length == 0 ) {
             setNoCards(true)
         }
+
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+
         setCards(sortedCards);
-    };
-
-    const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        setBoosterSets(data.booster_sets);
-    };
-
-    const handleBoosterSetChange = (event) => {
-        setBoosterSetId(event.target.value)
-        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
-        setBoosterSet(selectedBoosterSet)
-        console.log(boosterSet[rarity])
-    };
-
-    const handleRarityChange = (event) => {
-        setRarity(event.target.value);
-        console.log(rarity)
     };
 
     const getDeck = async() =>{
@@ -100,7 +84,6 @@ function DeckCopyPage() {
         if (deckData["side"] === null){
             deckData["side"] = []
         }
-        deckData["private"] = true
         setDeck(deckData);
         console.log(deckData)
     };
@@ -118,8 +101,10 @@ function DeckCopyPage() {
         setSelectedCard(deck.cover_card)
         const id_list = []
         const newList = []
+        console.log(newList)
         for (let card of combinedList){
             if (!id_list.includes(card.id)){
+                console.log(card)
                 id_list.push(card.id)
                 newList.push(card)
             }
@@ -131,7 +116,7 @@ function DeckCopyPage() {
         getDeck();
         getDeckList();
         getCards();
-        document.title = `Copying ${deck.name} - PM CardBase`
+        document.title = `Editing ${deck.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -140,6 +125,7 @@ function DeckCopyPage() {
 
     useEffect(() => {
         getExtraData();
+    // eslint-disable-next-line
     }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {
@@ -150,11 +136,6 @@ function DeckCopyPage() {
         card_number: { method: (a,b) => a.card_number - b.card_number },
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
-    };
-
-    const handleQuery = (event) => {
-        setQuery({ ...query, [event.target.name]: event.target.value });
-        setShowMore(20)
     };
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
@@ -194,12 +175,13 @@ function DeckCopyPage() {
     const handleStrategyChange = e => {
         let { options } = e.target;
         options = Array.apply(null, options)
-        const selectedValues = options.filter(function(x){return x.selected}).map(x => x.value);
+        const selectedValues = options.filter(x => x.selected).map(x => x.value);
         setSelectedList(selectedValues);
         console.log(selectedValues)
     }
 
     const handleClick = (card) => {
+        console.log(card)
         if (card.card_type[0] === 1006 ||
             card.card_type[0] === 1007 ||
             card.card_type[0] === 1008){
@@ -273,15 +255,11 @@ function DeckCopyPage() {
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
-        data["parent_id"] = deck_id
-        account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
-        delete data["id"]
-        // delete data["_id"]
         console.log(data)
 
-        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
+        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -290,8 +268,7 @@ function DeckCopyPage() {
 
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
-            const responseData = await response.json();
-            const child_deck_id = responseData.id;
+            await response.json();
             setDeck({
                 name: "",
                 account_id: "",
@@ -302,12 +279,9 @@ function DeckCopyPage() {
                 side: [],
                 views: 0,
                 cover_card: "",
-                parent_id: "",
             });
-            navigate(`/decks/${child_deck_id}`)
-        } else {
-            alert("Error in copying deck");
-        }
+            navigate(`/decks/${deck_id}`)
+        };
     }
 
     const handleShowPool = (event) => {
@@ -333,7 +307,7 @@ function DeckCopyPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Deck Copy</h1>
+            <h1 className="left-h1">Deck Edit</h1>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <div
                     id="create-deck-page">
@@ -406,43 +380,31 @@ function DeckCopyPage() {
                         Make my deck private
                     </label>
                     <br/>
-                    {account?
+                    { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
                         <button
                             style={{width: "67px", margin: "5px"}}
-                            variant="dark"
                             onClick={handleSubmit}
+                            className="heightNorm"
                         >
                             Save
                         </button>:
-                        <button
-                        style={{width: "67px", margin: "5px"}}
-                        variant="dark"
-                        >
-                            Save
-                        </button>
-                    }
+                    null}
                     <BackButton/>
                     <button
-                        className="left red"
-                        variant="danger"
+                        className="left red heightNorm"
                         onClick={clearMain}
                     >
                         Clear Main
                     </button>
                     <button
-                        className="left red"
-                        variant="danger"
+                        className="left red heightNorm"
                         onClick={clearPluck}
                     >
                         Clear Pluck
                     </button>
                     <br/>
-                    { !account?
-                        <h6 className="error">You must be logged in to copy a deck</h6>:
-                    null
-                    }
                 </div>
-                <div>
+                <div style={{ width: "350px"}}>
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
@@ -457,7 +419,8 @@ function DeckCopyPage() {
                 </div>
 
                 <BuilderCardSearch/>
-            </div>
+
+                </div>
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div>
                         <div style={{display: "flex", alignItems: "center"}}>
@@ -483,13 +446,11 @@ function DeckCopyPage() {
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{margin: "8px"}}>
-
                                 { all_cards.length == 0 && isQueryEmpty && !noCards?
                                     <div className="loading-container">
                                         <div className="loading-spinner"></div>
                                     </div> :
                                 null}
-
                                 <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
@@ -615,19 +576,19 @@ function DeckCopyPage() {
 
                             {main_list.length > 0 ?
                             <div className="card-pool-fill2">
-                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                    return (
-                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                        </div>
-                                    );
-                                })}
-                            </div> :
+                            {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                return (
+                                    <div style={{display: "flex", justifyContent: "center"}}>
+                                        <img
+                                            className="builder-card2 pointer"
+                                            onClick={() => handleRemoveCard(card)}
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    </div>
+                                );
+                            })}
+                        </div> :
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                     </div>
@@ -683,4 +644,4 @@ function DeckCopyPage() {
 }
 
 
-export default DeckCopyPage;
+export default DeckEditPage;

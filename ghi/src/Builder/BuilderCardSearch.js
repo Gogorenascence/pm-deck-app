@@ -63,6 +63,7 @@ function BuilderCardSearch() {
         setBoosterSetId("")
         setBoosterSet("");
         setRarity("")
+        setSortState("none")
     };
 
     const handleSort = (event) => {
