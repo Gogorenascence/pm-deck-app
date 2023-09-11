@@ -6,6 +6,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
+import BuilderCardSearch from "./BuilderCardSearch";
 
 function DeckBuilder() {
     const [deck, setDeck] = useState({
