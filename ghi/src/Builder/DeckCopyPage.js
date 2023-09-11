@@ -685,7 +685,7 @@ function DeckCopyPage() {
 
             </div>
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
-                    <div style={{marginLeft: "0px"}}>
+                    <div>
                         <div style={{display: "flex", alignItems: "center"}}>
                             <h2
                                 className="left"
@@ -708,7 +708,7 @@ function DeckCopyPage() {
                                 </h5>}
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
-                            <div style={{marginLeft: "20px"}}>
+                            <div style={{margin: "8px"}}>
 
                                 { all_cards.length == 0 && isQueryEmpty && !noCards?
                                     <div className="loading-container">
@@ -719,14 +719,13 @@ function DeckCopyPage() {
                                 <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
-                                            <div style={{padding: "5px"}}>
-                                                    <img
-                                                        onClick={() => handleClick(card)}
-                                                        className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
-                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                        alt={card.name}
-                                                        variant="bottom"/>
+                                            <div style={{display: "flex", justifyContent: "center"}}>
+                                                <img
+                                                    onClick={() => handleClick(card)}
+                                                    className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}/>
                                             </div>
                                         );
                                     })}
@@ -743,82 +742,82 @@ function DeckCopyPage() {
                     </div>
                 </div>
                 {listView?
-                                <div className="deck-list">
-                                    <div className="maindeck3">
-                                    <div style={{marginLeft: "20px"}}>
-                                        <div style={{display: "flex", alignItems: "center"}}>
-                                            <h2
-                                                className="left"
-                                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                            >Main Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                            {main_list.length > 0 ?
-                                            <h5
-                                                className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700"}}
-                                            >{main_list.length}</h5>:
-                                            null}
-                                        </div>
-                                        {main_list.length > 0 ?<>
-                                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                                    return (
-                                                        <Col style={{padding: "5px"}}>
-                                                            <div className="card-container pointer">
-                                                                <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
-                                                                <img
-                                                                    className="card-image"
-                                                                    src={card.picture_url}
-                                                                    alt={card.name}
-                                                                />
-                                                            </div>
-                                                        </Col>
-
-                                                    );
-                                                })}
-                                            </>:
-                                        <h4 className="left no-cards">No cards added</h4>}
-                                    </div>
-                                </div>
-
-                                <div className="pluckdeck3">
-                                    <div style={{marginLeft: "20px"}}>
-                                    <div style={{display: "flex", alignItems: "center"}}>
-                                            <h2
-                                                className="left"
-                                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                            >Pluck Deck</h2>
-                                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                            {pluck_list.length > 0 ?
-                                            <h5
-                                                className="left"
-                                                style={{margin: "1% 0%", fontWeight: "700"}}
-                                            >{pluck_list.length}</h5>:
-                                            null}
-                                        </div>
-                                        {pluck_list.length > 0 ?<>
-                                                {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                                    return (
-                                                        <Col style={{padding: "5px"}}>
-                                                            <div className="card-container pointer">
-                                                                <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
-                                                                <img
-                                                                    className="card-image"
-                                                                    src={card.picture_url}
-                                                                    alt={card.name}
-                                                                />
-                                                            </div>
-                                                        </Col>
-                                                    );
-                                                })}
-                                            </>:
-                                        <h4 className="left no-cards">No cards added</h4>}
-                                    </div>
-                                </div>
+                    <div className="deck-list">
+                        <div className="maindeck3">
+                        <div style={{marginLeft: "20px"}}>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                >Main Deck</h2>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                                {main_list.length > 0 ?
+                                <h5
+                                    className="left"
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                >{main_list.length}</h5>:
+                                null}
                             </div>
-                :<>
-                    <div className="maindeck">
+                            {main_list.length > 0 ?<>
+                                    {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                        return (
+                                            <Col style={{padding: "5px"}}>
+                                                <div className="card-container pointer">
+                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </div>
+                                            </Col>
+
+                                        );
+                                    })}
+                                </>:
+                            <h4 className="left no-cards">No cards added</h4>}
+                        </div>
+                    </div>
+
+                    <div className="pluckdeck3">
                         <div style={{marginLeft: "20px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
+                                <h2
+                                    className="left"
+                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                                >Pluck Deck</h2>
+                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                                {pluck_list.length > 0 ?
+                                <h5
+                                    className="left"
+                                    style={{margin: "1% 0%", fontWeight: "700"}}
+                                >{pluck_list.length}</h5>:
+                                null}
+                            </div>
+                            {pluck_list.length > 0 ?<>
+                                    {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                        return (
+                                            <Col style={{padding: "5px"}}>
+                                                <div className="card-container pointer">
+                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </div>
+                                            </Col>
+                                        );
+                                    })}
+                                </>:
+                            <h4 className="left no-cards">No cards added</h4>}
+                        </div>
+                    </div>
+                </div>
+                :<>
+                    <div className="maindeck">
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -845,7 +844,7 @@ function DeckCopyPage() {
                             <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                                 className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}
@@ -861,8 +860,8 @@ function DeckCopyPage() {
                     </div>
 
                     <div className="pluckdeck">
-                        <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -890,7 +889,7 @@ function DeckCopyPage() {
                             <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                                 className="builder-card2 pointer"
                                                 onClick={() => handleRemoveCard(card)}

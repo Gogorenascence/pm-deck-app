@@ -655,7 +655,7 @@ function PullsDeckBuilder() {
                                     </h5>}
                             </div>
                             <div className={showPool ? "scrollable" : "hidden2"}>
-                                <div style={{marginLeft: "20px"}}>
+                                <div style={{margin: "8px"}}>
 
                                 { all_cards.length == 0 && isQueryEmpty && !noCards?
                                     <div className="loading-container">
@@ -667,25 +667,23 @@ function PullsDeckBuilder() {
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (
                                             <div>
-
-                                                    {ultraRares.includes(card.card_number) ?
-                                                        <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}>
-                                                            <img
-                                                                onClick={() => handleClick(card)}
-                                                                className="builder-card4 pointer"
-                                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                                alt={card.name}/>
-                                                        </div>:
+                                                {ultraRares.includes(card.card_number) ?
+                                                    <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}
+                                                    style={{display: "flex", justifyContent: "center"}}>
                                                         <img
                                                             onClick={() => handleClick(card)}
-                                                            className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                            className="builder-card4 pointer"
                                                             title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                             src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                            alt={card.name}
-                                                            variant="bottom"/>
-                                                    }
-
+                                                            alt={card.name}/>
+                                                    </div>:
+                                                    <img
+                                                        onClick={() => handleClick(card)}
+                                                        className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                        alt={card.name}/>
+                                                }
                                             </div>
                                         );
                                     })}
@@ -792,8 +790,8 @@ function PullsDeckBuilder() {
                 </div>
                 :<>
                     <div className="maindeck">
-                        <div style={{marginLeft: "20px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -820,7 +818,7 @@ function PullsDeckBuilder() {
                             <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             {ultraRares.includes(card.card_number) ?
                                                 <div className="ultra">
                                                     <img
@@ -848,8 +846,8 @@ function PullsDeckBuilder() {
                     </div>
 
                     <div className="pluckdeck">
-                        <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -877,7 +875,7 @@ function PullsDeckBuilder() {
                             <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             {ultraRares.includes(card.card_number) ?
                                                 <div className="ultra">
                                                     <img

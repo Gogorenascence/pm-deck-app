@@ -255,8 +255,8 @@ function PullPage() {
                 (pulls.map((pull, pullIndex) => {
                     return (
                         <div className="rarities" ref={pullIndex === savedPulls.length - 1 ? lastSavedPullRef : null}>
-                            <div style={{marginLeft: "20px"}}>
-                                <div style={{display: "flex", alignItems: "center"}}>
+                            <div>
+                                <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                     <h2
                                         className="left"
                                         style={{margin: "1% 0%", fontWeight: "700"}}
@@ -274,10 +274,10 @@ function PullPage() {
                                         null
                                 }
                                 </div>
-                                    <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                                    <div className="card-pool-fill2">
                                         {pull.map((card) => {
                                             return (
-                                                <Col style={{padding: "5px"}}>
+                                                <div style={{display: "flex", justifyContent: "center"}}>
                                                     <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                         {ultraRares.includes(card.card_number) ?
                                                             <div className="ultra">
@@ -296,10 +296,10 @@ function PullPage() {
                                                                 variant="bottom"/>
                                                         }
                                                     </NavLink>
-                                                </Col>
+                                                </div>
                                             );
                                         })}
-                                    </Row>
+                                    </div>
                             </div>
                         </div>
                     )})
@@ -307,8 +307,8 @@ function PullPage() {
             }
             {fullView && pulls.length > 0?
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                    <div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -326,10 +326,10 @@ function PullPage() {
                                 null
                             }
                         </div>
-                            <Row xs="auto" className="justify-content-start" style={{marginBottom: "8px"}}>
+                        <div className="card-pool-fill2">
                                 {getAllCards(pulls).sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <Col style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 {ultraRares.includes(card.card_number) ?
                                                     <div className="ultra">
@@ -348,10 +348,10 @@ function PullPage() {
                                                         variant="bottom"/>
                                                 }
                                             </NavLink>
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>
+                            </div>
                     </div>
                 </div>:null
             }

@@ -179,7 +179,7 @@ function SetDetailPage() {
                                 {main_list.length > 0 ?<>
                                         {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
-                                                <div style={{padding: "5px"}}>
+                                                <div style={{display: "flex", justifyContent: "center"}}>
                                                     <div className="card-container">
                                                     <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
@@ -213,7 +213,7 @@ function SetDetailPage() {
                                 {pluck_list.length > 0 ?<>
                                         {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                             return (
-                                                <div style={{padding: "5px"}}>
+                                                <div style={{display: "flex", justifyContent: "center"}}>
                                                     <div className="card-container">
                                                     <h5>{card.name} x <b>{card.count}</b></h5>
                                                         <img
@@ -232,8 +232,8 @@ function SetDetailPage() {
                     </div>
             :<> */}
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+<div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -255,10 +255,10 @@ function SetDetailPage() {
                                 </h5>}
                         </div>
                         {ultraRares.length > 0 ?
-                            <div className={showUltraRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showUltraRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "18px"}}>
                                 {ultraRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <div className="ultra">
                                                     <img
@@ -278,8 +278,8 @@ function SetDetailPage() {
                 </div>
 
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                    <div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -302,10 +302,10 @@ function SetDetailPage() {
                         </div>
                         {superRares.length > 0 ?
 
-                            <div className={showSuperRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showSuperRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "18px"}}>
                                 {superRares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -323,8 +323,8 @@ function SetDetailPage() {
                 </div>
 
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+<div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -347,10 +347,10 @@ function SetDetailPage() {
                         </div>
                         {rares.length > 0 ?
 
-                            <div className={showRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showRares ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "18px"}}>
                                 {rares.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -368,8 +368,8 @@ function SetDetailPage() {
                 </div>
 
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+<div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -392,10 +392,10 @@ function SetDetailPage() {
                         </div>
                         {normals.length > 0 ?
 
-                            <div className={showNormals ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showNormals ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "18px"}}>
                                 {normals.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -413,8 +413,8 @@ function SetDetailPage() {
                 </div>
 
                 <div className="rarities">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+<div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -437,10 +437,10 @@ function SetDetailPage() {
                         </div>
                         {maxVariables.length > 0 ?
 
-                            <div className={showMaxVariables ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "8px"}}>
+                            <div className={showMaxVariables ? "card-pool-fill2" : "hidden2"} style={{marginBottom: "18px"}}>
                                 {maxVariables.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                                 <img
                                                     className="builder-card2"
@@ -482,10 +482,10 @@ function SetDetailPage() {
                                 </h5>}
                         </div>
                         {pluck_list.length > 0 ?
-                            <Row className={showPluck ? "card-pool-fill2": "hidden2"} style={{marginBottom: "8px"}}>
+                            <Row className={showPluck ? "card-pool-fill2": "hidden2"} style={{marginBottom: "18px"}}>
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                             className="builder-card2"
                                                 style={{ width: '140px',

@@ -158,7 +158,7 @@ function DeckDetailPage() {
                                 <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                             }
                             {account?
-                                <FavoriteDeck deck={deck}/>: null
+                                <FavoriteDeck deck={deck}/>:null
                             }
                         </div>
                         <h6 className="left"
@@ -409,9 +409,9 @@ function DeckDetailPage() {
                         </div>
                     </div>
             :<>
-                <div className="maindeck">
-                    <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                <div className="maindeck2">
+                    <div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -437,7 +437,7 @@ function DeckDetailPage() {
                             <div className="card-pool-fill2">
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                                 className="builder-card2"
                                                 title={card.name}
@@ -455,8 +455,8 @@ function DeckDetailPage() {
 
 
                 <div className="pluckdeck">
-                    <div style={{marginLeft: "20px"}}>
-                    <div style={{display: "flex", alignItems: "center"}}>
+                    <div>
+                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0%", fontWeight: "700"}}
@@ -483,7 +483,7 @@ function DeckDetailPage() {
                             <div className="card-pool-fill2">
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
-                                        <div style={{padding: "5px"}}>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                             className="builder-card2"
                                             title={card.name}

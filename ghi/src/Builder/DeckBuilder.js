@@ -309,7 +309,7 @@ function DeckBuilder() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Deck Builder</h1>
-            {/* <Row xs={3} sm={3} md={3} lg={3}> */}
+
                 <div style={{display: "flex", justifyContent: "space-between"}}>
                     <div
                         // style={{marginBottom: "45px", width: "435px"}}
@@ -628,7 +628,7 @@ function DeckBuilder() {
                         <br/>
                     </div>
                 </div>
-                {/* </Row> */}
+
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div style={{marginLeft: "0px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
@@ -653,7 +653,7 @@ function DeckBuilder() {
                                 </h5>}
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
-                            <div style={{marginLeft: "20px"}}>
+                            <div style={{margin: "8px"}}>
 
                             { all_cards.length == 0 && isQueryEmpty && !noCards?
                                 <div className="loading-container">
@@ -664,14 +664,13 @@ function DeckBuilder() {
                             <div className="card-pool-fill">
                                 {all_cards.slice(0, showMore).map((card) => {
                                     return (
-                                        <div>
+                                        <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                                 onClick={() => handleClick(card)}
                                                 className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
                                                 title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
+                                                alt={card.name}/>
                                         </div>
                                     );
                                 })}
@@ -760,8 +759,8 @@ function DeckBuilder() {
                 </div>
                 :<>
                     <div className="maindeck">
-                        <div style={{marginLeft: "20px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -804,8 +803,8 @@ function DeckBuilder() {
                     </div>
 
                     <div className="pluckdeck">
-                        <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
                                 <h2
                                     className="left"
                                     style={{margin: "1% 0%", fontWeight: "700"}}
@@ -833,7 +832,7 @@ function DeckBuilder() {
                             <div className="card-pool-fill2">
                             {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
-                                    <div style={{padding: "5px"}}>
+                                    <div style={{display: "flex", justifyContent: "center"}}>
                                         <img
                                             className="builder-card2 pointer"
                                             onClick={() => handleRemoveCard(card)}

@@ -1093,10 +1093,10 @@
   "updated_on": {
     "year": 2023,
     "month": 9,
-    "day": 4,
-    "time": "22:46",
+    "day": 5,
+    "time": "02:15",
     "full_time": {
-      "$date": "2023-09-04T22:46:57.415Z"
+      "$date": "2023-09-05T02:15:41.261Z"
     }
   }
 },
@@ -1367,7 +1367,7 @@
   "series_name": "Black Note//Altered//Quest//Call",
   "card_number": 1050,
   "enthusiasm": 0,
-  "effect_text": "All players discard 1 Move from their play. If your play did not have a Move before the resolution of this card's effect, resolve 1 of the discarded Moves as this card's effect.",
+  "effect_text": "All players discard 1 Move or MAX VARIABLE replacing a Move from their play. \nIf no card was removed from your play, resolve 1 of the discarded Moves as this card's effect.",
   "second_effect_text": "",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p1bna.png",
@@ -1385,17 +1385,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:54",
+    "month": 9,
+    "day": 11,
+    "time": "04:19",
     "full_time": {
-      "$date": "2023-06-25T18:54:56.208Z"
+      "$date": "2023-09-11T04:19:14.353Z"
     }
   }
 },
@@ -3001,7 +2999,7 @@
   "series_name": "Blast Mouth//Altered//Nature",
   "card_number": 1017,
   "enthusiasm": 0,
-  "effect_text": "Deal 2 damage to a foe. \n \nIf you are last to go this round or have the lowest Enthusiasm, deal 1 additional damage and draw 1 Pluck.",
+  "effect_text": "Deal 2 damage to a foe.\nIf you are last to go this round or have the lowest Enthusiasm, deal 1 additional damage and draw 1 Pluck.",
   "second_effect_text": "",
   "illustrator": "Znttus",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r1bmf.png",
@@ -4715,7 +4713,7 @@
   "series_name": "Hive//Tech//Nature",
   "card_number": 1040,
   "enthusiasm": 10,
-  "effect_text": "<Target> 2 foes on your right. //<1-5> Deal 1 damage. //<6-11> Deal 3 piercing damage. Draw 1 card. //<12+> Deal 3 piercing damage. Draw 1 card and resolve 1 random card in your play one more time.",
+  "effect_text": "<Target> 2 foes on your right. //<1-5> Deal 2 damage. //<6-11> Deal 3 piercing damage. //<12+> Deal 3 piercing damage. Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).",
   "second_effect_text": "",
   "illustrator": "layonsin.art",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b2he.png",
@@ -4734,17 +4732,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:20",
+    "month": 9,
+    "day": 11,
+    "time": "04:17",
     "full_time": {
-      "$date": "2023-06-25T19:20:14.831Z"
+      "$date": "2023-09-11T04:17:49.252Z"
     }
   }
 },

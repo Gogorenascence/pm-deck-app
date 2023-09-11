@@ -249,23 +249,7 @@ function CardEditModal() {
         const response = await fetch(cardUrl, fetchConfig);
         if (response.ok) {
             await response.json();
-            setCard({
-                name: "",
-                card_class: "",
-                hero_id: "",
-                series_name: "",
-                card_number: 0,
-                enthusiasm: 0,
-                effect_text: "",
-                second_effect_text: "",
-                illustrator: "",
-                picture_url: "",
-                file_name: "",
-                card_type: [],
-                extra_effects: [],
-                reactions: [],
-                card_tags: [],
-            });
+            handleClose()
             navigate(`/cards/${card_number}`)
         } else {
             alert("Error in updating card");

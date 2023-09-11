@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "64ec3b8382c5729f0b36e155"
   },
-  "email": "jogs2much@gmail.com",
+  "email": "jogs255much@gmail.com",
   "password": "$2b$12$o9YMmCvbEwmOft/yyOlHkOIUCtrw6aMdgRbfgDtHEVfxUK1C3cGeW",
   "username": "jogger8",
   "unhashed_password": "pass",
@@ -11,6 +11,14 @@
   "decks": null,
   "roles": [
     "member"
+  ],
+  "created_on": null,
+  "favorited_decks": [
+    "64fb5519fa55ac14231ef469",
+    "64f8aef2a717cc4a96fd8475",
+    "64f8c029a717cc4a96fd8d61",
+    "64f80d35525e01063274ab8c",
+    "64a3836ebdfcda9852d1a625"
   ]
 },
 {
@@ -18,24 +26,26 @@
     "$oid": "64ec43f682c5729f0b36e156"
   },
   "email": "nantahkl@gmail.com",
-  "password": "$2b$12$Iw1usD4ARaKCE/k9JKG05eVd6bpn2RT0iQqHCUPlg7FJ/RPJDXuvG",
+  "password": "$2b$12$4Lwb4zEvq8fj3dJ2/DMyue74k9g5KaW5CZQrkD.B5kN0XkPX2jdLu",
   "username": "gogorenascence",
   "unhashed_password": "123",
-  "collection": null,
-  "wishlist": null,
+  "collection": [],
+  "wishlist": [],
   "decks": null,
   "roles": [
     "member"
-  ]
+  ],
+  "created_on": null,
+  "favorited_decks": []
 },
 {
   "_id": {
     "$oid": "64ecc30f82c5729f0b36e158"
   },
   "email": "nantahkl@gmail.com",
-  "password": "$2b$12$43MhfHLteI.uN.WlP8bjc.NBznXo9TyIxwkSiRyhgw4U4cdHHnwxi",
+  "password": "$2b$12$svdkztO/DALHeTxD5UBJaOB3k2YCyidWemg4uD51UBrS3pLr/2QTS",
   "username": "TeamPlayMaker",
-  "unhashed_password": "CompAdminPower#12",
+  "unhashed_password": "pass",
   "collection": null,
   "wishlist": null,
   "decks": null,
@@ -44,7 +54,9 @@
     "admin"
   ],
   "created_on": null,
-  "favorited_decks": null
+  "favorited_decks": [
+    "64fc6447eff176ba42293519"
+  ]
 },
 {
   "_id": {
