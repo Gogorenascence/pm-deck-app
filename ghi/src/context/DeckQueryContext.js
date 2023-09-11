@@ -11,6 +11,7 @@ const DeckQueryContextProvider = ({ children }) => {
         cardName: "",
         strategies: "",
         seriesName: "",
+        user: "",
     });
     const [deckSortState, setDeckSortState] = useState("none");
 

@@ -4,6 +4,7 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
+import FavoriteDeck from "../Accounts/FavoriteDeck";
 
 
 function DeckRow() {
@@ -120,6 +121,9 @@ function DeckRow() {
                                             <img className="logo4"
                                                 src="https://i.imgur.com/V3uOVpD.png"
                                                 alt="private" />:null
+                                        }
+                                        {account?
+                                            <FavoriteDeck deck={deck}/>: null
                                         }
                                     </div>
                                     <h6 className="left"

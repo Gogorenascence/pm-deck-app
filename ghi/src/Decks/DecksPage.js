@@ -149,6 +149,14 @@ function DecksPage() {
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
         .sort(deckSortMethods[deckSortState].method)
 
+    // const decksByUser = deckQuery.user? all_decks.filter(deck => {
+    //     const matchingUser = users.find(user => user.id === deck.account_id);
+    //     return (
+    //         matchingUser &&
+    //         matchingUser.name.toLowerCase().includes(deckQuery.user.toLowerCase())
+    //     );
+    // }): all_decks
+
     const createdBy = (deck) => {
         const account = deck.account_id? users.find(user => user.id === deck.account_id): null
         return account? account.username : "TeamPlayMaker"
@@ -169,6 +177,16 @@ function DecksPage() {
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
+            {/* <input
+                className="left"
+                type="text"
+                placeholder=" Creator's Name Contains..."
+                name="user"
+                value={deckQuery.user}
+                onChange={handleDeckQuery}
+                style={{width: "370px", height: "37px"}}>
+            </input>
+            <br/> */}
             <input
                 className="left"
                 type="text"
