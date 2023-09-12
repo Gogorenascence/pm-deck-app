@@ -541,7 +541,7 @@ function DeckBuilder() {
                             <div className="card-pool-fill2">
                             {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
-                                    <div style={{padding: "5px"}}>
+                                    <div style={{display: "flex", justifyContent: "center"}}>
                                         <img
                                             className="builder-card2 pointer"
                                             onClick={() => handleRemoveCard(card)}
@@ -592,8 +592,7 @@ function DeckBuilder() {
                                             onClick={() => handleRemoveCard(card)}
                                             title={card.name}
                                             src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}
-                                            variant="bottom"/>
+                                            alt={card.name}/>
                                     </div>
                                 );
                             })}

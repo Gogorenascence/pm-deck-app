@@ -173,10 +173,12 @@ function AccountDecks(props) {
                     null}
                     {!loading ?
                         <div className="account-option-items account-scrollable">
-                            {my_decks.slice(0, deckShowMore).map((deck) => {
+                            {my_decks.slice(0, deckShowMore).map((deck, index) => {
+                                const marginBottom = index < my_decks.length - 1 ? '15px' : '0';
                                 return (
                                     <NavLink to={`/decks/${deck.id}`}>
-                                        <Card className="text-white text-center card-list-card3">
+                                        <Card className="text-white text-center card-list-card3"
+                                            style={{marginBottom}}>
                                             <div className="card-image-wrapper">
                                                 <div className="card-image-clip3">
                                                     <Card.Img

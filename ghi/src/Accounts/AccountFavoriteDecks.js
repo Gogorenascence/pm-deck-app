@@ -181,10 +181,12 @@ function AccountFavoriteDecks(props) {
                     null}
                     {!loading ?
                         <div className="account-option-items account-scrollable">
-                            {my_favorite_decks.slice(0, deckShowMore).map((deck) => {
+                            {my_favorite_decks.slice(0, deckShowMore).map((deck, index) => {
+                                const marginBottom = index < my_favorite_decks.length - 1 ? '15px' : '0';
                                 return (
                                     <NavLink to={`/decks/${deck.id}`}>
-                                        <Card className="text-white text-center card-list-card3">
+                                        <Card className="text-white text-center card-list-card3"
+                                            style={{marginBottom}}>
                                             <div className="card-image-wrapper">
                                                 <div className="card-image-clip3">
                                                     <Card.Img
@@ -201,10 +203,6 @@ function AccountFavoriteDecks(props) {
                                                     <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                                                 }
                                             </div>
-                                            {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
-                                            >
-                                                User:
-                                            </h6> */}
                                             <h6 className="left"
                                                 style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
                                             >

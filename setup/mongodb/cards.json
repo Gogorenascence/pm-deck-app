@@ -4671,7 +4671,7 @@
   "series_name": "Hive//Tech//Nature",
   "card_number": 1039,
   "enthusiasm": 0,
-  "effect_text": "Deal 3 damage to a foe, then steal 1 of their Items. Discard the Item at the end of the round or when this card is removed from your play.",
+  "effect_text": "Deal 3 damage to a foe, then steal 1 of their Active Items. Discard the Item at the end of the round or when this card is removed from your play.",
   "second_effect_text": "",
   "illustrator": "layonsin.art",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b2hm.png",
@@ -4689,17 +4689,15 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "19:20",
+    "month": 9,
+    "day": 12,
+    "time": "22:17",
     "full_time": {
-      "$date": "2023-06-25T19:20:10.620Z"
+      "$date": "2023-09-12T22:17:44.569Z"
     }
   }
 },
