@@ -575,7 +575,7 @@ function DeckEditPage() {
                             </div>
 
                             {main_list.length > 0 ?
-                            <div className="card-pool-fill2">
+                            <div className={showMain ? "card-pool-fill2": "hidden2"}>
                             {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
@@ -620,7 +620,7 @@ function DeckEditPage() {
                                     </h5>}
                             </div>
                             {pluck_list.length > 0 ?
-                            <div className="card-pool-fill2">
+                            <div className={showPluck ? "card-pool-fill2": "hidden2"}>
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
