@@ -197,7 +197,7 @@ button:hover {
 }
 
 .red {
-  background-color: rgb(209, 54, 54);
+  background-color: rgb(255, 24, 43);
 }
 
 .blackfooter {
@@ -448,10 +448,10 @@ button:hover {
 
 .Power {
   color: aliceblue;
-  background: url("./placeh2.png"),rgb(255, 73, 73);
+  background: url("./placeh2.png"),rgba(255, 0, 34, 0.788);
   background-blend-mode: multiply;
   background-size: 100%;
-  border: 7px solid rgb(255, 31, 31);
+  border: 7px solid rgb(255, 0, 43);
   border-radius: 7px;
   width: 207px;
   outline: 1px solid white;
@@ -459,10 +459,10 @@ button:hover {
 
 .bigPower {
   color: aliceblue;
-  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background: url("./placeh3.png"),rgb(255, 0, 34, 0.788);
   background-blend-mode: multiply;
   background-size: 70%;
-  border: 7px solid rgb(255, 31, 31);
+  border: 7px solid rgb(255, 0, 43);
   border-radius: 7px;
   margin-top: 4%;
   width: 635px;
@@ -888,10 +888,10 @@ button:hover {
 
 .bigPower2 {
   color: aliceblue;
-  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background: url("./placeh3.png"),rgb(255, 0, 34, 0.788);
   background-blend-mode: multiply;
   background-size: 70%;
-  border: 7px solid rgb(255, 31, 31);
+  border: 7px solid rgb(255, 0, 43);
   border-radius: 7px;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -1016,10 +1016,10 @@ button:hover {
 
 .bigPower3 {
   color: aliceblue;
-  background: url("./placeh3.png"),rgb(255, 73, 73);
+  background: url("./placeh3.png"),rgb(255, 0, 34, 0.788);
   background-blend-mode: multiply;
   background-size: 70%;
-  border: 7px solid rgb(255, 31, 31);
+  border: 7px solid rgb(255, 0, 43);
   border-radius: 7px;
   margin-top: 4%;
   width: 90%;
