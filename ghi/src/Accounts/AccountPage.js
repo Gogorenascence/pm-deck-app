@@ -7,6 +7,7 @@ import { DeckQueryContext } from "../context/DeckQueryContext";
 import { AuthContext } from "../context/AuthContext";
 import AccountDecks from "./AccountDecks";
 import AccountFavoriteDecks from "./AccountFavoriteDecks";
+import ImageUpload from "./ImageUpload";
 
 function AccountPage() {
     const {
@@ -79,6 +80,7 @@ function AccountPage() {
                             </div>
                         </div>
                         <div className="account-options-container">
+                            {/* <ImageUpload/> */}
                             <AccountDecks option={option}/>
                             <AccountFavoriteDecks option={option}/>
                         </div>
