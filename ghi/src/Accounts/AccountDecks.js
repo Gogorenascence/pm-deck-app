@@ -242,7 +242,7 @@ function AccountDecks(props) {
                             variant="dark"
                             style={{ width: "100%", marginTop:"2%"}}
                             onClick={handleDeckShowMore}>
-                                Show More Decks ({all_decks.length - deckShowMore} Remaining)
+                                Show More Decks ({my_decks.length - deckShowMore} Remaining)
                             </button> : null }
                         </div>:null
                     }
