@@ -129,6 +129,7 @@ function DecksPage() {
             cardName: "",
             strategy: "",
             seriesName: "",
+            user: "",
         });
         setDeckSortState("none")
     };
@@ -147,15 +148,8 @@ function DecksPage() {
         .filter(deck => deckQuery.cardName ? (deck.card_names && deck.card_names.length > 0 ? deck.card_names.some(name => name.toLowerCase().includes(deckQuery.cardName.toLowerCase())) : false) : true)
         .filter(deck => deckQuery.strategy? deck.strategies.some(strategy => strategy.includes(deckQuery.strategy)):deck.strategies)
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
+        .filter(deck => deckQuery.user? (deck.account_id? users.find(user => user.id === deck.account_id && user.username.toLowerCase().includes(deckQuery.user.toLowerCase())):false):true)
         .sort(deckSortMethods[deckSortState].method)
-
-    // const decksByUser = deckQuery.user? all_decks.filter(deck => {
-    //     const matchingUser = users.find(user => user.id === deck.account_id);
-    //     return (
-    //         matchingUser &&
-    //         matchingUser.name.toLowerCase().includes(deckQuery.user.toLowerCase())
-    //     );
-    // }): all_decks
 
     const createdBy = (deck) => {
         const account = deck.account_id? users.find(user => user.id === deck.account_id): null
@@ -177,7 +171,7 @@ function DecksPage() {
                 style={{width: "370px", height: "37px"}}>
             </input>
             <br/>
-            {/* <input
+            <input
                 className="left"
                 type="text"
                 placeholder=" Creator's Name Contains..."
@@ -186,7 +180,7 @@ function DecksPage() {
                 onChange={handleDeckQuery}
                 style={{width: "370px", height: "37px"}}>
             </input>
-            <br/> */}
+            <br/>
             <input
                 className="left"
                 type="text"

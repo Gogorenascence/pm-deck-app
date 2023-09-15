@@ -193,11 +193,11 @@ button {
 }
 
 button:hover {
-  filter: brightness(1.5);
+  filter: brightness(1.75);
 }
 
 .red {
-  background-color: rgb(255, 24, 43);
+  background-color: rgb(202, 31, 45);
 }
 
 .blackfooter {
