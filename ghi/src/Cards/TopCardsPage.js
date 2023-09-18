@@ -126,7 +126,7 @@ function TopCardsPage() {
                 <div className="card-list3">
                     {cards.slice(0, limit).slice(0, showMore).map(card => {
                         return (
-                            <NavLink to={`/cards/${card.card_number}`} className="nav-link">
+                            <NavLink to={`/cards/${card.card_number}`} className="nav-link glow2">
                                     <div className={card.card_class ? `big${card.card_class}2` : "bigNoClass2"}>
                                         <h3 style={{fontWeight: "600", margin: "12px"}}>{card.name}</h3>
                                         <h5 style={{fontWeight: "600", margin: "12px"}}>{card.card_class} {card.cardType}</h5>
@@ -143,7 +143,7 @@ function TopCardsPage() {
                 {cards.slice(0, limit).slice(0, showMore).map(card => {
                     return (
                             <div className="aligned">
-                                <NavLink to={`/cards/${card.card_number}`} className="nav-link">
+                                <NavLink to={`/cards/${card.card_number}`} className="nav-link glow3">
                                     <img className="card-list-card2"
                                         title={card.name}
                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}

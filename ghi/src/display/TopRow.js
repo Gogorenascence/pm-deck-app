@@ -9,7 +9,7 @@ function TopRow() {
       <div className="cd-inner">
           <div style={{width: "15vw", margin: "0px 5px"}}>
             <Link to="/deckbuilder">
-              <Card className=" text-white text-center" style={{ width: '15vw', minWidth: "200px"}}>
+              <Card className=" text-white text-center glow3" style={{ width: '15vw', minWidth: "200px"}}>
                 <Card.Img src="mv2.png" alt="Card image" variant="bottom"/>
                 <Card.ImgOverlay className="blackfooter mt-auto zindex-0">
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Deck Builder</Card.Title>
@@ -19,7 +19,7 @@ function TopRow() {
           </div>
           <div style={{width: "15vw", margin: "0px 5px"}}>
             <Link to="/decks">
-              <Card className="text-white text-center" style={{ width: '15vw', minWidth: "200px"}}>
+              <Card className="text-white text-center glow3" style={{ width: '15vw', minWidth: "200px"}}>
                 <Card.Img src="1b109Jet and Climber2.png" alt="Card image" variant="bottom"/>
                 <Card.ImgOverlay className="blackfooter mt-auto">
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Decks</Card.Title>
@@ -29,7 +29,7 @@ function TopRow() {
           </div>
           <div style={{width: "15vw", margin: "0px 5px"}}>
             <Link to="/cards">
-              <Card className="text-white text-center" style={{ width: '15vw', minWidth: "200px"}}>
+              <Card className="text-white text-center glow3" style={{ width: '15vw', minWidth: "200px"}}>
                 <Card.Img src="1r307Burst Esper2.png" alt="Card image" variant="bottom"/>
                 <Card.ImgOverlay className="blackfooter mt-auto">
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Cards</Card.Title>

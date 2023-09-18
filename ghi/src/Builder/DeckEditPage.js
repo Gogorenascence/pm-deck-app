@@ -457,7 +457,7 @@ function DeckEditPage() {
                                             <div style={{display: "flex", justifyContent: "center"}}>
                                                 <img
                                                     onClick={() => handleClick(card)}
-                                                    className={combinedList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                    className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
                                                     title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={card.name}/>

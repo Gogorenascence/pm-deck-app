@@ -24,6 +24,7 @@ import AppProvider from "./context/AppProvider";
 import PullsDeckBuilder from "./Builder/PullsDeckBuilder";
 import AccountPage from "./Accounts/AccountPage";
 import ResetPassword from "./Accounts/ResetPasswordPage";
+import GameCards from "./Cards/GameCards";
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
               <Route path="/articles" element={<UnderConstruction />} />
               <Route path="/gameplay" element={<UnderConstruction />} />
               <Route path="/forum" element={<UnderConstruction />} />
+              <Route path="/game" element={<GameCards />} />
             </Routes>
 
           </div>

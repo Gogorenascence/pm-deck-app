@@ -185,7 +185,7 @@ function AccountFavoriteDecks(props) {
                                 const marginBottom = index < my_favorite_decks.length - 1 ? '15px' : '0';
                                 return (
                                     <NavLink to={`/decks/${deck.id}`}>
-                                        <Card className="text-white text-center card-list-card3"
+                                        <Card className="text-white text-center card-list-card3 glow"
                                             style={{marginBottom}}>
                                             <div className="card-image-wrapper">
                                                 <div className="card-image-clip3">

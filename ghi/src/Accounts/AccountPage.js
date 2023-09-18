@@ -46,34 +46,34 @@ function AccountPage() {
                     <div className="account-split">
                         <div className="account-info-container">
                             <h1 className="left-h1">Account Page</h1>
-                            <h2 className="left">Welcome back, {account.username}!</h2>
+                            <h4 className="left">Welcome back, {account.username}!</h4>
 
-                            <div className={option === "profile"? "bigStaunch3 selected2 pointer" : "bigStaunch3 pointer half"}
+                            <div className={option === "profile"? "bigStaunch3 selected2 pointer glow2" : "bigStaunch3 pointer glow2 half"}
                                 onClick={() => handleOption("profile")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>Profile</h4>
                             </div>
-                            <div className={option === "security"? "bigPower3 selected2 pointer" : "bigPower3 pointer half"}
+                            <div className={option === "security"? "bigPower3 selected2 pointer glow2" : "bigPower3 pointer glow2 half"}
                                 onClick={() => handleOption("security")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>Security</h4>
                             </div>
-                            <div className={option === "myDecks"? "bigUnity3 selected2 pointer" : "bigUnity3 pointer half"}
+                            <div className={option === "myDecks"? "bigUnity3 selected2 pointer glow2" : "bigUnity3 pointer glow2 half"}
                                 onClick={() => handleOption("myDecks")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>My Uploaded Decks</h4>
                             </div>
-                            <div className={option === "favoriteDecks"? "bigCanny3 selected2 pointer" : "bigCanny3 pointer half"}
+                            <div className={option === "favoriteDecks"? "bigCanny3 selected2 pointer glow2" : "bigCanny3 pointer glow2 half"}
                                 onClick={() => handleOption("favoriteDecks")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>My Favorited Decks</h4>
                             </div>
-                            <div className={option === "collection"? "bigNoClass3 selected2 pointer" : "bigNoClass3 pointer half"}
+                            <div className={option === "collection"? "bigNoClass3 selected2 pointer glow2" : "bigNoClass3 pointer glow2 half"}
                                 onClick={() => handleOption("collection")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>My Collection</h4>
                             </div>
-                            <div className={option === "wishList"? "bigFaith selected2 pointer" : "bigFaith pointer half"}
+                            <div className={option === "wishList"? "bigFaith selected2 pointer glow2" : "bigFaith pointer glow2 half"}
                                 onClick={() => handleOption("wishList")}
                             >
                                 <h4 style={{fontWeight: "600", margin: "12px"}}>My Wishlist</h4>

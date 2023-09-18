@@ -136,3 +136,7 @@ async def get_full_card(
 @router.get("/api/full_cards/", response_model=CardsAll)
 async def get_all_full_cards(queries: CardQueries = Depends()):
     return CardsAll(cards=queries.get_all_full_cards())
+
+@router.get("/api/game_cards/", response_model=list)
+async def get_all_game_cards(queries: CardQueries = Depends()):
+    return queries.get_all_game_cards()

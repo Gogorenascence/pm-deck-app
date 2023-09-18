@@ -667,7 +667,7 @@ function PullsDeckBuilder() {
                                         return (
                                             <div>
                                                 {ultraRares.includes(card.card_number) ?
-                                                    <div className={uniqueList.includes(card) ? "selected ultra2 pointer" : "ultra2 pointer"}
+                                                    <div className={uniqueList.includes(card) ? "selected ultra2 pointer glow3" : "ultra2 pointer glow3"}
                                                     style={{display: "flex", justifyContent: "center"}}>
                                                         <img
                                                             onClick={() => handleClick(card)}
@@ -678,7 +678,7 @@ function PullsDeckBuilder() {
                                                     </div>:
                                                     <img
                                                         onClick={() => handleClick(card)}
-                                                        className={uniqueList.includes(card) ? "selected builder-card pointer" : "builder-card pointer"}
+                                                        className={uniqueList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
                                                         title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}/>

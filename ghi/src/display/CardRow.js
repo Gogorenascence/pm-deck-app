@@ -31,7 +31,7 @@ function CardRow() {
                         <div style={{width: "15vw", margin: "0px 5px"}} key={card.name}>
                             <NavLink to={`/cards/${card.card_number}`}>
                                     <img
-                                        className="card-row"
+                                        className="card-row glow3"
                                         title={card.name}
                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                         alt={card.name}/>

@@ -275,3 +275,109 @@ class CardQueries(Queries):
             props["id"] = str(props["_id"])
             cards.append(CardOut(**props))
         return cards
+
+    def get_all_game_cards(self):
+        db = self.collection.find()
+        items = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            items.append(CardOut(**document))
+        items.sort(key=lambda x: x.hero_id)
+        cards = []
+        for card in items:
+            print(type(card.card_type[0]))
+            if card.card_type[0] < 1006:
+                print(card)
+                game_card_name = card.file_name
+                id = card.card_number
+                name = card.name
+                series_names = card.series_name.split("//")
+                enthusiasm = card.enthusiasm
+                effect_text = card.effect_text
+                second_effect_text = card.second_effect_text
+                effect = "Effect Value"
+                second_effect = "Second Effect Value"
+                picture_url = card.picture_url
+                card_type = card.card_type[0]
+                reactions = card.reactions
+                card_tags = card.card_tags
+
+                card_template = '''
+{game_card_name} = MainDeckCard(
+    id={id},
+    name='{name}',
+    series_names={series_names},
+    hp=5,
+    defending=False,
+    enthusiasm={enthusiasm},
+    effect_text="{effect_text}",
+    second_effect_text="{second_effect_text}",
+    effect="Effect Value",
+    second_effect="Second Effect Value",
+    picture_url="{picture_url}",
+    card_type={card_type},
+    reactions={reactions},
+    card_tags={card_tags}
+)
+'''
+
+                card_code = card_template.format(
+                    game_card_name=game_card_name,
+                    id=id,
+                    name=name,
+                    series_names=series_names,
+                    enthusiasm=enthusiasm,
+                    effect_text=effect_text,
+                    second_effect_text=second_effect_text,
+                    effect=effect,
+                    second_effect=second_effect,
+                    picture_url=picture_url,
+                    card_type=card_type,
+                    reactions=reactions,
+                    card_tags=card_tags
+                )
+                cards.append(card_code)
+
+            else:
+                game_card_name = card.file_name
+                id = card.card_number
+                name = card.name
+                series_names = card.series_name.split("//")
+                effect_text = card.effect_text
+                second_effect_text = card.second_effect_text
+                effect = "Effect Value"
+                second_effect = "Second Effect Value"
+                picture_url = card.picture_url
+                card_type = card.card_type[0]
+                card_tags = card.card_tags
+
+                card_template = '''
+{game_card_name} = PluckDeckCard(
+    id={id},
+    name="{name}",
+    series_names={series_names},
+    effect_text="{effect_text}",
+    second_effect_text="{second_effect_text}",
+    effect="Effect Value",
+    second_effect="Second Effect Value",
+    picture_url="{picture_url}",
+    card_type={card_type},
+    card_tags={card_tags}
+)
+'''
+
+                card_code = card_template.format(
+                    game_card_name=game_card_name,
+                    id=id,
+                    name=name,
+                    series_names=series_names,
+                    effect_text=effect_text,
+                    second_effect_text=second_effect_text,
+                    effect=effect,
+                    second_effect=second_effect,
+                    picture_url=picture_url,
+                    card_type=card_type,
+                    card_tags=card_tags
+                )
+                cards.append(card_code)
+        return cards
