@@ -153,3 +153,8 @@ async def get_cover_image(
 async def get_all_full_decks(queries: DeckQueries = Depends()):
     full_deck_list = queries.get_all_full_decks()
     return {"decks": full_deck_list}
+
+
+@router.get("/api/game_decks/", response_model=list)
+async def get_all_game_decks(queries: DeckQueries = Depends()):
+    return queries.get_all_game_decks()

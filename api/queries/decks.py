@@ -361,3 +361,34 @@ class DeckQueries(Queries):
             deck["series_names"] = series_names
             decks.append(deck)
         return decks
+
+    def get_all_game_decks(self):
+        db = self.collection.find()
+        items = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            items.append(DeckOut(**document))
+        items.sort(key=lambda x: x.name)
+        decks = []
+        for deck in items:
+            name = deck.name
+            id = deck.id
+            cards = deck.cards
+            pluck = deck.pluck
+
+            deck_template = '''
+{name} = MainDeckCard(
+    id={id},
+    name='{name}',
+    cards={cards},
+    pluck={pluck}
+)
+'''
+            deck_code = deck_template.format(
+                name=name,
+                id=id,
+                cards=cards,
+                pluck=pluck
+            )
+            decks.append(deck_code)
+        return decks
