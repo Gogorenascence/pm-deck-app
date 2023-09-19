@@ -370,25 +370,35 @@ class DeckQueries(Queries):
             items.append(DeckOut(**document))
         items.sort(key=lambda x: x.name)
         decks = []
+        all_decks = []
         for deck in items:
+            pre_name = list(deck.name)
             name = deck.name
+            var_name = ""
+            for char in pre_name:
+                if char.isalnum():
+                    var_name += char.lower()
+                else:
+                    var_name += "_"
             id = deck.id
             cards = deck.cards
             pluck = deck.pluck
 
             deck_template = '''
-{name} = MainDeckCard(
-    id={id},
+{var_name} = Deck(
+    id="{id}",
     name='{name}',
     cards={cards},
     pluck={pluck}
 )
 '''
             deck_code = deck_template.format(
+                var_name=var_name,
                 name=name,
                 id=id,
                 cards=cards,
                 pluck=pluck
             )
             decks.append(deck_code)
-        return decks
+            all_decks.append(var_name)
+        return [decks, all_decks]
