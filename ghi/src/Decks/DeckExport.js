@@ -358,7 +358,7 @@ function DeckExport(props) {
       <button
         className="left heightNorm"
         variant="dark"
-        style={{marginRight: "10px"}}
+        style={{marginRight: "10px", marginLeft: "6px" }}
         onClick={exportDeck}
       >
         Export Decks

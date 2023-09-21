@@ -4,7 +4,7 @@ import {
     Card,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useParams} from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
@@ -138,6 +138,25 @@ function DeckDetailPage() {
     const handleShowPluck = (event) => {
         setShowPluck(!showPluck);
     };
+
+    const navigate = useNavigate()
+
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
+        const fetchConfig = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const response = await fetch(cardUrl, fetchConfig);
+        if (response.ok) {
+            navigate(`/decks`)
+        };
+    }
+
 
     return (
         <div className="white-space">
@@ -273,15 +292,25 @@ function DeckDetailPage() {
             </div>
             <div style={{ display: "flex" }}>
             { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
-                <NavLink to={`/decks/${deck.id}/edit`}>
-                    <button
+                <>
+                    <NavLink to={`/decks/${deck.id}/edit`}>
+                        <button
                             className="left heightNorm button100 red"
                             variant="danger"
                             style={{marginLeft: ".5%", marginRight: "7px"}}
                             >
                             Edit Deck
+                        </button>
+                    </NavLink>
+                    <button
+                        className="left heightNorm button100 red"
+                        onClick={handleDelete}
+                        style={{marginLeft: ".5%", marginRight: "7px"}}
+                        >
+                        Delete Deck
                     </button>
-                </NavLink>:
+                </>
+                :
             null}
             {listView?
                 <button
