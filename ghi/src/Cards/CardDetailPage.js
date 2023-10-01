@@ -281,7 +281,7 @@ function CardDetailPage() {
                                             return (
                                                 <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                         <img
-                                                            className="cd-related-card wide100"
+                                                            className="cd-related-card"
                                                             title={relatedCard.name}
                                                             src={relatedCard.picture_url ? relatedCard.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                             alt={relatedCard.name}/>
