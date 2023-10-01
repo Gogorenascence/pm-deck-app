@@ -250,7 +250,7 @@ function CardEditModal() {
         if (response.ok) {
             await response.json();
             handleClose()
-            navigate(`/cards/${card_number}`)
+            navigate(`/cards/`)
         } else {
             alert("Error in updating card");
         }

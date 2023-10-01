@@ -45,7 +45,7 @@ function SetsPage() {
     };
 
     const handleBoosterSetQuery = (event) => {
-        setBoosterSetShowMore({ ...boosterSetQuery, [event.target.name]: event.target.value });
+        setBoosterSetQuery({ ...boosterSetQuery, [event.target.name]: event.target.value });
     };
 
     const handleBoosterSetQueryReset = (event) => {

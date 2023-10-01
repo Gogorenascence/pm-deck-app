@@ -191,20 +191,18 @@ function CardsPage() {
             <h1 className="left-h1">Card Search</h1>
             <h2 className="left">Search our collection of cards</h2>
             <input
-                className="left"
+                className="left dcbsearch-x-x-large"
                 type="text"
                 placeholder=" Card Name Contains..."
-                style={{width: "740px", height: "37px"}}
                 name="cardName"
                 value={query.cardName}
                 onChange={handleQuery}>
             </input>
             <br/>
             <input
-                className="left"
+                className="left dcbsearch-x-x-large"
                 type="text"
                 placeholder=" Card Text Contains..."
-                style={{width: "740px", height: "37px"}}
                 name="cardText"
                 value={query.cardText}
                 onChange={handleQuery}>

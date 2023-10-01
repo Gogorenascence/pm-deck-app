@@ -35,7 +35,7 @@ function PullsDeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
-    const {pulls}= useContext(PullsContext);
+    const {pulls} = useContext(PullsContext);
 
     const [showMore, setShowMore] = useState(50);
     const [listView, setListView] = useState(false);
@@ -47,9 +47,6 @@ function PullsDeckBuilder() {
     const [boosterSet, setBoosterSet] = useState("");
     const [ultraRares, setUltraRares] = useState([]);
     const [rarity, setRarity] = useState("");
-
-
-
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{

@@ -89,7 +89,7 @@ function PullPage() {
             if (lastSavedPullRef.current) {
                 lastSavedPullRef.current.scrollIntoView({ behavior: 'smooth' });
             }
-            findUltras()
+            // findUltras()
         } else {
             alert("No number of packs selected")
         }
