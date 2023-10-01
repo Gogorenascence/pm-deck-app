@@ -1474,7 +1474,6 @@ button:hover {
   .card-pool-fill3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
     grid-auto-flow: dense;
     /* margin-right: 18px; */
   }
@@ -1570,7 +1569,7 @@ button:hover {
   .cards-page-card-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem; /* Add any gap you want between the cards */
+    gap: 7px;
   }
 
   .cards-page-card-list5 {
@@ -1887,12 +1886,12 @@ button:hover {
       left: 0;
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(to right, rgba(16, 14, 22, 0), rgba(17, 0, 54, 0)), url("./backg.png");
-      background-size: 100%, 100%;
-      background-repeat: no-repeat, repeat;
-      background-position: center center, center center;
-      background-attachment: fixed, fixed;
-    z-index: -1,-100;
+      background-image: url("./backg.png");
+      background-size: 100%;
+      background-repeat: repeat;
+      background-position: center center;
+      background-attachment:fixed;
+    z-index: -100;
   }
 
   body.dark::after {
