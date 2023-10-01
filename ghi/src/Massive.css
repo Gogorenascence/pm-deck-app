@@ -1229,7 +1229,7 @@ button:hover {
 }
 
 .card-row {
-  width: 15vw;
+  width: 100%;
   min-width: 200px;
   border-radius: 13px;
   overflow: hidden;
@@ -1742,17 +1742,6 @@ button:hover {
     margin: auto;
   }
 
-  .wide40 {
-    width: 100%;
-  }
-
-  .wide55 {
-    width: 100%;
-  }
-
-  .wide100 {
-    width: 100%;
-  }
 
   .media-display {
     display: block;
@@ -1849,7 +1838,7 @@ button:hover {
   }
 
   .cd-related-card {
-    width: 210px;
+    width: 100%px;
     border-radius: 4%;
     overflow: hidden;
     margin: 0px 10px 10px 10px;
@@ -1858,15 +1847,28 @@ button:hover {
   }
 
   .cd-related-card:hover {
+    width: 100%;
+    border-radius: 4%;
     position: static; /* or any other appropriate position value */
     top: auto; /* Reset the top property */
     left: auto; /* Reset the left property */
     transform: none; /* Reset the transform property */
-    width: 210px;
   }
 
   body {
     background-size: 100%, 60%;
+  }
+
+  .wide40 {
+    width: 100%;
+  }
+
+  .wide55 {
+    width: 100%;
+  }
+
+  .wide100 {
+    width: 100%;
   }
 }
 
@@ -1877,20 +1879,20 @@ button:hover {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: white;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to right, rgba(16, 14, 22, 0), rgba(17, 0, 54, 0)), url("./backg.png");
-    background-size: 100%, 100%;
-    background-repeat: no-repeat, repeat;
-    background-position: center center, center center;
-    background-attachment: fixed, fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: white;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to right, rgba(16, 14, 22, 0), rgba(17, 0, 54, 0)), url("./backg.png");
+      background-size: 100%, 100%;
+      background-repeat: no-repeat, repeat;
+      background-position: center center, center center;
+      background-attachment: fixed, fixed;
     z-index: -1,-100;
   }
 

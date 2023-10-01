@@ -281,7 +281,7 @@ function CardDetailPage() {
                                             return (
                                                 <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                         <img
-                                                            className="cd-related-card"
+                                                            className="cd-related-card wide100"
                                                             title={relatedCard.name}
                                                             src={relatedCard.picture_url ? relatedCard.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                             alt={relatedCard.name}/>
@@ -292,9 +292,7 @@ function CardDetailPage() {
                                 </div>
                                 <div className="cd-inner" style={{marginTop: "3%"}}>
                                 { account && account.roles.includes("admin")?
-
                                         <CardEditModal/>:
-
                                 null}
                                     <button
                                         className="left button100 heightNorm"
