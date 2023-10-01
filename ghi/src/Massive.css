@@ -1589,7 +1589,6 @@ button:hover {
   }
 
   .cards-page-card-list7 {
-    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem; /* Add any gap you want between the cards */
@@ -1838,7 +1837,7 @@ button:hover {
   }
 
   .cd-related-card {
-    width: 100%px;
+    width: 90%px;
     border-radius: 4%;
     overflow: hidden;
     margin: 0px 10px 10px 10px;
@@ -1847,7 +1846,7 @@ button:hover {
   }
 
   .cd-related-card:hover {
-    width: 100%;
+    width: 90%;
     border-radius: 4%;
     position: static; /* or any other appropriate position value */
     top: auto; /* Reset the top property */
