@@ -844,7 +844,6 @@ button:hover {
   float: right;
 }
 
-
 .footer {
   display: flex;
   justify-content: center;
@@ -1178,6 +1177,7 @@ button:hover {
   cursor: pointer;
   opacity: 30%;
   transition: opacity 0.5s;
+  z-index: 900;
 }
 
 .light-dark:hover {
@@ -1231,7 +1231,7 @@ button:hover {
 .card-row {
   width: 100%;
   min-width: 200px;
-  border-radius: 17px;
+  border-radius: 13px;
   overflow: hidden;
   border: 1px solid white;
 }
@@ -1700,6 +1700,11 @@ button:hover {
     height: 37px;
   }
 
+  .dcbsearch-switch {
+    width: 178px;
+    height: 37px;
+  }
+
   .media-button{
     width: 120px;
     margin-left: 35px;
@@ -1870,7 +1875,6 @@ button:hover {
   }
 }
 
-
 @media (prefers-color-scheme: dark) and (max-width: 1333px){
   body.dark {
     margin-bottom: 200px;
@@ -1939,5 +1943,4 @@ button:hover {
       background-position: -3000px 3000px;
     }
   }
-
 }

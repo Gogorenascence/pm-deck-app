@@ -5480,16 +5480,18 @@
 
 # print(len("640cd72b5f6730657ad87285"), len("640935736b4d5881ee5633dc"), len("6409357e6b4d5881ee5633de") )
 
-name = "Joe!"
+# name = "Joe!"
 
-pre_name = list(name)
-var_name = ""
-for char in pre_name:
-    if char.isalnum():
-        var_name += char
-    elif char == " ":
-        var_name += "_"
+# pre_name = list(name)
+# var_name = ""
+# for char in pre_name:
+#     if char.isalnum():
+#         var_name += char
+#     elif char == " ":
+#         var_name += "_"
 
-print(name)
-print("pre_name: ", pre_name)
-print("var_name: ", var_name)
+# print(name)
+# print("pre_name: ", pre_name)
+# print("var_name: ", var_name)
+
+print([1,3] == [1,2,3])

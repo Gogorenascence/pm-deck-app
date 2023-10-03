@@ -209,7 +209,7 @@ function CardsPage() {
             </input>
             <br/>
             <select
-                className="left dcbsearch-x-large"
+                className="left dcbsearch-x-large dcbsearch-switch"
                 type="text"
                 placeholder=" Card Set"
                 onChange={handleBoosterSetChange}
