@@ -278,7 +278,7 @@ function DecksPage() {
                     return (
                         <NavLink to={`/decks/${deck.id}`}  key={deck.id}>
                             <Card className="text-white text-center card-list-card3 glow">
-                                <div className="card-image-wrapper">
+                                <div className="card-image-wrapper media-card-image-wrapper">
                                     <div className="card-image-clip">
                                         <Card.Img
                                             src={deck.cover_card ? deck.cover_card : "https://i.imgur.com/8wqd1sD.png"}
@@ -289,7 +289,7 @@ function DecksPage() {
                                 </div>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                                     <div style={{display: "flex"}}>
-                                        <h3 className="left cd-container-child">{deck.name}</h3>
+                                        <h3 className="left cd-container-child media-margin-top-10">{deck.name}</h3>
                                         { deck.private && deck.private === true ?
                                             <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
                                         }
