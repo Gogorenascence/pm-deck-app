@@ -27,7 +27,7 @@ function RelatedCardModal() {
     useEffect(() => {
         getRelatedCards();
     // eslint-disable-next-line
-    }, []);
+    }, [card_number]);
 
 
     return (

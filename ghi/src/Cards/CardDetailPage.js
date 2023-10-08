@@ -107,7 +107,6 @@ function CardDetailPage() {
 
     useEffect(() => {
         getCard();
-        console.log(card)
         getRelatedCards();
         getCardType();
         getExtraEffects();
