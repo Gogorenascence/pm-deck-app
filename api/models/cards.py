@@ -36,6 +36,8 @@ class CardIn(BaseModel):
     card_tags: list
     created_on: dict
     updated_on: dict
+    alpha: Optional[bool]
+    beta: Optional[bool]
 
 
 class Card(CardIn):
