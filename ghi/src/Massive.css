@@ -1592,6 +1592,14 @@ button:hover {
     margin-left: 3%;
   }
 
+  .deck-import {
+    margin: 2% 0%;
+    background-color: rgba(0, 255, 200, 0.315);
+    border: 2px solid rgb(0, 99, 77);
+    border-radius: 5px;
+    outline: 1px solid white;
+  }
+
 @media screen and (max-width: 1333px) {
   .cards-page-card-list {
     display: grid;

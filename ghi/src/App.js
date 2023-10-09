@@ -25,6 +25,7 @@ import AccountPage from "./Accounts/AccountPage";
 import ResetPassword from "./Accounts/ResetPasswordPage";
 import GameCards from "./Cards/GameCards";
 import GameDecks from "./Decks/GameDecks";
+import DeckImport from "./Builder/DeckImport";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route index element={<MainPage />} />
               <Route path="/deckbuilder" element={<DeckBuilder />} />
               <Route path="/decks" element={<DecksPage />} />
+              <Route path="/deckimport" element={<DeckImport />} />
               <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
               <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
               <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
