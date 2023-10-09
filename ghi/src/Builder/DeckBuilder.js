@@ -1,8 +1,8 @@
 import {
-    Col,
+    Col
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
 import { BuilderQueryContext } from "../context/BuilderQueryContext";
@@ -25,8 +25,6 @@ function DeckBuilder() {
     });
 
     const {account} = useContext(AuthContext)
-
-    const {pulls} = useContext(PullsContext);
 
     const {query,
         setQuery,
@@ -54,15 +52,12 @@ function DeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
-    const [pulledCards, setPulledCards] = useState([]);
 
     const [showPool, setShowPool] = useState(true);
-    const [usePool, setUsePool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
     const [noCards, setNoCards] = useState(false);
-    const [noPulledCards, setNoPulledCards] = useState(false);
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -77,6 +72,13 @@ function DeckBuilder() {
         setCards(sortedCards);
     };
 
+    const {pulls} = useContext(PullsContext);
+
+    const [pulledCards, setPulledCards] = useState([]);
+    const [noPulledCards, setNoPulledCards] = useState(false);
+
+    const [usePool, setUsePool] = useState(true);
+
     const getPulledCards = async() =>{
         if (pulls.length == 0 ) {
             setNoPulledCards(true)
@@ -89,6 +91,12 @@ function DeckBuilder() {
         console.log(pulledCardsList)
 
         setPulledCards(sortedPulledCards);
+    };
+
+    const selectedPool = usePool? cards : pulledCards
+
+    const handleUsePool = (event) => {
+        setUsePool(!usePool);
     };
 
     useEffect(() => {
@@ -112,7 +120,6 @@ function DeckBuilder() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-    const selectedPool = usePool? cards : pulledCards
 
     const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -258,10 +265,6 @@ function DeckBuilder() {
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);
-    };
-
-    const handleUsePool = (event) => {
-        setUsePool(!usePool);
     };
 
     const handleShowMain = (event) => {
@@ -440,11 +443,30 @@ function DeckBuilder() {
                         <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{margin: "8px"}}>
 
-                            { all_cards.length == 0 && isQueryEmpty && !noCards?
+                            { usePool && all_cards.length == 0 && isQueryEmpty && !noCards?
                                 <div className="loading-container">
                                     <div className="loading-spinner"></div>
                                 </div> :
                             null}
+
+                            { !usePool && all_cards.length == 0 && isQueryEmpty && !noPulledCards?
+                                <div className="loading-container">
+                                    <div className="loading-spinner"></div>
+                                </div> :
+                            null}
+
+                            { !usePool && all_cards.length == 0 && isQueryEmpty && noPulledCards?
+                                <div className="inScrollable">
+                                    <NavLink to="/cardsets"
+                                        className="black-white nav-link">
+                                        <div>
+                                            <h1>No pulled cards</h1>
+                                            <h1 >Click here for Card Set Search</h1>
+                                        </div>
+                                    </NavLink>
+                                </div>
+                                : null
+                            }
 
                             <div className="card-pool-fill">
                                 {all_cards.slice(0, showMore).map((card) => {

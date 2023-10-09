@@ -365,6 +365,15 @@ button:hover {
   /* display: flex; */
 }
 
+.inScrollable {
+  position: relative; /* Make the container a positioning context */
+  width: 100%; /* Ensure the image container takes the full width of the scrollable div */
+  height: 53vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cardpool {
   margin: 2% 0%;
   background-color: rgba(80, 42, 170, 0.315);
@@ -1615,6 +1624,14 @@ button:hover {
     background-color: rgba(15, 0, 50, 0.315);
     border-radius: 2px;
     outline: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .black-white {
+    color: var(--color-body)
+  }
+
+  .black-white:hover {
+    color: var(--color-body)
   }
 
 @media screen and (max-width: 1333px) {
