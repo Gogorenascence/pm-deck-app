@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
 import { BuilderQueryContext } from "../context/BuilderQueryContext";
+import { PullsContext } from "../context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
 
 function DeckBuilder() {
@@ -24,6 +25,8 @@ function DeckBuilder() {
     });
 
     const {account} = useContext(AuthContext)
+
+    const {pulls} = useContext(PullsContext);
 
     const {query,
         setQuery,
@@ -51,12 +54,15 @@ function DeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
+    const [pulledCards, setPulledCards] = useState([]);
 
     const [showPool, setShowPool] = useState(true);
+    const [usePool, setUsePool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
 
     const [noCards, setNoCards] = useState(false);
+    const [noPulledCards, setNoPulledCards] = useState(false);
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -71,9 +77,23 @@ function DeckBuilder() {
         setCards(sortedCards);
     };
 
+    const getPulledCards = async() =>{
+        if (pulls.length == 0 ) {
+            setNoPulledCards(true)
+        }
+        const pulledCardsList = [];
+        for (let pull of pulls) {
+            pulledCardsList.push(...pull);
+        }
+        const sortedPulledCards = [...pulledCardsList].sort(sortMethods[sortState].method);
+        console.log(pulledCardsList)
+
+        setPulledCards(sortedPulledCards);
+    };
 
     useEffect(() => {
         getCards();
+        getPulledCards();
         console.log(account)
         document.title = "Deck Builder - PM CardBase"
         return () => {
@@ -92,7 +112,9 @@ function DeckBuilder() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-    const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
+    const selectedPool = usePool? cards : pulledCards
+
+    const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
@@ -108,7 +130,7 @@ function DeckBuilder() {
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 20);
+        {usePool? setShowMore(showMore + 20): setShowMore(showMore + 50)}
     };
 
     const handleChange = (event) => {
@@ -236,6 +258,10 @@ function DeckBuilder() {
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);
+    };
+
+    const handleUsePool = (event) => {
+        setUsePool(!usePool);
     };
 
     const handleShowMain = (event) => {
@@ -405,6 +431,11 @@ function DeckBuilder() {
                                     onClick={() => handleShowPool()}>
                                     &nbsp;[Show]
                                 </h5>}
+                                <h5 className="left db-pool-count"
+                                    style={{marginLeft: "8px"}}
+                                    onClick={() => handleUsePool()}>
+                                    {usePool? "[Use Pulls]" : "[Use All Cards]"}
+                                </h5>
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{margin: "8px"}}>

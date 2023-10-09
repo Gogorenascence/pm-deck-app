@@ -88,6 +88,9 @@ function Nav() {
       resetLoginCred()
       setShowSignUpModal(false)
     }
+    if (document.body.style.overflow == 'hidden') {
+      document.body.style.overflow = 'auto';
+    }
   };
 
   const Login = async (event) => {
@@ -96,6 +99,9 @@ function Nav() {
     if (token) {
       resetLoginCred();
       setShowLoginModal(false);
+    }
+    if (document.body.style.overflow == 'hidden') {
+      document.body.style.overflow = 'auto';
     }
   };
 
