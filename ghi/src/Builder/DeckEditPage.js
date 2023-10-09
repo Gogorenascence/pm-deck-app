@@ -140,12 +140,14 @@ function DeckEditPage() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-    const {pulls} = useContext(PullsContext);
+    const {
+        pulls,
+        usePool,
+        setUsePool
+    } = useContext(PullsContext);
 
     const [pulledCards, setPulledCards] = useState([]);
     const [noPulledCards, setNoPulledCards] = useState(false);
-
-    const [usePool, setUsePool] = useState(true);
 
     const getPulledCards = async() =>{
         if (pulls.length == 0 ) {
@@ -456,7 +458,7 @@ function DeckEditPage() {
                             <h2
                                 className="left"
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
-                            >Card Pool</h2>
+                            >{usePool? "All Cards":"Pulled Cards"}</h2>
                             <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
                             {all_cards.length > 0 ?
                                 <h5

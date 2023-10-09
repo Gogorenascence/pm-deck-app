@@ -4,9 +4,15 @@ const PullsContext = createContext();
 
 const PullsContextProvider = ({ children }) => {
     const [pulls, setPulls] = useState([]);
+    const [usePool, setUsePool] = useState(true);
 
     return (
-        <PullsContext.Provider value={{ pulls, setPulls }}>
+        <PullsContext.Provider value={{
+            pulls,
+            setPulls,
+            usePool,
+            setUsePool
+        }}>
             {children}
         </PullsContext.Provider>
     );
