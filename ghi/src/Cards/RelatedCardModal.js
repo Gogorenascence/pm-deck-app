@@ -2,7 +2,7 @@ import {
     Button,
     Modal,
 } from "react-bootstrap";
-import { useParams, NavLink} from 'react-router-dom';
+import { useParams, NavLink, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 
 
@@ -12,8 +12,14 @@ function RelatedCardModal() {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = async() => {
+        setShow(false)
+        document.body.style.overflow = 'auto';
+    };
+    const handleShow = async() => {
+        setShow(true)
+        document.body.style.overflow = 'hidden';
+    };
 
     const [relatedCards, setRelatedCards] = useState([]);
 
@@ -27,8 +33,15 @@ function RelatedCardModal() {
     useEffect(() => {
         getRelatedCards();
     // eslint-disable-next-line
-    }, [card_number]);
+    }, []);
 
+    const navigate = useNavigate()
+
+    const selectCard = async(card) =>{
+        const cards_number = card.card_number
+        navigate(`/cards/${cards_number}`);
+        handleClose()
+    }
 
     return (
 
@@ -39,39 +52,34 @@ function RelatedCardModal() {
                     onClick={handleShow}>
                     Show all Cards
             </button>
-
-            <Modal
-                show={show}
-                size="xl"
-                onHide={handleClose}
-                keyboard={false}
-                className="topbar"
-            >
-                <Modal.Body closeButton>
-                <h1 className="centered-h1"
-                    style={{color: "black"}}>Related Cards</h1>
-                <div>
-                    <div className="cd-inner2 card-pool-fill">
-                        {relatedCards.map((relatedCard) => {
-                            return (
-                                <NavLink to={`/cards/${relatedCard.card_number}`}>
-                                        <img
-                                            className="cd-related-card"
-                                            title={relatedCard.name}
-                                            src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
-                                            alt={relatedCard.name}/>
-                                </NavLink>
-                            );
-                        })}
+            {show?
+                <div className="large-modal topbar"
+                >
+                    <div className="outScrollable">
+                        <h1 className="centered-h1"
+                            style={{color: "black"}}>Related Cards</h1>
+                        <div>
+                            <div className="cd-inner2 card-pool-fill">
+                                {relatedCards.map((relatedCard) => {
+                                    return (
+                                            <img
+                                                className="cd-related-modal-card"
+                                                onClick={() => selectCard(relatedCard)}
+                                                title={relatedCard.name}
+                                                src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}
+                                                alt={relatedCard.name}/>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <div className="cd-inner margin-top-20">
+                            <button onClick={handleClose}>
+                                Close
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div className="cd-inner">
-                    <button onClick={handleClose}>
-                        Close
-                    </button>
-                </div>
-                </Modal.Body>
-            </Modal>
+                </div>:null
+            }
         </div>
     );
 }

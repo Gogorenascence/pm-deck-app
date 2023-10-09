@@ -106,6 +106,7 @@ function CardDetailPage() {
     }
 
     useEffect(() => {
+        window.scroll(0, 0);
         getCard();
         getRelatedCards();
         getCardType();

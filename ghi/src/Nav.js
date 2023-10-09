@@ -44,6 +44,11 @@ function Nav() {
   },[signUpCred]);
 
   const handleShowLoginModal = (event) => {
+    if (document.body.style.overflow == 'hidden') {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
     setShowLoginModal(!showLoginModal)
     if (showLoginModal === false) {
       resetLoginCred()
@@ -56,6 +61,11 @@ function Nav() {
   }
 
   const handleShowSignUpModal = async (event) => {
+    if (document.body.style.overflow == 'hidden') {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
     setShowSignUpModal(!showSignUpModal)
     if (showSignUpModal === false) {
       resetSignUpCred()
