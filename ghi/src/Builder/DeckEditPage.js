@@ -2,12 +2,13 @@ import {
     Col,
 } from "react-bootstrap";
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
 import { BuilderQueryContext } from "../context/BuilderQueryContext";
 import BuilderCardSearch from "./BuilderCardSearch";
+import { PullsContext } from "../context/PullsContext";
 
 
 function DeckEditPage() {
@@ -116,6 +117,7 @@ function DeckEditPage() {
         getDeck();
         getDeckList();
         getCards();
+        getPulledCards();
         document.title = `Editing ${deck.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
@@ -138,7 +140,35 @@ function DeckEditPage() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-    const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
+    const {pulls} = useContext(PullsContext);
+
+    const [pulledCards, setPulledCards] = useState([]);
+    const [noPulledCards, setNoPulledCards] = useState(false);
+
+    const [usePool, setUsePool] = useState(true);
+
+    const getPulledCards = async() =>{
+        if (pulls.length == 0 ) {
+            setNoPulledCards(true)
+        }
+        const pulledCardsList = [];
+        for (let pull of pulls) {
+            pulledCardsList.push(...pull);
+        }
+        const sortedPulledCards = [...pulledCardsList].sort(sortMethods[sortState].method);
+        console.log(pulledCardsList)
+
+        setPulledCards(sortedPulledCards);
+    };
+
+    const selectedPool = usePool? cards : pulledCards
+
+    const handleUsePool = (event) => {
+        setUsePool(!usePool);
+    };
+
+
+    const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
@@ -154,7 +184,7 @@ function DeckEditPage() {
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 20);
+        {usePool? setShowMore(showMore + 20): setShowMore(showMore + 50)}
     };
 
     const handleChange = (event) => {
@@ -416,14 +446,13 @@ function DeckEditPage() {
                             className="cover-card"
                             src={"https://i.imgur.com/krY25iI.png"}
                             alt="card"/>)}
+                    </div>
+                    <BuilderCardSearch/>
                 </div>
 
-                <BuilderCardSearch/>
-
-                </div>
                 <div className={showPool ? "cardpool" : "no-cardpool"}>
                     <div>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                    <div style={{display: "flex", alignItems: "center"}}>
                             <h2
                                 className="left"
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
@@ -443,14 +472,38 @@ function DeckEditPage() {
                                     onClick={() => handleShowPool()}>
                                     &nbsp;[Show]
                                 </h5>}
+                                <h5 className="left db-pool-count"
+                                    style={{marginLeft: "8px"}}
+                                    onClick={() => handleUsePool()}>
+                                    {usePool? "[Use Pulls]" : "[Use All Cards]"}
+                                </h5>
                         </div>
                         <div className={showPool ? "scrollable" : "hidden2"}>
                             <div style={{margin: "8px"}}>
-                                { all_cards.length == 0 && isQueryEmpty && !noCards?
-                                    <div className="loading-container">
-                                        <div className="loading-spinner"></div>
-                                    </div> :
-                                null}
+                            { usePool && all_cards.length == 0 && isQueryEmpty && !noCards?
+                                <div className="loading-container">
+                                    <div className="loading-spinner"></div>
+                                </div> :
+                            null}
+
+                            { !usePool && all_cards.length == 0 && isQueryEmpty && !noPulledCards?
+                                <div className="loading-container">
+                                    <div className="loading-spinner"></div>
+                                </div> :
+                            null}
+
+                            { !usePool && all_cards.length == 0 && isQueryEmpty && noPulledCards?
+                                <div className="inScrollable">
+                                    <NavLink to="/cardsets"
+                                        className="black-white nav-link">
+                                        <div>
+                                            <h1>No pulled cards</h1>
+                                            <h1 >Click here for Card Set Search</h1>
+                                        </div>
+                                    </NavLink>
+                                </div>
+                                : null
+                            }
                                 <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card) => {
                                         return (

@@ -120,7 +120,6 @@ function DeckBuilder() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-
     const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
         .filter(card => card.card_number.toString().includes(query.cardNumber))
