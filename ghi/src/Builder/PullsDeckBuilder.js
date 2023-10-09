@@ -384,7 +384,7 @@ function PullsDeckBuilder() {
                     <label for="private"
                         className="bold"
                     >
-                        Make my deck private
+                        Make my decks private
                     </label>
                     <br/>
                     {account?

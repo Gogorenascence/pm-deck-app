@@ -377,7 +377,7 @@ function DeckEditPage() {
                     <label for="private"
                         className="bold"
                     >
-                        Make my deck private
+                        Make my decks private
                     </label>
                     <br/>
                     { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
