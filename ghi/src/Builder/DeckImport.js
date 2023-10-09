@@ -472,9 +472,9 @@ function DeckImport() {
                                         </div>
                                     ))}
                                 </div>:
-                                <h4 className="left no-cards">No decks imported</h4>
+                                <h4 className="left no-cards2">No decks imported</h4>
                             }
-                            <div style={{display: "flex", alignItems: "center", margin: "10px 0px 15px 20px"}}>
+                            <div style={{display: "flex", alignItems: "center", margin: "0px 0px 15px 17px", paddingTop: "0"}}>
                                 <button
                                     className="left heightNorm"
                                     onClick={() => fileInput.current.click()}
