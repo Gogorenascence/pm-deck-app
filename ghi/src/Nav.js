@@ -191,6 +191,9 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/deckbuilder">
                     Deck Builder
                   </NavLink>
+                  <NavLink className="dropdown-item" to="/deckimport">
+                    Deck Import
+                  </NavLink>
                   <NavLink className="dropdown-item" to="/decks">
                     Search Decks
                   </NavLink>

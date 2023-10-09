@@ -64,6 +64,10 @@ function DeckImport() {
         setPluckList([...pluck_list, ...pluck])
     };
 
+    const clearDecks = () => {
+        setImportedDecks([])
+    }
+
     const [deck, setDeck] = useState({
         name: "",
         account_id: "",
@@ -454,25 +458,40 @@ function DeckImport() {
                         ref={fileInput}
                     />
                     {showDecks?
-                        <div style={{display: "flex", alignItems: "center", marginLeft: "20px", marginBottom: "15px"}}>
-                            <button
-                                className="left heightNorm"
-                                variant="dark"
-                                style={{ marginRight: '10px', marginLeft: '6px' }}
-                                onClick={() => fileInput.current.click()}
-                            >
-                                Import
-                            </button>
-                            {importedDecks.map((deckItem, index) => (
-                                <div key={index}>
-                                    <button
-                                        onClick={() => importDeck(deckItem)}
-                                        style={{ margin: '5px' }}
+                        <div>
+                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px", marginBottom: "15px"}}>
+                                <button
+                                    className="left heightNorm"
+                                    onClick={() => fileInput.current.click()}
+                                >
+                                    Import
+                                </button>
+                                {importedDecks.length > 0?
+                                    <div style={{display:"flex"}}>
+                                        <button
+                                            className="left heightNorm red"
+                                            style={{ marginRight: '6px', marginLeft: '4px', width: "115px" }}
+                                            onClick={clearDecks}
                                         >
-                                        {deckItem.ObjectStates[0].Nickname? deckItem.ObjectStates[0].Nickname: `Imported Deck ${index + 1}`}
-                                    </button>
-                                </div>
-                            ))}
+                                            Clear Decks
+                                        </button>
+<div className="deck-import-scrollable">
+                                        {importedDecks.map((deckItem, index) => (
+                                            <div key={index}>
+                                                <button
+                                                    onClick={() => importDeck(deckItem)}
+                                                    style={{ margin: '5px' }}
+                                                    >
+                                                    {deckItem.ObjectStates[0].Nickname? deckItem.ObjectStates[0].Nickname: `Imported Deck ${index + 1}`}
+                                                </button>
+                                            </div>
+                                        ))}
+                                        </div>
+                                    </div>:null
+                                }
+
+                            </div>
+
                         </div>:null
                     }
                 </div>

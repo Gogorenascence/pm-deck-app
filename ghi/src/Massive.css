@@ -1600,6 +1600,16 @@ button:hover {
     outline: 1px solid white;
   }
 
+  .deck-import-scrollable {
+    margin: 0% 0% 0% .5%;
+    width: 800px;
+    min-height: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    background-color: rgba(15, 0, 50, 0.315);
+    border-radius: 2px;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
 @media screen and (max-width: 1333px) {
   .cards-page-card-list {
     display: grid;
