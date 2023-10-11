@@ -61,6 +61,7 @@ class CardQueries(Queries):
             "full_time": datetime.now()
         }
         props["created_on"] = time_dict
+        props["updated_on"] = time_dict
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return Card(**props)

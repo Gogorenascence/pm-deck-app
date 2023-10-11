@@ -26,6 +26,8 @@ import ResetPassword from "./Accounts/ResetPasswordPage";
 import GameCards from "./Cards/GameCards";
 import GameDecks from "./Decks/GameDecks";
 import DeckImport from "./Builder/DeckImport";
+import CardCategoriesPage from "./GamePlay/CardCategoriesPage";
+import CardCategoriesCreate from "./GamePlay/CardCategoryCreate";
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
               <Route path="/forum" element={<UnderConstruction />} />
               <Route path="/game/cards" element={<GameCards />} />
               <Route path="/game/decks" element={<GameDecks />} />
+              <Route path="/cardcategories" element={<CardCategoriesPage />} />
+              <Route path="/categorycreate" element={<CardCategoriesCreate />} />
             </Routes>
 
           </div>

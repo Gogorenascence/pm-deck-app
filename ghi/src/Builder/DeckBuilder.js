@@ -27,19 +27,10 @@ function DeckBuilder() {
     const {account} = useContext(AuthContext)
 
     const {query,
-        setQuery,
         sortState,
-        setSortState,
         boosterSet,
-        setBoosterSet,
-        boosterSets,
-        setBoosterSets,
-        boosterSetId,
-        setBoosterSetId,
         rarity,
-        setRarity,
         listView,
-        setListView,
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
 

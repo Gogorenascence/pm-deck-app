@@ -136,6 +136,7 @@ body.dark::after {
 :root {
   --window-height: calc(100vh - 100px);
   --window-height-account: calc(100vh - 180px);
+  --window-width200: calc(80vw - 200px);
 }
 
 
@@ -408,7 +409,6 @@ button:hover {
 }
 
 .maindeck2{
-
   margin: 2% 0%;
   background-color: rgba(173, 73, 73, 0.315);
   border: 2px solid rgb(173, 41, 41);
@@ -1279,6 +1279,23 @@ button:hover {
   outline: 1px solid white;
 }
 
+.rarities2 {
+  margin: 2% 0%;
+  background-color: rgba(40, 34, 70, 0.315);
+  border: 2px solid rgb(40, 34, 70);
+  border-radius: 5px;
+  height: 70vh;
+  outline: 1px solid white;
+}
+
+.no-rarities {
+  margin: 2% 0%;
+  background-color: rgba(117, 90, 182, 0.315);
+  border: 2px solid rgb(68, 17, 206);
+  border-radius: 5px;
+  outline: 1px solid white;
+}
+
 .ultra {
   --angle: 0deg;
   display: flex;
@@ -1633,6 +1650,33 @@ button:hover {
   .black-white:hover {
     color: var(--color-body)
   }
+
+  .table200 {
+    width: 200px;
+    margin: 0;
+  }
+
+  .table200p {
+    width: var(--window-width200);
+    margin: 0;
+  }
+
+  .support {
+    margin: 2% 0%;
+    background-color: rgba(73, 173, 95, 0.315);
+    border: 2px solid rgb(41, 173, 81);
+    border-radius: 5px;
+    outline: 1px solid white;
+  }
+
+  .anti_support {
+    margin: 2% 0%;
+    background-color: rgba(238, 70, 70, 0.315);
+    border: 2px solid rgb(199, 30, 30);
+    border-radius: 5px;
+    outline: 1px solid white;
+  }
+
 
 @media screen and (max-width: 1333px) {
   .cards-page-card-list {

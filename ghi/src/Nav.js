@@ -237,6 +237,41 @@ function Nav() {
                   </NavLink>
                 </div>
               </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="/#"
+                  id="cardsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Game Play
+                </a>
+                <div className="dropdown-menu" aria-labelledby="cardsDropdown">
+                  <NavLink className="dropdown-item" to="/cardcategories">
+                    Card Categories
+                  </NavLink>
+                  { account && account.roles.includes("admin")?
+                    <NavLink className="dropdown-item" to="/categorycreate">
+                      Category Create
+                    </NavLink>:
+                  null}
+                  {/* <NavLink className="dropdown-item" to="/topcards">
+
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/series">
+                    Classes and Series
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/cardsets">
+                    Mechanics
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/cardsets">
+                    How to Play and Rulings
+                  </NavLink> */}
+                </div>
+              </li>
           </ul>
         { showSignUpModal?
           <>
