@@ -1654,7 +1654,7 @@
   "series_name": "PantheraMan//Nature//Brawler",
   "card_number": 1067,
   "enthusiasm": 0,
-  "effect_text": "<Limited> If you have no Moves in your play, deal 2 piercing damage to a foe who has yet to go this round. You can not add Moves to your play this round.",
+  "effect_text": "<Limited> If you have no Move(s) in your play, deal 2 piercing damage to a foe who has yet to go this round. You can not add Moves to your play this round.",
   "second_effect_text": "",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl01pmi.png",
@@ -1742,7 +1742,7 @@
   "card_number": 1069,
   "enthusiasm": 0,
   "effect_text": "This Comeback counts as a Staunch card in your play (this does not count towards play size).",
-  "second_effect_text": "<Critical> If you have no Fighter in your play, add 1 Staunch Fighter from your hand to your play.",
+  "second_effect_text": "<Critical> If you have no Fighter(s) in your play, add 1 Staunch Fighter from your hand to your play.",
   "illustrator": "XIOLI",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb1pm.png",
   "file_name": "",
@@ -2470,7 +2470,7 @@
   "series_name": "Warp Family//Cosmic//Psychic",
   "card_number": 1053,
   "enthusiasm": 0,
-  "effect_text": "Look at a random foe's hand, then discard 1 card from their hand. That foe draws 1 card.//\nIf you have a Unity card in your play, resolve this card one more time, but the target foe draws 2 cards instead.",
+  "effect_text": "Look at a random foe's hand, then discard 1 card from their hand. That foe draws 1 card.//If you have a Unity card in your play, resolve this card one more time, but the target foe draws 2 cards instead.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p2pf.png",
@@ -3274,7 +3274,7 @@
   "_id": {
     "$oid": "64395a903d6559427fc58539"
   },
-  "name": "Reconnection                      ",
+  "name": "Reconnection",
   "card_class": "",
   "hero_id": "BW1",
   "series_name": "Bone Whisperer//Mystic//Nature//Relaxation",
@@ -5284,7 +5284,7 @@
   "series_name": "Cosmic//Psychic//Quest//Spoiler",
   "card_number": 1121,
   "enthusiasm": 0,
-  "effect_text": "Unfurl 3 cards; add 1 card to your hand and discard the other unfurled cards. \nApply the following effects based on the classes of the added card (you can only apply each effect once): \n//<Power> Deal 1 damage to a foe and add 3 to your Focus. \n//<Unity> Return 1 Aura or 1 Move from the discard pile to the top of the Main deck. \n//<Canny> Deal 2 bypassing damage to a foe.",
+  "effect_text": "Unfurl 3 cards; add 1 card to your hand and discard the other unfurled cards. \nApply the following effects based on the classes of the added card (you can only apply each effect once): //<Power> Deal 1 damage to a foe and add 3 to your Focus.//<Unity> Return 1 Aura or 1 Move from the discard pile to the top of the Main deck.//<Canny> Deal 2 bypassing damage to a foe.",
   "second_effect_text": "",
   "illustrator": "mvthwus",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg3e.png",
@@ -5302,19 +5302,17 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
     "month": 6,
     "day": 25,
     "time": "19:21",
-    "full_time": {
-      "$date": "2023-06-25T19:21:39.801Z"
-    }
-  }
+    "full_time": "2023-06-25T19:21:39.801000"
+  },
+  "alpha": null,
+  "beta": null
 },
 {
   "_id": {
@@ -5411,7 +5409,7 @@
   "series_name": "Mystic//Quest//Relaxation",
   "card_number": 1127,
   "enthusiasm": null,
-  "effect_text": "Return 8 Mystic cards or Pluck with different names from their respective discard piles to the bottom of your Main deck/Pluck deck in any order; all Mystic cards in your play gain damage plus 1 this round (those cards deal 1 additional damage at the end of their resolutions).",
+  "effect_text": "Return 8 Mystic cards and/or Pluck with different names from their respective discard piles to the bottom of your Main deck/Pluck deck in any order; all Mystic cards in your play gain damage plus 1 this round (those cards deal 1 additional damage at the end of their resolutions).",
   "second_effect_text": "",
   "illustrator": "gogorenascence",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg9e.png",
@@ -5435,9 +5433,9 @@
     "year": 2023,
     "month": 10,
     "day": 8,
-    "time": "00:47",
+    "time": "20:54",
     "full_time": {
-      "$date": "2023-10-08T00:47:01.635Z"
+      "$date": "2023-10-08T20:54:58.856Z"
     }
   },
   "alpha": null,
@@ -5471,11 +5469,17 @@
     "month": 10,
     "day": 8,
     "time": "17:43",
+    "full_time": "2023-10-08T17:43:21.795000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 8,
+    "time": "20:41",
     "full_time": {
-      "$date": "2023-10-08T17:43:21.795Z"
+      "$date": "2023-10-08T20:41:07.632Z"
     }
   },
-  "updated_on": {},
   "alpha": null,
   "beta": null
 }]

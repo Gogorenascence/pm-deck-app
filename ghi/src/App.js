@@ -28,6 +28,7 @@ import GameDecks from "./Decks/GameDecks";
 import DeckImport from "./Builder/DeckImport";
 import CardCategoriesPage from "./GamePlay/CardCategoriesPage";
 import CardCategoriesCreate from "./GamePlay/CardCategoryCreate";
+import CardCategoryEdit from "./GamePlay/CardCategoryEdit";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
               <Route path="/game/decks" element={<GameDecks />} />
               <Route path="/cardcategories" element={<CardCategoriesPage />} />
               <Route path="/categorycreate" element={<CardCategoriesCreate />} />
+              <Route path="/cardcategories/:card_category_id/edit" element={<CardCategoryEdit />} />
             </Routes>
 
           </div>

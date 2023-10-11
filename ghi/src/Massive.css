@@ -1290,8 +1290,8 @@ button:hover {
 
 .no-rarities {
   margin: 2% 0%;
-  background-color: rgba(117, 90, 182, 0.315);
-  border: 2px solid rgb(68, 17, 206);
+  background-color: rgba(40, 34, 70, 0.315);
+  border: 2px solid rgb(40, 34, 70);
   border-radius: 5px;
   outline: 1px solid white;
 }

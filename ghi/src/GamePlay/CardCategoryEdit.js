@@ -2,14 +2,15 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "./GamePlayCardSearch";
 import { GamePlayQueryContext } from "../context/GamePlayQueryContext";
+import BackButton from "../display/BackButton";
 
 
-function CardCategoriesCreate() {
+function CardCategoryEdit() {
 
     const [cardCategory, setCardCategory ] = useState({
         cat_type: "",
@@ -21,6 +22,7 @@ function CardCategoriesCreate() {
         updated_on: {},
     });
 
+    const {card_category_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -43,6 +45,23 @@ function CardCategoriesCreate() {
 
     const [noCards, setNoCards] = useState(false);
 
+    const getCardCategory = async() =>{
+        const categoryResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}/`);
+        const category_data = await categoryResponse.json();
+        setCardCategory(category_data);
+
+        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const cardData = await cardResponse.json();
+
+        const support_card_list = category_data.support.map(supportItem =>
+            cardData.cards.find(card => card.card_number === supportItem))
+        const anti_support_card_list = category_data.anti_support.map(antiSupportItem =>
+            cardData.cards.find(card => card.card_number === antiSupportItem))
+        setSupportList(support_card_list)
+        console.log(category_data)
+        setAntiSupportList(anti_support_card_list)
+    };
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -55,7 +74,9 @@ function CardCategoriesCreate() {
 
     useEffect(() => {
         getCards();
-        document.title = "Category Create - PM CardBase"
+        getCardCategory();
+        console.log(cardCategory)
+        document.title = "Category Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -71,6 +92,9 @@ function CardCategoriesCreate() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
+
+    console.log(support_list)
+    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -137,9 +161,9 @@ function CardCategoriesCreate() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        const cardCategoryUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`;
+        const cardCategoryUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -149,7 +173,7 @@ function CardCategoriesCreate() {
         const response = await fetch(cardCategoryUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const card_category_id = responseData.id;
+            // const card_category_id = responseData.id;
             setCardCategory({
                 cat_type: "",
                 name: "",
@@ -159,9 +183,7 @@ function CardCategoriesCreate() {
                 created_on: {},
                 updated_on: {},
             });
-            setSupportList([])
-            setAntiSupportList([])
-            // navigate(`/cardcategories/${card_category_id}`);
+            navigate(`/cardcategories/`);
             console.log("Success")
         } else {
             alert("Error in creating Card Category");
@@ -201,7 +223,7 @@ function CardCategoriesCreate() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Category Create</h1>
+                    <h1 className="margin-top-40">Category Edit</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
@@ -242,15 +264,16 @@ function CardCategoriesCreate() {
                                     </select>
                                     <br/>
 
-                                    {account?
+                                    {account && account.roles.includes("admin")?
                                         <button
                                             className="left"
                                             style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
-                                            Create Category
+                                            Save
                                         </button>:null
                                     }
+                                    <BackButton/>
                                     <br/>
                                     { !account?
                                         <h6 className="error">You must be logged in to create a cardCategory</h6>:
@@ -524,4 +547,4 @@ function CardCategoriesCreate() {
     );
 }
 
-export default CardCategoriesCreate;
+export default CardCategoryEdit;
