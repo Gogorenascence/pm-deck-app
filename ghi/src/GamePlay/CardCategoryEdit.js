@@ -154,10 +154,14 @@ function CardCategoryEdit() {
         const support = []
         const anti_support = []
         for (let card of support_list){
-            support.push(card.card_number)
+            if (!support.includes(card.card_number)) {
+                support.push(card.card_number)
+            }
         }
         for (let card of anti_support_list){
-            anti_support.push(card.card_number)
+            if (!anti_support.includes(card.card_number)) {
+                anti_support.push(card.card_number)
+            }
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
@@ -258,6 +262,7 @@ function CardCategoryEdit() {
                                         name="cat_type"
                                         onChange={handleChange}>
                                         <option value="none">Category Type</option>
+                                        <option value="card_type">Card Type</option>
                                         <option value="card_class">Class</option>
                                         <option value="series">Series</option>
                                         <option value="sub_series">Sub-Series</option>
@@ -490,12 +495,12 @@ function CardCategoryEdit() {
                                         >{anti_support_list.length}</h5>:
                                         null}
                                         { showAntiSupport ?
-                                            <h5 className={anti_support_list.length > 0 ? "left db-anti_support-count" : "hidden2"}
+                                            <h5 className={anti_support_list.length > 0 ? "left db-main-count" : "hidden2"}
                                                 onClick={handleShowAntiSupport}
                                             >
                                                 &nbsp;[Hide]
                                             </h5> :
-                                            <h5 className={anti_support_list.length > 0 ? "left db-anti_support-count" : "hidden2"}
+                                            <h5 className={anti_support_list.length > 0 ? "left db-main-count" : "hidden2"}
                                                 onClick={handleShowAntiSupport}
                                             >
                                                 &nbsp;[Show]

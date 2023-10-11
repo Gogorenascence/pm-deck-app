@@ -392,7 +392,7 @@ function DeckImport() {
                         </select>
                         <br/>
                         <input
-                            style={{margin: "20px 8px 15px 5px"}}
+                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
                             id="private"
                             type="checkbox"
                             onChange={handleCheck}

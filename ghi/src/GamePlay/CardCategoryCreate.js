@@ -43,6 +43,8 @@ function CardCategoriesCreate() {
 
     const [noCards, setNoCards] = useState(false);
 
+    const [stayHere, setStayHere] = useState(false)
+
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -95,6 +97,10 @@ function CardCategoriesCreate() {
         setCardCategory({ ...cardCategory, [event.target.name]: event.target.value });
     };
 
+    const handleCheck = (event) => {
+        setStayHere(!stayHere);
+    };
+
     const handleClick = (card) => {
         modifySupport? setSupportList([...support_list, card]):
         setAntiSupportList([...anti_support_list, card]);
@@ -130,10 +136,14 @@ function CardCategoriesCreate() {
         const support = []
         const anti_support = []
         for (let card of support_list){
-            support.push(card.card_number)
+            if (!support.includes(card.card_number)) {
+                support.push(card.card_number)
+            }
         }
         for (let card of anti_support_list){
-            anti_support.push(card.card_number)
+            if (!anti_support.includes(card.card_number)) {
+                anti_support.push(card.card_number)
+            }
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
@@ -161,7 +171,8 @@ function CardCategoriesCreate() {
             });
             setSupportList([])
             setAntiSupportList([])
-            // navigate(`/cardcategories/${card_category_id}`);
+            setModifySupport(true)
+            if (!stayHere) {navigate(`/cardcategories/${card_category_id}`)}
             console.log("Success")
         } else {
             alert("Error in creating Card Category");
@@ -236,16 +247,31 @@ function CardCategoriesCreate() {
                                         name="cat_type"
                                         onChange={handleChange}>
                                         <option value="none">Category Type</option>
+                                        <option value="card_type">Card Type</option>
                                         <option value="card_class">Class</option>
                                         <option value="series">Series</option>
                                         <option value="sub_series">Sub-Series</option>
                                     </select>
                                     <br/>
 
+                                    <input
+                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
+                                        id="stayHere"
+                                        type="checkbox"
+                                        onChange={handleCheck}
+                                        name="stayHere"
+                                        checked={stayHere}>
+                                    </input>
+                                    <label for="stayHere"
+                                        className="bold"
+                                    >
+                                        Keep me here
+                                    </label>
+
+                                    <br/>
                                     {account?
                                         <button
                                             className="left"
-                                            style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
                                             Create Category
@@ -467,12 +493,12 @@ function CardCategoriesCreate() {
                                         >{anti_support_list.length}</h5>:
                                         null}
                                         { showAntiSupport ?
-                                            <h5 className={anti_support_list.length > 0 ? "left db-anti_support-count" : "hidden2"}
+                                            <h5 className={anti_support_list.length > 0 ? "left db-main-count" : "hidden2"}
                                                 onClick={handleShowAntiSupport}
                                             >
                                                 &nbsp;[Hide]
                                             </h5> :
-                                            <h5 className={anti_support_list.length > 0 ? "left db-anti_support-count" : "hidden2"}
+                                            <h5 className={anti_support_list.length > 0 ? "left db-main-count" : "hidden2"}
                                                 onClick={handleShowAntiSupport}
                                             >
                                                 &nbsp;[Show]

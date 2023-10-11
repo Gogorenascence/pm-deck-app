@@ -49,9 +49,28 @@ function CardCategoriesPage() {
                     </button>
                 </NavLink>:
             null}
-            <h3 className="left-h1">Card Classes</h3>
+            <h3 className="left-h1">Card Types</h3>
             {/* <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5> */}
 
+            <div>
+                {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_type")
+                    .map(function(cardCategory, index, arr) {
+                    return (
+                        <NavLink to={`/cardcategories/${cardCategory.id}/edit`} className="nav-link glow2" key={cardCategory.name}>
+                                <div style={{display: "flex"}}>
+                                    <div className="table200">
+                                        <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                    </div>
+                                    <div className="table200p">
+                                        <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                    </div>
+                                </div>
+                        </NavLink>
+                    );
+                })}
+            </div>
+
+            <h3 className="left-h1">Card Classes</h3>
             <div>
                 {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_class")
                     .map(function(cardCategory, index, arr) {

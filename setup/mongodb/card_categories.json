@@ -4,7 +4,7 @@
   },
   "cat_type": "series",
   "name": "PantheraMan",
-  "description": "Cards that are apart of the 'PantheraMan' continuity",
+  "description": "Cards that are apart of the 'PantheraMan' continuity.",
   "support": [],
   "anti_support": [],
   "created_on": {
@@ -17,10 +17,10 @@
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 10,
-    "time": "19:34",
+    "day": 11,
+    "time": "03:50",
     "full_time": {
-      "$date": "2023-10-10T19:34:54.463Z"
+      "$date": "2023-10-11T03:50:27.814Z"
     }
   }
 },
@@ -31,24 +31,31 @@
   "cat_type": "card_class",
   "name": "Staunch",
   "description": "Staunch cards have a general focus on defense and healing.",
-  "support": [],
+  "support": [
+    1005,
+    1014,
+    1069,
+    1070,
+    1071,
+    1101,
+    1117,
+    1125
+  ],
   "anti_support": [],
   "created_on": {
     "year": 2023,
     "month": 10,
     "day": 10,
     "time": "19:39",
-    "full_time": {
-      "$date": "2023-10-10T19:39:29.560Z"
-    }
+    "full_time": "2023-10-10T19:39:29.560000"
   },
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 10,
-    "time": "19:39",
+    "day": 11,
+    "time": "03:27",
     "full_time": {
-      "$date": "2023-10-10T19:39:29.560Z"
+      "$date": "2023-10-11T03:27:15.440Z"
     }
   }
 },
@@ -58,7 +65,7 @@
   },
   "cat_type": "series",
   "name": "Warp Family",
-  "description": "Cards that are apart of the 'Warp Family' continuity",
+  "description": "Cards that are apart of the 'Warp Family' continuity.",
   "support": [
     1098,
     1107
@@ -75,9 +82,9 @@
     "year": 2023,
     "month": 10,
     "day": 11,
-    "time": "02:27",
+    "time": "03:50",
     "full_time": {
-      "$date": "2023-10-11T02:27:18.205Z"
+      "$date": "2023-10-11T03:50:38.174Z"
     }
   }
 },
@@ -584,6 +591,466 @@
     "time": "02:06",
     "full_time": {
       "$date": "2023-10-11T02:06:22.833Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65260c62cb646354b039b89a"
+  },
+  "cat_type": "card_class",
+  "name": "Power",
+  "description": "Cards that have a focus on deal large amounts of direct damage.",
+  "support": [
+    1014,
+    1078,
+    1079,
+    1082,
+    1084,
+    1088,
+    1101,
+    1118,
+    1121,
+    1125
+  ],
+  "anti_support": [
+    1013,
+    1015,
+    1016,
+    1077
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:45",
+    "full_time": {
+      "$date": "2023-10-11T02:45:54.257Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:45",
+    "full_time": {
+      "$date": "2023-10-11T02:45:54.257Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65261a858a74e1db6df7855b"
+  },
+  "cat_type": "card_class",
+  "name": "Unity",
+  "description": "Unity cards have the ability add more cards to a play. ",
+  "support": [
+    1035,
+    1053,
+    1056,
+    1092,
+    1093,
+    1101,
+    1107,
+    1119,
+    1121
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "03:46",
+    "full_time": "2023-10-11T03:46:13.489000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "03:50",
+    "full_time": {
+      "$date": "2023-10-11T03:50:09.734Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65261b488a74e1db6df7855c"
+  },
+  "cat_type": "card_class",
+  "name": "Canny",
+  "description": "Canny cards focus on manipulating and weakening opposing plays.",
+  "support": [
+    1041,
+    1044,
+    1098,
+    1101,
+    1105,
+    1106,
+    1110,
+    1120,
+    1121
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "03:49",
+    "full_time": {
+      "$date": "2023-10-11T03:49:28.498Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "03:49",
+    "full_time": {
+      "$date": "2023-10-11T03:49:28.498Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526b32d8a74e1db6df78573"
+  },
+  "cat_type": "card_type",
+  "name": "Fighter",
+  "description": "Cards representing the actual characters.",
+  "support": [
+    1006,
+    1007,
+    1022,
+    1030,
+    1031,
+    1032,
+    1034,
+    1045,
+    1047,
+    1049,
+    1055,
+    1057,
+    1068,
+    1069,
+    1070,
+    1071,
+    1076,
+    1079,
+    1080,
+    1082,
+    1087,
+    1088,
+    1089,
+    1090,
+    1103,
+    1109,
+    1110
+  ],
+  "anti_support": [
+    1008,
+    1013,
+    1019,
+    1020,
+    1023,
+    1024,
+    1027,
+    1028,
+    1048,
+    1049,
+    1052,
+    1077,
+    1104,
+    1122,
+    1128
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "14:37",
+    "full_time": "2023-10-11T14:37:33.644000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:08",
+    "full_time": {
+      "$date": "2023-10-11T17:08:16.525Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526b44d8a74e1db6df78574"
+  },
+  "cat_type": "card_type",
+  "name": "Comeback",
+  "description": "Cards represent a character's method of getting back into battle or how they prepare for future battles. ",
+  "support": [
+    1037,
+    1057,
+    1058,
+    1059,
+    1060,
+    1101,
+    1109,
+    1110,
+    1111
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "14:42",
+    "full_time": {
+      "$date": "2023-10-11T14:42:21.198Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "14:42",
+    "full_time": {
+      "$date": "2023-10-11T14:42:21.198Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526d7fe8a74e1db6df785da"
+  },
+  "cat_type": "card_type",
+  "name": "Ending",
+  "description": "Cards are the finishing blows.",
+  "support": [
+    1019,
+    1110,
+    1114
+  ],
+  "anti_support": [
+    1004,
+    1029,
+    1054,
+    1113
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:14",
+    "full_time": {
+      "$date": "2023-10-11T17:14:38.648Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:14",
+    "full_time": {
+      "$date": "2023-10-11T17:14:38.648Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526da708a74e1db6df785db"
+  },
+  "cat_type": "card_type",
+  "name": "Move",
+  "description": "Cards that are one of character's attacks.",
+  "support": [
+    1022,
+    1033,
+    1035,
+    1037,
+    1038,
+    1042,
+    1110,
+    1111,
+    1120,
+    1121
+  ],
+  "anti_support": [
+    1004,
+    1050,
+    1054,
+    1055
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:25",
+    "full_time": {
+      "$date": "2023-10-11T17:25:04.269Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:25",
+    "full_time": {
+      "$date": "2023-10-11T17:25:04.269Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526db608a74e1db6df785dc"
+  },
+  "cat_type": "card_type",
+  "name": "Aura",
+  "description": "Cards that represents a character's ability or traits.",
+  "support": [
+    1016,
+    1022,
+    1037,
+    1042,
+    1047,
+    1076,
+    1078,
+    1111,
+    1120,
+    1121,
+    1124
+  ],
+  "anti_support": [
+    1054,
+    1062
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:29",
+    "full_time": "2023-10-11T17:29:04.202000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:32",
+    "full_time": {
+      "$date": "2023-10-11T17:32:43.491Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526dc788a74e1db6df785dd"
+  },
+  "cat_type": "card_type",
+  "name": "Item",
+  "description": "Cards that are items or equipment belonging to a character.",
+  "support": [
+    1037,
+    1041,
+    1042,
+    1043,
+    1044,
+    1092,
+    1095,
+    1099,
+    1126
+  ],
+  "anti_support": [
+    1039,
+    1063,
+    1126
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:33",
+    "full_time": {
+      "$date": "2023-10-11T17:33:44.993Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:33",
+    "full_time": {
+      "$date": "2023-10-11T17:33:44.993Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526dd228a74e1db6df785de"
+  },
+  "cat_type": "card_type",
+  "name": "Event",
+  "description": "Cards that depict events or activities.",
+  "support": [
+    1011,
+    1012,
+    1037,
+    1073
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:36",
+    "full_time": {
+      "$date": "2023-10-11T17:36:34.109Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:36",
+    "full_time": {
+      "$date": "2023-10-11T17:36:34.109Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526ddc58a74e1db6df785df"
+  },
+  "cat_type": "card_type",
+  "name": "Any Type",
+  "description": "Main deck cards representing Max Variable.",
+  "support": [
+    1033,
+    1037,
+    1092,
+    1115,
+    1116,
+    1124
+  ],
+  "anti_support": [
+    1050
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:39",
+    "full_time": {
+      "$date": "2023-10-11T17:39:17.467Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "17:39",
+    "full_time": {
+      "$date": "2023-10-11T17:39:17.467Z"
     }
   }
 }]
