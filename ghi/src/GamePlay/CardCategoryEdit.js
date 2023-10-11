@@ -222,7 +222,6 @@ function CardCategoryEdit() {
         }, 3000);
     }
 
-
     return (
         <div>
             { account && account.roles.includes("admin")?

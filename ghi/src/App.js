@@ -29,6 +29,7 @@ import DeckImport from "./Builder/DeckImport";
 import CardCategoriesPage from "./GamePlay/CardCategoriesPage";
 import CardCategoriesCreate from "./GamePlay/CardCategoryCreate";
 import CardCategoryEdit from "./GamePlay/CardCategoryEdit";
+import CardCategoryDetail from "./GamePlay/CardCategoryDetail";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
               <Route path="/game/decks" element={<GameDecks />} />
               <Route path="/cardcategories" element={<CardCategoriesPage />} />
               <Route path="/categorycreate" element={<CardCategoriesCreate />} />
+              <Route path="/cardcategories/:card_category_id" element={<CardCategoryDetail />} />
               <Route path="/cardcategories/:card_category_id/edit" element={<CardCategoryEdit />} />
             </Routes>
 
