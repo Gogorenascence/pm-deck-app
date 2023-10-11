@@ -1,0 +1,589 @@
+[{
+  "_id": {
+    "$oid": "6525a6ca7f21c2a3a3eb48cc"
+  },
+  "cat_type": "series",
+  "name": "PantheraMan",
+  "description": "Cards that are apart of the 'PantheraMan' continuity",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 10,
+    "time": "19:32",
+    "full_time": "2023-10-10T19:32:26.047350"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 10,
+    "time": "19:34",
+    "full_time": {
+      "$date": "2023-10-10T19:34:54.463Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525a871cb646354b039b878"
+  },
+  "cat_type": "card_class",
+  "name": "Staunch",
+  "description": "Staunch cards have a general focus on defense and healing.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 10,
+    "time": "19:39",
+    "full_time": {
+      "$date": "2023-10-10T19:39:29.560Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 10,
+    "time": "19:39",
+    "full_time": {
+      "$date": "2023-10-10T19:39:29.560Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f3cdcb646354b039b887"
+  },
+  "cat_type": "series",
+  "name": "Warp Family",
+  "description": "Cards that are apart of the 'Warp Family' continuity",
+  "support": [
+    1098,
+    1107
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:01",
+    "full_time": "2023-10-11T01:01:01.241000"
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:27",
+    "full_time": {
+      "$date": "2023-10-11T02:27:18.205Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f6b1cb646354b039b888"
+  },
+  "cat_type": "sub_series",
+  "name": "Mystic",
+  "description": "Cards related to the spiritual and metaphysical. ",
+  "support": [
+    1127
+  ],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:13",
+    "full_time": {
+      "$date": "2023-10-11T01:13:21.629Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:13",
+    "full_time": {
+      "$date": "2023-10-11T01:13:21.629Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f908cb646354b039b889"
+  },
+  "cat_type": "sub_series",
+  "name": "Nature",
+  "description": "Cards that derive their power from animals, plant-life or the environment.  ",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:23",
+    "full_time": {
+      "$date": "2023-10-11T01:23:20.621Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:23",
+    "full_time": {
+      "$date": "2023-10-11T01:23:20.621Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f945cb646354b039b88a"
+  },
+  "cat_type": "sub_series",
+  "name": "Brawler",
+  "description": "Cards that excel at physical combat or rely on brute force.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:24",
+    "full_time": {
+      "$date": "2023-10-11T01:24:21.167Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:24",
+    "full_time": {
+      "$date": "2023-10-11T01:24:21.167Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f997cb646354b039b88b"
+  },
+  "cat_type": "",
+  "name": "Cosmic",
+  "description": "Cards with origins tied to space and aliens.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:25",
+    "full_time": {
+      "$date": "2023-10-11T01:25:43.410Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:25",
+    "full_time": {
+      "$date": "2023-10-11T01:25:43.410Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525f9f4cb646354b039b88c"
+  },
+  "cat_type": "sub_series",
+  "name": "Transformation",
+  "description": "Cards that transform or shapeshift.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:27",
+    "full_time": {
+      "$date": "2023-10-11T01:27:16.905Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:27",
+    "full_time": {
+      "$date": "2023-10-11T01:27:16.905Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525fa29cb646354b039b88d"
+  },
+  "cat_type": "sub_series",
+  "name": "Call",
+  "description": "Sound or voice based cards.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:28",
+    "full_time": {
+      "$date": "2023-10-11T01:28:09.377Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:28",
+    "full_time": {
+      "$date": "2023-10-11T01:28:09.377Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525fa97cb646354b039b88e"
+  },
+  "cat_type": "sub_series",
+  "name": "Defender",
+  "description": "Cards that boast a formidable defense.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:29",
+    "full_time": {
+      "$date": "2023-10-11T01:29:59.595Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:29",
+    "full_time": {
+      "$date": "2023-10-11T01:29:59.595Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525fca7cb646354b039b88f"
+  },
+  "cat_type": "sub_series",
+  "name": "Magic",
+  "description": "Cards whose origins are tied to magic, fate, magical realms, creatures or artifacts.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:38",
+    "full_time": {
+      "$date": "2023-10-11T01:38:47.471Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:38",
+    "full_time": {
+      "$date": "2023-10-11T01:38:47.471Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525fd7fcb646354b039b890"
+  },
+  "cat_type": "sub_series",
+  "name": "Quest",
+  "description": "Cards that are on a journey, searching for someone or something, or have a task that must be completed.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:42",
+    "full_time": {
+      "$date": "2023-10-11T01:42:23.888Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:42",
+    "full_time": {
+      "$date": "2023-10-11T01:42:23.888Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525ff0dcb646354b039b891"
+  },
+  "cat_type": "sub_series",
+  "name": "Altered",
+  "description": "Cards that have been physically change by artificial means.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:49",
+    "full_time": {
+      "$date": "2023-10-11T01:49:01.264Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:49",
+    "full_time": {
+      "$date": "2023-10-11T01:49:01.264Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6525ffe7cb646354b039b892"
+  },
+  "cat_type": "sub_series",
+  "name": "Tech",
+  "description": "Cards that use technologically advanced weapons, tools or suits.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:52",
+    "full_time": {
+      "$date": "2023-10-11T01:52:39.594Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:52",
+    "full_time": {
+      "$date": "2023-10-11T01:52:39.594Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65260097cb646354b039b893"
+  },
+  "cat_type": "sub_series",
+  "name": "Psychic",
+  "description": "Cards with psychic abilities.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:55",
+    "full_time": {
+      "$date": "2023-10-11T01:55:35.912Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:55",
+    "full_time": {
+      "$date": "2023-10-11T01:55:35.912Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65260118cb646354b039b894"
+  },
+  "cat_type": "sub_series",
+  "name": "Energy",
+  "description": "Cards capable of energy manipulation.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:57",
+    "full_time": {
+      "$date": "2023-10-11T01:57:44.674Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:57",
+    "full_time": {
+      "$date": "2023-10-11T01:57:44.674Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65260182cb646354b039b895"
+  },
+  "cat_type": "sub_series",
+  "name": "Relaxation",
+  "description": "Cards relaxing, reducing stress or taking part in leisure.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:59",
+    "full_time": {
+      "$date": "2023-10-11T01:59:30.814Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "01:59",
+    "full_time": {
+      "$date": "2023-10-11T01:59:30.814Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "652601a6cb646354b039b896"
+  },
+  "cat_type": "sub_series",
+  "name": "Team",
+  "description": "Cards composing of more than one person.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:00",
+    "full_time": {
+      "$date": "2023-10-11T02:00:06.614Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:00",
+    "full_time": {
+      "$date": "2023-10-11T02:00:06.614Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65260275cb646354b039b897"
+  },
+  "cat_type": "sub_series",
+  "name": "Tactical",
+  "description": "Cards with a knack for strategy and improvisation in the heat of combat.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:03",
+    "full_time": {
+      "$date": "2023-10-11T02:03:33.218Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:03",
+    "full_time": {
+      "$date": "2023-10-11T02:03:33.218Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "652602facb646354b039b898"
+  },
+  "cat_type": "sub_series",
+  "name": "Development",
+  "description": "Cards that help with training or preparation.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:05",
+    "full_time": {
+      "$date": "2023-10-11T02:05:46.862Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:05",
+    "full_time": {
+      "$date": "2023-10-11T02:05:46.862Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6526031ecb646354b039b899"
+  },
+  "cat_type": "sub_series",
+  "name": "Spoiler",
+  "description": "Cards that point towards future events or new characters.",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:06",
+    "full_time": {
+      "$date": "2023-10-11T02:06:22.833Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 11,
+    "time": "02:06",
+    "full_time": {
+      "$date": "2023-10-11T02:06:22.833Z"
+    }
+  }
+}]
