@@ -135,19 +135,24 @@ function CardCategoryDetail() {
                                     onClick={() => handleShowPool()}>
                                     &nbsp;[Show]
                                 </h5>}
+                            { account && account.roles.includes("admin")?
+                            <NavLink to={`/cardcategories/${cardCategory.id}/edit`}>
+                                <button
+                                    className="left red"
+                                    style={{ margin: "3px 0px 0px 9px"}}
+                                >
+                                    Edit Category
+                                </button>
+                            </NavLink>
+                            :null}
                         </div>
                         <div className={showPool ? "card-pool-fill2" : "hidden2"}>
-                            {members.length == 0 && !noCards?
-                                <div className="loading-container">
-                                    <div className="loading-spinner"></div>
-                                </div> :
-                            null}
                                 {members.map((card) => {
                                     return (
                                         <NavLink to={`/cards/${card.card_number}`} key={card.name}>
                                         <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
-                                                className="builder-card pointer glow3"
+                                                className="builder-card2 pointer glow3"
                                                 title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}/>

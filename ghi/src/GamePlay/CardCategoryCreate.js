@@ -452,7 +452,7 @@ function CardCategoriesCreate() {
                                         {support_list.length > 0?
                                             <button
                                                 className="left red"
-                                                style={{ marginTop: "9px"}}
+                                                style={{margin: "3px 0px 0px 9px"}}
                                                 onClick={clearSupport}
                                             >
                                                 Clear Support
@@ -515,7 +515,7 @@ function CardCategoriesCreate() {
                                         {anti_support_list.length > 0?
                                             <button
                                                 className="left red"
-                                                style={{ marginTop: "9px"}}
+                                                style={{margin: "3px 0px 0px 9px"}}
                                                 onClick={clearAntiSupport}
                                             >
                                                 Clear Anti-Support
