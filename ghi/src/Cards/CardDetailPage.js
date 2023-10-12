@@ -38,6 +38,7 @@ function CardDetailPage() {
     const [extra_effects, setExtraEffects] = useState([])
     const [reactions, setReactions] = useState([])
     const [card_tags, setCardTags] = useState([])
+    const [card_categories, setCardCategories] = useState([])
 
     const [cards, setCards] = useState([]);
 
@@ -97,6 +98,14 @@ function CardDetailPage() {
         setCards(data.cards.reverse());
     };
 
+    const getCardCategories = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`);
+        const data = await response.json();
+        const sortedData = [...data.card_categories].sort((a,b) => a.name.localeCompare(b.name));
+        console.log(sortedData.find(category => category.name === "Mystic"))
+        setCardCategories(sortedData);
+    };
+
     const navigate = useNavigate()
 
     const getRandomCard = async() =>{
@@ -114,11 +123,18 @@ function CardDetailPage() {
         getReactions();
         getCardTags();
         getCards();
+        getCardCategories();
         document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
     }, [card_number]);
+
+    const matchCategory = (line) => {
+        const cardCategory = card_categories?.find(category => category.name === line)
+        console.log(card_categories)
+        return cardCategory?.id
+    }
 
     return (
         <div className="white-space">
@@ -216,8 +232,10 @@ function CardDetailPage() {
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Series</h4>
                                         {card.seriesNames.map((line) =>
-                                        <h5 style={{fontWeight: "400", margin: "18px 12px"}}>
-                                            {line}</h5>)}
+                                            <NavLink to={`/cardcategories/${matchCategory(line)}`} className="nav-link2 glow2">
+                                                <h5 style={{fontWeight: "400", margin: "18px 12px"}}>
+                                                {line}</h5>
+                                            </NavLink>)}
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Card Number</h4>

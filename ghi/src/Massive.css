@@ -1670,13 +1670,18 @@ button:hover {
   }
 
   .table200 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.212);
   }
 
   .table200p {
     width: var(--window-width200);
     margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.212);
   }
 
   .support {

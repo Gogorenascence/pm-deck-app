@@ -130,6 +130,33 @@ function CardCategoriesPage() {
                     );
                 })}
             </div>
+
+            { account && account.roles.includes("admin")?
+            <>
+            <h3 className="left-h1">Need to type</h3>
+                <div>
+                    {cardCategories.filter(cardCategory => cardCategory.cat_type !== "card_type" &&
+                        cardCategory.cat_type !== "card_class" &&
+                        cardCategory.cat_type !== "series" &&
+                        cardCategory.cat_type !== "sub_series")
+                        .map(function(cardCategory, index, arr) {
+                        return (
+                            <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
+                                    <div style={{display: "flex"}}>
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                        </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>
+            </>
+            :null}
+
         </div>
     );
 }
