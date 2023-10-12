@@ -178,7 +178,7 @@
   "_id": {
     "$oid": "6525f997cb646354b039b88b"
   },
-  "cat_type": "",
+  "cat_type": "sub_series",
   "name": "Cosmic",
   "description": "Cards with origins tied to space and aliens.",
   "support": [],

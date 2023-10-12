@@ -56,7 +56,7 @@ function CardCategoriesPage() {
                 {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_type")
                     .map(function(cardCategory, index, arr) {
                     return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}/edit`} className="nav-link glow2" key={cardCategory.name}>
+                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
                                 <div style={{display: "flex"}}>
                                     <div className="table200">
                                         <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
@@ -75,7 +75,7 @@ function CardCategoriesPage() {
                 {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_class")
                     .map(function(cardCategory, index, arr) {
                     return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}/edit`} className="nav-link glow2" key={cardCategory.name}>
+                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
                                 <div style={{display: "flex"}}>
                                     <div className="table200">
                                         <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
@@ -96,7 +96,7 @@ function CardCategoriesPage() {
                 {cardCategories.filter(cardCategory => cardCategory.cat_type === "series")
                     .map(function(cardCategory, index, arr) {
                     return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}/edit`} className="nav-link glow2" key={cardCategory.name}>
+                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
                                 <div style={{display: "flex"}}>
                                     <div className="table200">
                                         <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
@@ -117,7 +117,7 @@ function CardCategoriesPage() {
                 {cardCategories.filter(cardCategory => cardCategory.cat_type === "sub_series")
                     .map(function(cardCategory, index, arr) {
                     return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}/edit`} className="nav-link glow2" key={cardCategory.name}>
+                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
                                 <div style={{display: "flex"}}>
                                     <div className="table200">
                                         <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
