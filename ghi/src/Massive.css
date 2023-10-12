@@ -993,6 +993,24 @@ button:hover {
 
 .nav-link {
   text-decoration: none;
+  color: var(--color-body);
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: var(--color-body);
+}
+
+.nav-link2 {
+  text-decoration: none;
+  color: var(--color-body);
+  padding: 0px;
+}
+
+.nav-link2:hover {
+  text-decoration: none;
+  color: var(--color-body);
+  padding: 0px;
 }
 
 .deck-list {

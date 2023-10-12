@@ -388,12 +388,14 @@ function DeckDetailPage() {
                                             return (
                                                 <Col style={{padding: "5px"}}>
                                                     <div className="card-container">
-                                                    <h5>{card.name} x <b>{card.count}</b></h5>
-                                                        <img
-                                                            className="card-image"
-                                                            src={card.picture_url}
-                                                            alt={card.name}
-                                                        />
+                                                        <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
+                                                            <h5>{card.name} x <b>{card.count}</b></h5>
+                                                            <img
+                                                                className="card-image"
+                                                                src={card.picture_url}
+                                                                alt={card.name}
+                                                            />
+                                                        </NavLink>
                                                     </div>
                                                 </Col>
                                             );
@@ -422,12 +424,14 @@ function DeckDetailPage() {
                                             return (
                                                 <Col style={{padding: "5px"}}>
                                                     <div className="card-container">
-                                                    <h5>{card.name} x <b>{card.count}</b></h5>
-                                                        <img
-                                                            className="card-image"
-                                                            src={card.picture_url}
-                                                            alt={card.name}
-                                                        />
+                                                        <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
+                                                            <h5>{card.name} x <b>{card.count}</b></h5>
+                                                            <img
+                                                                className="card-image"
+                                                                src={card.picture_url}
+                                                                alt={card.name}
+                                                            />
+                                                        </NavLink>
                                                     </div>
                                                 </Col>
                                             );
@@ -467,12 +471,13 @@ function DeckDetailPage() {
                                 {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                className="builder-card2"
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
+                                            <NavLink to={`/cards/${card.card_number}`}>
+                                                <img
+                                                    className="builder-card2"
+                                                    title={card.name}
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}/>
+                                            </NavLink>
                                         </div>
                                     );
                                 })}
@@ -513,12 +518,13 @@ function DeckDetailPage() {
                                 {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                            className="builder-card2"
-                                            title={card.name}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}
-                                            variant="bottom"/>
+                                            <NavLink to={`/cards/${card.card_number}`}>
+                                                <img
+                                                className="builder-card2"
+                                                title={card.name}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                            </NavLink>
                                         </div>
                                     );
                                 })}

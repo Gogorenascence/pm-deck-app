@@ -678,7 +678,7 @@
   "name": "Battle Girl Transformation!",
   "card_class": "Power",
   "hero_id": "BGA",
-  "series_name": "Battle Girl Alice//Magic//Brawler",
+  "series_name": "Battle Girl Alice//Magic//Brawler//Transformation",
   "card_number": 1030,
   "enthusiasm": 0,
   "effect_text": "Resolve 1 of the following effects. If you have yet to deal damage this round, resolve 2 different effects instead: //<> Your Fighter gains Counter 1. //<> Take 2 damage, then your Fighter gains 2 HP. //<> This card copies the effect text of your Fighter.",
