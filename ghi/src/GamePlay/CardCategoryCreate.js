@@ -15,6 +15,7 @@ function CardCategoriesCreate() {
         cat_type: "",
         name: "",
         description: "",
+        article: "",
         support: [],
         anti_support: [],
         created_on: {},
@@ -288,6 +289,16 @@ function CardCategoriesCreate() {
                                 <GamePlayCardSearch/>
                             </div>
                         </div>
+                        <h2 className="label"> Article </h2>
+                        <textarea
+                            className="large-article"
+                            type="text"
+                            placeholder=" Category Article"
+                            onChange={handleChange}
+                            name="article"
+                            value={cardCategory.article}>
+                        </textarea>
+                        <br/>
                         <div className={showPool ? "rarities2" : "no-rarities"}>
                             <div style={{marginLeft: "0px"}}>
                                 <div style={{display: "flex", alignItems: "center"}}>

@@ -8,7 +8,10 @@ function CardCategoriesPage() {
     const { account } = useContext(AuthContext)
 
     const [cardCategories, setCardCategories ] = useState([]);
-    const [showMore, setShowMore] = useState(20);
+    const [showClasses, setShowClasses] = useState(false);
+    const [showTypes, setShowTypes] = useState(true);
+    const [showSeries, setShowSeries] = useState(false);
+    const [showSubSeries, setShowSubSeries] = useState(false);
 
     const getCardCategories = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`);
@@ -37,6 +40,28 @@ function CardCategoriesPage() {
     // eslint-disable-next-line
     },[]);
 
+    const handleShowClasses = () => {
+        setShowClasses(!showClasses)
+    }
+
+    const handleShowTypes = () => {
+        setShowTypes(!showTypes)
+    }
+
+    const handleShowSeries = () => {
+        setShowSeries(!showSeries)
+    }
+
+    const handleShowSubSeries = () => {
+        setShowSubSeries(!showSubSeries)
+    }
+
+    const untyped = cardCategories.filter(cardCategory => cardCategory.cat_type !== "card_type" &&
+    cardCategory.cat_type !== "card_class" &&
+    cardCategory.cat_type !== "series" &&
+    cardCategory.cat_type !== "sub_series")
+
+
     return (
         <div className="white-space">
             <h1 className="left-h1">Card Categories</h1>
@@ -49,97 +74,139 @@ function CardCategoriesPage() {
                     </button>
                 </NavLink>:
             null}
-            <h3 className="left-h1">Card Types</h3>
-            {/* <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5> */}
-
-            <div>
-                {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_type")
-                    .map(function(cardCategory, index, arr) {
-                    return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                    </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                    </div>
-                                </div>
-                        </NavLink>
-                    );
-                })}
+            <div style={{display: "flex", marginTop: "20px"}}>
+                <h3 className="cat-label">Card Types</h3>
+                { showTypes ?
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowTypes()}>
+                            &nbsp;[Hide]
+                    </h5> :
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowTypes()}>
+                        &nbsp;[Show]
+                    </h5>}
             </div>
-
-            <h3 className="left-h1">Card Classes</h3>
-            <div>
-                {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_class")
-                    .map(function(cardCategory, index, arr) {
-                    return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                    </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                    </div>
-                                </div>
-                        </NavLink>
-                    );
-                })}
-            </div>
-
-            <h3 className="left-h1">Series</h3>
-            {/* <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5> */}
-
-            <div>
-                {cardCategories.filter(cardCategory => cardCategory.cat_type === "series")
-                    .map(function(cardCategory, index, arr) {
-                    return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                    </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                    </div>
-                                </div>
-                        </NavLink>
-                    );
-                })}
-            </div>
-
-            <h3 className="left-h1">Sub-Series</h3>
-            {/* <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5> */}
-
-            <div>
-                {cardCategories.filter(cardCategory => cardCategory.cat_type === "sub_series")
-                    .map(function(cardCategory, index, arr) {
-                    return (
-                        <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                    </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                    </div>
-                                </div>
-                        </NavLink>
-                    );
-                })}
-            </div>
-
-            { account && account.roles.includes("admin")?
-            <>
-            <h3 className="left-h1">Need to type</h3>
+            {showTypes?
                 <div>
-                    {cardCategories.filter(cardCategory => cardCategory.cat_type !== "card_type" &&
-                        cardCategory.cat_type !== "card_class" &&
-                        cardCategory.cat_type !== "series" &&
-                        cardCategory.cat_type !== "sub_series")
+                    {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_type")
                         .map(function(cardCategory, index, arr) {
+                        return (
+                            <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
+                                    <div style={{display: "flex"}}>
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                        </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>:null
+            }
+
+            <div style={{display: "flex", marginTop: "20px"}}>
+                <h3 className="cat-label">Card Classes</h3>
+                { showClasses ?
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowClasses()}>
+                            &nbsp;[Hide]
+                    </h5> :
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowClasses()}>
+                        &nbsp;[Show]
+                    </h5>}
+            </div>
+            {showClasses?
+                <div>
+                    {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_class")
+                        .map(function(cardCategory, index, arr) {
+                            return (
+                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
+                                    <div style={{display: "flex"}}>
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                        </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>:null
+            }
+
+            <div style={{display: "flex", marginTop: "20px"}}>
+                <h3 className="cat-label">Series</h3>
+                { showSeries ?
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowSeries()}>
+                            &nbsp;[Hide]
+                    </h5> :
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowSeries()}>
+                        &nbsp;[Show]
+                    </h5>}
+            </div>
+            {showSeries?
+                <div>
+                    {cardCategories.filter(cardCategory => cardCategory.cat_type === "series")
+                        .map(function(cardCategory, index, arr) {
+                        return (
+                            <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
+                                    <div style={{display: "flex"}}>
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                        </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>:null
+            }
+
+            <div style={{display: "flex", marginTop: "20px"}}>
+                <h3 className="cat-label">Sub-Series</h3>
+                { showSubSeries ?
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowSubSeries()}>
+                            &nbsp;[Hide]
+                    </h5> :
+                    <h5 className="left db-pool-count"
+                    onClick={() => handleShowSubSeries()}>
+                        &nbsp;[Show]
+                    </h5>}
+            </div>
+            {showSubSeries?
+                <div>
+                    {cardCategories.filter(cardCategory => cardCategory.cat_type === "sub_series")
+                        .map(function(cardCategory, index, arr) {
+                            return (
+                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
+                                    <div style={{display: "flex"}}>
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
+                                        </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
+                            </NavLink>
+                        );
+                    })}
+                </div>:null
+            }
+
+            { account && account.roles.includes("admin") && untyped.length > 0?
+            <>
+            <h3 className="cat-label">Need to type</h3>
+                <div>
+                    {untyped.map(function(cardCategory, index, arr) {
                         return (
                             <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2" key={cardCategory.name}>
                                     <div style={{display: "flex"}}>

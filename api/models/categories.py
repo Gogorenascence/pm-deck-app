@@ -22,6 +22,7 @@ class CardCategoryIn(BaseModel):
     cat_type: str
     name: str
     description: Optional[str]
+    article: Optional[str]
     support: list
     anti_support: list
     created_on: dict
