@@ -1272,34 +1272,6 @@
 },
 {
   "_id": {
-    "$oid": "652882a38a74e1db6df787d2"
-  },
-  "cat_type": "series",
-  "name": "Project HERMES",
-  "description": "Cards that are a part of the 'Project Hermes' continuity.",
-  "support": [],
-  "anti_support": [],
-  "created_on": {
-    "year": 2023,
-    "month": 10,
-    "day": 12,
-    "time": "23:34",
-    "full_time": {
-      "$date": "2023-10-12T23:34:59.503Z"
-    }
-  },
-  "updated_on": {
-    "year": 2023,
-    "month": 10,
-    "day": 12,
-    "time": "23:34",
-    "full_time": {
-      "$date": "2023-10-12T23:34:59.503Z"
-    }
-  }
-},
-{
-  "_id": {
     "$oid": "652882cd8a74e1db6df787d3"
   },
   "cat_type": "series",
