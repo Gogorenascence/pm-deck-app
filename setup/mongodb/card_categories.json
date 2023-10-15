@@ -217,19 +217,18 @@
     "month": 10,
     "day": 11,
     "time": "01:27",
-    "full_time": {
-      "$date": "2023-10-11T01:27:16.905Z"
-    }
+    "full_time": "2023-10-11T01:27:16.905000"
   },
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 11,
-    "time": "01:27",
+    "day": 15,
+    "time": "21:15",
     "full_time": {
-      "$date": "2023-10-11T01:27:16.905Z"
+      "$date": "2023-10-15T21:15:38.703Z"
     }
-  }
+  },
+  "article": null
 },
 {
   "_id": {
@@ -485,7 +484,7 @@
   },
   "cat_type": "sub_series",
   "name": "Team",
-  "description": "Cards composing of more than one person.",
+  "description": "Cards composed of more than one person.",
   "support": [],
   "anti_support": [],
   "created_on": {
@@ -493,19 +492,18 @@
     "month": 10,
     "day": 11,
     "time": "02:00",
-    "full_time": {
-      "$date": "2023-10-11T02:00:06.614Z"
-    }
+    "full_time": "2023-10-11T02:00:06.614000"
   },
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 11,
-    "time": "02:00",
+    "day": 15,
+    "time": "21:32",
     "full_time": {
-      "$date": "2023-10-11T02:00:06.614Z"
+      "$date": "2023-10-15T21:32:59.193Z"
     }
-  }
+  },
+  "article": null
 },
 {
   "_id": {
