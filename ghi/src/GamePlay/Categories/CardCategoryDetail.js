@@ -38,27 +38,12 @@ function CardCategoryDetail() {
 
         const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
         const cat_name = category_data.name.toLowerCase()
-        console.log(cat_name)
         const seriesMembersList = sortedCards.filter(card => card.series_name.toLowerCase().includes(cat_name))
         const classMembersList = sortedCards.filter(card => card.card_class.toLowerCase().includes(cat_name))
-        const card_types = {
-            "Fighter": 1001,
-            "Aura": 1002,
-            "Move": 1003,
-            "Ending": 1004,
-            "Any Type": 1005,
-            "Item": 1006,
-            "Event": 1007,
-            "Comeback": 1008,
-        }
-        const typeMembersList = sortedCards.filter(card => card.card_type[0] === card_types[category_data.name])
-        console.log(card_types[cat_name])
         if (category_data.cat_type === "series"||category_data.cat_type === "sub_series") {
             setMembers(seriesMembersList);
-        } else if (category_data.cat_type === "card_class"){
-            setMembers(classMembersList)
         } else {
-            setMembers(typeMembersList)
+            setMembers(classMembersList)
         }
 
         const support_card_list = category_data.support.map(supportItem =>

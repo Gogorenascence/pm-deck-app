@@ -248,7 +248,6 @@ function CardCategoriesCreate() {
                                         name="cat_type"
                                         onChange={handleChange}>
                                         <option value="none">Category Type</option>
-                                        <option value="card_type">Card Type</option>
                                         <option value="card_class">Class</option>
                                         <option value="series">Series</option>
                                         <option value="sub_series">Sub-Series</option>
