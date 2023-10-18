@@ -130,11 +130,6 @@ function CardDetailPage() {
         };
     }, [card_number]);
 
-    const matchTag = (tag_number) => {
-        const cardTagInfo = card_tags?.find(tag => tag.tag_number === tag_number)
-        return cardTagInfo?.id
-    };
-
     const matchSeries = (line) => {
         const cardCategory = card_categories?.find(category => category.name === line)
         console.log(card_categories)
@@ -226,9 +221,11 @@ function CardDetailPage() {
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Reactions</h4>
                                     {reactions.length ? (
                                         reactions.map((reaction) => (
-                                        <h5 title={reaction.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction.name}>
-                                            {reaction.name} {reaction.count} *
-                                        </h5>
+                                            <NavLink to={`/reactions/${reaction.id}`} className="nav-link2 glow2">
+                                                <h5 title={reaction.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction.name}>
+                                                    {reaction.name} {reaction.count} *
+                                                </h5>
+                                            </NavLink>
                                         ))
                                     ) : (
                                         <h5 style={{fontWeight: "400", margin: "18px 12px"}}>n/a</h5>
@@ -244,7 +241,7 @@ function CardDetailPage() {
                                         <>
                                             {card_tags.map((card_tag) => {
                                                     return (
-                                                        <NavLink to={`/cardtags/${matchTag(card_tag.tag_number)}`} className="nav-link2 glow2">
+                                                        <NavLink to={`/cardtags/${card_tag.id}`} className="nav-link2 glow2">
                                                             <h5 title={card_tag.rules}
                                                                 style={{fontWeight: "400", margin: "18px 12px"}}>
                                                                     {card_tag.name} *
@@ -305,12 +302,13 @@ function CardDetailPage() {
                                         <h4 style={{fontWeight: "600", margin: "12px"}}>Extra Effect Types</h4>
                                         <div className="borderBlack" style={{display:"flex"}}>
                                             {extra_effects.map((extra_effect) => (
-
-                                                <h5 title={extra_effect.rules}
-                                                    style={{fontWeight: "400",
-                                                        height: "22px",
-                                                        margin: "0px 5px 20px 15px"}}>
-                                                    {extra_effect.name} *</h5>
+                                                <NavLink to={`/extraeffects/${extra_effect.id}`} className="nav-link2 glow2">
+                                                    <h5 title={extra_effect.rules}
+                                                        style={{fontWeight: "400",
+                                                            height: "22px",
+                                                            margin: "0px 5px 20px 15px"}}>
+                                                        {extra_effect.name} *</h5>
+                                                </NavLink>
                                             ))}
                                         </div>
                                     </>

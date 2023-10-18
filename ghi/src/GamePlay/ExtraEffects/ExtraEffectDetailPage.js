@@ -3,9 +3,9 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 
 
-function CardTagDetails() {
+function ExtraEffectDetails() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [extraEffect, setExtraEffect ] = useState({
         name: "",
         rules: "",
         tag_number: "",
@@ -13,7 +13,7 @@ function CardTagDetails() {
         anti_support: [],
     });
 
-    const {card_tag_id} = useParams()
+    const {extra_effect_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const [support_list, setSupportList] = useState([]);
@@ -25,36 +25,34 @@ function CardTagDetails() {
     const [showSupport, setShowSupport] = useState(true);
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
-    const getCardTag = async() =>{
-        const cardTagResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}/`);
-        const card_tag_data = await cardTagResponse.json();
-        setCardTag(card_tag_data);
+    const getExtraEffect = async() =>{
+        const extraEffectResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/${extra_effect_id}/`);
+        const extra_effect_data = await extraEffectResponse.json();
+        setExtraEffect(extra_effect_data);
 
         const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const cardData = await cardResponse.json();
 
         const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
-        const tagMembersList = sortedCards.filter(card => card.card_tags.includes(card_tag_data.tag_number))
+        const tagMembersList = sortedCards.filter(card => card.extra_effects.includes(extra_effect_data.effect_number))
         setMembers(tagMembersList)
 
-        const support_card_list = card_tag_data.support.map(supportItem =>
+        const support_card_list = extra_effect_data.support.map(supportItem =>
             cardData.cards.find(card => card.card_number === supportItem))
-        const anti_support_card_list = card_tag_data.anti_support.map(antiSupportItem =>
+        const anti_support_card_list = extra_effect_data.anti_support.map(antiSupportItem =>
             cardData.cards.find(card => card.card_number === antiSupportItem))
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };
 
     useEffect(() => {
-        getCardTag();
+        getExtraEffect();
         document.title = "Card Tags - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
     },[]);
-
-    const navigate = useNavigate()
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);
@@ -74,8 +72,8 @@ function CardTagDetails() {
 
     return (
         <div className="white-space">
-            <h1 className="margin-top-40">{cardTag.name}</h1>
-            <h2 className="margin-top-20">{cardTag.rules}</h2>
+            <h1 className="margin-top-40">{extraEffect.name}</h1>
+            <h2 className="margin-top-20">{extraEffect.rules}</h2>
                 <div style={{display: "flex", justifyContent: "center"}}>
 
                 </div>
@@ -102,12 +100,12 @@ function CardTagDetails() {
                                     &nbsp;[Show]
                                 </h5>}
                             { account && account.roles.includes("admin")?
-                            <NavLink to={`/cardtags/${cardTag.id}/edit`}>
+                            <NavLink to={`/extraeffects/${extraEffect.id}/edit`}>
                                 <button
                                     className="left red"
                                     style={{ margin: "3px 0px 0px 9px"}}
                                 >
-                                    Edit Category
+                                    Edit Effect
                                 </button>
                             </NavLink>
                             :null}
@@ -225,4 +223,4 @@ function CardTagDetails() {
     );
 }
 
-export default CardTagDetails;
+export default ExtraEffectDetails;

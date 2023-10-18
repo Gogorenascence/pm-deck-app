@@ -27,15 +27,22 @@ import GameCards from "./Cards/GameCards";
 import GameDecks from "./Decks/GameDecks";
 import DeckImport from "./Builder/DeckImport";
 import CardCategoriesPage from "./GamePlay/Categories/CardCategoriesPage";
-import CardCategoriesCreate from "./GamePlay/Categories/CardCategoryCreate";
-import CardCategoryEdit from "./GamePlay/Categories/CardCategoryEdit";
-import CardCategoryDetail from "./GamePlay/Categories/CardCategoryDetail";
-import CardTagCreate from "./GamePlay/CardTags/CardTagCreate";
-import CardTagEdit from "./GamePlay/CardTags/CardTagEdit";
-import CardTagDetails from "./GamePlay/CardTags/CardTagDetail";
-import CardTypeCreate from "./GamePlay/CardTypes/CardTypeCreate";
-import CardTypeEdit from "./GamePlay/CardTypes/CardTypeEdit";
-import CardTypeDetails from "./GamePlay/CardTypes/CardTypeDetail";
+import CardCategoriesCreate from "./GamePlay/Categories/CardCategoryCreatePage";
+import CardCategoryEdit from "./GamePlay/Categories/CardCategoryEditPage";
+import CardCategoryDetail from "./GamePlay/Categories/CardCategoryDetailPage";
+import CardTagCreate from "./GamePlay/CardTags/CardTagCreatePage";
+import CardTagEdit from "./GamePlay/CardTags/CardTagEditPage";
+import CardTagDetails from "./GamePlay/CardTags/CardTagDetailPage";
+import CardTypeCreate from "./GamePlay/CardTypes/CardTypeCreatePage";
+import CardTypeEdit from "./GamePlay/CardTypes/CardTypeEditPage";
+import CardTypeDetails from "./GamePlay/CardTypes/CardTypeDetailPage";
+import ExtraEffectCreate from "./GamePlay/ExtraEffects/ExtraEffectCreate";
+import ExtraEffectEdit from "./GamePlay/ExtraEffects/ExtraEffectEdit";
+import ExtraEffectDetails from "./GamePlay/ExtraEffects/ExtraEffectDetailPage";
+import ReactionCreate from "./GamePlay/Reactions/ReactionCreatePage";
+import ReactionEdit from "./GamePlay/Reactions/ReactionEditPage";
+import ReactionDetails from "./GamePlay/Reactions/ReactionDetailPage";
+import GamePlayPage from "./GamePlay/GamePlayPage";
 
 
 function App() {
@@ -71,7 +78,6 @@ function App() {
               <Route path="/account" element={<AccountPage />} />
               <Route path="/reset/:reset_id" element={<ResetPassword />} />
               <Route path="/articles" element={<UnderConstruction />} />
-              <Route path="/gameplay" element={<UnderConstruction />} />
               <Route path="/forum" element={<UnderConstruction />} />
               <Route path="/game/cards" element={<GameCards />} />
               <Route path="/game/decks" element={<GameDecks />} />
@@ -83,8 +89,15 @@ function App() {
               <Route path="/cardtags/:card_tag_id" element={<CardTagDetails />} />
               <Route path="/cardtags/:card_tag_id/edit" element={<CardTagEdit />} />
               <Route path="/cardtypecreate" element={<CardTypeCreate />} />
+              <Route path="/cardtypes/:card_type_id" element={<CardTypeDetails />} />
               <Route path="/cardtypes/:card_type_id/edit" element={<CardTypeEdit />} />
-              <Route path="/cardtypes/:card_type_id/" element={<CardTypeDetails />} />
+              <Route path="/extraeffectcreate" element={<ExtraEffectCreate />} />
+              <Route path="/extraeffects/:extra_effect_id/edit" element={<ExtraEffectEdit />} />
+              <Route path="/extraeffects/:extra_effect_id" element={<ExtraEffectDetails />} />
+              <Route path="/reactioncreate" element={<ReactionCreate />} />
+              <Route path="/reactions/:reaction_id" element={<ReactionDetails />} />
+              <Route path="/reactions/:reaction_id/edit" element={<ReactionEdit />} />
+              <Route path="/gameplay" element={<GamePlayPage />} />
             </Routes>
 
           </div>

@@ -2,25 +2,24 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "../GamePlayCardSearch";
 import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
-import BackButton from "../../display/BackButton";
 
 
-function CardTagEdit() {
+function CardTypeCreate() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [cardType, setCardType ] = useState({
         name: "",
+        deck_type: "",
+        description: "",
         rules: "",
-        tag_number: "",
+        type_number: "",
         support: [],
         anti_support: [],
     });
 
-    const {card_tag_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -43,22 +42,7 @@ function CardTagEdit() {
 
     const [noCards, setNoCards] = useState(false);
 
-    const getCardTag = async() =>{
-        const tagResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}/`);
-        const tag_data = await tagResponse.json();
-        setCardTag(tag_data);
-
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
-
-        const support_card_list = tag_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem))
-        const anti_support_card_list = tag_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem))
-        setSupportList(support_card_list)
-        console.log(tag_data)
-        setAntiSupportList(anti_support_card_list)
-    };
+    const [stayHere, setStayHere] = useState(false)
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -72,9 +56,7 @@ function CardTagEdit() {
 
     useEffect(() => {
         getCards();
-        getCardTag();
-        console.log(cardTag)
-        document.title = "Tag Edit - PM CardBase"
+        document.title = "Card Type Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -90,9 +72,6 @@ function CardTagEdit() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
-
-    console.log(support_list)
-    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -114,7 +93,11 @@ function CardTagEdit() {
     };
 
     const handleChange = (event) => {
-        setCardTag({ ...cardTag, [event.target.name]: event.target.value });
+        setCardType({ ...cardType, [event.target.name]: event.target.value });
+    };
+
+    const handleCheck = (event) => {
+        setStayHere(!stayHere);
     };
 
     const handleClick = (card) => {
@@ -148,7 +131,7 @@ function CardTagEdit() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardTag};
+        const data = {...cardType};
         const support = []
         const anti_support = []
         for (let card of support_list){
@@ -163,33 +146,36 @@ function CardTagEdit() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        data["tag_number"] = parseInt(cardTag["tag_number"], 10);
-        const cardTagUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}`;
+        data["type_number"] = parseInt(cardType["type_number"], 10);
+        const cardTypeUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`;
         const fetchConfig = {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
-        const response = await fetch(cardTagUrl, fetchConfig);
+        const response = await fetch(cardTypeUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            // const card_tag_id = responseData.id;
-            setCardTag({
-                cat_type: "",
+            const card_type_id = responseData.id;
+            setCardType({
                 name: "",
+                deck_type: "",
                 description: "",
+                rules: "",
+                type_number: "",
                 support: [],
                 anti_support: [],
-                created_on: {},
-                updated_on: {},
             });
-            navigate(`/cardtags/`);
+            setSupportList([])
+            setAntiSupportList([])
+            setModifySupport(true)
+            if (!stayHere) {navigate(`/cardcategories/${card_type_id}`)}
             console.log("Success")
         } else {
-            alert("Error in creating Card Tag");
+            alert("Error in creating Card Type");
         }
     }
 
@@ -221,60 +207,84 @@ function CardTagEdit() {
     //     }, 3000);
     // }
 
+
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Tag Edit</h1>
+                    <h1 className="margin-top-40">Card Type Create</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardTag-page">
-                                    <h2 className="left">Card Tag Details</h2>
+                                    id="create-cardType-page">
+                                    <h2 className="left">Card Type Details</h2>
                                     <h5 className="label">Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Tag Name"
+                                        placeholder=" Type Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardTag.name}>
+                                        value={cardType.name}>
                                     </input>
+                                    <br/>
+                                    <h5 className="label"> Description </h5>
+                                    <textarea
+                                        className="builder-text"
+                                        type="text"
+                                        placeholder=" Type Description"
+                                        onChange={handleChange}
+                                        name="description"
+                                        value={cardType.description}>
+                                    </textarea>
                                     <br/>
                                     <h5 className="label"> Rules </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Tag Rules"
+                                        placeholder=" Type Rules"
                                         onChange={handleChange}
                                         name="rules"
-                                        value={cardTag.rules}>
+                                        value={cardType.rules}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Tag Number </h5>
+                                    <h5 className="label">Type Number </h5>
                                     <input
                                         className="builder-input"
                                         type="number"
-                                        placeholder=" Tag Number"
+                                        placeholder=" Type Number"
                                         onChange={handleChange}
-                                        name="tag_number"
-                                        value={cardTag.tag_number}>
+                                        name="type_number"
+                                        value={cardType.type_number}>
                                     </input>
                                     <br/>
 
-                                    {account && account.roles.includes("admin")?
+                                    <input
+                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
+                                        id="stayHere"
+                                        type="checkbox"
+                                        onChange={handleCheck}
+                                        name="stayHere"
+                                        checked={stayHere}>
+                                    </input>
+                                    <label for="stayHere"
+                                        className="bold"
+                                    >
+                                        Keep me here
+                                    </label>
+
+                                    <br/>
+                                    {account?
                                         <button
                                             className="left"
-                                            style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
-                                            Save
+                                            Create Card Type
                                         </button>:null
                                     }
-                                    <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a tag</h6>:
+                                        <h6 className="error">You must be logged in to create a cardType</h6>:
                                     null
                                     }
                                 </div>
@@ -545,4 +555,4 @@ function CardTagEdit() {
     );
 }
 
-export default CardTagEdit;
+export default CardTypeCreate;

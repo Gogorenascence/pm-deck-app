@@ -2,23 +2,24 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "../GamePlayCardSearch";
 import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
+import BackButton from "../../display/BackButton";
 
 
-function CardTagCreate() {
+function ReactionEdit() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [reaction, setReaction ] = useState({
         name: "",
         rules: "",
-        tag_number: "",
+        reaction_number: "",
         support: [],
         anti_support: [],
     });
 
+    const {reaction_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -41,7 +42,22 @@ function CardTagCreate() {
 
     const [noCards, setNoCards] = useState(false);
 
-    const [stayHere, setStayHere] = useState(false)
+    const getReaction = async() =>{
+        const reactionResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/${reaction_id}/`);
+        const reaction_data = await reactionResponse.json();
+        setReaction(reaction_data);
+
+        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const cardData = await cardResponse.json();
+
+        const support_card_list = reaction_data.support.map(supportItem =>
+            cardData.cards.find(card => card.card_number === supportItem))
+        const anti_support_card_list = reaction_data.anti_support.map(antiSupportItem =>
+            cardData.cards.find(card => card.card_number === antiSupportItem))
+        setSupportList(support_card_list)
+        console.log(reaction_data)
+        setAntiSupportList(anti_support_card_list)
+    };
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -55,7 +71,9 @@ function CardTagCreate() {
 
     useEffect(() => {
         getCards();
-        document.title = "Card Tag Create - PM CardBase"
+        getReaction();
+        console.log(reaction)
+        document.title = "Reaction Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -71,6 +89,9 @@ function CardTagCreate() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
+
+    console.log(support_list)
+    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -92,11 +113,7 @@ function CardTagCreate() {
     };
 
     const handleChange = (event) => {
-        setCardTag({ ...cardTag, [event.target.name]: event.target.value });
-    };
-
-    const handleCheck = (event) => {
-        setStayHere(!stayHere);
+        setReaction({ ...reaction, [event.target.name]: event.target.value });
     };
 
     const handleClick = (card) => {
@@ -130,7 +147,7 @@ function CardTagCreate() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardTag};
+        const data = {...reaction};
         const support = []
         const anti_support = []
         for (let card of support_list){
@@ -145,33 +162,28 @@ function CardTagCreate() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        data["tag_number"] = parseInt(cardTag["tag_number"], 10);
-        const cardTagUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_tags/`;
+        data["reaction_number"] = parseInt(reaction["reaction_number"], 10);
+        const reactionUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/${reaction_id}`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
-        const response = await fetch(cardTagUrl, fetchConfig);
+        const response = await fetch(reactionUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const card_tag_id = responseData.id;
-            setCardTag({
-                cat_type: "",
+            // const card_tag_id = responseData.id;
+            setReaction({
                 name: "",
-                description: "",
+                rules: "",
+                reaction_number: "",
                 support: [],
                 anti_support: [],
-                created_on: {},
-                updated_on: {},
             });
-            setSupportList([])
-            setAntiSupportList([])
-            setModifySupport(true)
-            if (!stayHere) {navigate(`/cardcategories/${card_tag_id}`)}
+            navigate(`/cardtags/`);
             console.log("Success")
         } else {
             alert("Error in creating Card Tag");
@@ -206,74 +218,60 @@ function CardTagCreate() {
     //     }, 3000);
     // }
 
-
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Tag Create</h1>
+                    <h1 className="margin-top-40">Reaction Edit</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardTag-page">
-                                    <h2 className="left">Card Tag Details</h2>
+                                    id="create-reaction-page">
+                                    <h2 className="left">Reaction Details</h2>
                                     <h5 className="label">Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Tag Name"
+                                        placeholder=" Reaction Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardTag.name}>
+                                        value={reaction.name}>
                                     </input>
                                     <br/>
-                                    <h5 className="label"> Description </h5>
+                                    <h5 className="label"> Rules </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Tag Description"
+                                        placeholder=" Reaction Rules"
                                         onChange={handleChange}
                                         name="rules"
-                                        value={cardTag.rules}>
+                                        value={reaction.rules}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Tag Number </h5>
+                                    <h5 className="label">Reaction Number </h5>
                                     <input
                                         className="builder-input"
                                         type="number"
-                                        placeholder=" Tag Number"
+                                        placeholder=" Reaction Number"
                                         onChange={handleChange}
-                                        name="tag_number"
-                                        value={cardTag.tag_number}>
+                                        name="reaction_number"
+                                        value={reaction.reaction_number}>
                                     </input>
                                     <br/>
 
-                                    <input
-                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
-                                        id="stayHere"
-                                        type="checkbox"
-                                        onChange={handleCheck}
-                                        name="stayHere"
-                                        checked={stayHere}>
-                                    </input>
-                                    <label for="stayHere"
-                                        className="bold"
-                                    >
-                                        Keep me here
-                                    </label>
-
-                                    <br/>
-                                    {account?
+                                    {account && account.roles.includes("admin")?
                                         <button
                                             className="left"
+                                            style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
-                                            Create Card Tag
+                                            Save
                                         </button>:null
                                     }
+                                    <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a cardTag</h6>:
+                                        <h6 className="error">You must be logged in to create a reaction</h6>:
                                     null
                                     }
                                 </div>
@@ -544,4 +542,4 @@ function CardTagCreate() {
     );
 }
 
-export default CardTagCreate;
+export default ReactionEdit;

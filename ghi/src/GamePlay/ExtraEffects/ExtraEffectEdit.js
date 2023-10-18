@@ -4,23 +4,22 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "../GamePlayCardSearch";
 import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
 import BackButton from "../../display/BackButton";
 
 
-function CardTagEdit() {
+function ExtraEffectEdit() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [extraEffect, setExtraEffect] = useState({
         name: "",
         rules: "",
-        tag_number: "",
+        effect_number: "",
         support: [],
         anti_support: [],
     });
 
-    const {card_tag_id} = useParams()
+    const {extra_effect_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -43,20 +42,20 @@ function CardTagEdit() {
 
     const [noCards, setNoCards] = useState(false);
 
-    const getCardTag = async() =>{
-        const tagResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}/`);
-        const tag_data = await tagResponse.json();
-        setCardTag(tag_data);
+    const getExtraEffect = async() =>{
+        const effectResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/${extra_effect_id}/`);
+        const effect_data = await effectResponse.json();
+        setExtraEffect(effect_data);
 
         const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const cardData = await cardResponse.json();
 
-        const support_card_list = tag_data.support.map(supportItem =>
+        const support_card_list = effect_data.support.map(supportItem =>
             cardData.cards.find(card => card.card_number === supportItem))
-        const anti_support_card_list = tag_data.anti_support.map(antiSupportItem =>
+        const anti_support_card_list = effect_data.anti_support.map(antiSupportItem =>
             cardData.cards.find(card => card.card_number === antiSupportItem))
         setSupportList(support_card_list)
-        console.log(tag_data)
+        console.log(effect_data)
         setAntiSupportList(anti_support_card_list)
     };
 
@@ -72,9 +71,9 @@ function CardTagEdit() {
 
     useEffect(() => {
         getCards();
-        getCardTag();
-        console.log(cardTag)
-        document.title = "Tag Edit - PM CardBase"
+        getExtraEffect();
+        console.log(extraEffect)
+        document.title = "Extra Effect Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -104,7 +103,7 @@ function CardTagEdit() {
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
-        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => query.tag? card.extra_effects.some(tag => tag.toString() == query.tag):card.extra_effects)
         .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
         .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
@@ -114,7 +113,7 @@ function CardTagEdit() {
     };
 
     const handleChange = (event) => {
-        setCardTag({ ...cardTag, [event.target.name]: event.target.value });
+        setExtraEffect({ ...extraEffect, [event.target.name]: event.target.value });
     };
 
     const handleClick = (card) => {
@@ -148,7 +147,7 @@ function CardTagEdit() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardTag};
+        const data = {...extraEffect};
         const support = []
         const anti_support = []
         for (let card of support_list){
@@ -163,8 +162,8 @@ function CardTagEdit() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        data["tag_number"] = parseInt(cardTag["tag_number"], 10);
-        const cardTagUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}`;
+        data["effect_number"] = parseInt(extraEffect["effect_number"], 10);
+        const extraEffectUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/${extra_effect_id}`;
         const fetchConfig = {
             method: "PUT",
             body: JSON.stringify(data),
@@ -173,11 +172,11 @@ function CardTagEdit() {
             },
         };
 
-        const response = await fetch(cardTagUrl, fetchConfig);
+        const response = await fetch(extraEffectUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            // const card_tag_id = responseData.id;
-            setCardTag({
+            // const extra_effect_id = responseData.id;
+            setExtraEffect({
                 cat_type: "",
                 name: "",
                 description: "",
@@ -186,7 +185,7 @@ function CardTagEdit() {
                 created_on: {},
                 updated_on: {},
             });
-            navigate(`/cardtags/`);
+            navigate(`/extraeffects/`);
             console.log("Success")
         } else {
             alert("Error in creating Card Tag");
@@ -225,40 +224,40 @@ function CardTagEdit() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Tag Edit</h1>
+                    <h1 className="margin-top-40">Extra Effect Edit</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardTag-page">
-                                    <h2 className="left">Card Tag Details</h2>
+                                    id="create-extraEffect-page">
+                                    <h2 className="left">Extra Effect Details</h2>
                                     <h5 className="label">Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Tag Name"
+                                        placeholder=" Extra Effect Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardTag.name}>
+                                        value={extraEffect.name}>
                                     </input>
                                     <br/>
                                     <h5 className="label"> Rules </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Tag Rules"
+                                        placeholder=" Extra Effect Rules"
                                         onChange={handleChange}
                                         name="rules"
-                                        value={cardTag.rules}>
+                                        value={extraEffect.rules}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Tag Number </h5>
+                                    <h5 className="label"> Effect Number </h5>
                                     <input
                                         className="builder-input"
                                         type="number"
-                                        placeholder=" Tag Number"
+                                        placeholder=" Extra Effect Number"
                                         onChange={handleChange}
-                                        name="tag_number"
-                                        value={cardTag.tag_number}>
+                                        name="effect_number"
+                                        value={extraEffect.effect_number}>
                                     </input>
                                     <br/>
 
@@ -274,7 +273,7 @@ function CardTagEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a tag</h6>:
+                                        <h6 className="error">You must be logged in to create an effect</h6>:
                                     null
                                     }
                                 </div>
@@ -545,4 +544,4 @@ function CardTagEdit() {
     );
 }
 
-export default CardTagEdit;
+export default ExtraEffectEdit;

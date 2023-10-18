@@ -3,17 +3,17 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 
 
-function CardTagDetails() {
+function ReactionDetails() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [reaction, setReaction ] = useState({
         name: "",
         rules: "",
-        tag_number: "",
+        reaction_number: "",
         support: [],
         anti_support: [],
     });
 
-    const {card_tag_id} = useParams()
+    const {reaction_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const [support_list, setSupportList] = useState([]);
@@ -25,28 +25,28 @@ function CardTagDetails() {
     const [showSupport, setShowSupport] = useState(true);
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
-    const getCardTag = async() =>{
-        const cardTagResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/${card_tag_id}/`);
-        const card_tag_data = await cardTagResponse.json();
-        setCardTag(card_tag_data);
+    const getReaction = async() =>{
+        const reactionResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/${reaction_id}/`);
+        const reaction_data = await reactionResponse.json();
+        setReaction(reaction_data);
 
         const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const cardData = await cardResponse.json();
 
         const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
-        const tagMembersList = sortedCards.filter(card => card.card_tags.includes(card_tag_data.tag_number))
-        setMembers(tagMembersList)
+        const reactionMembersList = sortedCards.filter(card => card.reactions.includes(reaction_data.reaction_number))
+        setMembers(reactionMembersList)
 
-        const support_card_list = card_tag_data.support.map(supportItem =>
+        const support_card_list = reaction_data.support.map(supportItem =>
             cardData.cards.find(card => card.card_number === supportItem))
-        const anti_support_card_list = card_tag_data.anti_support.map(antiSupportItem =>
+        const anti_support_card_list = reaction_data.anti_support.map(antiSupportItem =>
             cardData.cards.find(card => card.card_number === antiSupportItem))
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };
 
     useEffect(() => {
-        getCardTag();
+        getReaction();
         document.title = "Card Tags - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -74,8 +74,8 @@ function CardTagDetails() {
 
     return (
         <div className="white-space">
-            <h1 className="margin-top-40">{cardTag.name}</h1>
-            <h2 className="margin-top-20">{cardTag.rules}</h2>
+            <h1 className="margin-top-40">{reaction.name}</h1>
+            <h2 className="margin-top-20">{reaction.rules}</h2>
                 <div style={{display: "flex", justifyContent: "center"}}>
 
                 </div>
@@ -102,12 +102,12 @@ function CardTagDetails() {
                                     &nbsp;[Show]
                                 </h5>}
                             { account && account.roles.includes("admin")?
-                            <NavLink to={`/cardtags/${cardTag.id}/edit`}>
+                            <NavLink to={`/reactions/${reaction.id}/edit`}>
                                 <button
                                     className="left red"
                                     style={{ margin: "3px 0px 0px 9px"}}
                                 >
-                                    Edit Category
+                                    Edit Reaction
                                 </button>
                             </NavLink>
                             :null}
@@ -225,4 +225,4 @@ function CardTagDetails() {
     );
 }
 
-export default CardTagDetails;
+export default ReactionDetails;

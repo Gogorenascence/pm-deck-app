@@ -107,7 +107,7 @@ function CardTagDetails() {
                                     className="left red"
                                     style={{ margin: "3px 0px 0px 9px"}}
                                 >
-                                    Edit Category
+                                    Edit Tag
                                 </button>
                             </NavLink>
                             :null}

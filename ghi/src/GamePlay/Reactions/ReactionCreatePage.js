@@ -2,20 +2,18 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import GamePlayCardSearch from "../GamePlayCardSearch";
 import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
 
 
-function CardTypeCreate() {
+function ReactionCreate() {
 
-    const [cardType, setCardType ] = useState({
+    const [reaction, setReaction ] = useState({
         name: "",
-        deck_type: "",
-        description: "",
         rules: "",
-        type_number: "",
+        reaction_number: "",
         support: [],
         anti_support: [],
     });
@@ -56,7 +54,7 @@ function CardTypeCreate() {
 
     useEffect(() => {
         getCards();
-        document.title = "Card Type Create - PM CardBase"
+        document.title = "Reaction Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -93,7 +91,7 @@ function CardTypeCreate() {
     };
 
     const handleChange = (event) => {
-        setCardType({ ...cardType, [event.target.name]: event.target.value });
+        setReaction({ ...reaction, [event.target.name]: event.target.value });
     };
 
     const handleCheck = (event) => {
@@ -131,7 +129,7 @@ function CardTypeCreate() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardType};
+        const data = {...reaction};
         const support = []
         const anti_support = []
         for (let card of support_list){
@@ -146,8 +144,8 @@ function CardTypeCreate() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        data["type_number"] = parseInt(cardType["type_number"], 10);
-        const cardTypeUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/`;
+        data["reaction_number"] = parseInt(reaction["reaction_number"], 10);
+        const reactionUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/`;
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -156,11 +154,11 @@ function CardTypeCreate() {
             },
         };
 
-        const response = await fetch(cardTypeUrl, fetchConfig);
+        const response = await fetch(reactionUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const card_type_id = responseData.id;
-            setCardType({
+            const reaction_id = responseData.id;
+            setReaction({
                 cat_type: "",
                 name: "",
                 description: "",
@@ -172,10 +170,10 @@ function CardTypeCreate() {
             setSupportList([])
             setAntiSupportList([])
             setModifySupport(true)
-            if (!stayHere) {navigate(`/cardcategories/${card_type_id}`)}
+            if (!stayHere) {navigate(`/cardcategories/${reaction_id}`)}
             console.log("Success")
         } else {
-            alert("Error in creating Card Type");
+            alert("Error in creating Card Tag");
         }
     }
 
@@ -212,50 +210,40 @@ function CardTypeCreate() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Card Type Create</h1>
+                    <h1 className="margin-top-40">Reaction Create</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardType-page">
-                                    <h2 className="left">Card Type Details</h2>
+                                    id="create-reaction-page">
+                                    <h2 className="left">Reaction Details</h2>
                                     <h5 className="label">Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Type Name"
+                                        placeholder=" Reaction Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardType.name}>
+                                        value={reaction.name}>
                                     </input>
                                     <br/>
                                     <h5 className="label"> Description </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Type Description"
-                                        onChange={handleChange}
-                                        name="description"
-                                        value={cardType.description}>
-                                    </textarea>
-                                    <br/>
-                                    <h5 className="label"> Rules </h5>
-                                    <textarea
-                                        className="builder-text"
-                                        type="text"
-                                        placeholder=" Type Rules"
+                                        placeholder=" Reaction Description"
                                         onChange={handleChange}
                                         name="rules"
-                                        value={cardType.rules}>
+                                        value={reaction.rules}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Type Number </h5>
+                                    <h5 className="label">Reaction Number </h5>
                                     <input
                                         className="builder-input"
                                         type="number"
-                                        placeholder=" Type Number"
+                                        placeholder=" Reaction Number"
                                         onChange={handleChange}
-                                        name="type_number"
-                                        value={cardType.type_number}>
+                                        name="reaction_number"
+                                        value={reaction.reaction_number}>
                                     </input>
                                     <br/>
 
@@ -279,12 +267,12 @@ function CardTypeCreate() {
                                             className="left"
                                             onClick={handleSubmit}
                                         >
-                                            Create Card Type
+                                            Create Reaction
                                         </button>:null
                                     }
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a cardType</h6>:
+                                        <h6 className="error">You must be logged in to create a reaction</h6>:
                                     null
                                     }
                                 </div>
@@ -555,4 +543,4 @@ function CardTypeCreate() {
     );
 }
 
-export default CardTypeCreate;
+export default ReactionCreate;

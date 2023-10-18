@@ -160,13 +160,11 @@ function CardTagCreate() {
             const responseData = await response.json();
             const card_tag_id = responseData.id;
             setCardTag({
-                cat_type: "",
                 name: "",
-                description: "",
+                rules: "",
+                tag_number: "",
                 support: [],
                 anti_support: [],
-                created_on: {},
-                updated_on: {},
             });
             setSupportList([])
             setAntiSupportList([])

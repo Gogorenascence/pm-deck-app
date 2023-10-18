@@ -250,8 +250,8 @@ function Nav() {
                   Game Play
                 </a>
                 <div className="dropdown-menu" aria-labelledby="cardsDropdown">
-                  <NavLink className="dropdown-item" to="/cardcategories">
-                    Card Categories
+                  <NavLink className="dropdown-item" to="/gameplay">
+                    GamePlay Portal
                   </NavLink>
                   { account && account.roles.includes("admin")?
                     <NavLink className="dropdown-item" to="/categorycreate">
@@ -266,6 +266,16 @@ function Nav() {
                   { account && account.roles.includes("admin")?
                     <NavLink className="dropdown-item" to="/cardtagcreate">
                       Card Tag Create
+                    </NavLink>:
+                  null}
+                  { account && account.roles.includes("admin")?
+                    <NavLink className="dropdown-item" to="/extraeffectcreate">
+                      Extra Effect Create
+                    </NavLink>:
+                  null}
+                  { account && account.roles.includes("admin")?
+                    <NavLink className="dropdown-item" to="/reactioncreate">
+                      Reaction Create
                     </NavLink>:
                   null}
                   {/* <NavLink className="dropdown-item" to="/topcards">
