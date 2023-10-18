@@ -1,13 +1,6 @@
-import {
-    Col
-} from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-import GamePlayCardSearch from "./GamePlayCardSearch";
-// import { GamePlayQueryContext } from "../context/GamePlayQueryContext";
-import BackButton from "../display/BackButton";
+import { AuthContext } from "../../context/AuthContext";
 
 
 function CardCategoryDetail() {
@@ -34,7 +27,6 @@ function CardCategoryDetail() {
     const [showSupport, setShowSupport] = useState(true);
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
-    const [noCards, setNoCards] = useState(false);
 
     const getCardCategory = async() =>{
         const categoryResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}/`);
@@ -43,9 +35,7 @@ function CardCategoryDetail() {
 
         const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const cardData = await cardResponse.json();
-        if (cardData.cards.length == 0 ) {
-            setNoCards(true)
-        }
+
         const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
         const cat_name = category_data.name.toLowerCase()
         console.log(cat_name)

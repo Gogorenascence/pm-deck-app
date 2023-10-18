@@ -2,26 +2,27 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-import GamePlayCardSearch from "./GamePlayCardSearch";
-import { GamePlayQueryContext } from "../context/GamePlayQueryContext";
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
+import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import GamePlayCardSearch from "../GamePlayCardSearch";
+import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
+import BackButton from "../../display/BackButton";
 
 
-function CardCategoriesCreate() {
+function CardTypeEdit() {
 
-    const [cardCategory, setCardCategory ] = useState({
-        cat_type: "",
+    const [cardType, setCardType ] = useState({
         name: "",
+        deck_type: "",
         description: "",
-        article: "",
+        rules: "",
+        type_number: "",
         support: [],
         anti_support: [],
-        created_on: {},
-        updated_on: {},
     });
 
+    const {card_type_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -44,7 +45,22 @@ function CardCategoriesCreate() {
 
     const [noCards, setNoCards] = useState(false);
 
-    const [stayHere, setStayHere] = useState(false)
+    const getCardType = async() =>{
+        const typeResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/${card_type_id}/`);
+        const type_data = await typeResponse.json();
+        setCardType(type_data);
+
+        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const cardData = await cardResponse.json();
+
+        const support_card_list = type_data.support.map(supportItem =>
+            cardData.cards.find(card => card.card_number === supportItem))
+        const anti_support_card_list = type_data.anti_support.map(antiSupportItem =>
+            cardData.cards.find(card => card.card_number === antiSupportItem))
+        setSupportList(support_card_list)
+        console.log(type_data)
+        setAntiSupportList(anti_support_card_list)
+    };
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -58,7 +74,9 @@ function CardCategoriesCreate() {
 
     useEffect(() => {
         getCards();
-        document.title = "Category Create - PM CardBase"
+        getCardType();
+        console.log(cardType)
+        document.title = "Card Type Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -74,6 +92,9 @@ function CardCategoriesCreate() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
+
+    console.log(support_list)
+    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -95,11 +116,7 @@ function CardCategoriesCreate() {
     };
 
     const handleChange = (event) => {
-        setCardCategory({ ...cardCategory, [event.target.name]: event.target.value });
-    };
-
-    const handleCheck = (event) => {
-        setStayHere(!stayHere);
+        setCardType({ ...cardType, [event.target.name]: event.target.value });
     };
 
     const handleClick = (card) => {
@@ -133,7 +150,7 @@ function CardCategoriesCreate() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardCategory};
+        const data = {...cardType};
         const support = []
         const anti_support = []
         for (let card of support_list){
@@ -148,20 +165,21 @@ function CardCategoriesCreate() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        const cardCategoryUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`;
+        data["type_number"] = parseInt(cardType["type_number"], 10);
+        const cardTypeUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/${card_type_id}`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
-        const response = await fetch(cardCategoryUrl, fetchConfig);
+        const response = await fetch(cardTypeUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const card_category_id = responseData.id;
-            setCardCategory({
+            // const card_tag_id = responseData.id;
+            setCardType({
                 cat_type: "",
                 name: "",
                 description: "",
@@ -170,13 +188,10 @@ function CardCategoriesCreate() {
                 created_on: {},
                 updated_on: {},
             });
-            setSupportList([])
-            setAntiSupportList([])
-            setModifySupport(true)
-            if (!stayHere) {navigate(`/cardcategories/${card_category_id}`)}
+            navigate(`/cardtypes/`);
             console.log("Success")
         } else {
-            alert("Error in creating Card Category");
+            alert("Error in creating Card Type");
         }
     }
 
@@ -202,85 +217,76 @@ function CardCategoriesCreate() {
 
     const isQueryEmpty = Object.values(query).every((value) => value === "");
 
-    if (!(account && account.roles.includes("admin"))) {
-        setTimeout(function() {
-            window.location.href = `${process.env.PUBLIC_URL}/`
-        }, 3000);
-    }
-
+    // if (!(account && account.roles.includes("admin"))) {
+    //     setTimeout(function() {
+    //         window.location.href = `${process.env.PUBLIC_URL}/`
+    //     }, 3000);
+    // }
 
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Category Create</h1>
+                    <h1 className="margin-top-40">Card Type Edit</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardCategory-page">
-                                    <h2 className="left">Category Details</h2>
+                                    id="create-cardType-page">
+                                    <h2 className="left">Card Type Details</h2>
                                     <h5 className="label">Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Category Name"
+                                        placeholder=" Type Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardCategory.name}>
+                                        value={cardType.name}>
                                     </input>
                                     <br/>
                                     <h5 className="label"> Description </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Category Description"
+                                        placeholder=" Type Description"
                                         onChange={handleChange}
                                         name="description"
-                                        value={cardCategory.description}>
+                                        value={cardType.description}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Category Type </h5>
-                                    <select
-                                        className="builder-input"
+                                    <h5 className="label"> Rules </h5>
+                                    <textarea
+                                        className="builder-text"
                                         type="text"
-                                        placeholder=" Category Type"
-                                        value={cardCategory.cat_type}
-                                        name="cat_type"
-                                        onChange={handleChange}>
-                                        <option value="none">Category Type</option>
-                                        <option value="card_type">Card Type</option>
-                                        <option value="card_class">Class</option>
-                                        <option value="series">Series</option>
-                                        <option value="sub_series">Sub-Series</option>
-                                    </select>
+                                        placeholder=" Type Rules"
+                                        onChange={handleChange}
+                                        name="rules"
+                                        value={cardType.rules}>
+                                    </textarea>
                                     <br/>
-
+                                    <h5 className="label">Type Number </h5>
                                     <input
-                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
-                                        id="stayHere"
-                                        type="checkbox"
-                                        onChange={handleCheck}
-                                        name="stayHere"
-                                        checked={stayHere}>
+                                        className="builder-input"
+                                        type="number"
+                                        placeholder=" Type Number"
+                                        onChange={handleChange}
+                                        name="type_number"
+                                        value={cardType.type_number}>
                                     </input>
-                                    <label for="stayHere"
-                                        className="bold"
-                                    >
-                                        Keep me here
-                                    </label>
-
                                     <br/>
-                                    {account?
+
+                                    {account && account.roles.includes("admin")?
                                         <button
                                             className="left"
+                                            style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
-                                            Create Category
+                                            Save
                                         </button>:null
                                     }
+                                    <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a cardCategory</h6>:
+                                        <h6 className="error">You must be logged in to create a tag</h6>:
                                     null
                                     }
                                 </div>
@@ -289,16 +295,6 @@ function CardCategoriesCreate() {
                                 <GamePlayCardSearch/>
                             </div>
                         </div>
-                        <h2 className="label"> Article </h2>
-                        <textarea
-                            className="large-article"
-                            type="text"
-                            placeholder=" Category Article"
-                            onChange={handleChange}
-                            name="article"
-                            value={cardCategory.article}>
-                        </textarea>
-                        <br/>
                         <div className={showPool ? "rarities2" : "no-rarities"}>
                             <div style={{marginLeft: "0px"}}>
                                 <div style={{display: "flex", alignItems: "center"}}>
@@ -561,4 +557,4 @@ function CardCategoriesCreate() {
     );
 }
 
-export default CardCategoriesCreate;
+export default CardTypeEdit;

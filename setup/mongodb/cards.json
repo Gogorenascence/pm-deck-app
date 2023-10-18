@@ -1960,14 +1960,14 @@
   "_id": {
     "$oid": "6413bdabb00a31a52c1b9d79"
   },
-  "name": "“1..2..3..”",
+  "name": "The Globetrotter",
   "card_class": "",
   "hero_id": "BN1",
   "series_name": "Black Note//Altered//Quest//Call",
   "card_number": 1104,
   "enthusiasm": 0,
-  "effect_text": "All players discard cards from their plays until they have 3 or less cards, then deal 2 damage to all players that discarded card(s) from their play. ",
-  "second_effect_text": "<Critical> All foes and their Fighters take 1 damage.",
+  "effect_text": "<Trigger> When a card(s) is removed from your play, add 1 Call or Quest card from your hand to your play.",
+  "second_effect_text": "<Critical> Add 1 Call or Quest card from your Main deck to your hand (the Main deck is then shuffled).\n",
   "illustrator": "ahtan_delmundo",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl13bne.png",
   "file_name": "i1pl13bne",
@@ -1975,6 +1975,7 @@
     1007
   ],
   "extra_effects": [
+    1001,
     1002
   ],
   "reactions": [],
@@ -1986,19 +1987,19 @@
     "month": 6,
     "day": 25,
     "time": "18:44",
-    "full_time": {
-      "$date": "2023-06-25T18:44:06.985Z"
-    }
+    "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
     "year": 2023,
-    "month": 6,
-    "day": 25,
-    "time": "18:57",
+    "month": 10,
+    "day": 16,
+    "time": "05:49",
     "full_time": {
-      "$date": "2023-06-25T18:57:24.796Z"
+      "$date": "2023-10-16T05:49:02.112Z"
     }
-  }
+  },
+  "alpha": null,
+  "beta": null
 },
 {
   "_id": {

@@ -21,8 +21,11 @@ class PydanticObjectId(ObjectId):
 class CardTypeIn(BaseModel):
     name: str
     deck_type: Optional[str]
+    description: Optional[str]
     rules: Optional[str]
     type_number: Optional[int]
+    support: Optional[list]
+    anti_support: Optional[list]
 
 
 class CardType(CardTypeIn):
@@ -78,6 +81,8 @@ class TagIn(BaseModel):
     name: str
     rules: Optional[str]
     tag_number: Optional[int]
+    support: Optional[list]
+    anti_support: Optional[list]
 
 
 class CardTag(TagIn):

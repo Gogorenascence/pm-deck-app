@@ -2,28 +2,26 @@ import {
     Col
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-import GamePlayCardSearch from "./GamePlayCardSearch";
-import { GamePlayQueryContext } from "../context/GamePlayQueryContext";
-import BackButton from "../display/BackButton";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
+import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import GamePlayCardSearch from "../GamePlayCardSearch";
+import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
 
 
-function CardCategoryEdit() {
+function CardCategoriesCreate() {
 
     const [cardCategory, setCardCategory ] = useState({
         cat_type: "",
         name: "",
         description: "",
+        article: "",
         support: [],
-        article:[],
         anti_support: [],
         created_on: {},
         updated_on: {},
     });
 
-    const {card_category_id} = useParams()
     const { account } = useContext(AuthContext)
 
     const {query,
@@ -46,22 +44,7 @@ function CardCategoryEdit() {
 
     const [noCards, setNoCards] = useState(false);
 
-    const getCardCategory = async() =>{
-        const categoryResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}/`);
-        const category_data = await categoryResponse.json();
-        setCardCategory(category_data);
-
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
-
-        const support_card_list = category_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem))
-        const anti_support_card_list = category_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem))
-        setSupportList(support_card_list)
-        console.log(category_data)
-        setAntiSupportList(anti_support_card_list)
-    };
+    const [stayHere, setStayHere] = useState(false)
 
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -75,9 +58,7 @@ function CardCategoryEdit() {
 
     useEffect(() => {
         getCards();
-        getCardCategory();
-        console.log(cardCategory)
-        document.title = "Category Edit - PM CardBase"
+        document.title = "Category Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -93,9 +74,6 @@ function CardCategoryEdit() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
-
-    console.log(support_list)
-    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -118,6 +96,10 @@ function CardCategoryEdit() {
 
     const handleChange = (event) => {
         setCardCategory({ ...cardCategory, [event.target.name]: event.target.value });
+    };
+
+    const handleCheck = (event) => {
+        setStayHere(!stayHere);
     };
 
     const handleClick = (card) => {
@@ -166,9 +148,9 @@ function CardCategoryEdit() {
         }
         data["support"] = support;
         data["anti_support"] = anti_support;
-        const cardCategoryUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}`;
+        const cardCategoryUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`;
         const fetchConfig = {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -178,7 +160,7 @@ function CardCategoryEdit() {
         const response = await fetch(cardCategoryUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            // const card_category_id = responseData.id;
+            const card_category_id = responseData.id;
             setCardCategory({
                 cat_type: "",
                 name: "",
@@ -188,7 +170,10 @@ function CardCategoryEdit() {
                 created_on: {},
                 updated_on: {},
             });
-            navigate(`/cardcategories/`);
+            setSupportList([])
+            setAntiSupportList([])
+            setModifySupport(true)
+            if (!stayHere) {navigate(`/cardcategories/${card_category_id}`)}
             console.log("Success")
         } else {
             alert("Error in creating Card Category");
@@ -223,11 +208,12 @@ function CardCategoryEdit() {
         }, 3000);
     }
 
+
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Category Edit</h1>
+                    <h1 className="margin-top-40">Category Create</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
@@ -269,16 +255,29 @@ function CardCategoryEdit() {
                                     </select>
                                     <br/>
 
-                                    {account && account.roles.includes("admin")?
+                                    <input
+                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
+                                        id="stayHere"
+                                        type="checkbox"
+                                        onChange={handleCheck}
+                                        name="stayHere"
+                                        checked={stayHere}>
+                                    </input>
+                                    <label for="stayHere"
+                                        className="bold"
+                                    >
+                                        Keep me here
+                                    </label>
+
+                                    <br/>
+                                    {account?
                                         <button
                                             className="left"
-                                            style={{ marginTop: "9px"}}
                                             onClick={handleSubmit}
                                         >
-                                            Save
+                                            Create Category
                                         </button>:null
                                     }
-                                    <BackButton/>
                                     <br/>
                                     { !account?
                                         <h6 className="error">You must be logged in to create a cardCategory</h6>:
@@ -562,4 +561,4 @@ function CardCategoryEdit() {
     );
 }
 
-export default CardCategoryEdit;
+export default CardCategoriesCreate;

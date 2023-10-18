@@ -1,7 +1,3 @@
-import {
-    Button,
-    Modal,
-} from "react-bootstrap";
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 
@@ -63,7 +59,7 @@ function RelatedCardModal() {
                                 {relatedCards.map((relatedCard) => {
                                     return (
                                             <img
-                                                className="cd-related-modal-card"
+                                                className="cd-related-modal-card pointer"
                                                 onClick={() => selectCard(relatedCard)}
                                                 title={relatedCard.name}
                                                 src={relatedCard.picture_url ? relatedCard.picture_url : "logo4p.png"}

@@ -130,6 +130,11 @@ function CardDetailPage() {
         };
     }, [card_number]);
 
+    const matchTag = (tag_number) => {
+        const cardTagInfo = card_tags?.find(tag => tag.tag_number === tag_number)
+        return cardTagInfo?.id
+    };
+
     const matchSeries = (line) => {
         const cardCategory = card_categories?.find(category => category.name === line)
         console.log(card_categories)
@@ -142,22 +147,6 @@ function CardDetailPage() {
         return cardCategory?.id
     }
 
-    const matchType = (card_type) => {
-        console.log(card_type)
-        const card_types = {
-            "Fighter": 1001,
-            "Aura": 1002,
-            "Move": 1003,
-            "Ending": 1004,
-            "Any Type": 1005,
-            "Item": 1006,
-            "Event": 1007,
-            "Comeback": 1008,
-        }
-        const cardCategory = card_categories?.find(category => category.name === card_type)
-        console.log(cardCategory)
-        return cardCategory?.id
-    }
 
     return (
         <div className="white-space">
@@ -216,7 +205,7 @@ function CardDetailPage() {
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Type</h4>
                                     {card_type?
-                                        <NavLink to={`/cardcategories/${matchType(card_type.name)}`} className="nav-link2 glow2">
+                                        <NavLink to={`/cardtypes/${card_type.id}`} className="nav-link2 glow2">
                                             <h5 title={card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
                                                 >{card_type.name} *</h5>
                                         </NavLink>:
@@ -228,7 +217,7 @@ function CardDetailPage() {
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Class</h4>
                                     { card.card_class?
                                         <NavLink to={`/cardcategories/${matchClass(card.card_class)}`} className="nav-link2 glow2">
-                                            <h5 style={{fontWeight: "400", margin: "18px 12px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
+                                            <h5 style={{fontWeight: "400", margin: "18px 12px"}}>{card.card_class ? `${card.card_class} *` : "n/a"}</h5>
                                         </NavLink>:
                                         <h5 style={{fontWeight: "400", margin: "18px 12px"}}>{card.card_class ? card.card_class : "n/a"}</h5>
                                     }
@@ -251,23 +240,29 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Tags</h4>
-                                    {card_tags.map((card_tag) => {
-                                            return (
-                                                <h5 title={card_tag.rules}
-                                                    style={{fontWeight: "400", margin: "18px 12px"}}>
-                                                        {
-                                                            card_tag.tag_number === "1000" ?
-                                                            card_tag.name : card_tag.name + " *"}
-                                                </h5>
-                                            );
-                                        })}
+                                    {card_tags[0] !== 1000?
+                                        <>
+                                            {card_tags.map((card_tag) => {
+                                                    return (
+                                                        <NavLink to={`/cardtags/${matchTag(card_tag.tag_number)}`} className="nav-link2 glow2">
+                                                            <h5 title={card_tag.rules}
+                                                                style={{fontWeight: "400", margin: "18px 12px"}}>
+                                                                    {card_tag.name} *
+                                                            </h5>
+                                                        </NavLink>
+                                                    );
+                                            })}
+                                        </>:
+                                            <h5 style={{fontWeight: "400", margin: "18px 12px"}}>
+                                                {card_tags[0].name}
+                                            </h5>}
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Series</h4>
                                         {card.seriesNames.map((line) =>
                                             <NavLink to={`/cardcategories/${matchSeries(line)}`} className="nav-link2 glow2">
                                                 <h5 style={{fontWeight: "400", margin: "18px 12px"}}>
-                                                {line}</h5>
+                                                {line} *</h5>
                                             </NavLink>)}
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>

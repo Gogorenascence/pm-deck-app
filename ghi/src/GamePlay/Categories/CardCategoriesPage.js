@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { AuthContext } from "../../context/AuthContext";
+import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 
 function CardCategoriesPage() {
 
@@ -24,12 +24,6 @@ function CardCategoriesPage() {
     };
 
     const navigate = useNavigate()
-
-    // const getRandomCategory = async() =>{
-    //     const randomIndex = Math.floor(Math.random() * cardCategories.length);
-    //     const randomCardCategory = [randomIndex].id;
-    //     navigate(`/categories/${randomCardCategory}`)
-    // }
 
     useEffect(() => {
         getCardCategories();
@@ -56,7 +50,7 @@ function CardCategoriesPage() {
         setShowSubSeries(!showSubSeries)
     }
 
-    const untyped = cardCategories.filter(cardCategory => cardCategory.cat_type !== "card_type" &&
+    const untyped = cardCategories.filter(cardCategory =>
     cardCategory.cat_type !== "card_class" &&
     cardCategory.cat_type !== "series" &&
     cardCategory.cat_type !== "sub_series")
@@ -74,37 +68,6 @@ function CardCategoriesPage() {
                     </button>
                 </NavLink>:
             null}
-            <div style={{display: "flex", marginTop: "20px"}}>
-                <h3 className="cat-label">Card Types</h3>
-                { showTypes ?
-                    <h5 className="left db-pool-count"
-                    onClick={() => handleShowTypes()}>
-                            &nbsp;[Hide]
-                    </h5> :
-                    <h5 className="left db-pool-count"
-                    onClick={() => handleShowTypes()}>
-                        &nbsp;[Show]
-                    </h5>}
-            </div>
-            {showTypes?
-                <div>
-                    {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_type")
-                        .map(function(cardCategory, index, arr) {
-                        return (
-                            <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2 no-pad" key={cardCategory.name}>
-                                    <div style={{display: "flex"}}>
-                                        <div className="table200">
-                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                        </div>
-                                        <div className="table200p">
-                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                        </div>
-                                    </div>
-                            </NavLink>
-                        );
-                    })}
-                </div>:null
-            }
 
             <div style={{display: "flex", marginTop: "20px"}}>
                 <h3 className="cat-label">Card Classes</h3>

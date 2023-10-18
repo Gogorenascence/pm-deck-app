@@ -26,10 +26,16 @@ import ResetPassword from "./Accounts/ResetPasswordPage";
 import GameCards from "./Cards/GameCards";
 import GameDecks from "./Decks/GameDecks";
 import DeckImport from "./Builder/DeckImport";
-import CardCategoriesPage from "./GamePlay/CardCategoriesPage";
-import CardCategoriesCreate from "./GamePlay/CardCategoryCreate";
-import CardCategoryEdit from "./GamePlay/CardCategoryEdit";
-import CardCategoryDetail from "./GamePlay/CardCategoryDetail";
+import CardCategoriesPage from "./GamePlay/Categories/CardCategoriesPage";
+import CardCategoriesCreate from "./GamePlay/Categories/CardCategoryCreate";
+import CardCategoryEdit from "./GamePlay/Categories/CardCategoryEdit";
+import CardCategoryDetail from "./GamePlay/Categories/CardCategoryDetail";
+import CardTagCreate from "./GamePlay/CardTags/CardTagCreate";
+import CardTagEdit from "./GamePlay/CardTags/CardTagEdit";
+import CardTagDetails from "./GamePlay/CardTags/CardTagDetail";
+import CardTypeCreate from "./GamePlay/CardTypes/CardTypeCreate";
+import CardTypeEdit from "./GamePlay/CardTypes/CardTypeEdit";
+import CardTypeDetails from "./GamePlay/CardTypes/CardTypeDetail";
 
 
 function App() {
@@ -73,6 +79,12 @@ function App() {
               <Route path="/categorycreate" element={<CardCategoriesCreate />} />
               <Route path="/cardcategories/:card_category_id" element={<CardCategoryDetail />} />
               <Route path="/cardcategories/:card_category_id/edit" element={<CardCategoryEdit />} />
+              <Route path="/cardtagcreate" element={<CardTagCreate />} />
+              <Route path="/cardtags/:card_tag_id" element={<CardTagDetails />} />
+              <Route path="/cardtags/:card_tag_id/edit" element={<CardTagEdit />} />
+              <Route path="/cardtypecreate" element={<CardTypeCreate />} />
+              <Route path="/cardtypes/:card_type_id/edit" element={<CardTypeEdit />} />
+              <Route path="/cardtypes/:card_type_id/" element={<CardTypeDetails />} />
             </Routes>
 
           </div>
