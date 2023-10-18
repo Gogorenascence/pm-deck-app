@@ -258,6 +258,16 @@ function Nav() {
                       Category Create
                     </NavLink>:
                   null}
+                  { account && account.roles.includes("admin")?
+                    <NavLink className="dropdown-item" to="/cardtypecreate">
+                      Card Type Create
+                    </NavLink>:
+                  null}
+                  { account && account.roles.includes("admin")?
+                    <NavLink className="dropdown-item" to="/cardtagcreate">
+                      Card Tag Create
+                    </NavLink>:
+                  null}
                   {/* <NavLink className="dropdown-item" to="/topcards">
 
                   </NavLink>

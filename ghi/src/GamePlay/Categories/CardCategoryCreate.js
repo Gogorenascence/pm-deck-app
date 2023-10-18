@@ -4,7 +4,6 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "../GamePlayCardSearch";
 import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
 

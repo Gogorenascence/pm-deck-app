@@ -56,7 +56,7 @@ function CardCategoryDetail() {
 
     useEffect(() => {
         getCardCategory();
-        document.title = "Category Edit - PM CardBase"
+        document.title = "Category Details - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };

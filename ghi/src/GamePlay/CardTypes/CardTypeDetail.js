@@ -57,8 +57,6 @@ function CardTypeDetails() {
     // eslint-disable-next-line
     },[]);
 
-    const navigate = useNavigate()
-
     const handleShowPool = (event) => {
         setShowPool(!showPool);
     };

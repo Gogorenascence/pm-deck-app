@@ -44,6 +44,8 @@ class ExtraEffectIn(BaseModel):
     name: str
     rules: Optional[str]
     effect_number: Optional[int]
+    support: Optional[list]
+    anti_support: Optional[list]
 
 
 class ExtraEffect(ExtraEffectIn):
@@ -63,6 +65,8 @@ class ReactionIn(BaseModel):
     rules: Optional[str]
     count: Optional[int]
     reaction_number: Optional[int]
+    support: Optional[list]
+    anti_support: Optional[list]
 
 
 class Reaction(ReactionIn):

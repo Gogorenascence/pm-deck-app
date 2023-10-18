@@ -9,7 +9,6 @@ function CardCategoriesPage() {
 
     const [cardCategories, setCardCategories ] = useState([]);
     const [showClasses, setShowClasses] = useState(false);
-    const [showTypes, setShowTypes] = useState(true);
     const [showSeries, setShowSeries] = useState(false);
     const [showSubSeries, setShowSubSeries] = useState(false);
 
@@ -23,8 +22,6 @@ function CardCategoriesPage() {
         setCardCategories(sortedData);
     };
 
-    const navigate = useNavigate()
-
     useEffect(() => {
         getCardCategories();
         document.title = "Card Categories - PM CardBase"
@@ -36,10 +33,6 @@ function CardCategoriesPage() {
 
     const handleShowClasses = () => {
         setShowClasses(!showClasses)
-    }
-
-    const handleShowTypes = () => {
-        setShowTypes(!showTypes)
     }
 
     const handleShowSeries = () => {
