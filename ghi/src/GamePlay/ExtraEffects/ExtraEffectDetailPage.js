@@ -47,12 +47,16 @@ function ExtraEffectDetails() {
 
     useEffect(() => {
         getExtraEffect();
-        document.title = "Card Tags - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `${extraEffect.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[extraEffect]);
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);

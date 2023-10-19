@@ -56,12 +56,16 @@ function CardCategoryDetail() {
 
     useEffect(() => {
         getCardCategory();
-        document.title = "Category Details - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `${cardCategory.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[cardCategory]);
 
     const navigate = useNavigate()
 

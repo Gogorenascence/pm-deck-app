@@ -75,13 +75,16 @@ function CardTagEdit() {
     useEffect(() => {
         getCards();
         getCardTag();
-        console.log(cardTag)
-        document.title = "Tag Edit - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `Editing ${cardTag.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[cardTag]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

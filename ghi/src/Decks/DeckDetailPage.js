@@ -91,12 +91,14 @@ function DeckDetailPage() {
         getDeckList();
         getCountedDeckList();
         getAgos();
-        console.log("Deck Details: ", deck)
+    },[createdAgo, updatedAgo]);
+
+    useEffect(() => {
         document.title = `${deck.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
-    },[createdAgo, updatedAgo]);
+    },[deck]);
 
     const handleMulliganChange = (card) => {
         const deckIndex = shuffledDeck.indexOf(card)

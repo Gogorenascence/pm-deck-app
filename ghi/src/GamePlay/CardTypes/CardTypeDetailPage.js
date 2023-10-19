@@ -50,12 +50,16 @@ function CardTypeDetails() {
 
     useEffect(() => {
         getCardType();
-        document.title = "Card Types - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `${cardType.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[cardType]);
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);

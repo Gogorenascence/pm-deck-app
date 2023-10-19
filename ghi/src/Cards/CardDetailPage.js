@@ -124,11 +124,14 @@ function CardDetailPage() {
         getCardTags();
         getCards();
         getCardCategories();
-        document.title = "Cards - PM CardBase"
+    }, [card_number]);
+
+    useEffect(() => {
+        document.title = `${card.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
-    }, [card_number]);
+    }, [card])
 
     const matchSeries = (line) => {
         const cardCategory = card_categories?.find(category => category.name === line)

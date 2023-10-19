@@ -49,12 +49,14 @@ function SetDetailPage() {
     useEffect(() => {
         getBoosterSet();
         getCardLists();
-        console.log(normals)
-        document.title = `Card Sets - PM CardBase`
+    },[]);
+
+    useEffect(() => {
+        document.title = `${boosterSet.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
-    },[]);
+    },[boosterSet]);
 
     const handleListView = (event) => {
         setListView(!listView);

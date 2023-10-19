@@ -74,13 +74,16 @@ function ExtraEffectEdit() {
     useEffect(() => {
         getCards();
         getExtraEffect();
-        console.log(extraEffect)
-        document.title = "Extra Effect Edit - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `Editing ${extraEffect.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[extraEffect]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

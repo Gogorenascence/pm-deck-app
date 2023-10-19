@@ -47,12 +47,16 @@ function CardTagDetails() {
 
     useEffect(() => {
         getCardTag();
-        document.title = "Card Tags - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `${cardTag.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[cardTag]);
 
     const navigate = useNavigate()
 

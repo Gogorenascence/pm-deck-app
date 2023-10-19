@@ -118,15 +118,15 @@ function DeckEditPage() {
         getDeckList();
         getCards();
         getPulledCards();
-        document.title = `Editing ${deck.name} - PM CardBase`
-        return () => {
-            document.title = "PlayMaker CardBase"
-        };
     // eslint-disable-next-line
     },[]);
 
     useEffect(() => {
         getExtraData();
+        document.title = `Editing ${deck.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     // eslint-disable-next-line
     }, [deck, deck_list, main_list, pluck_list]);
 

@@ -78,13 +78,16 @@ function CardTypeEdit() {
     useEffect(() => {
         getCards();
         getCardType();
-        console.log(cardType)
-        document.title = "Card Type Edit - PM CardBase"
+    // eslint-disable-next-line
+    },[]);
+
+    useEffect(() => {
+        document.title = `Editing ${cardType.name} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[cardType]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

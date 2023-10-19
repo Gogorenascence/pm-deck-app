@@ -131,15 +131,15 @@ function DeckCopyPage() {
         getDeck();
         getDeckList();
         getCards();
-        document.title = `Copying ${deck.name} - PM CardBase`
-        return () => {
-            document.title = "PlayMaker CardBase"
-        };
     // eslint-disable-next-line
     },[]);
 
     useEffect(() => {
         getExtraData();
+        document.title = `Copying ${deck.name} - PM CardBase`
+        return () => {
+            document.title = "PlayMaker CardBase"
+        };
     }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {
