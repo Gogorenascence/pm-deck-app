@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
-import DeckBuilder from "./Builder/DeckBuilder"
+// import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
 import DeckDetailPage from "./Decks/DeckDetailPage";
 import DeckEditPage from "./Builder/DeckEditPage";
@@ -36,6 +36,7 @@ import CardTagDetails from "./GamePlay/CardTags/CardTagDetailPage";
 import CardTypeCreate from "./GamePlay/CardTypes/CardTypeCreatePage";
 import CardTypeEdit from "./GamePlay/CardTypes/CardTypeEditPage";
 import CardTypeDetails from "./GamePlay/CardTypes/CardTypeDetailPage";
+import ExtraEffectsPage from "./GamePlay/ExtraEffects/ExtraEffectsPage";
 import ExtraEffectCreate from "./GamePlay/ExtraEffects/ExtraEffectCreate";
 import ExtraEffectEdit from "./GamePlay/ExtraEffects/ExtraEffectEdit";
 import ExtraEffectDetails from "./GamePlay/ExtraEffects/ExtraEffectDetailPage";
@@ -43,6 +44,9 @@ import ReactionCreate from "./GamePlay/Reactions/ReactionCreatePage";
 import ReactionEdit from "./GamePlay/Reactions/ReactionEditPage";
 import ReactionDetails from "./GamePlay/Reactions/ReactionDetailPage";
 import GamePlayPage from "./GamePlay/GamePlayPage";
+import CardTagsPage from "./GamePlay/CardTags/CardTagsPage";
+import CardTypesPage from "./GamePlay/CardTypes/CardTypesPage";
+import ReactionsPage from "./GamePlay/Reactions/ReactionsPage";
 
 
 function App() {
@@ -60,9 +64,9 @@ function App() {
 
             <Routes>
               <Route index element={<MainPage />} />
-              <Route path="/deckbuilder" element={<DeckBuilder />} />
+              <Route path="/deckbuilder" element={<DeckImport />} />
               <Route path="/decks" element={<DecksPage />} />
-              <Route path="/deckimport" element={<DeckImport />} />
+              {/* <Route path="/deckimport" element={<DeckImport />} /> */}
               <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
               <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
               <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
@@ -85,12 +89,15 @@ function App() {
               <Route path="/categorycreate" element={<CardCategoriesCreate />} />
               <Route path="/cardcategories/:card_category_id" element={<CardCategoryDetail />} />
               <Route path="/cardcategories/:card_category_id/edit" element={<CardCategoryEdit />} />
+              <Route path="/cardtags" element={<CardTagsPage />} />
               <Route path="/cardtagcreate" element={<CardTagCreate />} />
               <Route path="/cardtags/:card_tag_id" element={<CardTagDetails />} />
               <Route path="/cardtags/:card_tag_id/edit" element={<CardTagEdit />} />
+              <Route path="/cardtypes" element={<CardTypesPage />} />
               <Route path="/cardtypecreate" element={<CardTypeCreate />} />
               <Route path="/cardtypes/:card_type_id" element={<CardTypeDetails />} />
               <Route path="/cardtypes/:card_type_id/edit" element={<CardTypeEdit />} />
+              <Route path="/extraeffects" element={<ExtraEffectsPage />} />
               <Route path="/extraeffectcreate" element={<ExtraEffectCreate />} />
               <Route path="/extraeffects/:extra_effect_id/edit" element={<ExtraEffectEdit />} />
               <Route path="/extraeffects/:extra_effect_id" element={<ExtraEffectDetails />} />
@@ -98,6 +105,7 @@ function App() {
               <Route path="/reactions/:reaction_id" element={<ReactionDetails />} />
               <Route path="/reactions/:reaction_id/edit" element={<ReactionEdit />} />
               <Route path="/gameplay" element={<GamePlayPage />} />
+              <Route path="/reactions" element={<ReactionsPage />} />
             </Routes>
 
           </div>

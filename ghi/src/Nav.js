@@ -197,9 +197,9 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/deckbuilder">
                     Deck Builder
                   </NavLink>
-                  <NavLink className="dropdown-item" to="/deckimport">
+                  {/* <NavLink className="dropdown-item" to="/deckimport">
                     Deck Import
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink className="dropdown-item" to="/decks">
                     Search Decks
                   </NavLink>
@@ -221,11 +221,6 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/cards">
                     Search Cards
                   </NavLink>
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/cardcreate">
-                      Card Create
-                    </NavLink>:
-                  null}
                   <NavLink className="dropdown-item" to="/topcards">
                     Top Cards
                   </NavLink>
@@ -253,31 +248,6 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/gameplay">
                     GamePlay Portal
                   </NavLink>
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/categorycreate">
-                      Category Create
-                    </NavLink>:
-                  null}
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/cardtypecreate">
-                      Card Type Create
-                    </NavLink>:
-                  null}
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/cardtagcreate">
-                      Card Tag Create
-                    </NavLink>:
-                  null}
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/extraeffectcreate">
-                      Extra Effect Create
-                    </NavLink>:
-                  null}
-                  { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/reactioncreate">
-                      Reaction Create
-                    </NavLink>:
-                  null}
                   {/* <NavLink className="dropdown-item" to="/topcards">
 
                   </NavLink>
@@ -292,6 +262,65 @@ function Nav() {
                   </NavLink> */}
                 </div>
               </li>
+              { account && account.roles.includes("admin")?
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/#"
+                    id="cardsDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Admin
+                  </a>
+                  <div className="dropdown-menu" aria-labelledby="cardsDropdown">
+                    { account && account.roles.includes("admin")?
+                        <NavLink className="dropdown-item" to="/cardcreate">
+                          Card Create
+                        </NavLink>:
+                      null}
+                    { account && account.roles.includes("admin")?
+                      <NavLink className="dropdown-item" to="/categorycreate">
+                        Category Create
+                      </NavLink>:
+                    null}
+                    { account && account.roles.includes("admin")?
+                      <NavLink className="dropdown-item" to="/cardtypecreate">
+                        Card Type Create
+                      </NavLink>:
+                    null}
+                    { account && account.roles.includes("admin")?
+                      <NavLink className="dropdown-item" to="/cardtagcreate">
+                        Card Tag Create
+                      </NavLink>:
+                    null}
+                    { account && account.roles.includes("admin")?
+                      <NavLink className="dropdown-item" to="/extraeffectcreate">
+                        Extra Effect Create
+                      </NavLink>:
+                    null}
+                    { account && account.roles.includes("admin")?
+                      <NavLink className="dropdown-item" to="/reactioncreate">
+                        Reaction Create
+                      </NavLink>:
+                    null}
+                    {/* <NavLink className="dropdown-item" to="/topcards">
+
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/series">
+                      Classes and Series
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/cardsets">
+                      Mechanics
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/cardsets">
+                      How to Play and Rulings
+                    </NavLink> */}
+                  </div>
+                </li>:null
+              }
           </ul>
         { showSignUpModal?
           <>

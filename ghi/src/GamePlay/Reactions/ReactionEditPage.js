@@ -185,7 +185,7 @@ function ReactionEdit() {
                 support: [],
                 anti_support: [],
             });
-            navigate(`/cardtags/`);
+            navigate(`/reactions/`);
             console.log("Success")
         } else {
             alert("Error in creating Card Tag");
@@ -214,11 +214,11 @@ function ReactionEdit() {
 
     const isQueryEmpty = Object.values(query).every((value) => value === "");
 
-    // if (!(account && account.roles.includes("admin"))) {
-    //     setTimeout(function() {
-    //         window.location.href = `${process.env.PUBLIC_URL}/`
-    //     }, 3000);
-    // }
+    if (!(account && account.roles.includes("admin"))) {
+        setTimeout(function() {
+            window.location.href = `${process.env.PUBLIC_URL}/`
+        }, 3000);
+    }
 
     return (
         <div>

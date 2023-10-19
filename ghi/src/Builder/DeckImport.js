@@ -330,7 +330,7 @@ function DeckImport() {
     return (
         <div className="white-space">
             <div>
-                <h1 className="left-h1">Deck Import and Modify</h1>
+                <h1 className="left-h1">Deck Builder</h1>
                 <div style={{display: "flex", justifyContent: "space-between"}}>
                     <div
                         // style={{marginBottom: "45px", width: "435px"}}
