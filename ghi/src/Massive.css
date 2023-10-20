@@ -1674,18 +1674,27 @@ button:hover {
     align-items: center;
     justify-content: center;
     width: 200px;
-    margin: 0;
+    margin: 0 0 0 20px;
     border: 1px solid;
     border-color: var(--color-body);
     padding: 0px;
   }
 
   .table200p {
-    width: var(--window-width200);
-    margin: 0;
+    margin: 0 0 0 20px;
     border: 1px solid;
     border-color: var(--color-body);
     padding: 0px;
+  }
+
+  .text-table {
+    font-weight: 600;
+    margin: 5px 20px 5px 20px;
+  }
+
+  .text-table-2 {
+    font-weight: 600;
+    margin: 5px 20px 0 20px;
   }
 
   .support {

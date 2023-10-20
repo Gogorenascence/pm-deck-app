@@ -44,14 +44,14 @@ function ExtraEffectsPage() {
                         return (
                             <NavLink to={`/extraeffects/${extraEffect.id}`} className="nav-link glow2 no-pad" key={extraEffect.name}>
                                 <div style={{display: "flex"}}>
-                                    <div className="table200 no-pad">
-                                        <h5 style={{fontWeight: "600"}}>{extraEffect.name}</h5>
+                                    <div className="table200">
+                                        <h5 className="text-table">{extraEffect.name}</h5>
                                     </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{extraEffect.rules}</h5>
+                                    <div>
+                                        <h5 className="text-table-2">{extraEffect.rules}</h5>
                                     </div>
                                 </div>
-                        </NavLink>
+                            </NavLink>
                     );
                 })}
             </div>
