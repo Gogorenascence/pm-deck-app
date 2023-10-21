@@ -853,10 +853,11 @@ button:hover {
 }
 
 .hidden2 {
-  opacity: 0;
+  /* opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s;
+  transition: all 0.5s; */
+  display: none;
 }
 
 .logo {
@@ -1787,6 +1788,10 @@ button:hover {
     opacity: 1;
     max-height: 1000px;
     transition: opacity 0.5s, max-height 0.5s;
+  }
+
+  .wide90p {
+    width: 90%;
   }
 
 @media screen and (max-width: 1333px) {
