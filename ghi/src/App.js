@@ -25,7 +25,7 @@ import AccountPage from "./Accounts/AccountPage";
 import ResetPassword from "./Accounts/ResetPasswordPage";
 import GameCards from "./Cards/GameCards";
 import GameDecks from "./Decks/GameDecks";
-import DeckImport from "./Builder/DeckImport";
+import DeckImport from "./Builder/DeckBuildandImport";
 import CardCategoriesPage from "./GamePlay/Categories/CardCategoriesPage";
 import CardCategoriesCreate from "./GamePlay/Categories/CardCategoryCreatePage";
 import CardCategoryEdit from "./GamePlay/Categories/CardCategoryEditPage";
