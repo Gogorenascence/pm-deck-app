@@ -28,6 +28,7 @@ function DeckDetailPage() {
     const [listView, setListView] = useState(false);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
+    const [showHand, setShowHand] = useState(false);
 
     const {account, users} = useContext(AuthContext)
 
@@ -74,11 +75,11 @@ function DeckDetailPage() {
 
         const randomPluckIndex = Math.floor(Math.random() * pluck_list.length);
         setOwnership(pluck_list[randomPluckIndex]);
+        setShowHand(true)
     }
 
     const clearShuffledDeck = async() =>{
-        setShuffledDeck([]);
-        setOwnership("");
+        setShowHand(false)
     }
 
     const createdBy = (deck) => {
@@ -227,8 +228,9 @@ function DeckDetailPage() {
             </div>:
             null}
             <div style={{display: "flex"}}>
-                        {shuffledDeck.length > 0 ?
-                <div className="maindeck" style={{width: "90%"}}>
+
+                <div className={showHand? "maindeck animate wide90p": "hidden2"}
+                    style={{width: "90%"}}>
                     <div style={{marginLeft: "10px"}}>
 
                                 <h4
@@ -260,37 +262,36 @@ function DeckDetailPage() {
                                 </div>
 
                     </div>
-                </div>:
-                        null}
-                    {ownership ?
-
-                    <div className="pluckdeck" style={{marginLeft: ".5%"}}>
-
-                                        <h4
-                                            className="left"
-                                            style={{margin: "10px 10px", fontWeight: "700"}}
-                                            >Ownwership
-                                        </h4>
-                                        <Row xs="auto" className="justify-content-center">
-                                            <Col style={{paddingTop: "2px"}}>
-                                                <img
-                                                    className="builder-card3"
-                                                    style={{ width: '115px',
-                                                    margin: '10px 0px 10px 0px',
-                                                    borderRadius: "7px",
-                                                    overflow: "hidden"}}
-
-                                                    title={ownership.name}
-                                                    src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={ownership.name}
-                                                    variant="bottom"/>
-
-                                            </Col>
-                                        </Row>
+                </div>
 
 
-                    </div>:
-                    null}
+            <div className={showHand? "pluckdeck animate": "hidden2"}
+                style={{marginLeft: ".5%"}}>
+                <h4
+                    className="left"
+                    style={{margin: "10px 10px", fontWeight: "700"}}
+                    >Ownwership
+                </h4>
+                <Row xs="auto" className="justify-content-center">
+                    <Col style={{paddingTop: "2px"}}>
+                        <img
+                            className="builder-card3"
+                            style={{ width: '115px',
+                            margin: '10px 0px 10px 0px',
+                            borderRadius: "7px",
+                            overflow: "hidden"}}
+
+                            title={ownership.name}
+                            src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
+                            alt={ownership.name}
+                            variant="bottom"/>
+
+                    </Col>
+                </Row>
+
+
+            </div>
+
             </div>
             <div style={{ display: "flex" }}>
             { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
@@ -337,7 +338,7 @@ function DeckDetailPage() {
                     >
                     Test Hand
             </button>
-            {shuffledDeck.length > 0 ?
+            {showHand?
                 <>
                     <button
                             className="left"

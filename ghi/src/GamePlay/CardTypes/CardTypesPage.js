@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { shortenedText } from "../../Helpers";
 
 function CardTypesPage() {
 
@@ -48,7 +49,7 @@ function CardTypesPage() {
                                         <h5 className="text-table">{cardType.name}</h5>
                                     </div>
                                     <div>
-                                        <h5 className="text-table-2">{cardType.description}</h5>
+                                        <h5 className="text-table-2">{shortenedText(cardType.description)}</h5>
                                     </div>
                                 </div>
                         </NavLink>

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { shortenedText } from "../../Helpers";
 
 function ExtraEffectsPage() {
 
@@ -48,7 +49,7 @@ function ExtraEffectsPage() {
                                         <h5 className="text-table">{extraEffect.name}</h5>
                                     </div>
                                     <div>
-                                        <h5 className="text-table-2">{extraEffect.rules}</h5>
+                                        <h5 className="text-table-2">{shortenedText(extraEffect.rules)}</h5>
                                     </div>
                                 </div>
                             </NavLink>

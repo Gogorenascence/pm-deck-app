@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { shortenedText } from "../../Helpers";
+
 
 function ReactionsPage() {
 
@@ -44,11 +46,11 @@ function ReactionsPage() {
                         return (
                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link glow2 no-pad" key={reaction.name}>
                                 <div style={{display: "flex"}}>
-                                    <div className="table200 no-pad">
-                                        <h5 style={{fontWeight: "600"}}>{reaction.name}</h5>
+                                    <div className="table200">
+                                        <h5 className="text-table">{reaction.name}</h5>
                                     </div>
-                                    <div className="table200p">
-                                        <h5 style={{fontWeight: "600"}}>{reaction.rules}</h5>
+                                    <div>
+                                        <h5 className="text-table-2">{shortenedText(reaction.rules)}</h5>
                                     </div>
                                 </div>
                         </NavLink>

@@ -829,3 +829,17 @@ function sendEmail() {
 // Copy code
 // <p>Redirecting in <span id="countdown">5</span> seconds...</p>
 // With this code, the countdown will be displayed and decremented every second until it reaches zero, at which point the redirection will occur. Make sure to replace the redirection URL with your desired URL.
+
+
+                {/* <NavLink className="dropdown-item" to="/topcards">
+
+                </NavLink>
+                <NavLink className="dropdown-item" to="/series">
+                  Classes and Series
+                </NavLink>
+                <NavLink className="dropdown-item" to="/cardsets">
+                  Mechanics
+                </NavLink>
+                <NavLink className="dropdown-item" to="/cardsets">
+                  How to Play and Rulings
+                </NavLink> */}

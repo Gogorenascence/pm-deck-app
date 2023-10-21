@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   content: "";
   position: absolute;
-  top: 0;
+  top: 62px;
   left: 0;
   height: 100%;
   width: 100%;
@@ -22,7 +22,7 @@ body {
 body::after {
   content: "";
   position: fixed;
-  top: 0;
+  top: 62px;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -75,7 +75,7 @@ body.dark {
   color: white;
   content: "";
   position: absolute;
-  top: 0;
+  top: 62px;
   left: 0;
   height: 100%;
   width: 100%;
@@ -90,7 +90,7 @@ body.dark {
 body.dark::after {
   content: "";
   position: fixed;
-  top: 0;
+  top: 62px;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -252,6 +252,20 @@ button:hover {
   font-weight: 500;
 }
 
+.navbar-brand2 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 10px;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-brand2:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .nav-item {
   font-size: 20px;
   font-weight: 400;
@@ -382,6 +396,7 @@ button:hover {
   border-radius: 5px;
   height: 70vh;
   outline: 1px solid white;
+  transition: all 0.5s;
 }
 
 .no-cardpool {
@@ -390,6 +405,7 @@ button:hover {
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
   outline: 1px solid white;
+  transition: all 0.5s;
 }
 
 .maindeck {
@@ -837,7 +853,10 @@ button:hover {
 }
 
 .hidden2 {
-  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
 }
 
 .logo {
@@ -1544,6 +1563,9 @@ button:hover {
     grid-auto-flow: dense;
     /* margin-right: 18px; */
     margin: 0px 18px 18px 18px;
+    opacity: 1;
+    max-height: 2000px;
+    transition: all 0.5s;
   }
 
   .card-pool-fill3 {
@@ -1726,6 +1748,45 @@ button:hover {
 
   .no-pad {
     padding: 0px;
+  }
+
+  .navbar {
+    top: 0;
+    height: 62px;
+    width: 100%;
+    background-color: rgb(44, 41, 56);
+    border-bottom: 1px white solid;
+    /* border-bottom: none */
+    position: fixed;
+  }
+
+  .navbar.dark {
+    top: 0;
+    height: 62px;
+    width: 100vw;
+    background-color: rgb(44, 41, 56);
+    border-bottom: 1px white solid;
+  }
+
+  .threebars {
+    height: 40px;
+  }
+
+  .nav-main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-button100 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .animate {
+    opacity: 1;
+    max-height: 1000px;
+    transition: opacity 0.5s, max-height 0.5s;
   }
 
 @media screen and (max-width: 1333px) {

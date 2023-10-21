@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { shortenedText } from "../../Helpers";
+
 
 function CardCategoriesPage() {
 
@@ -17,8 +19,6 @@ function CardCategoriesPage() {
         const data = await response.json();
 
         const sortedData = [...data.card_categories].sort((a,b) => a.name.localeCompare(b.name));
-        sortedData.map(card_category =>
-            card_category.description = card_category.description.split("//"))
         setCardCategories(sortedData);
     };
 
@@ -47,7 +47,6 @@ function CardCategoriesPage() {
     cardCategory.cat_type !== "card_class" &&
     cardCategory.cat_type !== "series" &&
     cardCategory.cat_type !== "sub_series")
-
 
     return (
         <div className="white-space">
@@ -87,7 +86,7 @@ function CardCategoriesPage() {
                                             <h5 className="text-table">{cardCategory.name}</h5>
                                         </div>
                                         <div>
-                                            <h5 className="text-table-2">{cardCategory.description}</h5>
+                                            <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
                                         </div>
                                     </div>
                             </NavLink>
@@ -119,7 +118,7 @@ function CardCategoriesPage() {
                                             <h5 className="text-table">{cardCategory.name}</h5>
                                         </div>
                                         <div>
-                                            <h5 className="text-table-2">{cardCategory.description}</h5>
+                                            <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
                                         </div>
                                     </div>
                             </NavLink>
@@ -151,7 +150,7 @@ function CardCategoriesPage() {
                                             <h5 className="text-table">{cardCategory.name}</h5>
                                         </div>
                                         <div>
-                                            <h5 className="text-table-2">{cardCategory.description}</h5>
+                                            <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
                                         </div>
                                     </div>
                             </NavLink>
