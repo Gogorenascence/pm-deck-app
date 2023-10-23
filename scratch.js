@@ -843,3 +843,92 @@ function sendEmail() {
                 <NavLink className="dropdown-item" to="/cardsets">
                   How to Play and Rulings
                 </NavLink> */}
+
+
+              //   <ul className="navbar-menu">
+              //   <li className="nav-item">
+              //     <h5 onClick={() => handleShowMenu(true, "decks")}
+              //       className="navbar-menu-item"
+              //     >
+              //       Decks
+              //     </h5>
+              //     { showMenu.show && showMenu.section === "decks"?
+              //       <div className="nav-dropdown-menu">
+              //         <NavLink className="nav-dropdown-item" to="/deckbuilder">
+              //           Deck Builder
+              //         </NavLink>
+              //         <NavLink className="nav-dropdown-item" to="/decks">
+              //           Search Decks
+              //         </NavLink>
+              //       </div>: null
+              //     }
+              //   </li>
+              //   <li className="nav-item">
+              //     <h5 onClick={() => handleShowMenu(true, "cards")}
+              //       className="navbar-menu-item"
+              //     >
+              //       Cards
+              //     </h5>
+              //     { showMenu.show && showMenu.section === "cards"?
+              //       <div>
+              //         <NavLink className="nav-dropdown-item" to="/cards">
+              //           Search Cards
+              //         </NavLink>
+              //         <NavLink className="nav-dropdown-item" to="/topcards">
+              //           Top Cards
+              //         </NavLink>
+              //         <NavLink className="nav-dropdown-item" to="/series">
+              //             Series
+              //           </NavLink>
+              //         <NavLink className="nav-dropdown-item" to="/cardsets">
+              //           Card Sets
+              //         </NavLink>
+              //       </div>:null
+              //       }
+              //   </li>
+              //   <li className="nav-item">
+              //     <h5 onClick={() => handleShowMenu(true, "gameplay")}
+              //       className="navbar-menu-item"
+              //     >
+              //       Game Play
+              //     </h5>
+              //     { showMenu.show && showMenu.section === "gameplay"?
+              //       <div>
+              //         <NavLink className="nav-dropdown-item" to="/gameplay">
+              //           GamePlay Portal
+              //         </NavLink>
+              //       </div>:null
+              //     }
+              //   </li>
+              //   { account && account.roles.includes("admin")?
+              //     <li className="nav-item">
+              //       <h5 onClick={() => handleShowMenu(true, "admin")}
+              //         className="navbar-menu-item"
+              //       >
+              //         Admin
+              //       </h5>
+              //       { showMenu.show && showMenu.section === "admin"?
+              //         <div>
+              //           <NavLink className="nav-dropdown-item" to="/cardcreate">
+              //             Card Create
+              //           </NavLink>
+              //           <NavLink className="nav-dropdown-item" to="/categorycreate">
+              //             Category Create
+              //           </NavLink>
+              //           <NavLink className="nav-dropdown-item" to="/cardtypecreate">
+              //             Card Type Create
+              //           </NavLink>
+              //           <NavLink className="nav-dropdown-item" to="/cardtagcreate">
+              //             Card Tag Create
+              //           </NavLink>
+              //           <NavLink className="nav-dropdown-item" to="/extraeffectcreate">
+              //             Extra Effect Create
+              //           </NavLink>
+              //           <NavLink className="nav-dropdown-item" to="/reactioncreate">
+              //             Reaction Create
+              //           </NavLink>
+              //         </div>:null
+              //       }
+              //     </li>:null
+              //   }
+              // </ul>

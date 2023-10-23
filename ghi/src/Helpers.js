@@ -6,3 +6,17 @@ export function shortenedText(text) {
     }
     return text;
 }
+
+// export function useOutsideAlerter(ref) {
+//     useEffect(() => {
+//     // Function for click event
+//         function handleOutsideClick(event) {
+//             if (ref.current && !ref.current.contains(event.target)) {
+//                 handleShowMenu(false, "none");
+//             }
+//         }
+//     // Adding click event listener
+//         document.addEventListener("click", handleOutsideClick);
+//         return () => document.removeEventListener("click", handleOutsideClick);
+//     }, [ref]);
+// }

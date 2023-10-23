@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 
@@ -33,6 +33,9 @@ function NavBar() {
     account,
     getAccountData,
   } = useContext(AuthContext)
+
+  const navbar = useRef(null)
+  useOutsideAlerter(navbar);
 
   useEffect(() => {
     getAccountData()
@@ -172,12 +175,119 @@ function NavBar() {
     }
   };
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      // Function for click event
+      function handleOutsideClick(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          handleShowMenu(false, "none");
+        }
+      }
+      // Adding click event listener
+      document.addEventListener("click", handleOutsideClick);
+      return () => document.removeEventListener("click", handleOutsideClick);
+    }, [ref]);
+  }
+
+  const followLink = () => {
+    handleShowMenu(false, "none")
+  }
+
   return (
-    <nav className="navbar topbar">
+    <nav className="navbar topbar" ref={navbar}>
       <div className="nav-main">
-        <NavLink className="navbar-brand2" to="/">
-          PlayMaker CardBase
-        </NavLink>
+        <div style={{display: "flex"}}>
+          <NavLink className="navbar-brand2" to="/">
+            PlayMaker CardBase
+          </NavLink>
+          <ul className="navbar-menu">
+            <li className="nav-item">
+              <h5 onClick={() => handleShowMenu(true, "decks")}
+                className="navbar-menu-item"
+              >
+                Decks
+              </h5>
+              { showMenu.show && showMenu.section === "decks"?
+              <div className="nav-dropdown-content">
+                <NavLink className="nav-dropdown-item" to="/deckbuilder" onClick={() => followLink()}>
+                  Deck Builder
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/decks" onClick={() => followLink()}>
+                  Search Decks
+                </NavLink>
+              </div>: null
+              }
+            </li>
+            <li className="nav-item">
+              <h5 onClick={() => handleShowMenu(true, "cards")}
+                className="navbar-menu-item"
+              >
+                Cards
+              </h5>
+              { showMenu.show && showMenu.section === "cards"?
+                <div className="nav-dropdown-content">
+                  <NavLink className="nav-dropdown-item" to="/cards" onClick={() => followLink()}>
+                    Search Cards
+                  </NavLink>
+                  <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => followLink()}>
+                    Top Cards
+                  </NavLink>
+                  <NavLink className="nav-dropdown-item" to="/series" onClick={() => followLink()}>
+                      Series
+                    </NavLink>
+                  <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => followLink()}>
+                    Card Sets
+                  </NavLink>
+                </div>:null
+                }
+            </li>
+            <li className="nav-item">
+              <h5 onClick={() => handleShowMenu(true, "gameplay")}
+                className="navbar-menu-item"
+              >
+                Game Play
+              </h5>
+              { showMenu.show && showMenu.section === "gameplay"?
+                <div className="nav-dropdown-content">
+                  <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => followLink()}>
+                    GamePlay Portal
+                  </NavLink>
+                </div>:null
+              }
+            </li>
+            { account && account.roles.includes("admin")?
+              <li className="nav-item">
+                <h5 onClick={() => handleShowMenu(true, "admin")}
+                  className="navbar-menu-item"
+                >
+                  Admin
+                </h5>
+                { showMenu.show && showMenu.section === "admin"?
+                  <div className="nav-dropdown-content">
+                    <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => followLink()}>
+                      Card Create
+                    </NavLink>
+                    <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => followLink()}>
+                      Category Create
+                    </NavLink>
+                    <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => followLink()}>
+                      Card Type Create
+                    </NavLink>
+                    <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => followLink()}>
+                      Card Tag Create
+                    </NavLink>
+                    <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => followLink()}>
+                      Extra Effect Create
+                    </NavLink>
+                    <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => followLink()}>
+                      Reaction Create
+                    </NavLink>
+                  </div>:null
+                }
+              </li>:null
+            }
+          </ul>
+        </div>
         <img className="threebars hidden2 media-display"
           src="https://i.imgur.com/Q1Y2vV9.png"
           alt="menu"/>
@@ -210,111 +320,6 @@ function NavBar() {
 
       </div>
       {/* <div className="menu"> */}
-      <ul className="navbar-nav me-auto">
-        <li className="nav-item">
-          <h5 onClick={() => handleShowMenu(true, "decks")}>
-            Decks
-          </h5>
-          { showMenu.show && showMenu.section === "decks"?
-            <div>
-              <NavLink className="dropdown-itemw" to="/deckbuilder">
-                Deck Builder
-              </NavLink>
-              <NavLink className="dropdown-itema" to="/decks">
-                Search Decks
-              </NavLink>
-            </div>: null
-          }
-        </li>
-        <li className="nav-item">
-          <h5 onClick={() => handleShowMenu(true, "cards")}>
-            Cards
-          </h5>
-            { showMenu.show && showMenu.section === "cards"?
-              <div>
-                <NavLink className="dropdown-itemw" to="/cards">
-                  Search Cards
-                </NavLink>
-                <NavLink className="dropdown-iwtem" to="/topcards">
-                  Top Cards
-                </NavLink>
-                <NavLink className="dropdown-itwem" to="/series">
-                    Series
-                  </NavLink>
-                <NavLink className="dropdown-itwem" to="/cardsets">
-                  Card Sets
-                </NavLink>
-              </div>:null
-              }
-        </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="/#"
-              id="cardsDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Game Play
-            </a>
-            <div className="dropdown-menu" aria-labelledby="cardsDropdown">
-              <NavLink className="dropdown-item" to="/gameplay">
-                GamePlay Portal
-              </NavLink>
-
-            </div>
-          </li>
-          { account && account.roles.includes("admin")?
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/#"
-                id="cardsDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Admin
-              </a>
-              <div className="dropdown-menu" aria-labelledby="cardsDropdown">
-                { account && account.roles.includes("admin")?
-                    <NavLink className="dropdown-item" to="/cardcreate">
-                      Card Create
-                    </NavLink>:
-                  null}
-                { account && account.roles.includes("admin")?
-                  <NavLink className="dropdown-item" to="/categorycreate">
-                    Category Create
-                  </NavLink>:
-                null}
-                { account && account.roles.includes("admin")?
-                  <NavLink className="dropdown-item" to="/cardtypecreate">
-                    Card Type Create
-                  </NavLink>:
-                null}
-                { account && account.roles.includes("admin")?
-                  <NavLink className="dropdown-item" to="/cardtagcreate">
-                    Card Tag Create
-                  </NavLink>:
-                null}
-                { account && account.roles.includes("admin")?
-                  <NavLink className="dropdown-item" to="/extraeffectcreate">
-                    Extra Effect Create
-                  </NavLink>:
-                null}
-                { account && account.roles.includes("admin")?
-                  <NavLink className="dropdown-item" to="/reactioncreate">
-                    Reaction Create
-                  </NavLink>:
-                null}
-
-              </div>
-            </li>:null
-          }
-      </ul>
         { showSignUpModal?
           <>
             <form onSubmit={Signup} className="medium-modal">

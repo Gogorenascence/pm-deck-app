@@ -162,7 +162,7 @@ code {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 9900;
 }
 
 Card {
@@ -269,11 +269,17 @@ button:hover {
 .nav-item {
   font-size: 20px;
   font-weight: 400;
+  padding: auto;
+  float: left;
+  overflow: hidden;
 }
 
-.dropdown-item {
+.nav-dropdown-item {
   font-size: 20px;
   font-weight: 400;
+  text-decoration: none;
+  color: white;
+  display: block;
 }
 
 .semi-bold-20 {
@@ -1794,7 +1800,30 @@ button:hover {
     width: 90%;
   }
 
-@media screen and (max-width: 1333px) {
+  .navbar-menu {
+    display:flex;
+    margin: auto;
+    padding: 0 0 0 10px;
+  }
+
+  .navbar-menu-item {
+    /* display:block; */
+    margin: auto;
+    padding: 0 10px 0 10px;
+    font-weight: 400;
+  }
+
+  .nav-dropdown-content {
+    /* height: fit-content; */
+    /* width: fit-content; */
+    background-color: rgb(80, 74, 102);
+    position: absolute;
+    min-width: 160px;
+    z-index: 9999;
+    top: 62px;
+  }
+
+@media screen and (max-width: 30px) {
   .cards-page-card-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
