@@ -221,16 +221,16 @@ function NavBar() {
               </div>
               { showMenu.show && showMenu.section === "decks"?
               <div className="nav-dropdown-content">
-                <div className="dropdown-select">
-                  <NavLink className="nav-dropdown-item" to="/deckbuilder" onClick={() => followLink()}>
+                <NavLink className="dropdown-select username2" to="/deckbuilder" onClick={() => followLink()}>
+                  <div className="nav-dropdown-item">
                     Deck Builder
-                  </NavLink>
-                </div>
-                <div className="dropdown-select">
-                  <NavLink className="nav-dropdown-item" to="/decks" onClick={() => followLink()}>
+                  </div>
+                </NavLink>
+                <NavLink className="dropdown-select username2" to="/decks" onClick={() => followLink()}>
+                  <div className="nav-dropdown-item">
                     Search Decks
-                  </NavLink>
-                </div>
+                  </div>
+                </NavLink>
               </div>: null
               }
             </li>
@@ -244,26 +244,26 @@ function NavBar() {
               </div>
               { showMenu.show && showMenu.section === "cards"?
                 <div className="nav-dropdown-content">
-                  <div className="dropdown-select">
-                    <NavLink className="nav-dropdown-item" to="/cards" onClick={() => followLink()}>
+                  <NavLink className="dropdown-select username2" to="/cards" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
                       Search Cards
-                    </NavLink>
-                  </div>
-                  <div className="dropdown-select">
-                    <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => followLink()}>
+                    </div>
+                  </NavLink>
+                  <NavLink className="dropdown-select username2" to="/topcards" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
                       Top Cards
-                    </NavLink>
-                  </div>
-                  <div className="dropdown-select">
-                    <NavLink className="nav-dropdown-item" to="/series" onClick={() => followLink()}>
+                    </div>
+                  </NavLink>
+                  <NavLink className="dropdown-select username2" to="/series" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
                         Series
-                    </NavLink>
-                  </div>
-                  <div className="dropdown-select">
-                    <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => followLink()}>
+                    </div>
+                  </NavLink>
+                  <NavLink className="dropdown-select username2" to="/cardsets" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
                       Card Sets
-                    </NavLink>
-                  </div>
+                    </div>
+                  </NavLink>
                 </div>:null
                 }
             </li>
@@ -277,11 +277,11 @@ function NavBar() {
               </div>
               { showMenu.show && showMenu.section === "gameplay"?
                 <div className="nav-dropdown-content">
-                  <div className="dropdown-select">
-                    <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => followLink()}>
+                  <NavLink className="dropdown-select username2" to="/gameplay" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
                       GamePlay Portal
-                    </NavLink>
-                  </div>
+                    </div>
+                  </NavLink>
                 </div>:null
               }
             </li>
@@ -296,36 +296,36 @@ function NavBar() {
                 </div>
                 { showMenu.show && showMenu.section === "admin"?
                   <div className="nav-dropdown-content">
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => followLink()}>
+                    <NavLink className="dropdown-select username2" to="/cardcreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Card Create
-                      </NavLink>
-                    </div>
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => followLink()}>
+                      </div>
+                    </NavLink>
+                    <NavLink className="dropdown-select username2" to="/categorycreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Category Create
-                      </NavLink>
-                    </div>
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => followLink()}>
+                      </div>
+                    </NavLink>
+                    <NavLink className="dropdown-select username2" to="/cardtypecreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Card Type Create
-                      </NavLink>
-                    </div>
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => followLink()}>
+                      </div>
+                    </NavLink>
+                    <NavLink className="dropdown-select username2" to="/cardtagcreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Card Tag Create
-                      </NavLink>
-                    </div>
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => followLink()}>
+                      </div>
+                    </NavLink>
+                    <NavLink className="dropdown-select username2" to="/extraeffectcreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Extra Effect Create
-                      </NavLink>
-                    </div>
-                    <div className="dropdown-select">
-                      <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => followLink()}>
+                      </div>
+                    </NavLink>
+                    <NavLink className="dropdown-select username2" to="/reactioncreate" onClick={() => followLink()}>
+                      <div className="nav-dropdown-item">
                         Reaction Create
-                      </NavLink>
-                    </div>
+                      </div>
+                    </NavLink>
                   </div>:null
                 }
               </li>:null
