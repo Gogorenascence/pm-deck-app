@@ -59,10 +59,10 @@ function NavBar() {
   }
 
   const handleShowLoginModal = (event) => {
-    if (document.body.style.overflow == 'hidden') {
-      document.body.style.overflow = 'auto';
-    } else {
+    if (!showLoginModal){
       document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
     setShowLoginModal(!showLoginModal)
     if (showLoginModal === false) {
@@ -77,10 +77,10 @@ function NavBar() {
   }
 
   const handleShowSignUpModal = async (event) => {
-    if (document.body.style.overflow == 'hidden') {
-      document.body.style.overflow = 'auto';
-    } else {
+    if (!showSignUpModal){
       document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
     setShowSignUpModal(!showSignUpModal)
     if (showSignUpModal === false) {
@@ -103,9 +103,7 @@ function NavBar() {
       setPasswordCon("")
       resetLoginCred()
       setShowSignUpModal(false)
-    }
-    if (document.body.style.overflow == 'hidden') {
-      document.body.style.overflow = 'auto';
+      handleShowSignUpModal()
     }
   };
 
@@ -115,9 +113,7 @@ function NavBar() {
     if (token) {
       resetLoginCred();
       setShowLoginModal(false);
-    }
-    if (document.body.style.overflow == 'hidden') {
-      document.body.style.overflow = 'auto';
+      handleShowLoginModal()
     }
   };
 
@@ -210,7 +206,7 @@ function NavBar() {
     <nav className="navbar topbar" ref={navbar}>
       <div className="nav-main">
         <div style={{display: "flex"}}>
-          <NavLink className="navbar-brand2" to="/"
+          <NavLink className="navbar-brand2 navbar-select" to="/"
             onClick={() => handleClickBrand()}>
             PlayMaker CardBase
           </NavLink>
@@ -336,37 +332,48 @@ function NavBar() {
             }
           </ul>
         </div>
+
         <img className="threebars hidden2 media-display"
           onClick={() => handleShowMobileMenu()}
           src="https://i.imgur.com/Q1Y2vV9.png"
           alt="menu"/>
-        <div className="accountbuttons none">
+
+        <div className="none">
           { !account?
-            <div style={{margin: "auto"}}>
-              <button className="button100"
-                onClick={handleShowLoginModal}>
-                Login
-              </button>
-              <button className="button100"
-                onClick={handleShowSignUpModal}>
-                Signup
-              </button>
+            <div className="accountbuttons">
+              <div className="navbar-select pointer"
+                onClick={() => handleShowLoginModal()}>
+                <h5 className="navbar-menu-item">
+                  Login
+                </h5>
+              </div>
+              <div className="navbar-select pointer"
+                onClick={() => handleShowSignUpModal()}>
+                <h5 className="navbar-menu-item">
+                  Signup
+                </h5>
+              </div>
             </div>
               :
-            <div style={{margin: "auto"}}>
-              <NavLink to="/account">
-                <button className="button100">
-                  {account.username}
-                </button>
+            <div className="accountbuttons">
+              <NavLink className="username2" to="/account">
+                <div className="navbar-select pointer">
+                  <h5 className="navbar-menu-item">
+                    {account.username}
+                  </h5>
+                </div>
               </NavLink>
-              <button className="button100"
-                onClick={logout}>
-                Logout
-              </button>
+              <div className="navbar-select pointer"
+                onClick={() => logout()}>
+                <h5 className="navbar-menu-item">
+                  Logout
+                </h5>
+              </div>
             </div>
           }
         </div>
       </div>
+
       <ul className={showMobileMenu? "navbar-menu hidden2 maximize": "navbar-menu hidden2 minimize"}>
         <li className="nav-item">
           <div className={ showMenu.show && showMenu.section === "decks"?
@@ -520,6 +527,7 @@ function NavBar() {
           </li>
           }
       </ul>
+
       {/* <div className="menu"> */}
         { showSignUpModal?
           <>
