@@ -201,12 +201,17 @@ function NavBar() {
     handleShowMenu(false, "none")
   }
 
+  const handleClickBrand = () => {
+    setShowMobileMenu(false)
+    handleShowMenu(false, "none")
+  }
+
   return (
     <nav className="navbar topbar" ref={navbar}>
       <div className="nav-main">
         <div style={{display: "flex"}}>
           <NavLink className="navbar-brand2" to="/"
-            onClick={() => handleShowMobileMenu()}>
+            onClick={() => handleClickBrand()}>
             PlayMaker CardBase
           </NavLink>
           <ul className="navbar-menu none">
