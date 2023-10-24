@@ -1550,6 +1550,11 @@ button:hover {
     margin-right: 15px;
   }
 
+  .username2 {
+    color: white;
+    text-decoration: none;
+  }
+
   .footer-copy-right {
     font-weight: 500;
     margin-top: 12px;
