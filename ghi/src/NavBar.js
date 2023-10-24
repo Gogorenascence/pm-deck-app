@@ -12,6 +12,8 @@ function NavBar() {
   const [showSignUpModal, setShowSignUpModal] = useState(false)
   const [viewPass, setViewPass] = useState(false)
 
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+
   const {
     signUpError,
     setSignUpError,
@@ -71,6 +73,7 @@ function NavBar() {
     setLoginError("")
     setViewPass(false)
     resetSignUpCred()
+    setShowMobileMenu(false)
   }
 
   const handleShowSignUpModal = async (event) => {
@@ -88,7 +91,7 @@ function NavBar() {
     setLoginError("")
     setViewPass(false)
     resetLoginCred()
-
+    setShowMobileMenu(false)
   }
 
   const Signup = async (event) => {
@@ -193,95 +196,135 @@ function NavBar() {
     handleShowMenu(false, "none")
   }
 
+  const handleShowMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu)
+    handleShowMenu(false, "none")
+  }
+
   return (
     <nav className="navbar topbar" ref={navbar}>
       <div className="nav-main">
         <div style={{display: "flex"}}>
-          <NavLink className="navbar-brand2" to="/">
+          <NavLink className="navbar-brand2" to="/"
+            onClick={() => handleShowMobileMenu()}>
             PlayMaker CardBase
           </NavLink>
-          <ul className="navbar-menu">
+          <ul className="navbar-menu none">
             <li className="nav-item">
-              <h5 onClick={() => handleShowMenu(true, "decks")}
-                className="navbar-menu-item"
-              >
-                Decks
-              </h5>
+              <div className={ showMenu.show && showMenu.section === "decks"?
+                "navbar-selected pointer": "navbar-select pointer"}
+                onClick={() => handleShowMenu(true, "decks")}>
+                <h5 className="navbar-menu-item">
+                  Decks
+                </h5>
+              </div>
               { showMenu.show && showMenu.section === "decks"?
               <div className="nav-dropdown-content">
-                <NavLink className="nav-dropdown-item" to="/deckbuilder" onClick={() => followLink()}>
-                  Deck Builder
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/decks" onClick={() => followLink()}>
-                  Search Decks
-                </NavLink>
+                <div className="dropdown-select">
+                  <NavLink className="nav-dropdown-item" to="/deckbuilder" onClick={() => followLink()}>
+                    Deck Builder
+                  </NavLink>
+                </div>
+                <div className="dropdown-select">
+                  <NavLink className="nav-dropdown-item" to="/decks" onClick={() => followLink()}>
+                    Search Decks
+                  </NavLink>
+                </div>
               </div>: null
               }
             </li>
             <li className="nav-item">
-              <h5 onClick={() => handleShowMenu(true, "cards")}
-                className="navbar-menu-item"
-              >
-                Cards
-              </h5>
+              <div className={ showMenu.show && showMenu.section === "cards"?
+                "navbar-selected pointer": "navbar-select pointer"}
+                onClick={() => handleShowMenu(true, "cards")}>
+                <h5 className="navbar-menu-item">
+                  Cards
+                </h5>
+              </div>
               { showMenu.show && showMenu.section === "cards"?
                 <div className="nav-dropdown-content">
-                  <NavLink className="nav-dropdown-item" to="/cards" onClick={() => followLink()}>
-                    Search Cards
-                  </NavLink>
-                  <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => followLink()}>
-                    Top Cards
-                  </NavLink>
-                  <NavLink className="nav-dropdown-item" to="/series" onClick={() => followLink()}>
-                      Series
+                  <div className="dropdown-select">
+                    <NavLink className="nav-dropdown-item" to="/cards" onClick={() => followLink()}>
+                      Search Cards
                     </NavLink>
-                  <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => followLink()}>
-                    Card Sets
-                  </NavLink>
+                  </div>
+                  <div className="dropdown-select">
+                    <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => followLink()}>
+                      Top Cards
+                    </NavLink>
+                  </div>
+                  <div className="dropdown-select">
+                    <NavLink className="nav-dropdown-item" to="/series" onClick={() => followLink()}>
+                        Series
+                    </NavLink>
+                  </div>
+                  <div className="dropdown-select">
+                    <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => followLink()}>
+                      Card Sets
+                    </NavLink>
+                  </div>
                 </div>:null
                 }
             </li>
             <li className="nav-item">
-              <h5 onClick={() => handleShowMenu(true, "gameplay")}
-                className="navbar-menu-item"
-              >
-                Game Play
-              </h5>
+              <div className={ showMenu.show && showMenu.section === "gameplay"?
+                "navbar-selected pointer": "navbar-select pointer"}
+                onClick={() => handleShowMenu(true, "gameplay")}>
+                <h5 className="navbar-menu-item">
+                  Game Play
+                </h5>
+              </div>
               { showMenu.show && showMenu.section === "gameplay"?
                 <div className="nav-dropdown-content">
-                  <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => followLink()}>
-                    GamePlay Portal
-                  </NavLink>
+                  <div className="dropdown-select">
+                    <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => followLink()}>
+                      GamePlay Portal
+                    </NavLink>
+                  </div>
                 </div>:null
               }
             </li>
             { account && account.roles.includes("admin")?
               <li className="nav-item">
-                <h5 onClick={() => handleShowMenu(true, "admin")}
-                  className="navbar-menu-item"
-                >
-                  Admin
-                </h5>
+                <div className={showMenu.show && showMenu.section === "admin"?
+                  "navbar-selected pointer": "navbar-select pointer"}
+                  onClick={() => handleShowMenu(true, "admin")}>
+                  <h5 className="navbar-menu-item">
+                    Admin
+                  </h5>
+                </div>
                 { showMenu.show && showMenu.section === "admin"?
                   <div className="nav-dropdown-content">
-                    <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => followLink()}>
-                      Card Create
-                    </NavLink>
-                    <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => followLink()}>
-                      Category Create
-                    </NavLink>
-                    <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => followLink()}>
-                      Card Type Create
-                    </NavLink>
-                    <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => followLink()}>
-                      Card Tag Create
-                    </NavLink>
-                    <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => followLink()}>
-                      Extra Effect Create
-                    </NavLink>
-                    <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => followLink()}>
-                      Reaction Create
-                    </NavLink>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => followLink()}>
+                        Card Create
+                      </NavLink>
+                    </div>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => followLink()}>
+                        Category Create
+                      </NavLink>
+                    </div>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => followLink()}>
+                        Card Type Create
+                      </NavLink>
+                    </div>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => followLink()}>
+                        Card Tag Create
+                      </NavLink>
+                    </div>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => followLink()}>
+                        Extra Effect Create
+                      </NavLink>
+                    </div>
+                    <div className="dropdown-select">
+                      <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => followLink()}>
+                        Reaction Create
+                      </NavLink>
+                    </div>
                   </div>:null
                 }
               </li>:null
@@ -289,11 +332,12 @@ function NavBar() {
           </ul>
         </div>
         <img className="threebars hidden2 media-display"
+          onClick={() => handleShowMobileMenu()}
           src="https://i.imgur.com/Q1Y2vV9.png"
           alt="menu"/>
-        <div style={{display: "flex", marginRight: "10px"}}>
+        <div className="accountbuttons none">
           { !account?
-            <>
+            <div style={{margin: "auto"}}>
               <button className="button100"
                 onClick={handleShowLoginModal}>
                 Login
@@ -302,9 +346,9 @@ function NavBar() {
                 onClick={handleShowSignUpModal}>
                 Signup
               </button>
-            </>
+            </div>
               :
-            <>
+            <div style={{margin: "auto"}}>
               <NavLink to="/account">
                 <button className="button100">
                   {account.username}
@@ -314,11 +358,163 @@ function NavBar() {
                 onClick={logout}>
                 Logout
               </button>
-            </>
+            </div>
           }
         </div>
-
       </div>
+      <ul className={showMobileMenu? "navbar-menu hidden2 maximize": "navbar-menu hidden2 minimize"}>
+        <li className="nav-item">
+          <div className={ showMenu.show && showMenu.section === "decks"?
+            "navbar-selected pointer": "navbar-select pointer"}
+            onClick={() => handleShowMenu(true, "decks")}>
+            <h5 className="navbar-menu-item">
+              Decks
+            </h5>
+          </div>
+          { showMenu.show && showMenu.section === "decks"?
+          <div className="nav-dropdown-content">
+            <NavLink className="nav-dropdown-item" to="/deckbuilder" onClick={() => handleShowMobileMenu()}>
+              <div className="dropdown-select">
+                  Deck Builder
+              </div>
+            </NavLink>
+            <NavLink className="nav-dropdown-item" to="/decks" onClick={() => handleShowMobileMenu()}>
+              <div className="dropdown-select">
+                Search Decks
+              </div>
+            </NavLink>
+          </div>: null
+          }
+        </li>
+        <li className="nav-item">
+          <div className={ showMenu.show && showMenu.section === "cards"?
+            "navbar-selected pointer": "navbar-select pointer"}
+            onClick={() => handleShowMenu(true, "cards")}>
+            <h5 className="navbar-menu-item">
+              Cards
+            </h5>
+          </div>
+          { showMenu.show && showMenu.section === "cards"?
+            <div className="nav-dropdown-content">
+              <NavLink className="nav-dropdown-item" to="/cards" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  Search Cards
+                </div>
+              </NavLink>
+              <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  Top Cards
+                </div>
+              </NavLink>
+              <NavLink className="nav-dropdown-item" to="/series" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  Series
+                </div>
+              </NavLink>
+              <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  Card Sets
+                </div>
+              </NavLink>
+            </div>:null
+            }
+        </li>
+        <li className="nav-item">
+          <div className={ showMenu.show && showMenu.section === "gameplay"?
+            "navbar-selected pointer": "navbar-select pointer"}
+            onClick={() => handleShowMenu(true, "gameplay")}>
+            <h5 className="navbar-menu-item">
+              Game Play
+            </h5>
+          </div>
+          { showMenu.show && showMenu.section === "gameplay"?
+            <div className="nav-dropdown-content">
+              <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  GamePlay Portal
+                </div>
+              </NavLink>
+            </div>:null
+          }
+        </li>
+        { account && account.roles.includes("admin")?
+          <li className="nav-item">
+            <div className={showMenu.show && showMenu.section === "admin"?
+              "navbar-selected pointer": "navbar-select pointer"}
+              onClick={() => handleShowMenu(true, "admin")}>
+              <h5 className="navbar-menu-item">
+                Admin
+              </h5>
+            </div>
+            { showMenu.show && showMenu.section === "admin"?
+              <div className="nav-dropdown-content">
+                <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Card Create
+                  </div>
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Category Create
+                  </div>
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Card Type Create
+                  </div>
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Card Tag Create
+                  </div>
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Extra Effect Create
+                  </div>
+                </NavLink>
+                <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => handleShowMobileMenu()}>
+                  <div className="dropdown-select">
+                    Reaction Create
+                  </div>
+                </NavLink>
+              </div>:null
+            }
+          </li>:null
+        }
+        { !account?
+          <li className="nav-item2">
+            <div className="navbar-select2 pointer"
+              onClick={() => handleShowLoginModal()}>
+              <h5 className="navbar-menu-item">
+                Login
+              </h5>
+            </div>
+            <div className="navbar-select2 pointer"
+              onClick={() => handleShowSignUpModal()}>
+              <h5 className="navbar-menu-item">
+                Signup
+              </h5>
+            </div>
+          </li>
+          :
+          <li className="nav-item2">
+            <NavLink to="/account">
+              <div className="navbar-select2 pointer">
+                <h5 className="navbar-menu-item">
+                  {account.username}
+                </h5>
+              </div>
+            </NavLink>
+            <div className="navbar-select2 pointer"
+              onClick={() => logout()}>
+              <h5 className="navbar-menu-item">
+                Logout
+              </h5>
+            </div>
+          </li>
+          }
+      </ul>
       {/* <div className="menu"> */}
         { showSignUpModal?
           <>

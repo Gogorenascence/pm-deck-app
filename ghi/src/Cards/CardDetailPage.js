@@ -1,6 +1,3 @@
-import {
-    Container,
-} from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams, useNavigate} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";

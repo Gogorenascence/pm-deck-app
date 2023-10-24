@@ -1,6 +1,5 @@
 import {
     Col,
-    Row,
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from "react-router-dom";

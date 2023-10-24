@@ -1,6 +1,4 @@
 import {
-    Button,
-    Container,
     Modal,
 } from "react-bootstrap";
 import { useParams, useNavigate} from 'react-router-dom';

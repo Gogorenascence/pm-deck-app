@@ -1,6 +1,3 @@
-import {
-    Col,
-} from "react-bootstrap";
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import BackButton from "../display/BackButton";

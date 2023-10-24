@@ -1,6 +1,4 @@
 import {
-    Col,
-    Row,
     Card,
 } from "react-bootstrap";
 import { useState, useEffect, useRef, useContext } from "react";
