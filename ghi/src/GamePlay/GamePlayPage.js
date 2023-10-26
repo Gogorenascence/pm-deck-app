@@ -4,6 +4,7 @@ function GamePlayPage() {
     return (
         <div className="white-space">
             <h1 className="left-h1">Game Play Portal</h1>
+            <h2 className="left">Select a section</h2>
             <div className="decks-page-card-list2">
                 <SectionCard
                     link="/cardcategories"
