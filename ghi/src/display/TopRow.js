@@ -75,8 +75,8 @@ function TopRow() {
 
               <Card className=" text-white text-center card-list-card3 glow3 top-row">
                 <div className="media-card-image-wrapper2">
-                  <div className="media-card-image-clip3">
-                    <Card.Img className="media-card-image3" src="gcb17.png" alt="Card image" variant="bottom"/>
+                  <div className="media-card-image-clip2">
+                    <Card.Img className="media-card-image2" src="gcb17.png" alt="Card image" variant="bottom"/>
                   </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter mt-auto zindex-0">

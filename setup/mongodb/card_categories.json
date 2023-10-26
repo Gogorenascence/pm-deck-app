@@ -125,7 +125,7 @@
   },
   "cat_type": "sub_series",
   "name": "Nature",
-  "description": "Cards that derive their power from animals, plant-life or the environment.  ",
+  "description": "Cards that derive their power from animals, plant-life or the environment.",
   "support": [],
   "anti_support": [],
   "created_on": {
@@ -133,19 +133,18 @@
     "month": 10,
     "day": 11,
     "time": "01:23",
-    "full_time": {
-      "$date": "2023-10-11T01:23:20.621Z"
-    }
+    "full_time": "2023-10-11T01:23:20.621000"
   },
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 11,
-    "time": "01:23",
+    "day": 24,
+    "time": "23:43",
     "full_time": {
-      "$date": "2023-10-11T01:23:20.621Z"
+      "$date": "2023-10-24T23:43:57.456Z"
     }
-  }
+  },
+  "article": null
 },
 {
   "_id": {
@@ -293,7 +292,7 @@
   },
   "cat_type": "sub_series",
   "name": "Magic",
-  "description": "Cards whose origins are tied to fate, magic and magical realms, creatures or artifacts.",
+  "description": "Cards whose origins are tied to magical realms, creatures or artifacts.",
   "support": [],
   "anti_support": [],
   "created_on": {
@@ -306,12 +305,13 @@
   "updated_on": {
     "year": 2023,
     "month": 10,
-    "day": 12,
-    "time": "17:28",
+    "day": 24,
+    "time": "23:43",
     "full_time": {
-      "$date": "2023-10-12T17:28:49.697Z"
+      "$date": "2023-10-24T23:43:20.542Z"
     }
-  }
+  },
+  "article": null
 },
 {
   "_id": {
@@ -1100,6 +1100,35 @@
     "time": "23:39",
     "full_time": {
       "$date": "2023-10-12T23:39:59.071Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6538564f58f7f798b3c3095a"
+  },
+  "cat_type": "sub_series",
+  "name": "Fortune",
+  "description": "Cards that revolve around luck and fate.",
+  "article": "",
+  "support": [],
+  "anti_support": [],
+  "created_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 24,
+    "time": "23:42",
+    "full_time": {
+      "$date": "2023-10-24T23:42:07.504Z"
+    }
+  },
+  "updated_on": {
+    "year": 2023,
+    "month": 10,
+    "day": 24,
+    "time": "23:42",
+    "full_time": {
+      "$date": "2023-10-24T23:42:07.504Z"
     }
   }
 }]

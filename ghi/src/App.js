@@ -75,7 +75,6 @@ function App() {
               <Route path="/cardcreate" element={<CardCreatePage />} />
               <Route path="/cards/:card_number" element={<CardDetailPage />} />
               <Route path="/topcards" element={<TopCardsPage />} />
-              <Route path="/series" element={<UnderConstruction />} />
               <Route path="/cardsets" element={<SetsPage />} />
               <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
               <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
