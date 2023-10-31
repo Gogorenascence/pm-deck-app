@@ -327,14 +327,11 @@ function DeckBuildandImport() {
 
     return (
         <div className="white-space">
-
-                <h1 className="left-h1">Deck Builder</h1>
-                <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <div
-                        // style={{marginBottom: "45px", width: "435px"}}
-                        id="create-deck-page">
+            <div className="between-space media-display">
+                <span className="media-flex-center">
+                    <div>
+                        <h1 className="left-h1">Deck Builder</h1>
                         <h2 className="left">Deck Details</h2>
-
                         <h5 className="label">Name </h5>
                         <input
                             className="builder-input"
@@ -438,86 +435,87 @@ function DeckBuildandImport() {
                         null
                         }
                     </div>
-                    <div>
-                        <h2 className="left">Cover Card</h2>
-                        {selectedCard ? (
-                            <img
-                                className="cover-card"
-                                src={selectedCard}
-                                alt={selectedCard.name}
-                                variant="bottom"/>
-                                ):(
-                            <img
-                                className="cover-card"
-                                src={"https://i.imgur.com/krY25iI.png"}
-                                alt="Card"
-                                variant="bottom"/>)}
-                    </div>
-
-                    <BuilderCardSearch/>
+                </span>
+                <div className="none margin-top-93">
+                    <h2 className="left">Cover Card</h2>
+                    {selectedCard ? (
+                        <img
+                            className="cover-card"
+                            src={selectedCard}
+                            alt={selectedCard.name}
+                            variant="bottom"/>
+                            ):(
+                        <img
+                            className="cover-card"
+                            src={"https://i.imgur.com/krY25iI.png"}
+                            alt="Card"
+                            variant="bottom"/>)}
                 </div>
-                <DeckImport
-                    fileInput={fileInput}
-                    importDeck={importDeck}
-                    importedDecks={importedDecks}
-                    showDecks={showDecks}
-                    handleFileChange={handleFileChange}
-                    handleShowDecks={handleShowDecks}
-                    clearDecks={clearDecks}
-                />
-                <CardPool
-                    all_cards={all_cards}
-                    noCards={noCards}
-                    noPulledCards={noPulledCards}
-                    combinedList={combinedList}
-                    isQueryEmpty={isQueryEmpty}
-                    usePool={usePool}
-                    showPool={showPool}
-                    showMore={showMore}
-                    handleClick={handleClick}
-                    handleUsePool={handleUsePool}
-                    handleShowPool={handleShowPool}
-                    handleShowMore={handleShowMore}
-                />
-                {listView?
-                    <div className="deck-list">
-                        <div className="maindeck3">
-                            <ListViewListInput
-                                title={"Main Deck"}
-                                list={main_list}
-                                handleRemoveCard={handleRemoveCard}
-                            />
-                        </div>
-
-                        <div className="pluckdeck3">
-                            <ListViewListInput
-                                title={"Pluck Deck"}
-                                list={pluck_list}
-                                handleRemoveCard={handleRemoveCard}
-                            />
-                        </div>
-                    </div>
-                :<>
-                    <div className="maindeck">
-                        <ImageViewListInput
+                <span className="media-flex-center margin-top-93">
+                    <BuilderCardSearch/>
+                </span>
+            </div>
+            <DeckImport
+                fileInput={fileInput}
+                importDeck={importDeck}
+                importedDecks={importedDecks}
+                showDecks={showDecks}
+                handleFileChange={handleFileChange}
+                handleShowDecks={handleShowDecks}
+                clearDecks={clearDecks}
+            />
+            <CardPool
+                all_cards={all_cards}
+                noCards={noCards}
+                noPulledCards={noPulledCards}
+                combinedList={combinedList}
+                isQueryEmpty={isQueryEmpty}
+                usePool={usePool}
+                showPool={showPool}
+                showMore={showMore}
+                handleClick={handleClick}
+                handleUsePool={handleUsePool}
+                handleShowPool={handleShowPool}
+                handleShowMore={handleShowMore}
+            />
+            {listView?
+                <div className="deck-list">
+                    <div className="maindeck3">
+                        <ListViewListInput
                             title={"Main Deck"}
                             list={main_list}
-                            showList={showMain}
-                            handleShowList={handleShowMain}
                             handleRemoveCard={handleRemoveCard}
                         />
                     </div>
-                    <div className="pluckdeck">
-                        <ImageViewListInput
+
+                    <div className="pluckdeck3">
+                        <ListViewListInput
                             title={"Pluck Deck"}
                             list={pluck_list}
-                            showList={showPluck}
-                            handleShowList={handleShowPluck}
                             handleRemoveCard={handleRemoveCard}
                         />
                     </div>
-                </>}
-
+                </div>
+            :<>
+                <div className="maindeck">
+                    <ImageViewListInput
+                        title={"Main Deck"}
+                        list={main_list}
+                        showList={showMain}
+                        handleShowList={handleShowMain}
+                        handleRemoveCard={handleRemoveCard}
+                    />
+                </div>
+                <div className="pluckdeck">
+                    <ImageViewListInput
+                        title={"Pluck Deck"}
+                        list={pluck_list}
+                        showList={showPluck}
+                        handleShowList={handleShowPluck}
+                        handleRemoveCard={handleRemoveCard}
+                    />
+                </div>
+            </>}
         </div>
     );
 }

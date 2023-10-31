@@ -159,120 +159,121 @@ function DecksPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Deck Search</h1>
-            <h2 className="left">Search our collection of decks</h2>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Deck Name Contains..."
-                name="deckName"
-                value={deckQuery.deckName}
-                onChange={handleDeckQuery}
-                style={{width: "370px", height: "37px"}}>
-            </input>
-            <br/>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Creator's Name Contains..."
-                name="user"
-                value={deckQuery.user}
-                onChange={handleDeckQuery}
-                style={{width: "370px", height: "37px"}}>
-            </input>
-            <br/>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Description Contains..."
-                name="description"
-                value={deckQuery.description}
-                onChange={handleDeckQuery}
-                style={{width: "370px", height: "37px"}}>
-            </input>
-            <br/>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Contains Card Named..."
-                name="cardName"
-                value={deckQuery.cardName}
-                onChange={handleDeckQuery}
-                style={{width: "370px", height: "37px"}}>
-            </input>
-            <br/>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Contains Series Named..."
-                name="seriesName"
-                value={deckQuery.seriesName}
-                onChange={handleDeckQuery}
-                style={{width: "370px", height: "37px"}}>
-            </input>
-            <br/>
-            <select
-                className="left"
-                type="text"
-                placeholder=" Strategy"
-                name="strategy"
-                value={deckQuery.strategy}
-                onChange={handleDeckQuery}
-                style={{width: "180px", height: "37px"}}>
-                <option value="">Strategy</option>
-                <option value="Aggro">Aggro</option>
-                <option value="Combo">Combo</option>
-                <option value="Control">Control</option>
-                <option value="Mid-range">Mid-range</option>
-                <option value="Ramp">Ramp</option>
-                <option value="Second Wind">Second Wind</option>
-                <option value="Stall">Stall</option>
-                <option value="Toolbox">Toolbox</option>
-                <option value="other">other</option>
-            </select>
-            <select
-                className="left"
-                type="text"
-                placeholder="  Sorted By"
-                value={deckSortState}
-                onChange={handleDeckSort}
-                style={{width: "180px", height: "37px"}}>
-                <option value="none">Sorted By</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="updated">Last Updated</option>
-                <option value="name">A-Z</option>
-            </select>
-            <br/>
-            <NavLink to="/deckbuilder">
-                <button className="left"
-                    variant="dark">
-                        Create Deck
-                </button>
-            </NavLink>
-            <button
-                className="left"
-                variant="dark"
-                onClick={handleDeckQueryReset}
-                >
-                Reset Filters
-            </button>
-            <button
-                className="left"
-                variant="dark"
-                onClick={getRandomDeck}
-                >
-                Random Deck
-            </button>
+            <div className="media-flex-center">
+                <div className="wide400p">
+                    <h1 className="left-h1">Deck Search</h1>
+                    <h2 className="left">Search our collection of decks</h2>
+                    <input
+                        className="left"
+                        type="text"
+                        placeholder=" Deck Name Contains..."
+                        name="deckName"
+                        value={deckQuery.deckName}
+                        onChange={handleDeckQuery}
+                        style={{width: "370px", height: "37px"}}>
+                    </input>
+                    <br/>
+                    <input
+                        className="left"
+                        type="text"
+                        placeholder=" Creator's Name Contains..."
+                        name="user"
+                        value={deckQuery.user}
+                        onChange={handleDeckQuery}
+                        style={{width: "370px", height: "37px"}}>
+                    </input>
+                    <br/>
+                    <input
+                        className="left"
+                        type="text"
+                        placeholder=" Description Contains..."
+                        name="description"
+                        value={deckQuery.description}
+                        onChange={handleDeckQuery}
+                        style={{width: "370px", height: "37px"}}>
+                    </input>
+                    <br/>
+                    <input
+                        className="left"
+                        type="text"
+                        placeholder=" Contains Card Named..."
+                        name="cardName"
+                        value={deckQuery.cardName}
+                        onChange={handleDeckQuery}
+                        style={{width: "370px", height: "37px"}}>
+                    </input>
+                    <br/>
+                    <input
+                        className="left"
+                        type="text"
+                        placeholder=" Contains Series Named..."
+                        name="seriesName"
+                        value={deckQuery.seriesName}
+                        onChange={handleDeckQuery}
+                        style={{width: "370px", height: "37px"}}>
+                    </input>
+                    <br/>
+                    <select
+                        className="left"
+                        type="text"
+                        placeholder=" Strategy"
+                        name="strategy"
+                        value={deckQuery.strategy}
+                        onChange={handleDeckQuery}
+                        style={{width: "180px", height: "37px"}}>
+                        <option value="">Strategy</option>
+                        <option value="Aggro">Aggro</option>
+                        <option value="Combo">Combo</option>
+                        <option value="Control">Control</option>
+                        <option value="Mid-range">Mid-range</option>
+                        <option value="Ramp">Ramp</option>
+                        <option value="Second Wind">Second Wind</option>
+                        <option value="Stall">Stall</option>
+                        <option value="Toolbox">Toolbox</option>
+                        <option value="other">other</option>
+                    </select>
+                    <select
+                        className="left"
+                        type="text"
+                        placeholder="  Sorted By"
+                        value={deckSortState}
+                        onChange={handleDeckSort}
+                        style={{width: "180px", height: "37px"}}>
+                        <option value="none">Sorted By</option>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="updated">Last Updated</option>
+                        <option value="name">A-Z</option>
+                    </select>
+                    <br/>
+                    <NavLink to="/deckbuilder">
+                        <button className="left"
+                            variant="dark">
+                                Create Deck
+                        </button>
+                    </NavLink>
+                    <button
+                        className="left"
+                        variant="dark"
+                        onClick={handleDeckQueryReset}
+                        >
+                        Reset Filters
+                    </button>
+                    <button
+                        className="left"
+                        variant="dark"
+                        onClick={getRandomDeck}
+                        >
+                        Random Deck
+                    </button>
 
-            { loading ?
-                <div className="loading-container">
-                    <div className="loading-spinner"></div>
-                </div> :
-                <h4 className="left-h3">Showing Results 1 - {all_decks.slice(0, deckShowMore).length} of {all_decks.length}</h4>}
-
-
-
+                    { loading ?
+                        <div className="loading-container">
+                            <div className="loading-spinner"></div>
+                        </div> :
+                        <h4 className="left-h3">Showing Results 1 - {all_decks.slice(0, deckShowMore).length} of {all_decks.length}</h4>}
+                </div>
+            </div>
             <div className="decks-page-card-list2">
                 {all_decks.slice(0, deckShowMore).map((deck) => {
                     return (

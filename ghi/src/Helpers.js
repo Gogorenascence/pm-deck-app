@@ -7,16 +7,29 @@ export function shortenedText(text) {
     return text;
 }
 
-// export function useOutsideAlerter(ref) {
-//     useEffect(() => {
-//     // Function for click event
-//         function handleOutsideClick(event) {
-//             if (ref.current && !ref.current.contains(event.target)) {
-//                 handleShowMenu(false, "none");
-//             }
-//         }
-//     // Adding click event listener
-//         document.addEventListener("click", handleOutsideClick);
-//         return () => document.removeEventListener("click", handleOutsideClick);
-//     }, [ref]);
-// }
+export function adjustFontSize() {
+    const textMeasure = document.querySelector('.cd-measure');
+    const textElement = document.querySelector('.cd-title');
+    const containerElement = document.querySelector('.cd-title-container');
+    if (textElement && containerElement) {
+        const textWidth = textMeasure.scrollWidth;
+        const containerWidth = containerElement.offsetWidth;
+        console.log(textWidth, containerWidth)
+        if (textWidth > containerWidth) {
+            const fontSize = 37;
+            textElement.style.fontSize = fontSize + 'px';
+        } else {
+            const fontSize = 45;
+            textElement.style.fontSize = fontSize + 'px';
+        }
+    }
+}
+
+// useEffect(() => {
+//     adjustFontSize();
+//     window.addEventListener('resize', adjustFontSize);
+
+//     return () => {
+//         window.removeEventListener('resize', adjustFontSize);
+//     };
+// }, []);

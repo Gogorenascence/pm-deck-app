@@ -53,9 +53,9 @@ function ReactionEdit() {
         const cardData = await cardResponse.json();
 
         const support_card_list = reaction_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem))
+            cardData.cards.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
         const anti_support_card_list = reaction_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem))
+            cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
         console.log(reaction_data)
         setAntiSupportList(anti_support_card_list)

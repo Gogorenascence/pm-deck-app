@@ -193,6 +193,7 @@ button {
   text-align: center;
   font-size: large;
   padding: 0px 10px;
+  white-space: nowrap;
 }
 
 button:hover {
@@ -1791,6 +1792,10 @@ button:hover {
     padding: 0px;
   }
 
+  .margin-top-93 {
+    margin-top: 93px;
+  }
+
   .navbar {
     top: 0;
     height: 66px;
@@ -1914,6 +1919,21 @@ button:hover {
     overflow: hidden;
     transition: all 0.5s; */
     display: none;
+  }
+
+  .cd-title {
+    font-size: 40px;
+    white-space: nowrap;
+  }
+
+  .cd-title-container {
+    width: 635px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cd-measure {
+    width: fit-content;
   }
 
 @media screen and (max-width: 1330px) {
@@ -2051,17 +2071,17 @@ button:hover {
   }
 
   .dcbsearch-large {
-    width: 95%;
+    width: 366px;
     height: 37px;
   }
 
   .dcbsearch-x-large {
-    width: 95%;
+    width: 366px;
     height: 37px;
   }
 
   .dcbsearch-x-x-large {
-    width: 95%;
+    width: 366px;
     height: 37px;
   }
 
@@ -2250,6 +2270,11 @@ button:hover {
     transform: none; /* Reset the transform property */
   }
 
+  .media-flex-center {
+    display: flex;
+    justify-content: center;
+  }
+
   .nav-main {
     height: 66px;
     align-items: center;
@@ -2338,6 +2363,11 @@ button:hover {
     width: 100%;
   }
 
+  .margin-top-93 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
   .minimize {
     top: 66px;
     max-height: 0;
@@ -2356,6 +2386,10 @@ button:hover {
 
   .wide100 {
     width: 100%;
+  }
+
+  .wide400p {
+    width: 400px
   }
 
   .none {

@@ -7,7 +7,6 @@ function BuilderCardSearch() {
         setQuery,
         sortState,
         setSortState,
-        boosterSet,
         setBoosterSet,
         boosterSets,
         setBoosterSets,
@@ -17,7 +16,6 @@ function BuilderCardSearch() {
         setRarity,
         listView,
         setListView,
-        showMore,
         setShowMore} = useContext(BuilderQueryContext)
 
     const getBoosterSets = async() =>{

@@ -46,10 +46,16 @@ function CardCategoryDetail() {
             setMembers(classMembersList)
         }
 
+        // const support_card_list = []
+        // for (let supportItem of category_data.support) {
+        //     if (cardData.cards.find(card => card.card_number === supportItem)) {
+        //         support_card_list.push(cardData.cards.find(card => card.card_number === supportItem))
+        //     }
+        // }
         const support_card_list = category_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem))
+            cardData.cards.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
         const anti_support_card_list = category_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem))
+            cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };

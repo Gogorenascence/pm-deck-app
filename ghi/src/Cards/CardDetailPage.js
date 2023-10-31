@@ -5,7 +5,7 @@ import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-
+import { adjustFontSize } from "../Helpers";
 
 function CardDetailPage() {
 
@@ -130,15 +130,22 @@ function CardDetailPage() {
         };
     }, [card])
 
+    useEffect(() => {
+        adjustFontSize();
+        window.addEventListener('resize', adjustFontSize);
+
+        return () => {
+            window.removeEventListener('resize', adjustFontSize);
+        };
+    }, [card]);
+
     const matchSeries = (line) => {
         const cardCategory = card_categories?.find(category => category.name === line)
-        console.log(card_categories)
         return cardCategory?.id
     };
 
     const matchClass = (card_class) => {
         const cardCategory = card_categories?.find(category => category.name === card_class)
-        console.log(card_categories)
         return cardCategory?.id
     }
 
@@ -146,7 +153,7 @@ function CardDetailPage() {
     return (
         <div className="white-space">
             <div className="cd-container between-space">
-                <div className="cd-container-child wide40">
+                <div className="cd-container-child">
                     <div className="cd-inner media-display">
                         <h1 className="hidden2 media-display media-center">{card.name}</h1>
                         <img
@@ -192,9 +199,15 @@ function CardDetailPage() {
                         </div>
                     </div>
                 </div>
-                <div className="cd-container-child wide55 margin-left-3P">
+                <div className="cd-container-child">
                     <div className="cd-inner2 media-display">
-                    <h1 className="none">{card.name}</h1>
+                    <div className="cd-title-container">
+                        <div className="cd-measure">
+                            <h1 className="none cd-title"
+                                id="dynamic-font"
+                            >{card.name}</h1>
+                        </div>
+                    </div>
                         <div>
                             <div className="cd-info">
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
@@ -314,6 +327,16 @@ function CardDetailPage() {
                                     </>
                                     ) : null}
                                 </div>
+                                { account && account.roles.includes("admin")?
+                                    <div className="none"
+                                        style={{marginTop: "2%", width: "100%"}}
+                                        >
+                                        <div style={{display: "flex", marginBottom: ".75%"}}>
+                                            <CardEditModal/>
+                                            <BackButton/>
+                                        </div>
+                                    </div>:
+                                null}
                             </div>
                         </div>
                         <div>
@@ -351,15 +374,7 @@ function CardDetailPage() {
 
                                 </div>
                             </div>
-                            { account && account.roles.includes("admin")?
-                                <div className="none"
-                                    style={{margin: "2% 0% 2% 2%", width: "662px"}}>
-                                    <div style={{display: "flex", marginBottom: ".75%"}}>
-                                        <CardEditModal/>
-                                        <BackButton/>
-                                    </div>
-                                </div>:
-                            null}
+
                         </div>
                     </div>
                 </div>
