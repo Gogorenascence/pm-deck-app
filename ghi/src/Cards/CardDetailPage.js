@@ -250,7 +250,7 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Tags</h4>
-                                    {card_tags[0] !== 1000?
+                                    {card.card_tags[0] !== 1000?
                                         <>
                                             {card_tags.map((card_tag) => {
                                                     return (
