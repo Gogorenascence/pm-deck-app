@@ -1,12 +1,18 @@
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 
 function RelatedCardModal() {
 
     const {card_number} = useParams();
 
+    const navigate = useNavigate()
+
+    const content = useRef(null)
+
     const [show, setShow] = useState(false);
+
+    useOutsideAlerter(content)
 
     const handleClose = async() => {
         setShow(false)
@@ -29,14 +35,28 @@ function RelatedCardModal() {
     useEffect(() => {
         getRelatedCards();
     // eslint-disable-next-line
-    }, []);
+    }, [card_number]);
 
-    const navigate = useNavigate()
 
     const selectCard = async(card) =>{
         const cards_number = card.card_number
         navigate(`/cards/${cards_number}`);
         handleClose()
+    }
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+          // Function for click event
+            function handleOutsideClick(event) {
+                if (ref.current && !ref.current.contains(event.target)
+                    && !event.target.closest(".left.button100")) {
+                    handleClose();
+                }
+            }
+          // Adding click event listener
+            document.addEventListener("click", handleOutsideClick);
+                return () => document.removeEventListener("click", handleOutsideClick);
+        }, [ref]);
     }
 
     return (
@@ -51,7 +71,7 @@ function RelatedCardModal() {
             {show?
                 <div className="large-modal topbar"
                 >
-                    <div className="outScrollable">
+                    <div className="outScrollable" ref={content}>
                         <h1 className="centered-h1"
                             style={{color: "black"}}>Related Cards</h1>
                         <div>

@@ -165,7 +165,7 @@ function CardDetailPage() {
                             <h1 className="centered-h1">Related Cards</h1>
                         <div className="cd-inner">
                             <div className="cd-inner card-list3" style={{width: "480px"}}>
-                                {relatedCards.slice(0,6).map((relatedCard) => {
+                                {relatedCards?.slice(0,6).map((relatedCard) => {
                                     return (
                                         <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                 <img
@@ -252,7 +252,7 @@ function CardDetailPage() {
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Tags</h4>
                                     {card.card_tags[0] !== 1000?
                                         <>
-                                            {card_tags.map((card_tag) => {
+                                            {card_tags?.map((card_tag) => {
                                                     return (
                                                         <NavLink to={`/cardtags/${card_tag.id}`} className="nav-link2 glow2">
                                                             <h5 title={card_tag.rules}
@@ -264,7 +264,7 @@ function CardDetailPage() {
                                             })}
                                         </>:
                                             <h5 style={{fontWeight: "400", margin: "18px 12px"}}>
-                                                {card_tags[0].name}
+                                                n/a
                                             </h5>}
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
@@ -344,7 +344,7 @@ function CardDetailPage() {
                                 <h1 className="centered-h1">Related Cards</h1>
                                 <div className="cd-inner">
                                     <div className="cd-inner card-pool-fill3">
-                                        {relatedCards.slice(0,6).map((relatedCard) => {
+                                        {relatedCards?.slice(0,6).map((relatedCard) => {
                                             return (
                                                 <NavLink to={`/cards/${relatedCard.card_number}`}>
                                                         <img
