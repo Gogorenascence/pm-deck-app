@@ -107,6 +107,7 @@ function CardsPage() {
     }
 
     useEffect(() => {
+        window.scroll(0, 0);
         getCards();
         getBoosterSets();
         console.log(cards)

@@ -254,11 +254,6 @@ function NavBar() {
                       Top Cards
                     </div>
                   </NavLink>
-                  <NavLink className="dropdown-select username2" to="/series" onClick={() => followLink()}>
-                    <div className="nav-dropdown-item">
-                        Series
-                    </div>
-                  </NavLink>
                   <NavLink className="dropdown-select username2" to="/cardsets" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
                       Card Sets
@@ -416,11 +411,6 @@ function NavBar() {
               <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
                   Top Cards
-                </div>
-              </NavLink>
-              <NavLink className="nav-dropdown-item" to="/series" onClick={() => handleShowMobileMenu()}>
-                <div className="dropdown-select">
-                  Series
                 </div>
               </NavLink>
               <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => handleShowMobileMenu()}>

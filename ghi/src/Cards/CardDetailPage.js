@@ -149,7 +149,6 @@ function CardDetailPage() {
         return cardCategory?.id
     }
 
-
     return (
         <div className="white-space">
             <div className="cd-container between-space">

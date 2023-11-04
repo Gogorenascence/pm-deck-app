@@ -88,6 +88,7 @@ function DeckDetailPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
         getDeck();
         getDeckList();
         getCountedDeckList();

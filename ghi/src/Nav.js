@@ -224,9 +224,6 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/topcards">
                     Top Cards
                   </NavLink>
-                  <NavLink className="dropdown-item" to="/series">
-                      Series
-                    </NavLink>
                   <NavLink className="dropdown-item" to="/cardsets">
                     Card Sets
                   </NavLink>
