@@ -224,27 +224,50 @@ class DeckQueries(Queries):
     def get_popular_cards(self) -> list:
         deck_count = {}
         all_cards_lists = []
+
+        set_deck_count = {}
+        set_all_cards_lists = []
+
         db = self.collection.find()
         for document in db:
-            cards_list = list(set(document["cards"] + document["pluck"]))
+            cards_list = document["cards"] + document["pluck"]
             all_cards_lists += cards_list
+
+            set_cards_list = list(set(document["cards"] + document["pluck"]))
+            set_all_cards_lists += set_cards_list
+
         for card in all_cards_lists:
             if card not in deck_count.keys():
                 deck_count[card] = 1
             else:
                 deck_count[card] += 1
 
+        for card in set_all_cards_lists:
+            if card not in set_deck_count.keys():
+                set_deck_count[card] = 1
+            else:
+                set_deck_count[card] += 1
+
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
         db = conn.cards.cards
 
         popular_cards = []
+        total_cards = 0
         for card_number, count in deck_count.items():
             card = db.find_one({"card_number":card_number})
             card["id"] = str(card["_id"])
             card["count"] = count
+            total_cards += count
             popular_cards.append(CardOut(**card))
-        return popular_cards
+
+        set_popular_cards = []
+        for card_number, count in set_deck_count.items():
+            card = db.find_one({"card_number":card_number})
+            card["id"] = str(card["_id"])
+            card["count"] = count
+            set_popular_cards.append(CardOut(**card))
+        return popular_cards, set_popular_cards, total_cards
 
     def get_times(self, id) -> dict:
         time_ago = {}
