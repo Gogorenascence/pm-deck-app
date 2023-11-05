@@ -932,3 +932,21 @@ function sendEmail() {
               //     </li>:null
               //   }
               // </ul>
+
+
+            //   const handleFileChange = (event) => {
+            //     const file = event.target.files;
+            //     if (file) {
+            //         const reader = new FileReader();
+
+            //         reader.onload = (e) => {
+            //         try {
+            //             const importedDeck = JSON.parse(e.target.result);
+            //             setImportedDecks([...importedDecks, importedDeck]);
+            //         } catch (error) {
+            //             console.error('Error parsing imported deck JSON:', error);
+            //         }
+            //     };
+            //     reader.readAsText(file);
+            //     }
+            // };
