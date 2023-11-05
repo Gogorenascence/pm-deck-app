@@ -105,7 +105,7 @@ function DeckBuildandImport() {
 
     const [cards, setCards] = useState([]);
 
-    const [showDecks, setShowDecks] = useState(true);
+    const [showDecks, setShowDecks] = useState(false);
     const [showPool, setShowPool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 
 function DeckImport({
@@ -10,8 +10,25 @@ function DeckImport({
     handleShowDecks,
     clearDecks
 }){
+
+    const dropArea = useRef(null);
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        handleFileChange({ target: { files } });
+    };
+
     return(
-        <div className="deck-import">
+        <div className="deck-import"
+            ref={dropArea}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+        >
             <div style={{display: "flex", alignItems: "center"}}>
                 <h2
                     className="left"
@@ -56,7 +73,7 @@ function DeckImport({
                                 </div>
                             ))}
                         </div>:
-                        <h4 className="left no-cards2">No decks imported</h4>
+                            <h4 className="left no-cards2">No decks imported</h4>
                     }
                     <div style={{display: "flex", alignItems: "center", margin: "0px 0px 15px 17px", paddingTop: "0"}}>
                         <button
@@ -66,14 +83,15 @@ function DeckImport({
                             Select
                         </button>
                         {importedDecks.length > 0?
-                                <button
-                                    className="left heightNorm red"
-                                    style={{ marginRight: '6px', marginLeft: '4px', width: "115px" }}
-                                    onClick={clearDecks}
-                                >
-                                    Clear Decks
-                                </button>:null
+                            <button
+                                className="left heightNorm red"
+                                style={{ marginRight: '6px', marginLeft: '4px', width: "115px" }}
+                                onClick={clearDecks}
+                            >
+                                Clear Decks
+                            </button>:null
                         }
+                        <h6 className="error2">Select or Drag Over a Deck</h6>
                     </div>
                 </>:null
             }
