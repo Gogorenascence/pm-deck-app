@@ -8,6 +8,7 @@ import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";
 import CardPool from "./CardPool";
 import DeckImport from './DeckImport';
+import StatsPanel from './StatsPanel';
 
 
 function DeckBuildandImport() {
@@ -488,6 +489,10 @@ function DeckBuildandImport() {
                 handleUsePool={handleUsePool}
                 handleShowPool={handleShowPool}
                 handleShowMore={handleShowMore}
+            />
+            <StatsPanel
+                main_list={main_list}
+                pluck_list={pluck_list}
             />
             {listView?
                 <div className="deck-list">

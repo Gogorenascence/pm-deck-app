@@ -9,6 +9,7 @@ import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
+import StatsPanel from "../Builder/StatsPanel";
 
 
 function DeckDetailPage() {
@@ -50,6 +51,7 @@ function DeckDetailPage() {
         const deckListData = await response.json();
         setMainList(deckListData[0])
         setPluckList(deckListData[1])
+        console.log(deckListData[1])
     };
 
     const getCountedDeckList = async() =>{
@@ -219,17 +221,17 @@ function DeckDetailPage() {
                         </div>
                 </Card.ImgOverlay>
             </Card>
-
             {deck.description ?
-            <div>
-                <h3 className="left-h1">Deck Description</h3>
-                <h5 className="left-h1"
-                    style={{marginTop: "0"}}
-                    >{deck.description}</h5>
-            </div>:
-            null}
+                <div>
+                    <h3 className="left-h1">Deck Description</h3>
+                    <h5 className="left-h1"
+                        style={{marginTop: "0"}}
+                        >{deck.description}</h5>
+                </div>
+            :
+                null
+            }
             <div style={{display: "flex"}}>
-
                 <div className={showHand? "maindeck animate wide90p": "hidden2"}
                     style={{width: "90%"}}>
                     <div style={{marginLeft: "10px"}}>
@@ -264,187 +266,188 @@ function DeckDetailPage() {
 
                     </div>
                 </div>
+                <div className={showHand? "pluckdeck animate": "hidden2"}
+                    style={{marginLeft: ".5%"}}>
+                    <h4
+                        className="left"
+                        style={{margin: "10px 10px", fontWeight: "700"}}
+                        >Ownwership
+                    </h4>
+                    <Row xs="auto" className="justify-content-center">
+                        <Col style={{paddingTop: "2px"}}>
+                            <img
+                                className="builder-card3"
+                                style={{ width: '115px',
+                                margin: '10px 0px 10px 0px',
+                                borderRadius: "7px",
+                                overflow: "hidden"}}
+
+                                title={ownership.name}
+                                src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                alt={ownership.name}
+                                variant="bottom"/>
+
+                        </Col>
+                    </Row>
 
 
-            <div className={showHand? "pluckdeck animate": "hidden2"}
-                style={{marginLeft: ".5%"}}>
-                <h4
-                    className="left"
-                    style={{margin: "10px 10px", fontWeight: "700"}}
-                    >Ownwership
-                </h4>
-                <Row xs="auto" className="justify-content-center">
-                    <Col style={{paddingTop: "2px"}}>
-                        <img
-                            className="builder-card3"
-                            style={{ width: '115px',
-                            margin: '10px 0px 10px 0px',
-                            borderRadius: "7px",
-                            overflow: "hidden"}}
-
-                            title={ownership.name}
-                            src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
-                            alt={ownership.name}
-                            variant="bottom"/>
-
-                    </Col>
-                </Row>
-
-
-            </div>
-
+                </div>
             </div>
             <div style={{ display: "flex" }}>
-            { (account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
-                <>
-                    <NavLink to={`/decks/${deck.id}/edit`}>
+                {(account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
+                    <>
+                        <NavLink to={`/decks/${deck.id}/edit`}>
+                            <button
+                                className="left heightNorm button100 red"
+                                variant="danger"
+                                style={{marginLeft: ".5%", marginRight: "7px"}}
+                                >
+                                Edit Deck
+                            </button>
+                        </NavLink>
                         <button
                             className="left heightNorm button100 red"
-                            variant="danger"
+                            onClick={handleDelete}
                             style={{marginLeft: ".5%", marginRight: "7px"}}
                             >
-                            Edit Deck
+                            Delete Deck
                         </button>
-                    </NavLink>
-                    <button
-                        className="left heightNorm button100 red"
-                        onClick={handleDelete}
-                        style={{marginLeft: ".5%", marginRight: "7px"}}
-                        >
-                        Delete Deck
-                    </button>
-                </>
+                    </>
                 :
-            null}
-            {listView?
+                    null
+                }
+                {listView?
+                    <button
+                        className="left"
+                        onClick={handleListView}
+                    >
+                        Image View
+                    </button>
+                :
+                    <button
+                        className="left"
+                        onClick={handleListView}
+                    >
+                        List View
+                    </button>
+                }
                 <button
-                    className="left"
-                    variant="dark"
-                    onClick={handleListView}
-                >
-                    Image View
-                </button>:
-                <button
-                    className="left"
-                    variant="dark"
-                    onClick={handleListView}
-                >
-                    List View
-                </button>}
-            <button
-                    className="left"
-                    variant="dark"
+                    className="left none"
                     onClick={getShuffledDeck}
                     style={{marginLeft: ".5%"}}
                     >
                     Test Hand
-            </button>
-            {showHand?
-                <>
-                    <button
-                            className="left"
-                            variant="dark"
+                </button>
+                {showHand?
+                    <>
+                        <button
+                            className="left none"
                             onClick={mulligan}
                             style={{marginLeft: ".5%"}}
                             >
                             Mulligan
-                    </button>
-                    <button
-                            className="left"
-                            variant="dark"
+                        </button>
+                        <button
+                            className="left none"
+
                             onClick={clearShuffledDeck}
                             style={{marginLeft: ".5%", width: '108px', textAlign: "center"}}
                             >
                             Hide Hand
-                    </button>
-                </>:
-            null}
-            <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
-            <NavLink to={`/decks/${deck.id}/copy`}>
-                <button
-                        className="left heightNorm"
-                        variant="dark"
-                        style={{marginLeft: ".5%", width: "108px", textAlign: "center"}}
-                        >
-                        Copy Deck
-                </button>
-            </NavLink>
-            <BackButton/>
-            </div>
-            {listView?
-                        <div className="deck-list">
-                            <div className="maindeck3">
-                            <div style={{marginLeft: "20px"}}>
-                                <div style={{display: "flex", alignItems: "center"}}>
-                                    <h2
-                                        className="left"
-                                        style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                    >Main Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                    {main_list.length > 0 ?
-                                    <h5
-                                        className="left db-main-count"
-                                    >{main_list.length}</h5>:
-                                    null}
-                                </div>
-                                {main_list.length > 0 ?<>
-                                        {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                            return (
-                                                <Col style={{padding: "5px"}}>
-                                                    <div className="card-container">
-                                                        <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
-                                                            <h5>{card.name} x <b>{card.count}</b></h5>
-                                                            <img
-                                                                className="card-image"
-                                                                src={card.picture_url}
-                                                                alt={card.name}
-                                                            />
-                                                        </NavLink>
-                                                    </div>
-                                                </Col>
-                                            );
-                                        })}
-                                    </>:
-                                <h4 className="left no-cards">No cards added</h4>}
-                            </div>
-                        </div>
+                        </button>
+                    </>
+                :
+                    null
+                }
+                <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
+                <NavLink to={`/decks/${deck.id}/copy`}>
+                    <button
+                            className="left heightNorm"
 
-                        <div className="pluckdeck3">
-                            <div style={{marginLeft: "20px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                    <h2
-                                        className="left"
-                                        style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                    >Pluck Deck</h2>
-                                    <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                    {pluck_list.length > 0 ?
-                                    <h5
-                                        className="left db-pluck-count"
-                                    >{pluck_list.length}</h5>:
-                                    null}
-                                </div>
-                                {pluck_list.length > 0 ?<>
-                                        {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                            return (
-                                                <Col style={{padding: "5px"}}>
-                                                    <div className="card-container">
-                                                        <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
-                                                            <h5>{card.name} x <b>{card.count}</b></h5>
-                                                            <img
-                                                                className="card-image"
-                                                                src={card.picture_url}
-                                                                alt={card.name}
-                                                            />
-                                                        </NavLink>
-                                                    </div>
-                                                </Col>
-                                            );
-                                        })}
-                                    </>:
-                                <h4 className="left no-cards">No cards added</h4>}
-                            </div>
+                            style={{marginLeft: ".5%", width: "108px", textAlign: "center"}}
+                            >
+                            Copy Deck
+                    </button>
+                </NavLink>
+                <BackButton/>
+            </div>
+            <StatsPanel
+                main_list={main_list}
+                pluck_list={pluck_list}
+            />
+            {listView?
+                <div className="deck-list">
+                    <div className="maindeck3">
+                    <div style={{marginLeft: "20px"}}>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                            >Main Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {main_list.length > 0 ?
+                            <h5
+                                className="left db-main-count"
+                            >{main_list.length}</h5>:
+                            null}
                         </div>
+                        {main_list.length > 0 ?<>
+                                {countedMainList.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <div className="card-container">
+                                                <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
+                                                    <h5>{card.name} x <b>{card.count}</b></h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </NavLink>
+                                            </div>
+                                        </Col>
+                                    );
+                                })}
+                            </>:
+                        <h4 className="left no-cards">No cards added</h4>}
+                </div>
+                </div>
+                <div className="pluckdeck3">
+                    <div style={{marginLeft: "20px"}}>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
+                            >Pluck Deck</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {pluck_list.length > 0 ?
+                            <h5
+                                className="left db-pluck-count"
+                            >{pluck_list.length}</h5>:
+                            null}
+                        </div>
+                        {pluck_list.length > 0 ?<>
+                                {countedPluckList.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                                    return (
+                                        <Col style={{padding: "5px"}}>
+                                            <div className="card-container">
+                                                <NavLink to={`/cards/${card.card_number}`} className="nav-link2">
+                                                    <h5>{card.name} x <b>{card.count}</b></h5>
+                                                    <img
+                                                        className="card-image"
+                                                        src={card.picture_url}
+                                                        alt={card.name}
+                                                    />
+                                                </NavLink>
+                                            </div>
+                                        </Col>
+                                    );
+                                })}
+                            </>:
+                        <h4 className="left no-cards">No cards added</h4>}
                     </div>
+                </div>
+                </div>
             :<>
                 <div className="maindeck2">
                     <div>
@@ -489,9 +492,6 @@ function DeckDetailPage() {
                         <h4 className="left no-cards">No cards added</h4>}
                     </div>
                 </div>
-
-
-
                 <div className="pluckdeck">
                     <div>
                         <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
@@ -537,7 +537,7 @@ function DeckDetailPage() {
                     </div>
                 </div>
             </>}
-    </div>
+        </div>
     );
 }
 
