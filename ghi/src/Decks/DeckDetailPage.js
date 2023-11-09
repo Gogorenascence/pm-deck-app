@@ -9,7 +9,7 @@ import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
-import StatsPanel from "../Builder/StatsPanel";
+import StatsPanel from "./StatsPanel";
 
 
 function DeckDetailPage() {

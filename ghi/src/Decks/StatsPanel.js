@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function StatsPanel({
 main_list,
-pluck_list,
-handleRemoveCard
+pluck_list
 }) {
-    const [filteredCards, setFilteredCards] = useState([]); // Initialize as an empty array
+
     const stats = {
         fighters: 0,
         auras: 0,
@@ -22,6 +21,7 @@ handleRemoveCard
         unity: 0,
         canny: 0
     }
+
     const [showStats, setShowStats] = useState(false)
     const [showModal, setShowModal] = useState({
         show: false,
@@ -29,6 +29,7 @@ handleRemoveCard
         card_type: 0,
         card_class: ""
     })
+    const navigate = useNavigate()
     const content = useRef(null)
     useOutsideAlerter(content)
 
@@ -36,11 +37,8 @@ handleRemoveCard
         useEffect(() => {
           // Function for click event
             function handleOutsideClick(event) {
-                if (ref.current &&
-                    !ref.current.contains(event.target)&&
-                    !event.target.closest(".stat-item")&&
-                    !event.target.closest(".cd-related-modal-card")
-                ) {
+                if (ref.current && !ref.current.contains(event.target)
+                    && !event.target.closest(".stat-item")) {
                     handleClose();
                 }
             }
@@ -49,24 +47,6 @@ handleRemoveCard
                 return () => document.removeEventListener("click", handleOutsideClick);
         }, [ref]);
     }
-
-
-    useEffect(() => {
-      // Update filteredCards based on your filtering criteria
-        const card_list = main_list.concat(pluck_list)
-        const newFilteredCards = card_list.filter((card) =>
-            (showModal.card_type ? card.card_type[0] === showModal.card_type : true))
-            .filter((card) => (showModal.card_class ? card.card_class === showModal.card_class : true));
-        setFilteredCards(newFilteredCards);
-    }, [showModal, main_list, pluck_list]); // Include showModal and card_list as dependencies
-
-    useEffect(() => {
-      // Check if filteredCards is empty
-        if (filteredCards.length === 0) {
-            handleClose(); // Call handleClose when filteredCards is empty
-        }
-    }, [filteredCards]);
-
 
     for (let card of main_list){
         if (card.card_type[0] === 1001) {
@@ -125,6 +105,7 @@ handleRemoveCard
         document.body.style.overflow = 'auto';
     };
 
+
     const handleSetClass = (card_class, item) => {
         setShowModal({
             show: true,
@@ -145,12 +126,23 @@ handleRemoveCard
         document.body.style.overflow = 'hidden';
     };
 
+    const selectCard = async(card) =>{
+        const cards_number = card.card_number
+        navigate(`/cards/${cards_number}`);
+        handleClose()
+    }
+
     const fullLength = main_list.length + pluck_list.length
+
+    const card_list = main_list.concat(pluck_list)
+    const filteredCards = card_list.filter(card =>
+        (showModal.card_type? card.card_type[0] === showModal.card_type: true))
+        .filter(card => (showModal.card_class? card.card_class === showModal.card_class: true))
 
 
     return(
         <div>
-            {showModal.show ?
+            {showModal.show?
                 <div className="large-modal topbar"
                 >
                     <div className="outScrollable" ref={content}>
@@ -160,14 +152,12 @@ handleRemoveCard
                             <div className="cd-inner2 card-pool-fill">
                                 {filteredCards.map((card) => {
                                     return (
-                                        // <NavLink to={`/cards/${card.card_number}`}>
-                                            <img
-                                                className="cd-related-modal-card pointer"
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "logo4p.png"}
-                                                onClick={() => handleRemoveCard(card)}
-                                                alt={card.name}/>
-                                        // </NavLink>
+                                        <img
+                                            className="cd-related-modal-card pointer"
+                                            title={card.name}
+                                            src={card.picture_url ? card.picture_url : "logo4p.png"}
+                                            alt={card.name}
+                                            onClick={() => selectCard(card)}/>
                                     );
                                 })}
                             </div>

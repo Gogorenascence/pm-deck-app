@@ -493,6 +493,7 @@ function DeckBuildandImport() {
             <StatsPanel
                 main_list={main_list}
                 pluck_list={pluck_list}
+                handleRemoveCard={handleRemoveCard}
             />
             {listView?
                 <div className="deck-list">

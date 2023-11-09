@@ -1617,6 +1617,19 @@ button:hover {
     /* margin-right: 18px; */
   }
 
+  .card-pool-fill4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    grid-auto-flow: dense;
+    /* margin-right: 18px; */
+    justify-self: center;
+    margin: 10px;
+    opacity: 1;
+    /* max-height: 2000px; */
+    transition: all 0.5s;
+  }
+
   .app-container {
     position: relative;
   }
@@ -1952,6 +1965,12 @@ button:hover {
   .cd-measure {
     width: fit-content;
   }
+
+  .stat-item {
+    width: 145px;
+    margin: auto;
+  }
+
 
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
@@ -2411,6 +2430,10 @@ button:hover {
 
   .none {
     display: none;
+  }
+
+  .stat-item {
+    margin: auto;
   }
 }
 
