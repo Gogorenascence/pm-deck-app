@@ -1938,6 +1938,11 @@ button:hover {
     white-space: nowrap;
   }
 
+  .cd-title2 {
+    font-size: 35px;
+    white-space: nowrap;
+  }
+
   .cd-title-container {
     width: 635px;
     display: flex;

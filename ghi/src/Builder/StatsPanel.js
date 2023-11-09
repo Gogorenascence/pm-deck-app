@@ -65,19 +65,21 @@ pluck_list
     }
 
     return(
-        <div style={{marginLeft: "20px", display: "flex"}}>
-            <p>Fighters: {stats.fighters}</p>
-            <p>Auras: {stats.auras}</p>
-            <p>Moves: {stats.moves}</p>
-            <p>Endings: {stats.endings}</p>
-            <p>Any Types: {stats.anyTypes}</p>
-            <p>Items: {stats.items}</p>
-            <p>Events: {stats.events}</p>
-            <p>Comebacks: {stats.comebacks}</p>
-            <p>Staunch: {stats.staunch}</p>
-            <p>Power: {stats.power}</p>
-            <p>Unity: {stats.unity}</p>
-            <p>Canny: {stats.canny}</p>
+        <div className="rarities">
+            <div className="card-pool-fill2">
+                <p>Fighters: {stats.fighters}</p>
+                <p>Auras: {stats.auras}</p>
+                <p>Moves: {stats.moves}</p>
+                <p>Endings: {stats.endings}</p>
+                <p>Any Types: {stats.anyTypes}</p>
+                <p>Items: {stats.items}</p>
+                <p>Events: {stats.events}</p>
+                <p>Comebacks: {stats.comebacks}</p>
+                <p>Staunch: {stats.staunch}</p>
+                <p>Power: {stats.power}</p>
+                <p>Unity: {stats.unity}</p>
+                <p>Canny: {stats.canny}</p>
+            </div>
         </div>
     )
 }

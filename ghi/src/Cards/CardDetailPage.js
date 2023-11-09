@@ -5,7 +5,7 @@ import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-import { adjustFontSize } from "../Helpers";
+
 
 function CardDetailPage() {
 
@@ -130,15 +130,6 @@ function CardDetailPage() {
         };
     }, [card])
 
-    useEffect(() => {
-        adjustFontSize();
-        window.addEventListener('resize', adjustFontSize);
-
-        return () => {
-            window.removeEventListener('resize', adjustFontSize);
-        };
-    }, [card]);
-
     const matchSeries = (line) => {
         const cardCategory = card_categories?.find(category => category.name === line)
         return cardCategory?.id
@@ -200,13 +191,8 @@ function CardDetailPage() {
                 </div>
                 <div className="cd-container-child">
                     <div className="cd-inner2 media-display">
-                    <div className="cd-title-container">
-                        <div className="cd-measure">
-                            <h1 className="none cd-title"
-                                id="dynamic-font"
-                            >{card.name}</h1>
-                        </div>
-                    </div>
+                        <h1 className={card.name.length < 25 ? "none cd-title": "none cd-title2"}
+                        >{card.name}</h1>
                         <div>
                             <div className="cd-info">
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
