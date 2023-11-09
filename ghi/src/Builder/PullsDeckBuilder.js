@@ -6,6 +6,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { PullsContext } from "../context/PullsContext";
 import { AuthContext } from "../context/AuthContext";
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import StatsPanel from "./StatsPanel";
+
 
 function PullsDeckBuilder() {
     const [deck, setDeck] = useState({
@@ -710,7 +712,12 @@ function PullsDeckBuilder() {
 
                     </div>
                 </div>
-                    }
+                }
+                <StatsPanel
+                    main_list={main_list}
+                    pluck_list={pluck_list}
+                    handleRemoveCard={handleRemoveCard}
+                />
                 {listView?
                     <div className="deck-list">
                         <div className="maindeck3">

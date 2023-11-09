@@ -105,7 +105,6 @@ pluck_list
         document.body.style.overflow = 'auto';
     };
 
-
     const handleSetClass = (card_class, item) => {
         setShowModal({
             show: true,
@@ -139,6 +138,10 @@ pluck_list
         (showModal.card_type? card.card_type[0] === showModal.card_type: true))
         .filter(card => (showModal.card_class? card.card_class === showModal.card_class: true))
 
+    const preprocessText = (text) => {
+        return text.split("//").join("\n");
+    };
+
 
     return(
         <div>
@@ -154,7 +157,7 @@ pluck_list
                                     return (
                                         <img
                                             className="cd-related-modal-card pointer"
-                                            title={card.name}
+                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                             src={card.picture_url ? card.picture_url : "logo4p.png"}
                                             alt={card.name}
                                             onClick={() => selectCard(card)}/>
@@ -176,7 +179,7 @@ pluck_list
                         className="left"
                         style={{margin: "1% 5px 1% 20px", fontWeight: "700"}}
                         >Deck Stats</h2>
-                    <img className="logo" src="https://i.imgur.com/n86pToh.png" alt="bars icon"/>
+                    <img className="logo6" src="https://i.imgur.com/n86pToh.png" alt="bars icon"/>
                     {fullLength > 0 ?
                         <h5
                         className="left db-pool-count"

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { BuilderQueryContext } from '../context/BuilderQueryContext';
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { PullsContext } from "../context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
@@ -15,19 +15,10 @@ function DeckBuildandImport() {
     const fileInput = useRef(null);
     const {account} = useContext(AuthContext)
     const {query,
-        setQuery,
         sortState,
-        setSortState,
         boosterSet,
-        setBoosterSet,
-        boosterSets,
-        setBoosterSets,
-        boosterSetId,
-        setBoosterSetId,
         rarity,
-        setRarity,
         listView,
-        setListView,
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
 
@@ -36,29 +27,28 @@ function DeckBuildandImport() {
     const handleFileChange = (event) => {
         const files = event.target.files;
         if (files.length > 0) {
-          const importedDecksArray = [];
+            const importedDecksArray = [];
 
-          for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const reader = new FileReader();
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
 
-            reader.onload = (e) => {
-              try {
-                const importedDeck = JSON.parse(e.target.result);
-                importedDecksArray.push(importedDeck);
-                // If all files have been read, update the state
-                if (importedDecksArray.length === files.length) {
-                  setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                reader.onload = (e) => {
+                try {
+                    const importedDeck = JSON.parse(e.target.result);
+                    importedDecksArray.push(importedDeck);
+                    // If all files have been read, update the state
+                    if (importedDecksArray.length === files.length) {
+                    setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                    }
+                } catch (error) {
+                    console.error('Error parsing imported deck JSON:', error);
                 }
-              } catch (error) {
-                console.error('Error parsing imported deck JSON:', error);
-              }
-            };
-
-            reader.readAsText(file);
-          }
+                };
+                reader.readAsText(file);
+            }
         }
-      };
+    };
 
     const importDeck = (importedDeck) => {
         console.log(importedDeck.ObjectStates[0])

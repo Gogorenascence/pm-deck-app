@@ -1,14 +1,15 @@
-import {
-    Col,
-    Row,
-} from "react-bootstrap";
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from "../display/BackButton";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
 import { AuthContext } from "../context/AuthContext";
 import { BuilderQueryContext } from "../context/BuilderQueryContext";
+import { PullsContext } from "../context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
+import ImageViewListInput from "./ImageViewListInput";
+import ListViewListInput from "./ListViewListInput";
+import CardPool from "./CardPool";
+import DeckImport from './DeckImport';
+import StatsPanel from "./StatsPanel";
 
 
 function DeckCopyPage() {
@@ -28,22 +29,71 @@ function DeckCopyPage() {
 
     const {deck_id} = useParams();
     const {account} = useContext(AuthContext)
+    const fileInput = useRef(null);
     const {query,
-        setQuery,
         sortState,
-        setSortState,
         boosterSet,
-        setBoosterSet,
-        boosterSets,
-        setBoosterSets,
-        boosterSetId,
-        setBoosterSetId,
         rarity,
-        setRarity,
         listView,
-        setListView,
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
+
+
+    const [importedDecks, setImportedDecks] = useState([]);
+    const [showDecks, setShowDecks] = useState(false);
+
+    const handleFileChange = (event) => {
+        const files = event.target.files;
+        if (files.length > 0) {
+            const importedDecksArray = [];
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                try {
+                    const importedDeck = JSON.parse(e.target.result);
+                    importedDecksArray.push(importedDeck);
+                    // If all files have been read, update the state
+                    if (importedDecksArray.length === files.length) {
+                    setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                    }
+                } catch (error) {
+                    console.error('Error parsing imported deck JSON:', error);
+                }
+                };
+                reader.readAsText(file);
+            }
+        }
+    };
+
+    const importDeck = (importedDeck) => {
+        console.log(importedDeck.ObjectStates[0])
+        const cardIDList = importedDeck.ObjectStates[0].DeckIDs.map(num => num/100)
+        const cardList = cardIDList.map(cardID => cards.find(card => card.card_number === cardID))
+        console.log(cardList)
+        const main = cardList.filter(card => card.card_type[0] === 1001||
+            card.card_type[0] === 1002||
+            card.card_type[0] === 1003||
+            card.card_type[0] === 1004||
+            card.card_type[0] === 1005)
+        console.log(main)
+        setMainList([...main_list, ...main])
+        const pluck = cardList.filter(card => card.card_type[0] === 1006||
+            card.card_type[0] === 1007||
+            card.card_type[0] === 1008)
+        console.log(pluck)
+        setPluckList([...pluck_list, ...pluck])
+    };
+
+    const clearDecks = () => {
+        setImportedDecks([])
+    }
+
+    const handleShowDecks = (event) => {
+        setShowDecks(!showDecks);
+    };
 
     const [deck_list, setDeckList] = useState([]);
     const [main_list, setMainList] = useState([]);
@@ -71,24 +121,6 @@ function DeckCopyPage() {
         }
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
         setCards(sortedCards);
-    };
-
-    const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        setBoosterSets(data.booster_sets);
-    };
-
-    const handleBoosterSetChange = (event) => {
-        setBoosterSetId(event.target.value)
-        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
-        setBoosterSet(selectedBoosterSet)
-        console.log(boosterSet[rarity])
-    };
-
-    const handleRarityChange = (event) => {
-        setRarity(event.target.value);
-        console.log(rarity)
     };
 
     const getDeck = async() =>{
@@ -131,6 +163,7 @@ function DeckCopyPage() {
         getDeck();
         getDeckList();
         getCards();
+        getPulledCards();
     // eslint-disable-next-line
     },[]);
 
@@ -152,12 +185,36 @@ function DeckCopyPage() {
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
 
-    const handleQuery = (event) => {
-        setQuery({ ...query, [event.target.name]: event.target.value });
-        setShowMore(20)
+    const {
+        pulls,
+        usePool,
+        setUsePool
+    } = useContext(PullsContext);
+
+    const [pulledCards, setPulledCards] = useState([]);
+    const [noPulledCards, setNoPulledCards] = useState(false);
+
+    const getPulledCards = async() =>{
+        if (pulls.length == 0 ) {
+            setNoPulledCards(true)
+        }
+        const pulledCardsList = [];
+        for (let pull of pulls) {
+            pulledCardsList.push(...pull);
+        }
+        const sortedPulledCards = [...pulledCardsList].sort(sortMethods[sortState].method);
+        console.log(pulledCardsList)
+
+        setPulledCards(sortedPulledCards);
     };
 
-    const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
+    const selectedPool = usePool? cards : pulledCards
+
+    const handleUsePool = (event) => {
+        setUsePool(!usePool);
+    };
+
+    const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
@@ -173,7 +230,7 @@ function DeckCopyPage() {
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
-        setShowMore(showMore + 20);
+        {usePool? setShowMore(showMore + 20): setShowMore(showMore + 50)}
     };
 
     const handleChange = (event) => {
@@ -458,224 +515,70 @@ function DeckCopyPage() {
 
                 <BuilderCardSearch/>
             </div>
-                <div className={showPool ? "cardpool" : "no-cardpool"}>
-                    <div>
-                        <div style={{display: "flex", alignItems: "center"}}>
-                            <h2
-                                className="left"
-                                style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
-                            >Card Pool</h2>
-                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                            {all_cards.length > 0 ?
-                                <h5
-                                    className="left db-pool-count"
-                                >{all_cards.length}</h5>:
-                                null}
-                            { showPool ?
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                        &nbsp;[Hide]
-                                </h5> :
-                                <h5 className="left db-pool-count"
-                                    onClick={() => handleShowPool()}>
-                                    &nbsp;[Show]
-                                </h5>}
-                        </div>
-                        <div className={showPool ? "scrollable" : "hidden2"}>
-                            <div style={{margin: "8px"}}>
-
-                                { all_cards.length == 0 && isQueryEmpty && !noCards?
-                                    <div className="loading-container">
-                                        <div className="loading-spinner"></div>
-                                    </div> :
-                                null}
-
-                                <div className="card-pool-fill">
-                                    {all_cards.slice(0, showMore).map((card) => {
-                                        return (
-                                            <div style={{display: "flex", justifyContent: "center"}}>
-                                                <img
-                                                    onClick={() => handleClick(card)}
-                                                    className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
-                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                    alt={card.name}/>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                            {showMore < all_cards.length ?
-                                <button
-                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
-                                    onClick={handleShowMore}>
-                                    Show More Cards ({all_cards.length - showMore} Remaining)
-                                </button> : null }
-                        </div>
-                    </div>
-                </div>
-                {listView?
-                    <div className="deck-list">
-                        <div className="maindeck3">
-                        <div style={{marginLeft: "20px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                {main_list.length > 0 ?
-                                <h5
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >{main_list.length}</h5>:
-                                null}
-                            </div>
-                            {main_list.length > 0 ?<>
-                                    {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                        return (
-                                            <Col style={{padding: "5px"}}>
-                                                <div className="card-container pointer">
-                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
-                                                    <img
-                                                        className="card-image"
-                                                        src={card.picture_url}
-                                                        alt={card.name}
-                                                    />
-                                                </div>
-                                            </Col>
-
-                                        );
-                                    })}
-                                </>:
-                            <h4 className="left no-cards">No cards added</h4>}
-                        </div>
+            <DeckImport
+                fileInput={fileInput}
+                importDeck={importDeck}
+                importedDecks={importedDecks}
+                showDecks={showDecks}
+                handleFileChange={handleFileChange}
+                handleShowDecks={handleShowDecks}
+                clearDecks={clearDecks}
+            />
+            <CardPool
+                all_cards={all_cards}
+                noCards={noCards}
+                noPulledCards={noPulledCards}
+                combinedList={combinedList}
+                isQueryEmpty={isQueryEmpty}
+                usePool={usePool}
+                showPool={showPool}
+                showMore={showMore}
+                handleClick={handleClick}
+                handleUsePool={handleUsePool}
+                handleShowPool={handleShowPool}
+                handleShowMore={handleShowMore}
+            />
+            <StatsPanel
+                main_list={main_list}
+                pluck_list={pluck_list}
+                handleRemoveCard={handleRemoveCard}
+            />
+            {listView?
+                <div className="deck-list">
+                    <div className="maindeck3">
+                        <ListViewListInput
+                            title={"Main Deck"}
+                            list={main_list}
+                            handleRemoveCard={handleRemoveCard}
+                        />
                     </div>
 
                     <div className="pluckdeck3">
-                        <div style={{marginLeft: "20px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "2% 0% 1% 0%", fontWeight: "700"}}
-                                >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                {pluck_list.length > 0 ?
-                                <h5
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >{pluck_list.length}</h5>:
-                                null}
-                            </div>
-                            {pluck_list.length > 0 ?<>
-                                    {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                        return (
-                                            <Col style={{padding: "5px"}}>
-                                                <div className="card-container pointer">
-                                                    <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
-                                                    <img
-                                                        className="card-image"
-                                                        src={card.picture_url}
-                                                        alt={card.name}
-                                                    />
-                                                </div>
-                                            </Col>
-                                        );
-                                    })}
-                                </>:
-                            <h4 className="left no-cards">No cards added</h4>}
-                        </div>
+                        <ListViewListInput
+                            title={"Pluck Deck"}
+                            list={pluck_list}
+                            handleRemoveCard={handleRemoveCard}
+                        />
                     </div>
                 </div>
-                :<>
-                    <div className="maindeck">
-                        <div>
-                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >Main Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                {main_list.length > 0 ?
-                                <h5
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >{main_list.length}</h5>:
-                                null}
-                                { showMain ?
-                                    <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
-                                        onClick={() => handleShowMain()}>
-                                            &nbsp;[Hide]
-                                    </h5> :
-                                    <h5 className={main_list.length > 0 ? "left db-main-count" : "hidden2"}
-                                        onClick={() => handleShowMain()}>
-                                        &nbsp;[Show]
-                                    </h5>}
-                            </div>
-
-                            {main_list.length > 0 ?
-                            <div className={showMain ? "card-pool-fill2": "hidden2"}>
-                                {main_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                    return (
-                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                        </div>
-                                    );
-                                })}
-                            </div> :
-                        <h4 className="left no-cards">No cards added</h4>}
-                    </div>
-                    </div>
-
-                    <div className="pluckdeck">
-                        <div>
-                            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >Pluck Deck</h2>
-                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                {pluck_list.length > 0 ?
-                                <h5
-                                    className="left"
-                                    style={{margin: "1% 0%", fontWeight: "700"}}
-                                >{pluck_list.length}</h5>:
-                                null}
-                                { showPluck ?
-                                    <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
-                                        onClick={handleShowPluck}
-                                    >
-                                        &nbsp;[Hide]
-                                    </h5> :
-                                    <h5 className={pluck_list.length > 0 ? "left db-pluck-count" : "hidden2"}
-                                        onClick={handleShowPluck}
-                                    >
-                                        &nbsp;[Show]
-                                    </h5>}
-                            </div>
-                            {pluck_list.length > 0 ?
-                            <div className={showPluck ? "card-pool-fill2": "hidden2"}>
-                                {pluck_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
-                                    return (
-                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                className="builder-card2 pointer"
-                                                onClick={() => handleRemoveCard(card)}
-                                                title={card.name}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}
-                                                variant="bottom"/>
-                                        </div>
-                                    );
-                                })}
-                            </div> :
-                        <h4 className="left no-cards">No cards added</h4>}
-                    </div>
+            :<>
+                <div className="maindeck">
+                    <ImageViewListInput
+                        title={"Main Deck"}
+                        list={main_list}
+                        showList={showMain}
+                        handleShowList={handleShowMain}
+                        handleRemoveCard={handleRemoveCard}
+                    />
+                </div>
+                <div className="pluckdeck">
+                    <ImageViewListInput
+                        title={"Pluck Deck"}
+                        list={pluck_list}
+                        showList={showPluck}
+                        handleShowList={handleShowPluck}
+                        handleRemoveCard={handleRemoveCard}
+                    />
                 </div>
             </>}
         </div>

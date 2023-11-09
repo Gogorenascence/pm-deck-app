@@ -924,6 +924,12 @@ button:hover {
   float: right;
 }
 
+.logo6 {
+  margin: 2px 4px 4px 5px;
+  width: 54px;
+  z-index: -1;
+}
+
 .footer {
   display: flex;
   justify-content: center;

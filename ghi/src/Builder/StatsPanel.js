@@ -22,7 +22,7 @@ handleRemoveCard
         unity: 0,
         canny: 0
     }
-    const [showStats, setShowStats] = useState(false)
+    const [showStats, setShowStats] = useState(true)
     const [showModal, setShowModal] = useState({
         show: false,
         label: "",
@@ -145,6 +145,10 @@ handleRemoveCard
         document.body.style.overflow = 'hidden';
     };
 
+    const preprocessText = (text) => {
+        return text.split("//").join("\n");
+    };
+
     const fullLength = main_list.length + pluck_list.length
 
 
@@ -163,7 +167,7 @@ handleRemoveCard
                                         // <NavLink to={`/cards/${card.card_number}`}>
                                             <img
                                                 className="cd-related-modal-card pointer"
-                                                title={card.name}
+                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                 src={card.picture_url ? card.picture_url : "logo4p.png"}
                                                 onClick={() => handleRemoveCard(card)}
                                                 alt={card.name}/>
@@ -186,7 +190,7 @@ handleRemoveCard
                         className="left"
                         style={{margin: "1% 5px 1% 20px", fontWeight: "700"}}
                         >Deck Stats</h2>
-                    <img className="logo" src="https://i.imgur.com/n86pToh.png" alt="bars icon"/>
+                    <img className="logo6" src="https://i.imgur.com/n86pToh.png" alt="bars icon"/>
                     {fullLength > 0 ?
                         <h5
                         className="left db-pool-count"

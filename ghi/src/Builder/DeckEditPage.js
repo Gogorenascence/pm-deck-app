@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import { useParams, useNavigate, NavLink } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import { AuthContext } from "../context/AuthContext";
 import { BuilderQueryContext } from "../context/BuilderQueryContext";
@@ -9,6 +9,7 @@ import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";
 import CardPool from "./CardPool";
 import DeckImport from './DeckImport';
+import StatsPanel from './StatsPanel';
 
 
 function DeckEditPage() {
@@ -29,39 +30,39 @@ function DeckEditPage() {
     const {deck_id} = useParams();
     const {account} = useContext(AuthContext)
     const fileInput = useRef(null);
-
     const {query,
-        setQuery,
         sortState,
-        setSortState,
         boosterSet,
-        setBoosterSet,
-        boosterSets,
-        setBoosterSets,
-        boosterSetId,
-        setBoosterSetId,
         rarity,
-        setRarity,
         listView,
-        setListView,
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
 
     const [importedDecks, setImportedDecks] = useState([]);
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-            try {
-                const importedDeck = JSON.parse(e.target.result);
-                setImportedDecks([...importedDecks, importedDeck]);
-            } catch (error) {
-                console.error('Error parsing imported deck JSON:', error);
+        const files = event.target.files;
+        if (files.length > 0) {
+            const importedDecksArray = [];
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                try {
+                    const importedDeck = JSON.parse(e.target.result);
+                    importedDecksArray.push(importedDeck);
+                    // If all files have been read, update the state
+                    if (importedDecksArray.length === files.length) {
+                    setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                    }
+                } catch (error) {
+                    console.error('Error parsing imported deck JSON:', error);
+                }
+                };
+                reader.readAsText(file);
             }
-        };
-        reader.readAsText(file);
         }
     };
 
@@ -99,7 +100,7 @@ function DeckEditPage() {
 
     const [cards, setCards] = useState([]);
 
-    const [showDecks, setShowDecks] = useState(true);
+    const [showDecks, setShowDecks] = useState(false);
 
     const [showPool, setShowPool] = useState(true);
     const [showMain, setShowMain] = useState(true);
@@ -496,7 +497,7 @@ function DeckEditPage() {
                     <BuilderCardSearch/>
                 </div>
 
-                <DeckImport
+            <DeckImport
                 fileInput={fileInput}
                 importDeck={importDeck}
                 importedDecks={importedDecks}
@@ -518,6 +519,11 @@ function DeckEditPage() {
                 handleUsePool={handleUsePool}
                 handleShowPool={handleShowPool}
                 handleShowMore={handleShowMore}
+            />
+            <StatsPanel
+                main_list={main_list}
+                pluck_list={pluck_list}
+                handleRemoveCard={handleRemoveCard}
             />
             {listView?
                 <div className="deck-list">
