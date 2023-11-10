@@ -12,7 +12,6 @@ import StatsPanel from './StatsPanel';
 
 
 function DeckBuildandImport() {
-    const fileInput = useRef(null);
     const {account} = useContext(AuthContext)
     const {query,
         sortState,
@@ -22,7 +21,9 @@ function DeckBuildandImport() {
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
 
+    const fileInput = useRef(null);
     const [importedDecks, setImportedDecks] = useState([]);
+    const [showDecks, setShowDecks] = useState(false);
 
     const handleFileChange = (event) => {
         const files = event.target.files;
@@ -96,7 +97,6 @@ function DeckBuildandImport() {
 
     const [cards, setCards] = useState([]);
 
-    const [showDecks, setShowDecks] = useState(false);
     const [showPool, setShowPool] = useState(true);
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
@@ -389,7 +389,7 @@ function DeckBuildandImport() {
                         </select>
                         <br/>
                         <input
-                                        style={{margin: "20px 5px 9px 5px", height:"10px"}}
+                            style={{margin: "20px 5px 9px 5px", height:"10px"}}
                             id="private"
                             type="checkbox"
                             onChange={handleCheck}

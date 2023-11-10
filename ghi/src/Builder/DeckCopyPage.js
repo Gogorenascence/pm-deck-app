@@ -29,7 +29,6 @@ function DeckCopyPage() {
 
     const {deck_id} = useParams();
     const {account} = useContext(AuthContext)
-    const fileInput = useRef(null);
     const {query,
         sortState,
         boosterSet,
@@ -38,7 +37,7 @@ function DeckCopyPage() {
         showMore,
         setShowMore} = useContext(BuilderQueryContext)
 
-
+    const fileInput = useRef(null);
     const [importedDecks, setImportedDecks] = useState([]);
     const [showDecks, setShowDecks] = useState(false);
 
@@ -112,7 +111,6 @@ function DeckCopyPage() {
 
     const [noCards, setNoCards] = useState(false);
 
-
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
@@ -134,7 +132,6 @@ function DeckCopyPage() {
         }
         deckData["private"] = true
         setDeck(deckData);
-        console.log(deckData)
     };
 
     const getDeckList = async() =>{
@@ -173,6 +170,7 @@ function DeckCopyPage() {
         return () => {
             document.title = "PlayMaker CardBase"
         };
+    // eslint-disable-next-line
     }, [deck, deck_list, main_list, pluck_list]);
 
     const sortMethods = {
@@ -261,10 +259,8 @@ function DeckCopyPage() {
             card.card_type[0] === 1007 ||
             card.card_type[0] === 1008){
             setPluckList([...pluck_list, card]);
-            console.log(pluck_list);
         }else{
             setMainList([...main_list, card]);
-            console.log(main_list);
         }
         getExtraData();
     }
@@ -333,8 +329,6 @@ function DeckCopyPage() {
         data["parent_id"] = deck_id
         account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         delete data["id"]
-        // delete data["_id"]
-        console.log(data)
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`;
         const fetchConfig = {
@@ -369,137 +363,131 @@ function DeckCopyPage() {
 
     const handleShowPool = (event) => {
         setShowPool(!showPool);
-        console.log(showPool)
     };
 
     const handleShowMain = (event) => {
         setShowMain(!showMain);
-        console.log(showMain)
     };
 
     const handleShowPluck = (event) => {
         setShowPluck(!showPluck);
-        console.log(showPluck)
-    };
-
-    const preprocessText = (text) => {
-        return text.split("//").join("\n");
     };
 
     const isQueryEmpty = Object.values(query).every((value) => value === "");
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Deck Copy</h1>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
-                <div
-                    id="create-deck-page">
-                    <h2 className="left">Deck Details</h2>
-                    <h5 className="label">Name </h5>
-                    <input
-                        className="builder-input"
-                        type="text"
-                        placeholder=" Deck Name"
-                        onChange={handleChange}
-                        name="name"
-                        value={deck.name}>
-                    </input>
-                    <br/>
-                    <h5 className="label">Cover Card</h5>
-                    <select
-                        className="builder-input"
-                        type="text"
-                        placeholder=" Cover Card"
-                        onChange={handleCoverCardChange}
-                        name="cover_card"
-                        value={deck.cover_card}>
-                        <option value="">Cover Card</option>
-                        {uniqueList.sort((a,b) => a.card_number - b.card_number).map((card) => (
-                            <option value={card.picture_url}>{card.name}</option>
-                            ))}
-                    </select>
-                    <br/>
-                    <h5 className="label"> Description </h5>
-                    <textarea
-                        className="builder-text"
-                        type="text"
-                        placeholder=" Deck Description"
-                        onChange={handleChange}
-                        name="description"
-                        value={deck.description}>
-                    </textarea>
-                    <h5 className="label">Strategies</h5>
-                    <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
-                    <br/>
-                    <select
-                        className="builder-text"
-                        multiple
-                        name="strategies"
-                        onChange={handleStrategyChange}
+            <div className="between-space media-display">
+                <span className="media-flex-center">
+                    <div>
+                        <h1 className="left-h1">Deck Copy</h1>
+                        <h2 className="left">Deck Details</h2>
+                        <h5 className="label">Name </h5>
+                        <input
+                            className="builder-input"
+                            type="text"
+                            placeholder=" Deck Name"
+                            onChange={handleChange}
+                            name="name"
+                            value={deck.name}>
+                        </input>
+                        <br/>
+                        <h5 className="label">Cover Card</h5>
+                        <select
+                            className="builder-input"
+                            type="text"
+                            placeholder=" Cover Card"
+                            onChange={handleCoverCardChange}
+                            name="cover_card"
+                            value={deck.cover_card}>
+                            <option value="">Cover Card</option>
+                            {uniqueList.sort((a,b) => a.card_number - b.card_number).map((card) => (
+                                <option value={card.picture_url}>{card.name}</option>
+                                ))}
+                        </select>
+                        <br/>
+                        <h5 className="label"> Description </h5>
+                        <textarea
+                            className="builder-text"
+                            type="text"
+                            placeholder=" Deck Description"
+                            onChange={handleChange}
+                            name="description"
+                            value={deck.description}>
+                        </textarea>
+                        <h5 className="label">Strategies</h5>
+                        <h7 className="label"><em>hold ctrl/cmd to select more than one</em></h7>
+                        <br/>
+                        <select
+                            className="builder-text"
+                            multiple
+                            name="strategies"
+                            onChange={handleStrategyChange}
+                            >
+                            <option value="">Strategy</option>
+                            <option value="Aggro" selected={deck.strategies.includes("Aggro")}>Aggro</option>
+                            <option value="Combo" selected={deck.strategies.includes("Combo")}>Combo</option>
+                            <option value="Control" selected={deck.strategies.includes("Control")}>Control</option>
+                            <option value="Mid-range" selected={deck.strategies.includes("Mid-range")}>Mid-range</option>
+                            <option value="Ramp" selected={deck.strategies.includes("Ramp")}>Ramp</option>
+                            <option value="Second Wind" selected={deck.strategies.includes("Second Wind")}>Second Wind</option>
+                            <option value="Stall" selected={deck.strategies.includes("Stall")}>Stall</option>
+                            <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
+                            <option value="other" selected={deck.strategies.includes("other")}>other</option>
+                        </select>
+                        <br/>
+                        <input
+                            style={{margin: "20px 5px 9px 5px", height: "10px"}}
+                            id="private"
+                            type="checkbox"
+                            onChange={handleCheck}
+                            name="private"
+                            checked={deck.private}>
+                        </input>
+                        <label for="private"
+                            className="bold"
                         >
-                        <option value="">Strategy</option>
-                        <option value="Aggro" selected={deck.strategies.includes("Aggro")}>Aggro</option>
-                        <option value="Combo" selected={deck.strategies.includes("Combo")}>Combo</option>
-                        <option value="Control" selected={deck.strategies.includes("Control")}>Control</option>
-                        <option value="Mid-range" selected={deck.strategies.includes("Mid-range")}>Mid-range</option>
-                        <option value="Ramp" selected={deck.strategies.includes("Ramp")}>Ramp</option>
-                        <option value="Second Wind" selected={deck.strategies.includes("Second Wind")}>Second Wind</option>
-                        <option value="Stall" selected={deck.strategies.includes("Stall")}>Stall</option>
-                        <option value="Toolbox" selected={deck.strategies.includes("Toolbox")}>Toolbox</option>
-                        <option value="other" selected={deck.strategies.includes("other")}>other</option>
-                    </select>
-                    <br/>
-                    <input
-                        style={{margin: "20px 5px 9px 5px", height: "10px"}}
-                        id="private"
-                        type="checkbox"
-                        onChange={handleCheck}
-                        name="private"
-                        checked={deck.private}>
-                    </input>
-                    <label for="private"
-                        className="bold"
-                    >
-                        Make my decks private
-                    </label>
-                    <br/>
-                    {account?
-                        <button
+                            Make my decks private
+                        </label>
+                        <br/>
+                        {account?
+                            <button
+                                style={{width: "67px", margin: "5px"}}
+                                variant="dark"
+                                onClick={handleSubmit}
+                            >
+                                Save
+                            </button>:
+                            <button
                             style={{width: "67px", margin: "5px"}}
                             variant="dark"
-                            onClick={handleSubmit}
-                        >
-                            Save
-                        </button>:
+                            >
+                                Save
+                            </button>
+                        }
+                        <BackButton/>
                         <button
-                        style={{width: "67px", margin: "5px"}}
-                        variant="dark"
+                            className="left red"
+                            variant="danger"
+                            onClick={clearMain}
                         >
-                            Save
+                            Clear Main
                         </button>
-                    }
-                    <BackButton/>
-                    <button
-                        className="left red"
-                        variant="danger"
-                        onClick={clearMain}
-                    >
-                        Clear Main
-                    </button>
-                    <button
-                        className="left red"
-                        variant="danger"
-                        onClick={clearPluck}
-                    >
-                        Clear Pluck
-                    </button>
-                    <br/>
-                    { !account?
-                        <h6 className="error">You must be logged in to copy a deck</h6>:
-                    null
-                    }
-                </div>
-                <div>
+                        <button
+                            className="left red"
+                            variant="danger"
+                            onClick={clearPluck}
+                        >
+                            Clear Pluck
+                        </button>
+                        <br/>
+                        { !account?
+                            <h6 className="error">You must be logged in to copy a deck</h6>:
+                        null
+                        }
+                    </div>
+                </span>
+                <div className="none margin-top-93">
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
@@ -512,8 +500,9 @@ function DeckCopyPage() {
                             src={"https://i.imgur.com/krY25iI.png"}
                             alt="card"/>)}
                 </div>
-
-                <BuilderCardSearch/>
+                <span className="media-flex-center margin-top-93">
+                    <BuilderCardSearch/>
+                </span>
             </div>
             <DeckImport
                 fileInput={fileInput}
