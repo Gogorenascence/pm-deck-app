@@ -51,16 +51,16 @@ function DeckCopyPage() {
                 const reader = new FileReader();
 
                 reader.onload = (e) => {
-                try {
-                    const importedDeck = JSON.parse(e.target.result);
-                    importedDecksArray.push(importedDeck);
-                    // If all files have been read, update the state
-                    if (importedDecksArray.length === files.length) {
-                    setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                    try {
+                        const importedDeck = JSON.parse(e.target.result);
+                        importedDecksArray.push(importedDeck);
+                        // If all files have been read, update the state
+                        if (importedDecksArray.length === files.length) {
+                        setImportedDecks((prevDecks) => [...prevDecks, ...importedDecksArray]);
+                        }
+                    } catch (error) {
+                        console.error('Error parsing imported deck JSON:', error);
                     }
-                } catch (error) {
-                    console.error('Error parsing imported deck JSON:', error);
-                }
                 };
                 reader.readAsText(file);
             }
