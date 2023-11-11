@@ -771,13 +771,8 @@ function PullsDeckBuilder() {
                                 style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
                             >Card Pool</h2>
                             <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-
                         </div>
-
-                            <div style={{marginLeft: "20px"}}>
-                            <h4 className="left no-cards">No cards added</h4>
-                            </div>
-
+                        <h4 className="left no-cards">No cards added</h4>
                     </div>
                 </div>
                 }

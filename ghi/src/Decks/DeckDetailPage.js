@@ -231,39 +231,36 @@ function DeckDetailPage() {
             :
                 null
             }
-            <div style={{display: "flex"}}>
+            <div className="none button-fill">
                 <div className={showHand? "maindeck animate wide90p": "hidden2"}
                     style={{width: "90%"}}>
                     <div style={{marginLeft: "10px"}}>
-
-                                <h4
-                                    className="left"
-                                    style={{margin: "10px 10px", fontWeight: "700"}}
-                                    >Test Hand
-                                </h4>
-                                <div style={{width: "95%", marginLeft: "20px"}}>
-                                    <Row xs="auto" className="justify-content-start">
-                                        {shuffledDeck.slice(0,6).map((card) => {
-                                            return (
-                                                <Col
-                                                    style={{padding: "2px 5px 8px 5px"}}>
-                                                    <img
-                                                        style={{
-                                                            width: '115px',
-                                                            margin: '10px 0px 10px 0px',
-                                                            borderRadius: "7px",
-                                                            overflow: "hidden"}}
-                                                        onClick={() => handleMulliganChange(card)}
-                                                        className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card3" : "builder-card3"}
-                                                        title={card.name}
-                                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                        alt={card.name}/>
-                                                </Col>
-                                            );
-                                        })}
-                                    </Row>
-                                </div>
-
+                        <h4
+                            className="left"
+                            style={{margin: "10px 10px", fontWeight: "700"}}
+                            >Test Hand
+                        </h4>
+                        <div style={{width: "95%", marginLeft: "20px"}}>
+                            <Row xs="auto" className="justify-content-start">
+                                {shuffledDeck.slice(0,6).map((card) => {
+                                    return (
+                                        <Col style={{padding: "2px 5px 8px 5px"}}>
+                                            <img
+                                                style={{
+                                                    width: '115px',
+                                                    margin: '10px 0px 10px 0px',
+                                                    borderRadius: "7px",
+                                                    overflow: "hidden"}}
+                                                onClick={() => handleMulliganChange(card)}
+                                                className={mulliganList.includes(shuffledDeck.indexOf(card)) ? "selected builder-card3" : "builder-card3"}
+                                                title={card.name}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                        </div>
                     </div>
                 </div>
                 <div className={showHand? "pluckdeck animate": "hidden2"}
@@ -286,11 +283,8 @@ function DeckDetailPage() {
                                 src={ownership.picture_url ? ownership.picture_url : "https://i.imgur.com/krY25iI.png"}
                                 alt={ownership.name}
                                 variant="bottom"/>
-
                         </Col>
                     </Row>
-
-
                 </div>
             </div>
             <div style={{ display: "flex" }}>
@@ -306,9 +300,9 @@ function DeckDetailPage() {
                             </button>
                         </NavLink>
                         <button
-                            className="left heightNorm button100 red"
+                            className="left heightNorm red"
                             onClick={handleDelete}
-                            style={{marginLeft: ".5%", marginRight: "7px"}}
+                            style={{marginLeft: "5px", marginRight: "7px"}}
                             >
                             Delete Deck
                         </button>
@@ -376,7 +370,7 @@ function DeckDetailPage() {
                 pluck_list={pluck_list}
             />
             {listView?
-                <div className="deck-list">
+                <div className="deck-list media-display">
                     <div className="maindeck3">
                     <div style={{marginLeft: "20px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
