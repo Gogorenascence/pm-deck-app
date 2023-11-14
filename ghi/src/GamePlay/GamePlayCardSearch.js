@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { GamePlayQueryContext } from '../context/GamePlayQueryContext';
+import { GamePlayQueryContext } from '../context/GamePlayQueryContext.js';
 
 
 function GamePlayCardSearch() {

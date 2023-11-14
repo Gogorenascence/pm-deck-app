@@ -157,7 +157,7 @@ function PullPage() {
                     </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                        <h3 className="left cd-container-child media-margin-top-none">{boosterSet.name}</h3>
+                        <h3 className="left margin-top-30 media-margin-top-none">{boosterSet.name}</h3>
                         <h6 className="left"
                             style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
                             >

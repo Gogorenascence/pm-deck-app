@@ -4,7 +4,8 @@ import { QueryContextProvider } from "./QueryContext";
 import { DeckQueryContextProvider } from "./DeckQueryContext";
 import { AuthContextProvider } from "./AuthContext";
 import { BuilderQueryContextProvider } from "./BuilderQueryContext";
-import { GamePlayQueryContextProvider } from "./GamePlayQueryContext";
+import { GamePlayQueryContextProvider } from "./GamePlayQueryContext.js";
+import { GameStateContextProvider } from "./GameStateContext";
 
 
 const AppProvider = ({ children }) => {
@@ -15,7 +16,9 @@ const AppProvider = ({ children }) => {
                     <PullsContextProvider>
                         <QueryContextProvider>
                             <DeckQueryContextProvider>
-                                {children}
+                                <GameStateContextProvider>
+                                    {children}
+                                </GameStateContextProvider>
                             </DeckQueryContextProvider>
                         </QueryContextProvider>
                     </PullsContextProvider>

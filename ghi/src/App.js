@@ -48,6 +48,7 @@ import GamePlayPage from "./GamePlay/GamePlayPage";
 import CardTagsPage from "./GamePlay/CardTags/CardTagsPage";
 import CardTypesPage from "./GamePlay/CardTypes/CardTypesPage";
 import ReactionsPage from "./GamePlay/Reactions/ReactionsPage";
+import SimulatorPage from "./Simulator/SimulatorPage";
 
 
 function App() {
@@ -106,6 +107,7 @@ function App() {
               <Route path="/reactions/:reaction_id/edit" element={<ReactionEdit />} />
               <Route path="/gameplay" element={<GamePlayPage />} />
               <Route path="/reactions" element={<ReactionsPage />} />
+              <Route path="/simulator" element={<SimulatorPage />} />
             </Routes>
 
           </div>

@@ -6,7 +6,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
 import GamePlayCardSearch from "../GamePlayCardSearch";
-import { GamePlayQueryContext } from "../../context/GamePlayQueryContext";
+import { GamePlayQueryContext } from "../../context/GamePlayQueryContext.js";
 import BackButton from "../../display/BackButton";
 import ImageViewSupportInput from "../ImageViewSupportInput";
 import ImageViewAntiSupportInput from "../ImageViewAntiSupportInput";
