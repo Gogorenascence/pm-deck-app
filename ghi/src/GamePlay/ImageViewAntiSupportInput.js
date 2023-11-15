@@ -2,13 +2,13 @@ import React from 'react';
 
 
 function ImageViewAntiSupportInput({
-anti_support_list,
-showAntiSupport,
-handleShowAntiSupport,
-modifySupport,
-clearAntiSupport,
-handleModifySupport,
-handleRemoveCard,
+    anti_support_list,
+    showAntiSupport,
+    handleShowAntiSupport,
+    modifySupport,
+    clearAntiSupport,
+    handleModifySupport,
+    handleRemoveCard,
 }) {
     return (
         <div className="anti_support">

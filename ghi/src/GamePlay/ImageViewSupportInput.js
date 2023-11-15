@@ -2,13 +2,13 @@ import React from 'react';
 
 
 function ImageViewSupportInput({
-support_list,
-showSupport,
-handleShowSupport,
-modifySupport,
-clearSupport,
-handleModifySupport,
-handleRemoveCard,
+    support_list,
+    showSupport,
+    handleShowSupport,
+    modifySupport,
+    clearSupport,
+    handleModifySupport,
+    handleRemoveCard,
 }) {
     return (
         <div className="support">

@@ -688,13 +688,13 @@ button:hover {
 
 @keyframes pulse2 {
   0% {
-    outline: 7px solid rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.60);
   }
   50% {
-    outline: 7px solid rgba(255, 255, 255, 0.308);
+    background-color: rgba(0, 0, 0, 0.75);
   }
   100% {
-    outline: 7px solid rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.60);
   }
 }
 
@@ -1244,6 +1244,10 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.7); /* Adjust the background color and opacity as desired */
 }
 
+.margin-top-10 {
+  margin-top: 10px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -1418,6 +1422,15 @@ button:hover {
   border-radius: 7px;
   overflow: hidden;
   margin: auto;
+}
+
+
+.builder-card5 {
+  width: 140px;
+  margin: 0;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid white;
 }
 
 .rainbow {
@@ -1831,6 +1844,14 @@ button:hover {
     margin-top: 93px;
   }
 
+  .margin-left {
+    margin-left: 20px;
+  }
+
+  .margin-bottom-0 {
+    margin-bottom: 0px;
+  }
+
   .navbar {
     top: 0;
     height: 66px;
@@ -1983,15 +2004,67 @@ button:hover {
 
   .play-area {
     height: 100vh;
+    margin-top: 500px;
   }
 
-  .player-mat {
-    width: 600px;
+  /* .player-mat {
+    width: 900px;
+    position: absolute;
+    z-index: -10;
+    margin: -600px -600px -600px -600px ;
+    top: 206px;
+  } */
+
+  .matCard {
+    height: 196px;
+    width: 140px;
+    outline: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.75);
     position: relative;
-    left: 50vw;
-    top: 50vh;
   }
 
+  .matCard:hover {
+    height: 196px;
+    width: 140px;
+    animation: pulse2 1.5s infinite;
+  }
+
+  .matCardOverlay {
+    height: 196px;
+    width: 140px;
+    outline: 1px solid rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 3;
+    position: absolute;
+  }
+
+  .matLabel {
+    height: 40px;
+    width: 140px;
+    outline: 2px solid rgb(255, 255, 255);
+    background-color: rgba(107, 107, 107, 0.75);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .matLabel2 {
+    height: 40px;
+    width: 560px;
+    outline: 2px solid rgb(255, 255, 255);
+    background-color: rgba(107, 107, 107, 0.75);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .field_box {
+    transform: perspective(1000px) rotateX(45deg) scale(.8, .8);
+    align-self: center;
+    position: relative;
+}
 
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {

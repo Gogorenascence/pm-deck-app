@@ -1190,3 +1190,53 @@ function sendEmail() {
 // }
 
 // export default StatsPanel
+
+// const playCard = (card, index, deckType) => {
+//   const pluckZones = {...activePluck}
+//   if (deckType === "main") {
+//       const playZones = {...playArea}
+//       const extra_slots = ["slot_5", "slot_6", "slot_7", "slot_8"]
+//       const nextAvailableSlot = extra_slots.find(slot => playZones[slot].length === 0)
+//       const fighter_slot = playZones.fighter_slot
+//       const aura_slot = playZones.aura_slot
+//       const move_slot = playZones.move_slot
+//       const ending_slot = playZones.ending_slot
+//       const newHand = [...hand]
+//       if (card.card_type[0].name === "Fighter") {
+//           if (fighter_slot.length === 0) {
+//               fighter_slot.push(card)
+//           } else if (nextAvailableSlot) {
+//               playZones[nextAvailableSlot].push(card)
+//           } else {
+//               console.error("No available slots")
+//           }
+//       } else if (card.card_type[0].name === "Aura") {
+//           if (aura_slot.length === 0) {
+//               aura_slot.push(card)
+//           } else if (nextAvailableSlot) {
+//               playZones[nextAvailableSlot].push(card)
+//           } else {
+//               console.error("No available slots")
+//           }
+//       } else if (card.card_type[0].name === "Move") {
+//           if (move_slot.length === 0) {
+//               move_slot.push(card)
+//           } else if (nextAvailableSlot) {
+//               playZones[nextAvailableSlot].push(card)
+//           } else {
+//               console.error("No available slots")
+//           }
+//       } else if (card.card_type[0].name === "Ending") {
+//           if (ending_slot.length === 0) {
+//               ending_slot.push(card)
+//           } else if (nextAvailableSlot) {
+//               playZones[nextAvailableSlot].push(card)
+//           } else {
+//               console.error("No available slots")
+//           }
+//       }
+//       console.log(card, index)
+//       setHand(newHand.filter((_, i) => i !== index))
+//       setPlayArea(playZones)
+//   }
+// }

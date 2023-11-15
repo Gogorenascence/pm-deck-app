@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
+import GameBoard from "./GameBoard";
 
 
 function SimulatorPage() {
@@ -28,6 +29,9 @@ function SimulatorPage() {
     const [cards, setCards] = useState([])
     const [hand, setHand] = useState([])
     const [ownership, setOwnership] = useState([])
+    const [selectedIndex, setSelectedIndex] = useState(null)
+    const [selectedPluckIndex, setSelectedPluckIndex] = useState(null)
+
 
     const getDecks = async() =>{
         // setLoading(true)
@@ -76,21 +80,19 @@ function SimulatorPage() {
         );
         setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
-
-        console.log(player)
     }
 
     useEffect(() => {
-        console.log(playerMainDeck)
-        console.log(playerPluckDeck)
         setPlayer((prevPlayer) => ({
             ...prevPlayer,
             mainDeck: playerMainDeck.cards,
             pluckDeck: playerPluckDeck.cards,
             hand: hand,
             ownership: ownership,
+            playArea: playArea,
+            activePluck: activePluck
         }));
-    }, [playerMainDeck, playerPluckDeck, hand, ownership]);
+    }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck]);
 
     const shuffleMainDeck = () => {
         console.log(player)
@@ -106,7 +108,6 @@ function SimulatorPage() {
             shuffledDeck[randomMainIndex], shuffledDeck[currentMainIndex]];
         }
         setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledDeck});
-        console.log(shuffledDeck)
     }
 
     const shufflePluckDeck = () => {
@@ -123,7 +124,6 @@ function SimulatorPage() {
             shuffledDeck[randomPluckIndex], shuffledDeck[currentPluckIndex]];
         }
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledDeck});
-        console.log(shuffledDeck)
     }
 
     const gameStart = () => {
@@ -157,8 +157,7 @@ function SimulatorPage() {
     }
 
     const checkPlayer = () => {
-        console.log(player.hand)
-        console.log(hand)
+        console.log(player)
     }
 
     const drawCard = () => {
@@ -191,42 +190,126 @@ function SimulatorPage() {
         }
     }
 
+    const selectCard = (index) => {
+        selectedIndex === index? setSelectedIndex(null): setSelectedIndex(index)
+    }
+
+    const selectPluck = (index) => {
+        selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
+    }
+
+    const playCard = (zone) => {
+        if (selectedIndex !== null) {
+            const playedCard = player.hand[selectedIndex]
+            const playZones = {...player.playArea}
+            const selectZone = playZones[zone]
+            const newHand = [...player.hand]
+            selectZone.push(playedCard)
+            setHand(newHand.filter((_, i) => i !== selectedIndex))
+            setSelectedIndex(null)
+            setPlayArea(playZones)
+        }
+    }
+
+    const playPluck = (zone) => {
+        if (selectedPluckIndex !== null) {
+            const playedPluck = player.ownership[selectedPluckIndex]
+            const pluckZones = {...player.activePluck}
+            const selectZone = pluckZones[zone]
+            const newOwnership = [...player.ownership]
+            selectZone.push(playedPluck)
+            setOwnership(newOwnership.filter((_, i) => i !== selectedPluckIndex))
+            setSelectedPluckIndex(null)
+            setActivePluck(pluckZones)
+        }
+    }
+
+    const preprocessText = (text) => {
+        return text.split("//").join("\n");
+    };
+
     return (
-        <div className="play-area">
-            <div>
-                <h5 className="label">Select a Deck </h5>
-                <select
-                    className="builder-input"
-                    type="text"
-                    placeholder=" Deck"
-                    onChange={handleChangeDeck}
-                    name="Deck">
-                    <option value="">Deck</option>
-                    {decks.map((deck) => (
-                        <option value={deck.id}>{deck.name}</option>
-                        ))}
-                </select>
+        <div>
+            <div style={{display: "flex"}}>
+                <div>
+                    <h5 className="label">Select a Deck </h5>
+                    <select
+                        className="builder-input"
+                        type="text"
+                        placeholder=" Deck"
+                        onChange={handleChangeDeck}
+                        name="Deck">
+                        <option value="">Deck</option>
+                        {decks.map((deck) => (
+                            <option value={deck.id}>{deck.name}</option>
+                            ))}
+                    </select>
+                    <button onClick={fillDecks}>Get Deck</button>
+
+                    {player.mainDeck.length > 0 ?
+                        <>
+                            <button onClick={gameStart}>Game Start</button>
+
+                        </>:null
+                    }
+                    {player.hand.length > 0 || player.ownership.length > 0?
+                        // <p>{player.hand.length}</p>: null
+                        <>
+                            <div className="card-pool-fill">
+                                {player.hand.map((card, index) => {
+                                    return (
+                                        <div style={{display: "flex", justifyContent: "center"}}>
+                                            <img
+                                                onClick={() => selectCard(index)}
+                                                className={
+                                                    selectedIndex === index?
+                                                    "selected builder-card pointer glow3"
+                                                :
+                                                    "builder-card pointer glow3"
+                                                }
+                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            <div className="card-pool-fill">
+                                {player.ownership.map((card, index) => {
+                                    return (
+                                        <div style={{display: "flex", justifyContent: "center"}}>
+                                            <img
+                                                onClick={() => selectPluck(index)}
+                                                className={
+                                                    selectedPluckIndex === index?
+                                                    "selected builder-card pointer glow3"
+                                                :
+                                                    "builder-card pointer glow3"
+                                                }
+                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </>: null
+                    }
+                    <button onClick={checkPlayer}>Player Info</button>
+
+                </div>
+                <GameBoard
+                    playArea={player.playArea}
+                    activePluck={player.activePluck}
+                    drawCard={drawCard}
+                    drawPluck={drawPluck}
+                    mainDeck={player.mainDeck}
+                    pluckDeck={player.pluckDeck}
+                    playCard={playCard}
+                    playPluck={playPluck}
+                />
             </div>
-            <button onClick={fillDecks}>Get Deck</button>
-
-
-            {player.mainDeck.length > 0 ?
-                <>
-                <button onClick={gameStart}>Game Start</button>
-                <button onClick={drawCard}>Draw Card</button>
-                <button onClick={drawPluck}>Draw Pluck</button>
-                </>:null
-            }
-            {player.hand.length > 0 ?
-                // <p>{player.hand.length}</p>: null
-                <>
-                    {player.hand.map(card => <p>{card.name}</p>)}
-                    {player.ownership.map(card => <p>{card.name}</p>)}
-                </>: null
-            }
-            <button onClick={checkPlayer}>Player Info</button>
-            {/* <img className="player-mat"
-                src="pm-deck-builder-mat.png"/> */}
         </div>
     );
 }
