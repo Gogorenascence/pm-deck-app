@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
 import GameBoard from "./GameBoard";
+import PositionSlider from "./PositionSlider";
 
 
 function SimulatorPage() {
@@ -29,9 +30,17 @@ function SimulatorPage() {
     const [cards, setCards] = useState([])
     const [hand, setHand] = useState([])
     const [ownership, setOwnership] = useState([])
+    const [discard, setDiscard] = useState([])
+    const [pluckDiscard, setPluckDiscard] = useState([])
     const [selectedIndex, setSelectedIndex] = useState(null)
     const [selectedPluckIndex, setSelectedPluckIndex] = useState(null)
 
+    const [transformRotateX, setTransformRotateX] = useState("45deg")
+    const [scale, setScale] = useState(0.75)
+    const [position, setPosition] = useState({
+    x_pos: 0,
+    y_pos: -100,
+    })
 
     const getDecks = async() =>{
         // setLoading(true)
@@ -90,9 +99,11 @@ function SimulatorPage() {
             hand: hand,
             ownership: ownership,
             playArea: playArea,
-            activePluck: activePluck
+            activePluck: activePluck,
+            mainDiscard: discard,
+            pluckDiscard: pluckDiscard
         }));
-    }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck]);
+    }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck, discard, pluckDiscard]);
 
     const shuffleMainDeck = () => {
         console.log(player)
@@ -192,6 +203,7 @@ function SimulatorPage() {
 
     const selectCard = (index) => {
         selectedIndex === index? setSelectedIndex(null): setSelectedIndex(index)
+        console.log(pluckDiscard)
     }
 
     const selectPluck = (index) => {
@@ -224,6 +236,76 @@ function SimulatorPage() {
         }
     }
 
+    const discardCard = (card, index, zone) => {
+        const newPlayArea = {...player.playArea}
+        const selectZone = newPlayArea[zone]
+        const newDiscardPile = [...player.mainDiscard]
+
+        newDiscardPile.push(card)
+        const newSelectZone = selectZone.filter((_, i) => i !== index)
+        newPlayArea[zone] = newSelectZone
+
+        setDiscard(newDiscardPile)
+        setPlayArea(newPlayArea)
+    }
+
+    const discardPluck = (card, index, zone) => {
+        const newActivePluck = {...player.activePluck}
+        const selectZone = newActivePluck[zone]
+        const newDiscardPile = [...player.pluckDiscard]
+
+        newDiscardPile.push(card)
+        const newSelectZone = selectZone.filter((_, i) => i !== index)
+        newActivePluck[zone] = newSelectZone
+
+        setPluckDiscard(newDiscardPile)
+        setActivePluck(newActivePluck)
+    }
+
+    const handleChangeTransformRotateX = (event) => {
+        setTransformRotateX(`${event.target.value}deg`);
+    };
+
+    const handleChangeScale = (change) => {
+        if (change === 'increase') {
+            if (scale < 1.4) {
+                setScale(scale + 0.1);
+            }
+        } else {
+            if (scale > 0.5) {
+                setScale(scale - 0.1 );
+            }
+        }
+    }
+
+    const handleChangePosition = (direction) => {
+        const MOVE_AMOUNT = 30;
+        const y_pos = position.y_pos
+        const x_pos = position.x_pos
+        if (direction === 'up') {
+            setPosition({...position, y_pos: y_pos - MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'down') {
+            setPosition({...position, y_pos: y_pos + MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'left') {
+            setPosition({...position, x_pos: x_pos - MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'right') {
+            setPosition({...position, x_pos: x_pos + MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else {
+            setPosition({...position, x_pos: 0, y_pos: 0 });
+            //this.forceUpdate();
+        }
+    }
+
+    const fieldStyle = {
+        transform: transformRotateX && scale && position.x_pos != undefined && position.y_pos !== undefined ?
+            "perspective(1000px) rotateX(" + transformRotateX + ") scale(" + scale + ") translate(" + position.x_pos + "px, " + position.y_pos + "px)"
+            : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 0px)",
+    }
+
     const preprocessText = (text) => {
         return text.split("//").join("\n");
     };
@@ -252,10 +334,31 @@ function SimulatorPage() {
 
                         </>:null
                     }
+
+                    <button onClick={checkPlayer}>Player Info</button>
+
+                </div>
+                <div>
+                    <GameBoard
+                            playArea={player.playArea}
+                            activePluck={player.activePluck}
+                            drawCard={drawCard}
+                            drawPluck={drawPluck}
+                            mainDeck={player.mainDeck}
+                            pluckDeck={player.pluckDeck}
+                            playCard={playCard}
+                            playPluck={playPluck}
+                            fieldStyle={fieldStyle}
+                            mainDiscard={player.mainDiscard}
+                            discardCard={discardCard}
+                            pluckDiscard={player.pluckDiscard}
+                            discardPluck={discardPluck}
+                        />
+
                     {player.hand.length > 0 || player.ownership.length > 0?
                         // <p>{player.hand.length}</p>: null
                         <>
-                            <div className="card-pool-fill">
+                            <div className="card-pool-fill-hand">
                                 {player.hand.map((card, index) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
@@ -263,9 +366,9 @@ function SimulatorPage() {
                                                 onClick={() => selectCard(index)}
                                                 className={
                                                     selectedIndex === index?
-                                                    "selected builder-card pointer glow3"
+                                                    "selected3 builder-card-hand pointer glow3"
                                                 :
-                                                    "builder-card pointer glow3"
+                                                    "builder-card-hand pointer glow3"
                                                 }
                                                 title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -275,7 +378,7 @@ function SimulatorPage() {
                                 })}
                             </div>
 
-                            <div className="card-pool-fill">
+                            <div className="card-pool-fill-hand">
                                 {player.ownership.map((card, index) => {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
@@ -296,18 +399,11 @@ function SimulatorPage() {
                             </div>
                         </>: null
                     }
-                    <button onClick={checkPlayer}>Player Info</button>
-
                 </div>
-                <GameBoard
-                    playArea={player.playArea}
-                    activePluck={player.activePluck}
-                    drawCard={drawCard}
-                    drawPluck={drawPluck}
-                    mainDeck={player.mainDeck}
-                    pluckDeck={player.pluckDeck}
-                    playCard={playCard}
-                    playPluck={playPluck}
+                <PositionSlider
+                    handleChangePosition={handleChangePosition}
+                    handleChangeScale={handleChangeScale}
+                    handleChangeTransformRotateX={handleChangeTransformRotateX}
                 />
             </div>
         </div>

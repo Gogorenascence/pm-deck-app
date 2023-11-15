@@ -10,7 +10,12 @@ function GameBoard({
     drawCard,
     drawPluck,
     playCard,
-    playPluck
+    playPluck,
+    fieldStyle,
+    mainDiscard,
+    discardCard,
+    pluckDiscard,
+    discardPluck
 }) {
 
     const main_deck = mainDeck || [];
@@ -18,24 +23,26 @@ function GameBoard({
     const aura = playArea.aura_slot || [];
     const move = playArea.move_slot || [];
     const ending = playArea.ending_slot || [];
-    const slot5 = playArea.slot_5 || []
-    const slot6 = playArea.slot_6 || []
-    const slot7 = playArea.slot_7 || []
-    const slot8 = playArea.slot_8 || []
+    const slot5 = playArea.slot_5 || [];
+    const slot6 = playArea.slot_6 || [];
+    const slot7 = playArea.slot_7 || [];
+    const slot8 = playArea.slot_8 || [];
+    const discard_pile = mainDiscard || [];
 
     const pluck_deck = pluckDeck || [];
     const pluck_slot1 = activePluck.slot_1 || [];
     const pluck_slot2 = activePluck.slot_2 || [];
     const pluck_slot3 = activePluck.slot_3 || [];
     const pluck_slot4 = activePluck.slot_4 || [];
+    const pluck_discard_pile = pluckDiscard || [];
 
     const preprocessText = (text) => {
         return text.split("//").join("\n");
     };
 
     return (
-        <div>
-            <div className="field_box">
+        <div className="play-area">
+            <div className="field_box" style={fieldStyle}>
                 <div style={{display: "flex"}}>
                     <div className="matCard"
                         onClick={() => playCard("slot_5")}
@@ -48,11 +55,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(slot5[slot5.length-1], 0, "slot_5")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={slot5[0].picture_url ? slot5[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={slot5[0].name}/>
+                                    src={slot5[slot5.length-1].picture_url ? slot5[slot5.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={slot5[slot5.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -67,11 +74,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(slot6[slot6.length-1], 0, "slot_6")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={slot6[0].picture_url ? slot6[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={slot6[0].name}/>
+                                    src={slot6[slot6.length-1].picture_url ? slot6[slot6.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={slot6[slot6.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -86,11 +93,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(slot7[slot7.length-1], 0, "slot_7")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={slot7[0].picture_url ? slot7[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={slot7[0].name}/>
+                                    src={slot7[slot7.length-1].picture_url ? slot7[slot7.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={slot7[slot7.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -105,11 +112,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(slot8[slot8.length-1], 0, "slot_8")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={slot8[0].picture_url ? slot8[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={slot8[0].name}/>
+                                    src={slot8[slot8.length-1].picture_url ? slot8[slot8.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={slot8[slot8.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -132,11 +139,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={fighter[0].picture_url ? fighter[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={fighter[0].name}/>
+                                    src={fighter[fighter.length-1].picture_url ? fighter[fighter.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={fighter[fighter.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -151,11 +158,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(aura[aura.length-1], 0, "aura_slot")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={aura[0].picture_url ? aura[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={aura[0].name}/>
+                                    src={aura[aura.length-1].picture_url ? aura[aura.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={aura[aura.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -170,11 +177,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(move[move.length-1], 0, "move_slot")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={move[0].picture_url ? move[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={move[0].name}/>
+                                    src={move[move.length-1].picture_url ? move[move.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={move[move.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -189,15 +196,30 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardCard(ending[ending.length-1], 0, "ending_slot")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={ending[0].picture_url ? ending[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={ending[0].name}/>
+                                    src={ending[ending.length-1].picture_url ? ending[ending.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={ending[ending.length-1].name}/>
                             </>
                         :null}
                     </div>
-                    <div className="matCard margin-left"></div>
+                    <div className="matCard margin-left"
+                    >
+                        {discard_pile.length > 1 ?
+                            <div className="matCardOverlay">
+                                <h1>{discard_pile.length}</h1>
+                            </div> :null
+                        }
+                        {discard_pile.length > 0 ?
+                        <img
+                            onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                            className="builder-card5 pointer glow3"
+                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                            src={discard_pile[discard_pile.length-1].picture_url ? discard_pile[discard_pile.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                            alt={discard_pile[discard_pile.length-1].name}/>
+                            :null}
+                    </div>
                     <div className="matCard"
                         onClick={() => drawCard()}
                     >
@@ -207,7 +229,7 @@ function GameBoard({
                             </div> :null
                         }
                         <img
-                            // onClick={() => playCard(card, index, "main")}
+                            onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                             className="builder-card5 pointer glow3"
                             // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                             src="https://i.imgur.com/krY25iI.png"
@@ -227,11 +249,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardPluck(pluck_slot1[pluck_slot1.length-1], 0, "slot_1")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={pluck_slot1[0].picture_url ? pluck_slot1[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={pluck_slot1[0].name}/>
+                                    src={pluck_slot1[pluck_slot1.length-1].picture_url ? pluck_slot1[pluck_slot1.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                                    alt={pluck_slot1[pluck_slot1.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -246,11 +268,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardPluck(pluck_slot2[pluck_slot2.length-1], 0, "slot_2")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={pluck_slot2[0].picture_url ? pluck_slot2[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={pluck_slot2[0].name}/>
+                                    src={pluck_slot2[pluck_slot2.length-1].picture_url ? pluck_slot2[pluck_slot2.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                                    alt={pluck_slot2[pluck_slot2.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -265,11 +287,11 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardPluck(pluck_slot3[pluck_slot3.length-1], 0, "slot_3")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={pluck_slot3[0].picture_url ? pluck_slot3[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={pluck_slot3[0].name}/>
+                                    src={pluck_slot3[pluck_slot3.length-1].picture_url ? pluck_slot3[pluck_slot3.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                                    alt={pluck_slot3[pluck_slot3.length-1].name}/>
                             </>
                         :null}
                     </div>
@@ -284,25 +306,40 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    // onClick={() => playCard(card, index, "main")}
+                                    onClick={() => discardPluck(pluck_slot4[pluck_slot4.length-1], 0, "slot_4")}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={pluck_slot4[0].picture_url ? pluck_slot4[0].picture_url : "https://i.imgur.com/krY25iI.png"}
-                                    alt={pluck_slot2[0].name}/>
+                                    src={pluck_slot4[pluck_slot4.length-1].picture_url ? pluck_slot4[pluck_slot4.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                                    alt={pluck_slot2[pluck_slot4.length-1].name}/>
                             </>
                         :null}
                     </div>
-                    <div className="matCard margin-left"></div>
+                    <div className="matCard margin-left"
+                    >
+                        {pluck_discard_pile.length > 1 ?
+                            <div className="matCardOverlay">
+                                <h1>{pluck_discard_pile.length}</h1>
+                            </div> :null
+                        }
+                        {pluck_discard_pile.length > 0 ?
+                        <img
+                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                            className="builder-card5 pointer glow3"
+                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                            src={pluck_discard_pile[pluck_discard_pile.length-1].picture_url ? pluck_discard_pile[pluck_discard_pile.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                            alt={pluck_discard_pile[pluck_discard_pile.length-1].name}/>
+                            :null}
+                    </div>
                     <div className="matCard"
                         onClick={() => drawPluck()}
                     >
-                        {main_deck.length > 1 ?
+                        {pluck_deck.length > 1 ?
                             <div className="matCardOverlay">
                                 <h1>{pluck_deck.length}</h1>
                             </div> :null
                         }
                         <img
-                            // onClick={() => playCard(card, index, "main")}
+                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                             className="builder-card5 pointer glow3"
                             // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                             src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
