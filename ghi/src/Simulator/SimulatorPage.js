@@ -309,7 +309,7 @@ function SimulatorPage() {
     }
 
     const fieldStyle = {
-        transform: transformRotateX && scale && position.x_pos != undefined && position.y_pos !== undefined ?
+        transform: transformRotateX && scale && position.x_pos !== undefined && position.y_pos !== undefined ?
             "perspective(1000px) rotateX(" + transformRotateX + ") scale(" + scale + ") translate(" + position.x_pos + "px, " + position.y_pos + "px)"
             : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 0px)",
     }
@@ -353,6 +353,7 @@ function SimulatorPage() {
                     drawPluck={drawPluck}
                     mainDeck={player.mainDeck}
                     pluckDeck={player.pluckDeck}
+                    ownership={player.ownership}
                     playCard={playCard}
                     playPluck={playPluck}
                     fieldStyle={fieldStyle}
@@ -361,6 +362,8 @@ function SimulatorPage() {
                     pluckDiscard={player.pluckDiscard}
                     discardPluck={discardPluck}
                     handleHoveredCard={handleHoveredCard}
+                    selectPluck={selectPluck}
+                    selectedPluckIndex={selectedPluckIndex}
                     />
 
                 {player.hand.length > 0 || player.ownership.length > 0?
@@ -378,27 +381,6 @@ function SimulatorPage() {
                                                 "selected3 builder-card-hand pointer glow3"
                                             :
                                                 "builder-card-hand pointer glow3"
-                                            }
-                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}/>
-                                    </div>
-                                );
-                            })}
-                        </div>
-
-                        <div className="card-pool-fill-hand">
-                            {player.ownership.map((card, index) => {
-                                return (
-                                    <div style={{display: "flex", justifyContent: "center"}}>
-                                        <img
-                                            onClick={() => selectPluck(index)}
-                                            onMouseEnter={() => handleHoveredCard(card)}
-                                            className={
-                                                selectedPluckIndex === index?
-                                                "selected builder-card pointer glow3"
-                                            :
-                                                "builder-card pointer glow3"
                                             }
                                             title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                             src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}

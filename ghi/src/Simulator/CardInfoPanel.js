@@ -6,7 +6,7 @@ function CardInfoPanel({
     hoveredCard
 }) {
 
-    const [showPanel, setShowPanel] = useState(true)
+    const [showPanel, setShowPanel] = useState(false)
 
     const handleShowPanel = () => {
         setShowPanel(!showPanel)

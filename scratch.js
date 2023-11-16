@@ -1240,3 +1240,35 @@ function sendEmail() {
 //       setPlayArea(playZones)
 //   }
 // }
+
+// const newPlayArea = {...player.playArea}
+// const selectZone = [...newPlayArea[zone]]
+// const newDiscardPile = [...player.mainDiscard]
+// newDiscardPile.push(card)
+// selectZone.filter((_, i) => i !== index)
+// newPlayArea[zone] = selectZone
+// console.log(playArea)
+// setDiscard(newDiscardPile)
+// setPlayArea(newPlayArea)
+
+
+// <div className="card-pool-fill-hand">
+// {player.ownership.map((card, index) => {
+//     return (
+//         <div style={{display: "flex", justifyContent: "center"}}>
+//             <img
+//                 onClick={() => selectPluck(index)}
+//                 onMouseEnter={() => handleHoveredCard(card)}
+//                 className={
+//                     selectedPluckIndex === index?
+//                     "selected builder-card pointer glow3"
+//                 :
+//                     "builder-card pointer glow3"
+//                 }
+//                 title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+//                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+//                 alt={card.name}/>
+//         </div>
+//     );
+// })}
+// </div>

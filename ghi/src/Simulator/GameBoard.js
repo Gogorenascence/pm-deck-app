@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
+import OwnershipModal from "./OwnershipModal";
+import Ownership from "./Ownership";
 
 
 function GameBoard({
@@ -7,6 +9,7 @@ function GameBoard({
     activePluck,
     mainDeck,
     pluckDeck,
+    ownership,
     drawCard,
     drawPluck,
     playCard,
@@ -16,7 +19,9 @@ function GameBoard({
     discardCard,
     pluckDiscard,
     discardPluck,
-    handleHoveredCard
+    handleHoveredCard,
+    selectPluck,
+    selectedPluckIndex
 }) {
 
     const main_deck = mainDeck || [];
@@ -37,14 +42,20 @@ function GameBoard({
     const pluck_slot4 = activePluck.slot_4 || [];
     const pluck_discard_pile = pluckDiscard || [];
 
-    const preprocessText = (text) => {
-        return text.split("//").join("\n");
-    };
+    const [showOwnershipModal, setShowOwnershipModal] = useState(false)
 
     return (
         <div className="play-area">
+            <OwnershipModal
+                ownership={ownership}
+                selectPluck={selectPluck}
+                handleHoveredCard={handleHoveredCard}
+                selectedPluckIndex={selectedPluckIndex}
+                showOwnershipModal={showOwnershipModal}
+                setShowOwnershipModal={setShowOwnershipModal}
+            />
             <div className="field_box" style={fieldStyle}>
-                <div style={{display: "flex"}}>
+                <div className="flex">
                     <div className="matCard"
                         onClick={() => playCard("slot_5")}
                     >
@@ -255,13 +266,13 @@ function GameBoard({
                 </div>
 
                 <div style={{display: "flex"}}>
-                    <div className="matCard"
-                        onClick={() => drawPluck()}
+                    {/* <div className="matCard"
+                        // onClick={() => drawPluck()}
                         style={{marginLeft: "-160px", marginRight: "20px"}}
                     >
-                        {pluck_deck.length > 1 ?
+                        {full_ownership.length > 0 ?
                             <div className="matCardOverlay">
-                                <h1>{pluck_deck.length}</h1>
+                                <h1>{full_ownership.length}</h1>
                             </div> :null
                         }
                         <img
@@ -269,8 +280,16 @@ function GameBoard({
                             className="builder-card5 pointer glow3"
                             // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                             src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
-                            alt="pluck deck"/>
-                    </div>
+                            alt="ownership"/>
+                    </div> */}
+                    <Ownership
+                        ownership={ownership}
+                        selectPluck={selectPluck}
+                        handleHoveredCard={handleHoveredCard}
+                        selectedPluckIndex={selectedPluckIndex}
+                        showOwnershipModal={showOwnershipModal}
+                        setShowOwnershipModal={setShowOwnershipModal}
+                    />
 
                     <div className="matCard"
                         onClick={() => playPluck("slot_1")}
