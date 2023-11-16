@@ -245,8 +245,33 @@ function GameBoard({
                             alt="deck"/>
                     </div>
                 </div>
-                <div className="matLabel2 margin-top-20"><h5 className="margin-bottom-0">Active Pluck</h5></div>
+                <div className="flex">
+                    <div className="matLabel margin-top-20"
+                        style={{marginLeft: "-160px", marginRight: "20px"}}
+                    >
+                        <h5 className="margin-bottom-0">Ownership</h5>
+                    </div>
+                    <div className="matLabel2 margin-top-20"><h5 className="margin-bottom-0">Active Pluck</h5></div>
+                </div>
+
                 <div style={{display: "flex"}}>
+                    <div className="matCard"
+                        onClick={() => drawPluck()}
+                        style={{marginLeft: "-160px", marginRight: "20px"}}
+                    >
+                        {pluck_deck.length > 1 ?
+                            <div className="matCardOverlay">
+                                <h1>{pluck_deck.length}</h1>
+                            </div> :null
+                        }
+                        <img
+                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                            className="builder-card5 pointer glow3"
+                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                            src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
+                            alt="pluck deck"/>
+                    </div>
+
                     <div className="matCard"
                         onClick={() => playPluck("slot_1")}
                     >
