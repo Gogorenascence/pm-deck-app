@@ -15,7 +15,8 @@ function GameBoard({
     mainDiscard,
     discardCard,
     pluckDiscard,
-    discardPluck
+    discardPluck,
+    handleHoveredCard
 }) {
 
     const main_deck = mainDeck || [];
@@ -56,6 +57,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(slot5[slot5.length-1], 0, "slot_5")}
+                                    onMouseEnter={() => handleHoveredCard(slot5[slot5.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={slot5[slot5.length-1].picture_url ? slot5[slot5.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -75,6 +77,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(slot6[slot6.length-1], 0, "slot_6")}
+                                    onMouseEnter={() => handleHoveredCard(slot6[slot6.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={slot6[slot6.length-1].picture_url ? slot6[slot6.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -94,6 +97,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(slot7[slot7.length-1], 0, "slot_7")}
+                                    onMouseEnter={() => handleHoveredCard(slot7[slot7.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={slot7[slot7.length-1].picture_url ? slot7[slot7.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -113,6 +117,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(slot8[slot8.length-1], 0, "slot_8")}
+                                    onMouseEnter={() => handleHoveredCard(slot8[slot8.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={slot8[slot8.length-1].picture_url ? slot8[slot8.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -140,6 +145,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                                    onMouseEnter={() => handleHoveredCard(fighter[fighter.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={fighter[fighter.length-1].picture_url ? fighter[fighter.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -159,6 +165,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(aura[aura.length-1], 0, "aura_slot")}
+                                    onMouseEnter={() => handleHoveredCard(aura[aura.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={aura[aura.length-1].picture_url ? aura[aura.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -178,6 +185,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(move[move.length-1], 0, "move_slot")}
+                                    onMouseEnter={() => handleHoveredCard(move[move.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={move[move.length-1].picture_url ? move[move.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -197,6 +205,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardCard(ending[ending.length-1], 0, "ending_slot")}
+                                    onMouseEnter={() => handleHoveredCard(ending[ending.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={ending[ending.length-1].picture_url ? ending[ending.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -213,7 +222,7 @@ function GameBoard({
                         }
                         {discard_pile.length > 0 ?
                         <img
-                            onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                             className="builder-card5 pointer glow3"
                             // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                             src={discard_pile[discard_pile.length-1].picture_url ? discard_pile[discard_pile.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
@@ -229,7 +238,7 @@ function GameBoard({
                             </div> :null
                         }
                         <img
-                            onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                             className="builder-card5 pointer glow3"
                             // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                             src="https://i.imgur.com/krY25iI.png"
@@ -250,6 +259,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardPluck(pluck_slot1[pluck_slot1.length-1], 0, "slot_1")}
+                                    onMouseEnter={() => handleHoveredCard(pluck_slot1[pluck_slot1.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={pluck_slot1[pluck_slot1.length-1].picture_url ? pluck_slot1[pluck_slot1.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
@@ -269,6 +279,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardPluck(pluck_slot2[pluck_slot2.length-1], 0, "slot_2")}
+                                    onMouseEnter={() => handleHoveredCard(pluck_slot2[pluck_slot2.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={pluck_slot2[pluck_slot2.length-1].picture_url ? pluck_slot2[pluck_slot2.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
@@ -288,6 +299,7 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardPluck(pluck_slot3[pluck_slot3.length-1], 0, "slot_3")}
+                                    onMouseEnter={() => handleHoveredCard(pluck_slot3[pluck_slot3.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={pluck_slot3[pluck_slot3.length-1].picture_url ? pluck_slot3[pluck_slot3.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
@@ -307,10 +319,11 @@ function GameBoard({
                                 }
                                 <img
                                     onClick={() => discardPluck(pluck_slot4[pluck_slot4.length-1], 0, "slot_4")}
+                                    onMouseEnter={() => handleHoveredCard(pluck_slot4[pluck_slot4.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                     src={pluck_slot4[pluck_slot4.length-1].picture_url ? pluck_slot4[pluck_slot4.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
-                                    alt={pluck_slot2[pluck_slot4.length-1].name}/>
+                                    alt={pluck_slot4[pluck_slot4.length-1].name}/>
                             </>
                         :null}
                     </div>

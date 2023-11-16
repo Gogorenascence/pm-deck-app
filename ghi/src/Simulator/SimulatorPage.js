@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
 import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
+import CardInfoPanel from "./CardInfoPanel";
+
 
 
 function SimulatorPage() {
@@ -34,6 +36,7 @@ function SimulatorPage() {
     const [pluckDiscard, setPluckDiscard] = useState([])
     const [selectedIndex, setSelectedIndex] = useState(null)
     const [selectedPluckIndex, setSelectedPluckIndex] = useState(null)
+    const [hoveredCard, setHoveredCard] = useState("")
 
     const [transformRotateX, setTransformRotateX] = useState("45deg")
     const [scale, setScale] = useState(0.75)
@@ -60,7 +63,7 @@ function SimulatorPage() {
         getCards();
         getDecks();
 
-        document.title = "Card Create - PM CardBase"
+        document.title = "Simulator - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -262,6 +265,11 @@ function SimulatorPage() {
         setActivePluck(newActivePluck)
     }
 
+    const handleHoveredCard = (cardItem) => {
+        setHoveredCard(cardItem)
+        console.log(cardItem)
+    }
+
     const handleChangeTransformRotateX = (event) => {
         setTransformRotateX(`${event.target.value}deg`);
     };
@@ -311,101 +319,102 @@ function SimulatorPage() {
     };
 
     return (
-        <div>
-            <div style={{display: "flex"}}>
-                <div>
-                    <h5 className="label">Select a Deck </h5>
-                    <select
-                        className="builder-input"
-                        type="text"
-                        placeholder=" Deck"
-                        onChange={handleChangeDeck}
-                        name="Deck">
-                        <option value="">Deck</option>
-                        {decks.map((deck) => (
-                            <option value={deck.id}>{deck.name}</option>
-                            ))}
-                    </select>
-                    <button onClick={fillDecks}>Get Deck</button>
+        <div className="cd-inner">
+            <CardInfoPanel hoveredCard={hoveredCard}/>
+            <div>
+            <div>
+                <h5 className="label">Select a Deck </h5>
+                <select
+                    className="builder-input"
+                    type="text"
+                    placeholder=" Deck"
+                    onChange={handleChangeDeck}
+                    name="Deck">
+                    <option value="">Deck</option>
+                    {decks.map((deck) => (
+                        <option value={deck.id}>{deck.name}</option>
+                        ))}
+                </select>
+                <button onClick={fillDecks}>Get Deck</button>
 
-                    {player.mainDeck.length > 0 ?
-                        <>
-                            <button onClick={gameStart}>Game Start</button>
+                {player.mainDeck.length > 0 ?
+                    <>
+                        <button onClick={gameStart}>Game Start</button>
 
-                        </>:null
-                    }
+                    </>:null
+                }
 
-                    <button onClick={checkPlayer}>Player Info</button>
-
-                </div>
-                <div>
-                    <GameBoard
-                            playArea={player.playArea}
-                            activePluck={player.activePluck}
-                            drawCard={drawCard}
-                            drawPluck={drawPluck}
-                            mainDeck={player.mainDeck}
-                            pluckDeck={player.pluckDeck}
-                            playCard={playCard}
-                            playPluck={playPluck}
-                            fieldStyle={fieldStyle}
-                            mainDiscard={player.mainDiscard}
-                            discardCard={discardCard}
-                            pluckDiscard={player.pluckDiscard}
-                            discardPluck={discardPluck}
-                        />
-
-                    {player.hand.length > 0 || player.ownership.length > 0?
-                        // <p>{player.hand.length}</p>: null
-                        <>
-                            <div className="card-pool-fill-hand">
-                                {player.hand.map((card, index) => {
-                                    return (
-                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                onClick={() => selectCard(index)}
-                                                className={
-                                                    selectedIndex === index?
-                                                    "selected3 builder-card-hand pointer glow3"
-                                                :
-                                                    "builder-card-hand pointer glow3"
-                                                }
-                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            <div className="card-pool-fill-hand">
-                                {player.ownership.map((card, index) => {
-                                    return (
-                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                            <img
-                                                onClick={() => selectPluck(index)}
-                                                className={
-                                                    selectedPluckIndex === index?
-                                                    "selected builder-card pointer glow3"
-                                                :
-                                                    "builder-card pointer glow3"
-                                                }
-                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </>: null
-                    }
-                </div>
-                <PositionSlider
-                    handleChangePosition={handleChangePosition}
-                    handleChangeScale={handleChangeScale}
-                    handleChangeTransformRotateX={handleChangeTransformRotateX}
-                />
+                <button onClick={checkPlayer}>Player Info</button>
             </div>
+                <GameBoard
+                    playArea={player.playArea}
+                    activePluck={player.activePluck}
+                    drawCard={drawCard}
+                    drawPluck={drawPluck}
+                    mainDeck={player.mainDeck}
+                    pluckDeck={player.pluckDeck}
+                    playCard={playCard}
+                    playPluck={playPluck}
+                    fieldStyle={fieldStyle}
+                    mainDiscard={player.mainDiscard}
+                    discardCard={discardCard}
+                    pluckDiscard={player.pluckDiscard}
+                    discardPluck={discardPluck}
+                    handleHoveredCard={handleHoveredCard}
+                    />
+
+                {player.hand.length > 0 || player.ownership.length > 0?
+                    // <p>{player.hand.length}</p>: null
+                    <>
+                        <div className="card-pool-fill-hand">
+                            {player.hand.map((card, index) => {
+                                return (
+                                    <div style={{display: "flex", justifyContent: "center"}}>
+                                        <img
+                                            onClick={() => selectCard(index)}
+                                            onMouseEnter={() => handleHoveredCard(card)}
+                                            className={
+                                                selectedIndex === index?
+                                                "selected3 builder-card-hand pointer glow3"
+                                            :
+                                                "builder-card-hand pointer glow3"
+                                            }
+                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        <div className="card-pool-fill-hand">
+                            {player.ownership.map((card, index) => {
+                                return (
+                                    <div style={{display: "flex", justifyContent: "center"}}>
+                                        <img
+                                            onClick={() => selectPluck(index)}
+                                            onMouseEnter={() => handleHoveredCard(card)}
+                                            className={
+                                                selectedPluckIndex === index?
+                                                "selected builder-card pointer glow3"
+                                            :
+                                                "builder-card pointer glow3"
+                                            }
+                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </>: null
+                }
+            </div>
+            <PositionSlider
+                handleChangePosition={handleChangePosition}
+                handleChangeScale={handleChangeScale}
+                handleChangeTransformRotateX={handleChangeTransformRotateX}
+            />
         </div>
     );
 }

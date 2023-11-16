@@ -139,6 +139,7 @@ body.dark::after {
   --window-height: calc(100vh - 100px);
   --window-height-account: calc(100vh - 180px);
   --window-width200: calc(80vw - 200px);
+  --window-height2: calc(100vh - 62px);
 }
 
 
@@ -253,7 +254,6 @@ button:hover {
 .white-space {
   max-width: 80%;
   margin: auto;
-  top:
 }
 
 .navbar-brand {
@@ -301,6 +301,11 @@ button:hover {
 
 .semi-bold-20 {
   font-size: 20px;
+  font-weight: 500;
+}
+
+.semi-bold-25 {
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -2063,7 +2068,7 @@ button:hover {
 }
 
 .settings_container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   right: 0px;
@@ -2166,6 +2171,78 @@ button:hover {
 .card-pool-fill-hand {
   display: flex;
   justify-content: center;
+}
+
+.infoPanel {
+  height: var(--window-height2);
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.603);
+  border: 1px solid white;
+  position: fixed;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.infoPanelClosed {
+  height: var(--window-height2);
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.603);
+  border: 1px solid white;
+  position: fixed;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.panel-card {
+  width: 240px;
+  margin: 20px 0 10px 0;
+  border-radius: 17px;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.panel-text-box {
+  margin: 10px;
+  height: 175px;
+  overflow-y: scroll;
+  outline: 1px solid white;
+}
+
+.panel-text-box-text {
+  margin: 0 0 0 5px;
+}
+
+.margin-left-13 {
+  margin-left: 13px;
+}
+
+.margin-left-10p {
+  margin-left: 10%;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.white {
+  color: white;
+}
+
+.panel-open {
+  font-size: 100px;
+  position: absolute;
+  left: 45px;
+  top:222px;
+  transition: all 0.5s;
+}
+
+.panel-close {
+  font-size: 100px;
+  position: absolute;
+  left: 360px;
+  top:222px;
+  transition: all 0.5s;
 }
 
 @media screen and (max-width: 1330px) {
