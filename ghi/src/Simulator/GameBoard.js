@@ -266,22 +266,6 @@ function GameBoard({
                 </div>
 
                 <div style={{display: "flex"}}>
-                    {/* <div className="matCard"
-                        // onClick={() => drawPluck()}
-                        style={{marginLeft: "-160px", marginRight: "20px"}}
-                    >
-                        {full_ownership.length > 0 ?
-                            <div className="matCardOverlay">
-                                <h1>{full_ownership.length}</h1>
-                            </div> :null
-                        }
-                        <img
-                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
-                            className="builder-card5 pointer glow3"
-                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                            src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
-                            alt="ownership"/>
-                    </div> */}
                     <Ownership
                         ownership={ownership}
                         selectPluck={selectPluck}

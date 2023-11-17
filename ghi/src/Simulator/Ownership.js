@@ -5,14 +5,11 @@ import { NavLink } from 'react-router-dom';
 function Ownership({
     ownership,
     selectPluck,
-    handleHoveredCard,
     selectedPluckIndex,
-    showOwnershipModal,
     setShowOwnershipModal
 }) {
 
     const full_ownership = ownership || [];
-    const selectedIndex = selectedPluckIndex || null;
 
     const content = useRef(null)
     useOutsideAlerter(content)
@@ -36,20 +33,14 @@ function Ownership({
     }
 
 
-    // useEffect(() => {
-
-    // }, [showModal, main_list, pluck_list]); // Include showModal and card_list as dependencies
-
     useEffect(() => {
-      // Check if filteredCards is empty
         if (ownership.length === 0) {
-            handleClose(); // Call handleClose when filteredCards is empty
+            handleClose();
         }
     }, [ownership]);
 
     const handleOpen = () => {
         setShowOwnershipModal(true)
-        console.log("moo")
         document.body.style.overflow = 'hidden';
     };
 
@@ -57,30 +48,6 @@ function Ownership({
         setShowOwnershipModal(false)
         document.body.style.overflow = 'auto';
     };
-
-    const handlePluck = (index) => {
-        selectPluck(index)
-        handleClose()
-    }
-    // const handleSetClass = (card_class, item) => {
-    //     setShowModal({
-    //         show: true,
-    //         label: item,
-    //         card_type: 0,
-    //         card_class: card_class
-    //     })
-    //     document.body.style.overflow = 'hidden';
-    // };
-
-    // const handleSetType = async(card_type, item) => {
-    //     setShowModal({
-    //         show: true,
-    //         label: item,
-    //         card_type: card_type,
-    //         card_class: ""
-    //     })
-    //     document.body.style.overflow = 'hidden';
-    // };
 
 
     return(
