@@ -2284,7 +2284,7 @@ button:hover {
   overflow-x: visible;
   overflow-y: auto;
   max-height: 80vh;
-  opacity: 0%;
+  opacity: 10%;
   transition: all 0.5s;
 }
 
