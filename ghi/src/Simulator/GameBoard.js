@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
-import OwnershipModal from "./OwnershipModal";
+import SimDeckSearch from "./SimDeckSearch";
+import SimDeckSearchModal from "./SimDeckSearchModal";
 import Ownership from "./Ownership";
+import OwnershipModal from "./OwnershipModal";
+import UnfurlModal from "./UnfurlModal";
 
 
 function GameBoard({
@@ -21,7 +24,8 @@ function GameBoard({
     discardPluck,
     handleHoveredCard,
     selectPluck,
-    selectedPluckIndex
+    selectedPluckIndex,
+    shuffleMainDeck
 }) {
 
     const main_deck = mainDeck || [];
@@ -43,9 +47,22 @@ function GameBoard({
     const pluck_discard_pile = pluckDiscard || [];
 
     const [showOwnershipModal, setShowOwnershipModal] = useState(false)
+    const [showDeckSearchModal, setShowDeckSearchModal] = useState(false)
+    const [showUnfurlModal, setShowUnfurlModal] = useState(false)
+    const [showCardMenu, setShowCardMenu] = useState({
+        show: false,
+        index: null
+    })
+
 
     return (
         <div className="play-area">
+            <SimDeckSearchModal
+                mainDeck={mainDeck}
+                handleHoveredCard={handleHoveredCard}
+                showDeckSearchModal={showDeckSearchModal}
+                setShowDeckSearchModal={setShowDeckSearchModal}
+            />
             <OwnershipModal
                 ownership={ownership}
                 selectPluck={selectPluck}
@@ -53,6 +70,12 @@ function GameBoard({
                 selectedPluckIndex={selectedPluckIndex}
                 showOwnershipModal={showOwnershipModal}
                 setShowOwnershipModal={setShowOwnershipModal}
+            />
+            <UnfurlModal
+                mainDeck={mainDeck}
+                handleHoveredCard={handleHoveredCard}
+                showUnfurlModal={showUnfurlModal}
+                setShowUnfurlModal={setShowUnfurlModal}
             />
             <div className="field_box" style={fieldStyle}>
                 <div className="flex">
@@ -240,21 +263,13 @@ function GameBoard({
                             alt={discard_pile[discard_pile.length-1].name}/>
                             :null}
                     </div>
-                    <div className="matCard"
-                        onClick={() => drawCard()}
-                    >
-                        {main_deck.length > 1 ?
-                            <div className="matCardOverlay">
-                                <h1>{main_deck.length}</h1>
-                            </div> :null
-                        }
-                        <img
-                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
-                            className="builder-card5 pointer glow3"
-                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                            src="https://i.imgur.com/krY25iI.png"
-                            alt="deck"/>
-                    </div>
+                    <SimDeckSearch
+                        mainDeck={mainDeck}
+                        setShowDeckSearchModal={setShowDeckSearchModal}
+                        drawCard={drawCard}
+                        setShowUnfurlModal={setShowUnfurlModal}
+                        shuffleMainDeck={shuffleMainDeck}
+                    />
                 </div>
                 <div className="flex">
                     <div className="matLabel margin-top-20"

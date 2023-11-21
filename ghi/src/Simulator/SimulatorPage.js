@@ -20,6 +20,7 @@ function SimulatorPage() {
         activePluck,
         setActivePluck
     } = useContext(GameStateContext)
+
     const [selectedMainDeck, setSelectedMainDeck] = useState({
         name: "",
         cards: []
@@ -30,13 +31,18 @@ function SimulatorPage() {
     })
     const [decks, setDecks] = useState([])
     const [cards, setCards] = useState([])
-    const [hand, setHand] = useState([])
-    const [ownership, setOwnership] = useState([])
-    const [discard, setDiscard] = useState([])
-    const [pluckDiscard, setPluckDiscard] = useState([])
+    const [hand, setHand] = useState(player.hand)
+    const [ownership, setOwnership] = useState(player.ownership)
+    const [discard, setDiscard] = useState(player.mainDiscard)
+    const [pluckDiscard, setPluckDiscard] = useState(player.pluckDiscard)
     const [selectedIndex, setSelectedIndex] = useState(null)
     const [selectedPluckIndex, setSelectedPluckIndex] = useState(null)
     const [hoveredCard, setHoveredCard] = useState("")
+
+    const [showCardMenu, setShowCardMenu] = useState({
+        show: false,
+        index: null
+    })
 
     const [transformRotateX, setTransformRotateX] = useState("45deg")
     const [scale, setScale] = useState(0.75)
@@ -176,6 +182,7 @@ function SimulatorPage() {
 
     const drawCard = () => {
         if (hand.length < 8) {
+            console.log(player.mainDeck)
             const newHand = [...hand]
             const newMainDeck = [...playerMainDeck.cards]
             newHand.push(newMainDeck[0])
@@ -204,9 +211,15 @@ function SimulatorPage() {
         }
     }
 
+    const handleShowCardMenu = (index) => {
+        showCardMenu.index === index?
+            setShowCardMenu({show: false, index: null}):
+            setShowCardMenu({show: true, index: index})
+    }
+
     const selectCard = (index) => {
         selectedIndex === index? setSelectedIndex(null): setSelectedIndex(index)
-        console.log(pluckDiscard)
+        setShowCardMenu({show: false, index: index})
     }
 
     const selectPluck = (index) => {
@@ -223,6 +236,7 @@ function SimulatorPage() {
             setHand(newHand.filter((_, i) => i !== selectedIndex))
             setSelectedIndex(null)
             setPlayArea(playZones)
+            setShowCardMenu({show: false, index: null})
         }
     }
 
@@ -242,6 +256,7 @@ function SimulatorPage() {
     const discardCard = (card, index, zone) => {
         const newPlayArea = {...player.playArea}
         const selectZone = newPlayArea[zone]
+        console.log(player)
         const newDiscardPile = [...player.mainDiscard]
 
         newDiscardPile.push(card)
@@ -250,6 +265,38 @@ function SimulatorPage() {
 
         setDiscard(newDiscardPile)
         setPlayArea(newPlayArea)
+    }
+
+    const discardCardFromHand = (index) => {
+        const discardedCard = player.hand[index]
+        const newDiscardPile = [...player.mainDiscard]
+        const newHand = [...player.hand]
+        newDiscardPile.push(discardedCard)
+        setHand(newHand.filter((_, i) => i !== index))
+        setDiscard(newDiscardPile)
+        setShowCardMenu({show: false, index: null})
+    }
+
+    const topDeckCard = (index) => {
+        const toppedCard = player.hand[index]
+        const newCards = [...player.mainDeck]
+        console.log(newCards)
+        const newHand = [...player.hand]
+        newCards.unshift(toppedCard)
+        setHand(newHand.filter((_, i) => i !== index))
+        setPlayerMainDeck({...playerMainDeck, cards: newCards})
+        setShowCardMenu({show: false, index: null})
+    }
+
+    const bottomDeckCard = (index) => {
+        const bottomCard = player.hand[index]
+        const newCards = [...player.mainDeck]
+        console.log(newCards)
+        const newHand = [...player.hand]
+        newCards.push(bottomCard)
+        setHand(newHand.filter((_, i) => i !== index))
+        setPlayerMainDeck({...playerMainDeck, cards: newCards})
+        setShowCardMenu({show: false, index: null})
     }
 
     const discardPluck = (card, index, zone) => {
@@ -267,7 +314,6 @@ function SimulatorPage() {
 
     const handleHoveredCard = (cardItem) => {
         setHoveredCard(cardItem)
-        console.log(cardItem)
     }
 
     const handleChangeTransformRotateX = (event) => {
@@ -340,11 +386,12 @@ function SimulatorPage() {
                 {player.mainDeck.length > 0 ?
                     <>
                         <button onClick={gameStart}>Game Start</button>
-
                     </>:null
                 }
 
                 <button onClick={checkPlayer}>Player Info</button>
+                <p>cats {showCardMenu.show === true? "cats": "kittens"}</p>
+                <p>dogs {showCardMenu.index === null? "puppies": "dogs"}</p>
             </div>
                 <GameBoard
                     playArea={player.playArea}
@@ -364,6 +411,7 @@ function SimulatorPage() {
                     handleHoveredCard={handleHoveredCard}
                     selectPluck={selectPluck}
                     selectedPluckIndex={selectedPluckIndex}
+                    shuffleMainDeck={shuffleMainDeck}
                     />
 
                 {player.hand.length > 0 || player.ownership.length > 0?
@@ -373,18 +421,36 @@ function SimulatorPage() {
                             {player.hand.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
-                                        <img
-                                            onClick={() => selectCard(index)}
-                                            onMouseEnter={() => handleHoveredCard(card)}
-                                            className={
-                                                selectedIndex === index?
-                                                "selected3 builder-card-hand pointer glow3"
-                                            :
-                                                "builder-card-hand pointer glow3"
-                                            }
-                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}/>
+                                        <div>
+                                            <div className={showCardMenu.index === index && showCardMenu.show === true? "card-menu": "hidden2"}>
+                                                <div className="card-menu-item"
+                                                    onClick={() => selectCard(index)}
+                                                ><p>Play Face-Up</p></div>
+                                                <div className="card-menu-item"><p>Play Face-Down</p></div>
+                                                <div className="card-menu-item"><p>Place</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => discardCardFromHand(index)}
+                                                ><p>Discard</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => topDeckCard(index)}
+                                                ><p>Decktop</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => bottomDeckCard(index)}
+                                                ><p>Deckbottom</p></div>
+                                            </div>
+                                            <img
+                                                onClick={() => handleShowCardMenu(index)}
+                                                onMouseEnter={() => handleHoveredCard(card)}
+                                                className={
+                                                    showCardMenu.index === index?
+                                                    "selected3 builder-card-hand pointer"
+                                                :
+                                                    "builder-card-hand pointer"
+                                                }
+                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                            </div>
                                     </div>
                                 );
                             })}

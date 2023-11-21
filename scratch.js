@@ -1272,3 +1272,5 @@ function sendEmail() {
 //     );
 // })}
 // </div>
+
+//when clicking works: no card in hand then card added -- works again when a new card is drawn; before playing a card
