@@ -10,6 +10,7 @@ function CardInfoPanel({
 
     const handleShowPanel = () => {
         setShowPanel(!showPanel)
+        console.log(hoveredCard)
     }
 
     const processText = (text) => {
@@ -31,7 +32,7 @@ function CardInfoPanel({
                                         src={hoveredCard.picture_url ? hoveredCard.picture_url : "https://i.imgur.com/krY25iI.png"}
                                         alt={hoveredCard.name}/>
                                 </div>
-                                <p className="white semi-bold-25 margin-bottom-0 margin-left-13">{hoveredCard.name}</p>
+                                <p className={hoveredCard.name.length < 33 ? "infoPanelText" : "infoPanelTextSm"}>{hoveredCard.name}</p>
                                 <div className="flex-wrap">
                                     <p className="white panel-text-box-text margin-left-13">{hoveredCard.card_class? hoveredCard.card_class:null}</p>
                                     <p className="white panel-text-box-text">{hoveredCard.card_type[0].name}</p>
@@ -40,7 +41,7 @@ function CardInfoPanel({
                                             <p className="white panel-text-box-text">&#11089;{reaction.name} {reaction.count}</p>
                                         ):null
                                     }
-                                    {hoveredCard.card_tags.length > 0?
+                                    {hoveredCard.card_tags.length > 0 && hoveredCard.card_tags[0].tag_number !== 1000?
                                         hoveredCard.card_tags.map(card_tag =>
                                             <p className="white panel-text-box-text">&#11089;{card_tag.name}</p>
                                         ):null

@@ -2387,6 +2387,22 @@ button:hover {
   background-color: rgba(180, 180, 180, 0.75);
 }
 
+.infoPanelText {
+  font-size: 25px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0;
+  margin-left: 13px;
+}
+
+.infoPanelTextSm {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0;
+  margin-left: 13px;
+}
+
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
     display: grid;

@@ -47,6 +47,7 @@ function UnfurlModal({
 
     const handleClose = () => {
         setShowUnfurlModal(false)
+        setCount(1);
         document.body.style.overflow = 'auto';
     };
 
