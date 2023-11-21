@@ -52,13 +52,13 @@ function Ownership({
 
     return(
         <div>
-            <div className="matCard"
+            <div className="matCard pointer"
                 onClick={() => handleOpen()}
                 style={{marginLeft: "-160px", marginRight: "20px"}}
             >
                 {full_ownership.length > 0 ?
                     <div className="matCardOverlay">
-                        <h1>{full_ownership.length}</h1>
+                        <h1 className="fontSize60">{full_ownership.length}</h1>
                     </div> :null
                 }
                 <img

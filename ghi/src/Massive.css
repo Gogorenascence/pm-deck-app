@@ -2087,6 +2087,9 @@ button:hover {
 }
 
 .matCardOverlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 196px;
   width: 140px;
   outline: 1px solid rgb(255, 255, 255);
@@ -2414,6 +2417,10 @@ button:hover {
 
 .notify {
   animation: pulse3 1.5s infinite ;
+}
+
+.fontSize60 {
+  font-size: 60px;
 }
 
 @media screen and (max-width: 1330px) {

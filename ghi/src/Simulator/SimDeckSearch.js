@@ -87,7 +87,7 @@ function SimDeckSearch({
                 >
                     {mainDiscard.length > 1 ?
                         <div className="matCardOverlay">
-                            <h1>{mainDiscard.length}</h1>
+                            <h1 className="fontSize60">{mainDiscard.length}</h1>
                         </div> :null
                     }
                     {mainDiscard.length > 0 ?
@@ -120,7 +120,7 @@ function SimDeckSearch({
                 >
                     {mainDeck.length > 1 ?
                         <div className="matCardOverlay">
-                            <h1>{mainDeck.length}</h1>
+                            <h1 className="fontSize60">{mainDeck.length}</h1>
                         </div> :null
                     }
                     <img

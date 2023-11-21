@@ -88,7 +88,7 @@ function GameBoard({
                             <>
                                 {slot5.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{slot5.length}</h1>
+                                        <h1 className="fontSize60">{slot5.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -108,7 +108,7 @@ function GameBoard({
                             <>
                                 {slot6.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{slot6.length}</h1>
+                                        <h1 className="fontSize60">{slot6.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -128,7 +128,7 @@ function GameBoard({
                             <>
                                 {slot7.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{slot7.length}</h1>
+                                        <h1 className="fontSize60">{slot7.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -148,7 +148,7 @@ function GameBoard({
                             <>
                                 {slot8.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{slot8.length}</h1>
+                                        <h1 className="fontSize60">{slot8.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -189,7 +189,7 @@ function GameBoard({
                             <>
                                 {fighter.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{fighter.length}</h1>
+                                        <h1 className="fontSize60">{fighter.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -209,7 +209,7 @@ function GameBoard({
                             <>
                                 {aura.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{aura.length}</h1>
+                                        <h1 className="fontSize60">{aura.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -229,7 +229,7 @@ function GameBoard({
                             <>
                                 {move.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{move.length}</h1>
+                                        <h1 className="fontSize60">{move.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -249,7 +249,7 @@ function GameBoard({
                             <>
                                 {ending.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{ending.length}</h1>
+                                        <h1 className="fontSize60">{ending.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -298,7 +298,7 @@ function GameBoard({
                             <>
                                 {pluck_slot1.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{pluck_slot1.length}</h1>
+                                        <h1 className="fontSize60">{pluck_slot1.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -318,7 +318,7 @@ function GameBoard({
                             <>
                                 {pluck_slot2.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{pluck_slot2.length}</h1>
+                                        <h1 className="fontSize60">{pluck_slot2.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -338,7 +338,7 @@ function GameBoard({
                             <>
                                 {pluck_slot3.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{pluck_slot3.length}</h1>
+                                        <h1 className="fontSize60">{pluck_slot3.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -358,7 +358,7 @@ function GameBoard({
                             <>
                                 {pluck_slot4.length > 1 ?
                                     <div className="matCardOverlay">
-                                        <h1>{pluck_slot4.length}</h1>
+                                        <h1 className="fontSize60">{pluck_slot4.length}</h1>
                                     </div> :null
                                 }
                                 <img
@@ -375,7 +375,7 @@ function GameBoard({
                     >
                         {pluck_discard_pile.length > 1 ?
                             <div className="matCardOverlay">
-                                <h1>{pluck_discard_pile.length}</h1>
+                                <h1 className="fontSize60">{pluck_discard_pile.length}</h1>
                             </div> :null
                         }
                         {pluck_discard_pile.length > 0 ?
@@ -392,7 +392,7 @@ function GameBoard({
                     >
                         {pluck_deck.length > 1 ?
                             <div className="matCardOverlay">
-                                <h1>{pluck_deck.length}</h1>
+                                <h1 className="fontSize60">{pluck_deck.length}</h1>
                             </div> :null
                         }
                         <img
