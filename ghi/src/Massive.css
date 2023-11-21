@@ -1289,6 +1289,10 @@ button:hover {
   margin-top: 40px;
 }
 
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
@@ -2067,9 +2071,13 @@ button:hover {
 }
 
 .matToggle {
+  display: flex;
   height: 196px;
   width: 140px;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  outline: 2px solid white;
 }
 
 .matCard:hover {
@@ -2270,6 +2278,7 @@ button:hover {
 .panel-text-box {
   margin: 10px;
   height: 175px;
+  width: 378px;
   overflow-y: scroll;
   outline: 1px solid white;
 }
@@ -2401,6 +2410,10 @@ button:hover {
   color: white;
   margin-bottom: 0;
   margin-left: 13px;
+}
+
+.notify {
+  animation: pulse3 1.5s infinite ;
 }
 
 @media screen and (max-width: 1330px) {

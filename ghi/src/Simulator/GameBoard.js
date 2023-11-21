@@ -52,6 +52,8 @@ function GameBoard({
     const [showDiscardModal, setShowDiscardModal] = useState(false)
     const [showExtra, setShowExtra] = useState(true)
 
+    const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
+
     return (
         <div className={showExtra? "play-area" : "play-area2"}>
             <SimDeckSearchModal
@@ -167,21 +169,17 @@ function GameBoard({
                     <div className="matLabel"><h5 className="margin-bottom-0">Defending</h5></div>
                 </div>
                 <div style={{display: "flex"}}>
-                    <div className="matToggle cd-inner"
-
+                    <div className={ totalSlotLength > 0 && !showExtra? "notify" : null}
                         style={{marginLeft: "-160px", marginRight: "20px"}}
                     >
                     { !showExtra?
-                        <img
-                        className="logo5 pointer"
-                        src="https://i.imgur.com/z4CRxAm.png"
-                        onClick={() => setShowExtra(true)}
-                        />:
-                        <img
-                        className="logo5 pointer"
-                        src="https://i.imgur.com/NE539ZZ.png"
-                        onClick={() => setShowExtra(false)}
-                        />
+                        <div className="matToggle pointer" onClick={() => setShowExtra(true)}>
+                            <img className="logo5 pointer" src="https://i.imgur.com/z4CRxAm.png"/>
+                        </div>
+                        :
+                        <div className="matToggle pointer" onClick={() => setShowExtra(false)}>
+                            <img className="logo5" src="https://i.imgur.com/NE539ZZ.png"/>
+                        </div>
                     }
                     </div>
                     <div className="matCard"
