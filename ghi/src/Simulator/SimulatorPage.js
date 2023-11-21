@@ -390,8 +390,6 @@ function SimulatorPage() {
                 }
 
                 <button onClick={checkPlayer}>Player Info</button>
-                <p>cats {showCardMenu.show === true? "cats": "kittens"}</p>
-                <p>dogs {showCardMenu.index === null? "puppies": "dogs"}</p>
             </div>
                 <GameBoard
                     playArea={player.playArea}

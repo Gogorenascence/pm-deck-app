@@ -47,12 +47,6 @@ function OwnershipModal({
         }
     }, [ownership]);
 
-    const handleOpen = () => {
-        setShowOwnershipModal(true)
-        console.log("moo")
-        document.body.style.overflow = 'hidden';
-    };
-
     const handleClose = () => {
         setShowOwnershipModal(false)
         document.body.style.overflow = 'auto';
@@ -88,11 +82,11 @@ function OwnershipModal({
             {showOwnershipModal ?
                 <div className="sim-modal topbar"
                 >
-                    <div className="outScrollableSim" ref={content}>
+                    <div className={full_ownership.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1"
                             style={{color: "black"}}>Ownership</h1>
                         <div>
-                        <div className="card-pool-fill-hand">
+                        <div className={full_ownership.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {full_ownership.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
@@ -114,7 +108,7 @@ function OwnershipModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button onClick={handleClose}>
+                            <button className={full_ownership.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
                                 Close
                             </button>
                         </div>

@@ -38,7 +38,6 @@ function UnfurlModal({
         if (mainDeck.length === 0) {
             handleClose(); // Call handleClose when filteredCards is empty
         }
-        console.log(mainDeck.slice(0,5))
     }, [mainDeck]);
 
     const handleUnfurl = () => {
@@ -87,10 +86,10 @@ function UnfurlModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button onClick={handleUnfurl}>
+                            <button className="margin-bottom-20" onClick={handleUnfurl}>
                                 Unfurl
                             </button>
-                            <button onClick={handleClose}>
+                            <button className="margin-bottom-20" onClick={handleClose}>
                                 Close
                             </button>
                         </div>

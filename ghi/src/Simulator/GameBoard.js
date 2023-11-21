@@ -49,19 +49,19 @@ function GameBoard({
     const [showOwnershipModal, setShowOwnershipModal] = useState(false)
     const [showDeckSearchModal, setShowDeckSearchModal] = useState(false)
     const [showUnfurlModal, setShowUnfurlModal] = useState(false)
-    const [showCardMenu, setShowCardMenu] = useState({
-        show: false,
-        index: null
-    })
-
+    const [showDiscardModal, setShowDiscardModal] = useState(false)
+    const [showExtra, setShowExtra] = useState(true)
 
     return (
-        <div className="play-area">
+        <div className={showExtra? "play-area" : "play-area2"}>
             <SimDeckSearchModal
                 mainDeck={mainDeck}
                 handleHoveredCard={handleHoveredCard}
                 showDeckSearchModal={showDeckSearchModal}
                 setShowDeckSearchModal={setShowDeckSearchModal}
+                mainDiscard={mainDiscard}
+                showDiscardModal={showDiscardModal}
+                setShowDiscardModal={setShowDiscardModal}
             />
             <OwnershipModal
                 ownership={ownership}
@@ -78,7 +78,7 @@ function GameBoard({
                 setShowUnfurlModal={setShowUnfurlModal}
             />
             <div className="field_box" style={fieldStyle}>
-                <div className="flex">
+                <div className={showExtra? "flex": "hidden2"}>
                     <div className="matCard"
                         onClick={() => playCard("slot_5")}
                     >
@@ -167,6 +167,23 @@ function GameBoard({
                     <div className="matLabel"><h5 className="margin-bottom-0">Defending</h5></div>
                 </div>
                 <div style={{display: "flex"}}>
+                    <div className="matToggle cd-inner"
+
+                        style={{marginLeft: "-160px", marginRight: "20px"}}
+                    >
+                    { !showExtra?
+                        <img
+                        className="logo5 pointer"
+                        src="https://i.imgur.com/z4CRxAm.png"
+                        onClick={() => setShowExtra(true)}
+                        />:
+                        <img
+                        className="logo5 pointer"
+                        src="https://i.imgur.com/NE539ZZ.png"
+                        onClick={() => setShowExtra(false)}
+                        />
+                    }
+                    </div>
                     <div className="matCard"
                         onClick={() => playCard("fighter_slot")}
                     >
@@ -247,28 +264,14 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard margin-left"
-                    >
-                        {discard_pile.length > 1 ?
-                            <div className="matCardOverlay">
-                                <h1>{discard_pile.length}</h1>
-                            </div> :null
-                        }
-                        {discard_pile.length > 0 ?
-                        <img
-                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
-                            className="builder-card5 pointer glow3"
-                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                            src={discard_pile[discard_pile.length-1].picture_url ? discard_pile[discard_pile.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
-                            alt={discard_pile[discard_pile.length-1].name}/>
-                            :null}
-                    </div>
                     <SimDeckSearch
                         mainDeck={mainDeck}
                         setShowDeckSearchModal={setShowDeckSearchModal}
                         drawCard={drawCard}
                         setShowUnfurlModal={setShowUnfurlModal}
                         shuffleMainDeck={shuffleMainDeck}
+                        mainDiscard={mainDiscard}
+                        setShowDiscardModal={setShowDiscardModal}
                     />
                 </div>
                 <div className="flex">
