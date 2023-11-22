@@ -7,12 +7,15 @@ function SimDeckSearchModal({
     showDeckSearchModal,
     setShowDeckSearchModal,
     selectCard,
+    selectedIndex,
+    fromDiscard,
     setFromDiscard,
     addCardFromDeck,
     addCardFromDiscard,
     mainDiscard,
     showDiscardModal,
-    setShowDiscardModal
+    setShowDiscardModal,
+    setFromDeck
 }) {
 
     const content = useRef(null)
@@ -88,6 +91,7 @@ function SimDeckSearchModal({
         const originalIndex = mainDiscard.length - 1 - index;
         selectCard(originalIndex)
         setFromDiscard(true)
+        setFromDeck(false)
         setShowDeckMenu(null)
         handleCloseDiscard()
     }
@@ -118,7 +122,8 @@ function SimDeckSearchModal({
                                                 onClick={() => handleShowDiscardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
-                                                    showDiscardMenu === index?
+                                                    showDiscardMenu === index ||
+                                                    (selectedIndex === (mainDiscard.length - 1 - index) && fromDiscard)?
                                                     "selected3 builder-card margin-10 pointer glow3"
                                                 :
                                                     "builder-card margin-10 pointer"

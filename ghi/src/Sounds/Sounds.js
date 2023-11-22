@@ -4,6 +4,7 @@ import draw from "./draw.wav"
 import shuffle from "./shuffle.wav"
 import special from "./specialsummon.wav"
 import gain from "./gainlp.wav"
+import activate from "./activate.wav"
 import set from "./set.wav"
 import equip from "./equip.wav"
 
@@ -40,6 +41,12 @@ export function destroySound() {
 
 export function specialSound() {
     const audio = new Audio(special);
+    audio.volume = 0.05
+    audio.play()
+}
+
+export function activateSound() {
+    const audio = new Audio(activate);
     audio.volume = 0.05
     audio.play()
 }

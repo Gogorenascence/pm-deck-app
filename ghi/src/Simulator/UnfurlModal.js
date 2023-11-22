@@ -9,8 +9,11 @@ function UnfurlModal({
     setShowUnfurlModal,
     addCardFromDeck,
     selectCard,
+    selectedIndex,
+    fromDeck,
     setFromDeck,
-    discardFromDeck
+    discardFromDeck,
+    setFromDiscard
 }) {
 
     const content = useRef(null)
@@ -71,6 +74,7 @@ function UnfurlModal({
     const handleCardFromDeck = (index) => {
         selectCard(index)
         setFromDeck(true)
+        setFromDiscard(false)
         setShowDeckMenu(null)
         handleClose()
     }
@@ -110,7 +114,7 @@ function UnfurlModal({
                                                 onClick={() => handleShowDeckMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
-                                                    showDeckMenu === index?
+                                                    showDeckMenu === index || (selectedIndex === index && fromDeck)?
                                                     "selected3 builder-card margin-10 pointer glow3"
                                                 :
                                                     "builder-card margin-10 pointer"

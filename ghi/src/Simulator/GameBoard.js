@@ -38,6 +38,7 @@ function GameBoard({
     fromDiscard,
     setFromDiscard,
     selectPluck,
+    selectedIndex,
     selectedPluckIndex,
     shuffleMainDeck,
     shufflePluckDeck,
@@ -76,12 +77,15 @@ function GameBoard({
                 showDeckSearchModal={showDeckSearchModal}
                 setShowDeckSearchModal={setShowDeckSearchModal}
                 selectCard={selectCard}
+                selectedIndex={selectedIndex}
+                fromDiscard={fromDiscard}
                 setFromDiscard={setFromDiscard}
                 addCardFromDeck={addCardFromDeck}
                 addCardFromDiscard={addCardFromDiscard}
                 mainDiscard={mainDiscard}
                 showDiscardModal={showDiscardModal}
                 setShowDiscardModal={setShowDiscardModal}
+                setFromDeck={setFromDeck}
             />
             <SimPluckSearchModal
                 pluckDeck={pluckDeck}
@@ -112,9 +116,11 @@ function GameBoard({
                 setShowUnfurlModal={setShowUnfurlModal}
                 addCardFromDeck={addCardFromDeck}
                 selectCard={selectCard}
+                selectedIndex={selectedIndex}
                 fromDeck={fromDeck}
                 setFromDeck={setFromDeck}
                 discardFromDeck={discardFromDeck}
+                setFromDiscard={setFromDiscard}
             />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex": "hidden2"}>

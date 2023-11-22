@@ -10,6 +10,7 @@ import {
     summonSound,
     drawSound,
     gainSound,
+    activateSound
 } from "../Sounds/Sounds";
 
 
@@ -199,6 +200,7 @@ function SimulatorPage() {
 
     const checkPlayer = () => {
         console.log(player)
+        activateSound()
     }
 
     const drawCard = () => {
@@ -346,6 +348,12 @@ function SimulatorPage() {
         })
     }
 
+    const handleCardFromHand = (index) => {
+        setFromDeck(false)
+        setFromDiscard(false)
+        selectCard(index)
+    }
+
     const selectPluck = (index) => {
         selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
         setPrompt({
@@ -399,6 +407,7 @@ function SimulatorPage() {
                 setPlayArea(playZones)
                 setShowCardMenu({show: false, index: null})
             }
+            setShowCardMenu({show: false, index: null})
         }
     }
 
@@ -598,6 +607,7 @@ function SimulatorPage() {
                     discardPluckFromOwnership={discardPluckFromOwnership}
                     handleHoveredCard={handleHoveredCard}
                     selectCard={selectCard}
+                    selectedIndex={selectedIndex}
                     selectPluck={selectPluck}
                     selectedPluckIndex={selectedPluckIndex}
                     shuffleMainDeck={shuffleMainDeck}
@@ -615,7 +625,7 @@ function SimulatorPage() {
                                         <div>
                                             <div className={showCardMenu.index === index && showCardMenu.show === true? "card-menu": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => selectCard(index)}
+                                                    onClick={() => handleCardFromHand(index)}
                                                 ><p>Play Face-Up</p></div>
                                                 <div className="card-menu-item"><p>Play Face-Down</p></div>
                                                 <div className="card-menu-item"><p>Place</p></div>
