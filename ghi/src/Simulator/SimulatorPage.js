@@ -57,7 +57,8 @@ function SimulatorPage() {
         message: "",
         action: "",
     })
-
+    const [fromDeck, setFromDeck] = useState(false)
+    const [fromDiscard, setFromDiscard] = useState(false)
     const [showCardMenu, setShowCardMenu] = useState({
         show: false,
         index: null
@@ -200,10 +201,6 @@ function SimulatorPage() {
         console.log(player)
     }
 
-    const playerPrompt = (message) => {
-        setPrompt(message)
-    }
-
     const drawCard = () => {
         if (hand.length < 8) {
             console.log(player.mainDeck)
@@ -342,7 +339,6 @@ function SimulatorPage() {
 
     const selectCard = (index) => {
         selectedIndex === index? setSelectedIndex(null): setSelectedIndex(index)
-        console.log(showCardMenu.index, showPluckMenu)
         setShowCardMenu({show: false, index: index})
         setPrompt({
             message: "Select a Zone to Play Your Card!",
@@ -352,7 +348,6 @@ function SimulatorPage() {
 
     const selectPluck = (index) => {
         selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
-        console.log(showCardMenu.index, showPluckMenu)
         setPrompt({
             message: "Select a Zone to Play Your Pluck!",
             action: "activePluck"
@@ -361,18 +356,49 @@ function SimulatorPage() {
 
     const playCard = (zone) => {
         if (selectedIndex !== null) {
-            const playedCard = player.hand[selectedIndex]
-            const playZones = {...player.playArea}
-            const selectZone = playZones[zone]
-            const newHand = [...player.hand]
-            console.log(selectedIndex)
-            setPrompt({message: "", action: ""})
-            selectZone.push(playedCard)
-            summonSound()
-            setHand(newHand.filter((_, i) => i !== selectedIndex))
-            setSelectedIndex(null)
-            setPlayArea(playZones)
-            setShowCardMenu({show: false, index: null})
+            if (fromDeck) {
+                const playedCard = playerMainDeck.cards[selectedIndex]
+                const newMainDeck = [...playerMainDeck.cards]
+                const playZones = {...player.playArea}
+                const selectZone = playZones[zone]
+                setPrompt({message: "", action: ""})
+                console.log(fromDeck)
+                selectZone.push(playedCard)
+                specialSound()
+                setPlayerMainDeck({
+                    name: selectedMainDeck.name,
+                    cards: newMainDeck.filter((_, i) => i !== selectedIndex)
+                });
+                setSelectedIndex(null)
+                setFromDeck(false)
+                setPlayArea(playZones)
+            } else if (fromDiscard) {
+                const playedCard = player.mainDiscard[selectedIndex]
+                const playZones = {...player.playArea}
+                const selectZone = playZones[zone]
+                const newDiscardPile = [...player.mainDiscard]
+                setPrompt({message: "", action: ""})
+                selectZone.push(playedCard)
+                specialSound()
+                setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
+                setSelectedIndex(null)
+                setFromDiscard(false)
+                setPlayArea(playZones)
+            } else {
+                const playedCard = player.hand[selectedIndex]
+                const playZones = {...player.playArea}
+                const selectZone = playZones[zone]
+                const newHand = [...player.hand]
+                console.log(selectedIndex)
+                setPrompt({message: "", action: ""})
+                selectZone.push(playedCard)
+                summonSound()
+                setHand(newHand.filter((_, i) => i !== selectedIndex))
+                setSelectedIndex(null)
+                setFromDeck(false)
+                setPlayArea(playZones)
+                setShowCardMenu({show: false, index: null})
+            }
         }
     }
 
@@ -557,6 +583,10 @@ function SimulatorPage() {
                     ownership={player.ownership}
                     showPluckMenu={showPluckMenu}
                     setShowPluckMenu={setShowPluckMenu}
+                    fromDeck={fromDeck}
+                    setFromDeck={setFromDeck}
+                    fromDiscard={fromDiscard}
+                    setFromDiscard={setFromDiscard}
                     playCard={playCard}
                     playPluck={playPluck}
                     fieldStyle={fieldStyle}
@@ -567,6 +597,7 @@ function SimulatorPage() {
                     discardPluck={discardPluck}
                     discardPluckFromOwnership={discardPluckFromOwnership}
                     handleHoveredCard={handleHoveredCard}
+                    selectCard={selectCard}
                     selectPluck={selectPluck}
                     selectedPluckIndex={selectedPluckIndex}
                     shuffleMainDeck={shuffleMainDeck}
@@ -602,7 +633,7 @@ function SimulatorPage() {
                                                 onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
-                                                    showCardMenu.index === index?
+                                                    showCardMenu.index === index && !fromDeck && !fromDiscard?
                                                     "selected3 builder-card-hand pointer"
                                                 :
                                                     "builder-card-hand pointer"

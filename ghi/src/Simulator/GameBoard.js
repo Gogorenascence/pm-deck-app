@@ -32,6 +32,11 @@ function GameBoard({
     discardPluck,
     discardPluckFromOwnership,
     handleHoveredCard,
+    selectCard,
+    fromDeck,
+    setFromDeck,
+    fromDiscard,
+    setFromDiscard,
     selectPluck,
     selectedPluckIndex,
     shuffleMainDeck,
@@ -70,6 +75,8 @@ function GameBoard({
                 handleHoveredCard={handleHoveredCard}
                 showDeckSearchModal={showDeckSearchModal}
                 setShowDeckSearchModal={setShowDeckSearchModal}
+                selectCard={selectCard}
+                setFromDiscard={setFromDiscard}
                 addCardFromDeck={addCardFromDeck}
                 addCardFromDiscard={addCardFromDiscard}
                 mainDiscard={mainDiscard}
@@ -104,6 +111,9 @@ function GameBoard({
                 showUnfurlModal={showUnfurlModal}
                 setShowUnfurlModal={setShowUnfurlModal}
                 addCardFromDeck={addCardFromDeck}
+                selectCard={selectCard}
+                fromDeck={fromDeck}
+                setFromDeck={setFromDeck}
                 discardFromDeck={discardFromDeck}
             />
             <div className="field_box" style={fieldStyle}>

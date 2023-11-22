@@ -8,6 +8,8 @@ function UnfurlModal({
     showUnfurlModal,
     setShowUnfurlModal,
     addCardFromDeck,
+    selectCard,
+    setFromDeck,
     discardFromDeck
 }) {
 
@@ -66,6 +68,13 @@ function UnfurlModal({
         setShowDeckMenu(null)
     }
 
+    const handleCardFromDeck = (index) => {
+        selectCard(index)
+        setFromDeck(true)
+        setShowDeckMenu(null)
+        handleClose()
+    }
+
     const handleDiscardCard = (index) => {
         discardFromDeck(index)
         setCount(count - 1)
@@ -91,7 +100,7 @@ function UnfurlModal({
                                                     onClick={() => handleAddCard(index, true)}
                                                 ><p>Add to Hand</p></div>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleAddCard(index, false)}
+                                                    onClick={() => handleCardFromDeck(index)}
                                                 ><p>Add to Play</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleDiscardCard(index)}

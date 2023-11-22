@@ -6,6 +6,8 @@ function SimDeckSearchModal({
     handleHoveredCard,
     showDeckSearchModal,
     setShowDeckSearchModal,
+    selectCard,
+    setFromDiscard,
     addCardFromDeck,
     addCardFromDiscard,
     mainDiscard,
@@ -77,8 +79,17 @@ function SimDeckSearchModal({
     }
 
     const handleAddCardFromDiscard = (index) => {
-        addCardFromDiscard(index)
+        const originalIndex = mainDiscard.length - 1 - index;
+        addCardFromDiscard(originalIndex)
         setShowDiscardMenu(null)
+    }
+
+    const handleCardFromDiscard = (index) => {
+        const originalIndex = mainDiscard.length - 1 - index;
+        selectCard(originalIndex)
+        setFromDiscard(true)
+        setShowDeckMenu(null)
+        handleCloseDiscard()
     }
 
     return(
@@ -91,7 +102,7 @@ function SimDeckSearchModal({
                             style={{color: "black"}}>Discard Pile</h1>
                         <div>
                         <div className={mainDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {mainDiscard.map((card, index) => {
+                            {mainDiscard.slice().reverse().map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
@@ -100,7 +111,7 @@ function SimDeckSearchModal({
                                                     onClick={() => handleAddCardFromDiscard(index)}
                                                 ><p>Add to Hand</p></div>
                                                 <div className="card-menu-item"
-                                                    // onClick={() => handleAddCard(index, false)}
+                                                    onClick={() => handleCardFromDiscard(index)}
                                                 ><p>Add to Play</p></div>
                                             </div>
                                             <img

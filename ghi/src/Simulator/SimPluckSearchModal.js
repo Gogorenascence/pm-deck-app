@@ -77,7 +77,8 @@ function SimPluckSearchModal({
     }
 
     const handleAddPluckFromDiscard = (index) => {
-        addPluckFromDiscard(index)
+        const originalIndex = pluckDiscard.length - 1 - index;
+        addPluckFromDiscard(originalIndex)
         setShowDiscardMenu(null)
     }
 
@@ -91,7 +92,7 @@ function SimPluckSearchModal({
                             style={{color: "black"}}>Discard Pile</h1>
                         <div>
                         <div className={pluckDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {pluckDiscard.map((card, index) => {
+                            {pluckDiscard.slice().reverse().map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
