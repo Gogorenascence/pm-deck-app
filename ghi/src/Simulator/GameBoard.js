@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { GameStateContext } from "../context/GameStateContext";
 import SimDeckSearch from "./SimDeckSearch";
 import SimDeckSearchModal from "./SimDeckSearchModal";
+import SimPluckSearch from "./SimPluckSearch";
+import SimPluckSearchModal from "./SimPluckSearchModal";
 import Ownership from "./Ownership";
 import OwnershipModal from "./OwnershipModal";
 import UnfurlModal from "./UnfurlModal";
@@ -13,22 +14,32 @@ function GameBoard({
     mainDeck,
     pluckDeck,
     ownership,
+    showPluckMenu,
+    setShowPluckMenu,
     drawCard,
+    addCardFromDeck,
+    addCardFromDiscard,
     drawPluck,
+    addPluckFromDeck,
+    addPluckFromDiscard,
     playCard,
     playPluck,
     fieldStyle,
     mainDiscard,
     discardCard,
+    discardFromDeck,
     pluckDiscard,
     discardPluck,
+    discardPluckFromOwnership,
     handleHoveredCard,
     selectPluck,
     selectedPluckIndex,
-    shuffleMainDeck
+    shuffleMainDeck,
+    shufflePluckDeck,
+    showExtra,
+    setShowExtra
 }) {
 
-    const main_deck = mainDeck || [];
     const fighter = playArea.fighter_slot || [];
     const aura = playArea.aura_slot || [];
     const move = playArea.move_slot || [];
@@ -37,20 +48,18 @@ function GameBoard({
     const slot6 = playArea.slot_6 || [];
     const slot7 = playArea.slot_7 || [];
     const slot8 = playArea.slot_8 || [];
-    const discard_pile = mainDiscard || [];
 
-    const pluck_deck = pluckDeck || [];
     const pluck_slot1 = activePluck.slot_1 || [];
     const pluck_slot2 = activePluck.slot_2 || [];
     const pluck_slot3 = activePluck.slot_3 || [];
     const pluck_slot4 = activePluck.slot_4 || [];
-    const pluck_discard_pile = pluckDiscard || [];
 
     const [showOwnershipModal, setShowOwnershipModal] = useState(false)
     const [showDeckSearchModal, setShowDeckSearchModal] = useState(false)
     const [showUnfurlModal, setShowUnfurlModal] = useState(false)
     const [showDiscardModal, setShowDiscardModal] = useState(false)
-    const [showExtra, setShowExtra] = useState(true)
+    const [showPluckSearchModal, setShowPluckSearchModal] = useState(false)
+    const [showPluckDiscardModal, setShowPluckDiscardModal] = useState(false)
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
 
@@ -61,9 +70,22 @@ function GameBoard({
                 handleHoveredCard={handleHoveredCard}
                 showDeckSearchModal={showDeckSearchModal}
                 setShowDeckSearchModal={setShowDeckSearchModal}
+                addCardFromDeck={addCardFromDeck}
+                addCardFromDiscard={addCardFromDiscard}
                 mainDiscard={mainDiscard}
                 showDiscardModal={showDiscardModal}
                 setShowDiscardModal={setShowDiscardModal}
+            />
+            <SimPluckSearchModal
+                pluckDeck={pluckDeck}
+                handleHoveredCard={handleHoveredCard}
+                showPluckSearchModal={showPluckSearchModal}
+                setShowPluckSearchModal={setShowPluckSearchModal}
+                addPluckFromDeck={addPluckFromDeck}
+                addPluckFromDiscard={addPluckFromDiscard}
+                pluckDiscard={pluckDiscard}
+                showPluckDiscardModal={showPluckDiscardModal}
+                setShowPluckDiscardModal={setShowPluckDiscardModal}
             />
             <OwnershipModal
                 ownership={ownership}
@@ -72,12 +94,17 @@ function GameBoard({
                 selectedPluckIndex={selectedPluckIndex}
                 showOwnershipModal={showOwnershipModal}
                 setShowOwnershipModal={setShowOwnershipModal}
+                discardPluckFromOwnership={discardPluckFromOwnership}
+                showPluckMenu={showPluckMenu}
+                setShowPluckMenu={setShowPluckMenu}
             />
             <UnfurlModal
                 mainDeck={mainDeck}
                 handleHoveredCard={handleHoveredCard}
                 showUnfurlModal={showUnfurlModal}
                 setShowUnfurlModal={setShowUnfurlModal}
+                addCardFromDeck={addCardFromDeck}
+                discardFromDeck={discardFromDeck}
             />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex": "hidden2"}>
@@ -371,37 +398,15 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard margin-left"
-                    >
-                        {pluck_discard_pile.length > 1 ?
-                            <div className="matCardOverlay">
-                                <h1 className="fontSize60">{pluck_discard_pile.length}</h1>
-                            </div> :null
-                        }
-                        {pluck_discard_pile.length > 0 ?
-                        <img
-                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
-                            className="builder-card5 pointer glow3"
-                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                            src={pluck_discard_pile[pluck_discard_pile.length-1].picture_url ? pluck_discard_pile[pluck_discard_pile.length-1].picture_url : "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
-                            alt={pluck_discard_pile[pluck_discard_pile.length-1].name}/>
-                            :null}
-                    </div>
-                    <div className="matCard"
-                        onClick={() => drawPluck()}
-                    >
-                        {pluck_deck.length > 1 ?
-                            <div className="matCardOverlay">
-                                <h1 className="fontSize60">{pluck_deck.length}</h1>
-                            </div> :null
-                        }
-                        <img
-                            // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
-                            className="builder-card5 pointer glow3"
-                            // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                            src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
-                            alt="pluck deck"/>
-                    </div>
+                    <SimPluckSearch
+                        pluckDeck={pluckDeck}
+                        setShowPluckSearchModal={setShowPluckSearchModal}
+                        drawPluck={drawPluck}
+                        // setShowUnfurlPluckModal={setShowUnfurlPluckModal}
+                        shufflePluckDeck={shufflePluckDeck}
+                        pluckDiscard={pluckDiscard}
+                        setShowPluckDiscardModal={setShowPluckDiscardModal}
+                    />
                 </div>
             </div>
         </div>

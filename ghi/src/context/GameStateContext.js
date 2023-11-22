@@ -49,6 +49,15 @@ const GameStateContextProvider = ({ children }) => {
         slot_4: [],
     })
 
+    const [transformRotateX, setTransformRotateX] = useState("45deg")
+    const [scale, setScale] = useState(0.75)
+    const [position, setPosition] = useState({
+    x_pos: 0,
+    y_pos: -100,
+    })
+
+    const [showExtra, setShowExtra] = useState(true)
+
     return (
         <GameStateContext.Provider value={{
             player,
@@ -60,7 +69,15 @@ const GameStateContextProvider = ({ children }) => {
             playArea,
             setPlayArea,
             activePluck,
-            setActivePluck
+            setActivePluck,
+            transformRotateX,
+            setTransformRotateX,
+            scale,
+            setScale,
+            position,
+            setPosition,
+            showExtra,
+            setShowExtra
             }}>
             {children}
         </GameStateContext.Provider>

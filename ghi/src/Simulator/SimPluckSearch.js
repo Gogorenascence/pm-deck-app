@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 
-function SimDeckSearch({
-    mainDeck,
-    setShowDeckSearchModal,
-    drawCard,
-    setShowUnfurlModal,
-    shuffleMainDeck,
-    mainDiscard,
-    setShowDiscardModal
+function SimPluckSearch({
+    pluckDeck,
+    setShowPluckSearchModal,
+    drawPluck,
+    // setShowUnfurlPluckModal,
+    shufflePluckDeck,
+    pluckDiscard,
+    setShowPluckDiscardModal
 }) {
 
     const content = useRef(null)
@@ -28,7 +28,6 @@ function SimDeckSearch({
                 ) {
                     handleClose();
                     handleCloseDiscard();
-                    console.log("moo")
                 }
             }
           // Adding click event listener
@@ -37,40 +36,40 @@ function SimDeckSearch({
         }, [ref]);
     }
 
-
     useEffect(() => {
-        if (mainDeck.length === 0) {
+        if (pluckDeck.length === 0) {
             handleClose();
         }
-        if (mainDiscard.length === 0) {
+        if (pluckDiscard.length === 0) {
             handleCloseDiscard(); // Call handleClose when filteredCards is empty
         }
-    }, [mainDeck, mainDiscard]);
+    }, [pluckDeck, pluckDiscard]);
 
     const handleOpen = () => {
-        setShowDeckSearchModal(true)
+        setShowPluckSearchModal(true)
         setShowDeckMenu(false)
         document.body.style.overflow = 'hidden';
     };
 
-    const handleUnfurl = () => {
-        setShowUnfurlModal(true)
-        document.body.style.overflow = 'hidden';
-    };
+    // const handleUnfurl = () => {
+    //     setShowUnfurlModal(true)
+    //     document.body.style.overflow = 'hidden';
+    // };
 
     const handleClose = () => {
-        setShowDeckSearchModal(false)
+        setShowPluckSearchModal(false)
         document.body.style.overflow = 'auto';
     };
 
     const handleCloseDiscard = () => {
-        setShowDiscardModal(false)
+        setShowPluckDiscardModal(false)
         document.body.style.overflow = 'auto';
     };
 
     const handleOpenDiscard = () => {
-        setShowDiscardModal(true)
+        setShowPluckDiscardModal(true)
         setShowDiscardMenu(false)
+        console.log("meow")
         document.body.style.overflow = 'hidden';
     };
 
@@ -78,7 +77,7 @@ function SimDeckSearch({
     return(
         <div className='flex'>
             <span>
-                <div className={showDiscardMenu && mainDiscard.length > 0? "discard-menu margin-left": "hidden2"}>
+                <div className={showDiscardMenu && pluckDiscard.length > 0? "discard-menu margin-left": "hidden2"}>
                     <div className="card-menu-item"
                         onClick={() => handleOpenDiscard()}
                     ><p>Search</p></div>
@@ -86,52 +85,53 @@ function SimDeckSearch({
                 <div className="matCard margin-left"
                     onClick={() => setShowDiscardMenu(!showDiscardMenu)}
                 >
-                    {mainDiscard.length > 1 ?
+                    {pluckDiscard.length > 1 ?
                         <div className="matCardOverlay">
-                            <h1 className="fontSize60">{mainDiscard.length}</h1>
+                            <h1 className="fontSize60">{pluckDiscard.length}</h1>
                         </div> :null
                     }
-                    {mainDiscard.length > 0 ?
+                    {pluckDiscard.length > 0 ?
                     <img
+                        // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                         className="builder-card5 pointer glow3"
-                        src={mainDiscard[mainDiscard.length-1].picture_url ?
-                            mainDiscard[mainDiscard.length-1].picture_url :
-                            "https://i.imgur.com/krY25iI.png"}
-                        alt={mainDiscard[mainDiscard.length-1].name}/>
+                        src={pluckDiscard[pluckDiscard.length-1].picture_url ?
+                            pluckDiscard[pluckDiscard.length-1].picture_url :
+                            "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
+                        alt={pluckDiscard[pluckDiscard.length-1].name}/>
                         :null}
                 </div>
             </span>
             <span>
-                <div className={showDeckMenu && mainDeck.length > 0 ? "deck-menu": "hidden2"}>
+                <div className={showDeckMenu && pluckDeck.length > 0 ? "deck-menu": "hidden2"}>
                     <div className="card-menu-item"
-                        onClick={() => drawCard()}
+                        onClick={() => drawPluck()}
                     ><p>Draw</p></div>
                     <div className="card-menu-item"
-                        onClick={() => handleUnfurl()}
+                        // onClick={() => handleUnfurl()}
                     ><p>Unfurl</p></div>
                     <div className="card-menu-item"
                         onClick={() => handleOpen()}
                     ><p>Search</p></div>
                     <div className="card-menu-item"
-                        onClick={() => shuffleMainDeck()}
+                        onClick={() => shufflePluckDeck()}
                     ><p>Shuffle</p></div>
                 </div>
                 <div className="matCard"
                     onClick={() => setShowDeckMenu(!showDeckMenu)}
                 >
-                    {mainDeck.length > 1 ?
+                    {pluckDeck.length > 1 ?
                         <div className="matCardOverlay">
-                            <h1 className="fontSize60">{mainDeck.length}</h1>
+                            <h1 className="fontSize60">{pluckDeck.length}</h1>
                         </div> :null
                     }
                     <img
                         className="builder-card5 pointer glow3"
-                        src="https://i.imgur.com/krY25iI.png"
-                        alt="deck"/>
+                        src="https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"
+                        alt="pluck deck"/>
                 </div>
             </span>
         </div>
     )
 }
 
-export default SimDeckSearch
+export default SimPluckSearch

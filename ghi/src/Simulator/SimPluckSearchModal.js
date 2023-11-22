@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 
-function SimDeckSearchModal({
-    mainDeck,
+function SimPluckSearchModal({
+    pluckDeck,
     handleHoveredCard,
-    showDeckSearchModal,
-    setShowDeckSearchModal,
-    addCardFromDeck,
-    addCardFromDiscard,
-    mainDiscard,
-    showDiscardModal,
-    setShowDiscardModal
+    showPluckSearchModal,
+    setShowPluckSearchModal,
+    addPluckFromDeck,
+    addPluckFromDiscard,
+    pluckDiscard,
+    showPluckDiscardModal,
+    setShowPluckDiscardModal
 }) {
 
     const content = useRef(null)
@@ -26,7 +26,7 @@ function SimDeckSearchModal({
                     !ref.current.contains(event.target)&&
                     !event.target.closest(".card-menu-item")&&
                     !event.target.closest(".deck-menu-item")
-                ) {
+                    ) {
                     handleClose();
                     handleCloseDiscard();
                 }
@@ -39,22 +39,22 @@ function SimDeckSearchModal({
 
     useEffect(() => {
       // Check if filteredCards is empty
-        if (mainDeck.length === 0) {
+        if (pluckDeck.length === 0) {
             handleClose(); // Call handleClose when filteredCards is empty
         }
-        if (mainDiscard.length === 0) {
+        if (pluckDiscard.length === 0) {
             handleCloseDiscard(); // Call handleClose when filteredCards is empty
         }
-    }, [mainDeck, mainDiscard]);
+    }, [pluckDeck, pluckDiscard]);
 
     const handleClose = () => {
-        setShowDeckSearchModal(false)
+        setShowPluckSearchModal(false)
         setShowDeckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
     const handleCloseDiscard = () => {
-        setShowDiscardModal(false)
+        setShowPluckDiscardModal(false)
         setShowDiscardMenu(null)
         document.body.style.overflow = 'auto';
     };
@@ -71,37 +71,37 @@ function SimDeckSearchModal({
             setShowDiscardMenu(index)
     }
 
-    const handleAddCard = (index, unfurling) => {
-        addCardFromDeck(index, unfurling)
+    const handleAddPluck = (index, unfurling) => {
+        addPluckFromDeck(index, unfurling)
         setShowDeckMenu(null)
     }
 
-    const handleAddCardFromDiscard = (index) => {
-        addCardFromDiscard(index)
+    const handleAddPluckFromDiscard = (index) => {
+        addPluckFromDiscard(index)
         setShowDiscardMenu(null)
     }
 
     return(
         <div>
-            {showDiscardModal ?
+            {showPluckDiscardModal ?
                 <div className="sim-modal topbar"
                 >
-                    <div className={mainDiscard.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
+                    <div className={pluckDiscard.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1"
                             style={{color: "black"}}>Discard Pile</h1>
                         <div>
-                        <div className={mainDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {mainDiscard.map((card, index) => {
+                        <div className={pluckDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
+                            {pluckDiscard.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
                                             <div className={showDiscardMenu === index ? "deck-menu2Items": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleAddCardFromDiscard(index)}
-                                                ><p>Add to Hand</p></div>
+                                                    onClick={() => handleAddPluckFromDiscard(index)}
+                                                ><p>Add to Ownership</p></div>
                                                 <div className="card-menu-item"
                                                     // onClick={() => handleAddCard(index, false)}
-                                                ><p>Add to Play</p></div>
+                                                ><p>Add to Active Pluck</p></div>
                                             </div>
                                             <img
                                                 onClick={() => handleShowDiscardMenu(index)}
@@ -121,7 +121,7 @@ function SimDeckSearchModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button className={mainDiscard.length > 4 ? "margin-bottom-20" :null}
+                            <button className={pluckDiscard.length > 4 ? "margin-bottom-20" :null}
                                 onClick={handleCloseDiscard}
                             >
                                 Close
@@ -130,22 +130,22 @@ function SimDeckSearchModal({
                     </div>
                 </div>:null
             }
-            {showDeckSearchModal ?
+            {showPluckSearchModal ?
                 <div className="sim-modal topbar"
                 >
-                    <div className={mainDeck.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
+                    <div className={pluckDeck.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1"
-                            style={{color: "black"}}>Main Deck</h1>
+                            style={{color: "black"}}>Pluck Deck</h1>
                         <div>
-                        <div className={mainDeck.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {mainDeck.map((card, index) => {
+                        <div className={pluckDeck.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
+                            {pluckDeck.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
                                             <div className={showDeckMenu === index ? "deck-menu2": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleAddCard(index, false)}
-                                                ><p>Add to Hand</p></div>
+                                                    onClick={() => handleAddPluck(index, false)}
+                                                ><p>Add to Ownership</p></div>
                                             </div>
                                             <img
                                                 onClick={() => handleShowDeckMenu(index)}
@@ -165,7 +165,7 @@ function SimDeckSearchModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button className={mainDeck.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
+                            <button className={pluckDeck.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
                                 Close
                             </button>
                         </div>
@@ -176,4 +176,4 @@ function SimDeckSearchModal({
     )
 }
 
-export default SimDeckSearchModal
+export default SimPluckSearchModal

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom';
 
 
 function OwnershipModal({
@@ -8,11 +7,13 @@ function OwnershipModal({
     handleHoveredCard,
     selectedPluckIndex,
     showOwnershipModal,
-    setShowOwnershipModal
+    setShowOwnershipModal,
+    discardPluckFromOwnership,
+    showPluckMenu,
+    setShowPluckMenu
 }) {
 
     const full_ownership = ownership || [];
-    const selectedIndex = selectedPluckIndex || null;
 
     const content = useRef(null)
     useOutsideAlerter(content)
@@ -47,8 +48,15 @@ function OwnershipModal({
         }
     }, [ownership]);
 
+    const handleShowCardMenu = (index) => {
+        showPluckMenu === index?
+            clearSelected(index):
+            setShowPluckMenu(index)
+    }
+
     const handleClose = () => {
         setShowOwnershipModal(false)
+        setShowPluckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
@@ -56,31 +64,17 @@ function OwnershipModal({
         selectPluck(index)
         handleClose()
     }
-    // const handleSetClass = (card_class, item) => {
-    //     setShowModal({
-    //         show: true,
-    //         label: item,
-    //         card_type: 0,
-    //         card_class: card_class
-    //     })
-    //     document.body.style.overflow = 'hidden';
-    // };
 
-    // const handleSetType = async(card_type, item) => {
-    //     setShowModal({
-    //         show: true,
-    //         label: item,
-    //         card_type: card_type,
-    //         card_class: ""
-    //     })
-    //     document.body.style.overflow = 'hidden';
-    // };
+    const clearSelected = (index) => {
+        setShowPluckMenu(null)
+        selectPluck(index)
+    }
 
 
     return(
         <div>
             {showOwnershipModal ?
-                <div className="sim-modal topbar"
+                <div className="sim-modal2 topbar"
                 >
                     <div className={full_ownership.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1"
@@ -90,18 +84,35 @@ function OwnershipModal({
                             {full_ownership.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
-                                        <img
-                                            onClick={() => handlePluck(index)}
-                                            onMouseEnter={() => handleHoveredCard(card)}
-                                            className={
-                                                selectedIndex && selectedIndex === index?
-                                                "selected builder-card margin-5 pointer glow3"
-                                            :
-                                                "builder-card margin-5 pointer glow3"
-                                            }
-                                            // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                            alt={card.name}/>
+                                        <div>
+                                            <div className={showPluckMenu === index ? "deck-menu5Items": "hidden2"}>
+                                                <div className="card-menu-item"
+                                                    onClick={() => handlePluck(index)}
+                                                ><p>Play</p></div>
+                                                <div className="card-menu-item"><p>Place</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => discardPluckFromOwnership(index)}
+                                                ><p>Discard</p></div>
+                                                <div className="card-menu-item"
+                                                    // onClick={() => topDeckCard(index)}
+                                                ><p>Decktop</p></div>
+                                                <div className="card-menu-item"
+                                                    // onClick={() => bottomDeckCard(index)}
+                                                ><p>Deckbottom</p></div>
+                                            </div>
+                                            <img
+                                                onClick={() => handleShowCardMenu(index)}
+                                                onMouseEnter={() => handleHoveredCard(card)}
+                                                className={
+                                                    showPluckMenu === index || selectedPluckIndex === index?
+                                                    "selected3 builder-card margin-10 pointer glow3"
+                                                :
+                                                    "builder-card margin-10 pointer glow3"
+                                                }
+                                                // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                alt={card.name}/>
+                                        </div>
                                     </div>
                                 );
                             })}
