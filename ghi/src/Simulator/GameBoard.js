@@ -63,6 +63,7 @@ function GameBoard({
     const [showOwnershipModal, setShowOwnershipModal] = useState(false)
     const [showDeckSearchModal, setShowDeckSearchModal] = useState(false)
     const [showUnfurlModal, setShowUnfurlModal] = useState(false)
+    const [unfurlCount, setUnfurlCount] = useState(1)
     const [showDiscardModal, setShowDiscardModal] = useState(false)
     const [showPluckSearchModal, setShowPluckSearchModal] = useState(false)
     const [showPluckDiscardModal, setShowPluckDiscardModal] = useState(false)
@@ -114,6 +115,8 @@ function GameBoard({
                 handleHoveredCard={handleHoveredCard}
                 showUnfurlModal={showUnfurlModal}
                 setShowUnfurlModal={setShowUnfurlModal}
+                unfurlCount={unfurlCount}
+                setUnfurlCount={setUnfurlCount}
                 addCardFromDeck={addCardFromDeck}
                 selectCard={selectCard}
                 selectedIndex={selectedIndex}
@@ -310,6 +313,8 @@ function GameBoard({
                         setShowDeckSearchModal={setShowDeckSearchModal}
                         drawCard={drawCard}
                         setShowUnfurlModal={setShowUnfurlModal}
+                        unfurlCount={unfurlCount}
+                        setUnfurlCount={setUnfurlCount}
                         shuffleMainDeck={shuffleMainDeck}
                         mainDiscard={mainDiscard}
                         setShowDiscardModal={setShowDiscardModal}

@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+import {
+    menuSound,
+} from "../Sounds/Sounds";
 
 
 function SimPluckSearch({
@@ -48,6 +51,7 @@ function SimPluckSearch({
     const handleOpen = () => {
         setShowPluckSearchModal(true)
         setShowDeckMenu(false)
+        menuSound()
         document.body.style.overflow = 'hidden';
     };
 
@@ -69,9 +73,19 @@ function SimPluckSearch({
     const handleOpenDiscard = () => {
         setShowPluckDiscardModal(true)
         setShowDiscardMenu(false)
-        console.log("meow")
+        menuSound()
         document.body.style.overflow = 'hidden';
     };
+
+    const handleShowDeckMenu = () => {
+        setShowDeckMenu(!showDeckMenu)
+        menuSound()
+    }
+
+    const handleShowDiscardMenu = () => {
+        setShowDiscardMenu(!showDiscardMenu)
+        menuSound()
+    }
 
 
     return(
@@ -83,7 +97,7 @@ function SimPluckSearch({
                     ><p>Search</p></div>
                 </div>
                 <div className="matCard margin-left"
-                    onClick={() => setShowDiscardMenu(!showDiscardMenu)}
+                    onClick={() => handleShowDiscardMenu()}
                 >
                     {pluckDiscard.length > 1 ?
                         <div className="matCardOverlay">
@@ -117,7 +131,7 @@ function SimPluckSearch({
                     ><p>Shuffle</p></div>
                 </div>
                 <div className="matCard"
-                    onClick={() => setShowDeckMenu(!showDeckMenu)}
+                    onClick={() => handleShowDeckMenu()}
                 >
                     {pluckDeck.length > 1 ?
                         <div className="matCardOverlay">

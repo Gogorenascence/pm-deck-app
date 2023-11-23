@@ -10,7 +10,9 @@ import {
     summonSound,
     drawSound,
     gainSound,
-    activateSound
+    activateSound,
+    discardSound,
+    menuSound
 } from "../Sounds/Sounds";
 
 
@@ -60,10 +62,7 @@ function SimulatorPage() {
     })
     const [fromDeck, setFromDeck] = useState(false)
     const [fromDiscard, setFromDiscard] = useState(false)
-    const [showCardMenu, setShowCardMenu] = useState({
-        show: false,
-        index: null
-    })
+    const [showCardMenu, setShowCardMenu] = useState(null)
     const [showPluckMenu, setShowPluckMenu] = useState(null)
 
     const getDecks = async() =>{
@@ -92,7 +91,7 @@ function SimulatorPage() {
     },[]);
 
     useEffect(() => {
-        if (showCardMenu.index === null && selectedPluckIndex === null) {
+        if (selectedIndex === null && selectedPluckIndex === null) {
             setPrompt({message: "", action: ""})
         }
     }, [showCardMenu, showPluckMenu])
@@ -272,7 +271,7 @@ function SimulatorPage() {
             name: selectedMainDeck.name,
             cards: newMainDeck.filter((_, i) => i !== index)
         });
-        destroySound()
+        discardSound()
     }
 
     const drawPluck = () => {
@@ -334,18 +333,24 @@ function SimulatorPage() {
     }
 
     const handleShowCardMenu = (index) => {
-        showCardMenu.index === index?
-            setShowCardMenu({show: false, index: null}):
-            setShowCardMenu({show: true, index: index})
+        showCardMenu === index?
+            setShowCardMenu(null):
+            setShowCardMenu(index)
+        menuSound()
     }
 
     const selectCard = (index) => {
-        selectedIndex === index? setSelectedIndex(null): setSelectedIndex(index)
-        setShowCardMenu({show: false, index: index})
-        setPrompt({
-            message: "Select a Zone to Play Your Card!",
-            action: "playArea"
-        })
+        setShowCardMenu(null)
+        if (selectedIndex === index) {
+            setSelectedIndex(null)
+            setPrompt({message: "", action: ""})
+        } else {
+            setSelectedIndex(index)
+            setPrompt({
+                message: "Select a Zone to Play Your Card!",
+                action: "playArea"
+            })
+        }
     }
 
     const handleCardFromHand = (index) => {
@@ -405,9 +410,9 @@ function SimulatorPage() {
                 setSelectedIndex(null)
                 setFromDeck(false)
                 setPlayArea(playZones)
-                setShowCardMenu({show: false, index: null})
+                setShowCardMenu(null)
             }
-            setShowCardMenu({show: false, index: null})
+            setShowCardMenu(null)
         }
     }
 
@@ -449,8 +454,8 @@ function SimulatorPage() {
         newDiscardPile.push(discardedCard)
         setHand(newHand.filter((_, i) => i !== index))
         setDiscard(newDiscardPile)
-        destroySound()
-        setShowCardMenu({show: false, index: null})
+        discardSound()
+        setShowCardMenu(null)
     }
 
     const topDeckCard = (index) => {
@@ -461,7 +466,7 @@ function SimulatorPage() {
         newCards.unshift(toppedCard)
         setHand(newHand.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
-        setShowCardMenu({show: false, index: null})
+        setShowCardMenu(null)
     }
 
     const bottomDeckCard = (index) => {
@@ -472,7 +477,7 @@ function SimulatorPage() {
         newCards.push(bottomCard)
         setHand(newHand.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
-        setShowCardMenu({show: false, index: null})
+        setShowCardMenu(null)
     }
 
     const discardPluck = (card, index, zone) => {
@@ -494,7 +499,7 @@ function SimulatorPage() {
         const newOwnership = [...player.ownership]
         newDiscardPile.push(discardedPluck)
         setOwnership(newOwnership.filter((_, i) => i !== index))
-        destroySound()
+        discardSound()
         setPluckDiscard(newDiscardPile)
     }
 
@@ -552,7 +557,7 @@ function SimulatorPage() {
             <div className={prompt.message? "promptBar pointer": "noPromptBar"}
                 onClick={() => setPrompt({message: "", action: ""})}
             >
-                <h1>{prompt.message}</h1>
+                <h1 className={prompt.message? null: "hidden2"}>{prompt.message}</h1>
             </div>
             <div>
             <div className="deckSelect">
@@ -623,10 +628,10 @@ function SimulatorPage() {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            <div className={showCardMenu.index === index && showCardMenu.show === true? "card-menu": "hidden2"}>
+                                            <div className={showCardMenu === index? "card-menu": "hidden2"}>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleCardFromHand(index)}
-                                                ><p>Play Face-Up</p></div>
+                                                ><p>{selectedIndex === index? "Cancel" : "Play Face-Up"}</p></div>
                                                 <div className="card-menu-item"><p>Play Face-Down</p></div>
                                                 <div className="card-menu-item"><p>Place</p></div>
                                                 <div className="card-menu-item"
@@ -643,7 +648,7 @@ function SimulatorPage() {
                                                 onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
-                                                    showCardMenu.index === index && !fromDeck && !fromDiscard?
+                                                    showCardMenu === index || selectedIndex === index && !fromDeck && !fromDiscard?
                                                     "selected3 builder-card-hand pointer"
                                                 :
                                                     "builder-card-hand pointer"

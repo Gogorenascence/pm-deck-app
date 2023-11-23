@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+import {
+    menuSound,
+} from "../Sounds/Sounds";
 
 
 function SimDeckSearch({
@@ -6,6 +9,8 @@ function SimDeckSearch({
     setShowDeckSearchModal,
     drawCard,
     setShowUnfurlModal,
+    unfurlCount,
+    setUnfurlCount,
     shuffleMainDeck,
     mainDiscard,
     setShowDiscardModal
@@ -50,11 +55,16 @@ function SimDeckSearch({
     const handleOpen = () => {
         setShowDeckSearchModal(true)
         setShowDeckMenu(false)
+        menuSound()
         document.body.style.overflow = 'hidden';
     };
 
     const handleUnfurl = () => {
+        if (!unfurlCount) {
+            setUnfurlCount(1)
+        }
         setShowUnfurlModal(true)
+        menuSound()
         document.body.style.overflow = 'hidden';
     };
 
@@ -71,9 +81,19 @@ function SimDeckSearch({
     const handleOpenDiscard = () => {
         setShowDiscardModal(true)
         setShowDiscardMenu(false)
+        menuSound()
         document.body.style.overflow = 'hidden';
     };
 
+    const handleShowCardMenu = () => {
+        setShowDeckMenu(!showDeckMenu)
+        menuSound()
+    }
+
+    const handleShowDiscardMenu = () => {
+        setShowDiscardMenu(!showDiscardMenu)
+        menuSound()
+    }
 
     return(
         <div className='flex'>
@@ -84,7 +104,7 @@ function SimDeckSearch({
                     ><p>Search</p></div>
                 </div>
                 <div className="matCard margin-left"
-                    onClick={() => setShowDiscardMenu(!showDiscardMenu)}
+                    onClick={() => handleShowDiscardMenu()}
                 >
                     {mainDiscard.length > 1 ?
                         <div className="matCardOverlay">
@@ -117,7 +137,7 @@ function SimDeckSearch({
                     ><p>Shuffle</p></div>
                 </div>
                 <div className="matCard"
-                    onClick={() => setShowDeckMenu(!showDeckMenu)}
+                    onClick={() => handleShowCardMenu()}
                 >
                     {mainDeck.length > 1 ?
                         <div className="matCardOverlay">

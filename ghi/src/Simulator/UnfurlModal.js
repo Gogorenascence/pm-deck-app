@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-
+import {
+    menuSound,
+    drawSound
+} from "../Sounds/Sounds";
 
 
 function UnfurlModal({
@@ -7,6 +10,8 @@ function UnfurlModal({
     handleHoveredCard,
     showUnfurlModal,
     setShowUnfurlModal,
+    unfurlCount,
+    setUnfurlCount,
     addCardFromDeck,
     selectCard,
     selectedIndex,
@@ -19,7 +24,6 @@ function UnfurlModal({
     const content = useRef(null)
     useOutsideAlerter(content)
 
-    const [count, setCount] = useState(1)
     const [showDeckMenu, setShowDeckMenu] = useState(null)
 
     function useOutsideAlerter(ref) {
@@ -32,7 +36,6 @@ function UnfurlModal({
                     !event.target.closest(".deck-menu-item")
                 ) {
                     handleClose();
-                    setCount(1);
                 }
             }
           // Adding click event listener
@@ -43,19 +46,20 @@ function UnfurlModal({
 
     useEffect(() => {
       // Check if filteredCards is empty
-        if (mainDeck.length === 0 || count === 0) {
-            handleClose(); // Call handleClose when filteredCards is empty
+        if (mainDeck.length === 0 || unfurlCount === 0) {
+            handleClose();
         }
-    }, [mainDeck, count]);
+    }, [mainDeck, unfurlCount]);
 
     const handleUnfurl = () => {
-        setCount(count + 1)
+        setUnfurlCount(unfurlCount + 1)
+        drawSound()
         document.body.style.overflow = 'hidden';
     };
 
     const handleClose = () => {
         setShowUnfurlModal(false)
-        setCount(1);
+        setShowDeckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
@@ -63,11 +67,12 @@ function UnfurlModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
+        menuSound()
     }
 
     const handleAddCard = (index, unfurling) => {
         addCardFromDeck(index, unfurling)
-        setCount(count - 1)
+        setUnfurlCount(unfurlCount - 1)
         setShowDeckMenu(null)
     }
 
@@ -77,11 +82,12 @@ function UnfurlModal({
         setFromDiscard(false)
         setShowDeckMenu(null)
         handleClose()
+        setUnfurlCount(unfurlCount - 1)
     }
 
     const handleDiscardCard = (index) => {
         discardFromDeck(index)
-        setCount(count - 1)
+        setUnfurlCount(unfurlCount - 1)
         setShowDeckMenu(null)
     }
 
@@ -95,7 +101,7 @@ function UnfurlModal({
                             style={{color: "black"}}>Unfurled Cards</h1>
                         <div>
                         <div className="card-pool-fill-hand">
-                            {mainDeck.slice(0, count).map((card, index) => {
+                            {mainDeck.slice(0, unfurlCount).map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
@@ -105,7 +111,7 @@ function UnfurlModal({
                                                 ><p>Add to Hand</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleCardFromDeck(index)}
-                                                ><p>Add to Play</p></div>
+                                                ><p>{selectedIndex === index? "Cancel" : "Add to Play"}</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleDiscardCard(index)}
                                                 ><p>Discard</p></div>
@@ -130,6 +136,9 @@ function UnfurlModal({
                         <div className="cd-inner margin-top-20">
                             <button className="margin-bottom-20" onClick={handleUnfurl}>
                                 Unfurl
+                            </button>
+                            <button className="margin-bottom-20" onClick={() =>(setUnfurlCount(1))}>
+                                Clear
                             </button>
                             <button className="margin-bottom-20" onClick={handleClose}>
                                 Close

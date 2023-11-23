@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import {
+    menuSound
+} from "../Sounds/Sounds";
 
 
 function SimDeckSearchModal({
@@ -68,16 +71,19 @@ function SimDeckSearchModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
+        menuSound()
     }
 
     const handleShowDiscardMenu = (index) => {
         showDiscardMenu === index ?
             setShowDiscardMenu(null) :
             setShowDiscardMenu(index)
+        menuSound()
     }
 
     const handleAddCard = (index, unfurling) => {
         addCardFromDeck(index, unfurling)
+        handleClose()
         setShowDeckMenu(null)
     }
 
@@ -116,7 +122,7 @@ function SimDeckSearchModal({
                                                 ><p>Add to Hand</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleCardFromDiscard(index)}
-                                                ><p>Add to Play</p></div>
+                                                ><p>{selectedIndex === mainDiscard.length - 1 - index? "Cancel" : "Add to Play"}</p></div>
                                             </div>
                                             <img
                                                 onClick={() => handleShowDiscardMenu(index)}

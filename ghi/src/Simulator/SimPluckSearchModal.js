@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import {
+    menuSound,
+} from "../Sounds/Sounds";
 
 
 function SimPluckSearchModal({
@@ -63,16 +66,19 @@ function SimPluckSearchModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
+        menuSound()
     }
 
     const handleShowDiscardMenu = (index) => {
         showDiscardMenu === index ?
             setShowDiscardMenu(null) :
             setShowDiscardMenu(index)
+        menuSound()
     }
 
     const handleAddPluck = (index, unfurling) => {
         addPluckFromDeck(index, unfurling)
+        handleClose()
         setShowDeckMenu(null)
     }
 

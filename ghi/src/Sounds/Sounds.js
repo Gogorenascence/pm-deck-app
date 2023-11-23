@@ -7,6 +7,8 @@ import gain from "./gainlp.wav"
 import activate from "./activate.wav"
 import set from "./set.wav"
 import equip from "./equip.wav"
+import discard from "./discard.wav"
+import menu from "./menu.wav"
 
 
 export function gainSound() {
@@ -47,6 +49,18 @@ export function specialSound() {
 
 export function activateSound() {
     const audio = new Audio(activate);
+    audio.volume = 0.05
+    audio.play()
+}
+
+export function discardSound() {
+    const audio = new Audio(discard);
+    audio.volume = 0.05
+    audio.play()
+}
+
+export function menuSound() {
+    const audio = new Audio(menu);
     audio.volume = 0.05
     audio.play()
 }
