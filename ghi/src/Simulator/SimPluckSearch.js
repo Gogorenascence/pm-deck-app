@@ -11,7 +11,8 @@ function SimPluckSearch({
     // setShowUnfurlPluckModal,
     shufflePluckDeck,
     pluckDiscard,
-    setShowPluckDiscardModal
+    setShowPluckDiscardModal,
+    volume
 }) {
 
     const content = useRef(null)
@@ -51,7 +52,7 @@ function SimPluckSearch({
     const handleOpen = () => {
         setShowPluckSearchModal(true)
         setShowDeckMenu(false)
-        menuSound()
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
@@ -73,18 +74,18 @@ function SimPluckSearch({
     const handleOpenDiscard = () => {
         setShowPluckDiscardModal(true)
         setShowDiscardMenu(false)
-        menuSound()
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
     const handleShowDeckMenu = () => {
         setShowDeckMenu(!showDeckMenu)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleShowDiscardMenu = () => {
         setShowDiscardMenu(!showDiscardMenu)
-        menuSound()
+        menuSound(volume)
     }
 
 

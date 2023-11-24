@@ -88,7 +88,7 @@ function OwnershipModal({
                                             <div className={showPluckMenu === index ? "deck-menu5Items": "hidden2"}>
                                                 <div className="card-menu-item"
                                                     onClick={() => handlePluck(index)}
-                                                ><p>Play</p></div>
+                                                ><p>{selectedPluckIndex === index? "Cancel" : "Play"}</p></div>
                                                 <div className="card-menu-item"><p>Place</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => discardPluckFromOwnership(index)}

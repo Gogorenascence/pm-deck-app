@@ -9,58 +9,78 @@ import set from "./set.wav"
 import equip from "./equip.wav"
 import discard from "./discard.wav"
 import menu from "./menu.wav"
+import gameStart from "./nextturn.wav"
 
 
-export function gainSound() {
+export function soundLoop(sound, loopCount, time) {
+    let playCount = 0
+
+    const looper = () => {
+        if (playCount < loopCount) {
+            sound()
+            playCount++
+            setTimeout(looper, time*1000)
+        }
+    }
+    looper()
+}
+
+export function gainSound(volume) {
     const audio = new Audio(gain);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function summonSound() {
+export function summonSound(volume) {
     const audio = new Audio(summon);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function drawSound() {
+export function drawSound(volume) {
     const audio = new Audio(draw);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function shuffleSound() {
+export function shuffleSound(volume) {
     const audio = new Audio(shuffle);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function destroySound() {
+export function destroySound(volume) {
     const audio = new Audio(destroy);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function specialSound() {
+export function specialSound(volume) {
     const audio = new Audio(special);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function activateSound() {
+export function activateSound(volume) {
     const audio = new Audio(activate);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function discardSound() {
+export function discardSound(volume) {
     const audio = new Audio(discard);
-    audio.volume = 0.05
+    audio.volume = volume
     audio.play()
 }
 
-export function menuSound() {
+export function menuSound(volume) {
     const audio = new Audio(menu);
-    audio.volume = 0.05
+    audio.volume = volume
+    audio.play()
+}
+
+export function startSound(volume) {
+    const audio = new Audio(gameStart);
+    audio.volume = volume
     audio.play()
 }

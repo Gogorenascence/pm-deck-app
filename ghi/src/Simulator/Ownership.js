@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom';
+import {
+    menuSound
+} from "../Sounds/Sounds";
 
 
 function Ownership({
     ownership,
     selectPluck,
     selectedPluckIndex,
-    setShowOwnershipModal
+    setShowOwnershipModal,
+    volume
 }) {
 
     const full_ownership = ownership || [];
@@ -41,6 +44,7 @@ function Ownership({
 
     const handleOpen = () => {
         setShowOwnershipModal(true)
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 

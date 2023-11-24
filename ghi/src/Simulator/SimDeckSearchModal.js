@@ -18,7 +18,8 @@ function SimDeckSearchModal({
     mainDiscard,
     showDiscardModal,
     setShowDiscardModal,
-    setFromDeck
+    setFromDeck,
+    volume
 }) {
 
     const content = useRef(null)
@@ -71,14 +72,14 @@ function SimDeckSearchModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleShowDiscardMenu = (index) => {
         showDiscardMenu === index ?
             setShowDiscardMenu(null) :
             setShowDiscardMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleAddCard = (index, unfurling) => {
@@ -95,9 +96,9 @@ function SimDeckSearchModal({
 
     const handleCardFromDiscard = (index) => {
         const originalIndex = mainDiscard.length - 1 - index;
-        selectCard(originalIndex)
         setFromDiscard(true)
         setFromDeck(false)
+        selectCard(originalIndex)
         setShowDeckMenu(null)
         handleCloseDiscard()
     }

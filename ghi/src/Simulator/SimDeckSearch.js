@@ -13,7 +13,10 @@ function SimDeckSearch({
     setUnfurlCount,
     shuffleMainDeck,
     mainDiscard,
-    setShowDiscardModal
+    setShowDiscardModal,
+    fromDeck,
+    fromDiscard,
+    volume
 }) {
 
     const content = useRef(null)
@@ -55,7 +58,7 @@ function SimDeckSearch({
     const handleOpen = () => {
         setShowDeckSearchModal(true)
         setShowDeckMenu(false)
-        menuSound()
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
@@ -64,7 +67,7 @@ function SimDeckSearch({
             setUnfurlCount(1)
         }
         setShowUnfurlModal(true)
-        menuSound()
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
@@ -81,18 +84,18 @@ function SimDeckSearch({
     const handleOpenDiscard = () => {
         setShowDiscardModal(true)
         setShowDiscardMenu(false)
-        menuSound()
+        menuSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
     const handleShowCardMenu = () => {
         setShowDeckMenu(!showDeckMenu)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleShowDiscardMenu = () => {
         setShowDiscardMenu(!showDiscardMenu)
-        menuSound()
+        menuSound(volume)
     }
 
     return(
@@ -107,7 +110,7 @@ function SimDeckSearch({
                     onClick={() => handleShowDiscardMenu()}
                 >
                     {mainDiscard.length > 1 ?
-                        <div className="matCardOverlay">
+                        <div className={fromDiscard? "matCardOverlay notify":"matCardOverlay"}>
                             <h1 className="fontSize60">{mainDiscard.length}</h1>
                         </div> :null
                     }
@@ -140,7 +143,7 @@ function SimDeckSearch({
                     onClick={() => handleShowCardMenu()}
                 >
                     {mainDeck.length > 1 ?
-                        <div className="matCardOverlay">
+                        <div className={fromDeck? "matCardOverlay notify":"matCardOverlay"}>
                             <h1 className="fontSize60">{mainDeck.length}</h1>
                         </div> :null
                     }

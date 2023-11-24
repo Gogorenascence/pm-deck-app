@@ -18,7 +18,8 @@ function UnfurlModal({
     fromDeck,
     setFromDeck,
     discardFromDeck,
-    setFromDiscard
+    setFromDiscard,
+    volume
 }) {
 
     const content = useRef(null)
@@ -53,7 +54,7 @@ function UnfurlModal({
 
     const handleUnfurl = () => {
         setUnfurlCount(unfurlCount + 1)
-        drawSound()
+        drawSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
@@ -67,7 +68,7 @@ function UnfurlModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleAddCard = (index, unfurling) => {
@@ -77,9 +78,9 @@ function UnfurlModal({
     }
 
     const handleCardFromDeck = (index) => {
-        selectCard(index)
         setFromDeck(true)
         setFromDiscard(false)
+        selectCard(index)
         setShowDeckMenu(null)
         handleClose()
         setUnfurlCount(unfurlCount - 1)

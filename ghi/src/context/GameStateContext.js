@@ -58,6 +58,8 @@ const GameStateContextProvider = ({ children }) => {
 
     const [showExtra, setShowExtra] = useState(true)
 
+    const [volume, setVolume] = useState(0.05)
+
     return (
         <GameStateContext.Provider value={{
             player,
@@ -77,7 +79,9 @@ const GameStateContextProvider = ({ children }) => {
             position,
             setPosition,
             showExtra,
-            setShowExtra
+            setShowExtra,
+            volume,
+            setVolume
             }}>
             {children}
         </GameStateContext.Provider>

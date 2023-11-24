@@ -13,7 +13,8 @@ function SimPluckSearchModal({
     addPluckFromDiscard,
     pluckDiscard,
     showPluckDiscardModal,
-    setShowPluckDiscardModal
+    setShowPluckDiscardModal,
+    volume
 }) {
 
     const content = useRef(null)
@@ -66,14 +67,14 @@ function SimPluckSearchModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleShowDiscardMenu = (index) => {
         showDiscardMenu === index ?
             setShowDiscardMenu(null) :
             setShowDiscardMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const handleAddPluck = (index, unfurling) => {

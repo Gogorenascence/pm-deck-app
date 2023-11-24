@@ -43,7 +43,8 @@ function GameBoard({
     shuffleMainDeck,
     shufflePluckDeck,
     showExtra,
-    setShowExtra
+    setShowExtra,
+    volume
 }) {
 
     const fighter = playArea.fighter_slot || [];
@@ -87,6 +88,7 @@ function GameBoard({
                 showDiscardModal={showDiscardModal}
                 setShowDiscardModal={setShowDiscardModal}
                 setFromDeck={setFromDeck}
+                volume={volume}
             />
             <SimPluckSearchModal
                 pluckDeck={pluckDeck}
@@ -98,6 +100,7 @@ function GameBoard({
                 pluckDiscard={pluckDiscard}
                 showPluckDiscardModal={showPluckDiscardModal}
                 setShowPluckDiscardModal={setShowPluckDiscardModal}
+                volume={volume}
             />
             <OwnershipModal
                 ownership={ownership}
@@ -124,6 +127,7 @@ function GameBoard({
                 setFromDeck={setFromDeck}
                 discardFromDeck={discardFromDeck}
                 setFromDiscard={setFromDiscard}
+                volume={volume}
             />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex": "hidden2"}>
@@ -318,6 +322,9 @@ function GameBoard({
                         shuffleMainDeck={shuffleMainDeck}
                         mainDiscard={mainDiscard}
                         setShowDiscardModal={setShowDiscardModal}
+                        fromDeck={fromDeck}
+                        fromDiscard={fromDiscard}
+                        volume={volume}
                     />
                 </div>
                 <div className="flex">
@@ -337,6 +344,7 @@ function GameBoard({
                         selectedPluckIndex={selectedPluckIndex}
                         showOwnershipModal={showOwnershipModal}
                         setShowOwnershipModal={setShowOwnershipModal}
+                        volume={volume}
                     />
 
                     <div className="matCard"
@@ -427,6 +435,7 @@ function GameBoard({
                         shufflePluckDeck={shufflePluckDeck}
                         pluckDiscard={pluckDiscard}
                         setShowPluckDiscardModal={setShowPluckDiscardModal}
+                        volume={volume}
                     />
                 </div>
             </div>

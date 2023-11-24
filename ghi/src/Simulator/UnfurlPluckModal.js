@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 
 
-function UnfurlModal({
-    mainDeck,
+function UnfurlPluckModal({
+    pluckDeck,
     handleHoveredCard,
     showUnfurlModal,
     setShowUnfurlModal,
@@ -129,4 +129,4 @@ function UnfurlModal({
     )
 }
 
-export default UnfurlModal
+export default UnfurlPluckModal

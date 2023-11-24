@@ -9,10 +9,12 @@ import {
     shuffleSound,
     summonSound,
     drawSound,
+    soundLoop,
     gainSound,
     activateSound,
     discardSound,
-    menuSound
+    menuSound,
+    startSound
 } from "../Sounds/Sounds";
 
 
@@ -36,7 +38,9 @@ function SimulatorPage() {
         position,
         setPosition,
         showExtra,
-        setShowExtra
+        setShowExtra,
+        volume,
+        setVolume
     } = useContext(GameStateContext)
 
     const [selectedMainDeck, setSelectedMainDeck] = useState({
@@ -148,7 +152,7 @@ function SimulatorPage() {
             shuffledDeck[randomMainIndex], shuffledDeck[currentMainIndex]];
         }
         setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledDeck});
-        shuffleSound()
+        shuffleSound(volume)
     }
 
     const shufflePluckDeck = () => {
@@ -164,7 +168,7 @@ function SimulatorPage() {
             shuffledDeck[randomPluckIndex], shuffledDeck[currentPluckIndex]];
         }
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledDeck});
-        shuffleSound()
+        shuffleSound(volume)
     }
 
     const gameStart = () => {
@@ -180,6 +184,9 @@ function SimulatorPage() {
             shuffledMainDeck[randomMainIndex], shuffledMainDeck[currentMainIndex]];
         }
         setHand(shuffledMainDeck.slice(0,6))
+        // soundLoop(drawSound, 6, .07)
+        gainSound(volume)
+        startSound(volume)
         setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledMainDeck.slice(6)});
 
         const shuffledPluckDeck = [...playerPluckDeck.cards]
@@ -199,7 +206,12 @@ function SimulatorPage() {
 
     const checkPlayer = () => {
         console.log(player)
-        activateSound()
+        activateSound(volume)
+        // soundLoop(drawSound, 6, .1)
+    }
+
+    const mute = () => {
+        volume > 0? setVolume(0) : setVolume(0.05)
     }
 
     const drawCard = () => {
@@ -208,7 +220,7 @@ function SimulatorPage() {
             const newHand = [...hand]
             const newMainDeck = [...playerMainDeck.cards]
             newHand.push(newMainDeck[0])
-            drawSound()
+            drawSound(volume)
             setHand(newHand)
             setPlayerMainDeck({
                 name: selectedMainDeck.name,
@@ -225,7 +237,7 @@ function SimulatorPage() {
             const newMainDeck = [...playerMainDeck.cards]
             const cardToAdd = newMainDeck[index]
             newHand.push(cardToAdd)
-            drawSound()
+            drawSound(volume)
             setHand(newHand)
             const newShuffledMainDeck = newMainDeck.filter((_, i) => i !== index)
             if (unfurling === false) {
@@ -236,7 +248,7 @@ function SimulatorPage() {
                     [newShuffledMainDeck[currentMainIndex], newShuffledMainDeck[randomMainIndex]] = [
                     newShuffledMainDeck[randomMainIndex], newShuffledMainDeck[currentMainIndex]];
                 }
-                shuffleSound()
+                shuffleSound(volume)
             }
             setPlayerMainDeck({
                 name: selectedMainDeck.name,
@@ -255,7 +267,7 @@ function SimulatorPage() {
             newHand.push(cardToAdd)
             setHand(newHand)
             setDiscard(newDiscardPile.filter((_, i) => i !== index))
-            drawSound();
+            drawSound(volume);
         } else {
             console.error("Hand is full")
         }
@@ -271,7 +283,7 @@ function SimulatorPage() {
             name: selectedMainDeck.name,
             cards: newMainDeck.filter((_, i) => i !== index)
         });
-        discardSound()
+        discardSound(volume)
     }
 
     const drawPluck = () => {
@@ -280,7 +292,7 @@ function SimulatorPage() {
             const newPluckDeck = [...playerPluckDeck.cards]
             newOwnership.push(newPluckDeck[0])
             setOwnership(newOwnership)
-            gainSound()
+            gainSound(volume)
             setPlayerPluckDeck({
                 name: selectedPluckDeck.name,
                 cards: newPluckDeck.slice(1)
@@ -296,7 +308,7 @@ function SimulatorPage() {
             const newPluckDeck = [...playerPluckDeck.cards]
             const cardToAdd = newPluckDeck[index]
             newOwnership.push(cardToAdd)
-            gainSound()
+            gainSound(volume)
             setOwnership(newOwnership)
             const newShuffledPluckDeck = newPluckDeck.filter((_, i) => i !== index)
             if (unfurling === false) {
@@ -307,7 +319,7 @@ function SimulatorPage() {
                     [newShuffledPluckDeck[currentPluckIndex], newShuffledPluckDeck[randomPluckIndex]] = [
                     newShuffledPluckDeck[randomPluckIndex], newShuffledPluckDeck[currentPluckIndex]];
                 }
-                shuffleSound()
+                shuffleSound(volume)
             }
             setPlayerPluckDeck({
                 name: selectedPluckDeck.name,
@@ -325,7 +337,7 @@ function SimulatorPage() {
             const cardToAdd = newDiscardPile[index]
             newOwnership.push(cardToAdd)
             setOwnership(newOwnership)
-            gainSound()
+            gainSound(volume)
             setPluckDiscard(newDiscardPile.filter((_, i) => i !== index));
         } else {
             console.error("Ownership is full")
@@ -336,7 +348,7 @@ function SimulatorPage() {
         showCardMenu === index?
             setShowCardMenu(null):
             setShowCardMenu(index)
-        menuSound()
+        menuSound(volume)
     }
 
     const selectCard = (index) => {
@@ -344,6 +356,8 @@ function SimulatorPage() {
         if (selectedIndex === index) {
             setSelectedIndex(null)
             setPrompt({message: "", action: ""})
+            setFromDeck(false)
+            setFromDiscard(false)
         } else {
             setSelectedIndex(index)
             setPrompt({
@@ -377,7 +391,7 @@ function SimulatorPage() {
                 setPrompt({message: "", action: ""})
                 console.log(fromDeck)
                 selectZone.push(playedCard)
-                specialSound()
+                specialSound(volume)
                 setPlayerMainDeck({
                     name: selectedMainDeck.name,
                     cards: newMainDeck.filter((_, i) => i !== selectedIndex)
@@ -392,7 +406,7 @@ function SimulatorPage() {
                 const newDiscardPile = [...player.mainDiscard]
                 setPrompt({message: "", action: ""})
                 selectZone.push(playedCard)
-                specialSound()
+                specialSound(volume)
                 setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
                 setFromDiscard(false)
@@ -405,7 +419,7 @@ function SimulatorPage() {
                 console.log(selectedIndex)
                 setPrompt({message: "", action: ""})
                 selectZone.push(playedCard)
-                summonSound()
+                summonSound(volume)
                 setHand(newHand.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
                 setFromDeck(false)
@@ -427,7 +441,7 @@ function SimulatorPage() {
             selectZone.push(playedPluck)
             setOwnership(newOwnership.filter((_, i) => i !== selectedPluckIndex))
             setSelectedPluckIndex(null)
-            specialSound()
+            specialSound(volume)
             setActivePluck(pluckZones)
         }
     }
@@ -440,7 +454,7 @@ function SimulatorPage() {
 
         newDiscardPile.push(card)
         const newSelectZone = selectZone.filter((_, i) => i !== index)
-        destroySound()
+        destroySound(volume)
         newPlayArea[zone] = newSelectZone
 
         setDiscard(newDiscardPile)
@@ -454,7 +468,7 @@ function SimulatorPage() {
         newDiscardPile.push(discardedCard)
         setHand(newHand.filter((_, i) => i !== index))
         setDiscard(newDiscardPile)
-        discardSound()
+        discardSound(volume)
         setShowCardMenu(null)
     }
 
@@ -488,7 +502,7 @@ function SimulatorPage() {
         newDiscardPile.push(card)
         const newSelectZone = selectZone.filter((_, i) => i !== index)
         newActivePluck[zone] = newSelectZone
-        destroySound()
+        destroySound(volume)
         setPluckDiscard(newDiscardPile)
         setActivePluck(newActivePluck)
     }
@@ -499,7 +513,7 @@ function SimulatorPage() {
         const newOwnership = [...player.ownership]
         newDiscardPile.push(discardedPluck)
         setOwnership(newOwnership.filter((_, i) => i !== index))
-        discardSound()
+        discardSound(volume)
         setPluckDiscard(newDiscardPile)
     }
 
@@ -582,6 +596,7 @@ function SimulatorPage() {
                 }
 
                 <button onClick={checkPlayer}>Player Info</button>
+                <button onClick={mute}>{volume >0? "Sound Off":"Sound On"}</button>
             </div>
                 <GameBoard
                     playArea={player.playArea}
@@ -619,6 +634,7 @@ function SimulatorPage() {
                     shufflePluckDeck={shufflePluckDeck}
                     showExtra={showExtra}
                     setShowExtra={setShowExtra}
+                    volume={volume}
                     />
 
                 {player.hand.length > 0 || player.ownership.length > 0?

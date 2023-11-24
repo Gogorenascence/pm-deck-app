@@ -155,8 +155,9 @@ class DeckQueries(Queries):
         pluck_deck = []
         for pluck_item in pluck_list:
             pluck = db.find_one({"card_number": pluck_item})
-            pluck["id"] = str(pluck["_id"])
-            pluck_deck.append(CardOut(**pluck))
+            if pluck:
+                pluck["id"] = str(pluck["_id"])
+                pluck_deck.append(CardOut(**pluck))
         full_list = main_deck + pluck_deck
         for card in full_list:
             if card.card_type[0] == 1001:
@@ -210,9 +211,10 @@ class DeckQueries(Queries):
         pluck_deck = []
         for pluck_item, count in pluck_count.items():
             pluck = db.find_one({"card_number": pluck_item})
-            pluck["id"] = str(pluck["_id"])
-            pluck["count"] = count
-            pluck_deck.append(CardOut(**pluck))
+            if pluck:
+                pluck["id"] = str(pluck["_id"])
+                pluck["count"] = count
+                pluck_deck.append(CardOut(**pluck))
         side_deck = []
         for side_item in side_list:
             side = db.find_one({"card_number": side_item})
@@ -376,10 +378,13 @@ class DeckQueries(Queries):
 
             for pluck_item in pluck_list:
                 pluck = db.find_one({"card_number": pluck_item})
-                pluck_name = pluck["name"]
-                card_names.append(pluck_name)
-                series_name = pluck["series_name"]
-                series_names.append(series_name)
+                if pluck:
+                    pluck_name = pluck["name"]
+                    card_names.append(pluck_name)
+                    series_name = pluck["series_name"]
+                    series_names.append(series_name)
+                else:
+                    print(deck["name"], pluck_item)
             deck["card_names"] = card_names
             deck["series_names"] = series_names
             decks.append(deck)
