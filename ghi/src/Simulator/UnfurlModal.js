@@ -119,6 +119,7 @@ function UnfurlModal({
                                             </div>
                                             <img
                                                 onClick={() => handleShowDeckMenu(index)}
+                                                onDoubleClick={() => handleCardFromDeck(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
                                                     showDeckMenu === index || (selectedIndex === index && fromDeck)?

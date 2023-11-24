@@ -127,6 +127,7 @@ function SimDeckSearchModal({
                                             </div>
                                             <img
                                                 onClick={() => handleShowDiscardMenu(index)}
+                                                onDoubleClick={() => handleCardFromDiscard(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 className={
                                                     showDiscardMenu === index ||

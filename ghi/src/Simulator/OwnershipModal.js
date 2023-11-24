@@ -103,6 +103,7 @@ function OwnershipModal({
                                             <img
                                                 onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
+                                                onDoubleClick={() => handlePluck(index)}
                                                 className={
                                                     showPluckMenu === index || selectedPluckIndex === index?
                                                     "selected3 builder-card margin-10 pointer glow3"

@@ -663,6 +663,7 @@ function SimulatorPage() {
                                             <img
                                                 onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
+                                                onDoubleClick={() => handleCardFromHand(index)}
                                                 className={
                                                     showCardMenu === index || selectedIndex === index && !fromDeck && !fromDiscard?
                                                     "selected3 builder-card-hand pointer"
