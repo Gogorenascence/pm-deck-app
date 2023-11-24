@@ -743,6 +743,18 @@ button:hover {
   }
 }
 
+@keyframes pulse5 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
 @keyframes slide {
   0% {
     transform: translate(-1500px, 0);
@@ -2108,6 +2120,12 @@ button:hover {
   position: relative;
 }
 
+.matCard:hover {
+  height: 196px;
+  width: 140px;
+  animation: pulse2 1.5s infinite;
+}
+
 .matToggle {
   display: flex;
   height: 196px;
@@ -2118,10 +2136,14 @@ button:hover {
   outline: 2px solid white;
 }
 
-.matCard:hover {
+.matCardSelect {
   height: 196px;
   width: 140px;
+  outline: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: relative;
   animation: pulse2 1.5s infinite;
+  cursor: pointer;
 }
 
 .matCardOverlay {
@@ -2223,7 +2245,7 @@ button:hover {
   align-items: center;
   flex-grow: 1;
   height: 390px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .inner_container_hide {
@@ -2235,7 +2257,7 @@ button:hover {
   flex-grow: 1;
   overflow: hidden;
   max-height: 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -2332,6 +2354,7 @@ button:hover {
 
 .selected3 {
   z-index: 20;
+  /* filter: brightness(1.5); */
   animation: pulse3 1.5s infinite;
 }
 

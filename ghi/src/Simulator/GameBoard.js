@@ -131,7 +131,7 @@ function GameBoard({
             />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex": "hidden2"}>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("slot_5")}
                     >
                         {slot5.length > 0 ?
@@ -151,7 +151,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("slot_6")}
                     >
                         {slot6.length > 0 ?
@@ -171,7 +171,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("slot_7")}
                     >
                         {slot7.length > 0 ?
@@ -191,7 +191,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("slot_8")}
                     >
                         {slot8.length > 0 ?
@@ -232,7 +232,7 @@ function GameBoard({
                         </div>
                     }
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("fighter_slot")}
                     >
                         {fighter.length > 0 ?
@@ -252,7 +252,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("aura_slot")}
                     >
                         {aura.length > 0 ?
@@ -272,7 +272,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("move_slot")}
                     >
                         {move.length > 0 ?
@@ -292,7 +292,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedIndex === null? "matCard" : "matCardSelect"}
                         onClick={() => playCard("ending_slot")}
                     >
                         {ending.length > 0 ?
@@ -347,7 +347,7 @@ function GameBoard({
                         volume={volume}
                     />
 
-                    <div className="matCard"
+                    <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
                         onClick={() => playPluck("slot_1")}
                     >
                         {pluck_slot1.length > 0 ?
@@ -367,7 +367,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
                         onClick={() => playPluck("slot_2")}
                     >
                         {pluck_slot2.length > 0 ?
@@ -387,7 +387,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
                         onClick={() => playPluck("slot_3")}
                     >
                         {pluck_slot3.length > 0 ?
@@ -407,7 +407,7 @@ function GameBoard({
                             </>
                         :null}
                     </div>
-                    <div className="matCard"
+                    <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
                         onClick={() => playPluck("slot_4")}
                     >
                         {pluck_slot4.length > 0 ?

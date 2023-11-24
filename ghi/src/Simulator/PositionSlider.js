@@ -1,6 +1,5 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Slider from '@mui/material/Slider';
-import { useDraggable } from '../display/Draggable';
 
 
 function PositionSlider({
@@ -12,11 +11,9 @@ function PositionSlider({
     const [show, setShow] = useState(true)
 
     return (
-        // <div className='position-container'>
-
         <div className={show? "settings_container" : "settings_container_hide"}>
             <p className='lock pointer' onClick={() => setShow(!show)}>
-                {show? "[Hide]" : "[Show]"}
+                {show? "Hide" : "Show"}
             </p>
             <div className={show? "inner_container": "inner_container_hide"}>
 
@@ -61,11 +58,6 @@ function PositionSlider({
                 </div>
             </div>
         </div>
-            // :
-            // <div className="no_settings_container">
-            //     <p className='lock pointer' onClick={() => setShow(true)}>[Show]</p>
-            // </div>}
-
     )
 }
 
