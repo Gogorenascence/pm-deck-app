@@ -2165,13 +2165,21 @@ button:hover {
 }
 
 .slider_container {
-  height: 20%;
+  height: 80px;
+}
+
+.lock {
+  position: relative;
+  top: 0;
+  font-weight: 500;
+  margin: 24px 20px 20px 20px;
+  z-index: 12;
 }
 
 .settings_container {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 25%;
+  /* transform: translateY(-50%); */
   right: 0px;
   z-index: 10;
   display: flex;
@@ -2179,31 +2187,57 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: 50%;
+  overflow: hidden;
+  height: 390px;
+  width: 110px;
   border-radius: 17px;
   border: 1px solid white;
   background-color: rgba(0, 0, 0, 0.39);
-  transition: all 0.5s;
+  transition: all 0.5s ease-in-out;
 }
 
-.no_settings_container {
+.settings_container_hide {
   position: fixed;
-  width: 100px;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0px;
+  top: 25%;
+  /* transform: translateY(-50%); */
+  right: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: fit-content;
+  height: 10%;
+  width: 110px;
   border-radius: 17px;
   border: 1px solid white;
   background-color: rgba(0, 0, 0, 0.39);
-  transition: all 0.5s;
+  transition: all 0.5s ease-in-out;
 }
+
+.inner_container {
+  width: 110px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  height: 390px;
+  transition: all 0.5s ease-in-out;
+}
+
+.inner_container_hide {
+  width: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s ease-in-out;
+}
+
 
 .size_button {
   /* background-color: rgba(255, 255, 255, 0); */
@@ -2572,13 +2606,6 @@ button:hover {
   background-color: rgba(0, 0, 0, 0);
   z-index: -9;
   transition: all 0.5s;
-}
-
-.lock {
-  position: relative;
-  top: 0;
-  font-weight: 500;
-  margin-bottom: 5px;
 }
 
 @media screen and (max-width: 1330px) {

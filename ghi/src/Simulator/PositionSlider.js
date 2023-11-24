@@ -12,11 +12,14 @@ function PositionSlider({
     const [show, setShow] = useState(true)
 
     return (
-        <div className='position-container'>
-            {show?
-                <div className="settings_container">
-                    <p className='lock pointer' onClick={() => setShow(false)}>[Hide]</p>
-                {/* <div className={show? null: "hidden2"}> */}
+        // <div className='position-container'>
+
+        <div className={show? "settings_container" : "settings_container_hide"}>
+            <p className='lock pointer' onClick={() => setShow(!show)}>
+                {show? "[Hide]" : "[Show]"}
+            </p>
+            <div className={show? "inner_container": "inner_container_hide"}>
+
                 <div className="translate_button_container">
                     <div className='vertical_container'>
                         <div className='translate_button' onClick={() => handleChangePosition('up')}>
@@ -41,7 +44,6 @@ function PositionSlider({
                         </div>
                     </div>
                 </div>
-
                 <div className="size_button" onClick={() => handleChangeScale('increase')}>
                     <p className="utf-symbol2">&#43;</p>
                 </div>
@@ -57,13 +59,13 @@ function PositionSlider({
                         max={80}
                     />
                 </div>
-                {/* </div> */}
-                </div>
-            :
-            <div className="no_settings_container">
-                <p className='lock pointer' onClick={() => setShow(true)}>[Show]</p>
-            </div>}
+            </div>
         </div>
+            // :
+            // <div className="no_settings_container">
+            //     <p className='lock pointer' onClick={() => setShow(true)}>[Show]</p>
+            // </div>}
+
     )
 }
 
