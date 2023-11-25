@@ -84,3 +84,9 @@ export function startSound(volume) {
     audio.volume = volume
     audio.play()
 }
+
+export function equipSound(volume) {
+    const audio = new Audio(equip);
+    audio.volume = volume
+    audio.play()
+}

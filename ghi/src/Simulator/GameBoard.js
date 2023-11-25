@@ -358,7 +358,7 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    onClick={() => discardPluck(pluck_slot1[pluck_slot1.length-1], 0, "slot_1")}
+                                    onDoubleClick={() => discardPluck(pluck_slot1[pluck_slot1.length-1], 0, "slot_1")}
                                     onMouseEnter={() => handleHoveredCard(pluck_slot1[pluck_slot1.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
@@ -378,7 +378,7 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    onClick={() => discardPluck(pluck_slot2[pluck_slot2.length-1], 0, "slot_2")}
+                                    onDoubleClick={() => discardPluck(pluck_slot2[pluck_slot2.length-1], 0, "slot_2")}
                                     onMouseEnter={() => handleHoveredCard(pluck_slot2[pluck_slot2.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
@@ -398,7 +398,7 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    onClick={() => discardPluck(pluck_slot3[pluck_slot3.length-1], 0, "slot_3")}
+                                    onDoubleClick={() => discardPluck(pluck_slot3[pluck_slot3.length-1], 0, "slot_3")}
                                     onMouseEnter={() => handleHoveredCard(pluck_slot3[pluck_slot3.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
@@ -418,7 +418,7 @@ function GameBoard({
                                     </div> :null
                                 }
                                 <img
-                                    onClick={() => discardPluck(pluck_slot4[pluck_slot4.length-1], 0, "slot_4")}
+                                    onDoubleClick={() => discardPluck(pluck_slot4[pluck_slot4.length-1], 0, "slot_4")}
                                     onMouseEnter={() => handleHoveredCard(pluck_slot4[pluck_slot4.length-1])}
                                     className="builder-card5 pointer glow3"
                                     // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}

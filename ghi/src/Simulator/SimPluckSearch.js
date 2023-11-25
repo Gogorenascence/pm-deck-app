@@ -28,7 +28,9 @@ function SimPluckSearch({
                 if (ref.current &&
                     !ref.current.contains(event.target)&&
                     !event.target.closest(".card-menu-item")&&
-                    !event.target.closest(".deck-menu-item")
+                    !event.target.closest(".deck-menu-item")&&
+                    !event.target.closest(".matCard")&&
+                    !event.target.closest(".matCardSelected")
                 ) {
                     handleClose();
                     handleCloseDiscard();
@@ -92,13 +94,8 @@ function SimPluckSearch({
     return(
         <div className='flex'>
             <span>
-                <div className={showDiscardMenu && pluckDiscard.length > 0? "discard-menu margin-left": "hidden2"}>
-                    <div className="card-menu-item"
-                        onClick={() => handleOpenDiscard()}
-                    ><p>Search</p></div>
-                </div>
                 <div className="matCard margin-left"
-                    onClick={() => handleShowDiscardMenu()}
+                    onClick={() => handleOpenDiscard()}
                 >
                     {pluckDiscard.length > 1 ?
                         <div className="matCardOverlay">
@@ -135,7 +132,9 @@ function SimPluckSearch({
                     onClick={() => handleShowDeckMenu()}
                 >
                     {pluckDeck.length > 1 ?
-                        <div className="matCardOverlay">
+                        <div className="matCardOverlay"
+                            onDoubleClick={() => drawPluck()}
+                        >
                             <h1 className="fontSize60">{pluckDeck.length}</h1>
                         </div> :null
                     }

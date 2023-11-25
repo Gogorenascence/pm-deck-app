@@ -50,7 +50,7 @@ function OwnershipModal({
 
     const handleShowCardMenu = (index) => {
         showPluckMenu === index?
-            clearSelected(index):
+        setShowPluckMenu(null):
             setShowPluckMenu(index)
     }
 
@@ -64,12 +64,6 @@ function OwnershipModal({
         selectPluck(index)
         handleClose()
     }
-
-    const clearSelected = (index) => {
-        setShowPluckMenu(null)
-        selectPluck(index)
-    }
-
 
     return(
         <div>

@@ -14,7 +14,8 @@ import {
     activateSound,
     discardSound,
     menuSound,
-    startSound
+    startSound,
+    equipSound
 } from "../Sounds/Sounds";
 
 
@@ -68,13 +69,14 @@ function SimulatorPage() {
     const [fromDiscard, setFromDiscard] = useState(false)
     const [showCardMenu, setShowCardMenu] = useState(null)
     const [showPluckMenu, setShowPluckMenu] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const getDecks = async() =>{
-        // setLoading(true)
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
         setDecks(data.decks.sort((a,b) => a.name.localeCompare(b.name)));
-        // setLoading(false)
+        setLoading(false)
     };
 
     const getCards = async() =>{
@@ -122,6 +124,7 @@ function SimulatorPage() {
         );
         setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
+        equipSound(volume)
     }
 
     useEffect(() => {
@@ -573,31 +576,35 @@ function SimulatorPage() {
             >
                 <h1 className={prompt.message? null: "hidden2"}>{prompt.message}</h1>
             </div>
-            <div>
-            <div className="deckSelect">
-                <h5 className="label">Select a Deck </h5>
-                <select
-                    className="builder-input"
-                    type="text"
-                    placeholder=" Deck"
-                    onChange={handleChangeDeck}
-                    name="Deck">
-                    <option value="">Deck</option>
-                    {decks.map((deck) => (
-                        <option value={deck.id}>{deck.name}</option>
-                        ))}
-                </select>
-                <button onClick={fillDecks}>Get Deck</button>
+            <div className="cd-inner">
+                <div className="deckSelect">
+                    <h5 className="label">Select a Deck </h5>
+                    <select
+                        className="builder-input"
+                        type="text"
+                        placeholder=" Deck"
+                        onChange={handleChangeDeck}
+                        name="Deck">
+                        <option value="">Deck</option>
+                        {decks.map((deck) => (
+                            <option value={deck.id}>{deck.name}</option>
+                            ))}
+                    </select>
+                    <button onClick={fillDecks}>Get Deck</button>
 
-                {player.mainDeck.length > 0 ?
-                    <>
-                        <button onClick={gameStart}>Game Start</button>
-                    </>:null
-                }
+                    {player.mainDeck.length > 0 ?
+                        <>
+                            <button onClick={gameStart}>Game Start</button>
+                        </>:null
+                    }
 
-                <button onClick={checkPlayer}>Player Info</button>
-                <button onClick={mute}>{volume >0? "Sound Off":"Sound On"}</button>
-            </div>
+                    <button onClick={checkPlayer}>Player Info</button>
+                    <button onClick={mute}>{volume >0? "Sound Off":"Sound On"}</button>
+                </div>
+                <div className={loading? "deckSelect2": "hidden2"}>
+                {/* <div className="deckSelect2"> */}
+                    <p>Loading decks...</p>
+                </div>
                 <GameBoard
                     playArea={player.playArea}
                     activePluck={player.activePluck}

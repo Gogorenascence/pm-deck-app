@@ -32,7 +32,9 @@ function SimDeckSearch({
                 if (ref.current &&
                     !ref.current.contains(event.target)&&
                     !event.target.closest(".card-menu-item")&&
-                    !event.target.closest(".deck-menu-item")
+                    !event.target.closest(".deck-menu-item")&&
+                    !event.target.closest(".matCard")&&
+                    !event.target.closest(".matCardSelected")
                 ) {
                     handleClose();
                     handleCloseDiscard();
@@ -101,13 +103,8 @@ function SimDeckSearch({
     return(
         <div className='flex'>
             <span>
-                <div className={showDiscardMenu && mainDiscard.length > 0? "discard-menu margin-left": "hidden2"}>
-                    <div className="card-menu-item"
-                        onClick={() => handleOpenDiscard()}
-                    ><p>Search</p></div>
-                </div>
                 <div className="matCard margin-left"
-                    onClick={() => handleShowDiscardMenu()}
+                    onClick={() => handleOpenDiscard()}
                 >
                     {mainDiscard.length > 1 ?
                         <div className={fromDiscard? "matCardOverlay notify":"matCardOverlay"}>
@@ -141,6 +138,7 @@ function SimDeckSearch({
                 </div>
                 <div className="matCard"
                     onClick={() => handleShowCardMenu()}
+                    onDoubleClick={() => drawCard()}
                 >
                     {mainDeck.length > 1 ?
                         <div className={fromDeck? "matCardOverlay notify":"matCardOverlay"}>

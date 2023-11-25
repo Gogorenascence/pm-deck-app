@@ -29,7 +29,9 @@ function SimPluckSearchModal({
                 if (ref.current &&
                     !ref.current.contains(event.target)&&
                     !event.target.closest(".card-menu-item")&&
-                    !event.target.closest(".deck-menu-item")
+                    !event.target.closest(".deck-menu-item")&&
+                    !event.target.closest(".matCard")&&
+                    !event.target.closest(".matCardSelected")
                     ) {
                     handleClose();
                     handleCloseDiscard();

@@ -2098,6 +2098,14 @@ button:hover {
   top: 62px;
 }
 
+.deckSelect2 {
+  position: absolute;
+  top: 160px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .play-area {
   height: 70vh;
   margin-top: 25px;
