@@ -6,6 +6,7 @@ import {
 
 function SimDeckSearch({
     mainDeck,
+    handleHoveredCard,
     setShowDeckSearchModal,
     drawCard,
     setShowUnfurlModal,
@@ -38,7 +39,6 @@ function SimDeckSearch({
                 ) {
                     handleClose();
                     handleCloseDiscard();
-                    console.log("moo")
                 }
             }
           // Adding click event listener
@@ -95,16 +95,12 @@ function SimDeckSearch({
         menuSound(volume)
     }
 
-    const handleShowDiscardMenu = () => {
-        setShowDiscardMenu(!showDiscardMenu)
-        menuSound(volume)
-    }
-
     return(
         <div className='flex'>
             <span>
                 <div className="matCard margin-left"
                     onClick={() => handleOpenDiscard()}
+                    onMouseEnter={() => handleHoveredCard(mainDiscard[mainDiscard.length-1])}
                 >
                     {mainDiscard.length > 1 ?
                         <div className={fromDiscard? "matCardOverlay notify":"matCardOverlay"}>
@@ -113,6 +109,7 @@ function SimDeckSearch({
                     }
                     {mainDiscard.length > 0 ?
                     <img
+                        onMouseEnter={() => handleHoveredCard(mainDiscard[mainDiscard.length-1])}
                         className="builder-card5 pointer glow3"
                         src={mainDiscard[mainDiscard.length-1].picture_url ?
                             mainDiscard[mainDiscard.length-1].picture_url :

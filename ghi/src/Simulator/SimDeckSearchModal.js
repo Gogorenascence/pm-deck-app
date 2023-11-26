@@ -15,6 +15,7 @@ function SimDeckSearchModal({
     setFromDiscard,
     addCardFromDeck,
     addCardFromDiscard,
+    returnDiscardedCardToDeck,
     mainDiscard,
     showDiscardModal,
     setShowDiscardModal,
@@ -105,6 +106,12 @@ function SimDeckSearchModal({
         handleCloseDiscard()
     }
 
+    const handleReturnCardFromDiscard = (index, position) => {
+        const originalIndex = mainDiscard.length - 1 - index;
+        returnDiscardedCardToDeck(originalIndex, position)
+        setShowDiscardMenu(null)
+    }
+
     return(
         <div>
             {showDiscardModal ?
@@ -119,13 +126,19 @@ function SimDeckSearchModal({
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            <div className={showDiscardMenu === index ? "deck-menu2Items": "hidden2"}>
+                                            <div className={showDiscardMenu === index ? "deck-menu4Items": "hidden2"}>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleAddCardFromDiscard(index)}
                                                 ><p>Add to Hand</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleCardFromDiscard(index)}
                                                 ><p>{selectedIndex === mainDiscard.length - 1 - index? "Cancel" : "Add to Play"}</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => handleReturnCardFromDiscard(index, "top")}
+                                                ><p>Decktop</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => handleReturnCardFromDiscard(index, "bottom")}
+                                                ><p>Deckbottom</p></div>
                                             </div>
                                             <img
                                                 onClick={() => handleShowDiscardMenu(index)}

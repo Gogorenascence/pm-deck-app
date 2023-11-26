@@ -11,6 +11,7 @@ function SimPluckSearchModal({
     setShowPluckSearchModal,
     addPluckFromDeck,
     addPluckFromDiscard,
+    returnDiscardedPluckToDeck,
     pluckDiscard,
     showPluckDiscardModal,
     setShowPluckDiscardModal,
@@ -91,6 +92,12 @@ function SimPluckSearchModal({
         setShowDiscardMenu(null)
     }
 
+    const handleReturnPluckFromDiscard = (index, position) => {
+        const originalIndex = pluckDiscard.length - 1 - index;
+        returnDiscardedPluckToDeck(originalIndex, position)
+        setShowDiscardMenu(null)
+    }
+
     return(
         <div>
             {showPluckDiscardModal ?
@@ -105,13 +112,16 @@ function SimPluckSearchModal({
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            <div className={showDiscardMenu === index ? "deck-menu2Items": "hidden2"}>
+                                            <div className={showDiscardMenu === index ? "deck-menu3": "hidden2"}>
                                                 <div className="card-menu-item"
                                                     onClick={() => handleAddPluckFromDiscard(index)}
                                                 ><p>Add to Ownership</p></div>
                                                 <div className="card-menu-item"
-                                                    // onClick={() => handleAddCard(index, false)}
-                                                ><p>Add to Active Pluck</p></div>
+                                                    onClick={() => handleReturnPluckFromDiscard(index, "top")}
+                                                ><p>Decktop</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => handleReturnPluckFromDiscard(index, "bottom")}
+                                                ><p>Deckbottom</p></div>
                                             </div>
                                             <img
                                                 onClick={() => handleShowDiscardMenu(index)}

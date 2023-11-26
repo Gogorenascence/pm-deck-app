@@ -61,7 +61,7 @@ function Ownership({
                 style={{marginLeft: "-160px", marginRight: "20px"}}
             >
                 {full_ownership.length > 0 ?
-                    <div className="matCardOverlay">
+                    <div className={selectedPluckIndex !== null? "matCardOverlay notify":"matCardOverlay"}>
                         <h1 className="fontSize60">{full_ownership.length}</h1>
                     </div> :null
                 }

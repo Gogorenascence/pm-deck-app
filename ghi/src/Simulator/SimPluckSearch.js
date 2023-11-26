@@ -6,9 +6,12 @@ import {
 
 function SimPluckSearch({
     pluckDeck,
+    handleHoveredCard,
     setShowPluckSearchModal,
     drawPluck,
-    // setShowUnfurlPluckModal,
+    setShowUnfurlPluckModal,
+    unfurlPluckCount,
+    setUnfurlPluckCount,
     shufflePluckDeck,
     pluckDiscard,
     setShowPluckDiscardModal,
@@ -58,10 +61,14 @@ function SimPluckSearch({
         document.body.style.overflow = 'hidden';
     };
 
-    // const handleUnfurl = () => {
-    //     setShowUnfurlModal(true)
-    //     document.body.style.overflow = 'hidden';
-    // };
+    const handleUnfurl = () => {
+        if (!unfurlPluckCount) {
+            setUnfurlPluckCount(1)
+        }
+        setShowUnfurlPluckModal(true)
+        menuSound(volume)
+        document.body.style.overflow = 'hidden';
+    };
 
     const handleClose = () => {
         setShowPluckSearchModal(false)
@@ -85,17 +92,12 @@ function SimPluckSearch({
         menuSound(volume)
     }
 
-    const handleShowDiscardMenu = () => {
-        setShowDiscardMenu(!showDiscardMenu)
-        menuSound(volume)
-    }
-
-
     return(
         <div className='flex'>
             <span>
                 <div className="matCard margin-left"
                     onClick={() => handleOpenDiscard()}
+                    onMouseEnter={() => handleHoveredCard(pluckDiscard[pluckDiscard.length-1])}
                 >
                     {pluckDiscard.length > 1 ?
                         <div className="matCardOverlay">
@@ -104,7 +106,7 @@ function SimPluckSearch({
                     }
                     {pluckDiscard.length > 0 ?
                     <img
-                        // onClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
+                    onMouseEnter={() => handleHoveredCard(pluckDiscard[pluckDiscard.length-1])}
                         className="builder-card5 pointer glow3"
                         src={pluckDiscard[pluckDiscard.length-1].picture_url ?
                             pluckDiscard[pluckDiscard.length-1].picture_url :
@@ -119,7 +121,7 @@ function SimPluckSearch({
                         onClick={() => drawPluck()}
                     ><p>Draw</p></div>
                     <div className="card-menu-item"
-                        // onClick={() => handleUnfurl()}
+                        onClick={() => handleUnfurl()}
                     ><p>Unfurl</p></div>
                     <div className="card-menu-item"
                         onClick={() => handleOpen()}
@@ -130,11 +132,10 @@ function SimPluckSearch({
                 </div>
                 <div className="matCard"
                     onClick={() => handleShowDeckMenu()}
+                    onDoubleClick={() => drawPluck()}
                 >
                     {pluckDeck.length > 1 ?
-                        <div className="matCardOverlay"
-                            onDoubleClick={() => drawPluck()}
-                        >
+                        <div className="matCardOverlay">
                             <h1 className="fontSize60">{pluckDeck.length}</h1>
                         </div> :null
                     }

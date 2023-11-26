@@ -2126,6 +2126,7 @@ button:hover {
   outline: 2px solid white;
   background-color: rgba(0, 0, 0, 0.75);
   position: relative;
+  z-index: 2;
 }
 
 .matCard:hover {
@@ -2546,6 +2547,16 @@ button:hover {
   position: relative;
   margin-top: -50px;
   margin-left: 10px;
+  z-index: 3;
+}
+
+.deck-menu4Items {
+  width: 140px;
+  position: relative;
+  top: 0;
+  margin-top: -50px;
+  margin-left: 10px;
+  margin-bottom: -50px;
   z-index: 3;
 }
 

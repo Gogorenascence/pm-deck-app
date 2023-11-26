@@ -15,7 +15,8 @@ import {
     discardSound,
     menuSound,
     startSound,
-    equipSound
+    equipSound,
+    flipSound
 } from "../Sounds/Sounds";
 
 
@@ -70,6 +71,7 @@ function SimulatorPage() {
     const [showCardMenu, setShowCardMenu] = useState(null)
     const [showPluckMenu, setShowPluckMenu] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [placing, setPlacing] = useState(true)
 
     const getDecks = async() =>{
         setLoading(true)
@@ -347,6 +349,19 @@ function SimulatorPage() {
         }
     }
 
+    const discardFromPluckDeck = (index) => {
+        const newPluckDiscardPile = [...pluckDiscard]
+        const newPluckDeck = [...playerPluckDeck.cards]
+        const pluckToDiscard = newPluckDeck[index]
+        newPluckDiscardPile.push(pluckToDiscard)
+        setPluckDiscard(newPluckDiscardPile)
+        setPlayerPluckDeck({
+            name: selectedPluckDeck.name,
+            cards: newPluckDeck.filter((_, i) => i !== index)
+        });
+        discardSound(volume)
+    }
+
     const handleShowCardMenu = (index) => {
         showCardMenu === index?
             setShowCardMenu(null):
@@ -363,8 +378,13 @@ function SimulatorPage() {
             setFromDiscard(false)
         } else {
             setSelectedIndex(index)
+            !placing?
             setPrompt({
                 message: "Select a Zone to Play Your Card!",
+                action: "playArea"
+            }):
+            setPrompt({
+                message: "Select a Zone to Place Your Card!",
                 action: "playArea"
             })
         }
@@ -373,13 +393,26 @@ function SimulatorPage() {
     const handleCardFromHand = (index) => {
         setFromDeck(false)
         setFromDiscard(false)
+        setPlacing(false)
+        selectCard(index)
+    }
+
+    const handlePlaceCardFromHand = (index) => {
+        setFromDeck(false)
+        setFromDiscard(false)
+        setPlacing(true)
         selectCard(index)
     }
 
     const selectPluck = (index) => {
         selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
+        !placing?
         setPrompt({
             message: "Select a Zone to Play Your Pluck!",
+            action: "activePluck"
+        }):
+        setPrompt({
+            message: "Select a Zone to Place Your Pluck!",
             action: "activePluck"
         })
     }
@@ -392,8 +425,7 @@ function SimulatorPage() {
                 const playZones = {...player.playArea}
                 const selectZone = playZones[zone]
                 setPrompt({message: "", action: ""})
-                console.log(fromDeck)
-                selectZone.push(playedCard)
+                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
                 specialSound(volume)
                 setPlayerMainDeck({
                     name: selectedMainDeck.name,
@@ -408,7 +440,7 @@ function SimulatorPage() {
                 const selectZone = playZones[zone]
                 const newDiscardPile = [...player.mainDiscard]
                 setPrompt({message: "", action: ""})
-                selectZone.push(playedCard)
+                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
                 specialSound(volume)
                 setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
@@ -421,7 +453,7 @@ function SimulatorPage() {
                 const newHand = [...player.hand]
                 console.log(selectedIndex)
                 setPrompt({message: "", action: ""})
-                selectZone.push(playedCard)
+                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
                 summonSound(volume)
                 setHand(newHand.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
@@ -483,6 +515,7 @@ function SimulatorPage() {
         newCards.unshift(toppedCard)
         setHand(newHand.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
+        flipSound(volume)
         setShowCardMenu(null)
     }
 
@@ -494,6 +527,20 @@ function SimulatorPage() {
         newCards.push(bottomCard)
         setHand(newHand.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
+        flipSound(volume)
+        setShowCardMenu(null)
+    }
+
+    const returnDiscardedCardToDeck = (index, position) => {
+        const returnedCard = player.mainDiscard[index]
+        const newCards = [...player.mainDeck]
+        const newDiscard = [...player.mainDiscard]
+        position === "top"?
+            newCards.unshift(returnedCard):
+            newCards.push(returnedCard)
+        setDiscard(newDiscard.filter((_, i) => i !== index))
+        setPlayerMainDeck({...playerMainDeck, cards: newCards})
+        flipSound(volume)
         setShowCardMenu(null)
     }
 
@@ -520,6 +567,32 @@ function SimulatorPage() {
         setPluckDiscard(newDiscardPile)
     }
 
+    const returnPluckToDeck = (index, position) => {
+        const returnedPluck = player.ownership[index]
+        const newPluck = [...player.pluckDeck]
+        const newOwnership = [...player.ownership]
+        position === "top"?
+            newPluck.unshift(returnedPluck):
+            newPluck.push(returnedPluck)
+        setOwnership(newOwnership.filter((_, i) => i !== index))
+        setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
+        flipSound(volume)
+        setShowCardMenu(null)
+    }
+
+    const returnDiscardedPluckToDeck = (index, position) => {
+        const returnedPluck = player.pluckDiscard[index]
+        const newPluck = [...player.pluckDeck]
+        const newPluckDiscard = [...player.pluckDiscard]
+        position === "top"?
+            newPluck.unshift(returnedPluck):
+            newPluck.push(returnedPluck)
+        setPluckDiscard(newPluckDiscard.filter((_, i) => i !== index))
+        setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
+        flipSound(volume)
+        setShowCardMenu(null)
+    }
+
     const handleHoveredCard = (cardItem) => {
         setHoveredCard(cardItem)
     }
@@ -534,7 +607,7 @@ function SimulatorPage() {
                 setScale(scale + 0.1);
             }
         } else {
-            if (scale > 0.5) {
+            if (scale > 0.3) {
                 setScale(scale - 0.1 );
             }
         }
@@ -605,6 +678,7 @@ function SimulatorPage() {
                 {/* <div className="deckSelect2"> */}
                     <p>Loading decks...</p>
                 </div>
+            <div>
                 <GameBoard
                     playArea={player.playArea}
                     activePluck={player.activePluck}
@@ -614,6 +688,7 @@ function SimulatorPage() {
                     drawPluck={drawPluck}
                     addPluckFromDeck={addPluckFromDeck}
                     addPluckFromDiscard={addPluckFromDiscard}
+                    returnPluckToDeck={returnPluckToDeck}
                     mainDeck={player.mainDeck}
                     pluckDeck={player.pluckDeck}
                     ownership={player.ownership}
@@ -629,9 +704,12 @@ function SimulatorPage() {
                     mainDiscard={player.mainDiscard}
                     discardCard={discardCard}
                     discardFromDeck={discardFromDeck}
+                    returnDiscardedCardToDeck={returnDiscardedCardToDeck}
                     pluckDiscard={player.pluckDiscard}
                     discardPluck={discardPluck}
                     discardPluckFromOwnership={discardPluckFromOwnership}
+                    discardFromPluckDeck={discardFromPluckDeck}
+                    returnDiscardedPluckToDeck={returnDiscardedPluckToDeck}
                     handleHoveredCard={handleHoveredCard}
                     selectCard={selectCard}
                     selectedIndex={selectedIndex}
@@ -656,7 +734,9 @@ function SimulatorPage() {
                                                     onClick={() => handleCardFromHand(index)}
                                                 ><p>{selectedIndex === index? "Cancel" : "Play Face-Up"}</p></div>
                                                 <div className="card-menu-item"><p>Play Face-Down</p></div>
-                                                <div className="card-menu-item"><p>Place</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => handlePlaceCardFromHand(index)}
+                                                ><p>Place</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => discardCardFromHand(index)}
                                                 ><p>Discard</p></div>
@@ -686,6 +766,8 @@ function SimulatorPage() {
                         </div>
                     </>: null
                 }
+            </div>
+
             </div>
             <PositionSlider
                 handleChangePosition={handleChangePosition}

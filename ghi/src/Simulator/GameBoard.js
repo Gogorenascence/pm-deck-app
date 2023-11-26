@@ -6,7 +6,8 @@ import SimPluckSearchModal from "./SimPluckSearchModal";
 import Ownership from "./Ownership";
 import OwnershipModal from "./OwnershipModal";
 import UnfurlModal from "./UnfurlModal";
-
+import UnfurlPluckModal from "./UnfurlPluckModal";
+import PlayAreaModal from "./PlayAreaModal";
 
 function GameBoard({
     playArea,
@@ -22,15 +23,19 @@ function GameBoard({
     drawPluck,
     addPluckFromDeck,
     addPluckFromDiscard,
+    returnPluckToDeck,
     playCard,
     playPluck,
     fieldStyle,
     mainDiscard,
     discardCard,
     discardFromDeck,
+    returnDiscardedCardToDeck,
     pluckDiscard,
     discardPluck,
     discardPluckFromOwnership,
+    discardFromPluckDeck,
+    returnDiscardedPluckToDeck,
     handleHoveredCard,
     selectCard,
     fromDeck,
@@ -65,11 +70,17 @@ function GameBoard({
     const [showDeckSearchModal, setShowDeckSearchModal] = useState(false)
     const [showUnfurlModal, setShowUnfurlModal] = useState(false)
     const [unfurlCount, setUnfurlCount] = useState(1)
+    const [showUnfurlPluckModal, setShowUnfurlPluckModal] = useState(false)
+    const [unfurlPluckCount, setUnfurlPluckCount] = useState(1)
     const [showDiscardModal, setShowDiscardModal] = useState(false)
     const [showPluckSearchModal, setShowPluckSearchModal] = useState(false)
     const [showPluckDiscardModal, setShowPluckDiscardModal] = useState(false)
+    const [showPlayAreaModal, setShowPlayAreaModal] = useState({name: "", zone: null})
+    const [showActivePluckModal, setShowActivePluckModal] = useState(null)
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
+
+    console.log(showPlayAreaModal)
 
     return (
         <div className={showExtra? "play-area" : "play-area2"}>
@@ -84,6 +95,7 @@ function GameBoard({
                 setFromDiscard={setFromDiscard}
                 addCardFromDeck={addCardFromDeck}
                 addCardFromDiscard={addCardFromDiscard}
+                returnDiscardedCardToDeck={returnDiscardedCardToDeck}
                 mainDiscard={mainDiscard}
                 showDiscardModal={showDiscardModal}
                 setShowDiscardModal={setShowDiscardModal}
@@ -97,6 +109,7 @@ function GameBoard({
                 setShowPluckSearchModal={setShowPluckSearchModal}
                 addPluckFromDeck={addPluckFromDeck}
                 addPluckFromDiscard={addPluckFromDiscard}
+                returnDiscardedPluckToDeck={returnDiscardedPluckToDeck}
                 pluckDiscard={pluckDiscard}
                 showPluckDiscardModal={showPluckDiscardModal}
                 setShowPluckDiscardModal={setShowPluckDiscardModal}
@@ -110,6 +123,7 @@ function GameBoard({
                 showOwnershipModal={showOwnershipModal}
                 setShowOwnershipModal={setShowOwnershipModal}
                 discardPluckFromOwnership={discardPluckFromOwnership}
+                returnPluckToDeck={returnPluckToDeck}
                 showPluckMenu={showPluckMenu}
                 setShowPluckMenu={setShowPluckMenu}
             />
@@ -129,6 +143,22 @@ function GameBoard({
                 setFromDiscard={setFromDiscard}
                 volume={volume}
             />
+            <UnfurlPluckModal
+                pluckDeck={pluckDeck}
+                handleHoveredCard={handleHoveredCard}
+                showUnfurlPluckModal={showUnfurlPluckModal}
+                setShowUnfurlPluckModal={setShowUnfurlPluckModal}
+                unfurlPluckCount={unfurlPluckCount}
+                setUnfurlPluckCount={setUnfurlPluckCount}
+                addPluckFromDeck={addPluckFromDeck}
+                discardFromPluckDeck={discardFromPluckDeck}
+                volume={volume}
+            />
+            <PlayAreaModal
+                showPlayAreaModal={showPlayAreaModal}
+                setShowPlayAreaModal={setShowPlayAreaModal}
+                handleHoveredCard={handleHoveredCard}
+            />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex": "hidden2"}>
                     <div className={selectedIndex === null? "matCard" : "matCardSelect"}
@@ -137,7 +167,10 @@ function GameBoard({
                         {slot5.length > 0 ?
                             <>
                                 {slot5.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Extra Slot 1", zone: slot5})}
+                                        onMouseEnter={() => handleHoveredCard(slot5[slot5.length-1])}
+                                    >
                                         <h1 className="fontSize60">{slot5.length}</h1>
                                     </div> :null
                                 }
@@ -157,7 +190,10 @@ function GameBoard({
                         {slot6.length > 0 ?
                             <>
                                 {slot6.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Extra Slot 2", zone: slot6})}
+                                        onMouseEnter={() => handleHoveredCard(slot6[slot6.length-1])}
+                                    >
                                         <h1 className="fontSize60">{slot6.length}</h1>
                                     </div> :null
                                 }
@@ -177,7 +213,10 @@ function GameBoard({
                         {slot7.length > 0 ?
                             <>
                                 {slot7.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Extra Slot 3", zone: slot7})}
+                                        onMouseEnter={() => handleHoveredCard(slot7[slot7.length-1])}
+                                    >
                                         <h1 className="fontSize60">{slot7.length}</h1>
                                     </div> :null
                                 }
@@ -197,7 +236,10 @@ function GameBoard({
                         {slot8.length > 0 ?
                             <>
                                 {slot8.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Extra Slot 4", zone: slot8})}
+                                        onMouseEnter={() => handleHoveredCard(slot8[slot8.length-1])}
+                                    >
                                         <h1 className="fontSize60">{slot8.length}</h1>
                                     </div> :null
                                 }
@@ -238,7 +280,10 @@ function GameBoard({
                         {fighter.length > 0 ?
                             <>
                                 {fighter.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Fighter Slot", zone: fighter})}
+                                        onMouseEnter={() => handleHoveredCard(fighter[fighter.length-1])}
+                                    >
                                         <h1 className="fontSize60">{fighter.length}</h1>
                                     </div> :null
                                 }
@@ -258,7 +303,10 @@ function GameBoard({
                         {aura.length > 0 ?
                             <>
                                 {aura.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Aura Slot", zone: aura})}
+                                        onMouseEnter={() => handleHoveredCard(aura[aura.length-1])}
+                                    >
                                         <h1 className="fontSize60">{aura.length}</h1>
                                     </div> :null
                                 }
@@ -278,7 +326,10 @@ function GameBoard({
                         {move.length > 0 ?
                             <>
                                 {move.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                        onClick={() => setShowPlayAreaModal({name: "Move Slot", zone: move})}
+                                        onMouseEnter={() => handleHoveredCard(move[move.length-1])}
+                                    >
                                         <h1 className="fontSize60">{move.length}</h1>
                                     </div> :null
                                 }
@@ -298,7 +349,10 @@ function GameBoard({
                         {ending.length > 0 ?
                             <>
                                 {ending.length > 1 ?
-                                    <div className="matCardOverlay">
+                                    <div className="matCardOverlay"
+                                    onClick={() => setShowPlayAreaModal({name: "Ending Slot", zone: ending})}
+                                    onMouseEnter={() => handleHoveredCard(ending[ending.length-1])}
+                                    >
                                         <h1 className="fontSize60">{ending.length}</h1>
                                     </div> :null
                                 }
@@ -314,6 +368,7 @@ function GameBoard({
                     </div>
                     <SimDeckSearch
                         mainDeck={mainDeck}
+                        handleHoveredCard={handleHoveredCard}
                         setShowDeckSearchModal={setShowDeckSearchModal}
                         drawCard={drawCard}
                         setShowUnfurlModal={setShowUnfurlModal}
@@ -430,8 +485,11 @@ function GameBoard({
                     <SimPluckSearch
                         pluckDeck={pluckDeck}
                         setShowPluckSearchModal={setShowPluckSearchModal}
+                        handleHoveredCard={handleHoveredCard}
                         drawPluck={drawPluck}
-                        // setShowUnfurlPluckModal={setShowUnfurlPluckModal}
+                        setShowUnfurlPluckModal={setShowUnfurlPluckModal}
+                        unfurlPluckCount={unfurlPluckCount}
+                        setUnfurlPluckCount={setUnfurlPluckCount}
                         shufflePluckDeck={shufflePluckDeck}
                         pluckDiscard={pluckDiscard}
                         setShowPluckDiscardModal={setShowPluckDiscardModal}

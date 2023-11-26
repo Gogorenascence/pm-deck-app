@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 
-function OwnershipModal({
-    ownership,
-    selectPluck,
+function PlayAreaModal({
+    // ownership,
+    // selectPluck,
     handleHoveredCard,
-    selectedPluckIndex,
-    showOwnershipModal,
-    setShowOwnershipModal,
-    discardPluckFromOwnership,
-    returnPluckToDeck,
-    showPluckMenu,
-    setShowPluckMenu
+    // selectedPluckIndex,
+    showPlayAreaModal,
+    setShowPlayAreaModal,
+    // discardPluckFromOwnership,
+    // returnPluckToDeck,
+    // showPluckMenu,
+    // setShowPluckMenu
 }) {
-
-    const full_ownership = ownership || [];
 
     const content = useRef(null)
     useOutsideAlerter(content)
@@ -44,43 +42,43 @@ function OwnershipModal({
 
     useEffect(() => {
       // Check if filteredCards is empty
-        if (ownership.length === 0) {
+        if (showPlayAreaModal.zone?.length === 0) {
             handleClose(); // Call handleClose when filteredCards is empty
         }
-    }, [ownership]);
+    }, [showPlayAreaModal.zone]);
 
-    const handleShowCardMenu = (index) => {
-        showPluckMenu === index?
-        setShowPluckMenu(null):
-            setShowPluckMenu(index)
-    }
+    // const handleShowCardMenu = (index) => {
+    //     showPluckMenu === index?
+    //     setShowPluckMenu(null):
+    //         setShowPluckMenu(index)
+    // }
 
     const handleClose = () => {
-        setShowOwnershipModal(false)
-        setShowPluckMenu(null)
+        setShowPlayAreaModal({name: "", zone: null})
+        // setShowPluckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
-    const handlePluck = (index) => {
-        selectPluck(index)
-        handleClose()
-    }
+    // const handlePluck = (index) => {
+    //     selectPluck(index)
+    //     handleClose()
+    // }
 
     return(
         <div>
-            {showOwnershipModal ?
+            {showPlayAreaModal.zone ?
                 <div className="sim-modal2 topbar"
                 >
-                    <div className={full_ownership.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
+                    <div className={showPlayAreaModal.zone.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1"
-                            style={{color: "black"}}>Ownership</h1>
+                            style={{color: "black"}}>{showPlayAreaModal.name}</h1>
                         <div>
-                        <div className={full_ownership.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {full_ownership.map((card, index) => {
+                        <div className={showPlayAreaModal.zone.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
+                            {showPlayAreaModal.zone.map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            <div className={showPluckMenu === index ? "deck-menu5Items": "hidden2"}>
+                                            {/* <div className={showCardMenu === index ? "deck-menu5Items": "hidden2"}>
                                                 <div className="card-menu-item"
                                                     onClick={() => handlePluck(index)}
                                                 ><p>{selectedPluckIndex === index? "Cancel" : "Play"}</p></div>
@@ -94,16 +92,16 @@ function OwnershipModal({
                                                 <div className="card-menu-item"
                                                     onClick={() => returnPluckToDeck(index, "bottom")}
                                                 ><p>Deckbottom</p></div>
-                                            </div>
+                                            </div> */}
                                             <img
-                                                onClick={() => handleShowCardMenu(index)}
+                                                // onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
-                                                onDoubleClick={() => handlePluck(index)}
+                                                // onDoubleClick={() => handlePluck(index)}
                                                 className={
-                                                    showPluckMenu === index || selectedPluckIndex === index?
+                                                    // showPluckMenu === index || selectedPluckIndex === index?
                                                     "selected3 builder-card margin-10 pointer glow3"
-                                                :
-                                                    "builder-card margin-10 pointer glow3"
+                                                // :
+                                                    // "builder-card margin-10 pointer glow3"
                                                 }
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}/>
@@ -114,7 +112,7 @@ function OwnershipModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button className={full_ownership.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
+                            <button className={showPlayAreaModal.zone.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
                                 Close
                             </button>
                         </div>
@@ -125,4 +123,4 @@ function OwnershipModal({
     )
 }
 
-export default OwnershipModal
+export default PlayAreaModal

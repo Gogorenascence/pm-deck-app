@@ -1,20 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react'
-
+import {
+    menuSound,
+    gainSound
+} from "../Sounds/Sounds";
 
 
 function UnfurlPluckModal({
     pluckDeck,
     handleHoveredCard,
-    showUnfurlModal,
-    setShowUnfurlModal,
-    addCardFromDeck,
-    discardFromDeck
+    showUnfurlPluckModal,
+    setShowUnfurlPluckModal,
+    unfurlPluckCount,
+    setUnfurlPluckCount,
+    addPluckFromDeck,
+    discardFromPluckDeck,
+    volume
 }) {
 
     const content = useRef(null)
     useOutsideAlerter(content)
 
-    const [count, setCount] = useState(1)
     const [showDeckMenu, setShowDeckMenu] = useState(null)
 
     function useOutsideAlerter(ref) {
@@ -27,7 +32,7 @@ function UnfurlPluckModal({
                     !event.target.closest(".deck-menu-item")
                 ) {
                     handleClose();
-                    setCount(1);
+                    setUnfurlPluckCount(1);
                 }
             }
           // Adding click event listener
@@ -38,19 +43,20 @@ function UnfurlPluckModal({
 
     useEffect(() => {
       // Check if filteredCards is empty
-        if (mainDeck.length === 0 || count === 0) {
+        if (pluckDeck.length === 0 || unfurlPluckCount === 0) {
             handleClose(); // Call handleClose when filteredCards is empty
         }
-    }, [mainDeck, count]);
+    }, [pluckDeck, unfurlPluckCount]);
 
     const handleUnfurl = () => {
-        setCount(count + 1)
+        setUnfurlPluckCount(unfurlPluckCount + 1)
+        gainSound(volume)
         document.body.style.overflow = 'hidden';
     };
 
     const handleClose = () => {
-        setShowUnfurlModal(false)
-        setCount(1);
+        setShowUnfurlPluckModal(false)
+        setShowDeckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
@@ -58,43 +64,41 @@ function UnfurlPluckModal({
         showDeckMenu === index ?
             setShowDeckMenu(null) :
             setShowDeckMenu(index)
+        menuSound(volume)
     }
 
-    const handleAddCard = (index, unfurling) => {
-        addCardFromDeck(index, unfurling)
-        setCount(count - 1)
+    const handleAddPluck = (index, unfurling) => {
+        addPluckFromDeck(index, unfurling)
+        setUnfurlPluckCount(unfurlPluckCount - 1)
         setShowDeckMenu(null)
     }
 
-    const handleDiscardCard = (index) => {
-        discardFromDeck(index)
-        setCount(count - 1)
+    const handleDiscardPluck = (index) => {
+        discardFromPluckDeck(index)
+        setUnfurlPluckCount(unfurlPluckCount - 1)
         setShowDeckMenu(null)
     }
 
     return(
         <div>
-            {showUnfurlModal ?
+            {showUnfurlPluckModal ?
                 <div className="sim-modal topbar"
                 >
                     <div className="outScrollableSim" ref={content}>
                         <h1 className="centered-h1"
-                            style={{color: "black"}}>Unfurled Cards</h1>
+                            style={{color: "black"}}>Unfurled Pluck</h1>
                         <div>
                         <div className="card-pool-fill-hand">
-                            {mainDeck.slice(0, count).map((card, index) => {
+                            {pluckDeck.slice(0, unfurlPluckCount).map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            <div className={showDeckMenu === index ? "deck-menu3": "hidden2"}>
+                                            <div className={showDeckMenu === index ? "deck-menu2Items": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleAddCard(index, true)}
-                                                ><p>Add to Hand</p></div>
+                                                    onClick={() => handleAddPluck(index, true)}
+                                                ><p>Add to Ownership</p></div>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleAddCard(index, false)}
-                                                ><p>Add to Play</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => handleDiscardCard(index)}
+                                                    onClick={() => handleDiscardPluck(index)}
                                                 ><p>Discard</p></div>
                                             </div>
                                             <img
@@ -117,6 +121,9 @@ function UnfurlPluckModal({
                         <div className="cd-inner margin-top-20">
                             <button className="margin-bottom-20" onClick={handleUnfurl}>
                                 Unfurl
+                            </button>
+                            <button className="margin-bottom-20" onClick={() =>(setUnfurlPluckCount(1))}>
+                                Clear
                             </button>
                             <button className="margin-bottom-20" onClick={handleClose}>
                                 Close

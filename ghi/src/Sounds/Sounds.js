@@ -10,6 +10,7 @@ import equip from "./equip.wav"
 import discard from "./discard.wav"
 import menu from "./menu.wav"
 import gameStart from "./nextturn.wav"
+import flip from "./flip.wav"
 
 
 export function soundLoop(sound, loopCount, time) {
@@ -88,5 +89,11 @@ export function startSound(volume) {
 export function equipSound(volume) {
     const audio = new Audio(equip);
     audio.volume = volume
+    audio.play()
+}
+
+export function flipSound(volume) {
+    const audio = new Audio(flip);
+    audio.volume = volume*4
     audio.play()
 }
