@@ -72,6 +72,8 @@ function SimulatorPage() {
     const [showPluckMenu, setShowPluckMenu] = useState(null)
     const [loading, setLoading] = useState(false)
     const [placing, setPlacing] = useState(true)
+    const [shuffling, setShuffling] = useState(false)
+    const [shufflingPluck, setShufflingPluck] = useState(false)
 
     const getDecks = async() =>{
         setLoading(true)
@@ -143,8 +145,18 @@ function SimulatorPage() {
         }));
     }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck, discard, pluckDiscard]);
 
+    const isShuffling = () => {
+        setShuffling(true)
+        setTimeout(() => setShuffling(false), 1000)
+    }
+
+    const isShufflingPluck = () => {
+        setShufflingPluck(true)
+        setTimeout(() => setShufflingPluck(false), 1000)
+    }
+
     const shuffleMainDeck = () => {
-        console.log(player)
+        isShuffling()
         const shuffledDeck = [...playerMainDeck.cards]
         let currentMainIndex = shuffledDeck.length, randomMainIndex;
         // While there remain elements to shuffle.
@@ -161,6 +173,7 @@ function SimulatorPage() {
     }
 
     const shufflePluckDeck = () => {
+        isShufflingPluck()
         const shuffledDeck = [...playerPluckDeck.cards]
         let currentPluckIndex = shuffledDeck.length, randomPluckIndex;
         // While there remain elements to shuffle.
@@ -245,6 +258,7 @@ function SimulatorPage() {
             drawSound(volume)
             setHand(newHand)
             const newShuffledMainDeck = newMainDeck.filter((_, i) => i !== index)
+            isShuffling()
             if (unfurling === false) {
                 let currentMainIndex = newShuffledMainDeck.length, randomMainIndex;
                 while (currentMainIndex !== 0) {
@@ -317,6 +331,7 @@ function SimulatorPage() {
             setOwnership(newOwnership)
             const newShuffledPluckDeck = newPluckDeck.filter((_, i) => i !== index)
             if (unfurling === false) {
+                isShufflingPluck()
                 let currentPluckIndex = newShuffledPluckDeck.length, randomPluckIndex;
                 while (currentPluckIndex !== 0) {
                     randomPluckIndex = Math.floor(Math.random() * currentPluckIndex);
@@ -720,6 +735,8 @@ function SimulatorPage() {
                     showExtra={showExtra}
                     setShowExtra={setShowExtra}
                     volume={volume}
+                    shuffling={shuffling}
+                    shufflingPluck={shufflingPluck}
                     />
 
                 {player.hand.length > 0 || player.ownership.length > 0?

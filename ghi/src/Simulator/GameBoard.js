@@ -49,7 +49,9 @@ function GameBoard({
     shufflePluckDeck,
     showExtra,
     setShowExtra,
-    volume
+    volume,
+    shuffling,
+    shufflingPluck
 }) {
 
     const fighter = playArea.fighter_slot || [];
@@ -380,6 +382,7 @@ function GameBoard({
                         fromDeck={fromDeck}
                         fromDiscard={fromDiscard}
                         volume={volume}
+                        shuffling={shuffling}
                     />
                 </div>
                 <div className="flex">
@@ -494,6 +497,7 @@ function GameBoard({
                         pluckDiscard={pluckDiscard}
                         setShowPluckDiscardModal={setShowPluckDiscardModal}
                         volume={volume}
+                        shufflingPluck={shufflingPluck}
                     />
                 </div>
             </div>

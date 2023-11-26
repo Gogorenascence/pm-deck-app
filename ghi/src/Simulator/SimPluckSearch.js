@@ -15,7 +15,8 @@ function SimPluckSearch({
     shufflePluckDeck,
     pluckDiscard,
     setShowPluckDiscardModal,
-    volume
+    volume,
+    shufflingPluck
 }) {
 
     const content = useRef(null)
@@ -136,7 +137,8 @@ function SimPluckSearch({
                 >
                     {pluckDeck.length > 1 ?
                         <div className="matCardOverlay">
-                            <h1 className="fontSize60">{pluckDeck.length}</h1>
+                            <h1 className="fontSize60">{shufflingPluck? null: pluckDeck.length}</h1>
+                            <h3>{ shufflingPluck? "Shuffling":null}</h3>
                         </div> :null
                     }
                     <img

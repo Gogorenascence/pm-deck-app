@@ -17,7 +17,8 @@ function SimDeckSearch({
     setShowDiscardModal,
     fromDeck,
     fromDiscard,
-    volume
+    volume,
+    shuffling
 }) {
 
     const content = useRef(null)
@@ -136,10 +137,11 @@ function SimDeckSearch({
                 <div className="matCard"
                     onClick={() => handleShowCardMenu()}
                     onDoubleClick={() => drawCard()}
-                >
+                    >
                     {mainDeck.length > 1 ?
                         <div className={fromDeck? "matCardOverlay notify":"matCardOverlay"}>
-                            <h1 className="fontSize60">{mainDeck.length}</h1>
+                            <h1 className="fontSize60">{shuffling? null:mainDeck.length}</h1>
+                            <h3>{ shuffling? "Shuffling":null}</h3>
                         </div> :null
                     }
                     <img
