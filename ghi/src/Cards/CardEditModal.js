@@ -95,6 +95,7 @@ function CardEditModal() {
         getExtraEffects();
         getReactions();
         getCardTags();
+        console.log("Card state: ", card)
     // eslint-disable-next-line
     }, [card_number]);
 

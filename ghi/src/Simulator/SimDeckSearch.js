@@ -91,7 +91,8 @@ function SimDeckSearch({
         document.body.style.overflow = 'hidden';
     };
 
-    const handleShowCardMenu = () => {
+    const handleShowCardMenu = (event) => {
+        event.preventDefault()
         setShowDeckMenu(!showDeckMenu)
         menuSound(volume)
     }
@@ -135,7 +136,8 @@ function SimDeckSearch({
                     ><p>Shuffle</p></div>
                 </div>
                 <div className="matCard"
-                    onClick={() => handleShowCardMenu()}
+                    onContextMenu={(event) => handleShowCardMenu(event)}
+                    onClick={() => setShowDeckMenu(false)}
                     onDoubleClick={() => drawCard()}
                     >
                     {mainDeck.length > 1 ?
