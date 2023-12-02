@@ -133,7 +133,7 @@ function SimulatorPage() {
         setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
         equipSound(volume)
-        addToLog(`System: ${selectedMainDeck.name} selected`)
+        addToLog("System", "system", `${selectedMainDeck.name} selected`)
     }
 
     useEffect(() => {
@@ -175,7 +175,7 @@ function SimulatorPage() {
         }
         setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledDeck});
         shuffleSound(volume)
-        addToLog("System: Shuffling Main deck")
+        addToLog("System", "system", "Shuffling Main deck")
     }
 
     const shufflePluckDeck = () => {
@@ -193,7 +193,7 @@ function SimulatorPage() {
         }
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledDeck});
         shuffleSound(volume)
-        addToLog("System: Shuffling Pluck deck")
+        addToLog("System", "system", "Shuffling Pluck deck")
     }
 
     const gameStart = () => {
@@ -227,7 +227,7 @@ function SimulatorPage() {
         }
         setOwnership([shuffledPluckDeck[0]])
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledPluckDeck.slice(1)});
-        addToLog("System: Game Start!")
+        addToLog("System", "system", "Game Start!")
     }
 
     const checkPlayer = () => {
@@ -253,7 +253,7 @@ function SimulatorPage() {
                 cards: newMainDeck.slice(1)
             });
         } else {
-            console.error("Hand is full")
+            addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
     }
 

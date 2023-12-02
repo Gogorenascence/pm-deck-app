@@ -1011,6 +1011,7 @@ button:hover {
   align-items: center;
   height: 100px;
   position: relative;
+  z-index: 0;
 }
 
 .social-icon {
@@ -2224,7 +2225,7 @@ button:hover {
   width: 110px;
   border-radius: 17px;
   border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.39);
+  background-color: rgba(0, 0, 0, 0.603);
   transition: all 0.5s ease-in-out;
 }
 
@@ -2243,7 +2244,7 @@ button:hover {
   width: 110px;
   border-radius: 17px;
   border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.39);
+  background-color: rgba(0, 0, 0, 0.603);
   transition: all 0.5s ease-in-out;
 }
 
@@ -2269,7 +2270,6 @@ button:hover {
   max-height: 0;
   transition: all 0.3s ease-in-out;
 }
-
 
 .size_button {
   /* background-color: rgba(255, 255, 255, 0); */
@@ -2413,6 +2413,10 @@ button:hover {
 
 .panel-text-box-text {
   margin: 0 0 0 5px;
+}
+
+.m-l-r-5 {
+  margin: 0 5px 0 5px;
 }
 
 .margin-left-13 {
@@ -2659,7 +2663,7 @@ button:hover {
   position: relative;
   right: 1px;
   transition: all 0.5s;
-  z-index: 10;
+  z-index: 900;
 }
 
 .chatPanelClosed {
@@ -2716,6 +2720,7 @@ button:hover {
   right: 11px;
   top:222px;
   transition: all 0.5s;
+  z-index: 100;
 }
 
 .chat-panel-close {
@@ -2724,6 +2729,7 @@ button:hover {
   right: 375px;
   top:222px;
   transition: all 0.5s;
+
 }
 
 .rightSimSide {
@@ -2732,6 +2738,7 @@ button:hover {
   width: fit-content;
   position: fixed;
   right: 0;
+  z-index: 1;
 }
 
 .scrollableChat {
@@ -2740,17 +2747,19 @@ button:hover {
   /* height: 500px; */
   width: 360px;
   /* margin-right: -40px; */
-  margin: 4% -40px 0 0;
+  margin: 5% -40px 0 0;
   overflow-y: scroll;
   outline: white 1px solid;
+  flex-wrap: wrap;
 }
 
 .chatTextBox {
   background-color: white;
   color: #000;
   width: 360px;
-  height: 100px;
+  height: 90px;
   margin-top: 10px;
+  z-index: inherit;
 }
 
 .right {
@@ -2759,6 +2768,11 @@ button:hover {
   margin: 0 0 0 40px;
   padding: 0;
   width: 360px;
+}
+
+.messageWrapper {
+  white-space: wrap;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1330px) {

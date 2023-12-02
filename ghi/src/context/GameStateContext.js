@@ -5,7 +5,7 @@ const GameStateContext = createContext();
 
 const GameStateContextProvider = ({ children }) => {
     const [player, setPlayer] = useState({
-        name: "",
+        name: "WindFall",
         HP: 16,
         mainDeck: [],
         pluckDeck: [],
@@ -62,9 +62,13 @@ const GameStateContextProvider = ({ children }) => {
 
     const [log, setLog] = useState([])
 
-    const addToLog = (message) => {
+    const addToLog = (user, role, message) => {
         const newLog = [...log]
-        newLog.push(message)
+        newLog.push({
+            user: user,
+            role: role,
+            message: message
+        })
         setLog(newLog)
     }
 

@@ -10,7 +10,7 @@ function LogChatPanel({
     const [newMessage, setNewMessage] = useState(false)
     const [message, setMessage] = useState("")
 
-    const {log, addToLog} = useContext(GameStateContext)
+    const {player, log, addToLog} = useContext(GameStateContext)
     const [logLength, setLogLength] = useState(log.length)
 
     const handleShowPanel = () => {
@@ -57,9 +57,17 @@ function LogChatPanel({
     const sendMessage = (event) => {
         if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault();
-            addToLog(message)
-            setMessage("")
+            if (message.length > 0) {
+                addToLog(player.name, "player", message)
+                setMessage("")
+            }
         }
+    }
+
+    const colors = {
+        system: "green",
+        player: "skyblue",
+        opponent: "red"
     }
 
 
@@ -69,17 +77,25 @@ function LogChatPanel({
                 {showPanel?
                     <div className="right">
                         <div className="scrollableChat" ref={chatWindow}>
-                            {log.map((message) => (
-                                <p>{message}</p>
-                            ))}
+                            {log.length > 0? log.map((message) => (
+                                <div className="m-l-r-5">
+                                    <p style={{fontWeight: "700", color: colors[message.role], margin: "7px 0 0 0"}}>
+                                        {message.user}
+                                    </p>
+                                    <div className="messageWrapper">
+                                    <p className=" margin-bottom-0">{message.message}</p>
+                                    </div>
+                                </div>
+                            )): null}
                         </div>
                             <textarea
                                 className="chatTextBox"
                                 type="text"
                                 value={message}
+                                placeholder="Message"
                                 onChange={handleMessageChange}
                                 onKeyDown={sendMessage}
-                                focus={true}
+                                // focus={true}
                             >
                             </textarea>
                     </div>
