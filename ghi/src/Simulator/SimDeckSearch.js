@@ -102,7 +102,7 @@ function SimDeckSearch({
             <span>
                 <div className="matCard margin-left"
                     onClick={() => handleOpenDiscard()}
-                    onMouseEnter={() => handleHoveredCard(mainDiscard[mainDiscard.length-1])}
+                    onMouseEnter={() => mainDiscard.length > 0 ? handleHoveredCard(mainDiscard[mainDiscard.length-1]): null}
                 >
                     {mainDiscard.length > 1 ?
                         <div className={fromDiscard? "matCardOverlay notify":"matCardOverlay"}>

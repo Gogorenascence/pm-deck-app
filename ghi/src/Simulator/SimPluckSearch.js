@@ -98,7 +98,7 @@ function SimPluckSearch({
             <span>
                 <div className="matCard margin-left"
                     onClick={() => handleOpenDiscard()}
-                    onMouseEnter={() => handleHoveredCard(pluckDiscard[pluckDiscard.length-1])}
+                    onMouseEnter={() => pluckDiscard.length > 0? handleHoveredCard(pluckDiscard[pluckDiscard.length-1]):null}
                 >
                     {pluckDiscard.length > 1 ?
                         <div className="matCardOverlay">

@@ -140,6 +140,7 @@ body.dark::after {
   --window-height-account: calc(100vh - 180px);
   --window-width200: calc(80vw - 200px);
   --window-height2: calc(100vh - 62px);
+  --window-heightChat: calc(100vh - 200px);
 }
 
 
@@ -2652,11 +2653,11 @@ button:hover {
 
 .chatPanel {
   height: var(--window-height2);
-  width: 400px;
+  width: 415px;
   background-color: rgba(0, 0, 0, 0.603);
   border: 1px solid white;
   position: relative;
-  right: 0;
+  right: 1px;
   transition: all 0.5s;
   z-index: 10;
 }
@@ -2667,7 +2668,7 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.603);
   border: 1px solid white;
   position: relative;
-  right: 0;
+  right: 1px;
   transition: all 0.5s;
   z-index: 10;
 }
@@ -2720,7 +2721,7 @@ button:hover {
 .chat-panel-close {
   font-size: 100px;
   position: absolute;
-  right: 360px;
+  right: 375px;
   top:222px;
   transition: all 0.5s;
 }
@@ -2735,11 +2736,29 @@ button:hover {
 
 .scrollableChat {
   /* background-color: white; */
-  height: var(--window-height2);
+  height: var(--window-heightChat);
+  /* height: 500px; */
   width: 360px;
-  margin-right: -40px;
+  /* margin-right: -40px; */
+  margin: 4% -40px 0 0;
   overflow-y: scroll;
   outline: white 1px solid;
+}
+
+.chatTextBox {
+  background-color: white;
+  color: #000;
+  width: 360px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+.right {
+  position: relative;
+  right: 0;
+  margin: 0 0 0 40px;
+  padding: 0;
+  width: 360px;
 }
 
 @media screen and (max-width: 1330px) {
