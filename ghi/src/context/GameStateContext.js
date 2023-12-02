@@ -60,6 +60,14 @@ const GameStateContextProvider = ({ children }) => {
 
     const [volume, setVolume] = useState(0.05)
 
+    const [log, setLog] = useState([])
+
+    const addToLog = (message) => {
+        const newLog = [...log]
+        newLog.push(message)
+        setLog(newLog)
+    }
+
     return (
         <GameStateContext.Provider value={{
             player,
@@ -81,7 +89,10 @@ const GameStateContextProvider = ({ children }) => {
             showExtra,
             setShowExtra,
             volume,
-            setVolume
+            setVolume,
+            log,
+            setLog,
+            addToLog
             }}>
             {children}
         </GameStateContext.Provider>

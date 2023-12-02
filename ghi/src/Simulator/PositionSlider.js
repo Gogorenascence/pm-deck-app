@@ -11,6 +11,7 @@ function PositionSlider({
     const [show, setShow] = useState(true)
 
     const handleWheel = (event) => {
+        event.preventDefault();
         const scrollDelta = event.deltaY;
         if (scrollDelta > 0) {
             handleChangeScale('decrease');

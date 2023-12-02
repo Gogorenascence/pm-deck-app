@@ -3,6 +3,7 @@ import { GameStateContext } from "../context/GameStateContext";
 import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
 import CardInfoPanel from "./CardInfoPanel";
+import LogChatPanel from "./LogChatPanel";
 import {
     specialSound,
     destroySound,
@@ -42,7 +43,10 @@ function SimulatorPage() {
         showExtra,
         setShowExtra,
         volume,
-        setVolume
+        setVolume,
+        log,
+        setLog,
+        addToLog
     } = useContext(GameStateContext)
 
     const [selectedMainDeck, setSelectedMainDeck] = useState({
@@ -129,6 +133,7 @@ function SimulatorPage() {
         setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
         equipSound(volume)
+        addToLog(`System: ${selectedMainDeck.name} selected`)
     }
 
     useEffect(() => {
@@ -170,6 +175,7 @@ function SimulatorPage() {
         }
         setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledDeck});
         shuffleSound(volume)
+        addToLog("System: Shuffling Main deck")
     }
 
     const shufflePluckDeck = () => {
@@ -187,6 +193,7 @@ function SimulatorPage() {
         }
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledDeck});
         shuffleSound(volume)
+        addToLog("System: Shuffling Pluck deck")
     }
 
     const gameStart = () => {
@@ -220,6 +227,7 @@ function SimulatorPage() {
         }
         setOwnership([shuffledPluckDeck[0]])
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledPluckDeck.slice(1)});
+        addToLog("System: Game Start!")
     }
 
     const checkPlayer = () => {
@@ -786,11 +794,14 @@ function SimulatorPage() {
             </div>
 
             </div>
-            <PositionSlider
-                handleChangePosition={handleChangePosition}
-                handleChangeScale={handleChangeScale}
-                handleChangeTransformRotateX={handleChangeTransformRotateX}
-            />
+            <div className="rightSimSide">
+                <PositionSlider
+                    handleChangePosition={handleChangePosition}
+                    handleChangeScale={handleChangeScale}
+                    handleChangeTransformRotateX={handleChangeTransformRotateX}
+                />
+                <LogChatPanel/>
+            </div>
         </div>
     );
 }

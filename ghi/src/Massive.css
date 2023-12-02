@@ -2208,10 +2208,10 @@ button:hover {
 }
 
 .settings_container {
-  position: fixed;
-  top: 25%;
+  position: relative;
+  /* top: 25%; */
+  margin-top: 20vh;
   /* transform: translateY(-50%); */
-  right: 0px;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -2228,17 +2228,17 @@ button:hover {
 }
 
 .settings_container_hide {
-  position: fixed;
-  top: 25%;
+  position:relative;
+  /* top: 25%; */
+  margin-top: 20vh;
   /* transform: translateY(-50%); */
-  right: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: 10%;
+  height: 70px;
   width: 110px;
   border-radius: 17px;
   border: 1px solid white;
@@ -2434,7 +2434,7 @@ button:hover {
 .panel-open {
   font-size: 100px;
   position: absolute;
-  left: 45px;
+  left: 11px;
   top:222px;
   transition: all 0.5s;
 }
@@ -2648,6 +2648,98 @@ button:hover {
   background-color: rgba(0, 0, 0, 0);
   z-index: -9;
   transition: all 0.5s;
+}
+
+.chatPanel {
+  height: var(--window-height2);
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.603);
+  border: 1px solid white;
+  position: relative;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 10;
+}
+
+.chatPanelClosed {
+  height: var(--window-height2);
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.603);
+  border: 1px solid white;
+  position: relative;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 10;
+}
+
+.panel-card {
+  width: 240px;
+  margin: 20px 0 10px 0;
+  border-radius: 17px;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.panel-text-box {
+  margin: 10px;
+  height: 175px;
+  width: 378px;
+  overflow-y: scroll;
+  outline: 1px solid white;
+}
+
+.panel-text-box-text {
+  margin: 0 0 0 5px;
+}
+
+.margin-left-13 {
+  margin-left: 13px;
+}
+
+.margin-left-10p {
+  margin-left: 10%;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.white {
+  color: white;
+}
+
+.chat-panel-open {
+  font-size: 100px;
+  position: absolute;
+  right: 11px;
+  top:222px;
+  transition: all 0.5s;
+}
+
+.chat-panel-close {
+  font-size: 100px;
+  position: absolute;
+  right: 360px;
+  top:222px;
+  transition: all 0.5s;
+}
+
+.rightSimSide {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  position: fixed;
+  right: 0;
+}
+
+.scrollableChat {
+  /* background-color: white; */
+  height: var(--window-height2);
+  width: 360px;
+  margin-right: -40px;
+  overflow-y: scroll;
+  outline: white 1px solid;
 }
 
 @media screen and (max-width: 1330px) {
