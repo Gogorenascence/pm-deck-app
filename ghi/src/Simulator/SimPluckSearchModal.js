@@ -104,8 +104,7 @@ function SimPluckSearchModal({
                 <div className="sim-modal topbar"
                 >
                     <div className={pluckDiscard.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Discard Pile</h1>
+                        <h1 className="centered-h1">Discard Pile</h1>
                         <div>
                         <div className={pluckDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {pluckDiscard.slice().reverse().map((card, index) => {
@@ -154,8 +153,7 @@ function SimPluckSearchModal({
                 <div className="sim-modal topbar"
                 >
                     <div className={pluckDeck.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Pluck Deck</h1>
+                        <h1 className="centered-h1">Pluck Deck</h1>
                         <div>
                         <div className={pluckDeck.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {pluckDeck.map((card, index) => {

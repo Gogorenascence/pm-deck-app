@@ -98,8 +98,7 @@ function UnfurlModal({
                 <div className="sim-modal topbar"
                 >
                     <div className="outScrollableSim" ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Unfurled Cards</h1>
+                        <h1 className="centered-h1">Unfurled Cards</h1>
                         <div>
                         <div className="card-pool-fill-hand">
                             {mainDeck.slice(0, unfurlCount).map((card, index) => {

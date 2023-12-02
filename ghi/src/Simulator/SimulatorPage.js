@@ -22,7 +22,7 @@ import {
 
 
 function SimulatorPage() {
-
+    document.body.classList.add("dark")
     const {
         player,
         setPlayer,
@@ -150,6 +150,11 @@ function SimulatorPage() {
         }));
     }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck, discard, pluckDiscard]);
 
+    const allPlayerPluck = player.activePluck.slot_1?.length +
+        player.activePluck.slot_2?.length +
+        player.activePluck.slot_3?.length +
+        player.activePluck.slot_4?.length
+
     const isShuffling = () => {
         setShuffling(true)
         setTimeout(() => setShuffling(false), 1000)
@@ -242,7 +247,6 @@ function SimulatorPage() {
 
     const drawCard = () => {
         if (hand.length < 8) {
-            console.log(player.mainDeck)
             const newHand = [...hand]
             const newMainDeck = [...playerMainDeck.cards]
             newHand.push(newMainDeck[0])
@@ -282,7 +286,7 @@ function SimulatorPage() {
                 cards: newShuffledMainDeck
             });
         } else {
-            console.error("Hand is full")
+            addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
     }
 
@@ -296,7 +300,7 @@ function SimulatorPage() {
             setDiscard(newDiscardPile.filter((_, i) => i !== index))
             drawSound(volume);
         } else {
-            console.error("Hand is full")
+            addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
     }
 
@@ -314,7 +318,7 @@ function SimulatorPage() {
     }
 
     const drawPluck = () => {
-        if (ownership.length < 8) {
+        if (ownership.length + allPlayerPluck < 8) {
             const newOwnership = [...ownership]
             const newPluckDeck = [...playerPluckDeck.cards]
             newOwnership.push(newPluckDeck[0])
@@ -325,12 +329,16 @@ function SimulatorPage() {
                 cards: newPluckDeck.slice(1)
             });
         } else {
-            console.error("Ownership is full")
+            addToLog(
+                "System",
+                "system",
+                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
+            )
         }
     }
 
     const addPluckFromDeck = (index, unfurling) => {
-        if (ownership.length < 8) {
+        if (ownership.length + allPlayerPluck < 8) {
             const newOwnership = [...ownership]
             const newPluckDeck = [...playerPluckDeck.cards]
             const cardToAdd = newPluckDeck[index]
@@ -354,12 +362,16 @@ function SimulatorPage() {
                 cards: newShuffledPluckDeck
             });
         } else {
-            console.error("Ownership is full")
+            addToLog(
+                "System",
+                "system",
+                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
+            )
         }
     }
 
     const addPluckFromDiscard = (index) => {
-        if (ownership.length < 8) {
+        if (ownership.length + allPlayerPluck < 8) {
             const newOwnership = [...ownership]
             const newDiscardPile = [...pluckDiscard]
             const cardToAdd = newDiscardPile[index]
@@ -368,7 +380,11 @@ function SimulatorPage() {
             gainSound(volume)
             setPluckDiscard(newDiscardPile.filter((_, i) => i !== index));
         } else {
-            console.error("Ownership is full")
+            addToLog(
+                "System",
+                "system",
+                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
+            )
         }
     }
 
@@ -474,7 +490,6 @@ function SimulatorPage() {
                 const playZones = {...player.playArea}
                 const selectZone = playZones[zone]
                 const newHand = [...player.hand]
-                console.log(selectedIndex)
                 setPrompt({message: "", action: ""})
                 !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
                 summonSound(volume)
@@ -494,7 +509,6 @@ function SimulatorPage() {
             const pluckZones = {...player.activePluck}
             const selectZone = pluckZones[zone]
             const newOwnership = [...player.ownership]
-            console.log(selectedPluckIndex)
             setPrompt({message: "", action: ""})
             selectZone.push(playedPluck)
             setOwnership(newOwnership.filter((_, i) => i !== selectedPluckIndex))
@@ -507,7 +521,6 @@ function SimulatorPage() {
     const discardCard = (card, index, zone) => {
         const newPlayArea = {...player.playArea}
         const selectZone = newPlayArea[zone]
-        console.log(player)
         const newDiscardPile = [...player.mainDiscard]
 
         newDiscardPile.push(card)
@@ -533,7 +546,6 @@ function SimulatorPage() {
     const topDeckCard = (index) => {
         const toppedCard = player.hand[index]
         const newCards = [...player.mainDeck]
-        console.log(newCards)
         const newHand = [...player.hand]
         newCards.unshift(toppedCard)
         setHand(newHand.filter((_, i) => i !== index))
@@ -545,7 +557,6 @@ function SimulatorPage() {
     const bottomDeckCard = (index) => {
         const bottomCard = player.hand[index]
         const newCards = [...player.mainDeck]
-        console.log(newCards)
         const newHand = [...player.hand]
         newCards.push(bottomCard)
         setHand(newHand.filter((_, i) => i !== index))

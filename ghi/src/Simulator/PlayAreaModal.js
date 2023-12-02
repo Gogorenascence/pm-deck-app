@@ -70,8 +70,7 @@ function PlayAreaModal({
                 <div className="sim-modal2 topbar"
                 >
                     <div className={showPlayAreaModal.zone.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>{showPlayAreaModal.name}</h1>
+                        <h1 className="centered-h1">{showPlayAreaModal.name}</h1>
                         <div>
                         <div className={showPlayAreaModal.zone.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {showPlayAreaModal.zone.map((card, index) => {

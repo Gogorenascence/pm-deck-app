@@ -85,8 +85,7 @@ function UnfurlPluckModal({
                 <div className="sim-modal topbar"
                 >
                     <div className="outScrollableSim" ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Unfurled Pluck</h1>
+                        <h1 className="centered-h1">Unfurled Pluck</h1>
                         <div>
                         <div className="card-pool-fill-hand">
                             {pluckDeck.slice(0, unfurlPluckCount).map((card, index) => {

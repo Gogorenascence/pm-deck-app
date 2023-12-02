@@ -118,8 +118,7 @@ function SimDeckSearchModal({
                 <div className="sim-modal topbar"
                 >
                     <div className={mainDiscard.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Discard Pile</h1>
+                        <h1 className="centered-h1">Discard Pile</h1>
                         <div>
                         <div className={mainDiscard.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {mainDiscard.slice().reverse().map((card, index) => {
@@ -173,8 +172,7 @@ function SimDeckSearchModal({
                 <div className="sim-modal topbar"
                 >
                     <div className={mainDeck.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Main Deck</h1>
+                        <h1 className="centered-h1">Main Deck</h1>
                         <div>
                         <div className={mainDeck.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
                             {mainDeck.map((card, index) => {
