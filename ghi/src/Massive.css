@@ -409,19 +409,6 @@ button:hover {
   /* display: flex; */
 }
 
-.outScrollableSim {
-  position: relative; /* Make the container a positioning context */
-  height: 100%; /* Ensure the image container takes the full height of the scrollable div */
-  /* display: flex; */
-}
-
-.outScrollableSim2 {
-  position: relative; /* Make the container a positioning context */
-  height: 60vh; /* Ensure the image container takes the full height of the scrollable div */
-  /* display: flex; */
-  width: 45vw;
-}
-
 .inScrollable {
   position: relative; /* Make the container a positioning context */
   width: 100%; /* Ensure the image container takes the full width of the scrollable div */
@@ -704,76 +691,6 @@ button:hover {
   outline: 7px solid rgb(255, 0, 0);
   border: none;
 }
-
-@keyframes pulse2 {
-  0% {
-    background-color: rgba(255, 255, 255, 0.60);
-  }
-  50% {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-  100% {
-    background-color: rgba(255, 255, 255, 0.60);
-  }
-}
-
-@keyframes pulse3 {
-  0% {
-    filter: brightness(1.5);
-  }
-  50% {
-    filter: brightness(0.5);
-  }
-  100% {
-    filter: brightness(1.5);
-  }
-}
-
-@keyframes pulse4 {
-  0% {
-    filter: brightness(1.5);
-    background-color: rgba(255, 255, 255, 0.171);
-  }
-  50% {
-    filter: brightness(0.5);
-    background-color: rgba(255, 255, 255, 0);
-  }
-  100% {
-    filter: brightness(1.5);
-    background-color: rgba(255, 255, 255, 0.171);
-  }
-}
-
-@keyframes pulse5 {
-  0% {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-  100% {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-}
-
-@keyframes slide {
-  0% {
-    transform: translate(-1500px, 0);
-  }
-  10% {
-    transform: translate(-1500px, 0);
-  }
-  25% {
-    transform: translate(0, 0);
-  }
-  75% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(1500px, 0);
-  }
-}
-
 
 .add-comp-button {
   margin: 15px 10px 10px 5px;
@@ -1503,7 +1420,6 @@ button:hover {
   overflow: hidden;
   margin: auto;
 }
-
 
 .builder-card5 {
   width: 140px;
@@ -2774,6 +2690,88 @@ button:hover {
 .messageWrapper {
   white-space: wrap;
   word-wrap: break-word;
+}
+
+.outScrollableSim {
+  position: relative; /* Make the container a positioning context */
+  height: 100%; /* Ensure the image container takes the full height of the scrollable div */
+  /* display: flex; */
+}
+
+.outScrollableSim2 {
+  position: relative; /* Make the container a positioning context */
+  height: 60vh; /* Ensure the image container takes the full height of the scrollable div */
+  /* display: flex; */
+  width: 45vw;
+}
+
+@keyframes pulse2 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.60);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.60);
+  }
+}
+
+@keyframes pulse3 {
+  0% {
+    filter: brightness(1.5);
+  }
+  50% {
+    filter: brightness(0.5);
+  }
+  100% {
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes pulse4 {
+  0% {
+    filter: brightness(1.5);
+    background-color: rgba(255, 255, 255, 0.171);
+  }
+  50% {
+    filter: brightness(0.5);
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    filter: brightness(1.5);
+    background-color: rgba(255, 255, 255, 0.171);
+  }
+}
+
+@keyframes pulse5 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translate(-1500px, 0);
+  }
+  10% {
+    transform: translate(-1500px, 0);
+  }
+  25% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(1500px, 0);
+  }
 }
 
 @media screen and (max-width: 1330px) {

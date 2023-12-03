@@ -56,6 +56,7 @@ function SimDeckSearch({
         if (mainDiscard.length === 0) {
             handleCloseDiscard(); // Call handleClose when filteredCards is empty
         }
+        console.log(mainDiscard[mainDiscard.length-1])
     }, [mainDeck, mainDiscard]);
 
     const handleOpen = () => {
@@ -112,7 +113,7 @@ function SimDeckSearch({
                     {mainDiscard.length > 0 ?
                     <img
                         onMouseEnter={() => handleHoveredCard(mainDiscard[mainDiscard.length-1])}
-                        className="builder-card5 pointer glow3"
+                        className={fromDiscard? "builder-card5 pointer notify":"builder-card5 pointer glow3"}
                         src={mainDiscard[mainDiscard.length-1].picture_url ?
                             mainDiscard[mainDiscard.length-1].picture_url :
                             "https://i.imgur.com/krY25iI.png"}
