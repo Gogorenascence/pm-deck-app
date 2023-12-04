@@ -358,9 +358,9 @@ function DeckDetailPage() {
                     <button
                             className="left heightNorm"
 
-                            style={{marginLeft: ".5%", width: "108px", textAlign: "center"}}
+                            style={{marginLeft: ".5%", textAlign: "center"}}
                             >
-                            Copy Deck
+                            Copy Decks
                     </button>
                 </NavLink>
                 <BackButton/>

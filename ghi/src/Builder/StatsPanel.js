@@ -50,14 +50,13 @@ handleRemoveCard
         }, [ref]);
     }
 
-
     useEffect(() => {
       // Update filteredCards based on your filtering criteria
         const card_list = main_list.concat(pluck_list)
         const newFilteredCards = card_list.filter((card) =>
             (showModal.card_type ? card.card_type[0] === showModal.card_type : true))
             .filter((card) => (showModal.card_class ? card.card_class === showModal.card_class : true));
-        setFilteredCards(newFilteredCards);
+        setFilteredCards(() => newFilteredCards);
     }, [showModal, main_list, pluck_list]); // Include showModal and card_list as dependencies
 
     useEffect(() => {
