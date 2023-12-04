@@ -64,6 +64,7 @@ function DeckEditPage() {
                 };
                 reader.readAsText(file);
             }
+            setShowDecks(true)
         }
     };
 

@@ -48,6 +48,7 @@ function DeckBuildandImport() {
                 };
                 reader.readAsText(file);
             }
+            setShowDecks(true)
         }
     };
 

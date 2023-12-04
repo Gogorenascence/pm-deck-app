@@ -55,6 +55,7 @@ function PullsDeckBuilder() {
                 };
                 reader.readAsText(file);
             }
+            setShowDecks(true)
         }
     };
 
