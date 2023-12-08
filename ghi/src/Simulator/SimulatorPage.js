@@ -10,7 +10,6 @@ import {
     shuffleSound,
     summonSound,
     drawSound,
-    soundLoop,
     gainSound,
     activateSound,
     discardSound,
@@ -78,6 +77,7 @@ function SimulatorPage() {
     const [placing, setPlacing] = useState(true)
     const [shuffling, setShuffling] = useState(false)
     const [shufflingPluck, setShufflingPluck] = useState(false)
+    const [game, setGame] = useState(false)
 
     const getDecks = async() =>{
         setLoading(true)
@@ -232,6 +232,7 @@ function SimulatorPage() {
         }
         setOwnership([shuffledPluckDeck[0]])
         setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledPluckDeck.slice(1)});
+        setGame(true)
         addToLog("System", "system", "Game Start!")
     }
 
@@ -239,6 +240,17 @@ function SimulatorPage() {
         console.log(player)
         activateSound(volume)
         // soundLoop(drawSound, 6, .1)
+    }
+
+    const resetPlayer = () => {
+        setPlayerMainDeck({name: "", cards: []})
+        setPlayerPluckDeck({name: "", cards: []})
+        setDiscard([])
+        setPluckDiscard([])
+        setHand([])
+        setOwnership([])
+        setGame(false)
+        addToLog("System", "system", "Player was reset")
     }
 
     const mute = () => {
@@ -285,6 +297,7 @@ function SimulatorPage() {
                 name: selectedMainDeck.name,
                 cards: newShuffledMainDeck
             });
+            addToLog("System", "system", `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`)
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -299,6 +312,7 @@ function SimulatorPage() {
             setHand(newHand)
             setDiscard(newDiscardPile.filter((_, i) => i !== index))
             drawSound(volume);
+            addToLog("System", "system", `"${cardToAdd.name}" was added from discard pile to ${player.name}'s hand`)
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -315,6 +329,7 @@ function SimulatorPage() {
             cards: newMainDeck.filter((_, i) => i !== index)
         });
         discardSound(volume)
+        addToLog("System", "system", `${player.name} discarded "${cardToDiscard.name}" from their deck`)
     }
 
     const drawPluck = () => {
@@ -361,6 +376,7 @@ function SimulatorPage() {
                 name: selectedPluckDeck.name,
                 cards: newShuffledPluckDeck
             });
+            addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`)
         } else {
             addToLog(
                 "System",
@@ -379,6 +395,7 @@ function SimulatorPage() {
             setOwnership(newOwnership)
             gainSound(volume)
             setPluckDiscard(newDiscardPile.filter((_, i) => i !== index));
+            addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck discard pile to ${player.name}'s ownership`)
         } else {
             addToLog(
                 "System",
@@ -399,6 +416,7 @@ function SimulatorPage() {
             cards: newPluckDeck.filter((_, i) => i !== index)
         });
         discardSound(volume)
+        addToLog("System", "system", `${player.name} discarded "${pluckToDiscard.name}" from their Pluck deck`)
     }
 
     const handleShowCardMenu = (index) => {
@@ -473,6 +491,7 @@ function SimulatorPage() {
                 setSelectedIndex(null)
                 setFromDeck(false)
                 setPlayArea(playZones)
+                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the deck`)
             } else if (fromDiscard) {
                 const playedCard = player.mainDiscard[selectedIndex]
                 const playZones = {...player.playArea}
@@ -485,6 +504,7 @@ function SimulatorPage() {
                 setSelectedIndex(null)
                 setFromDiscard(false)
                 setPlayArea(playZones)
+                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the discard pile`)
             } else {
                 const playedCard = player.hand[selectedIndex]
                 const playZones = {...player.playArea}
@@ -498,6 +518,7 @@ function SimulatorPage() {
                 setFromDeck(false)
                 setPlayArea(playZones)
                 setShowCardMenu(null)
+                addToLog("System", "system", `${player.name} played "${playedCard.name}"`)
             }
             setShowCardMenu(null)
         }
@@ -515,6 +536,7 @@ function SimulatorPage() {
             setSelectedPluckIndex(null)
             specialSound(volume)
             setActivePluck(pluckZones)
+            addToLog("System", "system", `${player.name} played "${playedPluck.name}"`)
         }
     }
 
@@ -541,6 +563,7 @@ function SimulatorPage() {
         setDiscard(newDiscardPile)
         discardSound(volume)
         setShowCardMenu(null)
+        addToLog("System", "system", `${player.name} discarded "${discardedCard.name}" from their hand`)
     }
 
     const topDeckCard = (index) => {
@@ -552,6 +575,7 @@ function SimulatorPage() {
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
         flipSound(volume)
         setShowCardMenu(null)
+        addToLog("System", "system", `${player.name} returned "${toppedCard.name}" to the top of their deck`)
     }
 
     const bottomDeckCard = (index) => {
@@ -563,15 +587,20 @@ function SimulatorPage() {
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
         flipSound(volume)
         setShowCardMenu(null)
+        addToLog("System", "system", `${player.name} returned "${bottomCard.name}" to the bottom of their deck`)
     }
 
     const returnDiscardedCardToDeck = (index, position) => {
         const returnedCard = player.mainDiscard[index]
         const newCards = [...player.mainDeck]
         const newDiscard = [...player.mainDiscard]
-        position === "top"?
-            newCards.unshift(returnedCard):
+        if (position === "top") {
+            newCards.unshift(returnedCard)
+            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the top of their deck`)
+        } else {
             newCards.push(returnedCard)
+            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the bottom of their deck`)
+        }
         setDiscard(newDiscard.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
         flipSound(volume)
@@ -599,15 +628,20 @@ function SimulatorPage() {
         setOwnership(newOwnership.filter((_, i) => i !== index))
         discardSound(volume)
         setPluckDiscard(newDiscardPile)
+        addToLog("System", "system", `${player.name} discarded "${discardedPluck.name}" from their ownership`)
     }
 
     const returnPluckToDeck = (index, position) => {
         const returnedPluck = player.ownership[index]
         const newPluck = [...player.pluckDeck]
         const newOwnership = [...player.ownership]
-        position === "top"?
-            newPluck.unshift(returnedPluck):
+        if (position === "top") {
+            newPluck.unshift(returnedPluck)
+            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
+        } else {
             newPluck.push(returnedPluck)
+            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
+        }
         setOwnership(newOwnership.filter((_, i) => i !== index))
         setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
         flipSound(volume)
@@ -618,9 +652,13 @@ function SimulatorPage() {
         const returnedPluck = player.pluckDiscard[index]
         const newPluck = [...player.pluckDeck]
         const newPluckDiscard = [...player.pluckDiscard]
-        position === "top"?
-            newPluck.unshift(returnedPluck):
+        if (position === "top") {
+            newPluck.unshift(returnedPluck)
+            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
+        } else {
             newPluck.push(returnedPluck)
+            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
+        }
         setPluckDiscard(newPluckDiscard.filter((_, i) => i !== index))
         setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
         flipSound(volume)
@@ -701,7 +739,7 @@ function SimulatorPage() {
 
                     {player.mainDeck.length > 0 ?
                         <>
-                            <button onClick={gameStart}>Game Start</button>
+                            <button onClick={!game? gameStart: resetPlayer}>{!game? "Game Start": "Reset Player"}</button>
                         </>:null
                     }
 
