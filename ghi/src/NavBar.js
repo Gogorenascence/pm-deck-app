@@ -277,6 +277,15 @@ function NavBar() {
                 </div>:null
               }
             </li>
+            <li className="nav-item">
+              <div className="navbar-select pointer">
+                <NavLink className="username2" to="/simulator" onClick={() => followLink()}>
+                  <h5 className="navbar-menu-item">
+                    Simulator
+                  </h5>
+                </NavLink>
+              </div>
+            </li>
             { account && account.roles.includes("admin")?
               <li className="nav-item">
                 <div className={showMenu.show && showMenu.section === "admin"?

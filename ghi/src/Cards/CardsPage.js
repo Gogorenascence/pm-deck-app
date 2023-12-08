@@ -403,14 +403,14 @@ function CardsPage() {
                         >
                             List View
                         </button>}
-
-                        { all_cards.length == 0 && isQueryEmpty && !noCards?
-                            <div className="loading-container">
-                                <div className="loading-spinner"></div>
-                            </div> :
-                        null}
-
                     <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5>
+
+                    { all_cards.length == 0 && isQueryEmpty && !noCards?
+                        <div className="loading-container">
+                            <div className="loading-spinner"></div>
+                        </div> :
+                    null}
+
                 </div>
             </span>
             {listView?

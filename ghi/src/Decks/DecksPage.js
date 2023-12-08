@@ -102,6 +102,7 @@ function DecksPage() {
     }
 
     useEffect(() => {
+        window.scroll(0, 0);
         getDecks();
         document.title = "Decks - PM CardBase"
         return () => {

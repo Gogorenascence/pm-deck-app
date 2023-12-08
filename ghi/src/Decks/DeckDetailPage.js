@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import DeckExport from "./DeckExport";
 import BackButton from "../display/BackButton";
+import SimulateButton from "../Simulator/SimulateButton";
 import { AuthContext } from "../context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 import StatsPanel from "./StatsPanel";
@@ -51,7 +52,6 @@ function DeckDetailPage() {
         const deckListData = await response.json();
         setMainList(deckListData[0])
         setPluckList(deckListData[1])
-        console.log(deckListData[1])
     };
 
     const getCountedDeckList = async() =>{
@@ -363,6 +363,11 @@ function DeckDetailPage() {
                             Copy Decks
                     </button>
                 </NavLink>
+                <SimulateButton
+                    deckName={deck.name}
+                    main_list={main_list}
+                    pluck_list={pluck_list}
+                    />
                 <BackButton/>
             </div>
             <StatsPanel
