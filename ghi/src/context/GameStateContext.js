@@ -50,11 +50,23 @@ const GameStateContextProvider = ({ children }) => {
     })
 
     const [faceDown, setFaceDown] = useState({
-        fighter_slot: true,
+        fighter_slot: false,
         aura_slot: false,
         move_slot: false,
         ending_slot: false
     })
+
+    const [log, setLog] = useState([])
+
+    const addToLog = (user, role, message) => {
+        const newLog = [...log]
+        newLog.push({
+            user: user,
+            role: role,
+            message: message
+        })
+        setLog(newLog)
+    }
 
     const [playingFaceDown, setPlayingFaceDown] = useState(false)
 
@@ -113,17 +125,6 @@ const GameStateContextProvider = ({ children }) => {
 
     const [volume, setVolume] = useState(0.05)
 
-    const [log, setLog] = useState([])
-
-    const addToLog = (user, role, message) => {
-        const newLog = [...log]
-        newLog.push({
-            user: user,
-            role: role,
-            message: message
-        })
-        setLog(newLog)
-    }
 
     return (
         <GameStateContext.Provider value={{
@@ -136,6 +137,9 @@ const GameStateContextProvider = ({ children }) => {
             playArea,
             setPlayArea,
             activePluck,
+            log,
+            setLog,
+            addToLog,
             setActivePluck,
             transformRotateX,
             setTransformRotateX,
@@ -147,9 +151,6 @@ const GameStateContextProvider = ({ children }) => {
             setShowExtra,
             volume,
             setVolume,
-            log,
-            setLog,
-            addToLog,
             faceDown,
             setFaceDown,
             playingFaceDown,

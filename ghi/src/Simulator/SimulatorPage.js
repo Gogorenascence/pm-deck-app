@@ -248,6 +248,22 @@ function SimulatorPage() {
         setPluckDiscard([])
         setHand([])
         setOwnership([])
+        setPlayArea({
+            fighter_slot: [],
+            aura_slot: [],
+            move_slot: [],
+            ending_slot: [],
+            slot_5: [],
+            slot_6: [],
+            slot_7: [],
+            slot_8: [],
+        })
+        setActivePluck({
+            slot_1: [],
+            slot_2: [],
+            slot_3: [],
+            slot_4: [],
+        })
         setGame(false)
         addToLog("System", "system", "Player was reset")
     }
@@ -675,7 +691,6 @@ function SimulatorPage() {
 
     const handleHoveredCard = (cardItem) => {
         setHoveredCard(cardItem)
-        console.log(faceDown)
     }
 
     return (

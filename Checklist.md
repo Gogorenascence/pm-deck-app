@@ -13,4 +13,5 @@ place cards underneath stacks
 large background for simulator page
 hide lightswitch and back-to-top
 play area menu - move, flip, discard, swap, return
-play area menu - move, discard, return
+active pluck menu - move, discard, return
+place option will include active pluck
