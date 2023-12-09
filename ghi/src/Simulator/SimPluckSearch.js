@@ -97,7 +97,7 @@ function SimPluckSearch({
     return(
         <div className='flex'>
             <span>
-                <div className="matCard margin-left"
+                <div className="matCard margin-left pointer"
                     onClick={() => handleOpenDiscard()}
                     onMouseEnter={() => pluckDiscard.length > 0? handleHoveredCard(pluckDiscard[pluckDiscard.length-1]):null}
                 >
@@ -132,7 +132,7 @@ function SimPluckSearch({
                         onClick={() => shufflePluckDeck()}
                     ><p>Shuffle</p></div>
                 </div>
-                <div className="matCard"
+                <div className="matCard pointer"
                     onContextMenu={(event) => handleShowDeckMenu(event)}
                     onClick={() => setShowDeckMenu(false)}
                     onDoubleClick={() => drawPluck()}

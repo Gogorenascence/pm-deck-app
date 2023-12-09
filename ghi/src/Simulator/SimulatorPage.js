@@ -33,19 +33,18 @@ function SimulatorPage() {
         setPlayArea,
         activePluck,
         setActivePluck,
-        transformRotateX,
-        setTransformRotateX,
-        scale,
-        setScale,
-        position,
-        setPosition,
+        handleChangeTransformRotateX,
+        handleChangeScale,
+        handleChangePosition,
+        fieldStyle,
         showExtra,
         setShowExtra,
         volume,
         setVolume,
-        log,
-        setLog,
-        addToLog
+        addToLog,
+        faceDown,
+        setFaceDown,
+        setPlayingFaceDown
     } = useContext(GameStateContext)
 
     const [selectedMainDeck, setSelectedMainDeck] = useState({
@@ -297,7 +296,9 @@ function SimulatorPage() {
                 name: selectedMainDeck.name,
                 cards: newShuffledMainDeck
             });
-            addToLog("System", "system", `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`)
+            !unfurling?
+                addToLog("System", "system", `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`):
+                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled cards to ${player.name}'s hand`)
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -376,8 +377,10 @@ function SimulatorPage() {
                 name: selectedPluckDeck.name,
                 cards: newShuffledPluckDeck
             });
-            addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`)
-        } else {
+            !unfurling?
+                addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`):
+                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled Pluck to ${player.name}'s ownership`)
+            } else {
             addToLog(
                 "System",
                 "system",
@@ -474,7 +477,7 @@ function SimulatorPage() {
         })
     }
 
-    const playCard = (zone) => {
+    const playCard = (zone, zoneFaceDown) => {
         if (selectedIndex !== null) {
             if (fromDeck) {
                 const playedCard = playerMainDeck.cards[selectedIndex]
@@ -513,13 +516,18 @@ function SimulatorPage() {
                 setPrompt({message: "", action: ""})
                 !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
                 summonSound(volume)
+                if (zoneFaceDown){
+                    setFaceDown({...faceDown, [zoneFaceDown]: true})
+                }
                 setHand(newHand.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
                 setFromDeck(false)
                 setPlayArea(playZones)
                 setShowCardMenu(null)
-                addToLog("System", "system", `${player.name} played "${playedCard.name}"`)
+                zoneFaceDown? addToLog("System", "system", `${player.name} played a card face-down`):
+                    addToLog("System", "system", `${player.name} played "${playedCard.name}"`)
             }
+            setPlayingFaceDown(false)
             setShowCardMenu(null)
         }
     }
@@ -667,50 +675,7 @@ function SimulatorPage() {
 
     const handleHoveredCard = (cardItem) => {
         setHoveredCard(cardItem)
-    }
-
-    const handleChangeTransformRotateX = (event) => {
-        setTransformRotateX(`${event.target.value}deg`);
-    };
-
-    const handleChangeScale = (change) => {
-        if (change === 'increase') {
-            if (scale < 1.4) {
-                setScale(scale + 0.1);
-            }
-        } else {
-            if (scale > 0.3) {
-                setScale(scale - 0.1 );
-            }
-        }
-    }
-
-    const handleChangePosition = (direction) => {
-        const MOVE_AMOUNT = 30;
-        const y_pos = position.y_pos
-        const x_pos = position.x_pos
-        if (direction === 'up') {
-            setPosition({...position, y_pos: y_pos - MOVE_AMOUNT });
-            //this.forceUpdate();
-        } else if (direction === 'down') {
-            setPosition({...position, y_pos: y_pos + MOVE_AMOUNT });
-            //this.forceUpdate();
-        } else if (direction === 'left') {
-            setPosition({...position, x_pos: x_pos - MOVE_AMOUNT });
-            //this.forceUpdate();
-        } else if (direction === 'right') {
-            setPosition({...position, x_pos: x_pos + MOVE_AMOUNT });
-            //this.forceUpdate();
-        } else {
-            setPosition({...position, x_pos: 0, y_pos: 0 });
-            //this.forceUpdate();
-        }
-    }
-
-    const fieldStyle = {
-        transform: transformRotateX && scale && position.x_pos !== undefined && position.y_pos !== undefined ?
-            "perspective(1000px) rotateX(" + transformRotateX + ") scale(" + scale + ") translate(" + position.x_pos + "px, " + position.y_pos + "px)"
-            : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 0px)",
+        console.log(faceDown)
     }
 
     return (
@@ -807,7 +772,12 @@ function SimulatorPage() {
                                                 <div className="card-menu-item"
                                                     onClick={() => handleCardFromHand(index)}
                                                 ><p>{selectedIndex === index? "Cancel" : "Play Face-Up"}</p></div>
-                                                <div className="card-menu-item"><p>Play Face-Down</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => {
+                                                        setPlayingFaceDown(true)
+                                                        handleCardFromHand(index)
+                                                    }}
+                                                ><p>Play Face-Down</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handlePlaceCardFromHand(index)}
                                                 ><p>Place</p></div>

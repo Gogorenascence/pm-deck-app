@@ -49,12 +49,65 @@ const GameStateContextProvider = ({ children }) => {
         slot_4: [],
     })
 
+    const [faceDown, setFaceDown] = useState({
+        fighter_slot: true,
+        aura_slot: false,
+        move_slot: false,
+        ending_slot: false
+    })
+
+    const [playingFaceDown, setPlayingFaceDown] = useState(false)
+
     const [transformRotateX, setTransformRotateX] = useState("45deg")
     const [scale, setScale] = useState(0.75)
     const [position, setPosition] = useState({
     x_pos: 0,
     y_pos: -100,
     })
+
+    const handleChangeTransformRotateX = (event) => {
+        setTransformRotateX(`${event.target.value}deg`);
+    };
+
+    const handleChangeScale = (change) => {
+        if (change === 'increase') {
+            if (scale < 1.4) {
+                setScale(scale + 0.1);
+            }
+        } else {
+            if (scale > 0.3) {
+                setScale(scale - 0.1 );
+            }
+        }
+    }
+
+    const handleChangePosition = (direction) => {
+        const MOVE_AMOUNT = 30;
+        const y_pos = position.y_pos
+        const x_pos = position.x_pos
+        if (direction === 'up') {
+            setPosition({...position, y_pos: y_pos - MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'down') {
+            setPosition({...position, y_pos: y_pos + MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'left') {
+            setPosition({...position, x_pos: x_pos - MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else if (direction === 'right') {
+            setPosition({...position, x_pos: x_pos + MOVE_AMOUNT });
+            //this.forceUpdate();
+        } else {
+            setPosition({...position, x_pos: 0, y_pos: 0 });
+            //this.forceUpdate();
+        }
+    }
+
+    const fieldStyle = {
+        transform: transformRotateX && scale && position.x_pos !== undefined && position.y_pos !== undefined ?
+            "perspective(1000px) rotateX(" + transformRotateX + ") scale(" + scale + ") translate(" + position.x_pos + "px, " + position.y_pos + "px)"
+            : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 0px)",
+    }
 
     const [showExtra, setShowExtra] = useState(true)
 
@@ -96,7 +149,15 @@ const GameStateContextProvider = ({ children }) => {
             setVolume,
             log,
             setLog,
-            addToLog
+            addToLog,
+            faceDown,
+            setFaceDown,
+            playingFaceDown,
+            setPlayingFaceDown,
+            handleChangeTransformRotateX,
+            handleChangeScale,
+            handleChangePosition,
+            fieldStyle
             }}>
             {children}
         </GameStateContext.Provider>

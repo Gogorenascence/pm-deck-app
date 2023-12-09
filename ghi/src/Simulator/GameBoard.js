@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { GameStateContext } from "../context/GameStateContext";
 import SimDeckSearch from "./SimDeckSearch";
 import SimDeckSearchModal from "./SimDeckSearchModal";
 import SimPluckSearch from "./SimPluckSearch";
@@ -53,6 +54,14 @@ function GameBoard({
     shuffling,
     shufflingPluck
 }) {
+
+    const {
+        player,
+        faceDown,
+        setFaceDown,
+        playingFaceDown,
+        addToLog
+    } = useContext(GameStateContext)
 
     const fighter = playArea.fighter_slot || [];
     const aura = playArea.aura_slot || [];
@@ -277,7 +286,10 @@ function GameBoard({
                     }
                     </div>
                     <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                        onClick={() => playCard("fighter_slot")}
+                        onClick={() => !playingFaceDown?
+                            playCard("fighter_slot"):
+                            playCard("fighter_slot", "fighter_slot")
+                        }
                     >
                         {fighter.length > 0 ?
                             <>
@@ -293,14 +305,29 @@ function GameBoard({
                                     onDoubleClick={() => discardCard(fighter[fighter.length-1], 0, "fighter_slot")}
                                     onMouseEnter={() => handleHoveredCard(fighter[fighter.length-1])}
                                     className="builder-card5 pointer glow3"
-                                    // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={fighter[fighter.length-1].picture_url ? fighter[fighter.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    onClick={() => {
+                                        if (faceDown.fighter_slot === true){
+                                            addToLog("System", "system", `${player.name} revealed "${fighter[0].name}"`)
+                                        }
+                                        setFaceDown({...faceDown, fighter_slot: !faceDown.fighter_slot})
+                                        }
+                                    }
+                                    src={!faceDown.fighter_slot?
+                                            (fighter[fighter.length-1].picture_url ?
+                                                fighter[fighter.length-1].picture_url :
+                                                "https://i.imgur.com/krY25iI.png"
+                                            ):
+                                            "https://i.imgur.com/krY25iI.png"
+                                        }
                                     alt={fighter[fighter.length-1].name}/>
                             </>
                         :null}
                     </div>
                     <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                        onClick={() => playCard("aura_slot")}
+                        onClick={() => !playingFaceDown?
+                            playCard("aura_slot"):
+                            playCard("aura_slot", "aura_slot")
+                        }
                     >
                         {aura.length > 0 ?
                             <>
@@ -316,14 +343,26 @@ function GameBoard({
                                     onDoubleClick={() => discardCard(aura[aura.length-1], 0, "aura_slot")}
                                     onMouseEnter={() => handleHoveredCard(aura[aura.length-1])}
                                     className="builder-card5 pointer glow3"
-                                    // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={aura[aura.length-1].picture_url ? aura[aura.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    onClick={() => setFaceDown({
+                                        ...faceDown,
+                                        aura_slot: false
+                                    })}
+                                    src={!faceDown.aura_slot?
+                                            (aura[aura.length-1].picture_url ?
+                                                aura[aura.length-1].picture_url :
+                                                "https://i.imgur.com/krY25iI.png"
+                                            ):
+                                            "https://i.imgur.com/krY25iI.png"
+                                        }
                                     alt={aura[aura.length-1].name}/>
                             </>
                         :null}
                     </div>
                     <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                        onClick={() => playCard("move_slot")}
+                        onClick={() => !playingFaceDown?
+                            playCard("move_slot"):
+                            playCard("move_slot", "move_slot")
+                        }
                     >
                         {move.length > 0 ?
                             <>
@@ -339,14 +378,26 @@ function GameBoard({
                                     onDoubleClick={() => discardCard(move[move.length-1], 0, "move_slot")}
                                     onMouseEnter={() => handleHoveredCard(move[move.length-1])}
                                     className="builder-card5 pointer glow3"
-                                    // title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={move[move.length-1].picture_url ? move[move.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    onClick={() => setFaceDown({
+                                        ...faceDown,
+                                        move_slot: false
+                                    })}
+                                    src={!faceDown.move_slot?
+                                            (move[move.length-1].picture_url ?
+                                                move[move.length-1].picture_url :
+                                                "https://i.imgur.com/krY25iI.png"
+                                            ):
+                                            "https://i.imgur.com/krY25iI.png"
+                                        }
                                     alt={move[move.length-1].name}/>
                             </>
                         :null}
                     </div>
                     <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                        onClick={() => playCard("ending_slot")}
+                        onClick={() => !playingFaceDown?
+                            playCard("ending_slot"):
+                            playCard("ending_slot", "ending_slot")
+                        }
                     >
                         {ending.length > 0 ?
                             <>
@@ -362,8 +413,17 @@ function GameBoard({
                                     onDoubleClick={() => discardCard(ending[ending.length-1], 0, "ending_slot")}
                                     onMouseEnter={() => handleHoveredCard(ending[ending.length-1])}
                                     className="builder-card5 pointer glow3"
-                                    // title={`${ending.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                    src={ending[ending.length-1].picture_url ? ending[ending.length-1].picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    onClick={() => setFaceDown({
+                                        ...faceDown,
+                                        ending_slot: false
+                                    })}
+                                    src={!faceDown.ending_slot?
+                                            (ending[ending.length-1].picture_url ?
+                                                ending[ending.length-1].picture_url :
+                                                "https://i.imgur.com/krY25iI.png"
+                                            ):
+                                            "https://i.imgur.com/krY25iI.png"
+                                        }
                                     alt={ending[ending.length-1].name}/>
                             </>
                         :null}

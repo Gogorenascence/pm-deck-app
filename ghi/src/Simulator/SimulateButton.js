@@ -6,7 +6,8 @@ const SimulateButton = ({deckName, main_list, pluck_list}) => {
     const {
         setPlayer,
         setPlayerMainDeck,
-        setPlayerPluckDeck
+        setPlayerPluckDeck,
+        addToLog
     } = useContext(GameStateContext)
     const navigate = useNavigate()
 
@@ -35,6 +36,7 @@ const SimulateButton = ({deckName, main_list, pluck_list}) => {
             name: deckName + " Pluck",
             cards: pluck_list
         })
+        addToLog("System", "system", `${deckName} selected`)
         navigate(`/simulator`)
     }
 
