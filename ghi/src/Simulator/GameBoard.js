@@ -92,8 +92,6 @@ function GameBoard({
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
 
-    console.log(showPlayAreaModal)
-
     return (
         <div className={showExtra? "play-area" : "play-area2"}>
             <SimDeckSearchModal

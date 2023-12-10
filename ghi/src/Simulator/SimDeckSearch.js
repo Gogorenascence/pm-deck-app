@@ -56,7 +56,6 @@ function SimDeckSearch({
         if (mainDiscard.length === 0) {
             handleCloseDiscard(); // Call handleClose when filteredCards is empty
         }
-        console.log(mainDiscard[mainDiscard.length-1])
     }, [mainDeck, mainDiscard]);
 
     const handleOpen = () => {

@@ -80,9 +80,12 @@ discardCard
                 ><p>Discard</p></div>
             </div>
             <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                onClick={() => !playingFaceDown?
-                    playCard(objectName):
-                    playCard(objectName, objectName)
+                onClick={() => { if (!playingFaceDown) {
+                        playCard(objectName)
+                        setFaceDown({...faceDown, [objectName]: false})
+                    } else {
+                        playCard(objectName, objectName)}
+                    }
                 }
             >
                 {zoneArray.length > 0 ?
