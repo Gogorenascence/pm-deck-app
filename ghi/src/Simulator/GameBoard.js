@@ -182,6 +182,7 @@ function GameBoard({
                         setShowPlayAreaModal={setShowPlayAreaModal}
                         handleHoveredCard={handleHoveredCard}
                         discardCard={discardCard}
+                        playingFaceDown={playingFaceDown}
                     />
                     <ExtraZone
                         objectName={"slot_6"}
@@ -192,6 +193,7 @@ function GameBoard({
                         setShowPlayAreaModal={setShowPlayAreaModal}
                         handleHoveredCard={handleHoveredCard}
                         discardCard={discardCard}
+                        playingFaceDown={playingFaceDown}
                     />
                     <ExtraZone
                         objectName={"slot_7"}
@@ -202,6 +204,7 @@ function GameBoard({
                         setShowPlayAreaModal={setShowPlayAreaModal}
                         handleHoveredCard={handleHoveredCard}
                         discardCard={discardCard}
+                        playingFaceDown={playingFaceDown}
                     />
                     <ExtraZone
                         objectName={"slot_8"}
@@ -212,6 +215,7 @@ function GameBoard({
                         setShowPlayAreaModal={setShowPlayAreaModal}
                         handleHoveredCard={handleHoveredCard}
                         discardCard={discardCard}
+                        playingFaceDown={playingFaceDown}
                     />
                 </div>
                 <div className="margin-top-10" style={{display: "flex"}}>

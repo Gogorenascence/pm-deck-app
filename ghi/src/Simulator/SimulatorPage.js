@@ -44,6 +44,7 @@ function SimulatorPage() {
         addToLog,
         faceDown,
         setFaceDown,
+        playingFaceDown,
         setPlayingFaceDown
     } = useContext(GameStateContext)
 
@@ -785,14 +786,17 @@ function SimulatorPage() {
                                         <div>
                                             <div className={showCardMenu === index? "card-menu": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handleCardFromHand(index)}
-                                                ><p>{selectedIndex === index? "Cancel" : "Play Face-Up"}</p></div>
+                                                    onClick={() => {
+                                                        setPlayingFaceDown(false)
+                                                        handleCardFromHand(index)
+                                                    }}
+                                                ><p>{selectedIndex === index && !playingFaceDown? "Cancel" : "Play Face-Up"}</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => {
                                                         setPlayingFaceDown(true)
                                                         handleCardFromHand(index)
                                                     }}
-                                                ><p>Play Face-Down</p></div>
+                                                ><p>{selectedIndex === index && playingFaceDown? "Cancel" : "Play Face-Down"}</p></div>
                                                 <div className="card-menu-item"
                                                     onClick={() => handlePlaceCardFromHand(index)}
                                                 ><p>Place</p></div>
@@ -809,7 +813,10 @@ function SimulatorPage() {
                                             <img
                                                 onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
-                                                onDoubleClick={() => handleCardFromHand(index)}
+                                                onDoubleClick={() => {
+                                                    setPlayingFaceDown(false)
+                                                    handleCardFromHand(index)
+                                                }}
                                                 className={
                                                     showCardMenu === index || selectedIndex === index && !fromDeck && !fromDiscard?
                                                     "selected3 builder-card-hand pointer"

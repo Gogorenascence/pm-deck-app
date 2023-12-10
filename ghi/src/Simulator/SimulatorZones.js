@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import {
+    menuSound,
     activateSound,
     flipSound
 } from "../Sounds/Sounds";
@@ -27,11 +28,13 @@ discardCard
         ending_slot: false
     })
 
-    const handleMenu = () => {
+    const handleMenu = (event) => {
+        event.preventDefault()
         setShowPlayAreaMenu({
             ...showPlayAreaMenu,
             [objectName]: !showPlayAreaMenu[objectName]
         })
+        menuSound(volume)
     }
 
     const handleMenuClose = () => {
@@ -95,9 +98,14 @@ discardCard
                         <img
                             onDoubleClick={() => {
                                 discardCard(zoneArray[zoneArray.length-1], 0, objectName)
+                                setFaceDown({...faceDown, [objectName]: false})
                                 handleMenuClose()
                             }}
-                            onClick={() => handleMenu()}
+                            onContextMenu={(event) => handleMenu(event)}
+                            onClick={() => {
+                                setFaceDown({...faceDown, [objectName]: !faceDown[objectName]})
+                                flipSound(volume)
+                            }}
                             onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
                             className="builder-card5 pointer glow3"
                             src={!faceDown[objectName]?
@@ -187,7 +195,8 @@ function ExtraZone({
     playCard,
     setShowPlayAreaModal,
     handleHoveredCard,
-    discardCard
+    discardCard,
+    playingFaceDown
 }){
 
     const {player, volume, addToLog} = useContext(GameStateContext)
@@ -198,11 +207,13 @@ function ExtraZone({
         slot_8: false
     })
 
-    const handleMenu = () => {
+    const handleMenu = (event) => {
+        event.preventDefault()
         setShowPlayAreaMenu({
             ...showPlayAreaMenu,
             [objectName]: !showPlayAreaMenu[objectName]
         })
+        menuSound(volume)
     }
 
     const handleMenuClose = () => {
@@ -236,7 +247,7 @@ function ExtraZone({
                     }}
                 ><p>Discard</p></div>
             </div>
-            <div className={selectedIndex === null? "matCard" : "matCardSelect"}
+            <div className={selectedIndex !== null && playingFaceDown === false ? "matCardSelect" : "matCard"}
                 onClick={() => playCard(objectName)}
             >
                 {zoneArray.length > 0 ?
@@ -254,7 +265,8 @@ function ExtraZone({
                                 discardCard(zoneArray[zoneArray.length-1], 0, objectName)
                                 handleMenuClose()
                             }}
-                            onClick={() => handleMenu()}
+                            onContextMenu={(event) => handleMenu(event)}
+                            onClick={(event) => handleMenu(event)}
                             onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
                             className="builder-card5 pointer glow3"
                             src={zoneArray[zoneArray.length-1].picture_url ?
