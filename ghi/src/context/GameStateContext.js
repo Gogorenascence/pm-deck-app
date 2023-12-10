@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 const GameStateContext = createContext();
 
 const GameStateContextProvider = ({ children }) => {
+    const [game, setGame] = useState(false)
     const [player, setPlayer] = useState({
         name: "WindFall",
         HP: 16,
@@ -128,6 +129,8 @@ const GameStateContextProvider = ({ children }) => {
 
     return (
         <GameStateContext.Provider value={{
+            game,
+            setGame,
             player,
             setPlayer,
             playerMainDeck,

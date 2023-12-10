@@ -23,6 +23,8 @@ import {
 function SimulatorPage() {
     document.body.classList.add("dark")
     const {
+        game,
+        setGame,
         player,
         setPlayer,
         playerMainDeck,
@@ -77,7 +79,6 @@ function SimulatorPage() {
     const [placing, setPlacing] = useState(true)
     const [shuffling, setShuffling] = useState(false)
     const [shufflingPluck, setShufflingPluck] = useState(false)
-    const [game, setGame] = useState(false)
 
     const getDecks = async() =>{
         setLoading(true)
