@@ -81,7 +81,8 @@ function SimPluckSearch({
         document.body.style.overflow = 'auto';
     };
 
-    const handleOpenDiscard = () => {
+    const handleOpenDiscard = (event) => {
+        event.preventDefault()
         setShowPluckDiscardModal(true)
         setShowDiscardMenu(false)
         menuSound(volume)
@@ -98,7 +99,8 @@ function SimPluckSearch({
         <div className='flex'>
             <span>
                 <div className="matCard margin-left pointer"
-                    onClick={() => handleOpenDiscard()}
+                    onClick={(event) => handleOpenDiscard(event)}
+                    onContextMenu={(event) => handleOpenDiscard(event)}
                     onMouseEnter={() => pluckDiscard.length > 0? handleHoveredCard(pluckDiscard[pluckDiscard.length-1]):null}
                 >
                     {pluckDiscard.length > 1 ?

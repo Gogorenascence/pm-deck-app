@@ -439,7 +439,8 @@ function SimulatorPage() {
         addToLog("System", "system", `${player.name} discarded "${pluckToDiscard.name}" from their Pluck deck`)
     }
 
-    const handleShowCardMenu = (index) => {
+    const handleShowCardMenu = (index, event) => {
+        event.preventDefault()
         showCardMenu === index?
             setShowCardMenu(null):
             setShowCardMenu(index)
@@ -811,7 +812,8 @@ function SimulatorPage() {
                                                 ><p>Deckbottom</p></div>
                                             </div>
                                             <img
-                                                onClick={() => handleShowCardMenu(index)}
+                                                onClick={(event) => handleShowCardMenu(index, event)}
+                                                onContextMenu={(event) => handleShowCardMenu(index, event)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 onDoubleClick={() => {
                                                     setPlayingFaceDown(false)
