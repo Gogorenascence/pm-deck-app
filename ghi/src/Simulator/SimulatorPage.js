@@ -1,40 +1,25 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { GameStateContext } from "../context/GameStateContext";
+import { SimulatorActionsContext } from "../context/SimulatorActionsContext";
+import { MainActionsContext } from "../context/MainActionsContext";
+import { PluckActionsContext } from "../context/PluckActionsContext";
+import { AuthContext } from "../context/AuthContext";
 import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
 import CardInfoPanel from "./CardInfoPanel";
 import LogChatPanel from "./LogChatPanel";
-import {
-    specialSound,
-    destroySound,
-    shuffleSound,
-    summonSound,
-    drawSound,
-    gainSound,
-    activateSound,
-    discardSound,
-    menuSound,
-    startSound,
-    equipSound,
-    flipSound
-} from "../Sounds/Sounds";
 
 
 function SimulatorPage() {
     document.body.classList.add("dark")
     const {
         game,
-        setGame,
         player,
         setPlayer,
         playerMainDeck,
-        setPlayerMainDeck,
         playerPluckDeck,
-        setPlayerPluckDeck,
         playArea,
-        setPlayArea,
         activePluck,
-        setActivePluck,
         handleChangeTransformRotateX,
         handleChangeScale,
         handleChangePosition,
@@ -42,43 +27,76 @@ function SimulatorPage() {
         showExtra,
         setShowExtra,
         volume,
-        setVolume,
-        addToLog,
-        faceDown,
-        setFaceDown,
         playingFaceDown,
         setPlayingFaceDown
     } = useContext(GameStateContext)
 
-    const [selectedMainDeck, setSelectedMainDeck] = useState({
-        name: "",
-        cards: []
-    })
-    const [selectedPluckDeck, setSelectedPluckDeck] = useState({
-        name: "",
-        cards: []
-    })
-    const [decks, setDecks] = useState([])
-    const [cards, setCards] = useState([])
-    const [hand, setHand] = useState(player.hand)
-    const [ownership, setOwnership] = useState(player.ownership)
-    const [discard, setDiscard] = useState(player.mainDiscard)
-    const [pluckDiscard, setPluckDiscard] = useState(player.pluckDiscard)
-    const [selectedIndex, setSelectedIndex] = useState(null)
-    const [selectedPluckIndex, setSelectedPluckIndex] = useState(null)
-    const [hoveredCard, setHoveredCard] = useState("")
-    const [prompt, setPrompt] = useState({
-        message: "",
-        action: "",
-    })
-    const [fromDeck, setFromDeck] = useState(false)
-    const [fromDiscard, setFromDiscard] = useState(false)
-    const [showCardMenu, setShowCardMenu] = useState(null)
-    const [showPluckMenu, setShowPluckMenu] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [placing, setPlacing] = useState(true)
-    const [shuffling, setShuffling] = useState(false)
-    const [shufflingPluck, setShufflingPluck] = useState(false)
+    const {
+        decks,
+        setDecks,
+        setCards,
+        hand,
+        ownership,
+        discard,
+        pluckDiscard,
+        hoveredCard,
+        selectedIndex,
+        selectedPluckIndex,
+        prompt,
+        setPrompt,
+        fromDeck,
+        setFromDeck,
+        fromDiscard,
+        setFromDiscard,
+        showCardMenu,
+        showPluckMenu,
+        setShowPluckMenu,
+        loading,
+        setLoading,
+        shuffling,
+        shufflingPluck,
+        handleChangeDeck,
+        fillDecks,
+        gameStart,
+        checkPlayer,
+        resetPlayer,
+        mute,
+        handleHoveredCard
+    } = useContext(SimulatorActionsContext)
+
+    const {
+        shuffleMainDeck,
+        drawCard,
+        addCardFromDeck,
+        addCardFromDiscard,
+        discardFromDeck,
+        handleShowCardMenu,
+        selectCard,
+        handleCardFromHand,
+        handlePlaceCardFromHand,
+        playCard,
+        discardCard,
+        discardCardFromHand,
+        topDeckCard,
+        bottomDeckCard,
+        returnDiscardedCardToDeck
+    } = useContext(MainActionsContext)
+
+    const {
+        shufflePluckDeck,
+        drawPluck,
+        addPluckFromDeck,
+        addPluckFromDiscard,
+        discardFromPluckDeck,
+        selectPluck,
+        playPluck,
+        discardPluck,
+        discardPluckFromOwnership,
+        returnPluckToDeck,
+        returnDiscardedPluckToDeck
+    } = useContext(PluckActionsContext)
+
+    const {account} = useContext(AuthContext)
 
     const getDecks = async() =>{
         setLoading(true)
@@ -111,35 +129,10 @@ function SimulatorPage() {
         }
     }, [showCardMenu, showPluckMenu])
 
-    const handleChangeDeck = (event) => {
-        const deckID = event.target.value
-        const deckFound = decks.find(deck => deck.id === deckID)
-        setSelectedMainDeck({
-            name: deckFound.name + " Main",
-            cards: deckFound.cards
-        });
-        setSelectedPluckDeck({
-            name: deckFound.name + " Pluck",
-            cards: deckFound.pluck
-        })
-    };
-
-    const fillDecks = (event) => {
-        const filledMainDeck = selectedMainDeck.cards.map(cardNumber =>
-            cards.find(card => card.card_number === cardNumber)
-        );
-        const filledPluckDeck = selectedPluckDeck.cards.map(cardNumber =>
-            cards.find(card => card.card_number === cardNumber)
-        );
-        setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
-        setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
-        equipSound(volume)
-        addToLog("System", "system", `${selectedMainDeck.name} selected`)
-    }
-
     useEffect(() => {
         setPlayer((prevPlayer) => ({
             ...prevPlayer,
+            name: account.username ? account.username :"WindFall",
             mainDeck: playerMainDeck.cards,
             pluckDeck: playerPluckDeck.cards,
             hand: hand,
@@ -150,551 +143,6 @@ function SimulatorPage() {
             pluckDiscard: pluckDiscard
         }));
     }, [playerMainDeck, playerPluckDeck, hand, ownership, playArea, activePluck, discard, pluckDiscard]);
-
-    const allPlayerPluck = player.activePluck.slot_1?.length +
-        player.activePluck.slot_2?.length +
-        player.activePluck.slot_3?.length +
-        player.activePluck.slot_4?.length
-
-    const isShuffling = () => {
-        setShuffling(true)
-        setTimeout(() => setShuffling(false), 1000)
-    }
-
-    const isShufflingPluck = () => {
-        setShufflingPluck(true)
-        setTimeout(() => setShufflingPluck(false), 1000)
-    }
-
-    const shuffleMainDeck = () => {
-        isShuffling()
-        const shuffledDeck = [...playerMainDeck.cards]
-        let currentMainIndex = shuffledDeck.length, randomMainIndex;
-        // While there remain elements to shuffle.
-        while (currentMainIndex !== 0) {
-            // Pick a remaining element.
-            randomMainIndex = Math.floor(Math.random() * currentMainIndex);
-            currentMainIndex--;
-            // And swap it with the current element.
-            [shuffledDeck[currentMainIndex], shuffledDeck[randomMainIndex]] = [
-            shuffledDeck[randomMainIndex], shuffledDeck[currentMainIndex]];
-        }
-        setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledDeck});
-        shuffleSound(volume)
-        addToLog("System", "system", "Shuffling Main deck")
-    }
-
-    const shufflePluckDeck = () => {
-        isShufflingPluck()
-        const shuffledDeck = [...playerPluckDeck.cards]
-        let currentPluckIndex = shuffledDeck.length, randomPluckIndex;
-        // While there remain elements to shuffle.
-        while (currentPluckIndex !== 0) {
-            // Pick a remaining element.
-            randomPluckIndex = Math.floor(Math.random() * currentPluckIndex);
-            currentPluckIndex--;
-            // And swap it with the current element.
-            [shuffledDeck[currentPluckIndex], shuffledDeck[randomPluckIndex]] = [
-            shuffledDeck[randomPluckIndex], shuffledDeck[currentPluckIndex]];
-        }
-        setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledDeck});
-        shuffleSound(volume)
-        addToLog("System", "system", "Shuffling Pluck deck")
-    }
-
-    const gameStart = () => {
-        const shuffledMainDeck = [...playerMainDeck.cards]
-        let currentMainIndex = shuffledMainDeck.length, randomMainIndex;
-        // While there remain elements to shuffle.
-        while (currentMainIndex !== 0) {
-            // Pick a remaining element.
-            randomMainIndex = Math.floor(Math.random() * currentMainIndex);
-            currentMainIndex--;
-            // And swap it with the current element.
-            [shuffledMainDeck[currentMainIndex], shuffledMainDeck[randomMainIndex]] = [
-            shuffledMainDeck[randomMainIndex], shuffledMainDeck[currentMainIndex]];
-        }
-        setHand(shuffledMainDeck.slice(0,6))
-        // soundLoop(drawSound, 6, .07)
-        gainSound(volume)
-        startSound(volume)
-        setPlayerMainDeck({name: selectedMainDeck.name, cards: shuffledMainDeck.slice(6)});
-
-        const shuffledPluckDeck = [...playerPluckDeck.cards]
-        let currentPluckIndex = shuffledPluckDeck.length, randomPluckIndex;
-        // While there remain elements to shuffle.
-        while (currentPluckIndex !== 0) {
-            // Pick a remaining element.
-            randomPluckIndex = Math.floor(Math.random() * currentPluckIndex);
-            currentPluckIndex--;
-            // And swap it with the current element.
-            [shuffledPluckDeck[currentPluckIndex], shuffledPluckDeck[randomPluckIndex]] = [
-            shuffledPluckDeck[randomPluckIndex], shuffledPluckDeck[currentPluckIndex]];
-        }
-        setOwnership([shuffledPluckDeck[0]])
-        setPlayerPluckDeck({name: selectedPluckDeck.name, cards: shuffledPluckDeck.slice(1)});
-        setGame(true)
-        addToLog("System", "system", "Game Start!")
-    }
-
-    const checkPlayer = () => {
-        console.log(player)
-        activateSound(volume)
-        // soundLoop(drawSound, 6, .1)
-    }
-
-    const resetPlayer = () => {
-        setPlayerMainDeck({name: "", cards: []})
-        setPlayerPluckDeck({name: "", cards: []})
-        setDiscard([])
-        setPluckDiscard([])
-        setHand([])
-        setOwnership([])
-        setPlayArea({
-            fighter_slot: [],
-            aura_slot: [],
-            move_slot: [],
-            ending_slot: [],
-            slot_5: [],
-            slot_6: [],
-            slot_7: [],
-            slot_8: [],
-        })
-        setActivePluck({
-            slot_1: [],
-            slot_2: [],
-            slot_3: [],
-            slot_4: [],
-        })
-        setGame(false)
-        addToLog("System", "system", "Player was reset")
-    }
-
-    const mute = () => {
-        volume > 0? setVolume(0) : setVolume(0.05)
-    }
-
-    const drawCard = () => {
-        if (hand.length < 8) {
-            const newHand = [...hand]
-            const newMainDeck = [...playerMainDeck.cards]
-            newHand.push(newMainDeck[0])
-            drawSound(volume)
-            setHand(newHand)
-            setPlayerMainDeck({
-                name: selectedMainDeck.name,
-                cards: newMainDeck.slice(1)
-            });
-        } else {
-            addToLog("System", "system", "You can have more than 8 cards in your hand.")
-        }
-    }
-
-    const addCardFromDeck = (index, unfurling) => {
-        if (hand.length < 8) {
-            const newHand = [...hand]
-            const newMainDeck = [...playerMainDeck.cards]
-            const cardToAdd = newMainDeck[index]
-            newHand.push(cardToAdd)
-            drawSound(volume)
-            setHand(newHand)
-            const newShuffledMainDeck = newMainDeck.filter((_, i) => i !== index)
-            isShuffling()
-            if (unfurling === false) {
-                let currentMainIndex = newShuffledMainDeck.length, randomMainIndex;
-                while (currentMainIndex !== 0) {
-                    randomMainIndex = Math.floor(Math.random() * currentMainIndex);
-                    currentMainIndex--;
-                    [newShuffledMainDeck[currentMainIndex], newShuffledMainDeck[randomMainIndex]] = [
-                    newShuffledMainDeck[randomMainIndex], newShuffledMainDeck[currentMainIndex]];
-                }
-                shuffleSound(volume)
-            }
-            setPlayerMainDeck({
-                name: selectedMainDeck.name,
-                cards: newShuffledMainDeck
-            });
-            !unfurling?
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`):
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled cards to ${player.name}'s hand`)
-        } else {
-            addToLog("System", "system", "You can have more than 8 cards in your hand.")
-        }
-    }
-
-    const addCardFromDiscard = (index) => {
-        if (hand.length < 8) {
-            const newHand = [...hand]
-            const newDiscardPile = [...discard]
-            const cardToAdd = newDiscardPile[index]
-            newHand.push(cardToAdd)
-            setHand(newHand)
-            setDiscard(newDiscardPile.filter((_, i) => i !== index))
-            drawSound(volume);
-            addToLog("System", "system", `"${cardToAdd.name}" was added from discard pile to ${player.name}'s hand`)
-        } else {
-            addToLog("System", "system", "You can have more than 8 cards in your hand.")
-        }
-    }
-
-    const discardFromDeck = (index) => {
-        const newDiscardPile = [...discard]
-        const newMainDeck = [...playerMainDeck.cards]
-        const cardToDiscard = newMainDeck[index]
-        newDiscardPile.push(cardToDiscard)
-        setDiscard(newDiscardPile)
-        setPlayerMainDeck({
-            name: selectedMainDeck.name,
-            cards: newMainDeck.filter((_, i) => i !== index)
-        });
-        discardSound(volume)
-        addToLog("System", "system", `${player.name} discarded "${cardToDiscard.name}" from their deck`)
-    }
-
-    const drawPluck = () => {
-        if (ownership.length + allPlayerPluck < 8) {
-            const newOwnership = [...ownership]
-            const newPluckDeck = [...playerPluckDeck.cards]
-            newOwnership.push(newPluckDeck[0])
-            setOwnership(newOwnership)
-            gainSound(volume)
-            setPlayerPluckDeck({
-                name: selectedPluckDeck.name,
-                cards: newPluckDeck.slice(1)
-            });
-        } else {
-            addToLog(
-                "System",
-                "system",
-                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
-            )
-        }
-    }
-
-    const addPluckFromDeck = (index, unfurling) => {
-        if (ownership.length + allPlayerPluck < 8) {
-            const newOwnership = [...ownership]
-            const newPluckDeck = [...playerPluckDeck.cards]
-            const cardToAdd = newPluckDeck[index]
-            newOwnership.push(cardToAdd)
-            gainSound(volume)
-            setOwnership(newOwnership)
-            const newShuffledPluckDeck = newPluckDeck.filter((_, i) => i !== index)
-            if (unfurling === false) {
-                isShufflingPluck()
-                let currentPluckIndex = newShuffledPluckDeck.length, randomPluckIndex;
-                while (currentPluckIndex !== 0) {
-                    randomPluckIndex = Math.floor(Math.random() * currentPluckIndex);
-                    currentPluckIndex--;
-                    [newShuffledPluckDeck[currentPluckIndex], newShuffledPluckDeck[randomPluckIndex]] = [
-                    newShuffledPluckDeck[randomPluckIndex], newShuffledPluckDeck[currentPluckIndex]];
-                }
-                shuffleSound(volume)
-            }
-            setPlayerPluckDeck({
-                name: selectedPluckDeck.name,
-                cards: newShuffledPluckDeck
-            });
-            !unfurling?
-                addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`):
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled Pluck to ${player.name}'s ownership`)
-            } else {
-            addToLog(
-                "System",
-                "system",
-                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
-            )
-        }
-    }
-
-    const addPluckFromDiscard = (index) => {
-        if (ownership.length + allPlayerPluck < 8) {
-            const newOwnership = [...ownership]
-            const newDiscardPile = [...pluckDiscard]
-            const cardToAdd = newDiscardPile[index]
-            newOwnership.push(cardToAdd)
-            setOwnership(newOwnership)
-            gainSound(volume)
-            setPluckDiscard(newDiscardPile.filter((_, i) => i !== index));
-            addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck discard pile to ${player.name}'s ownership`)
-        } else {
-            addToLog(
-                "System",
-                "system",
-                "You can have more than 8 Pluck between in your Ownership and Active Pluck."
-            )
-        }
-    }
-
-    const discardFromPluckDeck = (index) => {
-        const newPluckDiscardPile = [...pluckDiscard]
-        const newPluckDeck = [...playerPluckDeck.cards]
-        const pluckToDiscard = newPluckDeck[index]
-        newPluckDiscardPile.push(pluckToDiscard)
-        setPluckDiscard(newPluckDiscardPile)
-        setPlayerPluckDeck({
-            name: selectedPluckDeck.name,
-            cards: newPluckDeck.filter((_, i) => i !== index)
-        });
-        discardSound(volume)
-        addToLog("System", "system", `${player.name} discarded "${pluckToDiscard.name}" from their Pluck deck`)
-    }
-
-    const handleShowCardMenu = (index, event) => {
-        event.preventDefault()
-        showCardMenu === index?
-            setShowCardMenu(null):
-            setShowCardMenu(index)
-        menuSound(volume)
-    }
-
-    const selectCard = (index) => {
-        setShowCardMenu(null)
-        if (selectedIndex === index) {
-            setSelectedIndex(null)
-            setPrompt({message: "", action: ""})
-            setFromDeck(false)
-            setFromDiscard(false)
-        } else {
-            setSelectedIndex(index)
-            !placing?
-            setPrompt({
-                message: "Select a Zone to Play Your Card!",
-                action: "playArea"
-            }):
-            setPrompt({
-                message: "Select a Zone to Place Your Card!",
-                action: "playArea"
-            })
-        }
-    }
-
-    const handleCardFromHand = (index) => {
-        setFromDeck(false)
-        setFromDiscard(false)
-        setPlacing(false)
-        selectCard(index)
-    }
-
-    const handlePlaceCardFromHand = (index) => {
-        setFromDeck(false)
-        setFromDiscard(false)
-        setPlacing(true)
-        selectCard(index)
-    }
-
-    const selectPluck = (index) => {
-        selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
-        !placing?
-        setPrompt({
-            message: "Select a Zone to Play Your Pluck!",
-            action: "activePluck"
-        }):
-        setPrompt({
-            message: "Select a Zone to Place Your Pluck!",
-            action: "activePluck"
-        })
-    }
-
-    const playCard = (zone, zoneFaceDown) => {
-        if (selectedIndex !== null) {
-            if (fromDeck) {
-                const playedCard = playerMainDeck.cards[selectedIndex]
-                const newMainDeck = [...playerMainDeck.cards]
-                const playZones = {...player.playArea}
-                const selectZone = playZones[zone]
-                setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                specialSound(volume)
-                setPlayerMainDeck({
-                    name: selectedMainDeck.name,
-                    cards: newMainDeck.filter((_, i) => i !== selectedIndex)
-                });
-                setSelectedIndex(null)
-                setFromDeck(false)
-                setPlayArea(playZones)
-                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the deck`)
-            } else if (fromDiscard) {
-                const playedCard = player.mainDiscard[selectedIndex]
-                const playZones = {...player.playArea}
-                const selectZone = playZones[zone]
-                const newDiscardPile = [...player.mainDiscard]
-                setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                specialSound(volume)
-                setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
-                setSelectedIndex(null)
-                setFromDiscard(false)
-                setPlayArea(playZones)
-                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the discard pile`)
-            } else {
-                const playedCard = player.hand[selectedIndex]
-                const playZones = {...player.playArea}
-                const selectZone = playZones[zone]
-                const newHand = [...player.hand]
-                setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                summonSound(volume)
-                if (zoneFaceDown){
-                    setFaceDown({...faceDown, [zoneFaceDown]: true})
-                }
-                setHand(newHand.filter((_, i) => i !== selectedIndex))
-                setSelectedIndex(null)
-                setFromDeck(false)
-                setPlayArea(playZones)
-                setShowCardMenu(null)
-                zoneFaceDown? addToLog("System", "system", `${player.name} played a card face-down`):
-                    addToLog("System", "system", `${player.name} played "${playedCard.name}"`)
-            }
-            setPlayingFaceDown(false)
-            setShowCardMenu(null)
-        }
-    }
-
-    const playPluck = (zone) => {
-        if (selectedPluckIndex !== null) {
-            const playedPluck = player.ownership[selectedPluckIndex]
-            const pluckZones = {...player.activePluck}
-            const selectZone = pluckZones[zone]
-            const newOwnership = [...player.ownership]
-            setPrompt({message: "", action: ""})
-            selectZone.push(playedPluck)
-            setOwnership(newOwnership.filter((_, i) => i !== selectedPluckIndex))
-            setSelectedPluckIndex(null)
-            specialSound(volume)
-            setActivePluck(pluckZones)
-            addToLog("System", "system", `${player.name} played "${playedPluck.name}"`)
-        }
-    }
-
-    const discardCard = (card, index, zone) => {
-        const newPlayArea = {...player.playArea}
-        const selectZone = newPlayArea[zone]
-        const newDiscardPile = [...player.mainDiscard]
-
-        newDiscardPile.push(card)
-        const newSelectZone = selectZone.filter((_, i) => i !== index)
-        destroySound(volume)
-        newPlayArea[zone] = newSelectZone
-
-        setDiscard(newDiscardPile)
-        setPlayArea(newPlayArea)
-    }
-
-    const discardCardFromHand = (index) => {
-        const discardedCard = player.hand[index]
-        const newDiscardPile = [...player.mainDiscard]
-        const newHand = [...player.hand]
-        newDiscardPile.push(discardedCard)
-        setHand(newHand.filter((_, i) => i !== index))
-        setDiscard(newDiscardPile)
-        discardSound(volume)
-        setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} discarded "${discardedCard.name}" from their hand`)
-    }
-
-    const topDeckCard = (index) => {
-        const toppedCard = player.hand[index]
-        const newCards = [...player.mainDeck]
-        const newHand = [...player.hand]
-        newCards.unshift(toppedCard)
-        setHand(newHand.filter((_, i) => i !== index))
-        setPlayerMainDeck({...playerMainDeck, cards: newCards})
-        flipSound(volume)
-        setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} returned "${toppedCard.name}" to the top of their deck`)
-    }
-
-    const bottomDeckCard = (index) => {
-        const bottomCard = player.hand[index]
-        const newCards = [...player.mainDeck]
-        const newHand = [...player.hand]
-        newCards.push(bottomCard)
-        setHand(newHand.filter((_, i) => i !== index))
-        setPlayerMainDeck({...playerMainDeck, cards: newCards})
-        flipSound(volume)
-        setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} returned "${bottomCard.name}" to the bottom of their deck`)
-    }
-
-    const returnDiscardedCardToDeck = (index, position) => {
-        const returnedCard = player.mainDiscard[index]
-        const newCards = [...player.mainDeck]
-        const newDiscard = [...player.mainDiscard]
-        if (position === "top") {
-            newCards.unshift(returnedCard)
-            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the top of their deck`)
-        } else {
-            newCards.push(returnedCard)
-            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the bottom of their deck`)
-        }
-        setDiscard(newDiscard.filter((_, i) => i !== index))
-        setPlayerMainDeck({...playerMainDeck, cards: newCards})
-        flipSound(volume)
-        setShowCardMenu(null)
-    }
-
-    const discardPluck = (card, index, zone) => {
-        const newActivePluck = {...player.activePluck}
-        const selectZone = newActivePluck[zone]
-        const newDiscardPile = [...player.pluckDiscard]
-
-        newDiscardPile.push(card)
-        const newSelectZone = selectZone.filter((_, i) => i !== index)
-        newActivePluck[zone] = newSelectZone
-        destroySound(volume)
-        setPluckDiscard(newDiscardPile)
-        setActivePluck(newActivePluck)
-    }
-
-    const discardPluckFromOwnership = (index) => {
-        const discardedPluck = player.ownership[index]
-        const newDiscardPile = [...player.pluckDiscard]
-        const newOwnership = [...player.ownership]
-        newDiscardPile.push(discardedPluck)
-        setOwnership(newOwnership.filter((_, i) => i !== index))
-        discardSound(volume)
-        setPluckDiscard(newDiscardPile)
-        addToLog("System", "system", `${player.name} discarded "${discardedPluck.name}" from their ownership`)
-    }
-
-    const returnPluckToDeck = (index, position) => {
-        const returnedPluck = player.ownership[index]
-        const newPluck = [...player.pluckDeck]
-        const newOwnership = [...player.ownership]
-        if (position === "top") {
-            newPluck.unshift(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
-        } else {
-            newPluck.push(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
-        }
-        setOwnership(newOwnership.filter((_, i) => i !== index))
-        setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
-        flipSound(volume)
-        setShowCardMenu(null)
-    }
-
-    const returnDiscardedPluckToDeck = (index, position) => {
-        const returnedPluck = player.pluckDiscard[index]
-        const newPluck = [...player.pluckDeck]
-        const newPluckDiscard = [...player.pluckDiscard]
-        if (position === "top") {
-            newPluck.unshift(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
-        } else {
-            newPluck.push(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
-        }
-        setPluckDiscard(newPluckDiscard.filter((_, i) => i !== index))
-        setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
-        flipSound(volume)
-        setShowCardMenu(null)
-    }
-
-    const handleHoveredCard = (cardItem) => {
-        setHoveredCard(cardItem)
-    }
 
     return (
         <div className="cd-inner">
@@ -729,7 +177,7 @@ function SimulatorPage() {
                     <button onClick={checkPlayer}>Player Info</button>
                     <button onClick={mute}>{volume >0? "Sound Off":"Sound On"}</button>
                 </div>
-                <div className={loading? "deckSelect2": "hidden2"}>
+                <div className={loading && decks.length < 1? "deckSelect2": "hidden2"}>
                 {/* <div className="deckSelect2"> */}
                     <p>Loading decks...</p>
                 </div>

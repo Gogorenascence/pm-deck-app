@@ -365,8 +365,8 @@ function DeckDetailPage() {
                 </NavLink>
                 <SimulateButton
                     deckName={deck.name}
-                    main_list={main_list}
-                    pluck_list={pluck_list}
+                    main_list={deck.cards}
+                    pluck_list={deck.pluck}
                     />
                 <BackButton/>
             </div>

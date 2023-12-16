@@ -58,7 +58,6 @@ function CardEditModal() {
         setExtraEffects(cardData.extra_effects)
         setReactions(cardData.reactions)
         setCardTags(cardData.card_tags)
-        console.log(cardData)
     };
 
     const getCardTypes = async() =>{
@@ -210,7 +209,9 @@ function CardEditModal() {
             return "Stay";
         } else if (cardTag === 1005) {
             return "Max 1";
-        } else if (cardTag === 1000) {
+        } else if (cardTag === 1006) {
+            return "Cycle";
+        }else if (cardTag === 1000) {
             return "n/a";
         }
     }

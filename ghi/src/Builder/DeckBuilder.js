@@ -98,7 +98,6 @@ function DeckBuilder() {
     useEffect(() => {
         getCards();
         getPulledCards();
-        console.log(account)
         document.title = "Deck Builder - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"

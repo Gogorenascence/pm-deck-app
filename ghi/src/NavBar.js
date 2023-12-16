@@ -108,7 +108,7 @@ function NavBar() {
 
   const Login = async (event) => {
     event.preventDefault();
-    const token = await login(loginCred);
+    const token = await login();
     if (token) {
       resetLoginCred();
       setShowLoginModal(false);

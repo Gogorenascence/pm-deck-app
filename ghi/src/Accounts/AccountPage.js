@@ -30,7 +30,6 @@ function AccountPage() {
 
     const handleOption = (item) => {
         setOption(item);
-        console.log(option)
     };
 
     if (!account) {

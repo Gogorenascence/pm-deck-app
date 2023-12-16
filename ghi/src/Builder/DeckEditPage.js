@@ -147,10 +147,8 @@ function DeckEditPage() {
         setSelectedCard(deck.cover_card)
         const id_list = []
         const newList = []
-        console.log(newList)
         for (let card of combinedList){
             if (!id_list.includes(card.id)){
-                console.log(card)
                 id_list.push(card.id)
                 newList.push(card)
             }
@@ -203,8 +201,6 @@ function DeckEditPage() {
             pulledCardsList.push(...pull);
         }
         const sortedPulledCards = [...pulledCardsList].sort(sortMethods[sortState].method);
-        console.log(pulledCardsList)
-
         setPulledCards(sortedPulledCards);
     };
 

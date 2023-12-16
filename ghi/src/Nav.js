@@ -108,8 +108,6 @@ function Nav() {
   const handleSignUpCredChange = (event) => {
       setSignUpCred({ ...signUpCred, [event.target.name]: event.target.value });
       setLoginCred({...loginCred, [event.target.name]: event.target.value})
-      console.log(signUpCred)
-
   };
 
   const handlePasswordConChange = (event) => {

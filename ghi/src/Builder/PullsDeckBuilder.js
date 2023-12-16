@@ -118,8 +118,6 @@ function PullsDeckBuilder() {
             pulledCards.push(...pull);
         }
         const sortedCards = [...pulledCards].sort(sortMethods[sortState].method);
-        console.log(pulledCards)
-
         setCards(sortedCards);
     };
 
@@ -149,10 +147,8 @@ function PullsDeckBuilder() {
 
     useEffect(() => {
         getCards();
-        console.log(card_set_id)
         getBoosterSet();
         document.title = "Deck Builder - PM CardBase"
-        console.log(typeof pulls)
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -622,6 +618,7 @@ function PullsDeckBuilder() {
                             <option value="1003">Auto</option>
                             <option value="1004">Stay</option>
                             <option value="1005">Max</option>
+                            <option value="1006">Cycle</option>
                         </select>
                         <select
                             className="left dcbsearch-small"

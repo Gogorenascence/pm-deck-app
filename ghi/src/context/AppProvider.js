@@ -6,6 +6,9 @@ import { AuthContextProvider } from "./AuthContext";
 import { BuilderQueryContextProvider } from "./BuilderQueryContext";
 import { GamePlayQueryContextProvider } from "./GamePlayQueryContext.js";
 import { GameStateContextProvider } from "./GameStateContext";
+import { SimulatorActionsContextProvider } from "./SimulatorActionsContext.js";
+import { MainActionsContextProvider } from "./MainActionsContext.js";
+import { PluckActionsContextProvider } from "./PluckActionsContext.js";
 
 
 const AppProvider = ({ children }) => {
@@ -17,7 +20,13 @@ const AppProvider = ({ children }) => {
                         <QueryContextProvider>
                             <DeckQueryContextProvider>
                                 <GameStateContextProvider>
-                                    {children}
+                                    <SimulatorActionsContextProvider>
+                                        <MainActionsContextProvider>
+                                            <PluckActionsContextProvider>
+                                                {children}
+                                            </PluckActionsContextProvider>
+                                        </MainActionsContextProvider>
+                                    </SimulatorActionsContextProvider>
                                 </GameStateContextProvider>
                             </DeckQueryContextProvider>
                         </QueryContextProvider>

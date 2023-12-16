@@ -93,7 +93,6 @@ function CardsPage() {
 
             typedCards.push(card)
         }
-        console.log(typedCards)
         setCards(typedCards);
     };
 
@@ -110,8 +109,6 @@ function CardsPage() {
         window.scroll(0, 0);
         getCards();
         getBoosterSets();
-        console.log(cards)
-        console.log(account)
         document.title = "Cards - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -348,6 +345,7 @@ function CardsPage() {
                         <option value="1003">Auto</option>
                         <option value="1004">Stay</option>
                         <option value="1005">Max</option>
+                        <option value="1006">Cycle</option>
                     </select>
                     <select
                         className="left"

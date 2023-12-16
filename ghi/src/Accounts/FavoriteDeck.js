@@ -29,14 +29,9 @@ function FavoriteDeck(props) {
 
     useEffect(() => {
         getAccountInfo()
-        console.log(accountInfo)
-        console.log(favorites)
     },[account]);
 
     const favorite = async (event) => {
-        console.log(accountInfo)
-        console.log(favorites)
-
         const data = {...accountInfo}
         const favorited_decks = favorites
         if (!favorited_decks.includes(deck.id)) {
@@ -44,9 +39,7 @@ function FavoriteDeck(props) {
         } else {
             console.log("deck is already favorited")
         }
-        console.log(favorited_decks)
         data["favorited_decks"] = favorited_decks
-        console.log(data)
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}/without`
         const response = await fetch(url, {
             method: "put",
@@ -61,9 +54,6 @@ function FavoriteDeck(props) {
     };
 
     const unfavorite = async (event) => {
-        console.log(accountInfo)
-        console.log(favorites)
-
         const data = {...accountInfo}
         if (favorites.includes(deck.id)) {
             const deckIndex = favorites.indexOf(deck.id)
@@ -71,7 +61,6 @@ function FavoriteDeck(props) {
             favorited_decks.splice(deckIndex, 1)
             data["favorited_decks"] = favorited_decks
         }
-        console.log(data)
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}/without`
         const response = await fetch(url, {
             method: "put",

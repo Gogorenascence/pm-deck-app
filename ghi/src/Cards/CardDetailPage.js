@@ -99,7 +99,6 @@ function CardDetailPage() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`);
         const data = await response.json();
         const sortedData = [...data.card_categories].sort((a,b) => a.name.localeCompare(b.name));
-        console.log(sortedData.find(category => category.name === "Mystic"))
         setCardCategories(sortedData);
     };
 
@@ -168,7 +167,7 @@ function CardDetailPage() {
                                 })}
                             </div>
                         </div>
-                        <div className="cd-inner" style={{marginTop: "3%"}}>
+                        <div className="cd-inner" style={{marginTop: "6px"}}>
                             <button
                                 className="left button100 heightNorm"
                                 style={{ textAlign: "center"}}

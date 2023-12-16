@@ -61,7 +61,6 @@ function CardTypeEdit() {
         const anti_support_card_list = type_data.anti_support.map(antiSupportItem =>
             cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
-        console.log(type_data)
         setAntiSupportList(anti_support_card_list)
     };
 
@@ -98,9 +97,6 @@ function CardTypeEdit() {
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
         enthusiasm_lowest: { method: (a,b) => a.enthusiasm - b.enthusiasm },
     };
-
-    console.log(support_list)
-    console.log(cards)
 
     const all_cards = cards.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
         .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
@@ -195,7 +191,6 @@ function CardTypeEdit() {
                 updated_on: {},
             });
             navigate(`/cardtypes/`);
-            console.log("Success")
         } else {
             alert("Error in creating Card Type");
         }

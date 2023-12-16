@@ -1237,6 +1237,10 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.7); /* Adjust the background color and opacity as desired */
 }
 
+.margin-top-5 {
+  margin-top: 5px;
+}
+
 .margin-top-10 {
   margin-top: 10px;
 }

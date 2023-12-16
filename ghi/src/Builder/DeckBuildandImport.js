@@ -53,7 +53,6 @@ function DeckBuildandImport() {
     };
 
     const importDeck = (importedDeck) => {
-        console.log(importedDeck.ObjectStates[0])
         const cardIDList = importedDeck.ObjectStates[0].DeckIDs.map(num => num/100)
         const cardList = cardIDList.map(cardID => cards.find(card => card.card_number === cardID))
         const main = cardList.filter(card => card.card_type[0] === 1001||
@@ -147,8 +146,6 @@ function DeckBuildandImport() {
             pulledCardsList.push(...pull);
         }
         const sortedPulledCards = [...pulledCardsList].sort(sortMethods[sortState].method);
-        console.log(pulledCardsList)
-
         setPulledCards(sortedPulledCards);
     };
 
@@ -161,7 +158,6 @@ function DeckBuildandImport() {
     useEffect(() => {
         getCards();
         getPulledCards();
-        console.log(account)
         document.title = "Deck Builder - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"

@@ -189,7 +189,6 @@ function ReactionEdit() {
                 anti_support: [],
             });
             navigate(`/reactions/`);
-            console.log("Success")
         } else {
             alert("Error in creating Card Tag");
         }

@@ -140,7 +140,6 @@ const AuthContextProvider = ({ children }) => {
         {credentials: "include"})
         const data = await response.json()
         setAccount(data.account)
-        console.log(account)
     };
 
     const getUsers = async() =>{

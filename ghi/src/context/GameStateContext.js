@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 
 const GameStateContext = createContext();
@@ -6,7 +6,7 @@ const GameStateContext = createContext();
 const GameStateContextProvider = ({ children }) => {
     const [game, setGame] = useState(false)
     const [player, setPlayer] = useState({
-        name: "WindFall",
+        name: "",
         HP: 16,
         mainDeck: [],
         pluckDeck: [],

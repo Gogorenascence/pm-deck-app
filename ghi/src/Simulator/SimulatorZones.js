@@ -107,6 +107,7 @@ discardCard
                             onClick={() => {
                                 setFaceDown({...faceDown, [objectName]: !faceDown[objectName]})
                                 flipSound(volume)
+                                handleMenuClose()
                             }}
                             onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
                             className="builder-card5 pointer glow3"

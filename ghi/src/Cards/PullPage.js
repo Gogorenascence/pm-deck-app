@@ -61,7 +61,6 @@ function PullPage() {
     useEffect(() => {
         getBoosterSet();
         document.title = `Pack Openings - PM CardBase`
-        console.log(pulls)
         return () => {
             document.title = "PlayMaker CardBase"
         };

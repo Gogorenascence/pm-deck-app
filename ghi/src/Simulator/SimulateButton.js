@@ -1,42 +1,26 @@
 import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GameStateContext } from '../context/GameStateContext';
+import { SimulatorActionsContext } from '../context/SimulatorActionsContext';
 
 const SimulateButton = ({deckName, main_list, pluck_list}) => {
     const {
-        setPlayer,
-        setPlayerMainDeck,
-        setPlayerPluckDeck,
-        addToLog
-    } = useContext(GameStateContext)
+        setSelectedMainDeck,
+        setSelectedPluckDeck,
+        fillDecks
+    } = useContext(SimulatorActionsContext)
+
     const navigate = useNavigate()
 
     const handleSimulator = () => {
-        setPlayer({
-            name: "WindFall",
-            HP: 16,
-            mainDeck: [],
-            pluckDeck: [],
-            hand: [],
-            ownership: [],
-            mainDiscard: [],
-            pluckDiscard: [],
-            playArea:"",
-            activePluck: "",
-            focus: 0,
-            enthusiasm: 0,
-            mettle: 0,
-            secondWind: false,
-        })
-        setPlayerMainDeck({
+        setSelectedMainDeck({
             name: deckName + " Main",
             cards: main_list
-        })
-        setPlayerPluckDeck({
+        });
+        setSelectedPluckDeck({
             name: deckName + " Pluck",
             cards: pluck_list
         })
-        addToLog("System", "system", `${deckName} selected`)
+        fillDecks()
         navigate(`/simulator`)
     }
 
