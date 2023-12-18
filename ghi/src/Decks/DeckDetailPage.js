@@ -91,6 +91,7 @@ function DeckDetailPage() {
 
     useEffect(() => {
         window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getDeck();
         getDeckList();
         getCountedDeckList();

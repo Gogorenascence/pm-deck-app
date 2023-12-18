@@ -1,11 +1,11 @@
-import {
-    Modal,
-} from "react-bootstrap";
 import { useParams, useNavigate} from 'react-router-dom';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AppContext } from "../context/AppContext";
 
 
 function CardEditModal() {
+    const {isDark} = useContext(AppContext)
+
     const [card, setCard] = useState({
         name: "",
         card_class: "",
@@ -46,8 +46,14 @@ function CardEditModal() {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = async() => {
+        setShow(false)
+        document.body.style.overflow = 'auto';
+    };
+    const handleShow = async() => {
+        setShow(true)
+        document.body.style.overflow = 'hidden';
+    };
 
     const getCard = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
@@ -287,286 +293,287 @@ function CardEditModal() {
             <button className="left red" onClick={handleShow}>
                 Edit Card
             </button>
-
-            <Modal
-                show={show}
-                size="xl"
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-                className="topbar edit-modal"
-            >
-                <Modal.Header closeButton>
-                    <h1 style={{marginLeft: "465px"}}>Card Edit</h1>
-                </Modal.Header>
-                <Modal.Body>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-                <div className="create-section">
-                    <div>
-                        <h5 className="label">Name </h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Card Name"
-                            onChange={handleChange}
-                            name="name"
-                            value={card.name}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Hero ID</h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Hero ID"
-                            onChange={handleChange}
-                            name="hero_id"
-                            value={card.hero_id}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Series </h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Series"
-                            onChange={handleChange}
-                            name="series_name"
-                            value={card.series_name}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Card Number </h5>
-                        <input
-                            className="builder-input"
-                            type="number"
-                            placeholder=" Card Number"
-                            onChange={handleChange}
-                            name="card_number"
-                            value={card.card_number}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Illustrator </h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Illustrator"
-                            onChange={handleChange}
-                            name="illustrator"
-                            value={card.illustrator}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Picture Url </h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Picture Url"
-                            onChange={handleChange}
-                            name="picture_url"
-                            value={card.picture_url}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">File Name </h5>
-                        <input
-                            className="builder-input"
-                            type="text"
-                            placeholder=" File Name"
-                            onChange={handleChange}
-                            name="file_name"
-                            value={card.file_name}>
-                        </input>
-                    </div>
-                </div>
-                <div className="create-section">
-                    <div>
-                        <h5 className="label">Card Class </h5>
-                        <select
-                            className="builder-input"
-                            type="text"
-                            placeholder=" Class"
-                            onChange={handleChange}
-                            name="card_class"
-                            value={card.card_class}>
-                            <option value="">Class</option>
-                            <option value="Staunch">Staunch</option>
-                            <option value="Power">Power</option>
-                            <option value="Unity">Unity</option>
-                            <option value="Canny">Canny</option>
-                        </select>
-                    </div>
-                    <div>
-                        <h5 className="label">Enthusiasm </h5>
-                        <input
-                            className="builder-input"
-                            type="number"
-                            placeholder=" Enthusiasm"
-                            onChange={handleChange}
-                            name="enthusiasm"
-                            value={card.enthusiasm}>
-                        </input>
-                    </div>
-                    <div>
-                        <h5 className="label">Effect Text </h5>
-                        <textarea
-                            className="create-card-text"
-                            type="text"
-                            placeholder=" Effect Text"
-                            onChange={handleChange}
-                            name="effect_text"
-                            value={card.effect_text}>
-                        </textarea>
-                    </div>
-                    <div>
-                        <h5 className="label">Second Effect Text </h5>
-                        <textarea
-                            className="create-card-text"
-                            type="text"
-                            placeholder=" Second Effect Text"
-                            onChange={handleChange}
-                            name="second_effect_text"
-                            value={card.second_effect_text}>
-                        </textarea>
-                    </div>
-                </div>
-            </div>
-            <div className="cardpool margin-top-40" style={{height: "auto"}}>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <h2 style={{margin: "1% 0% 1% 2%", fontWeight: "700"}}
-                            >Add/Remove Card Components</h2>
-                    { showComps ?
-                        <h5 className="left db-main-count" onClick={() => handleShowComps()}>
-                                &nbsp;[Hide]
-                        </h5> :
-                        <h5 className="left db-main-count" onClick={() => handleShowComps()}>
-                            &nbsp;[Show]
-                        </h5>}
-                </div>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <div className={showComps ? "create-section" : "hidden2"}>
-                        <div>
-                            <h5 className="label">Card Type </h5>
-                            <select
-                                className="builder-input margin-bottom-20"
-                                type="text"
-                                onChange={(e) => setCardTypeInput(e.target.value)}
-                                name="card_type"
-                                value={cardTypeInput}>
-                                <option value="">Card Type</option>
-                                {cardTypeList.map((card_type) => (
-                                    <option value={card_type.type_number}>{card_type.name}</option>
-                                    ))}
-                            </select>
-                            <button onClick={handleAddCardType}>Add</button>
-                        </div>
-                        <div>
-                            {card_type.map((item, index) => (
-                                <h5 key={index} className="pointer" onClick={() => handleRemoveCardType(index)}>
-                                {nameCardType(item)}
-                                </h5>
-                            ))}
-                        </div>
-                        <div>
-                            <h5 className="label">Extra Effect </h5>
-                            <select
-                                className="builder-input margin-bottom-20"
-                                type="text"
-                                onChange={(e) => setExtraEffectInput(e.target.value)}
-                                name="extra_effect"
-                                value={extraEffectInput}>
-                                <option value="">Extra Effect</option>
-                                {extraEffectList.map((extra_effect) => (
-                                    <option value={extra_effect.effect_number}>{extra_effect.name}</option>
-                                    ))}
-                            </select>
-                            <button onClick={handleAddExtraEffect}>Add</button>
-                        </div>
-                        <div>
-                            {extra_effects.map((item, index) => (
-                                <h5 key={index} className="pointer" onClick={() => handleRemoveExtraEffect(index)}>
-                                {nameExtraEffect(item)}
-                                </h5>
-                            ))}
-                        </div>
-                    </div>
-                    <div className={showComps ? "create-section" : "hidden2"}>
-                        <div>
-                            <h5 className="label">Reaction </h5>
-                            <select
-                                className="builder-input margin-bottom-20"
-                                type="text"
-                                onChange={(e) => setReactionInput(e.target.value)}
-                                name="reaction"
-                                value={reactionInput}>
-                                <option value="">Reaction</option>
-                                {reactionList.map((reaction) => (
-                                    <option value={reaction.reaction_number}>{reaction.name}</option>
-                                    ))}
-                            </select>
-                            <button onClick={handleAddReaction}>Add</button>
-                        </div>
-                        <div>
-                            {reactions.map((item, index) => (
-                                <h5 key={index} className="pointer" onClick={() => handleRemoveReaction(index)}>
-                                {nameReaction(item)}
-                                </h5>
-                            ))}
-                        </div>
-                        <div>
-                            <h5 className="label">Tag </h5>
-                            <select
-                                className="builder-input margin-bottom-20"
-                                type="text"
-                                onChange={(e) => setCardTagInput(e.target.value)}
-                                name="card_tag"
-                                value={cardTagInput}>
-                                <option value="">Tag</option>
-                                {cardTagList.map((card_tag) => (
-                                    <option value={card_tag.tag_number}>{card_tag.name}</option>
-                                    ))}
-                            </select>
-                            <button onClick={handleAddCardTag}>Add</button>
-                        </div>
-                        <div>
-                            {card_tags.map((item, index) => (
-                                <h5 key={index} className="pointer" onClick={() => handleRemoveCardTag(index)}>
-                                {nameCardTag(item)}
-                                </h5>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                <div>
-                    <button
-                        className="add-comp-button"
-                        variant="dark"
-                        onClick={handleSubmit}
+            { show?
+                <>
+                    <div
+                        className={!isDark? "topbar large-modal edit-modal":"topbar large-modal-dark topbar edit-modal"}
                     >
-                            Save
-                    </button>
-                    <button
-                        className="add-comp-button"
-                        variant="dark"
-                        onClick={getCard}
-                    >
-                            Reset
-                    </button>
-                    <button
-                        className="add-comp-button red"
-                        variant="danger"
-                        onClick={handleClear}
-                    >
-                            Clear
-                    </button>
-                </div>
-            </div>
-
-                </Modal.Body>
-            </Modal>
+                        <h1>Card Edit</h1>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <div className="create-section">
+                            <div>
+                                <h5 className="label">Name </h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Card Name"
+                                    onChange={handleChange}
+                                    name="name"
+                                    value={card.name}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Hero ID</h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Hero ID"
+                                    onChange={handleChange}
+                                    name="hero_id"
+                                    value={card.hero_id}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Series </h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Series"
+                                    onChange={handleChange}
+                                    name="series_name"
+                                    value={card.series_name}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Card Number </h5>
+                                <input
+                                    className="builder-input"
+                                    type="number"
+                                    placeholder=" Card Number"
+                                    onChange={handleChange}
+                                    name="card_number"
+                                    value={card.card_number}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Illustrator </h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Illustrator"
+                                    onChange={handleChange}
+                                    name="illustrator"
+                                    value={card.illustrator}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Picture Url </h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Picture Url"
+                                    onChange={handleChange}
+                                    name="picture_url"
+                                    value={card.picture_url}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">File Name </h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" File Name"
+                                    onChange={handleChange}
+                                    name="file_name"
+                                    value={card.file_name}>
+                                </input>
+                            </div>
+                        </div>
+                        <div className="create-section">
+                            <div>
+                                <h5 className="label">Card Class </h5>
+                                <select
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Class"
+                                    onChange={handleChange}
+                                    name="card_class"
+                                    value={card.card_class}>
+                                    <option value="">Class</option>
+                                    <option value="Staunch">Staunch</option>
+                                    <option value="Power">Power</option>
+                                    <option value="Unity">Unity</option>
+                                    <option value="Canny">Canny</option>
+                                </select>
+                            </div>
+                            <div>
+                                <h5 className="label">Enthusiasm </h5>
+                                <input
+                                    className="builder-input"
+                                    type="number"
+                                    placeholder=" Enthusiasm"
+                                    onChange={handleChange}
+                                    name="enthusiasm"
+                                    value={card.enthusiasm}>
+                                </input>
+                            </div>
+                            <div>
+                                <h5 className="label">Effect Text </h5>
+                                <textarea
+                                    className="create-card-text"
+                                    type="text"
+                                    placeholder=" Effect Text"
+                                    onChange={handleChange}
+                                    name="effect_text"
+                                    value={card.effect_text}>
+                                </textarea>
+                            </div>
+                            <div>
+                                <h5 className="label">Second Effect Text </h5>
+                                <textarea
+                                    className="create-card-text"
+                                    type="text"
+                                    placeholder=" Second Effect Text"
+                                    onChange={handleChange}
+                                    name="second_effect_text"
+                                    value={card.second_effect_text}>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="cardpool margin-top-40" style={{height: "auto"}}>
+                        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <h2 style={{margin: "1% 0% 1% 2%", fontWeight: "700"}}
+                                    >Add/Remove Card Components</h2>
+                            { showComps ?
+                                <h5 className="left db-main-count" onClick={() => handleShowComps()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className="left db-main-count" onClick={() => handleShowComps()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <div className={showComps ? "create-section" : "hidden2"}>
+                                <div>
+                                    <h5 className="label">Card Type </h5>
+                                    <select
+                                        className="builder-input margin-bottom-20"
+                                        type="text"
+                                        onChange={(e) => setCardTypeInput(e.target.value)}
+                                        name="card_type"
+                                        value={cardTypeInput}>
+                                        <option value="">Card Type</option>
+                                        {cardTypeList.map((card_type) => (
+                                            <option value={card_type.type_number}>{card_type.name}</option>
+                                            ))}
+                                    </select>
+                                    <button onClick={handleAddCardType}>Add</button>
+                                </div>
+                                <div>
+                                    {card_type.map((item, index) => (
+                                        <h5 key={index} className="pointer" onClick={() => handleRemoveCardType(index)}>
+                                        {nameCardType(item)}
+                                        </h5>
+                                    ))}
+                                </div>
+                                <div>
+                                    <h5 className="label">Extra Effect </h5>
+                                    <select
+                                        className="builder-input margin-bottom-20"
+                                        type="text"
+                                        onChange={(e) => setExtraEffectInput(e.target.value)}
+                                        name="extra_effect"
+                                        value={extraEffectInput}>
+                                        <option value="">Extra Effect</option>
+                                        {extraEffectList.map((extra_effect) => (
+                                            <option value={extra_effect.effect_number}>{extra_effect.name}</option>
+                                            ))}
+                                    </select>
+                                    <button onClick={handleAddExtraEffect}>Add</button>
+                                </div>
+                                <div>
+                                    {extra_effects.map((item, index) => (
+                                        <h5 key={index} className="pointer" onClick={() => handleRemoveExtraEffect(index)}>
+                                        {nameExtraEffect(item)}
+                                        </h5>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className={showComps ? "create-section" : "hidden2"}>
+                                <div>
+                                    <h5 className="label">Reaction </h5>
+                                    <select
+                                        className="builder-input margin-bottom-20"
+                                        type="text"
+                                        onChange={(e) => setReactionInput(e.target.value)}
+                                        name="reaction"
+                                        value={reactionInput}>
+                                        <option value="">Reaction</option>
+                                        {reactionList.map((reaction) => (
+                                            <option value={reaction.reaction_number}>{reaction.name}</option>
+                                            ))}
+                                    </select>
+                                    <button onClick={handleAddReaction}>Add</button>
+                                </div>
+                                <div>
+                                    {reactions.map((item, index) => (
+                                        <h5 key={index} className="pointer" onClick={() => handleRemoveReaction(index)}>
+                                        {nameReaction(item)}
+                                        </h5>
+                                    ))}
+                                </div>
+                                <div>
+                                    <h5 className="label">Tag </h5>
+                                    <select
+                                        className="builder-input margin-bottom-20"
+                                        type="text"
+                                        onChange={(e) => setCardTagInput(e.target.value)}
+                                        name="card_tag"
+                                        value={cardTagInput}>
+                                        <option value="">Tag</option>
+                                        {cardTagList.map((card_tag) => (
+                                            <option value={card_tag.tag_number}>{card_tag.name}</option>
+                                            ))}
+                                    </select>
+                                    <button onClick={handleAddCardTag}>Add</button>
+                                </div>
+                                <div>
+                                    {card_tags.map((item, index) => (
+                                        <h5 key={index} className="pointer" onClick={() => handleRemoveCardTag(index)}>
+                                        {nameCardTag(item)}
+                                        </h5>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <div>
+                            <button
+                                className="add-comp-button"
+                                variant="dark"
+                                onClick={handleSubmit}
+                            >
+                                    Save
+                            </button>
+                            <button
+                                className="add-comp-button"
+                                variant="dark"
+                                onClick={getCard}
+                            >
+                                    Reset
+                            </button>
+                            <button
+                                className="add-comp-button"
+                                variant="dark"
+                                onClick={handleClose}
+                            >
+                                    Close
+                            </button>
+                            <button
+                                className="add-comp-button red"
+                                variant="danger"
+                                onClick={handleClear}
+                            >
+                                    Clear
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="blackSpace"></div>
+                </>
+            :null}
         </div>
     )
 }

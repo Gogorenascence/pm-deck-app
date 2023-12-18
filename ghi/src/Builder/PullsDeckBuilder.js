@@ -146,6 +146,8 @@ function PullsDeckBuilder() {
     const [sortState, setSortState] = useState("none");
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getBoosterSet();
         document.title = "Deck Builder - PM CardBase"

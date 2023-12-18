@@ -156,6 +156,8 @@ function DeckBuildandImport() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getPulledCards();
         document.title = "Deck Builder - PM CardBase"

@@ -72,6 +72,8 @@ function ReactionEdit() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getReaction();
     // eslint-disable-next-line

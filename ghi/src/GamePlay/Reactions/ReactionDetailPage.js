@@ -46,6 +46,8 @@ function ReactionDetails() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getReaction();
 
     // eslint-disable-next-line

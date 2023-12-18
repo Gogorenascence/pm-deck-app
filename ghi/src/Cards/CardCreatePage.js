@@ -76,7 +76,8 @@ function CardCreatePage() {
         getExtraEffects();
         getReactions();
         getCardTags();
-
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         document.title = "Card Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"

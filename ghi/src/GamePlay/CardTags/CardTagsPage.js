@@ -18,6 +18,8 @@ function CardTagsPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCardTags();
         document.title = "Card Tags - PM CardBase"
         return () => {
@@ -29,16 +31,18 @@ function CardTagsPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Card Tags</h1>
+            <div className="flex-items">
+                <h1 className="left-h1 margin-top-20">Card Tags</h1>
 
-            { account && account.roles.includes("admin")?
-                <NavLink to="/cardtagcreate">
-                    <button
-                        className="left red">
-                        Create
-                    </button>
-                </NavLink>:
-            null}
+                { account && account.roles.includes("admin")?
+                    <NavLink to="/cardtagcreate">
+                        <button
+                            className="left red margin-left-13">
+                            Create
+                        </button>
+                    </NavLink>:
+                null}
+            </div>
 
             <div>
                 {cardTags.map(function(cardTag, index, arr) {

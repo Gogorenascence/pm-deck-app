@@ -107,6 +107,7 @@ function CardsPage() {
 
     useEffect(() => {
         window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getBoosterSets();
         document.title = "Cards - PM CardBase"

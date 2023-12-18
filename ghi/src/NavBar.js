@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { AppContext } from "./context/AppContext";
 
 
 function NavBar() {
@@ -35,6 +36,8 @@ function NavBar() {
     account,
     getAccountData,
   } = useContext(AuthContext)
+
+  const {isDark} = useContext(AppContext)
 
   const navbar = useRef(null)
   useOutsideAlerter(navbar);
@@ -527,11 +530,11 @@ function NavBar() {
       {/* <div className="menu"> */}
         { showSignUpModal?
           <>
-            <form onSubmit={Signup} className="medium-modal">
-              <h2 className="label-center black">Create Account </h2>
+            <form onSubmit={Signup} className={!isDark? "medium-modal" :"medium-modal-dark"}>
+              <h2 className="label-center">Create Account </h2>
               <div style={{ margin: "20px 20px 20px 20px"}}>
 
-                  <h5 className="label black">Email </h5>
+                  <h5 className="label">Email </h5>
                   <input
                       className="builder-input"
                       type="text"
@@ -541,7 +544,7 @@ function NavBar() {
                       value={signUpCred.email}>
                   </input>
 
-                  <h5 className="label black">Username </h5>
+                  <h5 className="label">Username </h5>
                   <input
                       className="builder-input"
                       type="text"
@@ -551,7 +554,7 @@ function NavBar() {
                       value={signUpCred.username}>
                   </input>
 
-                  <h5 className="label black">Password </h5>
+                  <h5 className="label">Password </h5>
                   <input
                       className="builder-input"
                       id="pass"
@@ -565,19 +568,19 @@ function NavBar() {
                   { !viewPass?
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/MfNqq8S.png"
+                      src={!isDark? "https://i.imgur.com/MfNqq8S.png":"https://i.imgur.com/z4CRxAm.png"}
                       onClick={handleViewPass}
                       title="view password"
                     />:
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/w8oag0B.png"
+                      src={!isDark? "https://i.imgur.com/w8oag0B.png":"https://i.imgur.com/NE539ZZ.png"}
                       onClick={handleViewPass}
                       title="hide password"
                     />
                   }
 
-                  <h5 className="label black">Confirm Password </h5>
+                  <h5 className="label">Confirm Password </h5>
                   <input
                       className="builder-input"
                       id="passConf"
@@ -590,13 +593,13 @@ function NavBar() {
                   { !viewPass?
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/MfNqq8S.png"
+                      src={!isDark? "https://i.imgur.com/MfNqq8S.png":"https://i.imgur.com/z4CRxAm.png"}
                       onClick={handleViewPass}
                       title="view password"
                     />:
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/w8oag0B.png"
+                      src={!isDark? "https://i.imgur.com/w8oag0B.png":"https://i.imgur.com/NE539ZZ.png"}
                       onClick={handleViewPass}
                       title="hide password"
                     />
@@ -618,7 +621,7 @@ function NavBar() {
                 <button type="submit">Signup</button>
                 <button onClick={handleShowSignUpModal}>Close</button>
                 <p onClick={handleShowLoginModal}
-                  className="black pointer label-center">
+                  className="pointer label-center">
                     Already have an account? Log in!
                 </p>
               </div>
@@ -630,10 +633,10 @@ function NavBar() {
 
         { showLoginModal?
           <>
-            <form onSubmit={Login} className="medium-modal">
-              <h2 className="label-center black">User Login </h2>
+            <form onSubmit={Login} className={!isDark? "medium-modal" :"medium-modal-dark"}>
+              <h2 className="label-center">User Login </h2>
               <div style={{margin: "20px 20px 20px 20px"}}>
-                  <h5 className="label black">Username </h5>
+                  <h5 className="label">Username </h5>
                   <input
                       className="builder-input"
                       type="text"
@@ -643,7 +646,7 @@ function NavBar() {
                       value={loginCred.username}>
                   </input>
 
-                  <h5 className="label black">Password </h5>
+                  <h5 className="label">Password </h5>
                   <input
                       className="builder-input"
                       id="pass"
@@ -657,13 +660,13 @@ function NavBar() {
                   { !viewPass?
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/MfNqq8S.png"
+                      src={!isDark? "https://i.imgur.com/MfNqq8S.png":"https://i.imgur.com/z4CRxAm.png"}
                       onClick={handleViewPass}
                       title="view password"
                     />:
                     <img
                       className="logo2 pointer"
-                      src="https://i.imgur.com/w8oag0B.png"
+                      src={!isDark? "https://i.imgur.com/w8oag0B.png":"https://i.imgur.com/NE539ZZ.png"}
                       onClick={handleViewPass}
                       title="hide password"
                     />
@@ -679,7 +682,7 @@ function NavBar() {
                 <button type="submit">Login</button>
                 <button onClick={handleShowLoginModal}>Close</button>
                 <p onClick={handleShowSignUpModal}
-                  className="black pointer label-center">
+                  className="pointer label-center">
                     New here? Sign Up!
                 </p>
               </div>

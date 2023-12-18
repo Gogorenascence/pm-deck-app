@@ -46,6 +46,8 @@ function CardTagDetails() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCardTag();
     // eslint-disable-next-line
     },[]);

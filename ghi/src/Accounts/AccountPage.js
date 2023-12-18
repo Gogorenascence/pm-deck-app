@@ -19,7 +19,9 @@ function AccountPage() {
     const [option, setOption] = useState("profile")
     const navigate = useNavigate()
 
-    useEffect(() => {
+        useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getAccountData();
         document.title = "Account Info - PM CardBase"
         return () => {

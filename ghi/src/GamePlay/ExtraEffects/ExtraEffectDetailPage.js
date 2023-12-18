@@ -46,6 +46,8 @@ function ExtraEffectDetails() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getExtraEffect();
     // eslint-disable-next-line
     },[]);

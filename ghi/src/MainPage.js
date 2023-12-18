@@ -5,6 +5,9 @@ import CardRow from "./display/CardRow";
 
 function MainPage() {
 
+  window.scroll(0, 0);
+  document.body.style.overflow = 'auto';
+
     return (
       <div>
         <br/>

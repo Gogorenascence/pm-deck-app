@@ -9,31 +9,34 @@ import { GameStateContextProvider } from "./GameStateContext";
 import { SimulatorActionsContextProvider } from "./SimulatorActionsContext.js";
 import { MainActionsContextProvider } from "./MainActionsContext.js";
 import { PluckActionsContextProvider } from "./PluckActionsContext.js";
+import { AppContextProvider } from "./AppContext.js";
 
 
 const AppProvider = ({ children }) => {
     return (
-        <AuthContextProvider>
-            <BuilderQueryContextProvider>
-                <GamePlayQueryContextProvider>
-                    <PullsContextProvider>
-                        <QueryContextProvider>
-                            <DeckQueryContextProvider>
-                                <GameStateContextProvider>
-                                    <SimulatorActionsContextProvider>
-                                        <MainActionsContextProvider>
-                                            <PluckActionsContextProvider>
-                                                {children}
-                                            </PluckActionsContextProvider>
-                                        </MainActionsContextProvider>
-                                    </SimulatorActionsContextProvider>
-                                </GameStateContextProvider>
-                            </DeckQueryContextProvider>
-                        </QueryContextProvider>
-                    </PullsContextProvider>
-                </GamePlayQueryContextProvider>
-            </BuilderQueryContextProvider>
-        </AuthContextProvider>
+        <AppContextProvider>
+            <AuthContextProvider>
+                <BuilderQueryContextProvider>
+                    <GamePlayQueryContextProvider>
+                        <PullsContextProvider>
+                            <QueryContextProvider>
+                                <DeckQueryContextProvider>
+                                    <GameStateContextProvider>
+                                        <SimulatorActionsContextProvider>
+                                            <MainActionsContextProvider>
+                                                <PluckActionsContextProvider>
+                                                    {children}
+                                                </PluckActionsContextProvider>
+                                            </MainActionsContextProvider>
+                                        </SimulatorActionsContextProvider>
+                                    </GameStateContextProvider>
+                                </DeckQueryContextProvider>
+                            </QueryContextProvider>
+                        </PullsContextProvider>
+                    </GamePlayQueryContextProvider>
+                </BuilderQueryContextProvider>
+            </AuthContextProvider>
+        </AppContextProvider>
     );
 };
 

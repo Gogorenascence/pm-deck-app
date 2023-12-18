@@ -55,6 +55,8 @@ function ExtraEffectCreate() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         document.title = "Extra Effect Create - PM CardBase"
         return () => {

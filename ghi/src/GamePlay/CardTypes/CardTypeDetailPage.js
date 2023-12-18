@@ -49,6 +49,8 @@ function CardTypeDetails() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCardType();
     // eslint-disable-next-line
     },[]);

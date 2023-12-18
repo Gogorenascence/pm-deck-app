@@ -162,6 +162,8 @@ function DeckCopyPage() {
     },[]);
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getExtraData();
         document.title = `Copying ${deck.name} - PM CardBase`
         return () => {

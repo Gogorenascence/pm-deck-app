@@ -18,6 +18,8 @@ function ExtraEffectsPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getExtraEffects();
         document.title = "Extra Effects - PM CardBase"
         return () => {
@@ -29,16 +31,18 @@ function ExtraEffectsPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Extra Effects</h1>
+            <div className="flex-items">
+                <h1 className="left-h1 margin-top-20">Extra Effects</h1>
 
-            { account && account.roles.includes("admin")?
-                <NavLink to="/extraeffectcreate">
-                    <button
-                        className="left red">
-                        Create
-                    </button>
-                </NavLink>:
-            null}
+                { account && account.roles.includes("admin")?
+                    <NavLink to="/extraeffectcreate">
+                        <button
+                            className="left red margin-left-13">
+                            Create
+                        </button>
+                    </NavLink>:
+                null}
+            </div>
 
             <div>
                 {extraEffects.map(function(extraEffect, index, arr) {

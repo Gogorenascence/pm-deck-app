@@ -47,6 +47,8 @@ function SetDetailPage() {
     }
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getBoosterSet();
         getCardLists();
     },[]);

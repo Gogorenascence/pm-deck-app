@@ -29,6 +29,8 @@ function SetsPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getBoosterSets();
         document.title = "Card Sets - PM CardBase"
         return () => {

@@ -57,6 +57,8 @@ function CardTypeCreate() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         document.title = "Card Type Create - PM CardBase"
         return () => {

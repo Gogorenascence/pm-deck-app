@@ -76,6 +76,8 @@ function CardCategoryEdit() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getCardCategory();
     // eslint-disable-next-line

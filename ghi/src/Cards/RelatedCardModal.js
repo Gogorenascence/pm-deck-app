@@ -1,13 +1,13 @@
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { AppContext } from '../context/AppContext';
 
 
 function RelatedCardModal() {
 
     const {card_number} = useParams();
-
+    const {isDark} = useContext(AppContext)
     const navigate = useNavigate()
-
     const content = useRef(null)
 
     const [show, setShow] = useState(false);
@@ -69,11 +69,10 @@ function RelatedCardModal() {
                     Show all Cards
             </button>
             {show?
-                <div className="large-modal topbar"
+                <div className={!isDark? "large-modal topbar":"large-modal-dark topbar"}
                 >
                     <div className="outScrollable" ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>Related Cards</h1>
+                        <h1 className="centered-h1">Related Cards</h1>
                         <div>
                             <div className="cd-inner2 card-pool-fill">
                                 {relatedCards.map((relatedCard) => {

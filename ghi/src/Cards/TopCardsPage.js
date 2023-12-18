@@ -108,6 +108,8 @@ function TopCardsPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getDecks();
         document.title = "Top Cards - PM CardBase"

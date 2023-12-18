@@ -25,6 +25,15 @@ export function adjustFontSize() {
     }
 }
 
+export function returnScroll() {
+    window.addEventListener('beforeunload', function (event) {
+        // Perform actions when leaving the page
+        // For example, you can show a confirmation message
+        event.preventDefault(); // For some browsers to work properly
+        document.body.style.overflow = 'auto';
+    });
+}
+
 // useEffect(() => {
 //     adjustFontSize();
 //     window.addEventListener('resize', adjustFontSize);

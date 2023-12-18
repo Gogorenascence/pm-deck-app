@@ -59,6 +59,8 @@ function CardCategoriesCreate() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         document.title = "Category Create - PM CardBase"
         return () => {

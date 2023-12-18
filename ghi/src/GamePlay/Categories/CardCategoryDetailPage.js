@@ -61,6 +61,8 @@ function CardCategoryDetail() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCardCategory();
     // eslint-disable-next-line
     },[]);

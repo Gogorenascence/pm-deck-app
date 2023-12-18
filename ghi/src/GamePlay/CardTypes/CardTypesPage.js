@@ -18,6 +18,8 @@ function CardTypesPage() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCardTypes();
         document.title = "Card Types - PM CardBase"
         return () => {
@@ -29,16 +31,18 @@ function CardTypesPage() {
 
     return (
         <div className="white-space">
-            <h1 className="left-h1">Card Types</h1>
+            <div className="flex-items">
+                <h1 className="left-h1 margin-top-20">Card Types</h1>
 
-            { account && account.roles.includes("admin")?
-                <NavLink to="/cardtypecreate">
-                    <button
-                        className="left red">
-                        Create
-                    </button>
-                </NavLink>:
-            null}
+                { account && account.roles.includes("admin")?
+                    <NavLink to="/cardtypecreate">
+                        <button
+                            className="left red margin-left-13">
+                            Create
+                        </button>
+                    </NavLink>:
+                null}
+            </div>
 
             <div>
                 {cardTypes.map(function(cardType, index, arr) {

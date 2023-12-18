@@ -72,6 +72,8 @@ function ExtraEffectEdit() {
     };
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getCards();
         getExtraEffect();
     // eslint-disable-next-line

@@ -103,6 +103,7 @@ function DecksPage() {
 
     useEffect(() => {
         window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getDecks();
         document.title = "Decks - PM CardBase"
         return () => {
