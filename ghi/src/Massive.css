@@ -1069,7 +1069,7 @@ button:hover {
 }
 
 .maindeck3 {
-  margin: 2% 0%;
+  margin: 0%;
   background-color: rgba(163, 26, 26, 0.315);
   border: 2px solid rgb(173, 41, 41);
   border-radius: 5px;
@@ -1077,7 +1077,7 @@ button:hover {
 }
 
 .pluckdeck3 {
-  margin: 2% 0%;
+  margin: 0%;
   background-color: rgba(26, 63, 163, 0.315);
   border: 2px solid rgb(41, 50, 173);
   border-radius: 5px;
