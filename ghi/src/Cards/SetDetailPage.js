@@ -1,13 +1,15 @@
 import {
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 import BackButton from "../display/BackButton";
 
 
 function SetDetailPage() {
 
+    const {account} = useContext(AuthContext)
     const {card_set_id} = useParams();
     const [boosterSet, setBoosterSet] = useState("");
     const [maxVariables, setMaxVariables] = useState([]);
@@ -128,12 +130,15 @@ function SetDetailPage() {
                 </div>:
             null}
             <div style={{ display: "flex" }}>
+                { account && account.roles.includes("admin")?
+                    <NavLink to={`/cardsets/${boosterSet.id}/edit`}>
+                        <button className="left red">
+                            Edit
+                        </button>
+                    </NavLink>:
+                null}
                 <NavLink to={`/cardsets/${boosterSet.id}/pulls`}>
-                    <button
-                            className="left heightNorm"
-                            variant="danger"
-                            style={{marginLeft: ".5%", marginRight: "7px", width:"120px"}}
-                            >
+                    <button className="left">
                             Open Packs
                     </button>
                 </NavLink>

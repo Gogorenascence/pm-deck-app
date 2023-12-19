@@ -1,15 +1,13 @@
-import {
-    Col
-} from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext.js";
 import CardSetCreateSearch from "./CardSetCreateSearch.js";
 import { CardSetQueryContext } from "../context/CardSetQueryContext.js";
 import ImageViewCardSetInput from "./ImageViewCardSetInput.js";
+import BackButton from "../display/BackButton.js";
 
 
-function CardSetCreate() {
+function CardSetCreate({action}) {
 
     const [cardSet, setCardSet ] = useState({
         name: "",
@@ -24,6 +22,30 @@ function CardSetCreate() {
         cover_image: "",
     });
 
+    const {card_set_id} = useParams()
+
+    const getBoosterSet = async() =>{
+        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
+        const cardData = await cardResponse.json();
+        if (cardData.cards.length == 0 ) {
+            setNoCards(true)
+        }
+        const sortedCards = [...cardData.cards].sort(sortMethods[sortState].method);
+        setCards(sortedCards);
+
+        if (action === "edit") {
+            const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
+            const data = await response.json();
+            const booster = data.booster_sets.find(booster => booster.id === card_set_id)
+            setCardSet(booster);
+            setMaxVariables(booster.mv.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+            setNormals(booster.normals.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+            setRares(booster.rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+            setSuperRares(booster.super_rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+            setUltraRares(booster.ultra_rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+        }
+    };
+
     const [ratio, setRatio] = useState({
         mv: 0,
         normals: 0,
@@ -32,13 +54,12 @@ function CardSetCreate() {
     })
 
     const ratioTypes = {
-        "": { mv: 1, normals: 5, rares: 3, supers: 2},
-        standard: { mv: 1, normals: 5, rares: 3, supers: 2},
+        "": { mv: 1, normals: 5, rares: 3, supers: 2 },
+        standard: { mv: 1, normals: 5, rares: 3, supers: 2 },
     }
 
     const handleRatio = (event) => {
         setRatio(ratioTypes[event.target.value])
-        console.log(ratio)
     }
 
     const { account } = useContext(AuthContext)
@@ -48,6 +69,7 @@ function CardSetCreate() {
         listView,
         showMore,
         setShowMore} = useContext(CardSetQueryContext)
+
 
     const [maxVariables, setMaxVariables] = useState([]);
     const [normals, setNormals] = useState([]);
@@ -71,24 +93,16 @@ function CardSetCreate() {
     const [showSuperRares, setShowSuperRares] = useState(true);
     const [showUltraRares, setShowUltraRares] = useState(true);
 
+    const selectedCards = maxVariables.concat(normals, rares, superRares, ultraRares)
+
     const [noCards, setNoCards] = useState(false);
 
     const [stayHere, setStayHere] = useState(false)
 
-    const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
-        if (data.cards.length == 0 ) {
-            setNoCards(true)
-        }
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
-        setCards(sortedCards);
-    };
-
     useEffect(() => {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
-        getCards();
+        getBoosterSet()
         document.title = "Card Set Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -236,14 +250,25 @@ function CardSetCreate() {
         data["ultra_rares"] = ultraRaresList;
         data["all_cards"] = all_cards;
         data["ratio"] = ratio;
-        const cardSetUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`;
-        const fetchConfig = {
+        const cardSetUrl = action === "create"?
+            `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/` :
+            `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`
+        const fetchConfig = action === "create"?
+        {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
             },
-        };
+        } :
+
+        {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
 
         const response = await fetch(cardSetUrl, fetchConfig);
         if (response.ok) {
@@ -348,18 +373,18 @@ function CardSetCreate() {
 
     const isQueryEmpty = Object.values(query).every((value) => value === "");
 
-    if (!(account && account.roles.includes("admin"))) {
-        setTimeout(function() {
-            window.location.href = `${process.env.PUBLIC_URL}/`
-        }, 3000);
-    }
+    // if (!(account && account.roles.includes("admin"))) {
+    //     setTimeout(function() {
+    //         window.location.href = `${process.env.PUBLIC_URL}/`
+    //     }, 3000);
+    // }
 
 
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Card Set Create</h1>
+                    <h1 className="margin-top-40">{action === "create"? "Card Set Create" : "Card Set Edit"}</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
@@ -413,12 +438,13 @@ function CardSetCreate() {
                                     <br/>
                                     {account?
                                         <button
-                                            className="left"
+                                            className={action === "create"? "left" : "left red"}
                                             onClick={handleSubmit}
                                         >
-                                            Create Card Set
+                                            {action === "create"? "Create Card Set" : "Save"}
                                         </button>:null
                                     }
+                                    <BackButton/>
                                     <br/>
                                     { !account?
                                         <h6 className="error">You must be logged in to create a cardSet</h6>:
@@ -468,7 +494,7 @@ function CardSetCreate() {
                                                 <div style={{display: "flex", justifyContent: "center"}}>
                                                     <img
                                                         onClick={() => handleClick(card)}
-                                                        className="builder-card pointer glow3"
+                                                        className={selectedCards.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
                                                         title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}/>

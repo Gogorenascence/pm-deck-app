@@ -77,8 +77,13 @@ function App() {
               <Route path="/cards/:card_number" element={<CardDetailPage />} />
               <Route path="/topcards" element={<TopCardsPage />} />
               <Route path="/cardsets" element={<SetsPage />} />
-              <Route path="/cardsetcreate" element={<CardSetCreate />} />
+              <Route path="/cardsetcreate" element={<CardSetCreate
+                                                      action={"create"}
+                                                    />} />
               <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
+              <Route path="/cardsets/:card_set_id/edit" element={<CardSetCreate
+                                                              action={"edit"}
+                                                            />} />
               <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
               <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
               <Route path="/account" element={<AccountPage />} />

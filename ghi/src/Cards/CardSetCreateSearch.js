@@ -190,7 +190,7 @@ function CardSetCreateSearch() {
                 >
                 Reset Filters
             </button>
-            {listView?
+            {/* {listView?
                 <button
                     className="left"
                     variant="dark"
@@ -204,7 +204,7 @@ function CardSetCreateSearch() {
                     onClick={handleListView}
                 >
                     List View
-                </button>}
+                </button>} */}
             <br/>
         </div>
     );
