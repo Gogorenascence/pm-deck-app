@@ -133,13 +133,18 @@ function SetDetailPage() {
                 { account && account.roles.includes("admin")?
                     <NavLink to={`/cardsets/${boosterSet.id}/edit`}>
                         <button className="left red">
-                            Edit
+                            Edit Set
                         </button>
                     </NavLink>:
                 null}
                 <NavLink to={`/cardsets/${boosterSet.id}/pulls`}>
                     <button className="left">
                             Open Packs
+                    </button>
+                </NavLink>
+                <NavLink to={`/cardsets/${boosterSet.id}/copy`}>
+                    <button className="left">
+                            Copy Set
                     </button>
                 </NavLink>
                 <BackButton/>

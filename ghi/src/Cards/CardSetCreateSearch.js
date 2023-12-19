@@ -7,6 +7,13 @@ function CardSetCreateSearch() {
         setQuery,
         sortState,
         setSortState,
+        setBoosterSet,
+        boosterSets,
+        setBoosterSets,
+        boosterSetId,
+        setBoosterSetId,
+        rarity,
+        setRarity,
         listView,
         setListView,
         setShowMore} = useContext(CardSetQueryContext)
@@ -15,6 +22,27 @@ function CardSetCreateSearch() {
         setQuery({ ...query, [event.target.name]: event.target.value });
         setShowMore(20)
     };
+
+    const getBoosterSets = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
+        const data = await response.json();
+        setBoosterSets(data.booster_sets);
+    };
+
+    const handleBoosterSetChange = (event) => {
+        setBoosterSetId(event.target.value)
+        const selectedBoosterSet = boosterSets.find(set => set.id === event.target.value);
+        setBoosterSet(selectedBoosterSet)
+    };
+
+    const handleRarityChange = (event) => {
+        setRarity(event.target.value);
+    };
+
+    useEffect(() => {
+        getBoosterSets();
+    // eslint-disable-next-line
+    },[]);
 
     const handleQueryReset = (event) => {
         setQuery({
@@ -181,6 +209,35 @@ function CardSetCreateSearch() {
                 <option value="card_number">Card Number</option>
                 <option value="enthusiasm_highest">Enth (High)</option>
                 <option value="enthusiasm_lowest">Enth (Low)</option>
+            </select>
+            <br/>
+            <br/>
+            <h5 className="left">Search by Rarity</h5>
+            <select
+                className="left dcbsearch-medium"
+                type="text"
+                placeholder=" Card Set"
+                onChange={handleBoosterSetChange}
+                name="boosterSet"
+                value={boosterSetId}>
+                <option value="">Card Set</option>
+                {boosterSets.map(function(boosterSet)
+                {return( <option value={boosterSet.id}>{boosterSet.name}</option>)}
+                    )}
+            </select>
+            <select
+                className="left dcbsearch-medium"
+                type="text"
+                placeholder=" Rarity"
+                onChange={handleRarityChange}
+                name="rarity"
+                value={rarity}>
+                <option value="">Rarity</option>
+                <option value="mv">Max Variables</option>
+                <option value="normals">Normals</option>
+                <option value="rares">Rares</option>
+                <option value="super_rares">Super Rares</option>
+                <option value="ultra_rares">Ultra Rares</option>
             </select>
             <br/>
             <button

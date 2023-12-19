@@ -7,7 +7,10 @@ import ImageViewCardSetInput from "./ImageViewCardSetInput.js";
 import BackButton from "../display/BackButton.js";
 
 
-function CardSetCreate({action}) {
+function CardSetCreate({
+    action,
+    copy
+}) {
 
     const [cardSet, setCardSet ] = useState({
         name: "",
@@ -47,15 +50,17 @@ function CardSetCreate({action}) {
     };
 
     const [ratio, setRatio] = useState({
-        mv: 0,
-        normals: 0,
-        rares: 0,
-        supers: 0,
+        mv: 1,
+        normals: 5,
+        rares: 3,
+        supers: 2,
     })
 
     const ratioTypes = {
         "": { mv: 1, normals: 5, rares: 3, supers: 2 },
         standard: { mv: 1, normals: 5, rares: 3, supers: 2 },
+        short: { mv: 1, normals: 3, rares: 1, supers: 1 },
+        gold: { mv: 0, normals: 3, rares: 3, supers: 4 },
     }
 
     const handleRatio = (event) => {
@@ -66,6 +71,8 @@ function CardSetCreate({action}) {
 
     const {query,
         sortState,
+        boosterSet,
+        rarity,
         listView,
         showMore,
         setShowMore} = useContext(CardSetQueryContext)
@@ -131,6 +138,8 @@ function CardSetCreate({action}) {
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
+        .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
@@ -250,25 +259,25 @@ function CardSetCreate({action}) {
         data["ultra_rares"] = ultraRaresList;
         data["all_cards"] = all_cards;
         data["ratio"] = ratio;
-        const cardSetUrl = action === "create"?
+        const cardSetUrl = action === "create" || copy?
             `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/` :
             `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`
-        const fetchConfig = action === "create"?
-        {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        } :
-
-        {
-            method: "PUT",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
+        const fetchConfig = action === "create" || copy?
+            {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        :
+            {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
 
         const response = await fetch(cardSetUrl, fetchConfig);
         if (response.ok) {
@@ -419,6 +428,8 @@ function CardSetCreate({action}) {
                                         onChange={handleRatio}>
                                         <option value="">Ratio Type</option>
                                         <option value="standard">Standard</option>
+                                        <option value="short">Short</option>
+                                        <option value="gold">Gold</option>
                                     </select>
                                     <br/>
                                     <input

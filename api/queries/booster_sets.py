@@ -89,7 +89,6 @@ class BoosterSetQueries(Queries):
         rares = booster_set["rares"]
         super_rares = booster_set["super_rares"]
         ultra_rares = booster_set["ultra_rares"]
-
         DATABASE_URL = os.environ["DATABASE_URL"]
         conn = MongoClient(DATABASE_URL)
         db = conn.cards.cards
@@ -209,8 +208,11 @@ class BoosterSetQueries(Queries):
         }
 
         for i in range(ratio["mv"]):
-            random_idx = random.randint(0, len(max_variables) - 1)
-            opened_pack["pull_list"].append(max_variables[random_idx])
+            if max_variables:
+                random_idx = random.randint(0, len(max_variables) - 1)
+                opened_pack["pull_list"].append(max_variables[random_idx])
+            else:
+                pass
         for i in range(ratio["normals"]):
             random_idx = random.randint(0, len(normal_pool) - 1)
             opened_pack["pull_list"].append(normal_pool[random_idx])

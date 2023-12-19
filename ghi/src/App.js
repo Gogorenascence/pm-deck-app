@@ -14,7 +14,6 @@ import CardSetCreate from "./Cards/SetCreatePage";
 import SetDetailPage from "./Cards/SetDetailPage";
 import PullPage from "./Cards/PullPage";
 import UnderConstruction from "./display/UnderConstruction";
-// import Nav from "./Nav";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import LightSwitch from "./display/LightSwitch";
@@ -83,6 +82,10 @@ function App() {
               <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
               <Route path="/cardsets/:card_set_id/edit" element={<CardSetCreate
                                                               action={"edit"}
+                                                            />} />
+              <Route path="/cardsets/:card_set_id/copy" element={<CardSetCreate
+                                                              action={"edit"}
+                                                              copy={true}
                                                             />} />
               <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
               <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
