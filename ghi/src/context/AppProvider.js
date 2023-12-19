@@ -10,6 +10,7 @@ import { SimulatorActionsContextProvider } from "./SimulatorActionsContext.js";
 import { MainActionsContextProvider } from "./MainActionsContext.js";
 import { PluckActionsContextProvider } from "./PluckActionsContext.js";
 import { AppContextProvider } from "./AppContext.js";
+import { CardSetQueryContextProvider } from "./CardSetQueryContext.js";
 
 
 const AppProvider = ({ children }) => {
@@ -21,15 +22,17 @@ const AppProvider = ({ children }) => {
                         <PullsContextProvider>
                             <QueryContextProvider>
                                 <DeckQueryContextProvider>
-                                    <GameStateContextProvider>
-                                        <SimulatorActionsContextProvider>
-                                            <MainActionsContextProvider>
-                                                <PluckActionsContextProvider>
-                                                    {children}
-                                                </PluckActionsContextProvider>
-                                            </MainActionsContextProvider>
-                                        </SimulatorActionsContextProvider>
-                                    </GameStateContextProvider>
+                                    <CardSetQueryContextProvider>
+                                        <GameStateContextProvider>
+                                            <SimulatorActionsContextProvider>
+                                                <MainActionsContextProvider>
+                                                    <PluckActionsContextProvider>
+                                                        {children}
+                                                    </PluckActionsContextProvider>
+                                                </MainActionsContextProvider>
+                                            </SimulatorActionsContextProvider>
+                                        </GameStateContextProvider>
+                                    </CardSetQueryContextProvider>
                                 </DeckQueryContextProvider>
                             </QueryContextProvider>
                         </PullsContextProvider>

@@ -10,6 +10,7 @@ import CardCreatePage from "./Cards/CardCreatePage";
 import CardDetailPage from "./Cards/CardDetailPage";
 import TopCardsPage from "./Cards/TopCardsPage";
 import SetsPage from "./Cards/SetsPage";
+import CardSetCreate from "./Cards/SetCreatePage";
 import SetDetailPage from "./Cards/SetDetailPage";
 import PullPage from "./Cards/PullPage";
 import UnderConstruction from "./display/UnderConstruction";
@@ -68,7 +69,6 @@ function App() {
               <Route index element={<MainPage />} />
               <Route path="/deckbuilder" element={<DeckImport />} />
               <Route path="/decks" element={<DecksPage />} />
-              {/* <Route path="/deckimport" element={<DeckImport />} /> */}
               <Route path="/decks/:deck_id" element={<DeckDetailPage />} />
               <Route path="/decks/:deck_id/edit" element={<DeckEditPage />} />
               <Route path="/decks/:deck_id/copy" element={<DeckCopyPage />} />
@@ -77,6 +77,7 @@ function App() {
               <Route path="/cards/:card_number" element={<CardDetailPage />} />
               <Route path="/topcards" element={<TopCardsPage />} />
               <Route path="/cardsets" element={<SetsPage />} />
+              <Route path="/cardsetcreate" element={<CardSetCreate />} />
               <Route path="/cardsets/:card_set_id" element={<SetDetailPage />} />
               <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
               <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />

@@ -3,43 +3,73 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
-import GamePlayCardSearch from "../GamePlayCardSearch";
-import { GamePlayQueryContext } from "../../context/GamePlayQueryContext.js";
-import ImageViewSupportInput from "../ImageViewSupportInput";
-import ImageViewAntiSupportInput from "../ImageViewAntiSupportInput";
+import { AuthContext } from "../context/AuthContext.js";
+import CardSetCreateSearch from "./CardSetCreateSearch.js";
+import { CardSetQueryContext } from "../context/CardSetQueryContext.js";
+import ImageViewCardSetInput from "./ImageViewCardSetInput.js";
 
 
-function CardTagCreate() {
+function CardSetCreate() {
 
-    const [cardTag, setCardTag ] = useState({
+    const [cardSet, setCardSet ] = useState({
         name: "",
-        rules: "",
-        tag_number: "",
-        support: [],
-        anti_support: [],
+        description: "",
+        ratio: {},
+        mv: [],
+        normals: [],
+        rares: [],
+        super_rares: [],
+        ultra_rares: [],
+        all_cards: [],
+        cover_image: "",
     });
+
+    const [ratio, setRatio] = useState({
+        mv: 0,
+        normals: 0,
+        rares: 0,
+        supers: 0,
+    })
+
+    const ratioTypes = {
+        "": { mv: 1, normals: 5, rares: 3, supers: 2},
+        standard: { mv: 1, normals: 5, rares: 3, supers: 2},
+    }
+
+    const handleRatio = (event) => {
+        setRatio(ratioTypes[event.target.value])
+        console.log(ratio)
+    }
 
     const { account } = useContext(AuthContext)
 
     const {query,
         sortState,
-        boosterSet,
-        rarity,
         listView,
         showMore,
-        setShowMore} = useContext(GamePlayQueryContext)
+        setShowMore} = useContext(CardSetQueryContext)
 
-    const [support_list, setSupportList] = useState([]);
-    const [anti_support_list, setAntiSupportList] = useState([]);
+    const [maxVariables, setMaxVariables] = useState([]);
+    const [normals, setNormals] = useState([]);
+    const [rares, setRares] = useState([]);
+    const [superRares, setSuperRares] = useState([]);
+    const [ultraRares, setUltraRares] = useState([]);
 
     const [cards, setCards] = useState([]);
 
-    const [modifySupport, setModifySupport] = useState(true)
+    const [modify, setModify] = useState({
+        maxVariables: false,
+        normals: true,
+        rares: false,
+        superRares: false,
+        ultraRares: false
+    })
     const [showPool, setShowPool] = useState(true);
-    const [showSupport, setShowSupport] = useState(true);
-    const [showAntiSupport, setShowAntiSupport] = useState(true);
+    const [showMaxVariables, setShowMaxVariables] = useState(true);
+    const [showNormals, setShowNormals] = useState(true);
+    const [showRares, setShowRares] = useState(true);
+    const [showSuperRares, setShowSuperRares] = useState(true);
+    const [showUltraRares, setShowUltraRares] = useState(true);
 
     const [noCards, setNoCards] = useState(false);
 
@@ -59,7 +89,7 @@ function CardTagCreate() {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getCards();
-        document.title = "Card Tag Create - PM CardBase"
+        document.title = "Card Set Create - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -81,14 +111,12 @@ function CardTagCreate() {
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-        .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
+        .filter(card => card.card_number > query.startingNum)
         .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
         .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
         .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
-        .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
-        .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
     const handleShowMore = (event) => {
@@ -96,7 +124,7 @@ function CardTagCreate() {
     };
 
     const handleChange = (event) => {
-        setCardTag({ ...cardTag, [event.target.name]: event.target.value });
+        setCardSet({ ...cardSet, [event.target.name]: event.target.value });
     };
 
     const handleCheck = (event) => {
@@ -104,53 +132,111 @@ function CardTagCreate() {
     };
 
     const handleClick = (card) => {
-        modifySupport? setSupportList([...support_list, card]):
-        setAntiSupportList([...anti_support_list, card]);
-        }
-
-    const handleRemoveCard = (card) => {
-        if (modifySupport) {
-            const supportIndex = support_list.indexOf(card);
-            const newSupportList = [...support_list];
-            newSupportList.splice(supportIndex, 1);
-            setSupportList(newSupportList);
-        }else{
-            const anti_supportIndex = anti_support_list.indexOf(card);
-            const newAntiSupportList = [...anti_support_list];
-            newAntiSupportList.splice(anti_supportIndex, 1);
-            setAntiSupportList(newAntiSupportList);
+        if (modify.maxVariables) {
+            setMaxVariables([...maxVariables, card])
+        } else if (modify.normals){
+            setNormals([...normals, card])
+        } else if (modify.rares){
+            setRares([...rares, card])
+        } else if (modify.superRares){
+            setSuperRares([...superRares, card])
+        } else if (modify.ultraRares){
+            setUltraRares([...ultraRares, card])
         }
     }
 
-    const clearSupport = async() => {
-        setSupportList([]);
+    const handleRemoveCard = (card, list) => {
+        if (list === "maxVariables") {
+            const listIndex = maxVariables.indexOf(card);
+            const newList = [...maxVariables];
+            newList.splice(listIndex, 1);
+            setMaxVariables(newList)
+        } else if (list === "normals"){
+            const listIndex = normals.indexOf(card);
+            const newList = [...normals];
+            newList.splice(listIndex, 1)
+            setNormals(newList)
+        } else if (list === "rares"){
+            const listIndex = rares.indexOf(card);
+            const newList = [...rares];
+            newList.splice(listIndex, 1)
+            setRares(newList)
+        } else if (list === "superRares"){
+            const listIndex = superRares.indexOf(card);
+            const newList = [...superRares];
+            newList.splice(listIndex, 1)
+            setSuperRares(newList)
+        } else {
+            const listIndex = ultraRares.indexOf(card);
+            const newList = [...ultraRares];
+            newList.splice(listIndex, 1)
+            setUltraRares(newList)
+        }
     }
 
-    const clearAntiSupport = async() => {
-        setAntiSupportList([]);
+    const clearList = async(list) => {
+        if (list === "maxVariables") {
+            setMaxVariables([])
+        } else if (list === "normals"){
+            setNormals([])
+        } else if (list === "rares"){
+            setRares([])
+        } else if (list === "superRares"){
+            setSuperRares([])
+        } else {
+            setUltraRares([])
+        }
     }
 
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...cardTag};
-        const support = []
-        const anti_support = []
-        for (let card of support_list){
-            if (!support.includes(card.card_number)) {
-                support.push(card.card_number)
+        const data = {...cardSet};
+        const maxVariablesList = []
+        const normalsList = []
+        const raresList = []
+        const superRaresList = []
+        const ultraRaresList = []
+        const all_cards = []
+        for (let card of maxVariables){
+            if (!maxVariablesList.includes(card.card_number)) {
+                maxVariablesList.push(card.card_number)
+                all_cards.push(card.card_number)
             }
         }
-        for (let card of anti_support_list){
-            if (!anti_support.includes(card.card_number)) {
-                anti_support.push(card.card_number)
+        for (let card of normals){
+            if (!normalsList.includes(card.card_number)) {
+                normalsList.push(card.card_number)
+                all_cards.push(card.card_number)
             }
         }
-        data["support"] = support;
-        data["anti_support"] = anti_support;
-        data["tag_number"] = parseInt(cardTag["tag_number"], 10);
-        const cardTagUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/`;
+        for (let card of rares){
+            if (!raresList.includes(card.card_number)) {
+                raresList.push(card.card_number)
+                all_cards.push(card.card_number)
+            }
+        }
+        for (let card of superRares){
+            if (!superRaresList.includes(card.card_number)) {
+                superRaresList.push(card.card_number)
+                all_cards.push(card.card_number)
+            }
+        }
+        for (let card of ultraRares){
+            if (!ultraRaresList.includes(card.card_number)) {
+                ultraRaresList.push(card.card_number)
+                all_cards.push(card.card_number)
+            }
+        }
+        data["mv"] = maxVariablesList;
+        data["normals"] = normalsList;
+        data["rares"] = raresList;
+        data["super_rares"] = superRaresList;
+        data["ultra_rares"] = ultraRaresList;
+        data["all_cards"] = all_cards;
+        data["ratio"] = ratio;
+        const cardSetUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`;
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -159,24 +245,32 @@ function CardTagCreate() {
             },
         };
 
-        const response = await fetch(cardTagUrl, fetchConfig);
+        const response = await fetch(cardSetUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const card_tag_id = responseData.id;
-            setCardTag({
+            const card_set_id = responseData.id;
+            setCardSet({
                 name: "",
-                rules: "",
-                tag_number: "",
-                support: [],
-                anti_support: [],
+                description: "",
+                ratio: {},
+                mv: [],
+                normals: [],
+                rares: [],
+                super_rares: [],
+                ultra_rares: [],
+                all_cards: [],
+                cover_image: "",
             });
-            setSupportList([])
-            setAntiSupportList([])
-            setModifySupport(true)
-            if (!stayHere) {navigate(`/cardtags/${card_tag_id}`)}
+            setMaxVariables([])
+            setNormals([])
+            setRares([])
+            setSuperRares([])
+            setUltraRares([])
+
+            if (!stayHere) {navigate(`/cardsets/${card_set_id}`)}
             console.log("Success")
         } else {
-            alert("Error in creating Card Tag");
+            alert("Error in creating Card Set");
         }
     }
 
@@ -184,16 +278,68 @@ function CardTagCreate() {
         setShowPool(!showPool);
     };
 
-    const handleModifySupport = (event) => {
-        setModifySupport(!modifySupport);
+    const handleModify = (list) => {
+        if (list === "maxVariables") {
+            setModify({
+                maxVariables: true,
+                normals: false,
+                rares: false,
+                superRares: false,
+                ultraRares: false
+            })
+        } else if (list === "normals"){
+            setModify({
+                maxVariables: false,
+                normals: true,
+                rares: false,
+                superRares: false,
+                ultraRares: false
+            })
+        } else if (list === "rares"){
+            setModify({
+                maxVariables: false,
+                normals: false,
+                rares: true,
+                superRares: false,
+                ultraRares: false
+            })
+        } else if (list === "superRares"){
+            setModify({
+                maxVariables: false,
+                normals: false,
+                rares: false,
+                superRares: true,
+                ultraRares: false
+            })
+        } else {
+            setModify({
+                maxVariables: false,
+                normals: false,
+                rares: false,
+                superRares: false,
+                ultraRares: true
+            })
+        }
     };
 
-    const handleShowSupport = (event) => {
-        setShowSupport(!showSupport);
+    const handleShowMaxVariables = (event) => {
+        setShowMaxVariables(!showMaxVariables);
     };
 
-    const handleShowAntiSupport = (event) => {
-        setShowAntiSupport(!showAntiSupport);
+    const handleShowNormals = (event) => {
+        setShowNormals(!showNormals);
+    };
+
+    const handleShowRares = (event) => {
+        setShowRares(!showRares);
+    };
+
+    const handleShowSuperRares = (event) => {
+        setShowSuperRares(!showSuperRares);
+    };
+
+    const handleShowUltraRares = (event) => {
+        setShowUltraRares(!showUltraRares);
     };
 
     const preprocessText = (text) => {
@@ -213,43 +359,43 @@ function CardTagCreate() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Tag Create</h1>
+                    <h1 className="margin-top-40">Card Set Create</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
-                                    id="create-cardTag-page">
-                                    <h2 className="left">Tag Details</h2>
-                                    <h5 className="label">Name </h5>
+                                    id="create-cardSet-page">
+                                    <h2 className="left">Card Set Details</h2>
+                                    <h5 className="label"> Name </h5>
                                     <input
                                         className="builder-input"
                                         type="text"
-                                        placeholder=" Tag Name"
+                                        placeholder=" Set Name"
                                         onChange={handleChange}
                                         name="name"
-                                        value={cardTag.name}>
+                                        value={cardSet.name}>
                                     </input>
                                     <br/>
-                                    <h5 className="label"> Rules </h5>
+                                    <h5 className="label"> Description </h5>
                                     <textarea
                                         className="builder-text"
                                         type="text"
-                                        placeholder=" Tag Rules"
+                                        placeholder=" Set Description"
                                         onChange={handleChange}
-                                        name="rules"
-                                        value={cardTag.rules}>
+                                        name="description"
+                                        value={cardSet.description}>
                                     </textarea>
                                     <br/>
-                                    <h5 className="label">Tag Number </h5>
-                                    <input
+                                    <h5 className="label">Set Ratios </h5>
+                                    <select
                                         className="builder-input"
-                                        type="number"
-                                        placeholder=" Tag Number"
-                                        onChange={handleChange}
-                                        name="tag_number"
-                                        value={cardTag.tag_number}>
-                                    </input>
+                                        type="text"
+                                        placeholder=" Ratio Type"
+                                        name="ratio"
+                                        onChange={handleRatio}>
+                                        <option value="">Ratio Type</option>
+                                        <option value="standard">Standard</option>
+                                    </select>
                                     <br/>
-
                                     <input
                                         style={{margin: "20px 5px 9px 5px", height:"10px"}}
                                         id="stayHere"
@@ -270,18 +416,18 @@ function CardTagCreate() {
                                             className="left"
                                             onClick={handleSubmit}
                                         >
-                                            Create Card Tag
+                                            Create Card Set
                                         </button>:null
                                     }
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a cardTag</h6>:
+                                        <h6 className="error">You must be logged in to create a cardSet</h6>:
                                     null
                                     }
                                 </div>
                             </div>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
-                                <GamePlayCardSearch/>
+                                <CardSetCreateSearch/>
                             </div>
                         </div>
                         <div className={showPool ? "rarities2" : "no-rarities"}>
@@ -340,7 +486,62 @@ function CardTagCreate() {
                                 </div>
                             </div>
                         </div>
-                        {listView?
+                        <ImageViewCardSetInput
+                            rarityString={"Ultra Rares"}
+                            rarityList={ultraRares}
+                            showRarity={showUltraRares}
+                            handleShowRarity={handleShowUltraRares}
+                            modify={modify}
+                            modifyName={"ultraRares"}
+                            clearList={clearList}
+                            handleModify={handleModify}
+                            handleRemoveCard={handleRemoveCard}
+                        />
+                        <ImageViewCardSetInput
+                            rarityString={"Super Rares"}
+                            rarityList={superRares}
+                            showRarity={showSuperRares}
+                            handleShowRarity={handleShowSuperRares}
+                            modify={modify}
+                            modifyName={"superRares"}
+                            clearList={clearList}
+                            handleModify={handleModify}
+                            handleRemoveCard={handleRemoveCard}
+                        />
+                        <ImageViewCardSetInput
+                            rarityString={"Rares"}
+                            rarityList={rares}
+                            showRarity={showRares}
+                            handleShowRarity={handleShowRares}
+                            modify={modify}
+                            modifyName={"rares"}
+                            clearList={clearList}
+                            handleModify={handleModify}
+                            handleRemoveCard={handleRemoveCard}
+                        />
+                        <ImageViewCardSetInput
+                            rarityString={"Normals"}
+                            rarityList={normals}
+                            showRarity={showNormals}
+                            handleShowRarity={handleShowNormals}
+                            modify={modify}
+                            modifyName={"normals"}
+                            clearList={clearList}
+                            handleModify={handleModify}
+                            handleRemoveCard={handleRemoveCard}
+                        />
+                        <ImageViewCardSetInput
+                            rarityString={"Max Variables"}
+                            rarityList={maxVariables}
+                            showRarity={showMaxVariables}
+                            handleShowRarity={handleShowMaxVariables}
+                            modify={modify}
+                            modifyName={"maxVariables"}
+                            clearList={clearList}
+                            handleModify={handleModify}
+                            handleRemoveCard={handleRemoveCard}
+                        />
+                        {/* {listView?
                             <div className="deck-list">
                                 <div className="support">
                                 <div style={{marginLeft: "20px"}}>
@@ -357,8 +558,7 @@ function CardTagCreate() {
                                         >{support_list.length}</h5>:
                                         null}
                                     </div>
-                                    {support_list.length > 0 ?
-                                        <>
+                                    {support_list.length > 0 ?<>
                                             {support_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                 return (
                                                     <div style={{padding: "5px"}}>
@@ -396,7 +596,7 @@ function CardTagCreate() {
                                     {anti_support_list.length > 0 ?<>
                                             {anti_support_list.sort((a,b) => a.card_number - b.card_number).map((card) => {
                                                 return (
-                                                    <div style={{padding: "5px"}}>
+                                                    <Col style={{padding: "5px"}}>
                                                         <div className="card-container pointer">
                                                             <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                                             <img
@@ -405,14 +605,14 @@ function CardTagCreate() {
                                                                 alt={card.name}
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </Col>
                                                 );
                                             })}
                                         </>:
                                     <h4 className="left no-cards">No cards added</h4>}
                                 </div>
                             </div>
-                        </div>
+                            </div>
                         :<>
                             <ImageViewSupportInput
                                 support_list={support_list}
@@ -432,7 +632,7 @@ function CardTagCreate() {
                                 handleModifySupport={handleModifySupport}
                                 handleRemoveCard={handleRemoveCard}
                             />
-                    </>}
+                    </>} */}
                 </div>:
                     <div className="textwindow">
                     <h1 className="undercontext">This Feature Is For Admins Only</h1>
@@ -443,4 +643,4 @@ function CardTagCreate() {
     );
 }
 
-export default CardTagCreate;
+export default CardSetCreate;

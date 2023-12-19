@@ -27,8 +27,8 @@ class BoosterSetIn(BaseModel):
     rares: list
     super_rares: list
     ultra_rares: list
-    created_on: dict
-    updated_on: dict
+    created_on: Optional[dict]
+    updated_on: Optional[dict]
     all_cards: Optional[List]
     cover_image: Optional[str]
 

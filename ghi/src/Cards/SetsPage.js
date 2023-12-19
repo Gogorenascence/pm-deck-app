@@ -1,21 +1,18 @@
 import {
     Card,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 
 function SetsPage() {
-
+    const {account} = useContext(AuthContext)
     const [boosterSets, setBoosterSets] = useState([]);
-
     const [boosterSetQuery, setBoosterSetQuery] = useState({
         boosterSetName: "",
     });
-
     const [boosterSetSortState, setBoosterSetSortState] = useState("none");
-
     const [boosterSetShowMore, setBoosterSetShowMore] = useState(20);
-
     const [noBoosterSet, setNoBoosterSet] = useState(false);
 
     const getBoosterSets = async() =>{
@@ -97,12 +94,14 @@ function SetsPage() {
                 <option value="name">A-Z</option>
             </select>
             <br/>
-            {/* <NavLink to="/deckbuilder">
-                <button className="left"
-                    variant="dark">
-                        Create Deck
-                </button>
-            </NavLink> */}
+            { account && account.roles.includes("admin")?
+                <NavLink to="/cardsetcreate">
+                    <button
+                        className="left red">
+                        Create
+                    </button>
+                </NavLink>:
+            null}
             <button
                 className="left"
                 variant="dark"
