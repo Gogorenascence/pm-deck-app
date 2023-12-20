@@ -106,6 +106,17 @@ function CardSetCreate({
 
     const [stayHere, setStayHere] = useState(false)
 
+    const getTitle = () => {
+        let title = "";
+        if (copy) {
+            title = "Copy";
+        } else {
+            title = "Edit";
+        }
+        return title;
+    };
+
+
     useEffect(() => {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
@@ -382,18 +393,18 @@ function CardSetCreate({
 
     const isQueryEmpty = Object.values(query).every((value) => value === "");
 
-    // if (!(account && account.roles.includes("admin"))) {
-    //     setTimeout(function() {
-    //         window.location.href = `${process.env.PUBLIC_URL}/`
-    //     }, 3000);
-    // }
+    if (!(account && account.roles.includes("admin"))) {
+        setTimeout(function() {
+            window.location.href = `${process.env.PUBLIC_URL}/`
+        }, 3000);
+    }
 
 
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">{action === "create"? "Card Set Create" : "Card Set Edit"}</h1>
+                    <h1 className="margin-top-40">{action === "create"? "Card Set Create" : `Card Set ${getTitle()}`}</h1>
                         <div style={{display: "flex", justifyContent: "center"}}>
                             <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                                 <div
