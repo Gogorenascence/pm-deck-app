@@ -140,6 +140,7 @@ const SimulatorActionsContextProvider = ({ children }) => {
         Focus: ${player.focus},
         Mettle: ${player.mettle}
         ${player.secondWind? ", Second Wind": ""}`)
+        console.log(player)
     }
 
     const resetPlayer = () => {

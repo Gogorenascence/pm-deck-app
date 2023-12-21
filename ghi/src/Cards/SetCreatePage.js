@@ -59,7 +59,7 @@ function CardSetCreate({
     const ratioTypes = {
         "": { mv: 1, normals: 5, rares: 3, supers: 2 },
         standard: { mv: 1, normals: 5, rares: 3, supers: 2 },
-        short: { mv: 1, normals: 3, rares: 1, supers: 1 },
+        short: { mv: 0, normals: 3, rares: 2, supers: 1 },
         gold: { mv: 0, normals: 3, rares: 3, supers: 4 },
     }
 
@@ -108,25 +108,29 @@ function CardSetCreate({
 
     const getTitle = () => {
         let title = "";
-        if (copy) {
-            title = "Copy";
+        if (action === "create") {
+            title = "Create"
+        } else if (action === "edit" && !copy){
+            title = "Edit"
         } else {
-            title = "Edit";
+            title = "Copy"
         }
         return title;
-    };
+    }
 
 
     useEffect(() => {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getBoosterSet()
-        document.title = "Card Set Create - PM CardBase"
+        document.title = action === "create"?
+        "Card Set Create - PM CardBase":
+        `Card Set ${getTitle()} - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[]);
+    },[boosterSet]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

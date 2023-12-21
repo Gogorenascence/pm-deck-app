@@ -132,6 +132,7 @@ function CardsPage() {
         setQuery({ ...query, [event.target.name]: event.target.value });
         setShowMore(20)
         console.log(query)
+        console.log()
     };
 
     const handleQueryReset = (event) => {
@@ -438,7 +439,7 @@ function CardsPage() {
             <div className="cards-page-card-list">
                 {all_cards.slice(0, showMore).map(card => {
                     return (
-                        <NavLink to={`/cards/${card.card_number}`} key={card.name}>
+                        <NavLink to={`/cards/${card.card_number}`}>
                                 <img className="card-list-card glow3"
                                     title={card.name}
                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
