@@ -281,13 +281,13 @@ function NavBar() {
               }
             </li>
             <li className="nav-item">
-              <div className="navbar-select pointer">
                 <NavLink className="username2" to="/simulator" onClick={() => followLink()}>
+              <div className="navbar-select pointer">
                   <h5 className="navbar-menu-item">
                     Simulator
                   </h5>
-                </NavLink>
               </div>
+                </NavLink>
             </li>
             { account && account.roles.includes("admin")?
               <li className="nav-item">
@@ -300,34 +300,9 @@ function NavBar() {
                 </div>
                 { showMenu.show && showMenu.section === "admin"?
                   <div className="nav-dropdown-content">
-                    <NavLink className="dropdown-select username2" to="/cardcreate" onClick={() => followLink()}>
+                    <NavLink className="dropdown-select username2" to="/createportal" onClick={() => followLink()}>
                       <div className="nav-dropdown-item">
-                        Card Create
-                      </div>
-                    </NavLink>
-                    <NavLink className="dropdown-select username2" to="/categorycreate" onClick={() => followLink()}>
-                      <div className="nav-dropdown-item">
-                        Category Create
-                      </div>
-                    </NavLink>
-                    <NavLink className="dropdown-select username2" to="/cardtypecreate" onClick={() => followLink()}>
-                      <div className="nav-dropdown-item">
-                        Card Type Create
-                      </div>
-                    </NavLink>
-                    <NavLink className="dropdown-select username2" to="/cardtagcreate" onClick={() => followLink()}>
-                      <div className="nav-dropdown-item">
-                        Card Tag Create
-                      </div>
-                    </NavLink>
-                    <NavLink className="dropdown-select username2" to="/extraeffectcreate" onClick={() => followLink()}>
-                      <div className="nav-dropdown-item">
-                        Extra Effect Create
-                      </div>
-                    </NavLink>
-                    <NavLink className="dropdown-select username2" to="/reactioncreate" onClick={() => followLink()}>
-                      <div className="nav-dropdown-item">
-                        Reaction Create
+                        Admin Create Portal
                       </div>
                     </NavLink>
                   </div>:null
@@ -459,34 +434,9 @@ function NavBar() {
             </div>
             { showMenu.show && showMenu.section === "admin"?
               <div className="nav-dropdown-content">
-                <NavLink className="nav-dropdown-item" to="/cardcreate" onClick={() => handleShowMobileMenu()}>
+                <NavLink className="nav-dropdown-item" to="/createportal" onClick={() => handleShowMobileMenu()}>
                   <div className="dropdown-select">
-                    Card Create
-                  </div>
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/categorycreate" onClick={() => handleShowMobileMenu()}>
-                  <div className="dropdown-select">
-                    Category Create
-                  </div>
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/cardtypecreate" onClick={() => handleShowMobileMenu()}>
-                  <div className="dropdown-select">
-                    Card Type Create
-                  </div>
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/cardtagcreate" onClick={() => handleShowMobileMenu()}>
-                  <div className="dropdown-select">
-                    Card Tag Create
-                  </div>
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/extraeffectcreate" onClick={() => handleShowMobileMenu()}>
-                  <div className="dropdown-select">
-                    Extra Effect Create
-                  </div>
-                </NavLink>
-                <NavLink className="nav-dropdown-item" to="/reactioncreate" onClick={() => handleShowMobileMenu()}>
-                  <div className="dropdown-select">
-                    Reaction Create
+                    Admin Create Portal
                   </div>
                 </NavLink>
               </div>:null

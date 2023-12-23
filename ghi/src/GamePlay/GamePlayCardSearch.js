@@ -53,7 +53,7 @@ function GamePlayCardSearch() {
             cardNumber: "",
             heroID: "",
             series: "",
-            illustrator: "",
+            startingNum: "",
             type: "",
             cardClass: "",
             extraEffect: "",
@@ -107,26 +107,26 @@ function GamePlayCardSearch() {
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Hero ID"
-                name="heroID"
-                value={query.heroID}
+                placeholder=" Illustrator"
+                name="illustrator"
+                value={query.illustrator}
                 onChange={handleQuery}>
             </input>
             <br/>
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Series"
-                name="series"
-                value={query.series}
+                placeholder=" Hero ID"
+                name="heroID"
+                value={query.heroID}
                 onChange={handleQuery}>
             </input>
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Illustrator"
-                name="illustrator"
-                value={query.illustrator}
+                placeholder=" Series"
+                name="series"
+                value={query.series}
                 onChange={handleQuery}>
             </input>
             <br/>

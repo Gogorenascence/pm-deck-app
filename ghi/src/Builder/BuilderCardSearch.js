@@ -51,7 +51,7 @@ function BuilderCardSearch() {
             cardNumber: "",
             heroID: "",
             series: "",
-            illustrator: "",
+            startingNum: "",
             type: "",
             cardClass: "",
             extraEffect: "",
@@ -105,26 +105,26 @@ function BuilderCardSearch() {
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Hero ID"
-                name="heroID"
-                value={query.heroID}
+                placeholder=" Starting Card Number"
+                name="startingNum"
+                value={query.startingNum}
                 onChange={handleQuery}>
             </input>
             <br/>
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Series"
-                name="series"
-                value={query.series}
+                placeholder=" Hero ID"
+                name="heroID"
+                value={query.heroID}
                 onChange={handleQuery}>
             </input>
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Illustrator"
-                name="illustrator"
-                value={query.illustrator}
+                placeholder=" Series"
+                name="series"
+                value={query.series}
                 onChange={handleQuery}>
             </input>
             <br/>

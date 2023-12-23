@@ -17,7 +17,8 @@ function DeckRow() {
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
 
-        const deckData = data.decks
+        const deckData = data.decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
+        .slice(-4).reverse()
         for (let deck of deckData){
             const date = new Date(deck["created_on"]["full_time"])
 
@@ -82,9 +83,6 @@ function DeckRow() {
         setDecks(deckData);
     };
 
-    const all_decks = decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
-    .slice(-4).reverse()
-
     const createdBy = (deck) => {
         const account = deck.account_id? users.find(user => user.id === deck.account_id): null
         return account? account.username : "TeamPlayMaker"
@@ -92,14 +90,14 @@ function DeckRow() {
 
     useEffect(() => {
         getDecks();
-    }, []);
+    }, [account]);
 
 
 
     return(
         <div className="white-space">
             <div className="deck-row-card-list2">
-                {all_decks.map((deck) => {
+                {decks.map((deck) => {
                     return (
                         <NavLink to={`/decks/${deck.id}`} key={deck.id}>
                             <Card className="text-white text-center card-list-card3 glow">

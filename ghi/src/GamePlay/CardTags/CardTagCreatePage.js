@@ -81,7 +81,7 @@ function CardTagCreate() {
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-        .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
+        .filter(card => card.card_number >= query.startingNum)
         .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)

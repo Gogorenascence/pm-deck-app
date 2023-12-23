@@ -184,7 +184,7 @@ function PullsDeckBuilder() {
             cardNumber: "",
             heroID: "",
             series: "",
-            illustrator: "",
+            startingNum: "",
             type: "",
             cardClass: "",
             extraEffect: "",
@@ -203,7 +203,7 @@ function PullsDeckBuilder() {
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-        .filter(card => card.illustrator.toLowerCase().includes(query.illustrator.toLowerCase()))
+                .filter(card => card.card_number >= query.startingNum)
         .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
@@ -528,26 +528,26 @@ function PullsDeckBuilder() {
                         <input
                             className="left dcbsearch-medium"
                             type="text"
-                            placeholder=" Hero ID"
-                            name="heroID"
-                            value={query.heroID}
+                            placeholder=" Starting Card Number"
+                            name="startingNum"
+                            value={query.startingNum}
                             onChange={handleQuery}>
                         </input>
                         <br/>
                         <input
                             className="left dcbsearch-medium"
                             type="text"
-                            placeholder=" Series"
-                            name="series"
-                            value={query.series}
+                            placeholder=" Hero ID"
+                            name="heroID"
+                            value={query.heroID}
                             onChange={handleQuery}>
                         </input>
                         <input
                             className="left dcbsearch-medium"
                             type="text"
-                            placeholder=" Illustrator"
-                            name="illustrator"
-                            value={query.illustrator}
+                            placeholder=" Series"
+                            name="series"
+                            value={query.series}
                             onChange={handleQuery}>
                         </input>
                         <br/>

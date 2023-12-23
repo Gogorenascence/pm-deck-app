@@ -49,6 +49,7 @@ import CardTagsPage from "./GamePlay/CardTags/CardTagsPage";
 import CardTypesPage from "./GamePlay/CardTypes/CardTypesPage";
 import ReactionsPage from "./GamePlay/Reactions/ReactionsPage";
 import SimulatorPage from "./Simulator/SimulatorPage";
+import CreatePortal from "./Accounts/CreatePortal";
 
 
 function App() {
@@ -117,6 +118,7 @@ function App() {
               <Route path="/gameplay" element={<GamePlayPage />} />
               <Route path="/reactions" element={<ReactionsPage />} />
               <Route path="/simulator" element={<SimulatorPage />} />
+              <Route path="/createportal" element={<CreatePortal />} />
             </Routes>
 
           </div>

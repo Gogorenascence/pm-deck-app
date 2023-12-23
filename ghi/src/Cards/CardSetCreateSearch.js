@@ -101,27 +101,27 @@ function CardSetCreateSearch() {
             </input>
             <input
                 className="left dcbsearch-medium"
-                type="text"
-                placeholder=" Hero ID"
-                name="heroID"
-                value={query.heroID}
+                type="number"
+                placeholder=" Starting Card Number"
+                name="startingNum"
+                value={query.startingNum}
                 onChange={handleQuery}>
             </input>
             <br/>
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Series"
-                name="series"
-                value={query.series}
+                placeholder=" Hero ID"
+                name="heroID"
+                value={query.heroID}
                 onChange={handleQuery}>
             </input>
             <input
                 className="left dcbsearch-medium"
-                type="number"
-                placeholder=" Starting Number"
-                name="startingNum"
-                value={query.startingNum}
+                type="text"
+                placeholder=" Series"
+                name="series"
+                value={query.series}
                 onChange={handleQuery}>
             </input>
             <br/>

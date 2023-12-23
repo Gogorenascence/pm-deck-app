@@ -10,7 +10,7 @@ const GamePlayQueryContextProvider = ({ children }) => {
         cardNumber: "",
         heroID: "",
         series: "",
-        illustrator: "",
+        startingNum: "",
         type: "",
         cardClass: "",
         extraEffect: "",
