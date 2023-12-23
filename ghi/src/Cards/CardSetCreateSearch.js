@@ -102,7 +102,7 @@ function CardSetCreateSearch() {
             <input
                 className="left dcbsearch-medium"
                 type="number"
-                placeholder=" Starting Card Number"
+                placeholder=" Starting Number"
                 name="startingNum"
                 value={query.startingNum}
                 onChange={handleQuery}>

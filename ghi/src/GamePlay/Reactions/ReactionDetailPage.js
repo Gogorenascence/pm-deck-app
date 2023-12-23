@@ -126,7 +126,7 @@ function ReactionDetails() {
                                         <div style={{display: "flex", justifyContent: "center"}}>
                                             <img
                                                 className="builder-card2 pointer glow3"
-                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                title={card.name}
                                                 src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                 alt={card.name}/>
                                         </div>

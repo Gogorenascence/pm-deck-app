@@ -5,6 +5,7 @@ import CardSetCreateSearch from "./CardSetCreateSearch.js";
 import { CardSetQueryContext } from "../context/CardSetQueryContext.js";
 import ImageViewCardSetInput from "./ImageViewCardSetInput.js";
 import BackButton from "../display/BackButton.js";
+import { getKeyByValue } from "../Helpers.js";
 
 
 function CardSetCreate({
@@ -26,6 +27,7 @@ function CardSetCreate({
     });
 
     const {card_set_id} = useParams()
+    const [ratioType, setRatioType] = useState("")
 
     const getBoosterSet = async() =>{
         const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
@@ -40,21 +42,17 @@ function CardSetCreate({
             const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
             const data = await response.json();
             const booster = data.booster_sets.find(booster => booster.id === card_set_id)
+            const type = getKeyByValue(ratioTypes, booster.ratio)
             setCardSet(booster);
             setMaxVariables(booster.mv.map(card_number => sortedCards.find(card => card.card_number === card_number)))
             setNormals(booster.normals.map(card_number => sortedCards.find(card => card.card_number === card_number)))
             setRares(booster.rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
             setSuperRares(booster.super_rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
             setUltraRares(booster.ultra_rares.map(card_number => sortedCards.find(card => card.card_number === card_number)))
+            console.log(type)
+            setRatioType(type)
         }
     };
-
-    const [ratio, setRatio] = useState({
-        mv: 1,
-        normals: 5,
-        rares: 3,
-        supers: 2,
-    })
 
     const ratioTypes = {
         "": { mv: 1, normals: 5, rares: 3, supers: 2 },
@@ -64,7 +62,8 @@ function CardSetCreate({
     }
 
     const handleRatio = (event) => {
-        setRatio(ratioTypes[event.target.value])
+        console.log(ratioType)
+        setRatioType(event.target.value)
     }
 
     const { account } = useContext(AuthContext)
@@ -273,7 +272,7 @@ function CardSetCreate({
         data["super_rares"] = superRaresList;
         data["ultra_rares"] = ultraRaresList;
         data["all_cards"] = all_cards;
-        data["ratio"] = ratio;
+        data["ratio"] = ratioTypes[ratioType];
         const cardSetUrl = action === "create" || copy?
             `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/` :
             `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`
@@ -440,8 +439,8 @@ function CardSetCreate({
                                         type="text"
                                         placeholder=" Ratio Type"
                                         name="ratio"
+                                        value={ratioType}
                                         onChange={handleRatio}>
-                                        <option value="">Ratio Type</option>
                                         <option value="standard">Standard</option>
                                         <option value="short">Short</option>
                                         <option value="gold">Gold</option>

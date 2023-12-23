@@ -528,7 +528,7 @@ function PullsDeckBuilder() {
                         <input
                             className="left dcbsearch-medium"
                             type="text"
-                            placeholder=" Starting Card Number"
+                            placeholder=" Starting Number"
                             name="startingNum"
                             value={query.startingNum}
                             onChange={handleQuery}>

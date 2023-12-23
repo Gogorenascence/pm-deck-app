@@ -34,6 +34,20 @@ export function returnScroll() {
     });
 }
 
+function objectsAreEqual(obj1, obj2) {
+    const obj1Keys = Object.keys(obj1);
+    for (const key of obj1Keys) {
+        if (obj1[key] !== obj2[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+export function getKeyByValue(obj1, obj2) {
+    return Object.keys(obj1).find(key => objectsAreEqual(obj1[key], obj2));
+}
+
 // useEffect(() => {
 //     adjustFontSize();
 //     window.addEventListener('resize', adjustFontSize);

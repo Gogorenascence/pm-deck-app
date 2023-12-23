@@ -249,7 +249,7 @@ function CardsPage() {
                     <input
                         className="left"
                         type="text"
-                        placeholder=" Starting Card Number"
+                        placeholder=" Starting Number"
                         style={{width: "177px", height: "37px"}}
                         name="startingNum"
                         value={query.startingNum}

@@ -107,9 +107,9 @@ function GamePlayCardSearch() {
             <input
                 className="left dcbsearch-medium"
                 type="text"
-                placeholder=" Illustrator"
-                name="illustrator"
-                value={query.illustrator}
+                placeholder=" Starting Number"
+                name="startingNum"
+                value={query.startingNum}
                 onChange={handleQuery}>
             </input>
             <br/>
