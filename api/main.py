@@ -21,7 +21,8 @@ app = FastAPI()
 
 
 origins = [
-    "http://localhost:3000",
+    # "http://localhost:3000",
+    "http://192.168.1.220:3000",
     os.environ.get("REACT_APP_FASTAPI_SERVICE_API_HOST", None),
     os.environ.get("CORS_HOST", None),
     os.environ.get("PUBLIC_URL", None),

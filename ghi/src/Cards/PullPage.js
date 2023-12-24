@@ -2,7 +2,7 @@ import {
     Card,
 } from "react-bootstrap";
 import { useState, useEffect, useRef, useContext } from "react";
-import { NavLink, useParams} from 'react-router-dom';
+import { NavLink, useParams, useNavigate} from 'react-router-dom';
 import BackButton from "../display/BackButton";
 import { PullsContext } from "../context/PullsContext";
 
@@ -21,6 +21,11 @@ function PullPage() {
     const [num, setNum] = useState("");
     const [savedPulls, setSavedPulls] = useState([]);
     const {pulls, setPulls}= useContext(PullsContext);
+
+    const lastSavedPullRef = useRef(null);
+    const navigate = useNavigate()
+
+
 
     const [loading, setLoading] = useState(false)
 
@@ -78,7 +83,6 @@ function PullPage() {
         setNum(event.target.value)
     };
 
-    const lastSavedPullRef = useRef(null);
 
     const handleSubmit = (event) => {
         if (num) {
@@ -197,7 +201,7 @@ function PullPage() {
                     value={num}>
                 </input>
                 <button
-                    className="left media-button media-center"
+                    className="left media-center"
                     onClick={handleSubmit}>
                         Open
                 </button>
@@ -216,29 +220,27 @@ function PullPage() {
                     </button>} */}
                 {fullView?
                     <button
-                        className="left media-button media-center"
+                        className="left media-center"
                         onClick={handleFullView}
                     >
                         Multiple View
                     </button>:
                     <button
-                        className="left media-button media-center"
+                        className="left media-center"
                         onClick={handleFullView}
                     >
                         Single View
                     </button>}
-                <button onClick={handleSavePulls} className="left media-button media-center">
+                <button onClick={handleSavePulls} className="left media-center">
                     Save Pulls
                 </button>
-                <button onClick={handleClearPulls} className="left media-button media-center">
+                <button onClick={handleClearPulls} className="left media-center">
                     Clear Pulls
                 </button>
-                <NavLink to={`/cardsets/${card_set_id}/pulls/deckbuilder`}>
-                    <button
-                        className="left media-button media-center">
-                        Create Deck
-                    </button>
-                </NavLink>
+                <button className="left media-center" onClick={() => navigate(`/cardsets/${card_set_id}/pulls/deckbuilder`)}>
+                    Create Deck
+                </button>
+
                 <BackButton/>
             </div>
 

@@ -11,6 +11,7 @@ import SimulateButton from "../Simulator/SimulateButton";
 import { AuthContext } from "../context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 import StatsPanel from "./StatsPanel";
+import PopUp from "./PopUp";
 
 
 function DeckDetailPage() {
@@ -31,6 +32,20 @@ function DeckDetailPage() {
     const [showMain, setShowMain] = useState(true);
     const [showPluck, setShowPluck] = useState(true);
     const [showHand, setShowHand] = useState(false);
+
+    const [popUpAction, setPopUpAction] = useState({
+        action: "",
+        message: "",
+        show: false
+    });
+
+    const handlePopUp = (action, message, show) => {
+        setPopUpAction({
+            action: action,
+            message: message,
+            show: show
+        })
+    }
 
     const {account, users} = useContext(AuthContext)
 
@@ -167,6 +182,14 @@ function DeckDetailPage() {
 
     return (
         <div className="white-space">
+            {popUpAction.show === true?
+                <PopUp
+                    action={popUpAction.action}
+                    message={popUpAction.message}
+                    show={popUpAction.show}
+                    setPopUpAction={setPopUpAction}
+                />
+            :null}
             <Card className="text-white text-center card-list-card3" style={{margin: "2% 0%" }}>
                 <div className="card-image-wrapper">
                     <div className="card-image-clip2">
@@ -288,7 +311,7 @@ function DeckDetailPage() {
                     </Row>
                 </div>
             </div>
-            <div style={{ display: "flex" }}>
+            <div className="dd-button-row flex">
                 {(account && account.roles.includes("admin")) || (account && deck.account_id === account.id)?
                     <>
                         <NavLink to={`/decks/${deck.id}/edit`}>
@@ -302,7 +325,7 @@ function DeckDetailPage() {
                         </NavLink>
                         <button
                             className="left heightNorm red"
-                            onClick={handleDelete}
+                            onClick={() => handlePopUp(handleDelete, "Are you sure you want to delete this deck?", true)}
                             style={{marginLeft: "5px", marginRight: "7px"}}
                             >
                             Delete Deck

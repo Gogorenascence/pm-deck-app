@@ -47,6 +47,23 @@ const AuthContextProvider = ({ children }) => {
         .catch(console.error);
     };
 
+    // const getToken = async (event) => {
+    //     try {
+    //         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token/`, {
+    //             credentials: "include",
+    //         });
+    //         if (!response.ok) {
+    //             throw new Error('Failed to fetch');
+    //         }
+    //         const data = await response.json();
+    //         console.log(response); // Log the obtained response data
+    //         return data?.access_token ?? null;
+    //     } catch (error) {
+    //         console.error(error);
+    //         return null;
+    //     }
+    // };
+
     const signup = async (event) => {
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/`
         console.log(signUpCred)

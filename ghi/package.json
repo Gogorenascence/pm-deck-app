@@ -27,7 +27,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node ./windows-setup.js && react-scripts start",
+    "start": "node ./windows-setup.js && set HOST=192.168.1.220 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

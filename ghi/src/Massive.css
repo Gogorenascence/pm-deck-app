@@ -2874,6 +2874,17 @@ button:hover {
   outline: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.dd-button-row {
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.dd-button-row::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
     display: grid;

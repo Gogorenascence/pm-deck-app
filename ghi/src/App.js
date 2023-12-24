@@ -18,7 +18,6 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import LightSwitch from "./display/LightSwitch";
 import BackToTop from "./display/BackToTop";
-import "./index.css"
 import "./Massive.css"
 import AppProvider from "./context/AppProvider";
 import PullsDeckBuilder from "./Builder/PullsDeckBuilder";
