@@ -48,7 +48,7 @@ setPopUpAction,
 
     return(
         <>
-            <div className={!isDark? "medium-modal" :"medium-modal-dark"}
+            <div className={!isDark? "small-modal" :"small-modal-dark"}
                 ref={content}>
                 <p>{message}</p>
                 <button className="back-button" onClick={handleConfirm}>Yes</button>

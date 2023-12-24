@@ -9,9 +9,12 @@ import ListViewListInput from "./ListViewListInput";
 import CardPool from "./CardPool";
 import DeckImport from './DeckImport';
 import StatsPanel from './StatsPanel';
+import {beforeLeaving} from '../Helpers';
+import { saveDeckToSessionStorage, loadDeckFromSessionStorage } from '../Storage';
 
 
 function DeckBuildandImport() {
+    const savedDeckState = JSON.parse(sessionStorage.getItem('savedDeckState')) || {};
     const {account} = useContext(AuthContext)
     const {query,
         sortState,
@@ -22,6 +25,7 @@ function DeckBuildandImport() {
         setShowMore} = useContext(BuilderQueryContext)
 
     const fileInput = useRef(null);
+
     const [importedDecks, setImportedDecks] = useState([]);
     const [showDecks, setShowDecks] = useState(false);
 
@@ -75,26 +79,45 @@ function DeckBuildandImport() {
         setShowDecks(!showDecks);
     };
 
-
-    const [deck, setDeck] = useState({
-        name: "",
-        account_id: "",
-        description: "",
-        strategies: [],
-        cards: [],
-        pluck: [],
-        side: [],
-        views: 0,
-        cover_card: null,
-        parent_id: "",
-        private: false,
-    });
-    const [main_list, setMainList] = useState([]);
-    const [pluck_list, setPluckList] = useState([]);
+    const [deck, setDeck] = useState(
+        savedDeckState?
+            {
+                name: savedDeckState.name,
+                account_id: savedDeckState.account_id,
+                description: savedDeckState.description,
+                strategies: [],
+                cards: [],
+                pluck: [],
+                side: [],
+                views: 0,
+                cover_card: savedDeckState.cover_card,
+                parent_id: savedDeckState.parent_id,
+                private: false,
+            }
+        :
+            {
+                name: "",
+                account_id: "",
+                description: "",
+                strategies: [],
+                cards: [],
+                pluck: [],
+                side: [],
+                views: 0,
+                cover_card: null,
+                parent_id: "",
+                private: false,
+            }
+    );
+    const [main_list, setMainList] = useState(
+        savedDeckState.main_list ?? []);
+    const [pluck_list, setPluckList] = useState(
+        savedDeckState.pluck_list ?? []);
     const combinedList = main_list.concat(pluck_list);
     const uniqueList = [...new Set(combinedList)];
 
-    const [selectedList, setSelectedList] = useState([]);
+    const [selectedList, setSelectedList] = useState(
+        savedDeckState.selectedList ?? []);
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
@@ -156,7 +179,15 @@ function DeckBuildandImport() {
     };
 
     useEffect(() => {
+        loadDeckFromSessionStorage(
+            deck,
+            setDeck,
+            setSelectedList,
+            setMainList,
+            setPluckList
+        );
         window.scroll(0, 0);
+        beforeLeaving()
         document.body.style.overflow = 'auto';
         getCards();
         getPulledCards();
@@ -167,12 +198,21 @@ function DeckBuildandImport() {
     // eslint-disable-next-line
     }, []);
 
+    useEffect(() => {
+        saveDeckToSessionStorage(
+            deck,
+            selectedList,
+            main_list,
+            pluck_list
+        );
+    }, [deck, selectedList, main_list, pluck_list]);
+
     const all_cards = selectedPool.filter(card => card.name.toLowerCase().includes(query.cardName.toLowerCase()))
     .filter(card => (card.effect_text + card.second_effect_text).toLowerCase().includes(query.cardText.toLowerCase()))
     .filter(card => card.card_number.toString().includes(query.cardNumber))
     .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
     .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-            .filter(card => card.card_number >= query.startingNum)
+    .filter(card => card.card_number >= query.startingNum)
     .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
     .filter(card => card.card_class.includes(query.cardClass))
     .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
@@ -374,15 +414,15 @@ function DeckBuildandImport() {
                             onChange={handleStrategyChange}
                             >
                             <option value="">Strategy</option>
-                            <option value="Aggro">Aggro</option>
-                            <option value="Combo">Combo</option>
-                            <option value="Control">Control</option>
-                            <option value="Mid-range">Mid-range</option>
-                            <option value="Ramp">Ramp</option>
-                            <option value="Second Wind">Second Wind</option>
-                            <option value="Stall">Stall</option>
-                            <option value="Toolbox">Toolbox</option>
-                            <option value="other">other</option>
+                            <option value="Aggro" selected={selectedList.includes("Aggro")}>Aggro</option>
+                            <option value="Combo" selected={selectedList.includes("Combo")}>Combo</option>
+                            <option value="Control" selected={selectedList.includes("Control")}>Control</option>
+                            <option value="Mid-range" selected={selectedList.includes("Mid-range")}>Mid-range</option>
+                            <option value="Ramp" selected={selectedList.includes("Ramp")}>Ramp</option>
+                            <option value="Second Wind" selected={selectedList.includes("Second Wind")}>Second Wind</option>
+                            <option value="Stall" selected={selectedList.includes("Stall")}>Stall</option>
+                            <option value="Toolbox" selected={selectedList.includes("Toolbox")}>Toolbox</option>
+                            <option value="other" selected={selectedList.includes("other")}>other</option>
                         </select>
                         <br/>
                         <input
