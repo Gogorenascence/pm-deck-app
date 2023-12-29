@@ -88,7 +88,7 @@ function CardTypeEdit() {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[cardType]);
+    },[cardType.id]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

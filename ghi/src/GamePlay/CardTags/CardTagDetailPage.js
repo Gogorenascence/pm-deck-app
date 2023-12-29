@@ -58,7 +58,7 @@ function CardTagDetails() {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[cardTag]);
+    },[cardTag.id]);
 
     const navigate = useNavigate()
 

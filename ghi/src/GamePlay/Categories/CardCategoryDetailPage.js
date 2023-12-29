@@ -73,7 +73,7 @@ function CardCategoryDetail() {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    },[cardCategory]);
+    },[cardCategory.id]);
 
     const navigate = useNavigate()
 

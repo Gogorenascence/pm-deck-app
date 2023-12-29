@@ -5,6 +5,7 @@ import {
     flipSound
 } from "../Sounds/Sounds";
 import { GameStateContext } from "../context/GameStateContext";
+import { MainActionsContext } from "../context/MainActionsContext";
 
 function PlayAreaZone({
 objectName,
@@ -21,6 +22,7 @@ discardCard
 }){
 
     const {player, volume, addToLog} = useContext(GameStateContext)
+    const {addCardFromPlay, swapping, setSwapping} = useContext(MainActionsContext)
     const [showPlayAreaMenu, setShowPlayAreaMenu] = useState({
         fighter_slot: false,
         aura_slot: false,
@@ -46,7 +48,7 @@ discardCard
 
     return(
         <div>
-            <div className={showPlayAreaMenu[objectName]? "zone-menu": "hidden2"}>
+            <div className={showPlayAreaMenu[objectName] && zoneArray.length > 0? "zone-menu": "hidden2"}>
                 <div className="card-menu-item"
                     onClick={() => {
                         activateSound(volume)
@@ -64,13 +66,22 @@ discardCard
                     }
                 ><p>Flip</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => handlePlaceCardFromHand(index)}
-                ><p>Swap</p></div>
+                    onClick={() => {swapping.cardToSwap && swapping.zone === objectName?
+                        setSwapping({cardToSwap: "", zone: "", index: null}):
+                        setSwapping({
+                            cardToSwap: zoneArray[zoneArray.length-1],
+                            zone: objectName,
+                            index: 0
+                        })}}
+                ><p>{swapping.cardToSwap && swapping.zone === objectName? "Cancel": "Swap from Hand"}</p></div>
                 <div className="card-menu-item"
                     // onClick={() => discardCardFromHand(index)}
                 ><p>Move</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => topDeckCard(index)}
+                    onClick={() => {
+                        addCardFromPlay(zoneArray[zoneArray.length-1], 0, objectName)
+                        handleMenuClose()
+                    }}
                 ><p>Return to Hand</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
@@ -110,7 +121,9 @@ discardCard
                                 handleMenuClose()
                             }}
                             onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
-                            className="builder-card5 pointer glow3"
+                            className={swapping.zone === objectName?
+                                "selected3 builder-card5 pointer glow3":
+                                "builder-card5 pointer glow3"}
                             src={!faceDown[objectName]?
                                     (zoneArray[zoneArray.length-1].picture_url ?
                                         zoneArray[zoneArray.length-1].picture_url :
@@ -203,6 +216,7 @@ function ExtraZone({
 }){
 
     const {player, volume, addToLog} = useContext(GameStateContext)
+    const {addCardFromPlay, swapping, setSwapping} = useContext(MainActionsContext)
     const [showPlayAreaMenu, setShowPlayAreaMenu] = useState({
         slot_5: false,
         slot_6: false,
@@ -227,7 +241,7 @@ function ExtraZone({
     }
     return(
         <div>
-            <div className={showPlayAreaMenu[objectName]? "zone-menu2": "hidden2"}>
+            <div className={showPlayAreaMenu[objectName] && zoneArray.length > 0? "zone-menu2": "hidden2"}>
                 <div className="card-menu-item"
                     onClick={() => {
                         activateSound(volume)
@@ -235,13 +249,22 @@ function ExtraZone({
                     }}
                 ><p>Resolve</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => handlePlaceCardFromHand(index)}
-                ><p>Swap</p></div>
+                    onClick={() => {swapping.cardToSwap && swapping.zone === objectName?
+                        setSwapping({cardToSwap: "", zone: "", index: null}):
+                        setSwapping({
+                            cardToSwap: zoneArray[zoneArray.length-1],
+                            zone: objectName,
+                            index: 0
+                        })}}
+                ><p>{swapping.cardToSwap && swapping.zone === objectName? "Cancel": "Swap from Hand"}</p></div>
                 <div className="card-menu-item"
                     // onClick={() => discardCardFromHand(index)}
                 ><p>Move</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => topDeckCard(index)}
+                    onClick={() => {
+                        addCardFromPlay(zoneArray[zoneArray.length-1], 0, objectName)
+                        handleMenuClose()
+                    }}
                 ><p>Return to Hand</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
@@ -271,7 +294,9 @@ function ExtraZone({
                             onContextMenu={(event) => handleMenu(event)}
                             onClick={(event) => handleMenu(event)}
                             onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
-                            className="builder-card5 pointer glow3"
+                            className={swapping.zone === objectName?
+                                "selected3 builder-card5 pointer glow3":
+                                "builder-card5 pointer glow3"}
                             src={zoneArray[zoneArray.length-1].picture_url ?
                                 zoneArray[zoneArray.length-1].picture_url :
                                 "https://i.imgur.com/krY25iI.png"}

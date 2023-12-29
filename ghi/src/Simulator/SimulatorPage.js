@@ -69,6 +69,8 @@ function SimulatorPage() {
         drawCard,
         addCardFromDeck,
         addCardFromDiscard,
+        swapCardInPlay,
+        swapping,
         discardFromDeck,
         handleShowCardMenu,
         selectCard,
@@ -177,7 +179,6 @@ function SimulatorPage() {
                     }
 
                     <button onClick={checkPlayer}>Player Info</button>
-                    <button onClick={mute}>{volume >0? "Sound Off":"Sound On"}</button>
                 </div>
                 <div className={loading && decks.length < 1? "deckSelect2": "hidden2"}>
                 {/* <div className="deckSelect2"> */}
@@ -234,7 +235,7 @@ function SimulatorPage() {
                         <div className="card-pool-fill-hand">
                             {player.hand.map((card, index) => {
                                 return (
-                                    <div style={{display: "flex", justifyContent: "center"}}>
+                                    <div className="in-hand" style={{display: "flex", justifyContent: "center"}}>
                                         <div>
                                             <div className={showCardMenu === index? "card-menu": "hidden2"}>
                                                 <div className="card-menu-item"
@@ -263,7 +264,7 @@ function SimulatorPage() {
                                                 ><p>Deckbottom</p></div>
                                             </div>
                                             <img
-                                                onClick={(event) => handleShowCardMenu(index, event)}
+                                                onClick={(event) => {!swapping.cardToSwap? handleShowCardMenu(index, event):swapCardInPlay(index)}}
                                                 onContextMenu={(event) => handleShowCardMenu(index, event)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 onDoubleClick={() => {
@@ -293,6 +294,7 @@ function SimulatorPage() {
                     handleChangePosition={handleChangePosition}
                     handleChangeScale={handleChangeScale}
                     handleChangeTransformRotateX={handleChangeTransformRotateX}
+                    volume={volume}
                 />
                 <LogChatPanel/>
             </div>

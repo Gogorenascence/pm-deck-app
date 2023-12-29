@@ -51,6 +51,14 @@ const MainActionsContextProvider = ({ children }) => {
         setShuffling,
     } = useContext(SimulatorActionsContext)
 
+    const [swapping, setSwapping] = useState({
+        cardToSwap: "",
+        zone: "",
+        index: null
+    })
+
+    const [moving, setMoving] = useState(false)
+
     const isShuffling = () => {
         setShuffling(true)
         setTimeout(() => setShuffling(false), 1000)
@@ -135,6 +143,53 @@ const MainActionsContextProvider = ({ children }) => {
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
+    }
+
+    const addCardFromPlay = (card, index, zone) => {
+        if (hand.length < 8) {
+            const newPlayArea = {...player.playArea}
+            const selectZone = newPlayArea[zone]
+            const newHand = [...hand]
+
+            newHand.push(card)
+            setHand(newHand)
+            const newSelectZone = selectZone.filter((_, i) => i !== index)
+            newPlayArea[zone] = newSelectZone
+            drawSound(volume);
+
+            setPlayArea(newPlayArea)
+            addToLog("System", "system", `"${player.name} returned "${card.name}" from their play to their hand.`)
+        } else {
+            addToLog("System", "system", "You can have more than 8 cards in your hand.")
+        }
+    }
+
+    const swapCardInPlay = (handIndex) => {
+        const cardInPlay = swapping.cardToSwap
+        const zone = swapping.zone
+        const zoneIndex = swapping.index
+        const newPlayArea = {...player.playArea}
+        const selectZone = newPlayArea[zone]
+        const cardInHand = hand[handIndex]
+
+        const newHand = hand.filter((_, i) => i !== handIndex)
+        newHand.push(cardInPlay)
+        setHand(newHand)
+        const newSelectZone = selectZone.filter((_, i) => i !== zoneIndex)
+        newSelectZone.push(cardInHand)
+        newPlayArea[zone] = newSelectZone
+        drawSound(volume);
+
+        setPlayArea(newPlayArea)
+        setSwapping({
+            cardToSwap: "",
+            zone: ""
+        })
+        addToLog(
+            "System",
+            "system",
+            `"${player.name} swapped "${cardInPlay.name}"
+            from their play with "${cardInHand.name}" from their hand.`)
     }
 
     const discardFromDeck = (index) => {
@@ -323,6 +378,10 @@ const MainActionsContextProvider = ({ children }) => {
             drawCard,
             addCardFromDeck,
             addCardFromDiscard,
+            addCardFromPlay,
+            swapCardInPlay,
+            swapping,
+            setSwapping,
             discardFromDeck,
             handleShowCardMenu,
             selectCard,
