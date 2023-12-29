@@ -60,7 +60,6 @@ function SimulatorPage() {
         gameStart,
         checkPlayer,
         resetPlayer,
-        mute,
         handleHoveredCard
     } = useContext(SimulatorActionsContext)
 

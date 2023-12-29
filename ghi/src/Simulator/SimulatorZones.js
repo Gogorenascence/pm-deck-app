@@ -22,7 +22,16 @@ discardCard
 }){
 
     const {player, volume, addToLog} = useContext(GameStateContext)
-    const {addCardFromPlay, swapping, setSwapping} = useContext(MainActionsContext)
+
+    const {
+        addCardFromPlay,
+        swapping,
+        setSwapping,
+        moving,
+        setMoving,
+        moveCard
+    } = useContext(MainActionsContext)
+
     const [showPlayAreaMenu, setShowPlayAreaMenu] = useState({
         fighter_slot: false,
         aura_slot: false,
@@ -67,50 +76,66 @@ discardCard
                 ><p>Flip</p></div>
                 <div className="card-menu-item"
                     onClick={() => {swapping.cardToSwap && swapping.zone === objectName?
-                        setSwapping({cardToSwap: "", zone: "", index: null}):
+                        setSwapping({cardToSwap: "", zone: "", index: null, zoneFaceDown: false}):
                         setSwapping({
-                            cardToSwap: zoneArray[zoneArray.length-1],
+                            cardToSwap: zoneArray[0],
                             zone: objectName,
-                            index: 0
-                        })}}
+                            index: 0,
+                            zoneFaceDown: faceDown[objectName]? true: false
+                        })}
+                    }
                 ><p>{swapping.cardToSwap && swapping.zone === objectName? "Cancel": "Swap from Hand"}</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => discardCardFromHand(index)}
-                ><p>Move</p></div>
+                    onClick={() => {moving.cardToMove && moving.zone === objectName?
+                        setMoving({cardToMove: "", zone: "", index: null}):
+                        setMoving({
+                            cardToMove: zoneArray[0],
+                            zone: objectName,
+                            index: 0,
+                            zoneFaceDown: faceDown[objectName]? true: false
+                        })}
+                    }
+                ><p>{moving.cardToMove && moving.zone === objectName? "Cancel": "Move"}</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
-                        addCardFromPlay(zoneArray[zoneArray.length-1], 0, objectName)
+                        addCardFromPlay(zoneArray[0], 0, objectName)
                         handleMenuClose()
                     }}
                 ><p>Return to Hand</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
-                        discardCard(zoneArray[zoneArray.length-1], 0, objectName)
+                        discardCard(zoneArray[0], 0, objectName)
                         handleMenuClose()
                     }}
                 ><p>Discard</p></div>
             </div>
             <div className={selectedIndex === null? "matCard" : "matCardSelect"}
-                onClick={() => { if (!playingFaceDown) {
-                        playCard(objectName)
-                    } else {
-                        playCard(objectName, objectName)}
-                    }
-                }
+                onClick={() => { if (!moving.cardToMove) {
+                                    if (!playingFaceDown && selectedIndex) {
+                                        playCard(objectName)
+                                        setFaceDown({...faceDown, [objectName]: false})
+                                    } else {
+                                        playCard(objectName, objectName)
+                                    }
+                                } else {
+                                    moveCard(objectName)
+                                }
+                            }
+                        }
             >
                 {zoneArray.length > 0 ?
                     <>
                         {zoneArray.length > 1 ?
                             <div className="matCardOverlay"
                                 onClick={() => setShowPlayAreaModal({name: stringName, zone: zoneArray})}
-                                onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
+                                onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             >
                                 <h1 className="fontSize60">{zoneArray.length}</h1>
                             </div> :null
                         }
                         <img
                             onDoubleClick={() => {
-                                discardCard(zoneArray[zoneArray.length-1], 0, objectName)
+                                discardCard(zoneArray[0], 0, objectName)
                                 setFaceDown({...faceDown, [objectName]: false})
                                 handleMenuClose()
                             }}
@@ -120,18 +145,20 @@ discardCard
                                 flipSound(volume)
                                 handleMenuClose()
                             }}
-                            onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
-                            className={swapping.zone === objectName?
+                            onMouseEnter={() => handleHoveredCard(zoneArray[0])}
+                            className={swapping.zone === objectName || moving.zone === objectName?
                                 "selected3 builder-card5 pointer glow3":
                                 "builder-card5 pointer glow3"}
                             src={!faceDown[objectName]?
-                                    (zoneArray[zoneArray.length-1].picture_url ?
-                                        zoneArray[zoneArray.length-1].picture_url :
+                                    (zoneArray[0].picture_url?
+                                        zoneArray[0].picture_url :
                                         "https://i.imgur.com/krY25iI.png"
                                     ):
-                                    "https://i.imgur.com/krY25iI.png"
+                                    zoneArray.length > 1?
+                                        zoneArray[0].picture_url:
+                                        "https://i.imgur.com/krY25iI.png"
                                 }
-                            alt={zoneArray[zoneArray.length-1].name}/>
+                            alt={zoneArray[0].name}/>
                     </>
                 :null}
             </div>
@@ -150,6 +177,14 @@ function ActivePluckZone({
 }){
 
     const {volume} = useContext(GameStateContext)
+    const {
+        addCardFromPlay,
+        swapping,
+        setSwapping,
+        moving,
+        setMoving,
+        moveCard
+    } = useContext(MainActionsContext)
 
     return(
         <div>
@@ -177,24 +212,33 @@ function ActivePluckZone({
                 ><p>Deckbottom</p></div>
             </div> */}
             <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
-                onClick={() => playPluck(objectName)}
+                onClick={() => { if (!moving.cardToMove) {
+                            playPluck(objectName)
+                        } else {
+                            moveCard(objectName, true)
+                        }
+                    }
+                }
             >
                 {zoneArray.length > 0 ?
                     <>
                         {zoneArray.length > 1 ?
-                            <div className="matCardOverlay">
+                            <div className="matCardOverlay"
+                                // onClick={() => setShowActivePluck({name: stringName, zone: zoneArray})}
+                                onMouseEnter={() => handleHoveredCard(zoneArray[0])}
+                            >
                                 <h1 className="fontSize60">{zoneArray.length}</h1>
                             </div> :null
                         }
                         <img
-                            onDoubleClick={() => discardPluck(zoneArray[zoneArray.length-1], 0, objectName)}
-                            onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
+                            onDoubleClick={() => discardPluck(zoneArray[0], 0, objectName)}
+                            onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             className="builder-card5 pointer glow3"
 
-                            src={zoneArray[zoneArray.length-1].picture_url ?
-                                    zoneArray[zoneArray.length-1].picture_url :
+                            src={zoneArray[0].picture_url ?
+                                    zoneArray[0].picture_url :
                                     "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
-                            alt={zoneArray[zoneArray.length-1].name}/>
+                            alt={zoneArray[0].name}/>
                     </>
                 :null}
             </div>
@@ -216,7 +260,16 @@ function ExtraZone({
 }){
 
     const {player, volume, addToLog} = useContext(GameStateContext)
-    const {addCardFromPlay, swapping, setSwapping} = useContext(MainActionsContext)
+
+    const {
+        addCardFromPlay,
+        swapping,
+        setSwapping,
+        moving,
+        setMoving,
+        moveCard
+    } = useContext(MainActionsContext)
+
     const [showPlayAreaMenu, setShowPlayAreaMenu] = useState({
         slot_5: false,
         slot_6: false,
@@ -252,55 +305,71 @@ function ExtraZone({
                     onClick={() => {swapping.cardToSwap && swapping.zone === objectName?
                         setSwapping({cardToSwap: "", zone: "", index: null}):
                         setSwapping({
-                            cardToSwap: zoneArray[zoneArray.length-1],
+                            cardToSwap: zoneArray[0],
                             zone: objectName,
                             index: 0
-                        })}}
+                        })}
+                    }
                 ><p>{swapping.cardToSwap && swapping.zone === objectName? "Cancel": "Swap from Hand"}</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => discardCardFromHand(index)}
-                ><p>Move</p></div>
+                    onClick={() => {moving.cardToMove && moving.zone === objectName?
+                        setMoving({cardToMove: "", zone: "", index: null}):
+                        setMoving({
+                            cardToMove: zoneArray[0],
+                            zone: objectName,
+                            index: 0
+                        })}
+                    }
+                ><p>{moving.cardToMove && moving.zone === objectName? "Cancel": "Move"}</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
-                        addCardFromPlay(zoneArray[zoneArray.length-1], 0, objectName)
+                        addCardFromPlay(zoneArray[0], 0, objectName)
                         handleMenuClose()
                     }}
                 ><p>Return to Hand</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
-                        discardCard(zoneArray[zoneArray.length-1], 0, objectName)
+                        discardCard(zoneArray[0], 0, objectName)
                         handleMenuClose()
                     }}
                 ><p>Discard</p></div>
             </div>
-            <div className={selectedIndex !== null && playingFaceDown === false ? "matCardSelect" : "matCard"}
-                onClick={() => playCard(objectName)}
+            <div className={selectedIndex === null? "matCard" : "matCardSelect"}
+                onClick={() => { if (!moving.cardToMove) {
+                                    !playingFaceDown?
+                                        playCard(objectName):
+                                        playCard(objectName, objectName)
+                                } else {
+                                    moveCard(objectName)
+                                }
+                            }
+                        }
             >
                 {zoneArray.length > 0 ?
                     <>
                         {zoneArray.length > 1 ?
                             <div className="matCardOverlay"
                                 onClick={() => setShowPlayAreaModal({name: stringName, zone: zoneArray})}
-                                onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
+                                onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             >
                                 <h1 className="fontSize60">{zoneArray.length}</h1>
                             </div> :null
                         }
                         <img
                             onDoubleClick={() => {
-                                discardCard(zoneArray[zoneArray.length-1], 0, objectName)
+                                discardCard(zoneArray[0], 0, objectName)
                                 handleMenuClose()
                             }}
                             onContextMenu={(event) => handleMenu(event)}
                             onClick={(event) => handleMenu(event)}
-                            onMouseEnter={() => handleHoveredCard(zoneArray[zoneArray.length-1])}
-                            className={swapping.zone === objectName?
+                            onMouseEnter={() => handleHoveredCard(zoneArray[0])}
+                            className={swapping.zone === objectName || moving.zone === objectName?
                                 "selected3 builder-card5 pointer glow3":
                                 "builder-card5 pointer glow3"}
-                            src={zoneArray[zoneArray.length-1].picture_url ?
-                                zoneArray[zoneArray.length-1].picture_url :
+                            src={zoneArray[0].picture_url ?
+                                zoneArray[0].picture_url :
                                 "https://i.imgur.com/krY25iI.png"}
-                            alt={zoneArray[zoneArray.length-1].name}/>
+                            alt={zoneArray[0].name}/>
                     </>
                 :null}
             </div>

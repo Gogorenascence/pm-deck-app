@@ -24,6 +24,8 @@ const MainActionsContextProvider = ({ children }) => {
         playerMainDeck,
         setPlayerMainDeck,
         setPlayArea,
+        activePluck,
+        setActivePluck,
         addToLog,
         volume,
         faceDown,
@@ -57,7 +59,12 @@ const MainActionsContextProvider = ({ children }) => {
         index: null
     })
 
-    const [moving, setMoving] = useState(false)
+    const [moving, setMoving] = useState({
+        cardToMove: "",
+        zone: "",
+        index: null,
+        zoneFaceDown: false
+    })
 
     const isShuffling = () => {
         setShuffling(true)
@@ -183,7 +190,8 @@ const MainActionsContextProvider = ({ children }) => {
         setPlayArea(newPlayArea)
         setSwapping({
             cardToSwap: "",
-            zone: ""
+            zone: "",
+            index: null
         })
         addToLog(
             "System",
@@ -304,6 +312,48 @@ const MainActionsContextProvider = ({ children }) => {
         }
     }
 
+    const moveCard = (nextZone, pluck) => {
+        if (moving.cardToMove) {
+            const newPlayArea = {...player.playArea}
+            const newActivePluck = pluck? {...activePluck}: null
+            const selectZone = newPlayArea[moving.zone]
+            const nextSelectZone = !pluck?
+                newPlayArea[nextZone]:
+                newActivePluck[nextZone]
+            if (moving.zoneFaceDown && !pluck){
+                setFaceDown({
+                    ...faceDown,
+                    [nextZone]: true,
+                    [moving.zone]: false
+                })
+            } else {
+                setFaceDown({...faceDown, [moving.zone]: false})
+            }
+
+            nextSelectZone.push(moving.cardToMove)
+            const newSelectZone = selectZone.filter((_, i) => i !== moving.index)
+            if (!pluck) {
+                newPlayArea[moving.zone] = newSelectZone
+                newPlayArea[nextZone] = nextSelectZone
+                setPlayArea(newPlayArea)
+            } else {
+                newPlayArea[moving.zone] = newSelectZone
+                newActivePluck[nextZone] = nextSelectZone
+                setPlayArea(newPlayArea)
+                setActivePluck(newActivePluck)
+            }
+            drawSound(volume);
+
+            setMoving({
+                cardToMove: "",
+                zone: "",
+                index: null,
+                pluck: false,
+                zoneFaceDown: false
+            })
+        }
+    }
+
     const discardCard = (card, index, zone) => {
         const newPlayArea = {...player.playArea}
         const selectZone = newPlayArea[zone]
@@ -388,6 +438,9 @@ const MainActionsContextProvider = ({ children }) => {
             handleCardFromHand,
             handlePlaceCardFromHand,
             playCard,
+            moving,
+            setMoving,
+            moveCard,
             discardCard,
             discardCardFromHand,
             topDeckCard,
