@@ -117,7 +117,7 @@ discardCard
                                     } else {
                                         playCard(objectName, objectName)
                                     }
-                                } else {
+                                } else if (moving.zone !== objectName) {
                                     moveCard(objectName)
                                 }
                             }
@@ -127,7 +127,10 @@ discardCard
                     <>
                         {zoneArray.length > 1 ?
                             <div className="matCardOverlay"
-                                onClick={() => setShowPlayAreaModal({name: stringName, zone: zoneArray})}
+                                onClick={() => setShowPlayAreaModal({
+                                    name: stringName,
+                                    objectName: objectName
+                                })}
                                 onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             >
                                 <h1 className="fontSize60">{zoneArray.length}</h1>
@@ -348,8 +351,13 @@ function ExtraZone({
                 {zoneArray.length > 0 ?
                     <>
                         {zoneArray.length > 1 ?
-                            <div className="matCardOverlay"
-                                onClick={() => setShowPlayAreaModal({name: stringName, zone: zoneArray})}
+                            <div className={moving.zone === objectName?
+                                    "matCardOverlay selected3" :
+                                    "matCardOverlay"}
+                                onClick={() => setShowPlayAreaModal({
+                                    name: stringName,
+                                    objectName: objectName
+                                })}
                                 onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             >
                                 <h1 className="fontSize60">{zoneArray.length}</h1>

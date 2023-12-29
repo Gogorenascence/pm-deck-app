@@ -87,7 +87,7 @@ function GameBoard({
     const [showDiscardModal, setShowDiscardModal] = useState(false)
     const [showPluckSearchModal, setShowPluckSearchModal] = useState(false)
     const [showPluckDiscardModal, setShowPluckDiscardModal] = useState(false)
-    const [showPlayAreaModal, setShowPlayAreaModal] = useState({name: "", zone: null})
+    const [showPlayAreaModal, setShowPlayAreaModal] = useState({name: "", zone: null, objectName: ""})
     const [showActivePluckModal, setShowActivePluckModal] = useState(null)
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
@@ -165,6 +165,7 @@ function GameBoard({
                 volume={volume}
             />
             <PlayAreaModal
+                playArea={playArea}
                 showPlayAreaModal={showPlayAreaModal}
                 setShowPlayAreaModal={setShowPlayAreaModal}
                 handleHoveredCard={handleHoveredCard}

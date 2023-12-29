@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { GameStateContext } from "../context/GameStateContext";
+import { MainActionsContext } from "../context/MainActionsContext";
 
 
 function PlayAreaModal({
     // ownership,
-    // selectPluck,
+    playArea,
     handleHoveredCard,
     // selectedPluckIndex,
     showPlayAreaModal,
@@ -16,6 +18,17 @@ function PlayAreaModal({
 
     const content = useRef(null)
     useOutsideAlerter(content)
+
+    const {faceDown} = useContext(GameStateContext)
+    const {
+        addCardFromPlay,
+        discardCard,
+        swapping,
+        setSwapping,
+        moving,
+        setMoving,
+        moveCard
+    } = useContext(MainActionsContext)
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -42,19 +55,19 @@ function PlayAreaModal({
 
     useEffect(() => {
       // Check if filteredCards is empty
-        if (showPlayAreaModal.zone?.length === 0) {
+        if (playArea[showPlayAreaModal.objectName]?.length === 0) {
             handleClose(); // Call handleClose when filteredCards is empty
         }
-    }, [showPlayAreaModal.zone]);
+    }, [playArea[showPlayAreaModal.objectName]]);
 
-    // const handleShowCardMenu = (index) => {
-    //     showPluckMenu === index?
-    //     setShowPluckMenu(null):
-    //         setShowPluckMenu(index)
-    // }
+    const handleShowCardMenu = (index) => {
+        showCardMenu === index?
+        setShowCardMenu(null):
+            setShowCardMenu(index)
+    }
 
     const handleClose = () => {
-        setShowPlayAreaModal({name: "", zone: null})
+        setShowPlayAreaModal({name: "", objectName: ""})
         // setShowPluckMenu(null)
         document.body.style.overflow = 'auto';
     };
@@ -64,41 +77,80 @@ function PlayAreaModal({
     //     handleClose()
     // }
 
+    const [showCardMenu, setShowCardMenu] = useState(null)
+
     return(
         <div>
-            {showPlayAreaModal.zone ?
+            {playArea[showPlayAreaModal.objectName]?
                 <div className="sim-modal2 topbar"
                 >
-                    <div className={showPlayAreaModal.zone.length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
+                    <div className={playArea[showPlayAreaModal.objectName].length < 5 ? "outScrollableSim" : "outScrollableSim2"} ref={content}>
                         <h1 className="centered-h1">{showPlayAreaModal.name}</h1>
                         <div>
-                        <div className={showPlayAreaModal.zone.length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
-                            {showPlayAreaModal.zone.map((card, index) => {
+                        <div className={playArea[showPlayAreaModal.objectName].length < 5 ? "card-pool-fill-hand" : "card-pool-fill"}>
+                            {playArea[showPlayAreaModal.objectName].map((card, index) => {
                                 return (
                                     <div style={{display: "flex", justifyContent: "center"}}>
                                         <div>
-                                            {/* <div className={showCardMenu === index ? "deck-menu5Items": "hidden2"}>
+                                            <div className={showCardMenu === index ? "deck-menu5Items": "hidden2"}>
                                                 <div className="card-menu-item"
-                                                    onClick={() => handlePluck(index)}
-                                                ><p>{selectedPluckIndex === index? "Cancel" : "Play"}</p></div>
-                                                <div className="card-menu-item"><p>Place</p></div>
+                                                    // onClick={() => {
+                                                    //     activateSound(volume)
+                                                    //     addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`)
+                                                    // }}
+                                                ><p>Resolve</p></div>
                                                 <div className="card-menu-item"
-                                                    onClick={() => discardPluckFromOwnership(index)}
+                                                    // onClick={() => {swapping.cardToSwap && swapping.zone === objectName?
+                                                    //     setSwapping({cardToSwap: "", zone: "", index: null, zoneFaceDown: false}):
+                                                    //     setSwapping({
+                                                    //         cardToSwap: zoneArray[0],
+                                                    //         zone: objectName,
+                                                    //         index: 0,
+                                                    //         zoneFaceDown: faceDown[objectName]? true: false
+                                                    //     })}
+                                                    // }
+                                                ><p>Swap from Hand</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => {moving.cardToMove && moving.zone === showPlayAreaModal.objectName?
+                                                        setMoving({cardToMove: "", zone: "", index: null}):
+                                                        setMoving({
+                                                            cardToMove: playArea[showPlayAreaModal.objectName][index],
+                                                            zone: showPlayAreaModal.objectName,
+                                                            index: index,
+                                                            zoneFaceDown: faceDown[showPlayAreaModal.objectName]? true: false
+                                                        })
+                                                        handleClose()}
+                                                    }
+                                                ><p>{moving.cardToMove && moving.zone === showPlayAreaModal.objectName?
+                                                    "Cancel": "Move"}</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => {
+                                                        addCardFromPlay(
+                                                            playArea[showPlayAreaModal.objectName][index],
+                                                            index,
+                                                            showPlayAreaModal.objectName)
+                                                        // handleClose()
+                                                        setShowCardMenu(null)
+                                                    }}
+                                                ><p>Return to Hand</p></div>
+                                                <div className="card-menu-item"
+                                                    onClick={() => {
+                                                        discardCard(
+                                                            playArea[showPlayAreaModal.objectName][index],
+                                                            index,
+                                                            showPlayAreaModal.objectName)
+                                                        setShowCardMenu(null)
+                                                    }}
                                                 ><p>Discard</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => returnPluckToDeck(index, "top")}
-                                                ><p>Decktop</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => returnPluckToDeck(index, "bottom")}
-                                                ><p>Deckbottom</p></div>
-                                            </div> */}
+                                            </div>
+
                                             <img
-                                                // onClick={() => handleShowCardMenu(index)}
+                                                onClick={() => handleShowCardMenu(index)}
                                                 onMouseEnter={() => handleHoveredCard(card)}
                                                 // onDoubleClick={() => handlePluck(index)}
                                                 className={
-                                                    // showPluckMenu === index || selectedPluckIndex === index?
-                                                    "selected3 builder-card margin-10 pointer glow3"
+                                                    showCardMenu === index?
+                                                    "selected3 builder-card margin-10 pointer glow3":"builder-card margin-10 pointer glow3"
                                                 // :
                                                     // "builder-card margin-10 pointer glow3"
                                                 }
@@ -111,8 +163,10 @@ function PlayAreaModal({
                         </div>
                         </div>
                         <div className="cd-inner margin-top-20">
-                            <button className={showPlayAreaModal.zone.length > 4 ? "margin-bottom-20" :null} onClick={handleClose}>
-                                Close
+                            <button
+                                className={playArea[showPlayAreaModal.objectName].length > 4 ? "margin-bottom-20" :null}
+                                onClick={handleClose}
+                                >Close
                             </button>
                         </div>
                     </div>
