@@ -16,9 +16,12 @@ hide lightswitch and back-to-top
 <!-- play area menu - move, flip, discard, swap, return -->
 <!-- stack modal menu - move, discard, swap, return -->
 main deck add to play
-active pluck menu - move, discard, return
+<!-- active pluck menu - move, discard, return -->
 place option will include active pluck
 place from hand
+move from active pluck to play areas
+send cards in the active pluck to the discard pile
+
 
 
 After crashing selecting a new deck crashes it again
