@@ -3,6 +3,7 @@ menu on cards and piles
 <!-- shuffle -->
 <!-- add all board cards to context -->
 player info display
+Note when player is checking a player display
 <!-- toggle for extra slots -->
 defending cards and tokens
 <!-- return cards to the hand -->
@@ -17,3 +18,4 @@ hide lightswitch and back-to-top
 main deck add to play
 active pluck menu - move, discard, return
 place option will include active pluck
+place from hand

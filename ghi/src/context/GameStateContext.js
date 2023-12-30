@@ -57,6 +57,17 @@ const GameStateContextProvider = ({ children }) => {
         ending_slot: false
     })
 
+    const [defending, setDefending] = useState({
+        fighter_slot: false,
+        aura_slot: false,
+        move_slot: false,
+        ending_slot: false,
+        slot_5: false,
+        slot_6: false,
+        slot_7: false,
+        slot_8: false,
+    })
+
     const [log, setLog] = useState([])
 
     const addToLog = (user, role, message) => {
@@ -156,6 +167,8 @@ const GameStateContextProvider = ({ children }) => {
             setVolume,
             faceDown,
             setFaceDown,
+            defending,
+            setDefending,
             playingFaceDown,
             setPlayingFaceDown,
             handleChangeTransformRotateX,

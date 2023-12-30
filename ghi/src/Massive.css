@@ -2341,6 +2341,12 @@ button:hover {
   animation: pulse3 1.5s infinite;
 }
 
+.selected4 {
+  background-color: rgb(170, 0, 0);
+  /* animation: pulse3 5s infinite; */
+  transition: all 0.5s;
+}
+
 .card-pool-fill-hand {
   display: flex;
   justify-content: center;
@@ -2930,6 +2936,8 @@ button:hover {
   transform: translate(0, -40px);
   transition: all 0.5s;
 }
+
+
 
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
