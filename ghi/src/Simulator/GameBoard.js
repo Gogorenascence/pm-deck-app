@@ -174,7 +174,7 @@ function GameBoard({
                 <div className={showExtra? "flex": "hidden2"}>
                     <ExtraZone
                         objectName={"slot_5"}
-                        stringName={"Extra Slot 5"}
+                        stringName={"Extra Slot 1"}
                         zoneArray={slot5}
                         selectedIndex={selectedIndex}
                         playCard={playCard}
@@ -185,7 +185,7 @@ function GameBoard({
                     />
                     <ExtraZone
                         objectName={"slot_6"}
-                        stringName={"Extra Slot 6"}
+                        stringName={"Extra Slot 2"}
                         zoneArray={slot6}
                         selectedIndex={selectedIndex}
                         playCard={playCard}
@@ -196,7 +196,7 @@ function GameBoard({
                     />
                     <ExtraZone
                         objectName={"slot_7"}
-                        stringName={"Extra Slot 7"}
+                        stringName={"Extra Slot 3"}
                         zoneArray={slot7}
                         selectedIndex={selectedIndex}
                         playCard={playCard}
@@ -207,7 +207,7 @@ function GameBoard({
                     />
                     <ExtraZone
                         objectName={"slot_8"}
-                        stringName={"Extra Slot 8"}
+                        stringName={"Extra Slot 4"}
                         zoneArray={slot8}
                         selectedIndex={selectedIndex}
                         playCard={playCard}

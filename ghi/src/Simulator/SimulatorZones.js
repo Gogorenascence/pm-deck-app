@@ -297,7 +297,7 @@ function ExtraZone({
     }
     return(
         <div>
-            <div className={showPlayAreaMenu[objectName] && zoneArray.length > 0? "zone-menu2": "hidden2"}>
+            <div className={showPlayAreaMenu[objectName] && zoneArray.length === 1 ? "zone-menu2": "hidden2"}>
                 <div className="card-menu-item"
                     onClick={() => {
                         activateSound(volume)
