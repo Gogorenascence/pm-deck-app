@@ -63,6 +63,8 @@ function GameBoard({
         playingFaceDown,
         defending,
         setDefending,
+        setDefendingCard,
+        handleDefending,
         addToLog
     } = useContext(GameStateContext)
 
@@ -94,9 +96,7 @@ function GameBoard({
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
 
-    const handleDefending = (slot) => {
-        setDefending({...defending, [slot]: !defending[slot]})
-    }
+
 
     return (
         <div className={showExtra? "play-area" : "play-area2"}>

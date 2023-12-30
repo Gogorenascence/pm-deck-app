@@ -29,7 +29,8 @@ const SimulatorActionsContextProvider = ({ children }) => {
         setActivePluck,
         volume,
         setVolume,
-        addToLog
+        addToLog,
+        defendingCard
     } = useContext(GameStateContext)
 
     const [selectedMainDeck, setSelectedMainDeck] = useState({
@@ -141,6 +142,7 @@ const SimulatorActionsContextProvider = ({ children }) => {
         Mettle: ${player.mettle}
         ${player.secondWind? ", Second Wind": ""}`)
         console.log(player)
+        console.log(defendingCard)
     }
 
     const resetPlayer = () => {

@@ -68,6 +68,51 @@ const GameStateContextProvider = ({ children }) => {
         slot_8: false,
     })
 
+    const [defendingCard, setDefendingCard] = useState({
+        card: "",
+        hp: 5,
+        block: 0,
+        counter: 0,
+        endure: 0,
+        redirect: 0,
+    })
+
+    const handleDefending = (slot) => {
+        if (!defending[slot]) {
+
+            const newDefendingCard = {
+                card: "",
+                hp: 5,
+                block: 0,
+                counter: 0,
+                endure: 0,
+                redirect: 0,
+            }
+            if (playArea[slot][0]) {
+                const card = playArea[slot][0]
+                newDefendingCard["card"] = card
+                for (let reaction of card.reactions) {
+                    if (reaction.name) {
+                        const newReaction = reaction.name.toLowerCase()
+                        newDefendingCard[newReaction] = reaction.count
+                    }
+                }
+            }
+            setDefending({...defending, [slot]: true})
+            setDefendingCard(newDefendingCard)
+        } else {
+            setDefending({...defending, [slot]: false})
+            setDefendingCard({
+                card: "",
+                hp: 5,
+                block: 0,
+                counter: 0,
+                endure: 0,
+                redirect: 0,
+            })
+        }
+    }
+
     const [log, setLog] = useState([])
 
     const addToLog = (user, role, message) => {
@@ -169,6 +214,9 @@ const GameStateContextProvider = ({ children }) => {
             setFaceDown,
             defending,
             setDefending,
+            defendingCard,
+            setDefendingCard,
+            handleDefending,
             playingFaceDown,
             setPlayingFaceDown,
             handleChangeTransformRotateX,
