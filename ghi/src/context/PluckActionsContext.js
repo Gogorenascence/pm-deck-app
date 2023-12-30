@@ -43,6 +43,18 @@ const PluckActionsContextProvider = ({ children }) => {
         allPlayerPluck,
     } = useContext(SimulatorActionsContext)
 
+    const [swapping, setSwapping] = useState({
+        cardToSwap: "",
+        zone: "",
+        index: null
+    })
+
+    const [movingPluck, setMovingPluck] = useState({
+        pluckToMove: "",
+        zone: "",
+        index: null,
+    })
+
     const isShufflingPluck = () => {
         setShufflingPluck(true)
         setTimeout(() => setShufflingPluck(false), 1000)
@@ -141,6 +153,54 @@ const PluckActionsContextProvider = ({ children }) => {
         }
     }
 
+    const addPluckFromActivePluck = (card, index, zone) => {
+        if (ownership.length + allPlayerPluck < 8 ) {
+            const newActivePluck = {...player.activePluck}
+            const selectZone = newActivePluck[zone]
+            const newOwnership = [...ownership]
+
+            newOwnership.push(card)
+            setOwnership(newOwnership)
+            const newSelectZone = selectZone.filter((_, i) => i !== index)
+            newActivePluck[zone] = newSelectZone
+            drawSound(volume);
+
+            setActivePluck(newActivePluck)
+            addToLog("System", "system", `"${player.name} returned "${card.name}" from their Active Pluck.`)
+        } else {
+            addToLog("You can have more than 8 Pluck between in your Ownership and Active Pluck.")
+        }
+    }
+
+    const swapPluckInOwnership = (ownershipIndex) => {
+        const cardInPlay = swapping.cardToSwap
+        const zone = swapping.zone
+        const zoneIndex = swapping.index
+        const newActivePluck = {...player.activePluck}
+        const selectZone = newActivePluck[zone]
+        const cardInOwnership = ownership[ownershipIndex]
+
+        const newOwnership = ownership.filter((_, i) => i !== ownershipIndex)
+        newOwnership.push(cardInPlay)
+        setOwnership(newOwnership)
+        const newSelectZone = selectZone.filter((_, i) => i !== zoneIndex)
+        newSelectZone.push(cardInOwnership)
+        newActivePluck[zone] = newSelectZone
+        specialSound(volume);
+
+        setActivePluck(newActivePluck)
+        setSwapping({
+            cardToSwap: "",
+            zone: "",
+            index: null
+        })
+        addToLog(
+            "System",
+            "system",
+            `"${player.name} swapped "${cardInPlay.name}"
+            from their Active Pluck with "${cardInOwnership.name}" from their ownership.`)
+    }
+
     const discardFromPluckDeck = (index) => {
         const newPluckDiscardPile = [...pluckDiscard]
         const newPluckDeck = [...playerPluckDeck.cards]
@@ -184,6 +244,31 @@ const PluckActionsContextProvider = ({ children }) => {
         }
     }
 
+    const movePluck = (nextZone) => {
+        if (movingPluck.pluckToMove) {
+            const newActivePluck = {...player.activePluck}
+            const selectZone = newActivePluck[movingPluck.zone]
+            const nextSelectZone = newActivePluck[nextZone]
+
+            nextSelectZone.push(movingPluck.pluckToMove)
+            const newSelectZone = selectZone.filter((_, i) => i !== movingPluck.index)
+
+            newActivePluck[movingPluck.zone] = newSelectZone
+            newActivePluck[nextZone] = nextSelectZone
+            setActivePluck(newActivePluck)
+
+            {nextSelectZone.length > 1?
+                equipSound(volume*1.5):
+                drawSound(volume)};
+
+            setMovingPluck({
+                pluckToMove: "",
+                zone: "",
+                index: null,
+            })
+        }
+    }
+
     const discardPluck = (card, index, zone) => {
         const newActivePluck = {...player.activePluck}
         const selectZone = newActivePluck[zone]
@@ -195,6 +280,7 @@ const PluckActionsContextProvider = ({ children }) => {
         destroySound(volume)
         setPluckDiscard(newDiscardPile)
         setActivePluck(newActivePluck)
+        addToLog("System", "system", `${player.name} discarded "${card.name}" from their Active Pluck`)
     }
 
     const discardPluckFromOwnership = (index) => {
@@ -249,9 +335,16 @@ const PluckActionsContextProvider = ({ children }) => {
             drawPluck,
             addPluckFromDeck,
             addPluckFromDiscard,
+            addPluckFromActivePluck,
+            swapPluckInOwnership,
+            swapping,
+            setSwapping,
             discardFromPluckDeck,
             selectPluck,
             playPluck,
+            movingPluck,
+            setMovingPluck,
+            movePluck,
             discardPluck,
             discardPluckFromOwnership,
             returnPluckToDeck,

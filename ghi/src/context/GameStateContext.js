@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { equipSound } from "../Sounds/Sounds";
 
 
 const GameStateContext = createContext();
@@ -100,6 +101,7 @@ const GameStateContextProvider = ({ children }) => {
             }
             setDefending({...defending, [slot]: true})
             setDefendingCard(newDefendingCard)
+            equipSound(volume*1.5)
         } else {
             setDefending({...defending, [slot]: false})
             setDefendingCard({

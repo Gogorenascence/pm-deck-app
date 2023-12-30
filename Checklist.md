@@ -19,3 +19,6 @@ main deck add to play
 active pluck menu - move, discard, return
 place option will include active pluck
 place from hand
+
+
+After crashing selecting a new deck crashes it again

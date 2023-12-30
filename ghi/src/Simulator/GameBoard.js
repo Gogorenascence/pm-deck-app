@@ -363,35 +363,47 @@ function GameBoard({
                     />
                     <ActivePluckZone
                         objectName={"slot_1"}
+                        stringName={"Active Pluck 1"}
                         zoneArray={pluck_slot1}
                         selectedPluckIndex={selectedPluckIndex}
                         playPluck={playPluck}
                         discardPluck={discardPluck}
                         handleHoveredCard={handleHoveredCard}
+                        showOwnershipModal={showOwnershipModal}
+                        setShowOwnershipModal={setShowOwnershipModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_2"}
+                        stringName={"Active Pluck 2"}
                         zoneArray={pluck_slot2}
                         selectedPluckIndex={selectedPluckIndex}
                         playPluck={playPluck}
                         discardPluck={discardPluck}
                         handleHoveredCard={handleHoveredCard}
+                        showOwnershipModal={showOwnershipModal}
+                        setShowOwnershipModal={setShowOwnershipModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_3"}
+                        stringName={"Active Pluck 3"}
                         zoneArray={pluck_slot3}
                         selectedPluckIndex={selectedPluckIndex}
                         playPluck={playPluck}
                         discardPluck={discardPluck}
                         handleHoveredCard={handleHoveredCard}
+                        showOwnershipModal={showOwnershipModal}
+                        setShowOwnershipModal={setShowOwnershipModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_4"}
+                        stringName={"Active Pluck 4"}
                         zoneArray={pluck_slot4}
                         selectedPluckIndex={selectedPluckIndex}
                         playPluck={playPluck}
                         discardPluck={discardPluck}
                         handleHoveredCard={handleHoveredCard}
+                        showOwnershipModal={showOwnershipModal}
+                        setShowOwnershipModal={setShowOwnershipModal}
                     />
                     <SimPluckSearch
                         pluckDeck={pluckDeck}

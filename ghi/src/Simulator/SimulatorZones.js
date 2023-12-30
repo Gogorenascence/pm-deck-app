@@ -6,6 +6,7 @@ import {
 } from "../Sounds/Sounds";
 import { GameStateContext } from "../context/GameStateContext";
 import { MainActionsContext } from "../context/MainActionsContext";
+import {PluckActionsContext} from "../context/PluckActionsContext";
 
 function PlayAreaZone({
 objectName,
@@ -172,52 +173,111 @@ discardCard
 
 function ActivePluckZone({
     objectName,
+    stringName,
     zoneArray,
     selectedPluckIndex,
     playPluck,
     discardPluck,
     handleHoveredCard,
+    showOwnershipModal,
+    setShowOwnershipModal
 }){
 
-    const {volume} = useContext(GameStateContext)
+    const {player, volume, addToLog} = useContext(GameStateContext)
     const {
-        addCardFromPlay,
+        addPluckFromActivePluck,
         swapping,
         setSwapping,
-        moving,
-        setMoving,
-        moveCard
-    } = useContext(MainActionsContext)
+        movingPluck,
+        setMovingPluck,
+        movePluck
+    } = useContext(PluckActionsContext)
+
+    const {moveCard, moving} = useContext(MainActionsContext)
+
+    const [showActivePluckMenu, setShowActivePluckMenu] = useState({
+        slot_1: false,
+        slot_2: false,
+        slot_3: false,
+        slot_4: false
+    })
+
+    const handleMenu = (event) => {
+        event.preventDefault()
+        setShowActivePluckMenu({
+            ...showActivePluckMenu,
+            [objectName]: !showActivePluckMenu[objectName]
+        })
+        menuSound(volume)
+    }
+
+    const handleMenuClose = () => {
+        setShowActivePluckMenu({
+            ...showActivePluckMenu,
+            [objectName]: false
+        })
+    }
+
+    const handleOpenOwnership = (event) => {
+        event.preventDefault()
+        setShowOwnershipModal(true)
+        menuSound(volume)
+        document.body.style.overflow = 'hidden';
+    };
 
     return(
         <div>
-            {/* <div className="zone-menu">
-                <div className="card-menu-item"
-                    // onClick={() => handleCardFromHand(index)}
-                ><p></p></div>
+            <div className={showActivePluckMenu[objectName] && zoneArray.length > 0? "zone-menu2": "hidden2"}>
                 <div className="card-menu-item"
                     onClick={() => {
-                        // setPlayingFaceDown(true)
-                        // handleCardFromHand(index)
+                        activateSound(volume)
+                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`)
                     }}
-                ><p>Play Face-Down</p></div>
+                ><p>Resolve</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => handlePlaceCardFromHand(index)}
-                ><p>Place</p></div>
+                    onClick={() => {
+                        swapping.cardToSwap && swapping.zone === objectName?
+                        setSwapping({cardToSwap: "", zone: "", index: null}):
+                        setSwapping({
+                            cardToSwap: zoneArray[0],
+                            zone: objectName,
+                            index: 0
+                        })
+                        setShowOwnershipModal(swapping.cardToSwap? false: true)}
+                    }
+                ><p>{swapping.cardToSwap && swapping.zone === objectName? "Cancel": "Swap from Ownership"}</p></div>
                 <div className="card-menu-item"
-                    // onClick={() => discardCardFromHand(index)}
+                    onClick={() => {movingPluck.pluckToMove && movingPluck.zone === objectName?
+                        setMovingPluck({pluckToMove: "", zone: "", index: null}):
+                        setMovingPluck({
+                            pluckToMove: zoneArray[0],
+                            zone: objectName,
+                            index: 0,
+                        })}
+                    }
+                ><p>
+                    {movingPluck.pluckToMove && movingPluck.zone === objectName? "Cancel": "Move"}
+                    </p></div>
+                <div className="card-menu-item"
+                    onClick={() => {
+                        addPluckFromActivePluck(zoneArray[0], 0, objectName)
+                        handleMenuClose()
+                    }}
+                ><p>Return to Ownership</p></div>
+                <div className="card-menu-item"
+                    onClick={() => {
+                        discardPluck(zoneArray[0], 0, objectName)
+                        handleMenuClose()
+                    }}
                 ><p>Discard</p></div>
-                <div className="card-menu-item"
-                    // onClick={() => topDeckCard(index)}
-                ><p>Decktop</p></div>
-                <div className="card-menu-item"
-                    // onClick={() => bottomDeckCard(index)}
-                ><p>Deckbottom</p></div>
-            </div> */}
+            </div>
             <div className={selectedPluckIndex === null? "matCard":"matCardSelect"}
-                onClick={() => { if (!moving.cardToMove) {
+                onClick={() => {
+                        if (!movingPluck.pluckToMove && !moving.cardToMove) {
                             playPluck(objectName)
-                        } else {
+                        } else if (movingPluck.pluckToMove && movingPluck.zone !== objectName) {
+                            movePluck(objectName)
+                        } else if (moving.cardToMove && moving.zone !== objectName) {
                             moveCard(objectName, true)
                         }
                     }
@@ -235,9 +295,10 @@ function ActivePluckZone({
                         }
                         <img
                             onDoubleClick={() => discardPluck(zoneArray[0], 0, objectName)}
+                            onContextMenu={(event) => handleMenu(event)}
+                            onClick={(event) => handleMenu(event)}
                             onMouseEnter={() => handleHoveredCard(zoneArray[0])}
                             className="builder-card5 pointer glow3"
-
                             src={zoneArray[0].picture_url ?
                                     zoneArray[0].picture_url :
                                     "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
@@ -342,7 +403,7 @@ function ExtraZone({
                                     !playingFaceDown?
                                         playCard(objectName):
                                         playCard(objectName, objectName)
-                                } else {
+                                } else if (moving.zone !== objectName){
                                     moveCard(objectName)
                                 }
                             }

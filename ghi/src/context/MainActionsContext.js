@@ -342,7 +342,9 @@ const MainActionsContextProvider = ({ children }) => {
                 setPlayArea(newPlayArea)
                 setActivePluck(newActivePluck)
             }
-            drawSound(volume);
+            {nextSelectZone.length > 1?
+                equipSound(volume*1.5):
+                drawSound(volume)};
 
             setMoving({
                 cardToMove: "",
@@ -366,6 +368,7 @@ const MainActionsContextProvider = ({ children }) => {
 
         setDiscard(newDiscardPile)
         setPlayArea(newPlayArea)
+        addToLog("System", "system", `${player.name} discarded "${card.name}" from their play`)
     }
 
     const discardCardFromHand = (index) => {
