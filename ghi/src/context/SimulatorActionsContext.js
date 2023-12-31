@@ -136,7 +136,7 @@ const SimulatorActionsContextProvider = ({ children }) => {
     const checkPlayer = () => {
         activateSound(volume)
         addToLog("System", "system", `${player.name},
-        HP: ${player["HP"]},
+        HP: ${player["hp"]},
         Enthusiasm: ${player.enthusiasm},
         Focus: ${player.focus},
         Mettle: ${player.mettle}

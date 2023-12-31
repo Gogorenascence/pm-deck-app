@@ -140,7 +140,7 @@ body.dark::after {
   --window-height-account: calc(100vh - 180px);
   --window-width200: calc(80vw - 200px);
   --window-height2: calc(100vh - 62px);
-  --window-heightChat: calc(100vh - 200px);
+  --window-heightChat: calc(100vh - 245px);
 }
 
 
@@ -2937,7 +2937,25 @@ button:hover {
   transition: all 0.5s;
 }
 
+.healthTracker {
+  width: 125px;
+  height: 37px;
+  margin: 11px 0 0 10px;
+}
 
+.healthTracker2 {
+  width: 90px;
+  height: 37px;
+  margin: 11px 0 0 0;
+  border-radius: 0;
+}
+
+.healthTracker3 {
+  width: 90px;
+  height: 37px;
+  margin: 11px 0 0 2px;
+  border-radius: 0 5px 5px 0;
+}
 
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {

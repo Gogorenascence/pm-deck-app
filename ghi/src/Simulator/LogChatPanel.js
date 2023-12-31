@@ -6,12 +6,23 @@ function LogChatPanel({
     // hoveredCard
 }) {
 
-    const [showPanel, setShowPanel] = useState(false)
+    const [showPanel, setShowPanel] = useState(true)
     const [newMessage, setNewMessage] = useState(false)
     const [message, setMessage] = useState("")
 
-    const {player, log, addToLog} = useContext(GameStateContext)
+    const {
+        player,
+        setPlayer,
+        defendingCard,
+        setDefendingCard,
+        log,
+        addToLog
+    } = useContext(GameStateContext)
     const [logLength, setLogLength] = useState(log.length)
+
+    const [damage, setDamage] = useState("")
+
+    const [defender, setDefender] = useState("self")
 
     const handleShowPanel = () => {
         if (!showPanel) {
@@ -70,6 +81,29 @@ function LogChatPanel({
         opponent: "red"
     }
 
+    const diceRoll = () => {
+        let roll = Math.floor(Math.random() *6) + 1
+        return roll;
+    }
+
+    const handleDamage = (event) => {
+        setDamage(event.target.value)
+    }
+
+    const takeDamage = (event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            const damageTaken = parseInt(damage, 10);
+            console.log(damageTaken)
+            if (defender === "self"){
+                setPlayer({...player, hp: player.hp - damageTaken})
+                setDamage("")
+            } else {
+                setDefendingCard({...defendingCard, hp: defendingCard.hp - damageTaken})
+                setDamage("")
+            }
+        }
+    }
 
     return (
         <div className={newMessage && !showPanel? "notify": null}>
@@ -88,16 +122,42 @@ function LogChatPanel({
                                 </div>
                             )): null}
                         </div>
-                            <textarea
-                                className="chatTextBox"
-                                type="text"
-                                value={message}
-                                placeholder="Message"
-                                onChange={handleMessageChange}
-                                onKeyDown={sendMessage}
-                                // focus={true}
+                        <div className="flex">
+                            <button
+                                onClick={() => addToLog("system", "system", `${player.name} rolled a ${diceRoll()}`)}
+                                className="margin-top-10"
                             >
-                            </textarea>
+                                Roll
+                            </button>
+                            <input
+                                type="text"
+                                value={damage}
+                                onChange={handleDamage}
+                                placeholder="Damage"
+                                className="healthTracker"
+                                onKeyDown={takeDamage}
+                            ></input>
+                            <button
+                                className={defender === "self"?
+                                "healthTracker2 red": "healthTracker2"}
+                                onClick={()=>setDefender("self")}
+                            >Self</button>
+                            <button
+                                className={defender === "card"?
+                                "healthTracker3 red": "healthTracker3"}
+                                onClick={()=>setDefender("card")}
+                            >Card</button>
+                        </div>
+                        <textarea
+                            className="chatTextBox"
+                            type="text"
+                            value={message}
+                            placeholder="Message"
+                            onChange={handleMessageChange}
+                            onKeyDown={sendMessage}
+                            // focus={true}
+                        >
+                        </textarea>
                     </div>
                 :null}
                 {showPanel?

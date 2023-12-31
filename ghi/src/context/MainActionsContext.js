@@ -266,7 +266,11 @@ const MainActionsContextProvider = ({ children }) => {
                 const selectZone = playZones[zone]
                 setPrompt({message: "", action: ""})
                 !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                specialSound(volume)
+                if (selectZone.length > 1) {
+                    equipSound(volume*1.5)
+                } else {
+                    specialSound(volume)
+                }
                 setPlayerMainDeck({
                     name: selectedMainDeck.name,
                     cards: newMainDeck.filter((_, i) => i !== selectedIndex)
@@ -282,7 +286,11 @@ const MainActionsContextProvider = ({ children }) => {
                 const newDiscardPile = [...player.mainDiscard]
                 setPrompt({message: "", action: ""})
                 !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                specialSound(volume)
+                if (selectZone.length > 1) {
+                    equipSound(volume*1.5)
+                } else {
+                    specialSound(volume)
+                }
                 setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
                 setFromDiscard(false)
@@ -295,7 +303,11 @@ const MainActionsContextProvider = ({ children }) => {
                 const newHand = [...player.hand]
                 setPrompt({message: "", action: ""})
                 !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
-                summonSound(volume)
+                if (selectZone.length > 1) {
+                    equipSound(volume*1.5)
+                } else {
+                    {zoneFaceDown? specialSound(volume):summonSound(volume)}
+                }
                 if (zoneFaceDown){
                     setFaceDown({...faceDown, [zoneFaceDown]: true})
                 }
@@ -344,7 +356,7 @@ const MainActionsContextProvider = ({ children }) => {
             }
             {nextSelectZone.length > 1?
                 equipSound(volume*1.5):
-                drawSound(volume)};
+                specialSound(volume)};
 
             setMoving({
                 cardToMove: "",

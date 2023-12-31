@@ -8,7 +8,7 @@ const GameStateContextProvider = ({ children }) => {
     const [game, setGame] = useState(false)
     const [player, setPlayer] = useState({
         name: "",
-        HP: 16,
+        hp: 16,
         mainDeck: [],
         pluckDeck: [],
         hand: [],
