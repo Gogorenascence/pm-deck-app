@@ -80,7 +80,6 @@ const GameStateContextProvider = ({ children }) => {
 
     const handleDefending = (slot) => {
         if (!defending[slot]) {
-
             const newDefendingCard = {
                 card: "",
                 hp: 5,
@@ -98,10 +97,11 @@ const GameStateContextProvider = ({ children }) => {
                         newDefendingCard[newReaction] = reaction.count
                     }
                 }
+                setDefending({...defending, [slot]: true})
+                setDefendingCard(newDefendingCard)
+                equipSound(volume*1.5)
+                addToLog("System", "system", `${player.name} is defending with "${card.name}"`)
             }
-            setDefending({...defending, [slot]: true})
-            setDefendingCard(newDefendingCard)
-            equipSound(volume*1.5)
         } else {
             setDefending({...defending, [slot]: false})
             setDefendingCard({

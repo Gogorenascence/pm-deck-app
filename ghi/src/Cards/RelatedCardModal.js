@@ -69,8 +69,7 @@ function RelatedCardModal() {
                     Show all Cards
             </button>
             {show?
-                <div className={!isDark? "large-modal topbar":"large-modal-dark topbar"}
-                >
+                <div className={!isDark? "large-modal topbar":"large-modal-dark topbar"}>
                     <div className="outScrollable" ref={content}>
                         <h1 className="centered-h1">Related Cards</h1>
                         <div>

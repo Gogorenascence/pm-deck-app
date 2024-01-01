@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { AppContext } from '../context/AppContext';
 import { NavLink } from 'react-router-dom';
 
 
@@ -7,6 +8,8 @@ main_list,
 pluck_list,
 handleRemoveCard
 }) {
+
+    const {isDark} = useContext(AppContext)
     const [filteredCards, setFilteredCards] = useState([]); // Initialize as an empty array
     const stats = {
         fighters: 0,
@@ -154,11 +157,9 @@ handleRemoveCard
     return(
         <div>
             {showModal.show ?
-                <div className="large-modal topbar"
-                >
+                <div className={!isDark? "large-modal topbar":"large-modal-dark topbar"}>
                     <div className="outScrollable" ref={content}>
-                        <h1 className="centered-h1"
-                            style={{color: "black"}}>{showModal.label}</h1>
+                        <h1 className="centered-h1">{showModal.label}</h1>
                         <div>
                             <div className="cd-inner2 card-pool-fill">
                                 {filteredCards.map((card) => {

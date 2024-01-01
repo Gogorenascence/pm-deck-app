@@ -568,8 +568,8 @@ function NavBar() {
               </div>
 
               <div className="aligned">
-                <button type="submit">Signup</button>
-                <button onClick={handleShowSignUpModal}>Close</button>
+                <button className="front-button" type="submit">Signup</button>
+                <button className="end-button" onClick={handleShowSignUpModal}>Close</button>
                 <p onClick={handleShowLoginModal}
                   className="pointer label-center">
                     Already have an account? Log in!
@@ -629,8 +629,8 @@ function NavBar() {
 
               </div>
               <div className="aligned">
-                <button type="submit">Login</button>
-                <button onClick={handleShowLoginModal}>Close</button>
+                <button className="front-button" type="submit">Login</button>
+                <button className="end-button" onClick={handleShowLoginModal}>Close</button>
                 <p onClick={handleShowSignUpModal}
                   className="pointer label-center">
                     New here? Sign Up!

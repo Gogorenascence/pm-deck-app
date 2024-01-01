@@ -367,7 +367,6 @@ function DeckDetailPage() {
                         </button>
                         <button
                             className="left none"
-
                             onClick={clearShuffledDeck}
                             style={{marginLeft: ".5%", width: '108px', textAlign: "center"}}
                             >
@@ -381,7 +380,6 @@ function DeckDetailPage() {
                 <NavLink to={`/decks/${deck.id}/copy`}>
                     <button
                             className="left heightNorm"
-
                             style={{marginLeft: ".5%", textAlign: "center"}}
                             >
                             Copy Decks
