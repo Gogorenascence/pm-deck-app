@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { GameStateContext } from "../context/GameStateContext";
+import { damageSound, gainSound } from "../Sounds/Sounds";
 
 
 function LogChatPanel({
@@ -16,7 +17,8 @@ function LogChatPanel({
         defendingCard,
         setDefendingCard,
         log,
-        addToLog
+        addToLog,
+        volume
     } = useContext(GameStateContext)
     const [logLength, setLogLength] = useState(log.length)
 
@@ -98,9 +100,23 @@ function LogChatPanel({
             if (defender === "self"){
                 setPlayer({...player, hp: player.hp - damageTaken})
                 setDamage("")
+                if (damageTaken > 0) {
+                    damageSound(volume)
+                    addToLog("system", "system", `${player.name} took ${damageTaken} damage`)
+                } else if (damageTaken < 0) {
+                    gainSound(volume*2)
+                    addToLog("system", "system", `${player.name} gained ${-damageTaken} HP`)
+                }
             } else {
                 setDefendingCard({...defendingCard, hp: defendingCard.hp - damageTaken})
                 setDamage("")
+                if (damageTaken > 0) {
+                    damageSound(volume)
+                    addToLog("system", "system", `${player.name}'s defending card took ${damageTaken} damage`)
+                } else if (damageTaken < 0) {
+                    gainSound(volume*2)
+                    addToLog("system", "system", `${player.name}'s defending card gained ${-damageTaken} HP`)
+                }
             }
         }
     }
