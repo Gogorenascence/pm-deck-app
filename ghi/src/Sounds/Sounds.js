@@ -12,6 +12,8 @@ import menu from "./menu.wav"
 import gameStart from "./nextturn.wav"
 import flip from "./flip.wav"
 import damage from "./damage.wav"
+import roll from "./diceroll.mp3"
+import chat from "./chatmessage.wav"
 
 
 export function soundLoop(sound, loopCount, time) {
@@ -101,6 +103,18 @@ export function flipSound(volume) {
 
 export function damageSound(volume) {
     const audio = new Audio(damage);
+    audio.volume = volume
+    audio.play()
+}
+
+export function rollSound(volume) {
+    const audio = new Audio(roll);
+    audio.volume = volume
+    audio.play()
+}
+
+export function chatSound(volume) {
+    const audio = new Audio(chat);
     audio.volume = volume
     audio.play()
 }
