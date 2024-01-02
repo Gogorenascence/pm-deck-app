@@ -93,6 +93,7 @@ function DeckDetailPage() {
         const randomPluckIndex = Math.floor(Math.random() * pluck_list.length);
         setOwnership(pluck_list[randomPluckIndex]);
         setShowHand(true)
+        console.log(main_list)
     }
 
     const clearShuffledDeck = async() =>{
@@ -389,6 +390,7 @@ function DeckDetailPage() {
                     deckName={deck.name}
                     main_list={deck.cards}
                     pluck_list={deck.pluck}
+                    handlePopUp={handlePopUp}
                     />
                 <BackButton/>
             </div>

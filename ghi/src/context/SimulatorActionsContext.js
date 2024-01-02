@@ -59,6 +59,7 @@ const SimulatorActionsContextProvider = ({ children }) => {
     const [showCardMenu, setShowCardMenu] = useState(null)
     const [showPluckMenu, setShowPluckMenu] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [cardsLoading, setCardsLoading] = useState(false)
     const [placing, setPlacing] = useState(true)
     const [shuffling, setShuffling] = useState(false)
     const [shufflingPluck, setShufflingPluck] = useState(false)
@@ -74,19 +75,26 @@ const SimulatorActionsContextProvider = ({ children }) => {
             name: deckFound.name,
             cards: deckFound.pluck
         })
+        console.log(deckFound)
     };
 
     const fillDecks = (event) => {
+        // console.log(selectedMainDeck)
+        if (cards.length === 0) {
+            addToLog("System", "system", "Cards are loading")
+            return;
+        }
         if (selectedMainDeck.cards.length > 0) {
             const filledMainDeck = selectedMainDeck.cards.map(cardNumber =>
-                cards.find(card => card.card_number === cardNumber)
-            );
+                    cards.find(card => card.card_number === cardNumber)
+                );
             const filledPluckDeck = selectedPluckDeck.cards.map(cardNumber =>
                 cards.find(card => card.card_number === cardNumber)
             );
             setPlayerMainDeck({name: selectedMainDeck.name, cards: filledMainDeck})
             setPlayerPluckDeck({name: selectedPluckDeck.name, cards: filledPluckDeck})
             equipSound(volume)
+            console.log(selectedMainDeck)
             addToLog("System", "system", `${selectedMainDeck.name} selected`)
         } else {
             addToLog("System", "system", "No deck selected")
@@ -99,6 +107,8 @@ const SimulatorActionsContextProvider = ({ children }) => {
         player.activePluck.slot_4?.length
 
     const gameStart = () => {
+        console.log(player)
+        console.log()
         const shuffledMainDeck = [...playerMainDeck.cards]
         let currentMainIndex = shuffledMainDeck.length, randomMainIndex;
         // While there remain elements to shuffle.
@@ -216,6 +226,8 @@ const SimulatorActionsContextProvider = ({ children }) => {
             setShowPluckMenu,
             loading,
             setLoading,
+            cardsLoading,
+            setCardsLoading,
             placing,
             setPlacing,
             shuffling,

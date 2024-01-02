@@ -1,27 +1,40 @@
 import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SimulatorActionsContext } from '../context/SimulatorActionsContext';
+import {GameStateContext} from '../context/GameStateContext';
 
-const SimulateButton = ({deckName, main_list, pluck_list}) => {
+
+const SimulateButton = ({deckName, main_list, pluck_list, handlePopUp}) => {
     const {
         setSelectedMainDeck,
         setSelectedPluckDeck,
-        fillDecks
+        setCards,
+        fillDecks,
     } = useContext(SimulatorActionsContext)
+
+    const {setGame} = useContext(GameStateContext)
 
     const navigate = useNavigate()
 
-    const handleSimulator = () => {
+    const getCards = async() =>{
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
+        const cardData = await response.json();
+        console.log(cardData.cards)
+        setCards(cardData.cards);
+    };
+
+    const handleSimulator = async () => {
+        // await getCards();
         setSelectedMainDeck({
-            name: deckName + " Main",
+            name: deckName,
             cards: main_list
         });
         setSelectedPluckDeck({
-            name: deckName + " Pluck",
+            name: deckName,
             cards: pluck_list
         })
-        fillDecks()
-        navigate(`/simulator`)
+        // await fillDecks();
+        navigate(`/simulator`);
     }
 
     return (

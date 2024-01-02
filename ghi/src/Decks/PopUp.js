@@ -21,7 +21,8 @@ setPopUpAction,
           // Function for click event
             function handleOutsideClick(event) {
                 if (ref.current && !ref.current.contains(event.target)
-                    && !event.target.closest(".red")) {
+                    && !event.target.closest(".red")
+                    && !event.target.closest(".left")) {
                     handleClose();
                 }
             }
@@ -51,8 +52,13 @@ setPopUpAction,
             <div className={!isDark? "small-modal" :"small-modal-dark"}
                 ref={content}>
                 <p>{message}</p>
-                <button className="back-button" onClick={handleConfirm}>Yes</button>
-                <button className="back-button" onClick={handleClose}>No</button>
+                {action && action !== "loading"?<>
+                    <button className="back-button" onClick={handleConfirm}>Yes</button>
+                    <button className="back-button" onClick={handleClose}>No</button>
+                </>:null}
+                {action === "loading"?
+                    <div className="loading-spinner"></div>:null
+                }
             </div>
             <div className="blackSpace"></div>
         </>

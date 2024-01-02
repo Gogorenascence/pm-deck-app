@@ -33,6 +33,8 @@ function SimulatorPage() {
 
     const {
         decks,
+        cards,
+        selectedMainDeck,
         setDecks,
         setCards,
         hand,
@@ -53,6 +55,8 @@ function SimulatorPage() {
         setShowPluckMenu,
         loading,
         setLoading,
+        cardsLoading,
+        setCardsLoading,
         shuffling,
         shufflingPluck,
         handleChangeDeck,
@@ -108,10 +112,12 @@ function SimulatorPage() {
     };
 
     const getCards = async() =>{
+        setCardsLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
         const cardData = await response.json();
         console.log(cardData.cards)
         setCards(cardData.cards);
+        setCardsLoading(false)
     };
 
     useEffect(() => {
@@ -119,7 +125,7 @@ function SimulatorPage() {
         document.body.style.overflow = 'auto';
         getCards();
         getDecks();
-
+        console.log(selectedMainDeck)
         document.title = "Simulator - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -167,7 +173,7 @@ function SimulatorPage() {
                         name="Deck">
                         <option value="">Deck</option>
                         {decks.map((deck) => (
-                            <option value={deck.id}>{deck.name}</option>
+                            <option value={deck.id} key={deck.id + deck.name}>{deck.name}</option>
                             ))}
                     </select>
                     <button className="front-button" onClick={fillDecks}>Get Deck</button>
@@ -180,114 +186,113 @@ function SimulatorPage() {
 
                     <button className="end-button" onClick={checkPlayer}>Player Info</button>
                 </div>
-                <div className={loading && decks.length < 1? "deckSelect2": "hidden2"}>
-                {/* <div className="deckSelect2"> */}
-                    <p>Loading decks...</p>
+                <div className="deckSelect3">
+                    {cardsLoading && cards.length < 1? <p>Loading cards...</p>:null}
+                    {loading && decks.length < 1? <p>Loading decks...</p>:null}
                 </div>
-            <div>
-                <GameBoard
-                    playArea={player.playArea}
-                    activePluck={player.activePluck}
-                    drawCard={drawCard}
-                    addCardFromDeck={addCardFromDeck}
-                    addCardFromDiscard={addCardFromDiscard}
-                    drawPluck={drawPluck}
-                    addPluckFromDeck={addPluckFromDeck}
-                    addPluckFromDiscard={addPluckFromDiscard}
-                    returnPluckToDeck={returnPluckToDeck}
-                    mainDeck={player.mainDeck}
-                    pluckDeck={player.pluckDeck}
-                    ownership={player.ownership}
-                    showPluckMenu={showPluckMenu}
-                    setShowPluckMenu={setShowPluckMenu}
-                    fromDeck={fromDeck}
-                    setFromDeck={setFromDeck}
-                    fromDiscard={fromDiscard}
-                    setFromDiscard={setFromDiscard}
-                    playCard={playCard}
-                    playPluck={playPluck}
-                    fieldStyle={fieldStyle}
-                    mainDiscard={player.mainDiscard}
-                    discardCard={discardCard}
-                    discardFromDeck={discardFromDeck}
-                    returnDiscardedCardToDeck={returnDiscardedCardToDeck}
-                    pluckDiscard={player.pluckDiscard}
-                    discardPluck={discardPluck}
-                    discardPluckFromOwnership={discardPluckFromOwnership}
-                    discardFromPluckDeck={discardFromPluckDeck}
-                    returnDiscardedPluckToDeck={returnDiscardedPluckToDeck}
-                    handleHoveredCard={handleHoveredCard}
-                    selectCard={selectCard}
-                    selectedIndex={selectedIndex}
-                    selectPluck={selectPluck}
-                    selectedPluckIndex={selectedPluckIndex}
-                    shuffleMainDeck={shuffleMainDeck}
-                    shufflePluckDeck={shufflePluckDeck}
-                    showExtra={showExtra}
-                    setShowExtra={setShowExtra}
-                    volume={volume}
-                    shuffling={shuffling}
-                    shufflingPluck={shufflingPluck}
-                    />
+                <div>
+                    <GameBoard
+                        playArea={player.playArea}
+                        activePluck={player.activePluck}
+                        drawCard={drawCard}
+                        addCardFromDeck={addCardFromDeck}
+                        addCardFromDiscard={addCardFromDiscard}
+                        drawPluck={drawPluck}
+                        addPluckFromDeck={addPluckFromDeck}
+                        addPluckFromDiscard={addPluckFromDiscard}
+                        returnPluckToDeck={returnPluckToDeck}
+                        mainDeck={player.mainDeck}
+                        pluckDeck={player.pluckDeck}
+                        ownership={player.ownership}
+                        showPluckMenu={showPluckMenu}
+                        setShowPluckMenu={setShowPluckMenu}
+                        fromDeck={fromDeck}
+                        setFromDeck={setFromDeck}
+                        fromDiscard={fromDiscard}
+                        setFromDiscard={setFromDiscard}
+                        playCard={playCard}
+                        playPluck={playPluck}
+                        fieldStyle={fieldStyle}
+                        mainDiscard={player.mainDiscard}
+                        discardCard={discardCard}
+                        discardFromDeck={discardFromDeck}
+                        returnDiscardedCardToDeck={returnDiscardedCardToDeck}
+                        pluckDiscard={player.pluckDiscard}
+                        discardPluck={discardPluck}
+                        discardPluckFromOwnership={discardPluckFromOwnership}
+                        discardFromPluckDeck={discardFromPluckDeck}
+                        returnDiscardedPluckToDeck={returnDiscardedPluckToDeck}
+                        handleHoveredCard={handleHoveredCard}
+                        selectCard={selectCard}
+                        selectedIndex={selectedIndex}
+                        selectPluck={selectPluck}
+                        selectedPluckIndex={selectedPluckIndex}
+                        shuffleMainDeck={shuffleMainDeck}
+                        shufflePluckDeck={shufflePluckDeck}
+                        showExtra={showExtra}
+                        setShowExtra={setShowExtra}
+                        volume={volume}
+                        shuffling={shuffling}
+                        shufflingPluck={shufflingPluck}
+                        />
 
-                {player.hand.length > 0 || player.ownership.length > 0?
-                    <>
-                        <div className="card-pool-fill-hand">
-                            {player.hand.map((card, index) => {
-                                return (
-                                    <div className="in-hand" style={{display: "flex", justifyContent: "center"}}>
-                                        <div>
-                                            <div className={showCardMenu === index? "card-menu": "hidden2"}>
-                                                <div className="card-menu-item"
-                                                    onClick={() => {
+                    {player.hand.length > 0 || player.ownership.length > 0?
+                        <>
+                            <div className="card-pool-fill-hand">
+                                {player.hand.map((card, index) => {
+                                    return (
+                                        <div className="in-hand" style={{display: "flex", justifyContent: "center"}}>
+                                            <div>
+                                                <div className={showCardMenu === index? "card-menu": "hidden2"}>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => {
+                                                            setPlayingFaceDown(false)
+                                                            handleCardFromHand(index)
+                                                        }}
+                                                    ><p>{selectedIndex === index && !playingFaceDown? "Cancel" : "Play Face-Up"}</p></div>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => {
+                                                            setPlayingFaceDown(true)
+                                                            handleCardFromHand(index)
+                                                        }}
+                                                    ><p>{selectedIndex === index && playingFaceDown? "Cancel" : "Play Face-Down"}</p></div>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => handlePlaceCardFromHand(index)}
+                                                    ><p>Place</p></div>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => discardCardFromHand(index)}
+                                                    ><p>Discard</p></div>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => topDeckCard(index)}
+                                                    ><p>Decktop</p></div>
+                                                    <div className="card-menu-item"
+                                                        onClick={() => bottomDeckCard(index)}
+                                                    ><p>Deckbottom</p></div>
+                                                </div>
+                                                <img
+                                                    onClick={(event) => {!swapping.cardToSwap? handleShowCardMenu(index, event):swapCardInPlay(index)}}
+                                                    onContextMenu={(event) => handleShowCardMenu(index, event)}
+                                                    onMouseEnter={() => handleHoveredCard(card)}
+                                                    onDoubleClick={() => {
                                                         setPlayingFaceDown(false)
                                                         handleCardFromHand(index)
                                                     }}
-                                                ><p>{selectedIndex === index && !playingFaceDown? "Cancel" : "Play Face-Up"}</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => {
-                                                        setPlayingFaceDown(true)
-                                                        handleCardFromHand(index)
-                                                    }}
-                                                ><p>{selectedIndex === index && playingFaceDown? "Cancel" : "Play Face-Down"}</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => handlePlaceCardFromHand(index)}
-                                                ><p>Place</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => discardCardFromHand(index)}
-                                                ><p>Discard</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => topDeckCard(index)}
-                                                ><p>Decktop</p></div>
-                                                <div className="card-menu-item"
-                                                    onClick={() => bottomDeckCard(index)}
-                                                ><p>Deckbottom</p></div>
-                                            </div>
-                                            <img
-                                                onClick={(event) => {!swapping.cardToSwap? handleShowCardMenu(index, event):swapCardInPlay(index)}}
-                                                onContextMenu={(event) => handleShowCardMenu(index, event)}
-                                                onMouseEnter={() => handleHoveredCard(card)}
-                                                onDoubleClick={() => {
-                                                    setPlayingFaceDown(false)
-                                                    handleCardFromHand(index)
-                                                }}
-                                                className={
-                                                    showCardMenu === index || selectedIndex === index && !fromDeck && !fromDiscard?
-                                                    "selected3 builder-card-hand pointer"
-                                                :
-                                                    "builder-card-hand pointer"
-                                                }
-                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                alt={card.name}/>
-                                            </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </>: null
-                }
-            </div>
-
+                                                    className={
+                                                        showCardMenu === index || selectedIndex === index && !fromDeck && !fromDiscard?
+                                                        "selected3 builder-card-hand pointer"
+                                                    :
+                                                        "builder-card-hand pointer"
+                                                    }
+                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                    alt={card.name}/>
+                                                </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </>: null
+                    }
+                </div>
             </div>
             <div className="rightSimSide">
                 <PositionSlider

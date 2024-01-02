@@ -2060,6 +2060,15 @@ button:hover {
   width: 100%;
 }
 
+.deckSelect3 {
+  position: absolute;
+  top: 155px;
+}
+
+.deckSelect3 p {
+  margin: 3px 0;
+}
+
 .play-area {
   height: 70vh;
   margin-top: 25px;
