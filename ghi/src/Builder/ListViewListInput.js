@@ -25,9 +25,9 @@ handleRemoveCard,
                     null}
                 </div>
                 {list.length > 0 ?<>
-                        {list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                        {list.sort((a,b) => a.card_number - b.card_number).map((card, index) => {
                             return (
-                                <Col style={{padding: "5px"}}>
+                                <Col style={{padding: "5px"}} key={index.toString() + card.card_number.toString()}>
                                     <div className="card-container pointer">
                                         <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                         <img

@@ -36,9 +36,9 @@ handleRemoveCard,
             </div>
             {list.length > 0 ?
             <div className={showList ? "card-pool-fill2": "hidden2"}>
-                {list.sort((a,b) => a.card_number - b.card_number).map((card) => {
+                {list.sort((a,b) => a.card_number - b.card_number).map((card, index) => {
                     return (
-                        <div style={{display: "flex", justifyContent: "center"}}>
+                        <div className='flex-content' key={index.toString() + card.card_number.toString()}>
                             <img
                                 className="builder-card2 pointer"
                                 onClick={() => handleRemoveCard(card)}

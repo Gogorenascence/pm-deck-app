@@ -79,9 +79,9 @@ function CardPool({
                     }
 
                     <div className="card-pool-fill">
-                        {all_cards.slice(0, showMore).map((card) => {
+                        {all_cards.slice(0, showMore).map((card, index) => {
                             return (
-                                <div style={{display: "flex", justifyContent: "center"}}>
+                                <div className="flex-content" key={index.toString() + card.card_number.toString()}>
                                     <img
                                         onClick={() => handleClick(card)}
                                         className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}

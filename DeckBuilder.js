@@ -304,7 +304,7 @@ function DeckBuilder() {
                             value={deck.cover_card}>
                             <option value="">Cover Card</option>
                             {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
-                            {return( <option value={card.picture_url}>{card.name}</option>)}
+                            {return( <option value={card.picture_url} key={card.id + index.toString()}>{card.name}</option>)}
                                 )}
                         </select>
                         <br/>

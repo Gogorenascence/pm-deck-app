@@ -390,8 +390,10 @@ function DeckBuildandImport() {
                             name="cover_card"
                             value={deck.cover_card}>
                             <option value="">Cover Card</option>
-                            {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card)
-                            {return( <option value={card.picture_url}>{card.name}</option>)}
+                            {uniqueList.sort((a,b) => a.card_number - b.card_number).map(function(card, index)
+                            {return( <option value={card.picture_url}
+                                key={index.toString() + card.card_number.toString()}
+                                >{card.name}</option>)}
                                 )}
                         </select>
                         <br/>

@@ -224,8 +224,8 @@ function BuilderCardSearch() {
                 name="boosterSet"
                 value={boosterSetId}>
                 <option value="">Card Set</option>
-                {boosterSets.map(function(boosterSet)
-                {return( <option value={boosterSet.id}>{boosterSet.name}</option>)}
+                {boosterSets.map(function(boosterSet, index)
+                {return( <option value={boosterSet.id} key={index}>{boosterSet.name}</option>)}
                     )}
             </select>
             <select
