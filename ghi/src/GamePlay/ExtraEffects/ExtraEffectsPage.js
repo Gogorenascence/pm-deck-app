@@ -44,7 +44,7 @@ function ExtraEffectsPage() {
                 null}
             </div>
 
-            <div className="colorBorder">
+            <div className="fullTableBorder">
                 {extraEffects.map(function(extraEffect, index, arr) {
                     return (
                         <NavLink to={`/extraeffects/${extraEffect.id}`} className="nav-link no-pad" key={extraEffect.name}>
@@ -53,7 +53,7 @@ function ExtraEffectsPage() {
                                     <h5 className="text-table">{extraEffect.name}</h5>
                                 </div>
                                 <div className="tableText">
-                                    <h5 className="text-table-2">{shortenedText(extraEffect.rules)}</h5>
+                                    <h5 className="text-table-2">{extraEffect.rules}</h5>
                                 </div>
                             </div>
                         </NavLink>

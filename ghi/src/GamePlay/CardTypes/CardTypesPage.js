@@ -44,7 +44,7 @@ function CardTypesPage() {
                 null}
             </div>
 
-            <div className="colorBorder">
+            <div className="fullTableBorder">
                 {cardTypes.map(function(cardType, index, arr) {
                     return (
                         <NavLink to={`/cardtypes/${cardType.id}`} className="nav-link no-pad" key={cardType.name}>
@@ -53,7 +53,7 @@ function CardTypesPage() {
                                     <h5 className="text-table">{cardType.name}</h5>
                                 </div>
                                 <div className="tableText">
-                                    <h5 className="text-table-2">{shortenedText(cardType.description)}</h5>
+                                    <h5 className="text-table-2">{cardType.description}</h5>
                                 </div>
                             </div>
                     </NavLink>

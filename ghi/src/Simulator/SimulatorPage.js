@@ -115,7 +115,6 @@ function SimulatorPage() {
         setCardsLoading(true)
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
         const cardData = await response.json();
-        console.log(cardData.cards)
         setCards(cardData.cards);
         setCardsLoading(false)
     };
@@ -125,7 +124,6 @@ function SimulatorPage() {
         document.body.style.overflow = 'auto';
         getCards();
         getDecks();
-        console.log(selectedMainDeck)
         document.title = "Simulator - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"

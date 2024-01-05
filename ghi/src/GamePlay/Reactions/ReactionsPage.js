@@ -48,7 +48,7 @@ function ReactionsPage() {
                 null}
             </div>
 
-            <div className="colorBorder">
+            <div className="fullTableBorder">
                 {reactions.map(function(reaction, index, arr) {
                         return (
                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link no-pad" key={reaction.name}>
