@@ -362,6 +362,7 @@ class DeckQueries(Queries):
             deck.pop("_id")
             card_list = set(deck["cards"])
             pluck_list = set(deck["pluck"])
+            deck["time_ago"] = self.get_times(deck["id"])
 
             DATABASE_URL = os.environ["DATABASE_URL"]
             conn = MongoClient(DATABASE_URL)
