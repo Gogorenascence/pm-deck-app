@@ -44,19 +44,19 @@ function ExtraEffectsPage() {
                 null}
             </div>
 
-            <div>
+            <div className="colorBorder">
                 {extraEffects.map(function(extraEffect, index, arr) {
-                        return (
-                            <NavLink to={`/extraeffects/${extraEffect.id}`} className="nav-link glow2 no-pad" key={extraEffect.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 className="text-table">{extraEffect.name}</h5>
-                                    </div>
-                                    <div>
-                                        <h5 className="text-table-2">{shortenedText(extraEffect.rules)}</h5>
-                                    </div>
+                    return (
+                        <NavLink to={`/extraeffects/${extraEffect.id}`} className="nav-link no-pad" key={extraEffect.name}>
+                            <div className="flex">
+                                <div className="table200">
+                                    <h5 className="text-table">{extraEffect.name}</h5>
                                 </div>
-                            </NavLink>
+                                <div className="tableText">
+                                    <h5 className="text-table-2">{shortenedText(extraEffect.rules)}</h5>
+                                </div>
+                            </div>
+                        </NavLink>
                     );
                 })}
             </div>

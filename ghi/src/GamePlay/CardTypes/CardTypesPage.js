@@ -44,19 +44,19 @@ function CardTypesPage() {
                 null}
             </div>
 
-            <div>
+            <div className="colorBorder">
                 {cardTypes.map(function(cardType, index, arr) {
-                        return (
-                            <NavLink to={`/cardtypes/${cardType.id}`} className="nav-link glow2 no-pad" key={cardType.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 className="text-table">{cardType.name}</h5>
-                                    </div>
-                                    <div>
-                                        <h5 className="text-table-2">{shortenedText(cardType.description)}</h5>
-                                    </div>
+                    return (
+                        <NavLink to={`/cardtypes/${cardType.id}`} className="nav-link no-pad" key={cardType.name}>
+                            <div className="flex">
+                                <div className="table200">
+                                    <h5 className="text-table">{cardType.name}</h5>
                                 </div>
-                        </NavLink>
+                                <div className="tableText">
+                                    <h5 className="text-table-2">{shortenedText(cardType.description)}</h5>
+                                </div>
+                            </div>
+                    </NavLink>
                     );
                 })}
             </div>

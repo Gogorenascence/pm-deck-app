@@ -63,7 +63,7 @@ function CardCategoriesPage() {
                 null}
             </div>
 
-            <div style={{marginLeft: "20px"}}>
+            <div className="catTable">
 
                 <div className="flex">
                     <h3 className="cat-label">Card Classes</h3>
@@ -78,16 +78,16 @@ function CardCategoriesPage() {
                         </h5>}
                 </div>
                 {showClasses?
-                    <div>
+                    <div className="colorBorder">
                         {cardCategories.filter(cardCategory => cardCategory.cat_type === "card_class")
                             .map(function(cardCategory, index, arr) {
                                 return (
-                                    <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2 no-pad" key={cardCategory.name}>
-                                        <div style={{display: "flex"}}>
+                                    <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
+                                        <div className="flex">
                                             <div className="table200">
                                                 <h5 className="text-table">{cardCategory.name}</h5>
                                             </div>
-                                            <div>
+                                            <div className="tableText">
                                                 <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
                                             </div>
                                         </div>
@@ -110,19 +110,19 @@ function CardCategoriesPage() {
                         </h5>}
                 </div>
                 {showSeries?
-                    <div>
+                    <div className="colorBorder">
                         {cardCategories.filter(cardCategory => cardCategory.cat_type === "series")
                             .map(function(cardCategory, index, arr) {
                             return (
-                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2 no-pad" key={cardCategory.name}>
-                                        <div style={{display: "flex"}}>
-                                            <div className="table200">
-                                                <h5 className="text-table">{cardCategory.name}</h5>
-                                            </div>
-                                            <div>
-                                                <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
-                                            </div>
+                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
+                                    <div className="flex">
+                                        <div className="table200">
+                                            <h5 className="text-table">{cardCategory.name}</h5>
                                         </div>
+                                        <div className="tableText">
+                                            <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
+                                        </div>
+                                    </div>
                                 </NavLink>
                             );
                         })}
@@ -142,16 +142,16 @@ function CardCategoriesPage() {
                         </h5>}
                 </div>
                 {showSubSeries?
-                    <div>
+                    <div className="colorBorder">
                         {cardCategories.filter(cardCategory => cardCategory.cat_type === "sub_series")
                             .map(function(cardCategory, index, arr) {
                                 return (
-                                    <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2 no-pad" key={cardCategory.name}>
-                                        <div style={{display: "flex"}}>
+                                    <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
+                                        <div className="flex">
                                             <div className="table200">
                                                 <h5 className="text-table">{cardCategory.name}</h5>
                                             </div>
-                                            <div>
+                                            <div className="tableText">
                                                 <h5 className="text-table-2">{shortenedText(cardCategory.description)}</h5>
                                             </div>
                                         </div>
@@ -167,15 +167,15 @@ function CardCategoriesPage() {
                     <div>
                         {untyped.map(function(cardCategory, index, arr) {
                             return (
-                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link glow2 no-pad" key={cardCategory.name}>
-                                        <div style={{display: "flex"}}>
-                                            <div className="table200">
-                                                <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
-                                            </div>
-                                            <div className="table200p">
-                                                <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
-                                            </div>
+                                <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
+                                    <div className="flex">
+                                        <div className="table200">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.name}</h5>
                                         </div>
+                                        <div className="table200p">
+                                            <h5 style={{fontWeight: "600"}}>{cardCategory.description}</h5>
+                                        </div>
+                                    </div>
                                 </NavLink>
                             );
                         })}

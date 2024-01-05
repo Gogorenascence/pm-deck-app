@@ -44,19 +44,19 @@ function CardTagsPage() {
                 null}
             </div>
 
-            <div>
+            <div className="colorBorder">
                 {cardTags.map(function(cardTag, index, arr) {
-                        return (
-                            <NavLink to={`/cardtags/${cardTag.id}`} className="nav-link glow2 no-pad" key={cardTag.name}>
-                                <div style={{display: "flex"}}>
-                                    <div className="table200">
-                                        <h5 className="text-table">{cardTag.name}</h5>
-                                    </div>
-                                    <div>
-                                        <h5 className="text-table-2">{shortenedText(cardTag.rules)}</h5>
-                                    </div>
+                    return (
+                        <NavLink to={`/cardtags/${cardTag.id}`} className="nav-link no-pad" key={cardTag.name}>
+                            <div className="flex">
+                                <div className="table200">
+                                    <h5 className="text-table">{cardTag.name}</h5>
                                 </div>
-                            </NavLink>
+                                <div className="tableText">
+                                    <h5 className="text-table-2">{shortenedText(cardTag.rules)}</h5>
+                                </div>
+                            </div>
+                        </NavLink>
                     );
                 })}
             </div>

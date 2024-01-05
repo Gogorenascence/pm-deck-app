@@ -111,7 +111,7 @@ function DeckRow() {
                                     </div>
                                 </div>
                                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                    <div style={{display: "flex"}}>
+                                    <div className="flex">
                                         <h3 className="left margin-top-20 media-margin-top-10"
                                         >{deck.name}</h3>
                                         { deck.private && deck.private === true ?

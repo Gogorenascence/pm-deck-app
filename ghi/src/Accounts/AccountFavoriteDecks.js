@@ -170,7 +170,7 @@ function AccountFavoriteDecks(props) {
         <div>
             {option === "favoriteDecks"?
                 <div className="account-options-container">
-                    <span style={{display: "flex"}}>
+                    <span className="flex">
                         <h1 className="left-h1">My Favorited Decks</h1>
                         <h4 className="left-h3">&nbsp; &nbsp; Showing 1 - {my_favorite_decks.slice(0, deckShowMore).length} of {my_favorite_decks.length}</h4>
                     </span>
@@ -197,7 +197,7 @@ function AccountFavoriteDecks(props) {
                                                 </div>
                                             </div>
                                             <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                            <div style={{display: "flex"}}>
+                                            <div className="flex">
                                                 <h3 className="left cd-container-child">{deck.name}</h3>
                                                 { deck.private && deck.private === true ?
                                                     <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null

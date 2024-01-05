@@ -62,8 +62,6 @@ function GameBoard({
         setFaceDown,
         playingFaceDown,
         defending,
-        setDefending,
-        setDefendingCard,
         handleDefending,
         addToLog
     } = useContext(GameStateContext)
@@ -239,7 +237,7 @@ function GameBoard({
                         playingFaceDown={playingFaceDown}
                     />
                 </div>
-                <div className="margin-top-10" style={{display: "flex"}}>
+                <div className="margin-top-10 flex">
                     <div
                         className={defending.fighter_slot? "matLabel selected4 pointer":"matLabel pointer"}
                         onClick={() => handleDefending("fighter_slot")}
@@ -257,7 +255,7 @@ function GameBoard({
                         onClick={() => handleDefending("ending_slot")}
                     ><h5 className="margin-bottom-0">{defending.ending_slot? "Defending":"Defend"}</h5></div>
                 </div>
-                <div style={{display: "flex"}}>
+                <div className="flex">
                     <div className={ totalSlotLength > 0 && !showExtra? "notify" : null}
                         style={{marginLeft: "-160px", marginRight: "20px"}}
                     >
@@ -349,7 +347,7 @@ function GameBoard({
                     <div className="matLabel2 margin-top-20"><h5 className="margin-bottom-0">Active Pluck</h5></div>
                 </div>
 
-                <div style={{display: "flex"}}>
+                <div className="flex">
                     <Ownership
                         ownership={ownership}
                         selectPluck={selectPluck}

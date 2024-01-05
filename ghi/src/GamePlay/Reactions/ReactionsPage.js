@@ -29,6 +29,9 @@ function ReactionsPage() {
     // eslint-disable-next-line
     },[]);
 
+    const replaceCount = (reaction) => {
+        return reaction.rules.replace("{count}", `X, where "X" is the count of ${reaction.name}`)
+    }
 
     return (
         <div className="white-space">
@@ -45,16 +48,16 @@ function ReactionsPage() {
                 null}
             </div>
 
-            <div>
+            <div className="colorBorder">
                 {reactions.map(function(reaction, index, arr) {
                         return (
-                            <NavLink to={`/reactions/${reaction.id}`} className="nav-link glow2 no-pad" key={reaction.name}>
-                                <div style={{display: "flex"}}>
+                            <NavLink to={`/reactions/${reaction.id}`} className="nav-link no-pad" key={reaction.name}>
+                                <div className="flex">
                                     <div className="table200">
                                         <h5 className="text-table">{reaction.name}</h5>
                                     </div>
-                                    <div>
-                                        <h5 className="text-table-2">{shortenedText(reaction.rules)}</h5>
+                                    <div className="tableText">
+                                        <h5 className="text-table-2">{shortenedText(replaceCount(reaction))}</h5>
                                     </div>
                                 </div>
                         </NavLink>

@@ -128,3 +128,39 @@ Page crashed during Burst Esper's data entry; it was because of:
 since upon first entry, it would not have a card type.
 Was changed to:
 .filter(card => query.type? card.card_type.some(type => type.includes(query.type)):card.card_type)
+
+
+1/4/24
+<body class="dark">
+  <!-- ... -->
+  <div class="table200">...</div>
+  <!-- ... -->
+</body>
+
+the body is the parent and all elements inside are the children so...
+
+.dark .table200 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  margin: 0 0 0 20px;
+  border: 1px solid;
+  border-color: var(--color-body);
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+works
+
+ .table200 .dark{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  margin: 0 0 0 20px;
+  border: 1px solid;
+  border-color: var(--color-body);
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+does not

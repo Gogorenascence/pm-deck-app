@@ -162,7 +162,7 @@ function AccountDecks(props) {
         <div>
             {option === "myDecks"?
                 <div className="account-options-container">
-                    <span style={{display: "flex"}}>
+                    <span className="flex">
                         <h1 className="left-h1">My Uploaded Decks</h1>
                         <h4 className="left-h3">&nbsp; &nbsp; Showing 1 - {my_decks.slice(0, deckShowMore).length} of {my_decks.length}</h4>
                     </span>
@@ -189,7 +189,7 @@ function AccountDecks(props) {
                                                 </div>
                                             </div>
                                             <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                            <div style={{display: "flex"}}>
+                                            <div className="flex">
                                                 <h3 className="left cd-container-child">{deck.name}</h3>
                                                 { deck.private && deck.private === true ?
                                                     <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
