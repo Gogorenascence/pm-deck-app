@@ -3021,6 +3021,30 @@ button:hover {
   z-index: 2;
 }
 
+.maskContainer {
+  height: 196px;
+  width: 140px;
+  z-index: 3;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.mask {
+  z-index: -3;
+  animation: slide2 infinite 2s;
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
     display: grid;

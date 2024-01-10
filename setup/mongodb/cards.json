@@ -2399,7 +2399,7 @@
   "series_name": "Ceifeira Preta//Mystic//Quest",
   "card_number": 1058,
   "enthusiasm": 0,
-  "effect_text": "This card can not target the same foe twice.//Gain 1 Comeback, then discard 1 card from your strongest or weakest foe's hand  for each Comeback in your ownership (max of 3). That targeted foe draws 1 card for each Comeback in their ownership plus 1 (max of 3). ",
+  "effect_text": "Gain 1 Comeback, then discard 1 card from your strongest or weakest foe's hand for each Comeback in your ownership (max of 3). That targeted foe draws 2 cards. ",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p3cpa.png",
@@ -2420,12 +2420,12 @@
     "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 11,
-    "day": 23,
-    "time": "14:22",
+    "year": 2024,
+    "month": 1,
+    "day": 9,
+    "time": "01:15",
     "full_time": {
-      "$date": "2023-11-23T14:22:14.006Z"
+      "$date": "2024-01-09T01:15:30.923Z"
     }
   },
   "alpha": null,
@@ -4009,7 +4009,7 @@
   "series_name": "Red Fist//Tech//Brawler",
   "card_number": 1022,
   "enthusiasm": 0,
-  "effect_text": "Add 2 to your Focus and your Fighter heals 1 HP. You can discard 1 Aura from your hand to resolve this effect one more time and your next Move gains damage plus 1.",
+  "effect_text": "Add 2 to your Focus and your Fighter heals 1 HP. You can discard 1 Aura from your hand to resolve this effect one more time and your Move gains damage plus 1.",
   "second_effect_text": "",
   "illustrator": "gmoshiro",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r2rfa.png",
@@ -4030,12 +4030,12 @@
     "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 19,
-    "time": "02:08",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "20:49",
     "full_time": {
-      "$date": "2023-12-19T02:08:56.280Z"
+      "$date": "2024-01-06T20:49:32.092Z"
     }
   },
   "alpha": null,
@@ -4976,7 +4976,7 @@
   "series_name": "Warp Family//Cosmic//Psychic//Support",
   "card_number": 1042,
   "enthusiasm": 0,
-  "effect_text": "Resolve 1 of the following effects for each Item in your Active Pluck or for each different class in your play://1+: Draw 1 Pluck.//2+: Add 1 Aura from your hand to your play.//3+: Add 1 Move from the discard pile to your play.",
+  "effect_text": "Resolve 1 of the following effects for each Item in your Active Pluck or for each different class in your play://1+: Draw 1 Pluck.//2+: Add the top card of the Main deck pile to your play.//3+: Add 1 Move from the discard pile to your play.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b3hsa.png",
@@ -4997,12 +4997,12 @@
     "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 27,
-    "time": "02:42",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "21:33",
     "full_time": {
-      "$date": "2023-12-27T02:42:20.597Z"
+      "$date": "2024-01-06T21:33:06.444Z"
     }
   },
   "alpha": null,
@@ -5149,7 +5149,7 @@
   "series_name": "Warp Family//Cosmic//Psychic//Call",
   "card_number": 1098,
   "enthusiasm": 0,
-  "effect_text": "Unfurl 3 cards; add 1 Warp Family series card and 1 Canny card to your hand. Discard the other unfurled cards. Add 1 random Warp Family series card or random 1 Canny card from your hand to your play.",
+  "effect_text": "Gain 1 Warp Family card or 1 Canny card. Add 1 random Warp Family card or 1 random Canny card from your hand to your play.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl11hse.png",
@@ -5170,12 +5170,12 @@
     "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 3,
-    "time": "22:32",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "21:17",
     "full_time": {
-      "$date": "2023-12-03T22:32:12.187Z"
+      "$date": "2024-01-06T21:17:31.708Z"
     }
   },
   "alpha": null,
@@ -5279,7 +5279,7 @@
   "series_name": "Warp Family//Cosmic//Psychic//Call",
   "card_number": 1107,
   "enthusiasm": 0,
-  "effect_text": "Unfurl 3 cards; add 1 Warp Family series card and 1 Unity card to your hand. Discard the other unfurled cards. Add 1 random Warp Family series card or 1 random Unity card from your hand to your play.",
+  "effect_text": "Gain 1 Warp Family card or 1 Unity card. Add 1 random Warp Family card or 1 random Unity card from your hand to your play.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl14pe.png",
@@ -5300,12 +5300,12 @@
     "full_time": "2023-06-25T18:44:06.985000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 3,
-    "time": "22:32",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "21:17",
     "full_time": {
-      "$date": "2023-12-03T22:32:01.998Z"
+      "$date": "2024-01-06T21:17:45.295Z"
     }
   },
   "alpha": null,
@@ -5937,7 +5937,7 @@
   "series_name": "Altered//Nature//Tech",
   "card_number": 1132,
   "enthusiasm": null,
-  "effect_text": "<Limited> Place 1 Altered Fighter or Aura from your hand under this Item (if this Item is removed from your Active Pluck, the placed card(s) is discarded).",
+  "effect_text": "<Limited> Place 1 Altered Fighter or Aura from your hand under this Item.",
   "second_effect_text": "When this Item is removed from your Active Pluck, add this Item's placed card(s) to your play.",
   "illustrator": "TBD",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg18i.png",
@@ -5960,12 +5960,12 @@
     "full_time": "2023-11-08T17:33:01.524000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 17,
-    "time": "00:11",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "03:07",
     "full_time": {
-      "$date": "2023-12-17T00:11:30.575Z"
+      "$date": "2024-01-06T03:07:08.724Z"
     }
   },
   "alpha": null,
@@ -6824,7 +6824,7 @@
   "card_number": 1150,
   "enthusiasm": null,
   "effect_text": "Add 1 of your placed cards to your play, then place another card from your hand under a card in your play (if that card is removed from your play, the placed card(s) is discarded).",
-  "second_effect_text": "<Trigger> If a player discards a card(s) from their hand or play, place 1 card of the same type from your hand under a card in your play.",
+  "second_effect_text": "<Trigger> If a player discards a card(s) from their hand or play, place 1 card of the same type from your hand or discard pile under a card in your play.",
   "illustrator": "TBD",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b5ga.png",
   "file_name": "i1b5ga.png",
@@ -6846,12 +6846,12 @@
     "full_time": "2023-12-16T17:02:32.856000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 17,
-    "time": "07:15",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "17:38",
     "full_time": {
-      "$date": "2023-12-17T07:15:33.772Z"
+      "$date": "2024-01-06T17:38:04.443Z"
     }
   },
   "alpha": null,
@@ -6913,7 +6913,7 @@
   "card_number": 1152,
   "enthusiasm": 12,
   "effect_text": "Target: Strongest foe. //1-5: Deal 2 damage.//6-11: Deal 1 piercing damage for each of your placed cards/Pluck (max of 5). Add 1 placed card to your hand.//12+: Deal 1 piercing damage for each of your placed cards/Pluck (max of 5). Add 1 placed card to your play.",
-  "second_effect_text": "<Trigger> If a player discards a card(s) from their hand or play, place 1 card from your hand or discard pile under a card in your play.",
+  "second_effect_text": "<Trigger> If a player discards a card(s) from their hand or play, place 1 card of the same type from your hand or discard pile under a card in your play.",
   "illustrator": "TBD",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b5ge.png",
   "file_name": "i1b5ge.png",
@@ -6933,17 +6933,15 @@
     "month": 12,
     "day": 16,
     "time": "17:07",
-    "full_time": {
-      "$date": "2023-12-16T17:07:02.895Z"
-    }
+    "full_time": "2023-12-16T17:07:02.895000"
   },
   "updated_on": {
-    "year": 2023,
-    "month": 12,
-    "day": 16,
-    "time": "17:07",
+    "year": 2024,
+    "month": 1,
+    "day": 6,
+    "time": "17:37",
     "full_time": {
-      "$date": "2023-12-16T17:07:02.895Z"
+      "$date": "2024-01-06T17:37:43.039Z"
     }
   },
   "alpha": null,
