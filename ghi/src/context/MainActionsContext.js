@@ -311,8 +311,10 @@ const MainActionsContextProvider = ({ children }) => {
                 }
                 if (zoneFaceDown){
                     setFaceDown({...faceDown, [zoneFaceDown]: true})
+                    console.log(zoneFaceDown)
                 } else {
                     setFaceDown({...faceDown, [zone]: false})
+                    console.log("here")
                 }
                 setHand(newHand.filter((_, i) => i !== selectedIndex))
                 setSelectedIndex(null)
