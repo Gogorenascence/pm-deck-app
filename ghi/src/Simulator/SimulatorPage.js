@@ -34,7 +34,6 @@ function SimulatorPage() {
     const {
         decks,
         cards,
-        selectedMainDeck,
         setDecks,
         setCards,
         hand,

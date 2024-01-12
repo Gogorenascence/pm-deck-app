@@ -64,6 +64,68 @@ export function loadDeckFromSessionStorage(
     }
 }
 
+export function saveGameStateToSessionStorage(
+    player,
+    game,
+    faceDown,
+    defending,
+    defendingCard,
+    volume
+) {
+    try {
+        // Create an object representing the deck state
+        const gameState = {
+            player: player,
+            game: game,
+            faceDown: faceDown,
+            defending: defending,
+            defendingCard: defendingCard,
+            volume: volume
+        };
+
+        // Convert the deck state object to a string
+        const gameStateString = JSON.stringify(gameState);
+        // Save the deck state string to session storage under a specific key
+        sessionStorage.setItem('savedGameState', gameStateString);
+
+        // Optionally, you can also save other related states to session storage here
+        // sessionStorage.setItem('otherStateKey', JSON.stringify(otherState));
+    } catch (error) {
+        console.error('Error saving game state to session storage:', error);
+    }
+};
+
+export function loadGameStateFromSessionStorage(
+    setPlayer,
+    setGame,
+    setFaceDown,
+    setDefending,
+    setDefendingCard,
+    setVolume
+) {
+    try {
+        // Retrieve the deck state string from session storage
+        const savedGameState = sessionStorage.getItem('savedGameState');
+        if (savedGameState) {
+            // Parse the stored string back to an object
+            const parsedGameState = JSON.parse(savedGameState);
+
+            // Update the deck state with the retrieved data
+            setPlayer(parsedGameState.player);
+            setGame(parsedGameState.game);
+            setFaceDown(parsedGameState.faceDown)
+            setDefending(parsedGameState.defending)
+            setDefendingCard(parsedGameState.defendingCard)
+            setVolume(parsedGameState.volume)
+
+            // Optionally, load and set other related states from session storage here
+            // const otherState = JSON.parse(sessionStorage.getItem('otherStateKey'));
+            // setOtherState(otherState);
+        }
+    } catch (error) {
+        console.error('Error loading game state from session storage:', error);
+    }
+}
 
     // // Load deck state from session storage on component mount
     // useEffect(() => {

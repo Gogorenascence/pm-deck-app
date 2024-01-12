@@ -8,22 +8,22 @@ import {
 } from "../Sounds/Sounds";
 
 function PlayAreaModal({
-    // ownership,
     playArea,
     handleHoveredCard,
-    // selectedPluckIndex,
     showPlayAreaModal,
     setShowPlayAreaModal,
-    // discardPluckFromOwnership,
-    // returnPluckToDeck,
-    // showPluckMenu,
-    // setShowPluckMenu
 }) {
 
     const content = useRef(null)
     useOutsideAlerter(content)
 
-    const {faceDown, player, volume, addToLog} = useContext(GameStateContext)
+    const {
+        faceDown,
+        player,
+        volume,
+        addToLog
+    } = useContext(GameStateContext)
+
     const {
         addCardFromPlay,
         discardCard,
@@ -51,11 +51,6 @@ function PlayAreaModal({
         }, [ref]);
     }
 
-
-    // useEffect(() => {
-
-    // }, [showModal, main_list, pluck_list]); // Include showModal and card_list as dependencies
-
     useEffect(() => {
       // Check if filteredCards is empty
         if (playArea[showPlayAreaModal.objectName]?.length === 0) {
@@ -71,15 +66,10 @@ function PlayAreaModal({
 
     const handleClose = () => {
         setShowPlayAreaModal({name: "", objectName: ""})
-        // setShowPluckMenu(null)
         document.body.style.overflow = 'auto';
     };
 
     const zoneArray = playArea[showPlayAreaModal.objectName]
-    // const handlePluck = (index) => {
-    //     selectPluck(index)
-    //     handleClose()
-    // }
 
     const [showCardMenu, setShowCardMenu] = useState(null)
 

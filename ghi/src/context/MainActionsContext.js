@@ -368,7 +368,6 @@ const MainActionsContextProvider = ({ children }) => {
                 cardToMove: "",
                 zone: "",
                 index: null,
-                pluck: false,
                 zoneFaceDown: false
             })
         }

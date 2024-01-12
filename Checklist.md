@@ -21,7 +21,7 @@ place option will include active pluck
 place from hand
 move from active pluck to play areas
 send cards in the active pluck to the discard pile
-
-
-
-After crashing selecting a new deck crashes it again
+discard entire stacks
+stack right click menu: discard move
+move dialog for placing cards
+<!-- After crashing selecting a new deck crashes it again -->

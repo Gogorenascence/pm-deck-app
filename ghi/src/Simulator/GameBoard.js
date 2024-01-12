@@ -10,6 +10,7 @@ import UnfurlModal from "./UnfurlModal";
 import UnfurlPluckModal from "./UnfurlPluckModal";
 import {PlayAreaZone, ActivePluckZone, ExtraZone} from "./SimulatorZones";
 import PlayAreaModal from "./PlayAreaModal";
+import ActivePluckModal from "./ActivePluckModal";
 
 
 function GameBoard({
@@ -90,7 +91,7 @@ function GameBoard({
     const [showPluckSearchModal, setShowPluckSearchModal] = useState(false)
     const [showPluckDiscardModal, setShowPluckDiscardModal] = useState(false)
     const [showPlayAreaModal, setShowPlayAreaModal] = useState({name: "", zone: null, objectName: ""})
-    const [showActivePluckModal, setShowActivePluckModal] = useState(null)
+    const [showActivePluckModal, setShowActivePluckModal] = useState({name: "", zone: null, objectName: ""})
 
     const totalSlotLength = slot5.length + slot6.length + slot7.length + slot8.length;
 
@@ -171,6 +172,13 @@ function GameBoard({
                 showPlayAreaModal={showPlayAreaModal}
                 setShowPlayAreaModal={setShowPlayAreaModal}
                 handleHoveredCard={handleHoveredCard}
+            />
+            <ActivePluckModal
+                activePluck={activePluck}
+                showActivePluckModal={showActivePluckModal}
+                setShowActivePluckModal={setShowActivePluckModal}
+                handleHoveredCard={handleHoveredCard}
+                setShowOwnershipModal={setShowOwnershipModal}
             />
             <div className="field_box" style={fieldStyle}>
                 <div className={showExtra? "flex margin-top-10": "hidden2"}>
@@ -367,6 +375,7 @@ function GameBoard({
                         handleHoveredCard={handleHoveredCard}
                         showOwnershipModal={showOwnershipModal}
                         setShowOwnershipModal={setShowOwnershipModal}
+                        setShowActivePluckModal={setShowActivePluckModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_2"}
@@ -378,6 +387,7 @@ function GameBoard({
                         handleHoveredCard={handleHoveredCard}
                         showOwnershipModal={showOwnershipModal}
                         setShowOwnershipModal={setShowOwnershipModal}
+                        setShowActivePluckModal={setShowActivePluckModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_3"}
@@ -389,6 +399,7 @@ function GameBoard({
                         handleHoveredCard={handleHoveredCard}
                         showOwnershipModal={showOwnershipModal}
                         setShowOwnershipModal={setShowOwnershipModal}
+                        setShowActivePluckModal={setShowActivePluckModal}
                     />
                     <ActivePluckZone
                         objectName={"slot_4"}
@@ -400,6 +411,7 @@ function GameBoard({
                         handleHoveredCard={handleHoveredCard}
                         showOwnershipModal={showOwnershipModal}
                         setShowOwnershipModal={setShowOwnershipModal}
+                        setShowActivePluckModal={setShowActivePluckModal}
                     />
                     <SimPluckSearch
                         pluckDeck={pluckDeck}
