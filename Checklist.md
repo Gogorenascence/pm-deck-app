@@ -12,7 +12,7 @@ send cards to the discard pile
 place cards underneath stacks
 <!-- toggle for perspective tool -->
 large background for simulator page
-hide lightswitch and back-to-top
+<!-- hide lightswitch and back-to-top -->
 <!-- play area menu - move, flip, discard, swap, return -->
 <!-- stack modal menu - move, discard, swap, return -->
 main deck add to play
