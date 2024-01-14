@@ -245,6 +245,12 @@ const GameStateContextProvider = ({ children }) => {
             : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 0px)",
     }
 
+    const fieldStyle2 = {
+        transform: transformRotateX && scale && position.x_pos !== undefined && position.y_pos !== undefined ?
+            "perspective(1000px) rotateX(" + transformRotateX + ") scale(" + scale + ") translate(" + position.x_pos + "px, " + position.y_pos + "px)"
+            : "perspective(1000px) rotateX(45deg) scale(1.0) translate(0px, 180px)",
+    }
+
     const [showExtra, setShowExtra] = useState(true)
 
     const [volume, setVolume] = useState(0.05)
@@ -292,7 +298,8 @@ const GameStateContextProvider = ({ children }) => {
             handleChangeTransformRotateX,
             handleChangeScale,
             handleChangePosition,
-            fieldStyle
+            fieldStyle,
+            fieldStyle2
             }}>
             {children}
         </GameStateContext.Provider>
