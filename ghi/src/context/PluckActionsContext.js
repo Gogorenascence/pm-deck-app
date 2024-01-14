@@ -43,7 +43,6 @@ const PluckActionsContextProvider = ({ children }) => {
         setSelectedPluckIndex,
         setPrompt,
         setShowCardMenu,
-        placing,
         setShufflingPluck,
         allPlayerPluck,
     } = useContext(SimulatorActionsContext)
@@ -128,8 +127,18 @@ const PluckActionsContextProvider = ({ children }) => {
                 cards: newShuffledPluckDeck
             });
             !unfurling?
-                addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`):
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled Pluck to ${player.name}'s ownership`)
+                addToLog(
+                    "System",
+                    "system",
+                    `"${cardToAdd.name}" was added from Pluck deck to ${player.name}'s ownership`,
+                    cardToAdd
+                ):
+                addToLog(
+                    "System",
+                    "system",
+                    `"${cardToAdd.name}" was added from the unfurled Pluck to ${player.name}'s ownership`,
+                    cardToAdd
+                )
             } else {
             addToLog(
                 "System",
@@ -148,7 +157,12 @@ const PluckActionsContextProvider = ({ children }) => {
             setOwnership(newOwnership)
             gainSound(volume)
             setPluckDiscard(newDiscardPile.filter((_, i) => i !== index));
-            addToLog("System", "system", `"${cardToAdd.name}" was added from Pluck discard pile to ${player.name}'s ownership`)
+            addToLog(
+                "System",
+                "system",
+                `"${cardToAdd.name}" was added from Pluck discard pile to ${player.name}'s ownership`,
+                cardToAdd
+            )
         } else {
             addToLog(
                 "System",
@@ -171,7 +185,12 @@ const PluckActionsContextProvider = ({ children }) => {
             drawSound(volume);
 
             setActivePluck(newActivePluck)
-            addToLog("System", "system", `"${player.name} returned "${card.name}" from their Active Pluck.`)
+            addToLog(
+                "System",
+                "system",
+                `"${player.name} returned "${card.name}" from their Active Pluck.`,
+                card
+            )
         } else {
             addToLog("You can have more than 8 Pluck between in your Ownership and Active Pluck.")
         }
@@ -203,7 +222,9 @@ const PluckActionsContextProvider = ({ children }) => {
             "System",
             "system",
             `"${player.name} swapped "${cardInPlay.name}"
-            from their Active Pluck with "${cardInOwnership.name}" from their ownership.`)
+            from their Active Pluck with "${cardInOwnership.name}" from their ownership.`,
+            cardInPlay
+        )
     }
 
     const discardFromPluckDeck = (index) => {
@@ -217,20 +238,26 @@ const PluckActionsContextProvider = ({ children }) => {
             cards: newPluckDeck.filter((_, i) => i !== index)
         });
         discardSound(volume)
-        addToLog("System", "system", `${player.name} discarded "${pluckToDiscard.name}" from their Pluck deck`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} discarded "${pluckToDiscard.name}" from their Pluck deck`,
+            pluckToDiscard
+        )
     }
 
     const selectPluck = (index) => {
         selectedPluckIndex === index? setSelectedPluckIndex(null): setSelectedPluckIndex(index)
-        !placing?
+        // !placing?
         setPrompt({
             message: "Select a Zone to Play Your Pluck!",
             action: "activePluck"
-        }):
-        setPrompt({
-            message: "Select a Zone to Place Your Pluck!",
-            action: "activePluck"
         })
+        // :
+        // setPrompt({
+        //     message: "Select a Zone to Place Your Pluck!",
+        //     action: "activePluck"
+        // })
     }
 
     const playPluck = (zone) => {
@@ -245,7 +272,12 @@ const PluckActionsContextProvider = ({ children }) => {
             setSelectedPluckIndex(null)
             specialSound(volume)
             setActivePluck(pluckZones)
-            addToLog("System", "system", `${player.name} played "${playedPluck.name}"`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} played "${playedPluck.name}"`,
+                playedPluck
+            )
         }
     }
 
@@ -299,7 +331,12 @@ const PluckActionsContextProvider = ({ children }) => {
             newActivePluck[zone] = newSelectZone
             setPluckDiscard(newDiscardPile)
             setActivePluck(newActivePluck)
-            addToLog("System", "system", `${player.name} discarded "${card.name}" from their Active Pluck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} discarded "${card.name}" from their Active Pluck`,
+                card
+            )
         } else {
             newMainDiscardPile.push(card)
             const newSelectZone = selectZone.filter((_, i) => i !== index)
@@ -307,7 +344,12 @@ const PluckActionsContextProvider = ({ children }) => {
             newActivePluck[zone] = newSelectZone
             setDiscard(newMainDiscardPile)
             setActivePluck(newActivePluck)
-            addToLog("System", "system", `${player.name} discarded "${card.name}" from their Active Pluck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} discarded "${card.name}" from their Active Pluck`,
+                card
+            )
         }
     }
 
@@ -319,7 +361,12 @@ const PluckActionsContextProvider = ({ children }) => {
         setOwnership(newOwnership.filter((_, i) => i !== index))
         discardSound(volume)
         setPluckDiscard(newDiscardPile)
-        addToLog("System", "system", `${player.name} discarded "${discardedPluck.name}" from their ownership`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} discarded "${discardedPluck.name}" from their ownership`,
+            discardedPluck
+        )
     }
 
     const returnPluckToDeck = (index, position) => {
@@ -328,10 +375,20 @@ const PluckActionsContextProvider = ({ children }) => {
         const newOwnership = [...player.ownership]
         if (position === "top") {
             newPluck.unshift(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`,
+                returnedPluck
+            )
         } else {
             newPluck.push(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`,
+                returnedPluck
+            )
         }
         setOwnership(newOwnership.filter((_, i) => i !== index))
         setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})
@@ -345,10 +402,20 @@ const PluckActionsContextProvider = ({ children }) => {
         const newPluckDiscard = [...player.pluckDiscard]
         if (position === "top") {
             newPluck.unshift(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedPluck.name}" to the top of their Pluck deck`,
+                returnedPluck
+            )
         } else {
             newPluck.push(returnedPluck)
-            addToLog("System", "system", `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedPluck.name}" to the bottom of their Pluck deck`,
+                returnedPluck
+            )
         }
         setPluckDiscard(newPluckDiscard.filter((_, i) => i !== index))
         setPlayerPluckDeck({...playerPluckDeck, cards: newPluck})

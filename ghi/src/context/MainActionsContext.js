@@ -49,8 +49,6 @@ const MainActionsContextProvider = ({ children }) => {
         setFromDiscard,
         showCardMenu,
         setShowCardMenu,
-        placing,
-        setPlacing,
         setShuffling,
     } = useContext(SimulatorActionsContext)
 
@@ -131,8 +129,18 @@ const MainActionsContextProvider = ({ children }) => {
                 cards: newShuffledMainDeck
             });
             !unfurling?
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`):
-                addToLog("System", "system", `"${cardToAdd.name}" was added from the unfurled cards to ${player.name}'s hand`)
+                addToLog(
+                    "System",
+                    "system",
+                    `"${cardToAdd.name}" was added from the deck to ${player.name}'s hand`,
+                    cardToAdd
+                ):
+                addToLog(
+                    "System",
+                    "system",
+                    `"${cardToAdd.name}" was added from the unfurled cards to ${player.name}'s hand`,
+                    cardToAdd
+                )
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -147,7 +155,12 @@ const MainActionsContextProvider = ({ children }) => {
             setHand(newHand)
             setDiscard(newDiscardPile.filter((_, i) => i !== index))
             drawSound(volume);
-            addToLog("System", "system", `"${cardToAdd.name}" was added from discard pile to ${player.name}'s hand`)
+            addToLog(
+                "System",
+                "system",
+                `"${cardToAdd.name}" was added from discard pile to ${player.name}'s hand`,
+                cardToAdd
+            )
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -166,7 +179,12 @@ const MainActionsContextProvider = ({ children }) => {
             drawSound(volume);
 
             setPlayArea(newPlayArea)
-            addToLog("System", "system", `"${player.name} returned "${card.name}" from their play to their hand.`)
+            addToLog(
+                "System",
+                "system",
+                `"${player.name} returned "${card.name}" from their play to their hand.`,
+                card
+            )
         } else {
             addToLog("System", "system", "You can have more than 8 cards in your hand.")
         }
@@ -198,7 +216,9 @@ const MainActionsContextProvider = ({ children }) => {
             "System",
             "system",
             `"${player.name} swapped "${cardInPlay.name}"
-            from their play with "${cardInHand.name}" from their hand.`)
+            from their play with "${cardInHand.name}" from their hand.`,
+            cardInPlay
+        )
     }
 
     const discardFromDeck = (index) => {
@@ -212,7 +232,12 @@ const MainActionsContextProvider = ({ children }) => {
             cards: newMainDeck.filter((_, i) => i !== index)
         });
         discardSound(volume)
-        addToLog("System", "system", `${player.name} discarded "${cardToDiscard.name}" from their deck`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} discarded "${cardToDiscard.name}" from their deck`,
+            cardToDiscard
+        )
     }
 
     const handleShowCardMenu = (index, event) => {
@@ -232,29 +257,30 @@ const MainActionsContextProvider = ({ children }) => {
             setFromDiscard(false)
         } else {
             setSelectedIndex(index)
-            !placing?
+            // !placing?
             setPrompt({
                 message: "Select a Zone to Play Your Card!",
                 action: "playArea"
-            }):
-            setPrompt({
-                message: "Select a Zone to Place Your Card!",
-                action: "playArea"
             })
+            // :
+            // setPrompt({
+            //     message: "Select a Zone to Place Your Card!",
+            //     action: "playArea"
+            // })
         }
     }
 
     const handleCardFromHand = (index) => {
         setFromDeck(false)
         setFromDiscard(false)
-        setPlacing(false)
+        // setPlacing(false)
         selectCard(index)
     }
 
     const handlePlaceCardFromHand = (index) => {
         setFromDeck(false)
         setFromDiscard(false)
-        setPlacing(true)
+        // setPlacing(true)
         selectCard(index)
     }
 
@@ -266,7 +292,7 @@ const MainActionsContextProvider = ({ children }) => {
                 const playZones = {...player.playArea}
                 const selectZone = playZones[zone]
                 setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+                selectZone.push(playedCard)
                 if (selectZone.length > 1) {
                     equipSound(volume*1.5)
                 } else {
@@ -279,14 +305,19 @@ const MainActionsContextProvider = ({ children }) => {
                 setSelectedIndex(null)
                 setFromDeck(false)
                 setPlayArea(playZones)
-                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the deck`)
+                addToLog(
+                    "System",
+                    "system",
+                    `${player.name} played "${playedCard.name}" from the deck`,
+                    playedCard
+                )
             } else if (fromDiscard) {
                 const playedCard = player.mainDiscard[selectedIndex]
                 const playZones = {...player.playArea}
                 const selectZone = playZones[zone]
                 const newDiscardPile = [...player.mainDiscard]
                 setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+                selectZone.push(playedCard)
                 if (selectZone.length > 1) {
                     equipSound(volume*1.5)
                 } else {
@@ -296,14 +327,19 @@ const MainActionsContextProvider = ({ children }) => {
                 setSelectedIndex(null)
                 setFromDiscard(false)
                 setPlayArea(playZones)
-                addToLog("System", "system", `${player.name} played "${playedCard.name}" from the discard pile`)
+                addToLog(
+                    "System",
+                    "system",
+                    `${player.name} played "${playedCard.name}" from the discard pile`,
+                    playedCard
+                )
             } else {
                 const playedCard = player.hand[selectedIndex]
                 const playZones = {...player.playArea}
                 const selectZone = playZones[zone]
                 const newHand = [...player.hand]
                 setPrompt({message: "", action: ""})
-                !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+                selectZone.push(playedCard)
                 if (selectZone.length > 1) {
                     equipSound(volume*1.5)
                 } else {
@@ -322,7 +358,12 @@ const MainActionsContextProvider = ({ children }) => {
                 setPlayArea(playZones)
                 setShowCardMenu(null)
                 zoneFaceDown? addToLog("System", "system", `${player.name} played a card face-down`):
-                    addToLog("System", "system", `${player.name} played "${playedCard.name}"`)
+                    addToLog(
+                        "System",
+                        "system",
+                        `${player.name} played "${playedCard.name}"`,
+                        playedCard
+                    )
             }
             setPlayingFaceDown(false)
             setShowCardMenu(null)
@@ -376,6 +417,92 @@ const MainActionsContextProvider = ({ children }) => {
         }
     }
 
+    // const placeCard = (zone) => {
+    //     if (selectedIndex !== null) {
+    //         if (fromDeck) {
+    //             const playedCard = playerMainDeck.cards[selectedIndex]
+    //             const newMainDeck = [...playerMainDeck.cards]
+    //             const playZones = {...player.playArea}
+    //             const selectZone = playZones[zone]
+    //             setPrompt({message: "", action: ""})
+    //             !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+    //             if (selectZone.length > 1) {
+    //                 equipSound(volume*1.5)
+    //             } else {
+    //                 specialSound(volume)
+    //             }
+    //             setPlayerMainDeck({
+    //                 name: selectedMainDeck.name,
+    //                 cards: newMainDeck.filter((_, i) => i !== selectedIndex)
+    //             });
+    //             setSelectedIndex(null)
+    //             setFromDeck(false)
+    //             setPlayArea(playZones)
+    //             addToLog(
+    //                 "System",
+    //                 "system",
+    //                 `${player.name} played "${playedCard.name}" from the deck`,
+    //                 playedCard
+    //             )
+    //         } else if (fromDiscard) {
+    //             const playedCard = player.mainDiscard[selectedIndex]
+    //             const playZones = {...player.playArea}
+    //             const selectZone = playZones[zone]
+    //             const newDiscardPile = [...player.mainDiscard]
+    //             setPrompt({message: "", action: ""})
+    //             !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+    //             if (selectZone.length > 1) {
+    //                 equipSound(volume*1.5)
+    //             } else {
+    //                 specialSound(volume)
+    //             }
+    //             setDiscard(newDiscardPile.filter((_, i) => i !== selectedIndex))
+    //             setSelectedIndex(null)
+    //             setFromDiscard(false)
+    //             setPlayArea(playZones)
+    //             addToLog(
+    //                 "System",
+    //                 "system",
+    //                 `${player.name} played "${playedCard.name}" from the discard pile`,
+    //                 playedCard
+    //             )
+    //         } else {
+    //             const playedCard = player.hand[selectedIndex]
+    //             const playZones = {...player.playArea}
+    //             const selectZone = playZones[zone]
+    //             const newHand = [...player.hand]
+    //             setPrompt({message: "", action: ""})
+    //             !placing? selectZone.push(playedCard): selectZone.unshift(playedCard)
+    //             if (selectZone.length > 1) {
+    //                 equipSound(volume*1.5)
+    //             } else {
+    //                 {zoneFaceDown? specialSound(volume):summonSound(volume)}
+    //             }
+    //             if (zoneFaceDown){
+    //                 setFaceDown({...faceDown, [zoneFaceDown]: true})
+    //                 console.log(zoneFaceDown)
+    //             } else {
+    //                 setFaceDown({...faceDown, [zone]: false})
+    //                 console.log("here")
+    //             }
+    //             setHand(newHand.filter((_, i) => i !== selectedIndex))
+    //             setSelectedIndex(null)
+    //             setFromDeck(false)
+    //             setPlayArea(playZones)
+    //             setShowCardMenu(null)
+    //             zoneFaceDown? addToLog("System", "system", `${player.name} played a card face-down`):
+    //                 addToLog(
+    //                     "System",
+    //                     "system",
+    //                     `${player.name} played "${playedCard.name}"`,
+    //                     playedCard
+    //                 )
+    //         }
+    //         setPlayingFaceDown(false)
+    //         setShowCardMenu(null)
+    //     }
+    // }
+
     const discardCard = (card, index, zone) => {
         const newPlayArea = {...player.playArea}
         const selectZone = newPlayArea[zone]
@@ -388,7 +515,12 @@ const MainActionsContextProvider = ({ children }) => {
             newPlayArea[zone] = newSelectZone
             setDiscard(newDiscardPile)
             setPlayArea(newPlayArea)
-            addToLog("System", "system", `${player.name} discarded "${card.name}" from their play`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} discarded "${card.name}" from their play`,
+                card
+            )
         } else {
             newPluckDiscardPile.push(card)
             const newSelectZone = selectZone.filter((_, i) => i !== index)
@@ -396,7 +528,12 @@ const MainActionsContextProvider = ({ children }) => {
             newPlayArea[zone] = newSelectZone
             setPluckDiscard(newPluckDiscardPile)
             setPlayArea(newPlayArea)
-            addToLog("System", "system", `${player.name} discarded "${card.name}" from their play`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} discarded "${card.name}" from their play`,
+                card
+            )
         }
     }
 
@@ -409,7 +546,12 @@ const MainActionsContextProvider = ({ children }) => {
         setDiscard(newDiscardPile)
         discardSound(volume)
         setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} discarded "${discardedCard.name}" from their hand`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} discarded "${discardedCard.name}" from their hand`,
+            discardedCard
+        )
     }
 
     const topDeckCard = (index) => {
@@ -421,7 +563,12 @@ const MainActionsContextProvider = ({ children }) => {
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
         flipSound(volume)
         setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} returned "${toppedCard.name}" to the top of their deck`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} returned "${toppedCard.name}" to the top of their deck`,
+            toppedCard
+        )
     }
 
     const bottomDeckCard = (index) => {
@@ -433,7 +580,12 @@ const MainActionsContextProvider = ({ children }) => {
         setPlayerMainDeck({...playerMainDeck, cards: newCards})
         flipSound(volume)
         setShowCardMenu(null)
-        addToLog("System", "system", `${player.name} returned "${bottomCard.name}" to the bottom of their deck`)
+        addToLog(
+            "System",
+            "system",
+            `${player.name} returned "${bottomCard.name}" to the bottom of their deck`,
+            bottomCard
+        )
     }
 
     const returnDiscardedCardToDeck = (index, position) => {
@@ -442,10 +594,20 @@ const MainActionsContextProvider = ({ children }) => {
         const newDiscard = [...player.mainDiscard]
         if (position === "top") {
             newCards.unshift(returnedCard)
-            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the top of their deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedCard.name}" to the top of their deck`,
+                returnedCard
+            )
         } else {
             newCards.push(returnedCard)
-            addToLog("System", "system", `${player.name} returned "${returnedCard.name}" to the bottom of their deck`)
+            addToLog(
+                "System",
+                "system",
+                `${player.name} returned "${returnedCard.name}" to the bottom of their deck`,
+                returnedCard
+            )
         }
         setDiscard(newDiscard.filter((_, i) => i !== index))
         setPlayerMainDeck({...playerMainDeck, cards: newCards})

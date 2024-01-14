@@ -8,6 +8,7 @@ import { GameStateContext } from "../context/GameStateContext";
 import { MainActionsContext } from "../context/MainActionsContext";
 import {PluckActionsContext} from "../context/PluckActionsContext";
 
+
 function PlayAreaZone({
 objectName,
 stringName,
@@ -27,7 +28,8 @@ discardCard
         volume,
         addToLog,
         activating,
-        handleActivating
+        handleActivating,
+        defendingCard,
     } = useContext(GameStateContext)
 
     const {
@@ -72,13 +74,13 @@ discardCard
                         activateSound(volume)
                         handleActivating(objectName)
                         setFaceDown({...faceDown, [objectName]: false})
-                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`)
+                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`, zoneArray[0])
                     }}
                 ><p>Resolve</p></div>
                 <div className="card-menu-item"
                     onClick={() => {
                         if (faceDown[objectName] === true){
-                            addToLog("System", "system", `${player.name} revealed "${zoneArray[0].name}"`)
+                            addToLog("System", "system", `${player.name} revealed "${zoneArray[0].name}"`, zoneArray[0])
                         }
                         setFaceDown({...faceDown, [objectName]: !faceDown[objectName]})
                         flipSound(volume)
@@ -184,7 +186,18 @@ discardCard
                                         zoneArray[0].picture_url:
                                         "https://i.imgur.com/krY25iI.png"
                                 }
-                            alt={zoneArray[0].name}/>
+                            alt={zoneArray[0].name}
+                            title={
+                                defendingCard.slot === objectName?
+                                    `HP: ${defendingCard.hp}`+
+                                    `${defendingCard.block?`\nBlock: ${defendingCard.block}`:""}`+
+                                    `${defendingCard.block?`\nCounter: ${defendingCard.counter}`:""}`+
+                                    `${defendingCard.endure?`\nEndure: ${defendingCard.endure}`:""}`+
+                                    `${defendingCard.redirect?`\nRedirect: ${defendingCard.redirect}`:""}`
+                                :
+                                    ""
+                            }
+                        />
                     </>
                 :null}
             </div>
@@ -211,7 +224,8 @@ function ActivePluckZone({
         volume,
         addToLog,
         activating,
-        handleActivating
+        handleActivating,
+        defendingCard,
     } = useContext(GameStateContext)
 
     const {
@@ -263,7 +277,7 @@ function ActivePluckZone({
                         handleActivating(objectName)
                         activateSound(volume)
                         console.log(zoneArray[0].card_type)
-                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`)
+                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`, zoneArray[0])
                     }}
                 ><p>Resolve</p></div>
                 <div className="card-menu-item"
@@ -341,12 +355,13 @@ function ActivePluckZone({
                             onDoubleClick={() => discardPluck(zoneArray[0], 0, objectName)}
                             onContextMenu={(event) => handleMenu(event)}
                             onClick={(event) => handleMenu(event)}
-                            onMouseEnter={() => handleHoveredCard(zoneArray[0])}
+                            onMouseEnter={() => {handleHoveredCard(zoneArray[0])}}
                             className="builder-card5 pointer glow3"
                             src={zoneArray[0].picture_url ?
                                     zoneArray[0].picture_url :
                                     "https://playmakercards.s3.us-west-1.amazonaws.com/plucks4-1.png"}
-                            alt={zoneArray[0].name}/>
+                            alt={zoneArray[0].name}
+                        />
                     </>
                 :null}
             </div>
@@ -372,7 +387,8 @@ function ExtraZone({
         volume,
         addToLog,
         activating,
-        handleActivating
+        handleActivating,
+        defendingCard,
     } = useContext(GameStateContext)
 
     const {
@@ -415,7 +431,7 @@ function ExtraZone({
                     onClick={() => {
                         handleActivating(objectName)
                         activateSound(volume)
-                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`)
+                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[0].name}"`, zoneArray[0])
                     }}
                 ><p>Resolve</p></div>
                 <div className="card-menu-item"
@@ -502,7 +518,18 @@ function ExtraZone({
                             src={zoneArray[0].picture_url ?
                                 zoneArray[0].picture_url :
                                 "https://i.imgur.com/krY25iI.png"}
-                            alt={zoneArray[0].name}/>
+                            alt={zoneArray[0].name}
+                            title={
+                                defendingCard.slot === objectName?
+                                    `HP: ${defendingCard.hp}`+
+                                    `${defendingCard.block?`\nBlock: ${defendingCard.block}`:""}`+
+                                    `${defendingCard.block?`\nCounter: ${defendingCard.counter}`:""}`+
+                                    `${defendingCard.endure?`\nEndure: ${defendingCard.endure}`:""}`+
+                                    `${defendingCard.redirect?`\nRedirect: ${defendingCard.redirect}`:""}`
+                                :
+                                    ""
+                            }
+                        />
                     </>
                 :null}
             </div>

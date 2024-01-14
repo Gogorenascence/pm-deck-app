@@ -96,7 +96,12 @@ function ActivePluckModal({
                                                 <div className="card-menu-item"
                                                     onClick={() => {
                                                         activateSound(volume)
-                                                        addToLog("System", "system", `${player.name} is resolving "${zoneArray[index].name}"`)
+                                                        addToLog(
+                                                            "System",
+                                                            "system",
+                                                            `${player.name} is resolving "${zoneArray[index].name}"`,
+                                                            zoneArray[index]
+                                                        )
                                                     }}
                                                 ><p>Resolve</p></div>
                                                 <div className="card-menu-item"

@@ -114,7 +114,12 @@ const GameStateContextProvider = ({ children }) => {
                 setDefending(newDefending)
                 setDefendingCard(newDefendingCard)
                 equipSound(volume*1.5)
-                addToLog("System", "system", `${player.name} is defending with "${card.name}"`)
+                addToLog(
+                    "System",
+                    "system",
+                    `${player.name} is defending with "${card.name}"`,
+                    card
+                )
             }
         } else {
             setDefending({...defending, [slot]: false})
@@ -127,6 +132,7 @@ const GameStateContextProvider = ({ children }) => {
                 redirect: 0,
                 slot: ""
             })
+            equipSound(volume*1.5)
         }
     }
 
@@ -175,12 +181,13 @@ const GameStateContextProvider = ({ children }) => {
 
     const [log, setLog] = useState([])
 
-    const addToLog = (user, role, message) => {
+    const addToLog = (user, role, message, card) => {
         const newLog = [...log]
         newLog.push({
             user: user,
             role: role,
-            message: message
+            message: message,
+            card: card
         })
         setLog(newLog)
     }

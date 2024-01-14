@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { GameStateContext } from "../context/GameStateContext";
 import { MainActionsContext } from "../context/MainActionsContext";
+import { SimulatorActionsContext } from "../context/SimulatorActionsContext";
 import { damageSound, gainSound, rollSound, chatSound } from "../Sounds/Sounds";
 
 
@@ -23,6 +24,8 @@ function LogChatPanel({
         addToLog,
         volume
     } = useContext(GameStateContext)
+
+    const {handleHoveredCard} = useContext(SimulatorActionsContext)
 
     const {discardCard} = useContext(MainActionsContext)
 
@@ -119,17 +122,28 @@ function LogChatPanel({
                 setDamage("")
                 if (damageTaken > 0) {
                     damageSound(volume)
-                    addToLog("System", "system", `${player.name}'s defending card took ${damageTaken} damage`)
+                    addToLog(
+                        "System",
+                        "system",
+                        `${player.name}'s defending card "${defendingCard.card.name}" took ${damageTaken} damage`,
+                        defendingCard.card
+                    )
                 } else if (damageTaken < 0) {
                     gainSound(volume*2)
-                    addToLog("System", "system", `${player.name}'s defending card gained ${-damageTaken} HP`)
+                    addToLog(
+                        "System",
+                        "system",
+                        `${player.name}'s defending card "${defendingCard.card.name}" gained ${-damageTaken} HP`,
+                        defendingCard.card
+                    )
                 }
                 if (damageTaken >= defendingCard.hp) {
                     discardCard(player.playArea[defendingCard.slot][0], 0, defendingCard.slot)
                     addToLog(
                         "System",
                         "system",
-                        `${player.name}'s defending card took ${damageTaken} damage and was defeated`
+                        `${player.name}'s defending card took ${damageTaken} damage and was defeated`,
+                        defendingCard.card
                     )
                     setDefending({...defending, [defendingCard.slot]: false})
                     setDefendingCard({
@@ -153,7 +167,13 @@ function LogChatPanel({
                     <div className="right">
                         <div className="scrollableChat" ref={chatWindow}>
                             {log.length > 0? log.map((message) => (
-                                <div className="m-l-r-5">
+                                <div className="m-l-r-5" onMouseEnter={() => {
+                                    if (message.card) {
+                                        handleHoveredCard(message.card)
+                                        }
+                                    console.log(message)
+                                    }}
+                                >
                                     <p style={{fontWeight: "700", color: colors[message.role], margin: "7px 0 0 0"}}>
                                         {message.user}
                                     </p>

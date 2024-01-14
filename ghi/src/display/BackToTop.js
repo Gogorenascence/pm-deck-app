@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function BackToTop() {
+    const location = useLocation();
     const showOnPx = 300;
     const [showButton, setShowButton] = useState(false);
 
@@ -29,7 +31,7 @@ function BackToTop() {
     };
 
     return (
-        <div>
+        <div className={location.pathname === "/simulator"? "hidden2": null}>
             <img
                 className={`back-to-top ${showButton ? null : "hidden"}`}
                 src="https://i.imgur.com/8VVXzFI.png"

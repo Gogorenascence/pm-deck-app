@@ -135,7 +135,9 @@ function SimDeckSearchModal({
                                                         addToLog(
                                                             "System",
                                                             "system",
-                                                            `${player.name} is resolving "${mainDiscard[index].name}" from the Discard pile`)
+                                                            `${player.name} is resolving "${mainDiscard[index].name}" from the Discard pile`,
+                                                            mainDiscard[index]
+                                                        )
                                                     }}
                                                 ><p>Resolve</p></div>
                                                 <div className="card-menu-item"

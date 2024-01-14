@@ -60,7 +60,6 @@ const SimulatorActionsContextProvider = ({ children }) => {
     const [showPluckMenu, setShowPluckMenu] = useState(null)
     const [loading, setLoading] = useState(false)
     const [cardsLoading, setCardsLoading] = useState(false)
-    const [placing, setPlacing] = useState(true)
     const [shuffling, setShuffling] = useState(false)
     const [shufflingPluck, setShufflingPluck] = useState(false)
 
@@ -228,8 +227,6 @@ const SimulatorActionsContextProvider = ({ children }) => {
             setLoading,
             cardsLoading,
             setCardsLoading,
-            placing,
-            setPlacing,
             shuffling,
             setShuffling,
             shufflingPluck,

@@ -19,9 +19,15 @@ main deck add to play
 <!-- active pluck menu - move, discard, return -->
 place option will include active pluck
 place from hand
-move from active pluck to play areas
-send cards in the active pluck to the discard pile
+<!-- move from active pluck to play areas -->
+<!-- send cards in the active pluck to the discard pile -->
 discard entire stacks
 stack right click menu: discard move
 move dialog for placing cards
+<!-- card details when hovering -->
+<!-- card tokens on hover -->
 <!-- After crashing selecting a new deck crashes it again -->
+contact us navtab
+player actions tab
+modal for deck select
+<!-- remove footer, lightSwitch and backToTop when in simulator -->
