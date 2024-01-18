@@ -182,7 +182,7 @@ const MainActionsContextProvider = ({ children }) => {
             addToLog(
                 "System",
                 "system",
-                `"${player.name} returned "${card.name}" from their play to their hand.`,
+                `"${player.name} returned "${card.name}" from their String to their hand.`,
                 card
             )
         } else {
@@ -518,7 +518,7 @@ const MainActionsContextProvider = ({ children }) => {
             addToLog(
                 "System",
                 "system",
-                `${player.name} discarded "${card.name}" from their play`,
+                `${player.name} discarded "${card.name}" from their String`,
                 card
             )
         } else {
@@ -531,7 +531,7 @@ const MainActionsContextProvider = ({ children }) => {
             addToLog(
                 "System",
                 "system",
-                `${player.name} discarded "${card.name}" from their play`,
+                `${player.name} discarded "${card.name}" from their String`,
                 card
             )
         }

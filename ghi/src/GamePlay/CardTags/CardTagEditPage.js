@@ -182,8 +182,6 @@ function CardTagEdit() {
 
         const response = await fetch(cardTagUrl, fetchConfig);
         if (response.ok) {
-            const responseData = await response.json();
-            // const card_tag_id = responseData.id;
             setCardTag({
                 cat_type: "",
                 name: "",
@@ -281,7 +279,7 @@ function CardTagEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a tag</h6>:
+                                        <h6 className="error">You must be logged in to edit a tag</h6>:
                                     null
                                     }
                                 </div>

@@ -181,8 +181,6 @@ function ExtraEffectEdit() {
 
         const response = await fetch(extraEffectUrl, fetchConfig);
         if (response.ok) {
-            const responseData = await response.json();
-            // const extra_effect_id = responseData.id;
             setExtraEffect({
                 cat_type: "",
                 name: "",
@@ -280,7 +278,7 @@ function ExtraEffectEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create an effect</h6>:
+                                        <h6 className="error">You must be logged in to edit an effect</h6>:
                                     null
                                     }
                                 </div>

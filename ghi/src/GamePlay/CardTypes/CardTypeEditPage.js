@@ -289,7 +289,7 @@ function CardTypeEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a tag</h6>:
+                                        <h6 className="error">You must be logged in to edit a tag</h6>:
                                     null
                                     }
                                 </div>

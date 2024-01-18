@@ -50,7 +50,7 @@ function CardTypesPage() {
                         <NavLink to={`/cardtypes/${cardType.id}`} className="nav-link no-pad" key={cardType.name}>
                             <div className="flex">
                                 <div className="table200">
-                                    <h5 className="text-table">{cardType.name}</h5>
+                                    <h5 className="text-table aligned">{cardType.name}</h5>
                                 </div>
                                 <div className="tableText">
                                     <h5 className="text-table-2">{cardType.description}</h5>

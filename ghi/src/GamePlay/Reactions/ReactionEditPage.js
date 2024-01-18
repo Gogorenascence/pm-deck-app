@@ -181,8 +181,6 @@ function ReactionEdit() {
 
         const response = await fetch(reactionUrl, fetchConfig);
         if (response.ok) {
-            const responseData = await response.json();
-            // const card_tag_id = responseData.id;
             setReaction({
                 name: "",
                 rules: "",
@@ -277,7 +275,7 @@ function ReactionEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a reaction</h6>:
+                                        <h6 className="error">You must be logged in to edit a reaction</h6>:
                                     null
                                     }
                                 </div>

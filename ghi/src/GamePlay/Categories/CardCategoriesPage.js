@@ -85,7 +85,7 @@ function CardCategoriesPage() {
                                     <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
                                         <div className="flex">
                                             <div className="table200">
-                                                <h5 className="text-table">{cardCategory.name}</h5>
+                                                <h5 className="text-table aligned">{cardCategory.name}</h5>
                                             </div>
                                             <div className="tableText">
                                                 <h5 className="text-table-2">{cardCategory.description}</h5>
@@ -117,7 +117,7 @@ function CardCategoriesPage() {
                                 <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
                                     <div className="flex">
                                         <div className="table200">
-                                            <h5 className="text-table">{cardCategory.name}</h5>
+                                            <h5 className="text-table aligned">{cardCategory.name}</h5>
                                         </div>
                                         <div className="tableText">
                                             <h5 className="text-table-2">{cardCategory.description}</h5>
@@ -149,7 +149,7 @@ function CardCategoriesPage() {
                                     <NavLink to={`/cardcategories/${cardCategory.id}`} className="nav-link no-pad" key={cardCategory.name}>
                                         <div className="flex">
                                             <div className="table200">
-                                                <h5 className="text-table">{cardCategory.name}</h5>
+                                                <h5 className="text-table aligned">{cardCategory.name}</h5>
                                             </div>
                                             <div className="tableText">
                                                 <h5 className="text-table-2">{cardCategory.description}</h5>

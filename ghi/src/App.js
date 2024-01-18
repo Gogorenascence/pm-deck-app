@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
-// import DeckBuilder from "./Builder/DeckBuilder"
 import DecksPage from "./Decks/DecksPage"
 import DeckDetailPage from "./Decks/DeckDetailPage";
 import DeckEditPage from "./Builder/DeckEditPage";
@@ -49,6 +48,9 @@ import CardTypesPage from "./GamePlay/CardTypes/CardTypesPage";
 import ReactionsPage from "./GamePlay/Reactions/ReactionsPage";
 import SimulatorPage from "./Simulator/SimulatorPage";
 import CreatePortal from "./Accounts/CreatePortal";
+import TermCreate from "./GamePlay/Terms/TermCreatePage";
+import TermsPage from "./GamePlay/Terms/TermsPage";
+import TermEdit from "./GamePlay/Terms/TermEditPage";
 
 
 function App() {
@@ -118,6 +120,9 @@ function App() {
               <Route path="/reactions" element={<ReactionsPage />} />
               <Route path="/simulator" element={<SimulatorPage />} />
               <Route path="/createportal" element={<CreatePortal />} />
+              <Route path="/termcreate" element={<TermCreate />} />
+              <Route path="/glossary" element={<TermsPage />} />
+              <Route path="/glossary/:term_id" element={<TermEdit />} />
             </Routes>
 
           </div>

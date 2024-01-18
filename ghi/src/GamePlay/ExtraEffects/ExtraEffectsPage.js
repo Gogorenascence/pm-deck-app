@@ -50,7 +50,7 @@ function ExtraEffectsPage() {
                         <NavLink to={`/extraeffects/${extraEffect.id}`} className="nav-link no-pad" key={extraEffect.name}>
                             <div className="flex">
                                 <div className="table200">
-                                    <h5 className="text-table">{extraEffect.name}</h5>
+                                    <h5 className="text-table aligned">{extraEffect.name}</h5>
                                 </div>
                                 <div className="tableText">
                                     <h5 className="text-table-2">{extraEffect.rules}</h5>

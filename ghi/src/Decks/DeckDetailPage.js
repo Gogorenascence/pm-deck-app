@@ -11,7 +11,7 @@ import SimulateButton from "../Simulator/SimulateButton";
 import { AuthContext } from "../context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 import StatsPanel from "./StatsPanel";
-import PopUp from "./PopUp";
+import PopUp from "../display/PopUp";
 
 
 function DeckDetailPage() {

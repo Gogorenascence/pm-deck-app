@@ -184,8 +184,6 @@ function CardCategoryEdit() {
 
         const response = await fetch(cardCategoryUrl, fetchConfig);
         if (response.ok) {
-            const responseData = await response.json();
-            // const card_category_id = responseData.id;
             setCardCategory({
                 cat_type: "",
                 name: "",
@@ -287,7 +285,7 @@ function CardCategoryEdit() {
                                     <BackButton/>
                                     <br/>
                                     { !account?
-                                        <h6 className="error">You must be logged in to create a cardCategory</h6>:
+                                        <h6 className="error">You must be logged in to edit a cardCategory</h6>:
                                     null
                                     }
                                 </div>

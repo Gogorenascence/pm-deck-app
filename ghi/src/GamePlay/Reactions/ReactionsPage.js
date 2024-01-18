@@ -54,7 +54,7 @@ function ReactionsPage() {
                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link no-pad" key={reaction.name}>
                                 <div className="flex">
                                     <div className="table200">
-                                        <h5 className="text-table">{reaction.name}</h5>
+                                        <h5 className="text-table aligned">{reaction.name}</h5>
                                     </div>
                                     <div className="tableText">
                                         <h5 className="text-table-2">{shortenedText(replaceCount(reaction))}</h5>

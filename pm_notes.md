@@ -46,3 +46,17 @@ shadow strike
 Karmic crash
 Kitten lost in the mist
 "Gizma" - collar
+
+beholder beast
+boulder beast
+\
+nkl3
+Bank
+
+1st 1 crit die
+sw 1 crit die
+2nd 1 crit die
+sw no crit
+4 mettle player
+2 mettle
+pluck not cleared out

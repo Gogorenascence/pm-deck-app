@@ -31,3 +31,4 @@ contact us navtab
 player actions tab
 modal for deck select
 <!-- remove footer, lightSwitch and backToTop when in simulator -->
+Glossary object and rules

@@ -131,8 +131,6 @@ function CardsPage() {
     const handleQuery = (event) => {
         setQuery({ ...query, [event.target.name]: event.target.value });
         setShowMore(20)
-        console.log(query)
-        console.log()
     };
 
     const handleQueryReset = (event) => {
@@ -174,7 +172,7 @@ function CardsPage() {
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter((card, index, arr) => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-                .filter(card => card.card_number >= query.startingNum)
+        .filter(card => card.card_number >= query.startingNum)
         .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
@@ -184,7 +182,7 @@ function CardsPage() {
         .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
 
-        const isQueryEmpty = Object.values(query).every((value) => value === "");
+    const isQueryEmpty = Object.values(query).every((value) => value === "");
 
     return (
         <div className="white-space">

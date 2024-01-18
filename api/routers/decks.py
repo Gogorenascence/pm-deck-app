@@ -6,7 +6,6 @@ from models.decks import (
 
 from queries.decks import DeckQueries
 from fastapi import APIRouter, Depends, Response
-from authenticator import authenticator
 
 router = APIRouter(tags=["decks"])
 

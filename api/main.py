@@ -11,7 +11,8 @@ from routers import (
     booster_sets,
     accounts,
     password_resets,
-    categories
+    categories,
+    terms
 )
 from authenticator import authenticator
 import os
@@ -38,6 +39,7 @@ app.include_router(booster_sets.router, tags=["booster_sets"])
 app.include_router(accounts.router, tags=["accounts"])
 app.include_router(password_resets.router, tags=["password_resets"])
 app.include_router(categories.router, tags=["card_categories"])
+app.include_router(terms.router, tags=["terms"])
 app.include_router(authenticator.router, tags=["authenticator"])
 
 

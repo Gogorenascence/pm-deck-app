@@ -11,7 +11,6 @@ from authenticator import authenticator
 from pydantic import BaseModel
 from queries.password_resets import (
     PasswordResetQueries,
-    DuplicatePasswordResetError,
 )
 from models.password_reset import (
     PasswordResetIn,
