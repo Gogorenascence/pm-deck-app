@@ -281,14 +281,23 @@ function NavBar() {
               }
             </li>
             <li className="nav-item">
-                <NavLink className="username2" to="/simulator" onClick={() => followLink()}>
               <div className="navbar-select pointer">
+                <NavLink className="username2" to="/simulator">
                   <h5 className="navbar-menu-item">
                     Simulator
                   </h5>
-              </div>
                 </NavLink>
+              </div>
             </li>
+            {/* <li className="nav-item">
+                <NavLink className="username2" to="/simulator" onClick={() => followLink()}>
+                  <div className="navbar-select pointer">
+                      <h5 className="navbar-menu-item">
+                        Simulator
+                      </h5>
+                  </div>
+                </NavLink>
+            </li> */}
             { account && account.roles.includes("admin")?
               <li className="nav-item">
                 <div className={showMenu.show && showMenu.section === "admin"?

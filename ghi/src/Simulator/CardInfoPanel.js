@@ -54,9 +54,11 @@ function CardInfoPanel({
                                         {processText(hoveredCard.effect_text).map(text =>(
                                             <p className="white panel-text-box-text">{text}</p>
                                         ))}
-                                        {processText(hoveredCard.second_effect_text).map(text =>(
-                                            <p className="white panel-text-box-text">{text}</p>
-                                        ))}
+                                        <div className="margin-top-20">
+                                            {processText(hoveredCard.second_effect_text).map(text =>(
+                                                <p className="white panel-text-box-text">{text}</p>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                                 <p className="white panel-text-box-text margin-left-13">{hoveredCard.series_name.replaceAll("//", " | ")}</p>

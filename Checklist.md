@@ -1,4 +1,4 @@
-deck/discard pile/stack search
+<!-- deck/discard pile/stack search -->
 menu on cards and piles
 <!-- shuffle -->
 <!-- add all board cards to context -->
@@ -31,4 +31,6 @@ contact us navtab
 player actions tab
 modal for deck select
 <!-- remove footer, lightSwitch and backToTop when in simulator -->
-Glossary object and rules
+<!-- Glossary object -->
+rules
+site news slider

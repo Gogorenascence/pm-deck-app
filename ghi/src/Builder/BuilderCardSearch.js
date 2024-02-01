@@ -198,6 +198,7 @@ function BuilderCardSearch() {
                 <option value="1004">Stay</option>
                 <option value="1005">Max</option>
                 <option value="1006">Cycle</option>
+                <option value="1007">Hit 1</option>
             </select>
             <select
                 className="left dcbsearch-small"

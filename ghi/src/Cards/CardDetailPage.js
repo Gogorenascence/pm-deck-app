@@ -152,7 +152,7 @@ function CardDetailPage() {
                             alt={card.name}/>
                     </div>
                     <div className="none" style={{margin: "5% 0%"}}>
-                            <h1 className="centered-h1">Related Cards</h1>
+                        <h1 className="centered-h1">Related Cards</h1>
                         <div className="cd-inner">
                             <div className="cd-inner card-list3" style={{width: "480px"}}>
                                 {relatedCards?.slice(0,6).map((relatedCard) => {
@@ -325,7 +325,7 @@ function CardDetailPage() {
                             </div>
                         </div>
                         <div>
-                        <div className="hidden2 media-display" style={{margin: "5% 0%"}}>
+                            <div className="hidden2 media-display" style={{margin: "5% 0%"}}>
                                 <h1 className="centered-h1">Related Cards</h1>
                                 <div className="cd-inner">
                                     <div className="cd-inner card-pool-fill3">
@@ -359,7 +359,6 @@ function CardDetailPage() {
 
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
