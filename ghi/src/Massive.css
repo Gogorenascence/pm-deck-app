@@ -143,6 +143,7 @@ body.dark::after {
   --window-width600: calc(100vw - 600px);
   --window-height2: calc(100vh - 62px);
   --window-heightChat: calc(100vh - 245px);
+  --color-body: #fff;
 }
 
 
@@ -3047,6 +3048,38 @@ button:hover {
 
 .wide100-2 {
   width: 100vw;
+}
+
+.newsRow {
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.newsItem {
+  width: 100%;
+  min-height: 70px;
+  margin: 10px 0px;
+  border: 2px solid;
+  border-color: white;
+  border-radius: 25px 0px;
+}
+
+.newsText {
+  margin: 0 10px;
+}
+.newsRow::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* .newsRow::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  height: 250px;
+} */
+
+
+.newsRow::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 1330px) {

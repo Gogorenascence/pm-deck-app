@@ -51,6 +51,9 @@ import CreatePortal from "./Accounts/CreatePortal";
 import TermCreate from "./GamePlay/Terms/TermCreatePage";
 import TermsPage from "./GamePlay/Terms/TermsPage";
 import TermEdit from "./GamePlay/Terms/TermEditPage";
+import StoryCreate from "./Articles/StoryCreatePage";
+import StoriesPage from "./Articles/StoriesPage";
+import StoryEdit from "./Articles/StoryEditPage";
 
 
 function App() {
@@ -123,6 +126,10 @@ function App() {
               <Route path="/termcreate" element={<TermCreate />} />
               <Route path="/glossary" element={<TermsPage />} />
               <Route path="/glossary/:term_id" element={<TermEdit />} />
+              <Route path="/newscreate" element={<StoryCreate />} />
+              <Route path="/news" element={<StoriesPage />} />
+              <Route path="/news/:news_id" element={<StoryEdit />} />
+              {/* <Route path="/storycreate" element={<StoryCreate />} /> */}
             </Routes>
 
           </div>

@@ -20,9 +20,11 @@ class PydanticObjectId(ObjectId):
 
 class StoryIn(BaseModel):
     section: str
-    content: str
+    headline: str
+    content: Optional[str]
+    image: Optional[str]
     account: str
-    story_date: Optional[dict]
+    story_date: Optional[str]
     site_link: Optional[str]
 
 
