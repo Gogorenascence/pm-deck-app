@@ -28,13 +28,23 @@ function NewsRow() {
         stories.filter(story => story.section !== "admin").slice(0,20)
 
     const newsColors = {
-        releases: "#ffbb00de",
-        game: "rgba(42, 168, 115, 0.85)",
-        design: "rgba(124, 19, 33, 0.85)",
-        site: "#4d475e49",
-        social: "rgba(82, 96, 194, 0.85)",
-        events: "rgba(101, 56, 131, 0.85)",
-        admin: "#4d475e49",
+        releases: "rgba(192, 145, 17, 0.87)",
+        game: "rgba(42, 168, 115, 0.70)",
+        design: "rgba(124, 19, 33, 0.70)",
+        site: "rgba(77, 71, 94, 0.50)",
+        social: "rgba(82, 96, 194, 0.70)",
+        events: "rgba(101, 56, 131, 0.70)",
+        admin: "rgba(77, 71, 94, 0.50)",
+    }
+
+    const newsBorders = {
+        releases: "#f0be1c",
+        game: "rgb(54, 184, 129)",
+        design: "rgb(255, 0, 43)",
+        site: "#4D475E",
+        social: "rgb(88, 129, 253)",
+        events: "rgb(104, 20, 172)",
+        admin: "#4D475E",
     }
 
     useEffect(() => {
@@ -51,13 +61,16 @@ function NewsRow() {
                             className="flex-items newsItem"
                             style={{
                                 backgroundColor: newsColors[story.section],
-                                marginTop: index === 0 ? "0px" : "10px",
-                                marginBottom: index ===  filteredStories.length -1 ? "0px" : "10px"
+                                borderColor: newsBorders[story.section],
+                                marginTop: index === 0 ? "2px" : "10px",
+                                marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
                             }}
                         >
-                            <h3 className="newsText">{formatDate(story.story_date)}</h3>
-                            <h4 className="newsText">{story.section}</h4>
-                            <h5 className="newsText">{story.headline}</h5>
+
+                            <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
+                            <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
+                            {/* <h4 className="newsText">{story.section}</h4> */}
+                            <h4 className="newsText">{story.headline}</h4>
                         </div>
                     )
                 })}
@@ -95,7 +108,7 @@ function NewsRow() {
             <br/>
             {/* <NavLink to="/stories"> */}
                 <button style={{ width: "100%" }}>
-                    Browse News
+                    Browse All News
                 </button>
             {/* </NavLink> */}
         </div>

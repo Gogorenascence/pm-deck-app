@@ -2949,7 +2949,7 @@ button:hover {
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.212);
-  background-color: rgba(15, 0, 50, 0.315);
+  background-color: rgba(224, 174, 35, 0.87);
   border-radius: 2px;
   outline: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -3056,16 +3056,20 @@ button:hover {
 }
 
 .newsItem {
-  width: 100%;
+  width: calc(100% - 8px);
   min-height: 70px;
-  margin: 10px 0px;
-  border: 2px solid;
+  margin: 10px 0px 10px 4px;
+  border: 5px solid;
   border-color: white;
   border-radius: 25px 0px;
+  outline: 2px solid white;
+  filter: brightness(90%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.35));
 }
 
 .newsText {
   margin: 0 10px;
+  color: white;
 }
 .newsRow::-webkit-scrollbar {
   width: 10px;
@@ -3080,6 +3084,16 @@ button:hover {
 .newsRow::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 5px;
+  width: 100%;
+}
+
+.newsSection {
+  height: 55px;
+  margin: 0 -10px 0 -20px;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 1330px) {
