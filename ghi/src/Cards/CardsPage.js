@@ -402,7 +402,7 @@ function CardsPage() {
                         >
                             List View
                         </button>}
-                    <h5 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h5>
+                    <h4 className="left-h3">Showing Results 1 - {all_cards.slice(0, showMore).length} of {all_cards.length}</h4>
 
                     { all_cards.length == 0 && isQueryEmpty && !noCards?
                         <div className="loading-container">
@@ -452,7 +452,7 @@ function CardsPage() {
             {showMore < all_cards.length ?
                 <button
                     variant="dark"
-                    style={{ width: "100%", marginTop:"3%"}}
+                    style={{ width: "100%", marginTop:"2%"}}
                     onClick={handleShowMore}>
                     Show More Cards ({all_cards.length - showMore} Remaining)
                 </button> : null }

@@ -21,11 +21,6 @@ function CreatePortal() {
                     <h2 className="left">Select an Item to Create</h2>
                     <div className="decks-page-card-list2">
                         <SectionCard
-                            link="/newscreate"
-                            title="News Create"
-                            imageSRC="https://i.imgur.com/8wqd1sD.png"
-                        />
-                        <SectionCard
                             link="/cardcreate"
                             title="Card Create"
                             imageSRC="https://i.imgur.com/8wqd1sD.png"
@@ -33,6 +28,16 @@ function CreatePortal() {
                         <SectionCard
                             link="/cardsetcreate"
                             title="Card Set Create"
+                            imageSRC="https://i.imgur.com/8wqd1sD.png"
+                        />
+                        <SectionCard
+                            link="/newscreate"
+                            title="News Create"
+                            imageSRC="https://i.imgur.com/8wqd1sD.png"
+                        />
+                        <SectionCard
+                            link="/articlecreate"
+                            title="Article Create"
                             imageSRC="https://i.imgur.com/8wqd1sD.png"
                         />
                         <SectionCard

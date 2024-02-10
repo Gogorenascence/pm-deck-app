@@ -33,4 +33,27 @@ modal for deck select
 <!-- remove footer, lightSwitch and backToTop when in simulator -->
 <!-- Glossary object -->
 rules
-site news slider
+<!-- site news slider -->
+
+article model
+
+article = {
+    title: string
+    subtitle:
+    author:
+    created:
+    updated:
+    section:
+    text:
+    images: {
+        int(paragraph number): [
+            {
+                src
+                caption
+                link
+                order
+                alt
+            }
+        ]
+    }
+}

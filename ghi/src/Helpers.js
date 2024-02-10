@@ -25,21 +25,21 @@ export function adjustFontSize() {
     }
 }
 
-export function beforeLeaving() {
-    window.addEventListener('beforeunload', function (event) {
-        // Cancel the event
-        event.preventDefault();
-        // Chrome requires returnValue to be set
-        event.returnValue = '';
+// export function beforeLeaving() {
+//     window.addEventListener('beforeunload', function (event) {
+//         // Cancel the event
+//         event.preventDefault();
+//         // Chrome requires returnValue to be set
+//         event.returnValue = '';
 
-        // Custom message to display in the confirmation dialog
-        const confirmationMessage = 'Are you sure you want to leave this page? Your changes may not be saved.';
+//         // Custom message to display in the confirmation dialog
+//         const confirmationMessage = 'Are you sure you want to leave this page? Your changes may not be saved.';
 
-        // Display the confirmation message
-        event.returnValue = confirmationMessage;
-        return confirmationMessage;
-    });
-}
+//         // Display the confirmation message
+//         event.returnValue = confirmationMessage;
+//         return confirmationMessage;
+//     });
+// }
 
 function objectsAreEqual(obj1, obj2) {
     const obj1Keys = Object.keys(obj1);

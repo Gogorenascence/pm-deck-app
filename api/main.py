@@ -13,7 +13,8 @@ from routers import (
     password_resets,
     categories,
     terms,
-    stories
+    stories,
+    articles
 )
 from authenticator import authenticator
 import os
@@ -42,6 +43,7 @@ app.include_router(password_resets.router, tags=["password_resets"])
 app.include_router(categories.router, tags=["card_categories"])
 app.include_router(terms.router, tags=["terms"])
 app.include_router(stories.router, tags=["stories"])
+app.include_router(articles.router, tags=["articles"])
 app.include_router(authenticator.router, tags=["authenticator"])
 
 

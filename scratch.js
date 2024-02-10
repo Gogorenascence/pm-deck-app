@@ -2252,3 +2252,43 @@ export default CardModal;
         //     deck["updated_on"]["ago"] = "a few seconds ago";
         //     }
         // }
+
+        {
+            "title": "Test Article",
+            "subtitle": "This is a Test",
+            "author": "John Cussack",
+            "created": "2-6-2024",
+            "section": "Lore",
+            "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+            "images": {
+              "1": [
+                {
+                  "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
+                  "caption": "This is another card image",
+                  "link": "cards/1001",
+                  "order": 8,
+                  "alt_text": "PantheraMan"
+                }
+              ],
+              "4": [
+                {
+                  "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
+                  "caption": "This is a card image",
+                  "link": "cards/1007",
+                  "order": 2,
+                  "alt_text": "Swift Guard"
+                },
+                {
+                  "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
+                  "caption": "This is also a card image",
+                  "link": "cards/1005",
+                  "order": 0,
+                  "alt_text": "Golden Wall"
+                }
+              ]
+
+            }
+          }
+          {Array.apply(0, Array(imageCount)).map((image, index) =>
+            <button onClick={() => handleAddImage(index + 1)}>{index}</button>
+        )}

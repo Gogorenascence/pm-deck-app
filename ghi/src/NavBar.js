@@ -289,6 +289,24 @@ function NavBar() {
                 </NavLink>
               </div>
             </li>
+            <li className="nav-item">
+              <div className={ showMenu.show && showMenu.section === "articles"?
+                "navbar-selected pointer": "navbar-select pointer"}
+                onClick={() => handleShowMenu(true, "articles")}>
+                <h5 className="navbar-menu-item">
+                  Articles
+                </h5>
+              </div>
+              { showMenu.show && showMenu.section === "articles"?
+                <div className="nav-dropdown-content">
+                  <NavLink className="dropdown-select username2" to="/News" onClick={() => followLink()}>
+                    <div className="nav-dropdown-item">
+                      News
+                    </div>
+                  </NavLink>
+                </div>:null
+              }
+            </li>
             {/* <li className="nav-item">
                 <NavLink className="username2" to="/simulator" onClick={() => followLink()}>
                   <div className="navbar-select pointer">

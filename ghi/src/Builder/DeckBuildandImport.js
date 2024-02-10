@@ -9,7 +9,7 @@ import ListViewListInput from "./ListViewListInput";
 import CardPool from "./CardPool";
 import DeckImport from './DeckImport';
 import StatsPanel from './StatsPanel';
-import { beforeLeaving } from '../Helpers';
+// import { beforeLeaving } from '../Helpers';
 import { saveDeckToSessionStorage, loadDeckFromSessionStorage } from '../Storage';
 
 
@@ -187,7 +187,7 @@ function DeckBuildandImport() {
             setPluckList
         );
         window.scroll(0, 0);
-        beforeLeaving()
+        // beforeLeaving()
         document.body.style.overflow = 'auto';
         getCards();
         getPulledCards();

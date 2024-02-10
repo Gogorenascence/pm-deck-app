@@ -122,6 +122,7 @@ function StoryCreate() {
                                         <option value="site">Site</option>
                                         <option value="social">Social Media</option>
                                         <option value="events">Events</option>
+                                        <option value="simulator">Simulator</option>
                                         <option value="admin">Admin</option>
                                     </select>
                                     <br/>
@@ -129,7 +130,7 @@ function StoryCreate() {
                                     <input
                                         className="builder-input"
                                         type="date"
-                                        placeholder=" Image"
+                                        placeholder=" Date"
                                         max={maxDate}
                                         onChange={handleChange}
                                         name="story_date"
@@ -162,7 +163,7 @@ function StoryCreate() {
                                         type="text"
                                         placeholder=" Content"
                                         onChange={handleChange}
-                                        name="text"
+                                        name="content"
                                         value={story.content}>
                                     </textarea>
                                     <br/>

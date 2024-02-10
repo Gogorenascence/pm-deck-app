@@ -23,7 +23,6 @@ function TopRow() {
           </div>
           <div>
             <Link to="/decks">
-
               <Card className=" text-white text-center card-list-card3 glow3 top-row">
                 <div className="media-card-image-wrapper2">
                   <div className="media-card-image-clip2">
@@ -34,13 +33,10 @@ function TopRow() {
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Decks</Card.Title>
                 </Card.ImgOverlay>
               </Card>
-
             </Link>
           </div>
           <div>
             <Link to="/cards">
-
-
               <Card className=" text-white text-center card-list-card3 glow3 top-row">
                 <div className="media-card-image-wrapper2">
                   <div className="media-card-image-clip2">
@@ -51,28 +47,10 @@ function TopRow() {
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Cards</Card.Title>
                 </Card.ImgOverlay>
               </Card>
-
-            </Link>
-          </div>
-          <div>
-            <Link to="/simulator">
-
-              <Card className=" text-white text-center card-list-card3 glow3 top-row">
-                <div className="media-card-image-wrapper2">
-                  <div className="media-card-image-clip2">
-                    <Card.Img className="media-card-image2" src="1r307Burst Esper2.png" alt="Card image" variant="bottom"/>
-                  </div>
-                </div>
-                <Card.ImgOverlay className="blackfooter mt-auto zindex-0">
-                  <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Simulator</Card.Title>
-                </Card.ImgOverlay>
-              </Card>
-
             </Link>
           </div>
           <div>
             <Link to="/gameplay">
-
               <Card className=" text-white text-center card-list-card3 glow3 top-row">
                 <div className="media-card-image-wrapper2">
                   <div className="media-card-image-clip2">
@@ -83,7 +61,20 @@ function TopRow() {
                   <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Game Play</Card.Title>
                 </Card.ImgOverlay>
               </Card>
-
+            </Link>
+          </div>
+          <div>
+            <Link to="/simulator">
+              <Card className=" text-white text-center card-list-card3 glow3 top-row">
+                <div className="media-card-image-wrapper2">
+                  <div className="media-card-image-clip2">
+                    <Card.Img className="media-card-image2" src="1r307Burst Esper2.png" alt="Card image" variant="bottom"/>
+                  </div>
+                </div>
+                <Card.ImgOverlay className="blackfooter mt-auto zindex-0">
+                  <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Simulator</Card.Title>
+                </Card.ImgOverlay>
+              </Card>
             </Link>
           </div>
       </div>

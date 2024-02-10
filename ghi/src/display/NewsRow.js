@@ -35,6 +35,7 @@ function NewsRow() {
         social: "rgba(82, 96, 194, 0.70)",
         events: "rgba(101, 56, 131, 0.70)",
         admin: "rgba(77, 71, 94, 0.50)",
+        simulator: "rgba(232, 82, 230, 0.70)"
     }
 
     const newsBorders = {
@@ -45,6 +46,7 @@ function NewsRow() {
         social: "rgb(88, 129, 253)",
         events: "rgb(104, 20, 172)",
         admin: "#4D475E",
+        simulator: "rgba(232, 82, 230, 0.70)"
     }
 
     useEffect(() => {
@@ -54,63 +56,37 @@ function NewsRow() {
 
     return(
         <div className="white-space">
-            <div className="newsRow">
-                {filteredStories.map((story, index) => {
-                    return (
-                        <div
-                            className="flex-items newsItem"
-                            style={{
-                                backgroundColor: newsColors[story.section],
-                                borderColor: newsBorders[story.section],
-                                marginTop: index === 0 ? "2px" : "10px",
-                                marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
-                            }}
-                        >
+            { filteredStories.length > 0 ?
+                <>
+                    <div className="newsRow">
+                        {filteredStories.map((story, index) => {
+                            return (
+                                <div
+                                    className="flex-items newsItem"
+                                    style={{
+                                        backgroundColor: newsColors[story.section],
+                                        borderColor: newsBorders[story.section],
+                                        marginTop: index === 0 ? "2px" : "10px",
+                                        marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
+                                    }}
+                                >
 
-                            <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
-                            <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
-                            {/* <h4 className="newsText">{story.section}</h4> */}
-                            <h4 className="newsText">{story.headline}</h4>
-                        </div>
-                    )
-                })}
-            </div>
-            {/* <div className="stories-page-story-list5 none">
-                {stories.slice(0, 5).map((story) => {
-                    return (
-                        <div className="story-row" key={story.name}>
-                            <NavLink to={`/stories/${story.story_number}`}>
-                                    <img
-                                        className="story-row glow3"
-                                        title={story.name}
-                                        src={story.picture_url ? story.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                        alt={story.name}/>
-                            </NavLink>
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="hidden2 media-display">
-                <div className="stories-page-story-list">
-                    {stories.slice(0, 6).map(story => {
-                        return (
-                            <NavLink to={`/stories/${story.story_number}`} key={story.name}>
-                                    <img className="story-list-story4 glow3"
-                                        title={story.name}
-                                        src={story.picture_url ? story.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                        alt={story.name}
-                                        loading="lazy"/>
-                            </NavLink>
-                        );
-                    })}
-                </div>
-                </div> */}
-            <br/>
-            {/* <NavLink to="/stories"> */}
-                <button style={{ width: "100%" }}>
-                    Browse All News
-                </button>
-            {/* </NavLink> */}
+                                    <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
+                                    <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
+                                    {/* <h4 className="newsText">{story.section}</h4> */}
+                                    <h4 className="newsText">{story.headline}</h4>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <br/>
+                    <NavLink to="/news">
+                        <button style={{ width: "100%" }}>
+                            Browse All News
+                        </button>
+                    </NavLink>
+                </>: null
+            }
         </div>
     );
 }

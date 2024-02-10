@@ -54,6 +54,9 @@ import TermEdit from "./GamePlay/Terms/TermEditPage";
 import StoryCreate from "./Articles/StoryCreatePage";
 import StoriesPage from "./Articles/StoriesPage";
 import StoryEdit from "./Articles/StoryEditPage";
+import ArticlePage from "./Articles/ArticlePage";
+import ArticleCreate from "./Articles/ArticleCreatePage";
+import ArticleCreatePage from "./Articles/ArticleCreatePage";
 
 
 function App() {
@@ -129,7 +132,8 @@ function App() {
               <Route path="/newscreate" element={<StoryCreate />} />
               <Route path="/news" element={<StoriesPage />} />
               <Route path="/news/:news_id" element={<StoryEdit />} />
-              {/* <Route path="/storycreate" element={<StoryCreate />} /> */}
+              <Route path="/articlecreate" element={<ArticleCreatePage />} />
+              <Route path="/articles/:article_id" element={<ArticlePage />} />
             </Routes>
 
           </div>

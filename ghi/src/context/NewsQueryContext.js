@@ -1,0 +1,45 @@
+import { createContext, useState } from "react";
+
+
+const NewsQueryContext = createContext();
+
+const NewsQueryContextProvider = ({ children }) => {
+    const [newsQuery, setNewsQuery] = useState({
+        section: "",
+        startingDate: "",
+        content: "",
+        headline: "",
+    });
+    const [newsSortState, setNewsSortState] = useState("none");
+    const [someMoreNews, setSomeMoreNews] = useState(20)
+
+    const handleResetNewsQuery = () => {
+        setNewsQuery({
+            section: "",
+            startingDate: "",
+            content: "",
+            headline: "",
+        })
+        setSomeMoreNews(20)
+    }
+
+    const handleSomeMoreNews = () => {
+        setSomeMoreNews(someMoreNews + 20)
+    }
+
+    return (
+        <NewsQueryContext.Provider value={{
+            newsQuery,
+            setNewsQuery,
+            newsSortState,
+            setNewsSortState,
+            handleResetNewsQuery,
+            someMoreNews,
+            handleSomeMoreNews,
+            }}>
+            {children}
+        </NewsQueryContext.Provider>
+    );
+};
+
+export { NewsQueryContext, NewsQueryContextProvider };

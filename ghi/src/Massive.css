@@ -3051,7 +3051,7 @@ button:hover {
 }
 
 .newsRow {
-  height: 250px;
+  max-height: 250px;
   overflow-y: scroll;
 }
 
@@ -3064,22 +3064,17 @@ button:hover {
   border-radius: 25px 0px;
   outline: 2px solid white;
   filter: brightness(90%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.35));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.4));
 }
 
 .newsText {
   margin: 0 10px;
   color: white;
 }
+
 .newsRow::-webkit-scrollbar {
   width: 10px;
 }
-
-/* .newsRow::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  height: 250px;
-} */
-
 
 .newsRow::-webkit-scrollbar-thumb {
   background: #888;
