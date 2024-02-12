@@ -6,12 +6,12 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import DeckExport from "./DeckExport";
-import BackButton from "../display/BackButton";
+import BackButton from "../Display/BackButton";
 import SimulateButton from "../Simulator/SimulateButton";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 import StatsPanel from "./StatsPanel";
-import PopUp from "../display/PopUp";
+import PopUp from "../Display/PopUp";
 
 
 function DeckDetailPage() {

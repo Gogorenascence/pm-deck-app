@@ -1,7 +1,7 @@
-import TopRow from "./display/TopRow";
-import DeckRow from "./display/DeckRow";
-import CardRow from "./display/CardRow";
-import NewsRow from "./display/NewsRow";
+import TopRow from "./Display/TopRow";
+import DeckRow from "./Display/DeckRow";
+import CardRow from "./Display/CardRow";
+import NewsRow from "./Display/NewsRow";
 
 
 function MainPage() {

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { AuthContext } from "./context/AuthContext";
-import { AppContext } from "./context/AppContext";
+import { AuthContext } from "./Context/AuthContext";
+import { AppContext } from "./Context/AppContext";
 
 
 function NavBar() {

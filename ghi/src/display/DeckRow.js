@@ -3,7 +3,7 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 
 

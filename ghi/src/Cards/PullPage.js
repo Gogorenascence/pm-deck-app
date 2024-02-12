@@ -3,8 +3,8 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useRef, useContext } from "react";
 import { NavLink, useParams, useNavigate} from 'react-router-dom';
-import BackButton from "../display/BackButton";
-import { PullsContext } from "../context/PullsContext";
+import BackButton from "../Display/BackButton";
+import { PullsContext } from "../Context/PullsContext";
 
 
 function PullPage() {

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { CardSetQueryContext } from '../context/CardSetQueryContext';
+import { CardSetQueryContext } from '../Context/CardSetQueryContext';
 
 
 function CardSetCreateSearch() {

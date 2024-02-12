@@ -3,8 +3,8 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import BackButton from "../display/BackButton";
+import { AuthContext } from "../Context/AuthContext";
+import BackButton from "../Display/BackButton";
 
 
 function SetDetailPage() {

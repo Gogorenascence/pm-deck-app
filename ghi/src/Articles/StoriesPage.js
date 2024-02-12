@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext";
-import { NewsQueryContext } from "../context/NewsQueryContext";
+import { AuthContext } from "../Context/AuthContext";
+import { NewsQueryContext } from "../Context/NewsQueryContext";
 
 
 function ArticlesPage() {
@@ -153,6 +153,8 @@ function ArticlesPage() {
                             value={newsQuery.section}
                             onChange={handleNewsQuery}>
                             <option value="">Section</option>
+                            <option value="guides">Guides</option>
+                            <option value="lore">Lore</option>
                             <option value="releases">Releases</option>
                             <option value="game">Game</option>
                             <option value="design">Design</option>

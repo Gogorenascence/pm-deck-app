@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import BackButton from "../display/BackButton";
-import { AuthContext } from "../context/AuthContext";
-import { BuilderQueryContext } from "../context/BuilderQueryContext";
+import BackButton from "../Display/BackButton";
+import { AuthContext } from "../Context/AuthContext";
+import { BuilderQueryContext } from "../Context/BuilderQueryContext";
 import BuilderCardSearch from "./BuilderCardSearch";
-import { PullsContext } from "../context/PullsContext";
+import { PullsContext } from "../Context/PullsContext";
 import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";
 import CardPool from "./CardPool";

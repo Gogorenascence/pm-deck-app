@@ -1,4 +1,4 @@
-import SectionCard from "../display/SectionCard";
+import SectionCard from "../Display/SectionCard";
 
 function GamePlayPage() {
     return (

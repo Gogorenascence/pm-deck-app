@@ -1,6 +1,6 @@
-import SectionCard from "../display/SectionCard";
+import SectionCard from "../Display/SectionCard";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 
 
 function CreatePortal() {

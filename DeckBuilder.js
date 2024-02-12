@@ -4,9 +4,9 @@ import {
 import React, { useState, useEffect, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
-import { AuthContext } from "../context/AuthContext";
-import { BuilderQueryContext } from "../context/BuilderQueryContext";
-import { PullsContext } from "../context/PullsContext";
+import { AuthContext } from "../Context/AuthContext";
+import { BuilderQueryContext } from "../Context/BuilderQueryContext";
+import { PullsContext } from "../Context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
 import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";

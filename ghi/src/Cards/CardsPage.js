@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { QueryContext } from "../context/QueryContext";
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { QueryContext } from "../Context/QueryContext";
+import { AuthContext } from "../Context/AuthContext";
+import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
 
 function CardsPage() {
 

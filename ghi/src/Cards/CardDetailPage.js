@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams, useNavigate} from 'react-router-dom';
 import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
-import BackButton from "../display/BackButton";
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import BackButton from "../Display/BackButton";
+import { AuthContext } from "../Context/AuthContext";
+import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
 
 
 function CardDetailPage() {

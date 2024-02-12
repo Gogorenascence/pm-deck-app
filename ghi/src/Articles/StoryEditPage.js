@@ -3,9 +3,9 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext.js";
-import BackButton from "../display/BackButton.js";
-import PopUp from "../display/PopUp.js";
+import { AuthContext } from "../Context/AuthContext.js";
+import BackButton from "../Display/BackButton.js";
+import PopUp from "../Display/PopUp.js";
 
 
 function TermEdit() {

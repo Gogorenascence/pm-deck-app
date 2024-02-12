@@ -1,9 +1,9 @@
 import { useEffect, useContext } from "react";
-import { GameStateContext } from "../context/GameStateContext";
-import { SimulatorActionsContext } from "../context/SimulatorActionsContext";
-import { MainActionsContext } from "../context/MainActionsContext";
-import { PluckActionsContext } from "../context/PluckActionsContext";
-import { AuthContext } from "../context/AuthContext";
+import { GameStateContext } from "../Context/GameStateContext";
+import { SimulatorActionsContext } from "../Context/SimulatorActionsContext";
+import { MainActionsContext } from "../Context/MainActionsContext";
+import { PluckActionsContext } from "../Context/PluckActionsContext";
+import { AuthContext } from "../Context/AuthContext";
 import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
 import CardInfoPanel from "./CardInfoPanel";

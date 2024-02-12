@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { AuthContext } from "../../Context/AuthContext";
+import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick";
 import { shortenedText } from "../../Helpers";
 
 function CardTypesPage() {

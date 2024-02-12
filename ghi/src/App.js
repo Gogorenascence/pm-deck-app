@@ -12,13 +12,13 @@ import SetsPage from "./Cards/SetsPage";
 import CardSetCreate from "./Cards/SetCreatePage";
 import SetDetailPage from "./Cards/SetDetailPage";
 import PullPage from "./Cards/PullPage";
-import UnderConstruction from "./display/UnderConstruction";
+import UnderConstruction from "./Display/UnderConstruction";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import LightSwitch from "./display/LightSwitch";
-import BackToTop from "./display/BackToTop";
+import LightSwitch from "./Display/LightSwitch";
+import BackToTop from "./Display/BackToTop";
 import "./Massive.css"
-import AppProvider from "./context/AppProvider";
+import AppProvider from "./Context/AppProvider";
 import PullsDeckBuilder from "./Builder/PullsDeckBuilder";
 import AccountPage from "./Accounts/AccountPage";
 import ResetPassword from "./Accounts/ResetPasswordPage";

@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../context/AuthContext.js";
+import { AuthContext } from "../Context/AuthContext.js";
 import CardSetCreateSearch from "./CardSetCreateSearch.js";
-import { CardSetQueryContext } from "../context/CardSetQueryContext.js";
+import { CardSetQueryContext } from "../Context/CardSetQueryContext.js";
 import ImageViewCardSetInput from "./ImageViewCardSetInput.js";
-import BackButton from "../display/BackButton.js";
+import BackButton from "../Display/BackButton.js";
 import { getKeyByValue } from "../Helpers.js";
 
 

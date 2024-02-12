@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { BuilderQueryContext } from '../context/BuilderQueryContext';
+import { BuilderQueryContext } from '../Context/BuilderQueryContext';
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { PullsContext } from "../context/PullsContext";
+import { AuthContext } from "../Context/AuthContext";
+import { PullsContext } from "../Context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
 import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";

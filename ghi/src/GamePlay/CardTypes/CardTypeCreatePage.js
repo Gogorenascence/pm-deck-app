@@ -3,9 +3,9 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import GamePlayCardSearch from "../GamePlayCardSearch";
-import { GamePlayQueryContext } from "../../context/GamePlayQueryContext.js";
+import { GamePlayQueryContext } from "../../Context/GamePlayQueryContext.js";
 import ImageViewSupportInput from "../ImageViewSupportInput";
 import ImageViewAntiSupportInput from "../ImageViewAntiSupportInput";
 

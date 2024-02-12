@@ -1,6 +1,6 @@
 import { useParams, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react'
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../Context/AppContext";
 
 
 function CardEditModal() {

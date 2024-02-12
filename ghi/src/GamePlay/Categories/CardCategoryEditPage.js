@@ -3,11 +3,11 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
-import ImageWithoutRightClick from "../../display/ImageWithoutRightClick";
+import { AuthContext } from "../../Context/AuthContext";
+import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick.js";
 import GamePlayCardSearch from "../GamePlayCardSearch";
-import { GamePlayQueryContext } from "../../context/GamePlayQueryContext.js";
-import BackButton from "../../display/BackButton";
+import { GamePlayQueryContext } from "../../Context/GamePlayQueryContext.js";
+import BackButton from "../../Display/BackButton.js";
 import ImageViewSupportInput from "../ImageViewSupportInput";
 import ImageViewAntiSupportInput from "../ImageViewAntiSupportInput";
 

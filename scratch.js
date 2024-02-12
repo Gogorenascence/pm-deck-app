@@ -1278,7 +1278,7 @@ function sendEmail() {
 
 
 import { useState, useEffect, useContext } from "react";
-import { GameStateContext } from "../context/GameStateContext";
+import { GameStateContext } from "../Context/GameStateContext";
 import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
 import CardInfoPanel from "./CardInfoPanel";

@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import BackButton from "../display/BackButton";
-import { AuthContext } from "../context/AuthContext";
-import { BuilderQueryContext } from "../context/BuilderQueryContext";
-import { PullsContext } from "../context/PullsContext";
+import BackButton from "../Display/BackButton";
+import { AuthContext } from "../Context/AuthContext";
+import { BuilderQueryContext } from "../Context/BuilderQueryContext";
+import { PullsContext } from "../Context/PullsContext";
 import BuilderCardSearch from "./BuilderCardSearch";
 import ImageViewListInput from "./ImageViewListInput";
 import ListViewListInput from "./ListViewListInput";

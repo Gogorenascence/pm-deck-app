@@ -3,9 +3,9 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect, useContext, useRef } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
-import { PullsContext } from "../context/PullsContext";
-import { AuthContext } from "../context/AuthContext";
-import ImageWithoutRightClick from "../display/ImageWithoutRightClick";
+import { PullsContext } from "../Context/PullsContext";
+import { AuthContext } from "../Context/AuthContext";
+import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
 import StatsPanel from "./StatsPanel";
 import DeckImport from './DeckImport';
 
