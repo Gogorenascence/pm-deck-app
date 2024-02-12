@@ -52,11 +52,35 @@ boulder beast
 \
 nkl3
 Bank
-
+<!--
 1st 1 crit die
 sw 1 crit die
 2nd 1 crit die
 sw no crit
 4 mettle player
 2 mettle
-pluck not cleared out
+pluck not cleared out -->
+
+
+
+4 hp and mettle per max number of players
+
+4 mettle and draw 1 pluck for defeating player
+2 mettle and draw 1 pluck for defeating fighter
+1 mettle and draw 1 pluck for defeating a card
+
+string and pluck not cleared out with defeat
+
+weakest player draws 1 pluck during the PP
+
+adding card to string face up or down
+drawing 1 pluck
+drawing 1 card
+swapping 1 face down card
+
+pluck with trigger effects are played face down
+second wind criticals during PP or own turn
+
+After defeat player draws back to 6 cards
+
+shared pool 4 x max players plus 4

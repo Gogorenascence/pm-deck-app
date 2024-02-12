@@ -12,16 +12,19 @@ function ArticleCreatePage() {
         title: "",
         subtitle: "",
         author: "",
-        created: new Date().toISOString().split("T")[0],
+        story_date: new Date().toISOString().split("T")[0],
         section: "",
-        text: "",
+        content: "",
         images: "",
+        news: false,
+        site_link: "",
     });
 
     const [images, setImages] = useState([])
+    const [stayHere, setStayHere] = useState(false)
 
     const handleArticleChange = (event) => {
-        console.log(images)
+        console.log(article)
         setArticle({
             ...article,
             [event.target.name]: event.target.value})
@@ -41,13 +44,13 @@ function ArticleCreatePage() {
         setImages(newImages)
     }
 
+    const handleArticleCheck = (event) => {
+        setArticle({...article, news: !article.news});
+    };
 
-    // useEffect(() => {
-    //     window.scroll(0, 0);
-    //     document.body.style.overflow = 'auto';
-    //     getArticle();
-    // // eslint-disable-next-line
-    // },[]);
+    const handleStayCheck = (event) => {
+        setStayHere(!stayHere);
+    };
 
     useEffect(() => {
         document.title = "Article Create - PM CardBase"
@@ -57,9 +60,6 @@ function ArticleCreatePage() {
     // eslint-disable-next-line
     },[]);
 
-    const processedText = (text) => {
-        return text.split("//");
-    };
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -102,18 +102,21 @@ function ArticleCreatePage() {
 
         const response = await fetch(articleUrl, fetchConfig);
         if (response.ok) {
-            const article_id = response.id;
+            const responseData = await response.json();
+            const article_id = responseData.id;
             setArticle({
                 title: "",
                 subtitle: "",
                 author: "",
-                created: "",
+                story_date: "",
                 section: "",
-                text: "",
+                content: "",
                 images: "",
+                news: false,
+                site_link: "",
             });
             setImages([])
-            // if (!stayHere) {navigate(`/articles/article_id`)}
+            if (!stayHere) {navigate(`/articles/article_id`)}
             navigate(`/articles/${article_id}`)
             console.log("Success")
         } else {
@@ -165,34 +168,72 @@ function ArticleCreatePage() {
                                     name="section"
                                     onChange={handleArticleChange}>
                                     <option value="">Section</option>
-                                    <option value="Guide">Guide</option>
-                                    <option value="Lore">Lore</option>
-                                    <option value="Card Releases">Card Releases</option>
-                                    <option value="Game Play and Mechanics">Game Play and Mechanics</option>
-                                    <option value="Game Design">Game Design</option>
-                                    <option value="Site">Site</option>
-                                    <option value="Social Media">Social Media</option>
-                                    <option value="Events">Events</option>
-                                    <option value="Simulator">Simulator</option>
-                                    <option value="Admin">Admin</option>
+                                    <option value="guide">Guide</option>
+                                    <option value="lore">Lore</option>
+                                    <option value="releases">Card Releases</option>
+                                    <option value="game">Game Play and Mechanics</option>
+                                    <option value="design">Game Design</option>
+                                    <option value="site">Site</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="events">Events</option>
+                                    <option value="simulator">Simulator</option>
+                                    <option value="admin">Admin</option>
                                 </select>
                                 <br/>
+                                <h5 className="label">Date</h5>
                                 <input
-                                    style={{margin: "20px 5px 9px 5px", height:"10px"}}
-                                    id="stayHere"
-                                    type="checkbox"
-                                    // onChange={handleCheck}
-                                    name="stayHere"
-                                    // checked={stayHere}
-                                    >
+                                    className="builder-input"
+                                    type="date"
+                                    placeholder=" Date"
+                                    max={new Date().toISOString().split("T")[0]}
+                                    onChange={handleArticleChange}
+                                    name="story_date"
+                                    value={article.story_date}>
                                 </input>
-                                <label for="stayHere"
-                                    className="bold"
-                                >
-                                    Keep me here
-                                </label>
-
                                 <br/>
+                                <h5 className="label">Site Link</h5>
+                                <input
+                                    className="builder-input"
+                                    type="text"
+                                    placeholder=" Site Link"
+                                    onChange={handleArticleChange}
+                                    name="site_link"
+                                    value={article.site_link}>
+                                </input>
+                                <br/>
+                                <div className="flex builder-input">
+                                    <div className="flex-full">
+                                        <input
+                                            style={{margin: "2px 5px 0 0", height:"10px"}}
+                                            type="checkbox"
+                                            onChange={handleArticleCheck}
+                                            name="news"
+                                            checked={article.news}
+                                            >
+                                        </input>
+                                        <label for="news"
+                                            className="bold"
+                                        >
+                                            News Article
+                                        </label>
+                                    </div>
+                                    <div className="flex-full margin-left">
+                                        <input
+                                            style={{margin: "2px 5px 0 0", height:"10px"}}
+                                            id="stayHere"
+                                            type="checkbox"
+                                            onChange={handleStayCheck}
+                                            name="stayHere"
+                                            checked={stayHere}
+                                            >
+                                        </input>
+                                        <label for="stayHere"
+                                            className="bold"
+                                        >
+                                            Keep me here
+                                        </label>
+                                    </div>
+                                </div>
                                 {account?
                                     <div className="flex-items">
                                         <button
@@ -223,8 +264,8 @@ function ArticleCreatePage() {
                         type="text"
                         placeholder=" Article Content"
                         onChange={handleArticleChange}
-                        name="text"
-                        value={article.text}>
+                        name="content"
+                        value={article.content}>
                     </textarea>
                     <br/>
                     {images?.map((image, index) =>

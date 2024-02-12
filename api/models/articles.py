@@ -28,13 +28,15 @@ class Image(BaseModel):
 
 class ArticleIn(BaseModel):
     title: str
-    subtitle: str
+    subtitle: Optional[str]
     author: str
-    created: Optional[str]
+    story_date: Optional[str]
     updated: Optional[str]
     section: str
-    text: str
+    content: Optional[str]
     images: Optional[dict[str, List[Image]]]
+    news: Optional[bool]
+    site_link: Optional[str]
 
 
 class Article(ArticleIn):

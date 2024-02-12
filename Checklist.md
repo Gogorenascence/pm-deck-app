@@ -57,3 +57,5 @@ article = {
         ]
     }
 }
+
+change story model to article

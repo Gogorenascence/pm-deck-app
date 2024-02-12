@@ -9,7 +9,7 @@ function ArticlePage() {
         title: "",
         subtitle: "",
         author: "",
-        created: "",
+        story_date: "",
         section: "",
         text: "",
         images: {},
@@ -41,18 +41,25 @@ function ArticlePage() {
     },[article]);
 
     const processedText = (text) => {
-        return text.split("//");
+        return text?.split("//");
     };
+
+    const formatDate = (date) => {
+        const month = date.slice(5,7);
+        const day = date.slice(8);
+        const year = date.slice(0,4);
+        return `${month}-${day}-${year}`
+    }
 
     return (
         <div className="white-space">
             <h1>{article.title}</h1>
             <h2>{article.subtitle}</h2>
             <h3>{article.author}</h3>
-            <h4>{article.created}</h4>
+            <h4>{formatDate(article.story_date)}</h4>
             <h5>{article.section}</h5>
             {
-                processedText(article.text).map((line, index) => {
+                processedText(article.content)?.map((line, index) => {
                     return (
                         <>
                             <p>{line}</p>

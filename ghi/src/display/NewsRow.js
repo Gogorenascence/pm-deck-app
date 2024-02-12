@@ -10,10 +10,13 @@ function NewsRow() {
     const [stories, setStories] = useState([]);
 
     const getStories = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/stories/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/`);
         const data = await response.json();
 
-        setStories(data.stories.sort((a,b) => new Date(b.story_date) - new Date(a.story_date)));
+        setStories(
+            data.articles.filter(story => story.news === true)
+            .sort((a,b) => new Date(b.story_date) - new Date(a.story_date))
+        );
     };
 
     const formatDate = (date) => {
@@ -61,21 +64,43 @@ function NewsRow() {
                     <div className="newsRow">
                         {filteredStories.map((story, index) => {
                             return (
-                                <div
-                                    className="flex-items newsItem"
-                                    style={{
-                                        backgroundColor: newsColors[story.section],
-                                        borderColor: newsBorders[story.section],
-                                        marginTop: index === 0 ? "2px" : "10px",
-                                        marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
-                                    }}
-                                >
+                                <>
+                                {story.content ?
+                                    <NavLink className="nav-link no-pad" to={`/articles/${story.id}`}>
+                                        <div
+                                            className="flex-items newsItem"
+                                            style={{
+                                                backgroundColor: newsColors[story.section],
+                                                borderColor: newsBorders[story.section],
+                                                marginTop: index === 0 ? "2px" : "10px",
+                                                marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
+                                            }}
+                                        >
 
-                                    <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
-                                    <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
-                                    {/* <h4 className="newsText">{story.section}</h4> */}
-                                    <h4 className="newsText">{story.headline}</h4>
-                                </div>
+                                            <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
+                                            <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
+                                            {/* <h4 className="newsText">{story.section}</h4> */}
+                                            <h4 className="newsText">{story.title}</h4>
+                                        </div>
+                                    </NavLink>
+                                :
+                                    <div
+                                        className="flex-items newsItem"
+                                        style={{
+                                            backgroundColor: newsColors[story.section],
+                                            borderColor: newsBorders[story.section],
+                                            marginTop: index === 0 ? "2px" : "10px",
+                                            marginBottom: index ===  filteredStories.length -1 ? "2px" : "10px"
+                                        }}
+                                    >
+
+                                        <h3 className="newsText no-wrap">{formatDate(story.story_date)}</h3>
+                                        <img className="newsSection" src={`${story.section}.png`} alt={story.section}/>
+                                        {/* <h4 className="newsText">{story.section}</h4> */}
+                                        <h4 className="newsText">{story.title}</h4>
+                                    </div>
+                                }
+                                </>
                             )
                         })}
                     </div>
