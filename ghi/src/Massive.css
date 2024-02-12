@@ -3046,10 +3046,6 @@ button:hover {
   }
 }
 
-.wide100 {
-  width: 100%;
-}
-
 .wide100-2 {
   width: 100vw;
 }
@@ -3518,6 +3514,10 @@ button:hover {
   }
 
   .wide55 {
+    width: 100%;
+  }
+
+  .wide100 {
     width: 100%;
   }
 
