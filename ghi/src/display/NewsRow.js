@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { NavLink } from 'react-router-dom';
+import { NewsQueryContext } from "../Context/NewsQueryContext";
+import { NavLink, useNavigate } from 'react-router-dom';
 import ImageWithoutRightClick from "./ImageWithoutRightClick";
 
 
 function NewsRow() {
 
     const { account } = useContext(AuthContext)
+    const { newsQuery, setNewsQuery } = useContext(NewsQueryContext)
+    const navigate = useNavigate()
     const [stories, setStories] = useState([]);
 
     const getStories = async() =>{
@@ -24,6 +27,11 @@ function NewsRow() {
         const day = date.slice(8);
         const year = date.slice(0,4);
         return `${month}-${day}-${year}`
+    }
+
+    const goToNews = () => {
+        setNewsQuery({...newsQuery, news: true})
+        navigate("/articles")
     }
 
     const filteredStories = account && account.roles.includes("admin")?
@@ -105,11 +113,13 @@ function NewsRow() {
                         })}
                     </div>
                     <br/>
-                    <NavLink to="/articles">
-                        <button style={{ width: "100%" }}>
+                        <button
+                            style={{ width: "100%" }}
+                            className="pointer"
+                            onClick={goToNews}
+                        >
                             Browse All News
                         </button>
-                    </NavLink>
                 </>: null
             }
         </div>
