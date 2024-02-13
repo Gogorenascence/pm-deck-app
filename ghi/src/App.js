@@ -52,11 +52,10 @@ import TermCreate from "./GamePlay/Terms/TermCreatePage";
 import TermsPage from "./GamePlay/Terms/TermsPage";
 import TermEdit from "./GamePlay/Terms/TermEditPage";
 import StoryCreate from "./Articles/StoryCreatePage";
-import StoriesPage from "./Articles/StoriesPage";
-import StoryEdit from "./Articles/StoryEditPage";
+import ArticlesPage from "./Articles/ArticlesPage";
 import ArticlePage from "./Articles/ArticlePage";
-import ArticleCreate from "./Articles/ArticleCreatePage";
 import ArticleCreatePage from "./Articles/ArticleCreatePage";
+import ArticleEditPage from "./Articles/ArticleEditPage";
 
 
 function App() {
@@ -99,7 +98,6 @@ function App() {
               <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
               <Route path="/account" element={<AccountPage />} />
               <Route path="/reset/:reset_id" element={<ResetPassword />} />
-              <Route path="/articles" element={<UnderConstruction />} />
               <Route path="/forum" element={<UnderConstruction />} />
               <Route path="/game/cards" element={<GameCards />} />
               <Route path="/game/decks" element={<GameDecks />} />
@@ -130,10 +128,10 @@ function App() {
               <Route path="/glossary" element={<TermsPage />} />
               <Route path="/glossary/:term_id" element={<TermEdit />} />
               <Route path="/newscreate" element={<StoryCreate />} />
-              <Route path="/news" element={<StoriesPage />} />
-              <Route path="/news/:news_id" element={<StoryEdit />} />
+              <Route path="/articles" element={<ArticlesPage />} />
               <Route path="/articlecreate" element={<ArticleCreatePage />} />
               <Route path="/articles/:article_id" element={<ArticlePage />} />
+              <Route path="/articles/:article_id/edit" element={<ArticleEditPage />} />
             </Routes>
 
           </div>

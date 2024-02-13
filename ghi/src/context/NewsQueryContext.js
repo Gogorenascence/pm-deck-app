@@ -9,6 +9,7 @@ const NewsQueryContextProvider = ({ children }) => {
         startingDate: "",
         content: "",
         headline: "",
+        news: false
     });
     const [newsSortState, setNewsSortState] = useState("none");
     const [someMoreNews, setSomeMoreNews] = useState(20)
@@ -19,6 +20,7 @@ const NewsQueryContextProvider = ({ children }) => {
             startingDate: "",
             content: "",
             headline: "",
+            news: false
         })
         setSomeMoreNews(20)
     }

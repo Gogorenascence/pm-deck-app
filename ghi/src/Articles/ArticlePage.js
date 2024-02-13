@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 
 function ArticlePage() {
 
-    const [article, setArticle ] = useState({
+    const [article, setArticle] = useState({
         title: "",
         subtitle: "",
         author: "",
@@ -54,6 +54,16 @@ function ArticlePage() {
     return (
         <div className="white-space">
             <h1>{article.title}</h1>
+            { account && account.roles.includes("admin")?
+                <NavLink to={`/articles/${article.id}/edit`}>
+                    <button
+                        className="left red"
+                        style={{ margin: "3px 0px 0px 9px"}}
+                    >
+                        Edit Article
+                    </button>
+                </NavLink>
+            :null}
             <h2>{article.subtitle}</h2>
             <h3>{article.author}</h3>
             <h4>{formatDate(article.story_date)}</h4>

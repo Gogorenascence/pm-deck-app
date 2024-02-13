@@ -105,7 +105,7 @@ function NewsRow() {
                         })}
                     </div>
                     <br/>
-                    <NavLink to="/news">
+                    <NavLink to="/articles">
                         <button style={{ width: "100%" }}>
                             Browse All News
                         </button>
