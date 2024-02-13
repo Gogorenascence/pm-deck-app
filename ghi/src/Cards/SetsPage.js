@@ -71,59 +71,61 @@ function SetsPage() {
         <div className="white-space">
             <div className="flex-items">
             </div>
-            <h1 className="left-h1">Card Set Search</h1>
-            <h2 className="left">Search our collection of Card Sets</h2>
-            <input
-                className="left"
-                type="text"
-                placeholder=" Card Set Name Contains..."
-                name="boosterSetName"
-                value={boosterSetQuery.boosterSetName}
-                onChange={handleBoosterSetQuery}
-                style={{width: "40%", height: "37px"}}>
-            </input>
-            <br/>
-            <select
-                className="left"
-                type="text"
-                placeholder="  Sorted By"
-                value={boosterSetSortState}
-                onChange={handleBoosterSetSort}
-                style={{width: "20%", height: "37px"}}>
-                <option value="none">Sorted By</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="name">A-Z</option>
-            </select>
-            <br/>
-            { account && account.roles.includes("admin")?
-                <NavLink to="/cardsetcreate">
+            <span className="media-flex-center">
+                <div className="wide400p">
+                    <h1 className="left-h1">Card Set Search</h1>
+                    <h2 className="left">Search our collection of Card Sets</h2>
+                    <input
+                        className="left dcbsearch-large"
+                        type="text"
+                        placeholder=" Card Set Name Contains..."
+                        name="boosterSetName"
+                        value={boosterSetQuery.boosterSetName}
+                        onChange={handleBoosterSetQuery}>
+                    </input>
+                    <br/>
+                    <select
+                        className="left dcbsearch-medium"
+                        type="text"
+                        placeholder="  Sorted By"
+                        value={boosterSetSortState}
+                        onChange={handleBoosterSetSort}>
+                        <option value="none">Sorted By</option>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="name">A-Z</option>
+                    </select>
+                    <br/>
+                    { account && account.roles.includes("admin")?
+                        <NavLink to="/cardsetcreate">
+                            <button
+                                className="left red">
+                                Create
+                            </button>
+                        </NavLink>:
+                    null}
                     <button
-                        className="left red">
-                        Create
+                        className="left"
+                        variant="dark"
+                        onClick={handleBoosterSetQueryReset}
+                        >
+                        Reset Filters
                     </button>
-                </NavLink>:
-            null}
-            <button
-                className="left"
-                variant="dark"
-                onClick={handleBoosterSetQueryReset}
-                >
-                Reset Filters
-            </button>
-            {/* <button
-                className="left"
-                variant="dark"
-                onClick={getRandomDeck}
-                >
-                Random Deck
-            </button> */}
+                    {/* <button
+                        className="left"
+                        variant="dark"
+                        onClick={getRandomDeck}
+                        >
+                        Random Deck
+                    </button> */}
 
-            { all_booster_sets.length == 0 && isQueryEmpty && !noBoosterSet ?
-                <div className="loading-container">
-                    <div className="loading-spinner"></div>
-                </div> :
-            null}
+                    { all_booster_sets.length == 0 && isQueryEmpty && !noBoosterSet ?
+                        <div className="loading-container">
+                            <div className="loading-spinner"></div>
+                        </div> :
+                    null}
+                </div>
+            </span>
 
             <div className="decks-page-card-list2">
                 {all_booster_sets.slice(0, boosterSetShowMore).map((boosterSet) => {
