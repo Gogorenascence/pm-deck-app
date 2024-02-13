@@ -109,19 +109,10 @@ function ArticlesPage() {
     return (
         <div className="white-space">
             <div className="flex-items">
-                <h1 className="left-h1">Article Search</h1>
-                {/* <h2 className="left">Search our collection of decks</h2> */}
-                { account && account.roles.includes("admin")?
-                    <NavLink to="/articlecreate">
-                        <button
-                            className="left red margin-left-13">
-                            Create
-                        </button>
-                    </NavLink>:
-                null}
             </div>
             <span className="media-flex-center">
                 <div className="wide400p">
+                    <h1 className="left-h1">Article Search</h1>
                     <input
                         className="left dcbsearch-x-large"
                         type="text"
@@ -198,13 +189,23 @@ function ArticlesPage() {
                         </label>
                     </div>
                     <br/>
-                    <button
-                        className="left"
-                        variant="dark"
-                        onClick={handleResetNewsQuery}
-                        >
-                        Reset Filters
-                    </button>
+                    <div className="flex">
+                        { account && account.roles.includes("admin")?
+                            <NavLink to="/articlecreate">
+                                <button
+                                    className="left red margin-left-13">
+                                    Create Article
+                                </button>
+                            </NavLink>:
+                        null}
+                        <button
+                            className="left"
+                            variant="dark"
+                            onClick={handleResetNewsQuery}
+                            >
+                            Reset Filters
+                        </button>
+                    </div>
                     { loading ?
                         <div className="loading-container">
                             <div className="loading-spinner"></div>

@@ -186,6 +186,8 @@ function CardsPage() {
 
     return (
         <div className="white-space">
+            <div className="flex-items">
+            </div>
             <span className="media-flex-center">
                 <div className="wide400p">
                     <h1 className="left-h1">Card Search</h1>

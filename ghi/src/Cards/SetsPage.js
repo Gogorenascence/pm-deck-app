@@ -69,6 +69,8 @@ function SetsPage() {
 
     return (
         <div className="white-space">
+            <div className="flex-items">
+            </div>
             <h1 className="left-h1">Card Set Search</h1>
             <h2 className="left">Search our collection of Card Sets</h2>
             <input

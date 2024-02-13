@@ -101,6 +101,8 @@ function DecksPage() {
 
     return (
         <div className="white-space">
+            <div className="flex-items">
+            </div>
             <div className="media-flex-center">
                 <div className="wide400p">
                     <h1 className="left-h1">Deck Search</h1>
@@ -189,9 +191,8 @@ function DecksPage() {
                     </select>
                     <br/>
                     <NavLink to="/deckbuilder">
-                        <button className="left"
-                            variant="dark">
-                                Create Deck
+                        <button className="left">
+                            Create Deck
                         </button>
                     </NavLink>
                     <button
