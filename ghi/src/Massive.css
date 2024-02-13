@@ -143,7 +143,7 @@ body.dark::after {
   --window-width600: calc(100vw - 600px);
   --window-height2: calc(100vh - 62px);
   --window-heightChat: calc(100vh - 245px);
-  --color-body: #fff;
+  /* --color-body: #fff; */
 }
 
 

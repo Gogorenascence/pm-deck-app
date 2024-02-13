@@ -191,20 +191,18 @@ function DecksPage() {
                     </select>
                     <br/>
                     <NavLink to="/deckbuilder">
-                        <button className="left">
-                            Create Deck
+                        <button className="left red">
+                            Create
                         </button>
                     </NavLink>
                     <button
                         className="left"
-                        variant="dark"
                         onClick={handleDeckQueryReset}
                         >
                         Reset Filters
                     </button>
                     <button
                         className="left"
-                        variant="dark"
                         onClick={getRandomDeck}
                         >
                         Random Deck
