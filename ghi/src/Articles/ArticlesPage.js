@@ -74,7 +74,7 @@ function ArticlesPage() {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getArticles();
-        document.title = "Glossary and Rulings - PM CardBase"
+        document.title = "Articles - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -109,7 +109,7 @@ function ArticlesPage() {
     return (
         <div className="white-space">
             <div className="flex-items">
-                <h1 className="left-h1">CardBase News</h1>
+                <h1 className="left-h1">Article Search</h1>
                 {/* <h2 className="left">Search our collection of decks</h2> */}
                 { account && account.roles.includes("admin")?
                     <NavLink to="/articlecreate">

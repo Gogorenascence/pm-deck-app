@@ -228,7 +228,7 @@ function NavBar() {
                 </NavLink>
                 <NavLink className="dropdown-select username2" to="/decks" onClick={() => followLink()}>
                   <div className="nav-dropdown-item">
-                    Search Decks
+                    Deck Search
                   </div>
                 </NavLink>
               </div>: null
@@ -246,7 +246,7 @@ function NavBar() {
                 <div className="nav-dropdown-content">
                   <NavLink className="dropdown-select username2" to="/cards" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
-                      Search Cards
+                      Card Search
                     </div>
                   </NavLink>
                   <NavLink className="dropdown-select username2" to="/topcards" onClick={() => followLink()}>
@@ -256,7 +256,7 @@ function NavBar() {
                   </NavLink>
                   <NavLink className="dropdown-select username2" to="/cardsets" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
-                      Card Sets
+                      Card Set Search
                     </div>
                   </NavLink>
                 </div>:null
@@ -299,9 +299,9 @@ function NavBar() {
               </div>
               { showMenu.show && showMenu.section === "articles"?
                 <div className="nav-dropdown-content">
-                  <NavLink className="dropdown-select username2" to="/News" onClick={() => followLink()}>
+                  <NavLink className="dropdown-select username2" to="/articles" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
-                      News
+                      Article Search
                     </div>
                   </NavLink>
                 </div>:null
@@ -398,7 +398,7 @@ function NavBar() {
             </NavLink>
             <NavLink className="nav-dropdown-item" to="/decks" onClick={() => handleShowMobileMenu()}>
               <div className="dropdown-select">
-                Search Decks
+                Deck Search
               </div>
             </NavLink>
           </div>: null
@@ -416,7 +416,7 @@ function NavBar() {
             <div className="nav-dropdown-content">
               <NavLink className="nav-dropdown-item" to="/cards" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
-                  Search Cards
+                  Card Search
                 </div>
               </NavLink>
               <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => handleShowMobileMenu()}>
@@ -426,7 +426,7 @@ function NavBar() {
               </NavLink>
               <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
-                  Card Sets
+                  Card Set Search
                 </div>
               </NavLink>
             </div>:null
@@ -445,6 +445,24 @@ function NavBar() {
               <NavLink className="nav-dropdown-item" to="/gameplay" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
                   GamePlay Portal
+                </div>
+              </NavLink>
+            </div>:null
+          }
+        </li>
+        <li className="nav-item">
+          <div className={ showMenu.show && showMenu.section === "articles"?
+            "navbar-selected pointer": "navbar-select pointer"}
+            onClick={() => handleShowMenu(true, "articles")}>
+            <h5 className="navbar-menu-item">
+              Articles
+            </h5>
+          </div>
+          { showMenu.show && showMenu.section === "articles"?
+            <div className="nav-dropdown-content">
+              <NavLink className="nav-dropdown-item" to="/articles" onClick={() => handleShowMobileMenu()}>
+                <div className="dropdown-select">
+                  Article Search
                 </div>
               </NavLink>
             </div>:null
