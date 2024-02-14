@@ -470,7 +470,7 @@ function DeckEditPage() {
                         <br/>
                     </div>
                 </span>
-                <div className="none margin-top-93">
+                <div className="none margin-top-63">
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
@@ -483,7 +483,7 @@ function DeckEditPage() {
                             src={"https://i.imgur.com/krY25iI.png"}
                             alt="card"/>)}
                 </div>
-                <span className="media-flex-center margin-top-93">
+                <span className="media-flex-center margin-top-63">
                     <BuilderCardSearch/>
                 </span>
             </div>

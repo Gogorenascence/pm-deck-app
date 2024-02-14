@@ -11,7 +11,6 @@ function MainPage() {
 
     return (
       <div>
-        <br/>
         <h1>Welcome to PlayMaker CardBase</h1>
         <h2>The PlayMaker Card Database and Deck Sharing Site</h2>
         <br/>

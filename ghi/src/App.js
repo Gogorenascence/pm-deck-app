@@ -69,7 +69,7 @@ function App() {
           <NavBar/>
           <LightSwitch/>
           <BackToTop/>
-          <div className="App">
+          <div className="app">
 
             <Routes>
               <Route index element={<MainPage />} />

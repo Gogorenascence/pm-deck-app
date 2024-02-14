@@ -101,8 +101,6 @@ function DecksPage() {
 
     return (
         <div className="white-space">
-            <div className="flex-items">
-            </div>
             <div className="media-flex-center">
                 <div className="wide400p">
                     <h1 className="left-h1">Deck Search</h1>

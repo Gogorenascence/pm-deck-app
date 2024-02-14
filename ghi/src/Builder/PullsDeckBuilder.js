@@ -481,7 +481,7 @@ function PullsDeckBuilder() {
                         }
                     </div>
                 </span>
-                <div className="none margin-top-93">
+                <div className="none margin-top-63">
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
@@ -496,7 +496,7 @@ function PullsDeckBuilder() {
                             alt="Card"
                             variant="bottom"/>)}
                 </div>
-                <span className="media-flex-center margin-top-93">
+                <span className="media-flex-center margin-top-63">
                     <div>
                         <h2 className="left">Search for cards</h2>
                         <input

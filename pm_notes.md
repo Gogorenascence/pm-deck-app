@@ -67,7 +67,7 @@ pluck not cleared out -->
 
 4 mettle and draw 1 pluck for defeating player
 2 mettle and draw 1 pluck for defeating fighter
-1 mettle and draw 1 pluck for defeating a card
+0 mettle and draw 1 pluck for defeating a card
 
 string and pluck not cleared out with defeat
 
@@ -83,4 +83,6 @@ second wind criticals during PP or own turn
 
 After defeat player draws back to 6 cards
 
-shared pool 4 x max players plus 4
+shared mettle pool 4 x max players plus 4
+
+Players not going first draw 1 card

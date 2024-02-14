@@ -369,7 +369,7 @@ function DeckBuildandImport() {
             <div className="between-space media-display">
                 <span className="media-flex-center">
                     <div>
-                        <h1 className="left-h1">Deck Builder</h1>
+                        <h1 className="left-h1-2">Deck Builder</h1>
                         <h2 className="left">Deck Details</h2>
                         <h5 className="label">Name </h5>
                         <input
@@ -477,7 +477,7 @@ function DeckBuildandImport() {
                         }
                     </div>
                 </span>
-                <div className="none margin-top-93">
+                <div className="none margin-top-63">
                     <h2 className="left">Cover Card</h2>
                     {selectedCard ? (
                         <img
@@ -492,7 +492,7 @@ function DeckBuildandImport() {
                             alt="Card"
                             variant="bottom"/>)}
                 </div>
-                <span className="media-flex-center margin-top-93">
+                <span className="media-flex-center margin-top-63">
                     <BuilderCardSearch/>
                 </span>
             </div>
