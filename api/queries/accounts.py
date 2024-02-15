@@ -1,6 +1,6 @@
 from bson.objectid import ObjectId
 from .client import Queries
-from models.accounts import Account, AccountIn, AccountOut
+from models.accounts import Account, AccountIn, AccountOut, AccountWithOut
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from typing import Union
@@ -21,6 +21,14 @@ class AccountQueries(Queries):
         for document in db:
             document["id"] = str(document["_id"])
             accounts.append(AccountOut(**document))
+        return accounts
+
+    def get_all_accounts_without_passwords(self) -> list[AccountWithOut]:
+        db = self.collection.find()
+        accounts = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            accounts.append(AccountWithOut(**document))
         return accounts
 
     def get_account(self, username: str) -> AccountOut:

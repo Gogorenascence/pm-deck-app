@@ -192,7 +192,7 @@ function ArticlesPage() {
                             <NavLink to="/articlecreate">
                                 <button
                                     className="left red margin-left-13">
-                                    Create Article
+                                    Create
                                 </button>
                             </NavLink>:
                         null}

@@ -160,7 +160,7 @@ const AuthContextProvider = ({ children }) => {
     };
 
     const getUsers = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accountswithout/`);
         const data = await response.json();
         setUsers(data)
     }

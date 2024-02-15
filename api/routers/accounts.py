@@ -16,7 +16,8 @@ from queries.accounts import (
 from models.accounts import (
     AccountIn,
     Account,
-    AccountOut
+    AccountOut,
+    AccountWithOut
     )
 
 
@@ -39,6 +40,11 @@ router = APIRouter(tags=["accounts"])
 @router.get("/api/accounts/", response_model=list[AccountOut])
 async def get_all_accounts(repo: AccountQueries = Depends()):
     return repo.get_all_accounts()
+
+
+@router.get("/api/accountswithout/", response_model=list[AccountWithOut])
+async def get_all_accounts_without_passwords(repo: AccountQueries = Depends()):
+    return repo.get_all_accounts_without_passwords()
 
 
 @router.get("/api/accounts/{account_id}", response_model=AccountOut)

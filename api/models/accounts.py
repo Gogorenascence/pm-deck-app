@@ -37,3 +37,13 @@ class Account(AccountIn):
 
 class AccountOut(AccountIn):
     id: str
+
+class AccountWithOut(BaseModel):
+    email: str
+    username: str
+    collection: Optional[List]
+    wishlist: Optional[List]
+    decks: Optional[List]
+    favorited_decks: Optional[List]
+    roles: Optional[List]
+    created_on: Optional[dict]

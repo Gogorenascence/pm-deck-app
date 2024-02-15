@@ -57,7 +57,13 @@
   ],
   "created_on": null,
   "favorited_decks": [
-    "64fc6447eff176ba42293519"
+    "64fc6447eff176ba42293519",
+    "6567d2ce6b97532b76bf65b7",
+    "65712e5b0bb745cd65277818",
+    "657f2e8a578eec6c6f07376d",
+    "6571e9e30bb745cd65277829",
+    null,
+    null
   ]
 },
 {
@@ -120,5 +126,28 @@
     "day": 8,
     "time": "17:07",
     "full_time": "2023-09-08T17:07:46.388804"
+  }
+},
+{
+  "_id": {
+    "$oid": "65cd905d094771042159e458"
+  },
+  "email": "korne@sbcglobal.net",
+  "password": "$2b$12$QQMy557bFEY05TpVz1OtKeoGn4UPc2bw/3oAQl/19NGAsez2/GNhe",
+  "username": "HyperAttack",
+  "unhashed_password": "KingGambit23X!",
+  "collection": [],
+  "wishlist": [],
+  "decks": [],
+  "favorited_decks": [],
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2024,
+    "month": 2,
+    "day": 15,
+    "time": "04:17",
+    "full_time": "2024-02-15T04:17:33.994224"
   }
 }]

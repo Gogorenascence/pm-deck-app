@@ -24,8 +24,8 @@ function ArticleEditPage() {
     const getArticle = async() =>{
         const articleResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/${article_id}/`);
         const article_data = await articleResponse.json();
-        console.log(Object.keys(article_data.images))
         setArticle(article_data);
+
         const processedImages = []
         for (let keyName of Object.keys(article_data.images)) {
             for (let order of Object.keys(article_data.images[keyName])) {
