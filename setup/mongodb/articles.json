@@ -148,12 +148,14 @@
   },
   "section": "game",
   "title": "Hit tag introduced",
-  "content": "A tag has been created! The Hit tag allows players to deal damage with unresolved cards.",
+  "content": "",
   "images": {},
   "author": "64ecc30f82c5729f0b36e158",
   "story_date": "2024-01-29",
   "site_link": "cardtags/65b70deee2ecede8e472ac23",
-  "news": true
+  "news": true,
+  "subtitle": null,
+  "updated": "2024-02-16"
 },
 {
   "_id": {
@@ -174,12 +176,14 @@
   },
   "section": "game",
   "title": "Name changes for Play and Ownership",
-  "content": "Play and Ownership will now be named String and Reserve, respectively.",
+  "content": "\"Play\" and \"Ownership\" will now be named \"String\" and \"Reserve\", respectively.",
   "images": {},
   "author": "64ecc30f82c5729f0b36e158",
   "story_date": "2024-01-17",
   "site_link": "",
-  "news": true
+  "news": true,
+  "subtitle": null,
+  "updated": "2024-02-16"
 },
 {
   "_id": {
@@ -447,12 +451,14 @@
   },
   "section": "game",
   "title": "Change to Second Wind mechanic",
-  "content": "Before: Second Wind lasts the duration of the game.\n\nAfter: Second Wind lasts 1 turn.",
+  "content": "Before: Second Wind lasts the duration of the game.//\n\nAfter: Second Wind lasts 1 turn.",
   "images": {},
   "author": "64ecc30f82c5729f0b36e158",
   "story_date": "2024-01-24",
   "site_link": "",
-  "news": true
+  "news": true,
+  "subtitle": null,
+  "updated": "2024-02-17"
 },
 {
   "_id": {
@@ -581,9 +587,9 @@
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2024-02-14",
-  "updated": "2024-02-16",
+  "updated": "2024-02-17",
   "section": "game",
-  "content": "The hit tag effect has been changed.// Previous effect://\"If this card is not defending and has not resolved its main effect, deal 1 damage to a foe. You can not defend with or resolve the main effect of this card for the rest of the round.\"//New effect://If this card has not resolved its main effect, deal 1 damage to a foe. You can not resolve the main effect of this card for the rest of the round.",
+  "content": "The hit tag effect has been changed.// Previous effect://If this card is not defending and has not resolved its main effect, deal 1 damage to a foe. You can not defend with or resolve the main effect of this card for the rest of the round.//New effect://If this card has not resolved its main effect, deal 1 damage to a foe. You can not resolve the main effect of this card for the rest of the round.",
   "images": {},
   "news": true,
   "site_link": ""
@@ -611,9 +617,9 @@
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2024-02-16",
-  "updated": "2024-02-16",
+  "updated": "2024-02-17",
   "section": "releases",
-  "content": "Changes in card effects:@@]]//\nFeza of the Black Winds]]//\nPrevious://\n\"<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following: ● Discard up to 1 card from your hand; 1 foe whose String has a Magic card(s) discards 1 card in their String.\"//\nNew effect://\n\"<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following:● Discard 1 card from your hand, then 1 foe whose String has a Magic card(s) discards 1 card in their String.\"//\nFinal Attack: One Ton Wingbeat]]//\n\"<Trigger> If this card is discarded from your String, deal 2 damage to a foe.\" added.//\nSeries changes:@@]]//\n\"Gimza\", \"Master of Shadows!\", \"Shadow Strike!!\", \"Karmic Crash!!!\", \"Old Collar\" and \"Shadow Clone\" have been added to the Quest series.",
+  "content": "Changes in card effects:@@]]//\nFeza of the Black Winds]]//\nPrevious://\n<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following: ● Discard up to 1 card from your hand; 1 foe whose String has a Magic card(s) discards 1 card in their String.//\nNew://\n<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following: ● Discard 1 card from your hand, then 1 foe whose String has a Magic card(s) discards 1 card in their String.//\nFinal Attack: One Ton Wingbeat]]//\n\"<Trigger> If this card is discarded from your String, deal 2 damage to a foe.\" added.//\nSeries changes:@@]]//\n\"Gimza\", \"Master of Shadows!\", \"Shadow Strike!!\", \"Karmic Crash!!!\", \"Old Collar\" and \"Shadow Clone\" have been added to the Quest series.",
   "images": {},
   "news": true,
   "site_link": ""
@@ -629,6 +635,21 @@
   "updated": "2024-02-16",
   "section": "releases",
   "content": "Changes in card effects:@@]]//\n\nTaxonomy Above All Orders]]//\nPrevious://\nReset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\n<Unity> Reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nMirror Plant!!]]//\nPrevious://\n● Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\n● Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\n\"Hau, Scout Ahead!\"]]//\nPrevious: Focus plus 3 and reset 1 of your Pluck.//\nNew: Focus plus 3 and reset 1 Item.//\n\nHammerspace]]//\nPrevious://\nIf your String has a Canny card(s), reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\nIf your String has a Canny card(s), reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nHive]]//\nPrevious://<Event> Reset 1 of your Pluck.//\nNew://<Event> Reset 1 Item.//\n\nStinger Tornado!!!]]//\nPrevious://<12+> Deal 3 piercing damage. Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://<12+> Deal 3 piercing damage. Reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nSeries changes:@@]]//\n\n\"Peaceful Mediation\" have been added to the Mystic series and removed from the Brawler series.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d00b67029ae854b4ad8da1"
+  },
+  "title": "Card Changes 1/28 - 2/3",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-03",
+  "updated": null,
+  "section": "releases",
+  "content": "Changes in card effects:@@]]//\nGizma]]//\nPrevious://\nResolve the main effect of 1 Fighter, Aura or Move in your placed cards, then discard it.//\nNew://\nResolve the main effect of 1 card in your placed cards, then discard it.//",
   "images": {},
   "news": true,
   "site_link": ""
