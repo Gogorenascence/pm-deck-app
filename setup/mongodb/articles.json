@@ -1,123 +1,5 @@
 [{
   "_id": {
-    "$oid": "65c27607655d53f5b5e214e7"
-  },
-  "title": "Test Article",
-  "subtitle": "This is a Test",
-  "author": "TeamPlayMaker",
-  "story_date": "2024-02-06",
-  "updated": null,
-  "section": "lore",
-  "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-  "images": {
-    "1": [
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
-        "caption": "This is another card image",
-        "link": "cards/1001",
-        "order": 0,
-        "alt_text": "PantheraMan"
-      }
-    ],
-    "2": [
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
-        "caption": "This is a card image",
-        "link": "cards/1007",
-        "order": 0,
-        "alt_text": "Swift Guard"
-      },
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
-        "caption": "This is also a card image",
-        "link": "cards/1005",
-        "order": 1,
-        "alt_text": "Golden Wall "
-      }
-    ]
-  },
-  "news": null,
-  "site_link": null
-},
-{
-  "_id": {
-    "$oid": "65c6548c833f10de9b0740f4"
-  },
-  "title": "Test",
-  "subtitle": "This is a test",
-  "author": "TeamPlayMaker",
-  "story_date": "2024-02-09",
-  "updated": null,
-  "section": "lore",
-  "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "65c657e8833f10de9b0740f5"
-  },
-  "title": "Test",
-  "subtitle": "This is a test",
-  "author": "TeamPlayMaker",
-  "story_date": "2024-02-09",
-  "updated": null,
-  "section": "lore",
-  "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-  "images": {
-    "4": [
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
-        "caption": "This is a card image",
-        "link": "cards/1007",
-        "order": 2,
-        "alt_text": "Swift Guard"
-      }
-    ]
-  }
-},
-{
-  "_id": {
-    "$oid": "65c659f3833f10de9b0740f6"
-  },
-  "title": "sdfsdf",
-  "subtitle": "sdfsd",
-  "author": "TeamPlayMaker",
-  "story_date": "2024-02-09",
-  "updated": "2024-02-16",
-  "section": "guide",
-  "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-  "images": {
-    "1": [
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
-        "caption": "testing",
-        "link": "cards/1001",
-        "order": 0,
-        "alt_text": "PantheraMan"
-      }
-    ],
-    "4": [
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
-        "caption": "This is a card image",
-        "link": "cards/1007",
-        "order": 0,
-        "alt_text": "Swift Guard"
-      },
-      {
-        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
-        "caption": "test",
-        "link": "cards/1005",
-        "order": 1,
-        "alt_text": "Golden Wall"
-      }
-    ]
-  },
-  "news": null,
-  "site_link": null
-},
-{
-  "_id": {
     "$oid": "65bd8c363e76a19d864fcf9c"
   },
   "section": "site",
@@ -162,13 +44,15 @@
     "$oid": "65bd8e0d3e76a19d864fcf9f"
   },
   "section": "game",
-  "title": "New key terms introduced",
-  "content": "Focus plus X, Focus minus X, Enthusiasm plus X and Enthusiasm minus X have been introduced. ",
+  "title": "New key terms introduced 1/14 - 1/20",
+  "content": "Key terms Focus plus X, Focus minus X, Enthusiasm plus X and Enthusiasm minus X have been introduced.//\nAll text \"Add X to your Focus\" will be replaced by \"Focus plus X\".//\nAll text \"Lower the Focus of X foes by Y\" will be replaced by and \"X foes gain Focus minus Y\".//\nAll text \"Add X to your Enthusiasm\" will be replaced by \"Enthusiasm plus X\".//\nAll text \"Lower the Focus of X foes by Y\" will be replaced by and \"X foes gain Enthusiasm minus Y\".//",
   "images": {},
   "author": "64ecc30f82c5729f0b36e158",
   "story_date": "2024-01-17",
   "site_link": "",
-  "news": true
+  "news": true,
+  "subtitle": null,
+  "updated": "2024-02-17"
 },
 {
   "_id": {
@@ -770,13 +654,13 @@
   "_id": {
     "$oid": "65d00b67029ae854b4ad8da1"
   },
-  "title": "Card Changes 1/28 - 2/3",
+  "title": "Card changes: Gizma",
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2024-02-03",
   "updated": "2024-02-17",
   "section": "releases",
-  "content": "Changes in card effects:@@]]//\nGizma]]//\nPrevious: Resolve the main effect of 1 Fighter, Aura or Move in your placed cards, then discard it.//\nNew: Resolve the main effect of 1 card in your placed cards, then discard it.//",
+  "content": "Change in card effects:@@]]//\nGizma]]//\nPrevious: Resolve the main effect of 1 Fighter, Aura or Move in your placed cards, then discard it.//\nNew: Resolve the main effect of 1 card in your placed cards, then discard it.//",
   "images": {
     "1": [
       {
@@ -914,10 +798,101 @@
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2023-10-02",
-  "updated": null,
+  "updated": "2024-02-17",
   "section": "releases",
-  "content": "Changes in card effects:@@]]//\nStrength Training Manual]]//\nPrevious://\nDiscard this Item; your Fighter gains 2 HP.//\nNew://\nDiscard this Item; deal 1 damage to a foe.//\n\nBattle Girl Alice]]//\nPrevious://\nThis card gains Counter 1.//\nNew://\nSelect 1 foe; that foe must resolve their Ending this round with you as the target (other players can still be targeted).//\n\nThe Survey Crew]]//\nPrevious://\n<Critical> Return 1 card from the discard pile to the top of the Main deck.//\nNew://\n<Critical> Return 2 cards from the discard pile to the top of the Main deck.//\n\nAn Opening to Their Blindspot]]//\nPrevious://\n<Limited> If you have a Canny Fighter in your play, deal 1 bypassing damage to a foe.//\nNew://\n<Limited> If you have a Canny card(s) in your play, deal 1 bypassing damage to a foe.//\n\nGround Collapse]]//\nPrevious://\nReduce the focus of all foes by 2. If they have Enthusiasm lower than yours, reduce it by 4 instead.//\nNew://\nFoes with Enthusiasm lower than yours have their Focus reduced by 4 and must resolve their Endings in this round.//\n\nOld Playbook]]//\nPrevious://\nDiscard this Item; reveal 2 cards in a foe's play.//\nNew://\nDiscard this Item; add 1 Aura or Move from the discard pile to your hand, then discard 1 card from your hand.//\n\nBattle Girl Transformation]]//\nPrevious://\n<> Draw 1 Pluck.//\nNew://\n<> This card copies the effect text of your Fighter.//\n\nRallying Cry]]//\nPrevious://\n<C. Trigger> At the start of the round or during a foe’s turn, add 8 to your Enthusiasm.//\nNew://\n<Critical> If you have no Fighter in your play, add 1 Staunch Fighter from your hand to your play.//\n\nThe Star-Cat Alliance]]//\nPrevious://\n<Trigger> At the start of a round, gain 1 HP and add 2 to your Enthusiasm. <C. Trigger> At the start of a foe's turn, deal 1 damage to that foe if they have Enthusiasm lower than yours.//\nNew://\n<Trigger> During the Start Phase, if you have the highest enthusiasm, add 2 to your Focus. <C. Trigger> At the start of a foe's turn, deal 2 damage to that foe if they have Enthusiasm lower than yours.//\n\nBull in a China Shop]]//\nPrevious://\n<Trigger> At the start of the round or during a player’s turn, deal 1 damage to a random foe each time a card(s) is discarded from your hand or removed from your play this round.//\nNew://\n<Trigger> During the Start Phase or during a player’s turn, deal 1 damage to a foe each time a card(s) is discarded from your hand or removed from your play this round.//",
-  "images": {},
+  "content": "Changes in card effects:@@]]//\nStrength Training Manual]]//\nPrevious: Discard this Item; your Fighter gains 2 HP.//\nNew: Discard this Item; deal 1 damage to a foe.//\n\nBattle Girl Alice]]//\nPrevious: This card gains Counter 1.//\nNew: Select 1 foe; that foe must resolve their Ending this round with you as the target (other players can still be targeted).//\n\nThe Survey Crew]]//\nPrevious: <Critical> Return 1 card from the discard pile to the top of the Main deck.//\nNew: <Critical> Return 2 cards from the discard pile to the top of the Main deck.//\n\nAn Opening to Their Blindspot]]//\nPrevious: <Limited> If you have a Canny Fighter in your play, deal 1 bypassing damage to a foe.//\nNew: <Limited> If you have a Canny card(s) in your play, deal 1 bypassing damage to a foe.//\n\nGround Collapse]]//\nPrevious: Reduce the focus of all foes by 2. If they have Enthusiasm lower than yours, reduce it by 4 instead.//\nNew: Foes with Enthusiasm lower than yours have their Focus reduced by 4 and must resolve their Endings in this round.//\n\nOld Playbook]]//\nPrevious: Discard this Item; reveal 2 cards in a foe's play.//\nNew: Discard this Item; add 1 Aura or Move from the discard pile to your hand, then discard 1 card from your hand.//\n\nBattle Girl Transformation]]//\nPrevious: ● Draw 1 Pluck.//\nNew: ● This card copies the effect text of your Fighter.//\n\nRallying Cry]]//\nPrevious: <C. Trigger> At the start of the round or during a foe’s turn, add 8 to your Enthusiasm.//\nNew: <Critical> If you have no Fighter in your play, add 1 Staunch Fighter from your hand to your play.//\n\nThe Star-Cat Alliance]]//\nPrevious: <Trigger> At the start of a round, gain 1 HP and add 2 to your Enthusiasm. <C. Trigger> At the start of a foe's turn, deal 1 damage to that foe if they have Enthusiasm lower than yours.//\nNew: <Trigger> During the Start Phase, if you have the highest enthusiasm, add 2 to your Focus. <C. Trigger> At the start of a foe's turn, deal 2 damage to that foe if they have Enthusiasm lower than yours.//\n\nBull in a China Shop]]//\nPrevious: <Trigger> At the start of the round or during a player’s turn, deal 1 damage to a random foe each time a card(s) is discarded from your hand or removed from your play this round.//\nNew: <Trigger> During the Start Phase or during a player’s turn, deal 1 damage to a foe each time a card(s) is discarded from your hand or removed from your play this round.//",
+  "images": {
+    "1": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg6i.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Strength Training Manual"
+      }
+    ],
+    "4": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r4bgaf.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Battle Girl Alice"
+      }
+    ],
+    "7": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb9dw.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "The Survey Crew"
+      }
+    ],
+    "10": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl14pi.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "An Opening to Their Blindspot"
+      }
+    ],
+    "13": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl16gee.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Ground Collapse"
+      }
+    ],
+    "16": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg8i.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Old Playbook"
+      }
+    ],
+    "19": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r4bgaa.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Battle Girl Transformation"
+      }
+    ],
+    "22": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb1pm.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Rallying Cry"
+      }
+    ],
+    "25": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb17g.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "The Star-Cat Alliance"
+      }
+    ],
+    "28": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl06rfe.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Bull in a China Shop"
+      }
+    ]
+  },
   "news": true,
   "site_link": ""
 },
@@ -963,9 +938,9 @@
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2023-10-06",
-  "updated": null,
+  "updated": "2024-02-17",
   "section": "game",
-  "content": "All text referring to the start of the round will replaced with \"During the Start Phase\".",
+  "content": "The key term Start Phase has been introduced.//\nAll text referring to the start of the round will be replaced with \"During the Start Phase\".",
   "images": {},
   "news": true,
   "site_link": ""
@@ -1019,6 +994,64 @@
       }
     ]
   },
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d0e580029ae854b4ad8e45"
+  },
+  "title": "New cards 10/29 - 11/4",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2023-11-04",
+  "updated": "2024-02-17",
+  "section": "releases",
+  "content": "Overclock and Overload@@]]//\nHero ID and Card Number:]]//GEN 1129//\nType:]]//Event//\nTag:]]//Max 1//\nSeries]]://Tech and Energy//\nEffect]]:// All Tech and Energy cards in your play gain damage plus 1 (those cards deal 1 additional damage at the end of their resolutions). Take 1 damage and reduce your Focus by 1 each time you resolve a card or Pluck.//\n\nRoar of Nature@@]]//\nHero ID and Card Number:]]//GEN 1134//\nType:]]//Event//\nTag:]]//Max 1//\nSeries]]://Nature and Call//\nEffect]]:// If your play has 3 or more Nature cards, resolve this card as if you were at critical HP. <C. Trigger> When a card or Pluck is resolving, cancel the non-damaging effects of the resolving card/Pluck.//\n\nMiraculous Transformation@@]]//\nHero ID and Card Number:]]//GEN 1135//\nType:]]//Comeback//\nSeries]]://Transformation and Fortune//\nEffect]]:// If you take 5 or more damage, resolve this Comeback as if you were at critical HP (quick effect). <C. Trigger> During the Start Phase or if you take damage, add 1 Transformation card from your hand or discard pile to your play, then resolve its main effect.",
+  "images": {
+    "0": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg11e.png",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Overclock and Overload"
+      }
+    ],
+    "11": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg12e.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Roar of Nature"
+      }
+    ],
+    "22": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg13cb.png",
+        "caption": null,
+        "link": null,
+        "order": 2,
+        "alt_text": "Miraculous Transformation"
+      }
+    ]
+  },
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d0fe99029ae854b4ad8ed8"
+  },
+  "title": "Key term Provoke introduced",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2023-10-30",
+  "updated": null,
+  "section": "game",
+  "content": "The key term Provoke has been introduced.//All text \"Select X foes; that foe must resolve their Y this round with you as the target (other players can still be targeted)\" will be replaced with \"Provoke X Y\".",
+  "images": {},
   "news": true,
   "site_link": ""
 }]

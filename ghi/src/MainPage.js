@@ -20,10 +20,10 @@ function MainPage() {
         <div>
           <TopRow/>
         </div>
-        <br/>
-        <div>
+        <div className="margin-top-20">
           <SimulatorRow/>
         </div>
+        <br/>
         <h1 className="margin-top-20">CardBase News</h1>
         <br/>
         <div>

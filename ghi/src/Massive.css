@@ -3239,7 +3239,7 @@ button:hover {
 .sim-back-wrapper {
   position: relative;
   overflow: hidden;
-  height: 150px; /* Adjust this value as needed to control the card height */
+  height: 200px; /* Adjust this value as needed to control the card height */
   width: 100%;
   outline: 1px white solid;
   border-radius: 7px;
@@ -3248,7 +3248,7 @@ button:hover {
 .sim-back {
   position: relative;
   overflow: hidden;
-  height: 150px; /* Adjust this value as needed to control the card height */
+  height: 200px; /* Adjust this value as needed to control the card height */
   background-image: url("./net.png");
   background-size: 100%;
 }
@@ -3262,11 +3262,11 @@ button:hover {
   height: 100%;
   display: flex;
   overflow: hidden;
-  background-size: 400px;
+  background-size: 950px;
   background-image: url("./frames.png");
   background-repeat: repeat;
   animation: scroll2 1000s linear infinite;
-  opacity: .25;
+  opacity: .175;
   z-index: 2;
 }
 
