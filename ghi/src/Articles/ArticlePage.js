@@ -155,7 +155,7 @@ function ArticlePage() {
                 </Card.ImgOverlay>
             </Card>
             <h1>{article.subtitle}</h1>
-            <div className="margin-5p">
+            <div className="newsSection2">
                 {
                     processedText(article.content)?.map((line, index) => {
                         return (

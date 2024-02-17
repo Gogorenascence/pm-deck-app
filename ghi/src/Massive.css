@@ -3165,6 +3165,10 @@ button:hover {
   margin: 0 -10px 0 -20px;
 }
 
+.newsSection2 {
+  margin: 10px 2.5%;
+}
+
 .newsText2 {
   font-size: 23px;
 }
