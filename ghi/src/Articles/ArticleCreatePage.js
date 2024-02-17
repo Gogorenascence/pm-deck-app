@@ -273,6 +273,7 @@ function ArticleCreatePage() {
                             image={image}
                             imagesIndex={index}
                             handleImageChange={handleImageChange}
+                            content={article.content}
                         />
                     )}
                 </div>:

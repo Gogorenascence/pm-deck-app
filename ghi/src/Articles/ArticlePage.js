@@ -161,16 +161,16 @@ function ArticlePage() {
                         return (
                             <>
                                 {line.includes("]]")?
-                                    <p className={`${line.includes("@@")? "newsText4" :"newsText2"} bolder`}>
+                                    <p className={`${line.includes("@@")? "newsText4" :"newsText2"} bolder margin-bottom-0 margin-top-20`}>
                                         { line.includes("@@")? processedBigLine(processedBoldLine(line)): processedBoldLine(line)}
                                     </p>
                                 :
-                                    <p className="newsText2">{line}</p>
+                                    <p className="newsText2 margin-bottom-0">{line}</p>
                                 }
                                 <div className="newsImageContainer">
                                     {article.images[index.toString()] ?
                                         article.images[index.toString()].sort((a,b) => a.order - b.order).map(image =>
-                                            <div className="margin-top-20">
+                                            <div className="margin-top-10 margin-bottom-10">
                                                 <img className="newsImage"
                                                     src={image.src}
                                                     title={image.alt_text}

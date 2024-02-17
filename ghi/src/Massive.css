@@ -3175,6 +3175,8 @@ button:hover {
 
 .newsText3 {
   font-size: 20px;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .newsText4 {
@@ -3195,15 +3197,15 @@ button:hover {
 .newsImageContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10vw;
+  justify-content: left;
+  gap: 1%;
   margin: 10px;
 }
 
 .newsImage {
   width: 250px;
   margin: 2.25px 0px;
-  border-radius: 7px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid white;
 }

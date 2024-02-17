@@ -67,6 +67,12 @@ function ArticleEditPage() {
         setImages(newImages)
     }
 
+    const handleRemoveImage = (index) => {
+        const newImages = [...images]
+        newImages.splice(index, 1)
+        setImages(newImages)
+    }
+
     const handleArticleCheck = (event) => {
         setArticle({...article, news: !article.news});
     };
@@ -298,6 +304,8 @@ function ArticleEditPage() {
                             image={image}
                             imagesIndex={index}
                             handleImageChange={handleImageChange}
+                            content={article.content}
+                            handleRemoveImage={handleRemoveImage}
                         />
                     )}
                 </div>:
