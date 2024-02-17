@@ -164,6 +164,10 @@ code {
   font-weight: 500;
 }
 
+.bolder {
+  font-weight: 700;
+}
+
 .topbar{
   top: 0;
   left: 0;
@@ -2542,6 +2546,14 @@ button:hover {
   margin: 10px;
 }
 
+.margin-20 {
+  margin: 20px;
+}
+
+.margin-5p {
+  margin: 5%;
+}
+
 .card-menu {
   width: 115px;
   position: relative;
@@ -3057,6 +3069,10 @@ button:hover {
   width: 100vw;
 }
 
+.wide100-3 {
+  width: 100%;
+}
+
 .newsRow {
   max-height: 250px;
   overflow-y: scroll;
@@ -3149,6 +3165,19 @@ button:hover {
   margin: 0 -10px 0 -20px;
 }
 
+.newsText2 {
+  font-size: 23px;
+}
+
+.newsText3 {
+  font-size: 20px;
+}
+
+.newsText4 {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
 .no-wrap {
   white-space: nowrap;
 }
@@ -3157,6 +3186,22 @@ button:hover {
   position: absolute;
   top: 66px;
   width: 100vw;
+}
+
+.newsImageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10vw;
+  margin: 10px;
+}
+
+.newsImage {
+  width: 250px;
+  margin: 2.25px 0px;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid white;
 }
 
 @media screen and (max-width: 1330px) {

@@ -89,7 +89,7 @@ function ArticleEditPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...article};
-        data["author"] = account.username
+        data["updated"] = new Date().toISOString().split("T")[0]
         data["images"] = {}
         for (let image of images) {
             console.log(typeof image.keyName)

@@ -6,7 +6,7 @@ import { Card } from "react-bootstrap";
 function ArticlePage() {
 
     const { article_id } = useParams()
-    const { account, getUsers, users } = useContext(AuthContext)
+    const { account } = useContext(AuthContext)
 
     const [article, setArticle] = useState({
         title: "",
@@ -27,36 +27,35 @@ function ArticlePage() {
 
     const getArticle = async() =>{
         const articleResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/${article_id}/`);
-        const article_data = await articleResponse.json();
-        setArticle(article_data);
-        console.log(article)
+        const articleData = await articleResponse.json();
+        setArticle(articleData);
+        console.log(articleData)
 
         const processedImages = []
-        for (let keyName of Object.keys(article_data.images)) {
-            for (let order of Object.keys(article_data.images[keyName])) {
+        for (let keyName of Object.keys(articleData.images)) {
+            for (let order of Object.keys(articleData.images[keyName])) {
                 const image = {
                     keyName: keyName,
-                    src: article_data.images[keyName][order].src??null,
-                    alt_text: article_data.images[keyName][order].alt_text??null,
-                    caption: article_data.images[keyName][order].caption??null,
+                    src: articleData.images[keyName][order].src??null,
+                    alt_text: articleData.images[keyName][order].alt_text??null,
+                    caption: articleData.images[keyName][order].caption??null,
                     order: order,
-                    link: article_data.images[keyName][order].link??null,
+                    link: articleData.images[keyName][order].link??null,
                 }
                 processedImages.push(image)
             }
         }
         setImages(processedImages)
 
-        const author = users.find(user => user.id === article_data.author)
-        setAuthor(author)
+        const usersResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accountswithout/`);
+        const usersData = await usersResponse.json();
+        setAuthor(usersData.find(user => user.id === articleData.author) ?? {username: "TeamPlayMaker"})
     };
 
     useEffect(() => {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getArticle();
-        getUsers()
-        console.log(images)
     // eslint-disable-next-line
     },[]);
 
@@ -72,12 +71,22 @@ function ArticlePage() {
         return text?.split("//");
     };
 
+    const processedBoldLine = (line) => {
+        return line?.replace("]]", "");
+    };
+
+    const processedBigLine = (line) => {
+        return line?.replace("@@", "");
+    };
+
     const formatDate = (date) => {
         const month = date.slice(5,7);
         const day = date.slice(8);
         const year = date.slice(0,4);
         return `${month}-${day}-${year}`
     }
+
+
 
     return (
         <div className="white-space">
@@ -92,86 +101,92 @@ function ArticlePage() {
                     </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                        <div className="flex">
-                            <h1 className="left margin-top-30">{article.title}</h1>
-                            {/* {account?
-                                <FavoriteDeck deck={deck}/>:null
-                            } */}
-                        </div>
-                        {/* <h6 className="left"
-                            style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                    <div className="flex">
+                        <h1 className="left margin-top-10">{article.title}</h1>
+                        {/* {account?
+                            <FavoriteDeck deck={deck}/>:null
+                        } */}
+                        { account && account.roles.includes("admin")?
+                            <NavLink className="nav-link" to={`/articles/${article.id}/edit`}>
+                                <h5>[Edit]</h5>
+                            </NavLink>
+                        :null}
+                    </div>
+                    {/* <h6 className="left"
+                        style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
+                    >
+                        Section: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                    </h6> */}
+                    <div className=" flex wide100-3">
+                        <img className="newsSection" src={`/${article.section}.png`} alt={article.section}/>
+                    </div>
+                    {/* <h6 className="left"
+                        style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                    >
+                        Main Deck: {main_list.length} &nbsp; Pluck Deck: {pluck_list.length}
+                    </h6> */}
+                    <div className="flex">
+                        <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
+                        <h6
+                            className="left justify-content-end"
+                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                         >
-                            Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
+                            {formatDate(article.story_date)} &nbsp; &nbsp;
                         </h6>
-                        <h6 className="left"
-                            style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
+                        { article.updated ?
+                            <>
+                                <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
+                                <h6
+                                className="left justify-content-end"
+                                    style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
+                                >
+                                    {article.updated} &nbsp; &nbsp;
+                                </h6>
+                            </>:null
+                        }
+                        <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
+                        <h6
+                        className="left justify-content-end"
+                            style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                         >
-                            Main Deck: {main_list.length} &nbsp; Pluck Deck: {pluck_list.length}
+                            {author.username}
                         </h6>
-                        <div style={{ display: "flex" }}>
-                            <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
-                            <h6
-                            className="left justify-content-end"
-                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                            >
-                                {createdAgo} &nbsp; &nbsp;
-                            </h6>
-                            <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
-                            <h6
-                            className="left justify-content-end"
-                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                            >
-                                {updatedAgo} &nbsp; &nbsp;
-                            </h6>
-                            <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
-                            <h6
-                            className="left justify-content-end"
-                                style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
-                            >
-                                {createdBy(deck)}
-                            </h6>
-                        </div> */}
+                    </div>
                 </Card.ImgOverlay>
             </Card>
-            { account && account.roles.includes("admin")?
-                <NavLink to={`/articles/${article.id}/edit`}>
-                    <button
-                        className="left red"
-                        style={{ margin: "3px 0px 0px 9px"}}
-                    >
-                        Edit Article
-                    </button>
-                </NavLink>
-            :null}
-            <h2>{article.subtitle}</h2>
-            <h3>{"author.username"}</h3>
-            <h4>{formatDate(article.story_date)}</h4>
-            <h5>{article.section}</h5>
-            {
-                processedText(article.content)?.map((line, index) => {
-                    return (
-                        <>
-                            <p>{line}</p>
-                            <div className="flex-content">
-                                {article.images[index.toString()] ?
-                                    article.images[index.toString()].sort((a,b) => a.order - b.order).map(image =>
-                                        <div>
-
-                                            <img className="builder-card"
-                                                src={image.src}
-                                                title={image.alt_text}
-                                                alt={image.alt_text}
-                                            />
-                                            {image.caption? <p>{image.caption}</p>: null}
-                                        </div>
-
-                                    ):null
+            <h1>{article.subtitle}</h1>
+            <div className="margin-5p">
+                {
+                    processedText(article.content)?.map((line, index) => {
+                        return (
+                            <>
+                                {line.includes("]]")?
+                                    <p className={`${line.includes("@@")? "newsText4" :"newsText2"} bolder`}>
+                                        { line.includes("@@")? processedBigLine(processedBoldLine(line)): processedBoldLine(line)}
+                                    </p>
+                                :
+                                    <p className="newsText2">{line}</p>
                                 }
-                            </div>
-                        </>
-                    )
-                })
-            }
+                                <div className="newsImageContainer">
+                                    {article.images[index.toString()] ?
+                                        article.images[index.toString()].sort((a,b) => a.order - b.order).map(image =>
+                                            <div className="margin-top-20">
+                                                <img className="newsImage"
+                                                    src={image.src}
+                                                    title={image.alt_text}
+                                                    alt={image.alt_text}
+                                                />
+                                                {image.caption? <p className="newsText3">{image.caption}</p>: null}
+                                            </div>
+
+                                        ):null
+                                    }
+                                </div>
+                            </>
+                        )
+                    })
+                }
+            </div>
         </div>
     );
 }

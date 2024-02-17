@@ -47,3 +47,4 @@ class AccountWithOut(BaseModel):
     favorited_decks: Optional[List]
     roles: Optional[List]
     created_on: Optional[dict]
+    id: str

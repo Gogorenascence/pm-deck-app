@@ -16,7 +16,7 @@ function ArticleCreatePage() {
         section: "",
         content: "",
         images: "",
-        news: false,
+        news: true,
         site_link: "",
     });
 
@@ -116,8 +116,7 @@ function ArticleCreatePage() {
                 site_link: "",
             });
             setImages([])
-            if (!stayHere) {navigate(`/articles/article_id`)}
-            navigate(`/articles/${article_id}`)
+            if (!stayHere) {navigate(`/articles/${article_id}`)}
             console.log("Success")
         } else {
             alert("Error in creating news");

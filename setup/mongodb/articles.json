@@ -4,10 +4,10 @@
   },
   "title": "Test Article",
   "subtitle": "This is a Test",
-  "author": "John Cussack",
-  "story_date": "2-6-2024",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-06",
   "updated": null,
-  "section": "Lore",
+  "section": "lore",
   "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
   "images": {
     "1": [
@@ -15,40 +15,29 @@
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
         "caption": "This is another card image",
         "link": "cards/1001",
-        "order": 8,
+        "order": 0,
         "alt_text": "PantheraMan"
       }
     ],
-    "4": [
+    "2": [
       {
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
         "caption": "This is a card image",
         "link": "cards/1007",
-        "order": 2,
+        "order": 0,
         "alt_text": "Swift Guard"
       },
       {
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
         "caption": "This is also a card image",
         "link": "cards/1005",
-        "order": 0,
-        "alt_text": "Golden Wall"
+        "order": 1,
+        "alt_text": "Golden Wall "
       }
     ]
-  }
-},
-{
-  "_id": {
-    "$oid": "65c652d7833f10de9b0740f3"
   },
-  "title": "This is a test",
-  "subtitle": "Testing",
-  "author": "",
-  "story_date": "",
-  "updated": null,
-  "section": "Lore",
-  "content": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\",",
-  "images": {}
+  "news": null,
+  "site_link": null
 },
 {
   "_id": {
@@ -59,7 +48,7 @@
   "author": "TeamPlayMaker",
   "story_date": "2024-02-09",
   "updated": null,
-  "section": "Lore",
+  "section": "lore",
   "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
   "images": {}
 },
@@ -72,7 +61,7 @@
   "author": "TeamPlayMaker",
   "story_date": "2024-02-09",
   "updated": null,
-  "section": "Lore",
+  "section": "lore",
   "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
   "images": {
     "4": [
@@ -94,8 +83,8 @@
   "subtitle": "sdfsd",
   "author": "TeamPlayMaker",
   "story_date": "2024-02-09",
-  "updated": null,
-  "section": "Card Releases",
+  "updated": "2024-02-16",
+  "section": "guide",
   "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
   "images": {
     "1": [
@@ -103,7 +92,7 @@
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
         "caption": "testing",
         "link": "cards/1001",
-        "order": 8,
+        "order": 0,
         "alt_text": "PantheraMan"
       }
     ],
@@ -112,18 +101,20 @@
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
         "caption": "This is a card image",
         "link": "cards/1007",
-        "order": 2,
+        "order": 0,
         "alt_text": "Swift Guard"
       },
       {
         "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
         "caption": "test",
         "link": "cards/1005",
-        "order": 0,
+        "order": 1,
         "alt_text": "Golden Wall"
       }
     ]
-  }
+  },
+  "news": null,
+  "site_link": null
 },
 {
   "_id": {
@@ -566,5 +557,79 @@
   "story_date": "2023-04-12",
   "site_link": "",
   "news": true
-}
-]
+},
+{
+  "_id": {
+    "$oid": "65cf9986029ae854b4ad8d44"
+  },
+  "title": "News model converted to an Article model",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-16",
+  "updated": null,
+  "section": "admin",
+  "content": "The news model for the site has been changed to an article model.  Article create page created and all news instances have been converted into articles.",
+  "images": {},
+  "news": false,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65cf9ae7029ae854b4ad8d45"
+  },
+  "title": "Hit tag effect change",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-14",
+  "updated": "2024-02-16",
+  "section": "game",
+  "content": "The hit tag effect has been changed.// Previous effect://\"If this card is not defending and has not resolved its main effect, deal 1 damage to a foe. You can not defend with or resolve the main effect of this card for the rest of the round.\"//New effect://If this card has not resolved its main effect, deal 1 damage to a foe. You can not resolve the main effect of this card for the rest of the round.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65cf9bcf029ae854b4ad8d46"
+  },
+  "title": "Article Pages are up",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-16",
+  "updated": null,
+  "section": "site",
+  "content": "The each article and news item with more than a headline will a full page. If an article has more information it will now be clickable.",
+  "images": {},
+  "news": false,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65cfa166029ae854b4ad8d57"
+  },
+  "title": "Card changes 2/11 - 2/17",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-16",
+  "updated": "2024-02-16",
+  "section": "releases",
+  "content": "Changes in card effects:@@]]//\nFeza of the Black Winds]]//\nPrevious://\n\"<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following: ● Discard up to 1 card from your hand; 1 foe whose String has a Magic card(s) discards 1 card in their String.\"//\nNew effect://\n\"<Trigger> When a card in foe's String is resolving, the effect text of that foe's Fighter or Aura becomes the following:● Discard 1 card from your hand, then 1 foe whose String has a Magic card(s) discards 1 card in their String.\"//\nFinal Attack: One Ton Wingbeat]]//\n\"<Trigger> If this card is discarded from your String, deal 2 damage to a foe.\" added.//\nSeries changes:@@]]//\n\"Gimza\", \"Master of Shadows!\", \"Shadow Strike!!\", \"Karmic Crash!!!\", \"Old Collar\" and \"Shadow Clone\" have been added to the Quest series.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65cfb858029ae854b4ad8d78"
+  },
+  "title": "Card changes 2/4 - 2/10",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-10",
+  "updated": "2024-02-16",
+  "section": "releases",
+  "content": "Changes in card effects:@@]]//\n\nTaxonomy Above All Orders]]//\nPrevious://\nReset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\n<Unity> Reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nMirror Plant!!]]//\nPrevious://\n● Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\n● Return 2 cards from your hand to the top of the Main deck in any order; resolve your Fighter and reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\n\"Hau, Scout Ahead!\"]]//\nPrevious: Focus plus 3 and reset 1 of your Pluck.//\nNew: Focus plus 3 and reset 1 Item.//\n\nHammerspace]]//\nPrevious://\nIf your String has a Canny card(s), reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://\nIf your String has a Canny card(s), reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nHive]]//\nPrevious://<Event> Reset 1 of your Pluck.//\nNew://<Event> Reset 1 Item.//\n\nStinger Tornado!!!]]//\nPrevious://<12+> Deal 3 piercing damage. Reset 1 of your Pluck (you can resolve the extra effects of 1 Pluck one more time).//\nNew://<12+> Deal 3 piercing damage. Reset 1 Item (you can resolve the effects of 1 Item in your Reserve one more time).//\n\nSeries changes:@@]]//\n\n\"Peaceful Mediation\" have been added to the Mystic series and removed from the Brawler series.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+}]

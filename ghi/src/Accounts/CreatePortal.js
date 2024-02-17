@@ -31,11 +31,6 @@ function CreatePortal() {
                             imageSRC="https://i.imgur.com/8wqd1sD.png"
                         />
                         <SectionCard
-                            link="/newscreate"
-                            title="News Create"
-                            imageSRC="https://i.imgur.com/8wqd1sD.png"
-                        />
-                        <SectionCard
                             link="/articlecreate"
                             title="Article Create"
                             imageSRC="https://i.imgur.com/8wqd1sD.png"
