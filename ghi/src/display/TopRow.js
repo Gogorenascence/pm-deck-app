@@ -64,15 +64,15 @@ function TopRow() {
             </Link>
           </div>
           <div>
-            <Link to="/simulator">
+            <Link to="/articles">
               <Card className=" text-white text-center card-list-card3 glow3 top-row">
                 <div className="media-card-image-wrapper2">
                   <div className="media-card-image-clip2">
-                    <Card.Img className="media-card-image2" src="1r307Burst Esper2.png" alt="Card image" variant="bottom"/>
+                    <Card.Img className="media-card-image2" src="gcb20.png" alt="Card image" variant="bottom"/>
                   </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter mt-auto zindex-0">
-                  <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Simulator</Card.Title>
+                  <Card.Title className="card-img-overlay d-flex flex-column justify-content-end">Articles</Card.Title>
                 </Card.ImgOverlay>
               </Card>
             </Link>

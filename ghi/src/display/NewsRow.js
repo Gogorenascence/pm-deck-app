@@ -118,7 +118,7 @@ function NewsRow() {
                             className="pointer"
                             onClick={goToNews}
                         >
-                            Browse All News
+                            Browse All News and Articles
                         </button>
                 </>: null
             }

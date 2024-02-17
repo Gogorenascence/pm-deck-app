@@ -478,7 +478,7 @@ function CardCreatePage() {
                                 <div>
                                     {extra_effects.map((item, index) => (
                                         <h5 key={index} className="pointer" onClick={() => handleRemoveExtraEffect(index)}>
-                                        {nameExtraEffect(item)}
+                                            {nameExtraEffect(item)}
                                         </h5>
                                     ))}
                                 </div>

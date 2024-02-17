@@ -2,11 +2,14 @@ import TopRow from "./Display/TopRow";
 import DeckRow from "./Display/DeckRow";
 import CardRow from "./Display/CardRow";
 import NewsRow from "./Display/NewsRow";
+import SimulatorRow from "./Display/SimulatorRow";
+import { Card } from "react-bootstrap";
+import { NavLink } from 'react-router-dom';
 
 
 function MainPage() {
 
-  window.scroll(0, 0);
+  // window.scroll(0, 0);
   document.body.style.overflow = 'auto';
 
     return (
@@ -18,6 +21,9 @@ function MainPage() {
           <TopRow/>
         </div>
         <br/>
+        <div>
+          <SimulatorRow/>
+        </div>
         <h1 className="margin-top-20">CardBase News</h1>
         <br/>
         <div>

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import ArticleImageCreate from "./ArticleImageCreate";
+import ArticleTemplates from "./ArticleTemplates";
 
 
 function ArticleCreatePage() {
@@ -41,6 +42,12 @@ function ArticleCreatePage() {
     const handleAddImage = () => {
         const newImages = [...images]
         newImages.push({})
+        setImages(newImages)
+    }
+
+    const handleRemoveImage = (index) => {
+        const newImages = [...images]
+        newImages.splice(index, 1)
         setImages(newImages)
     }
 
@@ -122,6 +129,7 @@ function ArticleCreatePage() {
             alert("Error in creating news");
         }
     }
+
 
     // if (!(account && account.roles.includes("admin"))) {
     //     setTimeout(function() {
@@ -254,9 +262,14 @@ function ArticleCreatePage() {
                                     <h6 className="error">You must be logged in to create a article</h6>:
                                 null
                                 }
+                                <ArticleTemplates
+                                    setArticle={setArticle}
+                                    author={account}
+                                />
                             </div>
                         </div>
                     </div>
+                    <br/>
                     <h2 className="label">Article Content</h2>
                     <textarea
                         className="large-article"
@@ -274,6 +287,7 @@ function ArticleCreatePage() {
                             imagesIndex={index}
                             handleImageChange={handleImageChange}
                             content={article.content}
+                            handleRemoveImage={handleRemoveImage}
                         />
                     )}
                 </div>:

@@ -83,7 +83,7 @@ function ArticleEditPage() {
 
     useEffect(() => {
         getArticle();
-        document.title = "Article Create - PM CardBase"
+        document.title = "Article Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -164,7 +164,7 @@ function ArticleEditPage() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Article Create</h1>
+                    <h1 className="margin-top-40">Article Edit</h1>
                     <div style={{display: "flex", justifyContent: "center"}}>
                         <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                             <div
@@ -277,6 +277,12 @@ function ArticleEditPage() {
                                             onClick={() => handleAddImage()}
                                         >
                                             Add Image
+                                        </button>
+                                        <button
+                                            className="left"
+                                            onClick={getArticle}
+                                        >
+                                            Reset Article
                                         </button>
                                     </div>:null
                                 }

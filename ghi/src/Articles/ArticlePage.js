@@ -102,7 +102,7 @@ function ArticlePage() {
                 </div>
                 <Card.ImgOverlay className="blackfooter2 mt-auto">
                     <div className="flex">
-                        <h1 className="left margin-top-10">{article.title}</h1>
+                        <h1 className="left margin-top-10 ellipsis">{article.title}</h1>
                         {/* {account?
                             <FavoriteDeck deck={deck}/>:null
                         } */}
@@ -140,7 +140,7 @@ function ArticlePage() {
                                 className="left justify-content-end"
                                     style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                 >
-                                    {article.updated} &nbsp; &nbsp;
+                                    {formatDate(article.updated)} &nbsp; &nbsp;
                                 </h6>
                             </>:null
                         }
@@ -161,7 +161,7 @@ function ArticlePage() {
                         return (
                             <>
                                 {line.includes("]]")?
-                                    <p className={`${line.includes("@@")? "newsText4" :"newsText2"} bolder margin-bottom-0 margin-top-20`}>
+                                    <p className={`${line.includes("@@")? "newsText4" :"newsText5"} bolder margin-bottom-0 margin-top-20`}>
                                         { line.includes("@@")? processedBigLine(processedBoldLine(line)): processedBoldLine(line)}
                                     </p>
                                 :

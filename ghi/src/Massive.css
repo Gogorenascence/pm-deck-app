@@ -1277,6 +1277,18 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+
+.margin-bottom-50 {
+  margin-bottom: 50px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
 .db-pool-count {
   margin: 1% 0%;
   font-weight: 700;
@@ -1897,7 +1909,7 @@ button:hover {
 }
 
 .large-article {
-  height: 150px;
+  height: 300px;
   width: 100%;
 }
 
@@ -3177,10 +3189,16 @@ button:hover {
   font-size: 20px;
   text-align: center;
   margin: 10px 0;
+  font-weight: 500;
 }
 
 .newsText4 {
   font-size: 32px;
+  margin-bottom: 0;
+}
+
+.newsText5 {
+  font-size: 27px;
   margin-bottom: 0;
 }
 
@@ -3203,11 +3221,86 @@ button:hover {
 }
 
 .newsImage {
-  width: 250px;
+  width: 300px;
   margin: 2.25px 0px;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid white;
+}
+
+.ellipsis {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: calc(90%); /* The trick is here! */
+}
+
+.sim-back-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 150px; /* Adjust this value as needed to control the card height */
+  width: 100%;
+  outline: 1px white solid;
+  border-radius: 7px;
+}
+
+.sim-back {
+  position: relative;
+  overflow: hidden;
+  height: 150px; /* Adjust this value as needed to control the card height */
+  background-image: url("./net.png");
+  background-size: 100%;
+}
+
+.sim-back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  background-size: 400px;
+  background-image: url("./frames.png");
+  background-repeat: repeat;
+  animation: scroll2 1000s linear infinite;
+  opacity: .25;
+  z-index: 2;
+}
+
+@keyframes scroll2 {
+  0% {
+    background-position: 3000px 0px;
+  }
+  50% {
+    background-position: 3000px 3000px;
+  }
+  100% {
+    background-position: 3000px 0px;
+  }
+}
+
+.sim-row-link {
+  text-decoration: none;
+  color: white;
+}
+
+.sim-row-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.sim-row-text {
+  z-index: 10;
+  font-size: 60px;
+}
+
+.card-image-clip4 {
+  margin-top: -20%;
+  height: 50%;
+  background-color: black; /* Adjust the background color if needed */
 }
 
 @media screen and (max-width: 1330px) {
