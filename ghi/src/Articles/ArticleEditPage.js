@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import ArticleImageCreate from "./ArticleImageCreate";
+import { todaysFormattedDate } from "../Helpers";
 
 
 function ArticleEditPage() {
@@ -13,7 +14,7 @@ function ArticleEditPage() {
         title: "",
         subtitle: "",
         author: "",
-        story_date: new Date().toISOString().split("T")[0],
+        story_date: todaysFormattedDate(),
         section: "",
         content: "",
         images: "",
@@ -95,7 +96,7 @@ function ArticleEditPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {...article};
-        data["updated"] = new Date().toISOString().split("T")[0]
+        data["updated"] = todaysFormattedDate()
         data["images"] = {}
         for (let image of images) {
             console.log(typeof image.keyName)
@@ -215,7 +216,7 @@ function ArticleEditPage() {
                                     className="builder-input"
                                     type="date"
                                     placeholder=" Date"
-                                    max={new Date().toISOString().split("T")[0]}
+                                    max={todaysFormattedDate()}
                                     onChange={handleArticleChange}
                                     name="story_date"
                                     value={article.story_date}>

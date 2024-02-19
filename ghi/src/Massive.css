@@ -3262,7 +3262,7 @@ button:hover {
   height: 100%;
   display: flex;
   overflow: hidden;
-  background-size: 950px;
+  background-size: 1200px;
   background-image: url("./frames.png");
   background-repeat: repeat;
   animation: scroll2 1000s linear infinite;

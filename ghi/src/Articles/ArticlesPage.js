@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import { NewsQueryContext } from "../Context/NewsQueryContext";
+import { todaysFormattedDate } from "../Helpers";
 
 
 function ArticlesPage() {
@@ -19,7 +20,7 @@ function ArticlesPage() {
     } = useContext(NewsQueryContext)
     const [articles, setArticles] = useState([]);
 
-    const maxDate = new Date().toISOString().split("T")[0];
+    const maxDate = todaysFormattedDate();
 
     const [loading, setLoading] = useState(false)
 

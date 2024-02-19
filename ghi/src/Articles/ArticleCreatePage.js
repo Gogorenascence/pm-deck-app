@@ -3,6 +3,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import ArticleImageCreate from "./ArticleImageCreate";
 import ArticleTemplates from "./ArticleTemplates";
+import { todaysFormattedDate } from "../Helpers";
 
 
 function ArticleCreatePage() {
@@ -13,7 +14,7 @@ function ArticleCreatePage() {
         title: "",
         subtitle: "",
         author: "",
-        story_date: new Date().toISOString().split("T")[0],
+        story_date: todaysFormattedDate(),
         section: "",
         content: "",
         images: "",
@@ -192,7 +193,7 @@ function ArticleCreatePage() {
                                     className="builder-input"
                                     type="date"
                                     placeholder=" Date"
-                                    max={new Date().toISOString().split("T")[0]}
+                                    max={todaysFormattedDate()}
                                     onChange={handleArticleChange}
                                     name="story_date"
                                     value={article.story_date}>
