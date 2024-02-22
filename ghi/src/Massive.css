@@ -2930,7 +2930,7 @@ button:hover {
 }
 
 .cardpool2-ro {
-  margin: 28px 0 14px 30px;
+  margin: 0px 0 14px 30px;
   background-color: rgba(80, 42, 170, 0.315);
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
@@ -2941,7 +2941,7 @@ button:hover {
 }
 
 .no-cardpool-ro {
-  margin: 40px 0 14px 30px;
+  margin: 12px 0 14px 30px;
   background-color: rgba(117, 90, 182, 0.315);
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
@@ -2952,7 +2952,7 @@ button:hover {
 }
 
 .no-cardpool2-ro {
-  margin: 40px 0 14px 30px;
+  margin: 12px 0 14px 30px;
   background-color: rgba(117, 90, 182, 0.315);
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
@@ -2963,7 +2963,7 @@ button:hover {
 }
 
 .no-cardpool3-ro {
-  margin: 28px 0 14px 30px;
+  margin: 0px 0 14px 30px;
   background-color: rgba(117, 90, 182, 0.315);
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
@@ -2980,7 +2980,7 @@ button:hover {
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.212);
-  background-color: rgba(224, 174, 35, 0.87);
+  background-color: rgba(15,0,50,.315);
   border-radius: 2px;
   outline: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -3301,6 +3301,15 @@ button:hover {
   margin-top: -20%;
   height: 50%;
   background-color: black; /* Adjust the background color if needed */
+}
+
+.cardSheet {
+  height: 1080px;
+  width: 792px;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(336px, 240px));
+  gap: 0;
+  grid-auto-flow: dense; */
 }
 
 @media screen and (max-width: 1330px) {

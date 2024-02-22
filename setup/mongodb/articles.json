@@ -1054,4 +1054,113 @@
   "images": {},
   "news": true,
   "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d12d1c029ae854b4ada3e7"
+  },
+  "title": "Article templates added to Article Create page",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-17",
+  "updated": null,
+  "section": "admin",
+  "content": "The Article Create now has templates that can be selected to help with formatting.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d12d86029ae854b4ada3e8"
+  },
+  "title": "Article detail view completed",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-17",
+  "updated": null,
+  "section": "admin",
+  "content": "The detail view for articles are now available.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d12dfe029ae854b4ada3e9"
+  },
+  "title": "Link to Articles Page added to front page",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-17",
+  "updated": null,
+  "section": "admin",
+  "content": "Articles has been added to the top row of the main page and the simulator now has its own row.",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d2b6fc029ae854b4ada92a"
+  },
+  "title": "Artwork for Feza added",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-18",
+  "updated": null,
+  "section": "design",
+  "content": "",
+  "images": {},
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d2f097029ae854b4adaee3"
+  },
+  "title": "Card changes: 2/18 - 2/24",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-20",
+  "updated": "2024-02-20",
+  "section": "releases",
+  "content": "Change in card effects:@@]]//\nShinobi Art of Substitution!]]//\nPrevious: <Trigger> If you are targeted by a foe's card, resolve this card's main effect and you are unaffected by all non-damaging effects of the card targeting you this turn.//\nNew: <Trigger> If you are targeted by a foe's card, resolve this card's main effect and you are unaffected by all non-damaging effects of cards targeting you this turn.//\n\nChanges in wording:@@]]//\nBackdoor Exit]]//\nPrevious: <Trigger> If a card(s) in your String would be sent to the discard pile during this round, add that card to your hand instead (max of 1).//\nNew: <Trigger> If a card(s) in your String is discarded, add that card to your hand instead (max of 1).//",
+  "images": {
+    "1": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p5fa.png",
+        "caption": null,
+        "link": null,
+        "order": 0,
+        "alt_text": "Shinobi Art of Substitution!"
+      }
+    ],
+    "5": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb14p.png",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Backdoor Exit"
+      }
+    ]
+  },
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65d534c5ebdf4798dd742580"
+  },
+  "title": "PDF generator added to Deck pages and Deck Builer",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-20",
+  "updated": null,
+  "section": "site",
+  "content": "",
+  "images": {},
+  "news": true,
+  "site_link": ""
 }]

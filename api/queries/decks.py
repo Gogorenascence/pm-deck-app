@@ -10,6 +10,7 @@ from models.decks import (
 from models.cards import CardOut
 import os
 from datetime import datetime
+from card_sheet_gen import generate_card_sheet
 
 
 class DeckQueries(Queries):
@@ -431,3 +432,21 @@ class DeckQueries(Queries):
             decks.append(deck_code)
             all_decks.append(var_name)
         return [decks, all_decks]
+
+    def get_deck_sheet(self, id):
+        deck = self.collection.find_one({"_id": ObjectId(id)})
+        images = []
+        DATABASE_URL = os.environ["DATABASE_URL"]
+        conn = MongoClient(DATABASE_URL)
+        db = conn.cards.cards
+        for card_item in deck["cards"]:
+            card = db.find_one({"card_number": card_item})
+            card_image = card["picture_url"]
+            images.append(card_image)
+        for pluck_item in deck["pluck"]:
+            pluck = db.find_one({"card_number": pluck_item})
+            card_image = pluck["picture_url"]
+            images.append(card_image)
+        generate_card_sheet(images, deck["name"], os)
+        print(images)
+        return images

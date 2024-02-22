@@ -35,7 +35,7 @@ modal for deck select
 rules
 <!-- site news slider -->
 
-article model
+<!-- article model
 
 article = {
     title: string
@@ -58,4 +58,15 @@ article = {
     }
 }
 
-change story model to article
+change story model to article -->
+
+dedicated article row
+~~~favoriting for articles
+add articles to gameplay sections
+make a site links object similar to images object for articles
+make a template for Artwork added articles
+make card images clickable in articles
+site links need to work for internal and external sites
+finish backtrack through commits
+
+card sheet pdf generator

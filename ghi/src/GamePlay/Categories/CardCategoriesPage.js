@@ -51,7 +51,7 @@ function CardCategoriesPage() {
     return (
         <div className="white-space">
             <div className="flex-items">
-                <h1 className="left-h1 margin-top-20">Card Categories</h1>
+                <h1 className="left-h1-2">Card Categories</h1>
 
                 { account && account.roles.includes("admin")?
                     <NavLink to="/categorycreate">

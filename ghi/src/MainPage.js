@@ -3,8 +3,6 @@ import DeckRow from "./Display/DeckRow";
 import CardRow from "./Display/CardRow";
 import NewsRow from "./Display/NewsRow";
 import SimulatorRow from "./Display/SimulatorRow";
-import { Card } from "react-bootstrap";
-import { NavLink } from 'react-router-dom';
 
 
 function MainPage() {

@@ -12,6 +12,7 @@ import { AuthContext } from "../Context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
 import StatsPanel from "./StatsPanel";
 import PopUp from "../Display/PopUp";
+import DeckSheetPage from "./DeckSheetPage";
 
 
 function DeckDetailPage() {
@@ -378,6 +379,7 @@ function DeckDetailPage() {
                     null
                 }
                 <DeckExport deck_id={deck_id} deck={deck} main_list={main_list} pluck_list={pluck_list}/>
+                <DeckSheetPage name={deck.name} main_list={main_list} pluck_list={pluck_list}/>
                 <NavLink to={`/decks/${deck.id}/copy`}>
                     <button
                             className="left heightNorm"

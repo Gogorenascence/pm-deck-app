@@ -56,6 +56,7 @@ import ArticlesPage from "./Articles/ArticlesPage";
 import ArticlePage from "./Articles/ArticlePage";
 import ArticleCreatePage from "./Articles/ArticleCreatePage";
 import ArticleEditPage from "./Articles/ArticleEditPage";
+import DeckSheetPage from "./Decks/DeckSheetPage";
 
 
 function App() {
@@ -101,6 +102,7 @@ function App() {
               <Route path="/forum" element={<UnderConstruction />} />
               <Route path="/game/cards" element={<GameCards />} />
               <Route path="/game/decks" element={<GameDecks />} />
+              <Route path="/decks/:deck_id/deck_sheet" element={<DeckSheetPage />} />
               <Route path="/cardcategories" element={<CardCategoriesPage />} />
               <Route path="/categorycreate" element={<CardCategoriesCreate />} />
               <Route path="/cardcategories/:card_category_id" element={<CardCategoryDetail />} />
