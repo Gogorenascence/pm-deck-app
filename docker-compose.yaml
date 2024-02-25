@@ -7,7 +7,8 @@ services:
       context: ./api
       dockerfile: Dockerfile.dev
     environment:
-      CORS_HOST: http://54.151.37.229:8000
+      CORS_HOST: http://54.151.37.229:3000
+      # CORS_HOST: http://localhost:3000
       # CORS_HOST: http://192.168.1.220:3000
       DATABASE_URL: mongodb://root:password@mongo
       DATABASE_NAME: cards
