@@ -56,7 +56,7 @@ function CardsPage() {
             setNoCards(true)
         }
 
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+        const sortedCards = [...data.cards].sort(sortMethods[sortState].method)
 
         const typedCards = []
         for (let card of sortedCards){
@@ -90,10 +90,13 @@ function CardsPage() {
             if (card.second_effect_text){
                 card["secondEffectText"] = card.second_effect_text.split("//")
             }
-
             typedCards.push(card)
         }
-        setCards(typedCards);
+        setCards(typedCards.map(card => ({
+            ...card,
+            picture_url: card.picture_url.replace("https://playmakercards","https://compressedplaymakercards")
+                .replace("png", "jpg")
+        })));
     };
 
     const navigate = useNavigate()

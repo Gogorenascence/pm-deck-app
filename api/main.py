@@ -14,7 +14,8 @@ from routers import (
     categories,
     terms,
     stories,
-    articles
+    articles,
+    how_tos
 )
 from authenticator import authenticator
 import os
@@ -44,6 +45,7 @@ app.include_router(categories.router, tags=["card_categories"])
 app.include_router(terms.router, tags=["terms"])
 app.include_router(stories.router, tags=["stories"])
 app.include_router(articles.router, tags=["articles"])
+app.include_router(how_tos.router, tags=["how_tos"])
 app.include_router(authenticator.router, tags=["authenticator"])
 
 

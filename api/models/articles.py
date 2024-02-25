@@ -49,3 +49,18 @@ class ArticleOut(ArticleIn):
 
 class ArticlesAll(BaseModel):
     articles: list
+
+
+class HowToIn(BaseModel):
+    title: str
+    updated: Optional[str]
+    content: Optional[str]
+    images: Optional[dict[str, List[Image]]]
+
+
+class HowTo(HowToIn):
+    id: PydanticObjectId
+
+
+class HowToOut(HowToIn):
+    id: str

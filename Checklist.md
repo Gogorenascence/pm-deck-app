@@ -69,4 +69,10 @@ make card images clickable in articles
 site links need to work for internal and external sites
 finish backtrack through commits
 
-card sheet pdf generator
+<!-- card sheet pdf generator -->
+
+
+finish acount page
+
+hashmapping
+pagination for decks and cards
