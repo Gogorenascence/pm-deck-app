@@ -72,3 +72,8 @@ export function todaysFormattedDate() {
     const formattedDate = new Date(adjustedDate).toISOString().split('T')[0];
     return formattedDate;
 }
+
+export function compressCard(link) {
+    return link.replace("https://playmakercards","https://compressedplaymakercards")
+        .replace("png", "jpg");
+}

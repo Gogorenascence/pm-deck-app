@@ -51,7 +51,7 @@ function CardCategoriesCreate() {
     const getCards = async() =>{
         const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
         const data = await response.json();
-        if (data.cards.length == 0 ) {
+        if (data.cards.length === 0 ) {
             setNoCards(true)
         }
         const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
@@ -85,11 +85,11 @@ function CardCategoriesCreate() {
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
         .filter(card => card.card_number >= query.startingNum)
-        .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
+        .filter(card => query.type? card.card_type.some(type => type.toString() === query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
-        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
-        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() == query.reaction):card.reactions)
-        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() == query.tag):card.card_tags)
+        .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() === query.extraEffect):card.extra_effects)
+        .filter(card => query.reaction? card.reactions.some(reaction => reaction.toString() === query.reaction):card.reactions)
+        .filter(card => query.tag? card.card_tags.some(tag => tag.toString() === query.tag):card.card_tags)
         .filter(card => boosterSet && !rarity ? boosterSet.all_cards.includes(card.card_number):card.card_number)
         .filter(card => boosterSet && rarity ? boosterSet[rarity].includes(card.card_number):card.card_number)
         .sort(sortMethods[sortState].method)
@@ -328,7 +328,7 @@ function CardCategoriesCreate() {
                                 <div className={showPool ? "scrollable" : "hidden2"}>
                                     <div style={{margin: "8px"}}>
 
-                                    { all_cards.length == 0 && isQueryEmpty && !noCards?
+                                    { all_cards.length === 0 && isQueryEmpty && !noCards?
                                         <div className="loading-container">
                                             <div className="loading-spinner"></div>
                                         </div> :

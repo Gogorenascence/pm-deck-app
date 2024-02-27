@@ -10,7 +10,6 @@ from models.decks import (
 from models.cards import CardOut
 import os
 from datetime import datetime
-from card_sheet_gen import generate_card_sheet
 
 
 class DeckQueries(Queries):

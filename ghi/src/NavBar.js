@@ -110,6 +110,7 @@ function NavBar() {
   };
 
   const Login = async (event) => {
+    // console.log(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/token`)
     event.preventDefault();
     const token = await login();
     if (token) {

@@ -140,6 +140,11 @@ function CardDetailPage() {
         return cardCategory?.id
     }
 
+    const compressCard = (link) => {
+        return link.replace("https://playmakercards","https://compressedplaymakercards")
+            .replace("png", "jpg");
+    }
+
     return (
         <div className="white-space">
             <div className="cd-container between-space">

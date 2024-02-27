@@ -1139,7 +1139,7 @@
   "series_name": "MAX VARIABLE",
   "card_number": 1116,
   "enthusiasm": 0,
-  "effect_text": "Discard 2 cards from your hand; add MAX VARIABLEs from the discard pile to your String until you have 4 cards in your String (max of 2). If all cards in your String are MAX VARIABLE, draw 1 Pluck and Focus plus 4.",
+  "effect_text": "Discard 4 cards from your hand; add MAX VARIABLEs from the discard pile to your String until you have 4 cards in your String (max of 2). If all cards in your String are MAX VARIABLE, draw 1 Pluck and Focus plus 4.",
   "second_effect_text": "",
   "illustrator": "Dalfovo",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg2eb.png",
@@ -1150,7 +1150,8 @@
   "extra_effects": [],
   "reactions": [],
   "card_tags": [
-    1005
+    1005,
+    1003
   ],
   "created_on": {
     "year": 2023,
@@ -1161,11 +1162,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:43",
+    "month": 2,
+    "day": 27,
+    "time": "16:12",
     "full_time": {
-      "$date": "2024-01-18T00:43:03.893Z"
+      "$date": "2024-02-27T16:12:01.434Z"
     }
   },
   "alpha": null,
@@ -2640,13 +2641,13 @@
   "_id": {
     "$oid": "64141dadb00a31a52c1b9f55"
   },
-  "name": "Distant Drop-off!!!",
+  "name": "Distant Drop-Off!!!",
   "card_class": "Canny",
   "hero_id": "P01",
   "series_name": "Warp Family//Cosmic//Psychic//Tactical",
   "card_number": 1056,
   "enthusiasm": 16,
-  "effect_text": "<Target> Random foe.//If your String has a Unity card(s), Focus plus 3.//<1-5> Deal 3 damage.//<6-11> Deal 3 damage. Discard 1 card from their hand.//<12+> Deal 3 damage. They discard 1 card from their String and 1 card from their hand.",
+  "effect_text": "<Target> Random foe.//If your String has a Unity card(s), Focus plus 3.//<1-5> Deal 3 damage.//<6-11> Deal 3 damage. Discard 1 card from their hand.//<12+> Deal 3 damage. They discard 1 unresolved non-Fighter card from their String.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1p2pe.png",
@@ -2670,10 +2671,10 @@
   "updated_on": {
     "year": 2024,
     "month": 2,
-    "day": 1,
-    "time": "01:01",
+    "day": 27,
+    "time": "16:04",
     "full_time": {
-      "$date": "2024-02-01T01:01:31.103Z"
+      "$date": "2024-02-27T16:04:06.748Z"
     }
   },
   "alpha": null,
@@ -3614,7 +3615,7 @@
   "card_number": 1085,
   "enthusiasm": 0,
   "effect_text": "<Limited> Place up to 3 Psychic cards from your hand or discard pile under this Item. \n\n\n",
-  "second_effect_text": "If a card in your String or Reserve randomly chooses a foe(s) or card(s), you choose the foe(s)/card(s) instead.//Add 1 of this Item's placed cards to your hand during each End Phase or discard this Item.",
+  "second_effect_text": "If 1 of your cards or Active Pluck randomly chooses a foe(s) or card(s), you choose the foe(s)/card(s) instead.//Add 1 of this Item's placed cards to your hand during each End Phase or discard this Item.",
   "illustrator": "mo.moan",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl07bei.png",
   "file_name": "i1pl07bei",
@@ -3637,11 +3638,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:21",
+    "month": 2,
+    "day": 27,
+    "time": "16:13",
     "full_time": {
-      "$date": "2024-01-18T00:21:01.436Z"
+      "$date": "2024-02-27T16:13:29.203Z"
     }
   },
   "alpha": null,
@@ -4806,7 +4807,7 @@
   "series_name": "Hive//Tech//Nature",
   "card_number": 1039,
   "enthusiasm": 0,
-  "effect_text": "Deal 3 damage to a foe and take 1 Item in their Active Pluck. Return the Item to its owner during the End Phase or when this card is removed from your String.",
+  "effect_text": "Deal 3 damage to a foe and take 1 of their Active Pluck. Return the Pluck to its owner during the End Phase or when this card is removed from your String.",
   "second_effect_text": "",
   "illustrator": "layonsin.art",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1b2hm.png",
@@ -4829,11 +4830,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 29,
-    "time": "02:44",
+    "month": 2,
+    "day": 27,
+    "time": "15:35",
     "full_time": {
-      "$date": "2024-01-29T02:44:11.071Z"
+      "$date": "2024-02-27T15:35:34.863Z"
     }
   },
   "alpha": null,
@@ -5373,7 +5374,7 @@
   "series_name": "Warp Family//Cosmic//Psychic//Tactical",
   "card_number": 1108,
   "enthusiasm": 0,
-  "effect_text": "<Trigger> If a card(s) in your String is discarded, add that card to your hand instead (max of 1). ",
+  "effect_text": "<Trigger> If a card(s) in your String is discarded, return that card to your hand instead (max of 1). ",
   "second_effect_text": "<Critical> Discard 1 card from 2 random foes' hands.",
   "illustrator": "Undeadsushii",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1cb14p.png",
@@ -5399,10 +5400,10 @@
   "updated_on": {
     "year": 2024,
     "month": 2,
-    "day": 20,
-    "time": "23:34",
+    "day": 27,
+    "time": "16:28",
     "full_time": {
-      "$date": "2024-02-20T23:34:11.110Z"
+      "$date": "2024-02-27T16:28:35.619Z"
     }
   },
   "alpha": null,
@@ -6306,7 +6307,7 @@
   "series_name": "Recoil//Energy//Brawler//Call",
   "card_number": 1148,
   "enthusiasm": 7,
-  "effect_text": "Target: All foes.//1-5: Deal 2 true damage.//6-11: Deal 2 true, piercing damage.//12+: Deal true, piercing damage equal to the total number of damage tokens on 1 card in your String. Damage dealt by this card can not be reduced.",
+  "effect_text": "Target: All foes.//<1-5> Deal 2 true damage.//<6-11> Deal 2 true, piercing damage.//<12+>Deal 1 true, piercing damage for each damage token on 1 card in your String.",
   "second_effect_text": "",
   "illustrator": "Znttus",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1r5re.png",
@@ -6330,10 +6331,10 @@
   "updated_on": {
     "year": 2024,
     "month": 2,
-    "day": 1,
-    "time": "01:05",
+    "day": 27,
+    "time": "16:08",
     "full_time": {
-      "$date": "2024-02-01T01:05:24.618Z"
+      "$date": "2024-02-27T16:08:55.246Z"
     }
   },
   "alpha": null,
@@ -6483,7 +6484,7 @@
   "series_name": "Energy//Nature//Psychic//Team",
   "card_number": 1136,
   "enthusiasm": null,
-  "effect_text": "Discard 1 card from your hand or String; deal 1 piercing damage to a foe. You can resolve this effect again (no limit) if you discard a card from your hand or String with a class different to the cards already discarded for this effect. ",
+  "effect_text": "Discard 1 card from your hand or String; deal 1 piercing damage to a foe. You can resolve this effect again (no limit) if you discard a card from your String with a class different to the cards already discarded for this effect each time. ",
   "second_effect_text": "",
   "illustrator": "TBD",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1plg22e.png",
@@ -6505,11 +6506,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:49",
+    "month": 2,
+    "day": 27,
+    "time": "15:36",
     "full_time": {
-      "$date": "2024-01-18T00:49:55.534Z"
+      "$date": "2024-02-27T15:36:39.133Z"
     }
   },
   "alpha": null,
@@ -6615,7 +6616,7 @@
   "series_name": "Fog Palace//Magic//Mystic//Call",
   "card_number": 1168,
   "enthusiasm": null,
-  "effect_text": "<Trigger> If a card(s) in your String is discarded, Focus plus 2 (add 2 to your Focus) and draw 1 card.",
+  "effect_text": "<Trigger> If a card(s) in your String is discarded, Focus plus 2 (add 2 to your Focus).",
   "second_effect_text": "<Trigger> If a card(s) or Pluck(s) is discarded from your hand/String/Active Pluck, the next card in your String gains damage plus 1.",
   "illustrator": "Ham West",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl20fcb.png",
@@ -6795,7 +6796,7 @@
   "series_name": "Fog Palace//Magic//Mystic//Call",
   "card_number": 1167,
   "enthusiasm": null,
-  "effect_text": "Add up to 2 Canny cards from your discard pile to your String, then take 2 damage for each card added this way. You can not resolve the added cards in your String or use them for your Focus roll this round.",
+  "effect_text": "Add up to 2 Canny cards from your discard pile to your String, then take 2 damage for each card added this way. You can not resolve any of their effects in your String or use them for your Focus roll this round.",
   "second_effect_text": "",
   "illustrator": "Ham West",
   "picture_url": "https://playmakercards.s3.us-west-1.amazonaws.com/i1pl20fe.png",
@@ -6818,10 +6819,10 @@
   "updated_on": {
     "year": 2024,
     "month": 2,
-    "day": 19,
-    "time": "02:05",
+    "day": 27,
+    "time": "15:38",
     "full_time": {
-      "$date": "2024-02-19T02:05:34.383Z"
+      "$date": "2024-02-27T15:38:41.323Z"
     }
   },
   "alpha": null,
