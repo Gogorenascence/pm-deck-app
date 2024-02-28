@@ -10,7 +10,7 @@ function DeckSheetPage({
 }) {
 
     const {deck_id} = useParams();
-    const [sheets, setSheets] = useState([]);
+    // const [sheets, setSheets] = useState([]);
 
     const getDeck = async() =>{
         console.log(main_list)
@@ -38,17 +38,9 @@ function DeckSheetPage({
             }
         }
         sheetList.push(sheet)
-        setSheets(sheetList);
-    };
 
-    useEffect(() => {
-        getDeck();
-    },[deck_id]);
-
-    const getPDF = () => {
         const doc = new jsPDF('p', 'mm', 'a4', true, true);
-
-        sheets.forEach((sheet, index) => {
+        sheetList.forEach((sheet, index) => {
             if (index > 0) {
                 doc.addPage();
             }
@@ -59,13 +51,34 @@ function DeckSheetPage({
             });
         });
         doc.save(`${name}.pdf`);
-    }
+    };
+
+    // useEffect(() => {
+    //     getDeck();
+    // },[deck_id]);
+
+    // const getPDF = () => {
+    //     const doc = new jsPDF('p', 'mm', 'a4', true, true);
+
+    //     sheets.forEach((sheet, index) => {
+    //         if (index > 0) {
+    //             doc.addPage();
+    //         }
+    //         sheet.forEach((image, i) => {
+    //             const x = (i % 3) * 2.5 * 25.4 + 12.7; // 2.5 inches converted to mm plus half inch margin
+    //             const y = Math.floor(i / 3) * 3.5 * 25.4 + 6.35; // 3.5 inches converted to mm plus half inch margin
+    //             doc.addImage(image, 'JPEG', x, y, 2.5 * 25.4, 3.5 * 25.4, undefined, "FAST");
+    //         });
+    //         console.log("dog")
+    //     });
+    //     doc.save(`${name}.pdf`);
+    // }
 
     return (
         <>
             <button
                 className="left heightNorm"
-                onClick={getPDF}
+                onClick={getDeck}
                 style={{marginRight: "10px", marginLeft: "0px" }}
             >PDF</button>
         </>
