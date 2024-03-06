@@ -26,6 +26,11 @@ function CreatePortal() {
                             imageSRC="https://i.imgur.com/8wqd1sD.png"
                         />
                         <SectionCard
+                            link="/howtocreate"
+                            title="Rulebook Create"
+                            imageSRC="https://i.imgur.com/8wqd1sD.png"
+                        />
+                        <SectionCard
                             link="/cardsetcreate"
                             title="Card Set Create"
                             imageSRC="https://i.imgur.com/8wqd1sD.png"

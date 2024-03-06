@@ -1,34 +1,53 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from "../Context/AuthContext";
-import ArticleImageCreate from "./ArticleImageCreate";
-import ArticleTemplates from "./ArticleTemplates";
-import { todaysFormattedDate } from "../Helpers";
+import { AuthContext } from "../../Context/AuthContext";
+import ArticleImageCreate from "../../Articles/ArticleImageCreate";
+import { todaysFormattedDate } from "../../Helpers";
 
 
-function ArticleCreatePage() {
+function HowToEditPage() {
 
     const { account } = useContext(AuthContext)
+    const { how_to_id } = useParams();
 
-    const [article, setArticle ] = useState({
+    const [howTo, setHowTo] = useState({
         title: "",
-        subtitle: "",
-        author: "",
-        story_date: todaysFormattedDate(),
-        section: "",
+        game_format: "",
+        skill_level: "",
         content: "",
+        how_to_number: 0,
         images: "",
-        news: true,
-        site_link: "",
     });
+
+    const getHowTo = async() =>{
+        const howToResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/${how_to_id}/`);
+        const how_to_data = await howToResponse.json();
+        setHowTo(how_to_data);
+
+        const processedImages = []
+        for (let keyName of Object.keys(how_to_data.images)) {
+            for (let order of Object.keys(how_to_data.images[keyName])) {
+                console.log(how_to_data.images[keyName][order].src)
+                const image = {
+                    keyName: keyName,
+                    src: how_to_data.images[keyName][order].src??null,
+                    alt_text: how_to_data.images[keyName][order].alt_text??null,
+                    caption: how_to_data.images[keyName][order].caption??null,
+                    order: order,
+                    link: how_to_data.images[keyName][order].link??null,
+                }
+                processedImages.push(image)
+            }
+        }
+        setImages(processedImages)
+    };
 
     const [images, setImages] = useState([])
     const [stayHere, setStayHere] = useState(false)
 
-    const handleArticleChange = (event) => {
-        console.log(article)
-        setArticle({
-            ...article,
+    const handleHowToChange = (event) => {
+        setHowTo({
+            ...howTo,
             [event.target.name]: event.target.value})
     }
 
@@ -52,16 +71,13 @@ function ArticleCreatePage() {
         setImages(newImages)
     }
 
-    const handleArticleCheck = (event) => {
-        setArticle({...article, news: !article.news});
-    };
-
     const handleStayCheck = (event) => {
         setStayHere(!stayHere);
     };
 
     useEffect(() => {
-        document.title = "Article Create - PM CardBase"
+        getHowTo();
+        document.title = "Rulebook Edit - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -72,47 +88,47 @@ function ArticleCreatePage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {...article};
-        data["author"] = account.username
+        const data = {...howTo};
+        data["updated"] = todaysFormattedDate()
         data["images"] = {}
         for (let image of images) {
             console.log(typeof image.keyName)
             if (data["images"][image.keyName]) {
-                const articleImage = {
+                const howToImage = {
                     src: image.src,
                     caption: image.caption,
                     link: image.link,
                     order: image.order,
                     alt_text: image.alt_text,
                 }
-                data["images"][image.keyName].push(articleImage)
+                data["images"][image.keyName].push(howToImage)
             } else {
                 data["images"][image.keyName] = []
-                const articleImage = {
+                const howToImage = {
                     src: image.src,
                     caption: image.caption,
                     link: image.link,
                     order: image.order,
                     alt_text: image.alt_text,
                 }
-                data["images"][image.keyName].push(articleImage)
+                data["images"][image.keyName].push(howToImage)
             }
         }
         console.log(data)
-        const articleUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/`;
+        const howToUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/${how_to_id}`;
         const fetchConfig = {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
-        const response = await fetch(articleUrl, fetchConfig);
+        const response = await fetch(howToUrl, fetchConfig);
         if (response.ok) {
             const responseData = await response.json();
-            const article_id = responseData.id;
-            setArticle({
+            const how_to_id = responseData.id;
+            setHowTo({
                 title: "",
                 subtitle: "",
                 author: "",
@@ -124,108 +140,75 @@ function ArticleCreatePage() {
                 site_link: "",
             });
             setImages([])
-            if (!stayHere) {navigate(`/articles/${article_id}`)}
+            if (!stayHere) {navigate(`/rulebooks/${how_to_id}`)}
             console.log("Success")
         } else {
-            alert("Error in creating news");
+            alert("Error in editing rulebook");
         }
     }
 
-
-    if (!(account && account.roles.includes("admin"))) {
-        setTimeout(function() {
-            window.location.href = `${process.env.PUBLIC_URL}/`
-        }, 3000);
-    }
+    // if (!(account && account.roles.includes("admin"))) {
+    //     setTimeout(function() {
+    //         window.location.href = `${process.env.PUBLIC_URL}/`
+    //     }, 3000);
+    // }
 
     return (
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">Article Create</h1>
+                    <h1 className="margin-top-40">Rulebook Edit</h1>
                     <div style={{display: "flex", justifyContent: "center"}}>
                         <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                             <div
-                                id="create-article-page">
-                                <h2 className="left">Article Details</h2>
+                                id="create-howTo-page">
+                                <h2 className="left">Rulebook Details</h2>
                                 <h5 className="label">Title </h5>
                                 <input
                                     className="builder-input"
                                     type="text"
                                     placeholder=" Title"
-                                    onChange={handleArticleChange}
+                                    onChange={handleHowToChange}
                                     name="title"
-                                    value={article.title}>
+                                    value={howTo.title}>
                                 </input>
                                 <br/>
-                                <h5 className="label">Subtitle </h5>
+                                <h5 className="label">Rulebook Number </h5>
                                 <input
                                     className="builder-input"
-                                    type="text"
-                                    placeholder=" Subtitle"
-                                    onChange={handleArticleChange}
-                                    name="subtitle"
-                                    value={article.subtitle}>
+                                    type="number"
+                                    placeholder=" Rulebook Number"
+                                    onChange={handleHowToChange}
+                                    name="how_to_number"
+                                    value={howTo.how_to_number}>
                                 </input>
                                 <br/>
-                                <h5 className="label">Section </h5>
+                                <h5 className="label">Game Format </h5>
                                 <select
                                     className="builder-input"
                                     type="text"
-                                    value={article.section}
-                                    name="section"
-                                    onChange={handleArticleChange}>
-                                    <option value="">Section</option>
-                                    <option value="guide">Guide</option>
-                                    <option value="lore">Lore</option>
-                                    <option value="releases">Card Releases</option>
-                                    <option value="game">Game Play and Mechanics</option>
-                                    <option value="design">Game Design</option>
-                                    <option value="site">Site</option>
-                                    <option value="social">Social Media</option>
-                                    <option value="events">Events</option>
-                                    <option value="simulator">Simulator</option>
-                                    <option value="admin">Admin</option>
+                                    value={howTo.game_format}
+                                    name="game_format"
+                                    onChange={handleHowToChange}>
+                                    <option value="">Game Format</option>
+                                    <option value="Standard">Standard</option>
                                 </select>
                                 <br/>
-                                <h5 className="label">Date</h5>
-                                <input
-                                    className="builder-input"
-                                    type="date"
-                                    placeholder=" Date"
-                                    max={todaysFormattedDate()}
-                                    onChange={handleArticleChange}
-                                    name="story_date"
-                                    value={article.story_date}>
-                                </input>
-                                <br/>
-                                <h5 className="label">Site Link</h5>
-                                <input
+                                <h5 className="label">Skill Level </h5>
+                                <select
                                     className="builder-input"
                                     type="text"
-                                    placeholder=" Site Link"
-                                    onChange={handleArticleChange}
-                                    name="site_link"
-                                    value={article.site_link}>
-                                </input>
+                                    value={howTo.skill_level}
+                                    name="skill_level"
+                                    onChange={handleHowToChange}>
+                                    <option value="">Skill Level</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
                                 <br/>
                                 <div className="flex builder-input">
                                     <div className="flex-full">
-                                        <input
-                                            style={{margin: "2px 5px 0 0", height:"10px"}}
-                                            type="checkbox"
-                                            onChange={handleArticleCheck}
-                                            name="news"
-                                            checked={article.news}
-                                            >
-                                        </input>
-                                        <label for="news"
-                                            className="bold"
-                                        >
-                                            News Article
-                                        </label>
-                                    </div>
-                                    <div className="flex-full margin-left">
                                         <input
                                             style={{margin: "2px 5px 0 0", height:"10px"}}
                                             id="stayHere"
@@ -248,13 +231,19 @@ function ArticleCreatePage() {
                                             className="left"
                                             onClick={handleSubmit}
                                         >
-                                            Create Article
+                                            Save Rulebook
                                         </button>
                                         <button
                                             className="left"
                                             onClick={() => handleAddImage()}
                                         >
                                             Add Image
+                                        </button>
+                                        <button
+                                            className="left"
+                                            onClick={getHowTo}
+                                        >
+                                            Reset Rulebook
                                         </button>
                                     </div>:null
                                 }
@@ -263,11 +252,6 @@ function ArticleCreatePage() {
                                     <h6 className="error">You must be logged in to create a article</h6>:
                                 null
                                 }
-                                <ArticleTemplates
-                                    setArticle={setArticle}
-                                    author={account}
-                                />
-                                <br/>
                                 <div className="margin-left-13">
                                     <p>Add "//" to make a new line</p>
                                     <p>Add "]]" to make a line bold</p>
@@ -277,14 +261,14 @@ function ArticleCreatePage() {
                         </div>
                     </div>
                     <br/>
-                    <h2 className="label">Article Content</h2>
+                    <h2 className="label">Rulebook Content</h2>
                     <textarea
                         className="large-article"
                         type="text"
-                        placeholder=" Article Content"
-                        onChange={handleArticleChange}
+                        placeholder=" Rulebook Content"
+                        onChange={handleHowToChange}
                         name="content"
-                        value={article.content}>
+                        value={howTo.content}>
                     </textarea>
                     <br/>
                     {images?.map((image, index) =>
@@ -293,7 +277,7 @@ function ArticleCreatePage() {
                             image={image}
                             imagesIndex={index}
                             handleImageChange={handleImageChange}
-                            content={article.content}
+                            content={howTo.content}
                             handleRemoveImage={handleRemoveImage}
                         />
                     )}
@@ -307,4 +291,4 @@ function ArticleCreatePage() {
     );
 }
 
-export default ArticleCreatePage;
+export default HowToEditPage;

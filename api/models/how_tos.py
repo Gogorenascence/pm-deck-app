@@ -30,6 +30,9 @@ class HowToIn(BaseModel):
     title: str
     updated: Optional[str]
     content: Optional[str]
+    game_format: Optional[str]
+    skill_level: Optional[str]
+    how_to_number: Optional[float]
     images: Optional[dict[str, List[Image]]]
 
 

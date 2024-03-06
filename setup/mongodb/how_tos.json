@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "65e75e7d6bcd1d2b035452bf"
+  },
+  "title": "Quick Start",
+  "updated": "2024-03-05",
+  "content": "Game Setup@@]]//\nStarting Player HP is 4 times the number of players. Starting with 4, add 4 Mettle to the Mettle Pool for each player. Each player starts with a Health Tracker with the Player Token placed at the Starting Player HP and 5 Damage Tokens. All players draw 6 cards from the Main deck and 1 Pluck from the Pluck deck.//\n\nObjective@@]]//\nThe game ends once a player claims a majority of the Mettle Pool. Players get 4 Mettle for defeating a player, 2 Mettle for defeating a Fighter, and 1 Mettle for defeating a non-Fighter card.//\n\nMulligans@@]]//\nOnce only, if the player does not like their starting hand, they can perform a Mulligan. To perform a Mulligan, players return any number of cards from their hand to the bottom of the Main deck, then draw a number of cards equal to the amount returned.//\n\nPlanning Phase@@]]//\nDuring the Planning Phase, players can make 2 RADs (Resource Altering Decisions).//\nThe following are RADs://\n1. Drawing from the Main deck// \n2. Drawing from the Pluck deck//\n3. Adding a card to a String// \n4. Swapping a face down card with a card from the hand face up//\n\nStart Phase@@]]//\nThe player with the shortest String goes first. If all players have Strings of the same length, both players flip their endings the player with the highest Enthusiasm goes first. If no tied players have an ending, each will roll a die for turn order.//\n\nActive Phase@@]]//\nAt the start of their turn, players draw 1 card from the Main deck if they’re not going first.//\n\nOn their turn, each player can make 2 more RADs. They then reveal and resolve the effects of any number of the cards in their String, in FAME (Fighter, Aura, Move and Ending) order.//\n\nEnd Phase@@]]//\nOnce all players have had a turn, they send all resolved cards and Pluck to their respective discard piles. After that, the players enter a new Planning Phase.//",
+  "game_format": "Standard",
+  "skill_level": "Beginner",
+  "how_to_number": 0,
+  "images": {}
+}]
