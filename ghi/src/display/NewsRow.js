@@ -17,8 +17,13 @@ function NewsRow() {
         const data = await response.json();
 
         setStories(
-            data.articles.filter(story => story.news === true)
-            .sort((a,b) => new Date(b.story_date) - new Date(a.story_date))
+            data.articles.sort((a,b) => {
+                let comparedArticles = new Date(b.story_date) - new Date(a.story_date)
+                if (comparedArticles === 0) {
+                    comparedArticles = b.id.localeCompare(a.id)
+                }
+                return comparedArticles
+            })
         );
     };
 

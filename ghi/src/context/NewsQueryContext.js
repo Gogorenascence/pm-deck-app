@@ -37,6 +37,7 @@ const NewsQueryContextProvider = ({ children }) => {
             setNewsSortState,
             handleResetNewsQuery,
             someMoreNews,
+            setSomeMoreNews,
             handleSomeMoreNews,
             }}>
             {children}

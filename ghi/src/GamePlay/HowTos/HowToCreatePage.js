@@ -112,7 +112,7 @@ function HowToCreatePage() {
                 images: "",
             });
             setImages([])
-            // if (!stayHere) {navigate(`/howTos/${howTo_id}`)}
+            if (!stayHere) {navigate(`/rulebooks/${how_to_id}`)}
             console.log("Success")
         } else {
             alert("Error in creating rulebook");
@@ -129,7 +129,7 @@ function HowToCreatePage() {
         <div>
             { account && account.roles.includes("admin")?
                 <div className="white-space">
-                    <h1 className="margin-top-40">HowTo Create</h1>
+                    <h1 className="margin-top-40">Rulebook Create</h1>
                     <div style={{display: "flex", justifyContent: "center"}}>
                         <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
                             <div
@@ -174,9 +174,9 @@ function HowToCreatePage() {
                                     name="skill_level"
                                     onChange={handleHowToChange}>
                                     <option value="">Skill Level</option>
-                                    <option value="Beginner">Beginner</option>
-                                    <option value="Intermediate">Intermediate</option>
-                                    <option value="Expert">Expert</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="expert">Expert</option>
                                 </select>
                                 <br/>
                                 <div className="flex builder-input">

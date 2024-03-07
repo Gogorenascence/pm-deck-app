@@ -60,6 +60,7 @@ import DeckSheetPage from "./Decks/DeckSheetPage";
 import HowToCreatePage from "./GamePlay/HowTos/HowToCreatePage";
 import HowToPage from "./GamePlay/HowTos/HowToPage";
 import HowToEditPage from "./GamePlay/HowTos/HowToEditPage";
+import HowTosPage from "./GamePlay/HowTos/HowTosPage";
 
 
 function App() {
@@ -140,6 +141,7 @@ function App() {
               <Route path="/howtocreate" element={<HowToCreatePage />} />
               <Route path="/rulebooks/:how_to_id" element={<HowToPage />} />
               <Route path="/rulebooks/:how_to_id/edit" element={<HowToEditPage />} />
+              <Route path="/rulebooks" element={<HowTosPage />} />
             </Routes>
 
           </div>

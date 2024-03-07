@@ -29,7 +29,6 @@ function ArticlePage() {
         const articleResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/${article_id}/`);
         const articleData = await articleResponse.json();
         setArticle(articleData);
-        console.log(articleData)
 
         const processedImages = []
         for (let keyName of Object.keys(articleData.images)) {
@@ -205,6 +204,12 @@ function ArticlePage() {
                         )
                     })
                 }
+                <NavLink className="nav-link no-pad" to={"/articles"}>
+                    <button
+                        style={{ width: "100%"}}>
+                        Back to News and Articles
+                    </button>
+                </NavLink>
             </div>
         </div>
     );

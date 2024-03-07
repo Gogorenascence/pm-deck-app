@@ -12,6 +12,7 @@ import { PluckActionsContextProvider } from "./PluckActionsContext.js";
 import { AppContextProvider } from "./AppContext.js";
 import { CardSetQueryContextProvider } from "./CardSetQueryContext.js";
 import { NewsQueryContextProvider } from "./NewsQueryContext.js";
+import { HowToQueryContextProvider } from "./HowToQueryContext.js";
 
 
 const AppProvider = ({ children }) => {
@@ -25,15 +26,17 @@ const AppProvider = ({ children }) => {
                                 <DeckQueryContextProvider>
                                     <CardSetQueryContextProvider>
                                         <NewsQueryContextProvider>
-                                            <GameStateContextProvider>
-                                                <SimulatorActionsContextProvider>
-                                                    <MainActionsContextProvider>
-                                                        <PluckActionsContextProvider>
-                                                            {children}
-                                                        </PluckActionsContextProvider>
-                                                    </MainActionsContextProvider>
-                                                </SimulatorActionsContextProvider>
-                                            </GameStateContextProvider>
+                                            <HowToQueryContextProvider>
+                                                <GameStateContextProvider>
+                                                    <SimulatorActionsContextProvider>
+                                                        <MainActionsContextProvider>
+                                                            <PluckActionsContextProvider>
+                                                                {children}
+                                                            </PluckActionsContextProvider>
+                                                        </MainActionsContextProvider>
+                                                    </SimulatorActionsContextProvider>
+                                                </GameStateContextProvider>
+                                            </HowToQueryContextProvider>
                                         </NewsQueryContextProvider>
                                     </CardSetQueryContextProvider>
                                 </DeckQueryContextProvider>

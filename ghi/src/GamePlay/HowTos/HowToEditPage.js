@@ -202,9 +202,9 @@ function HowToEditPage() {
                                     name="skill_level"
                                     onChange={handleHowToChange}>
                                     <option value="">Skill Level</option>
-                                    <option value="Beginner">Beginner</option>
-                                    <option value="Intermediate">Intermediate</option>
-                                    <option value="Expert">Expert</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="expert">Expert</option>
                                 </select>
                                 <br/>
                                 <div className="flex builder-input">

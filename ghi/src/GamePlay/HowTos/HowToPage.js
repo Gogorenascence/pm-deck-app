@@ -18,14 +18,25 @@ function HowToPage() {
         updated: "",
     });
 
+    const [prevHowTo, setPrevHowTo] = useState("")
+    const [nextHowTo, setNextHowTo] = useState("")
+
     const [images, setImages] = useState([])
 
     const getHowTo = async() =>{
-        const howToResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/${how_to_id}/`);
-        const howToData = await howToResponse.json();
-        setHowTo(howToData);
-        console.log(howToData)
+        const howTosResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/`);
+        const howTosData = await howTosResponse.json();
+        const howToData = howTosData.find(howToItem => howToItem.id === how_to_id)
 
+        const sortedHowTos = howTosData.sort((a,b) => a.how_to_number - b.how_to_number)
+        const howToIndexes = sortedHowTos.map((howToItem) => howToItem.id)
+        const prevHowToItem = sortedHowTos[howToIndexes.indexOf(how_to_id) - 1] ?? ""
+        const nextHowToItem = sortedHowTos[howToIndexes.indexOf(how_to_id) + 1] ?? ""
+        setHowTo(howToData);
+        setPrevHowTo(prevHowToItem)
+        setNextHowTo(nextHowToItem)
+
+        console.log(prevHowToItem, howToData, nextHowToItem)
         const processedImages = []
         for (let keyName of Object.keys(howToData.images)) {
             for (let order of Object.keys(howToData.images[keyName])) {
@@ -44,11 +55,11 @@ function HowToPage() {
     };
 
     useEffect(() => {
-        window.scroll(0, 0);
+        // window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getHowTo();
     // eslint-disable-next-line
-    },[]);
+    },[how_to_id]);
 
     useEffect(() => {
         document.title = `${howTo.title} - PM CardBase`
@@ -84,6 +95,25 @@ function HowToPage() {
             newLink = link
         return newLink
     }
+
+    const howToColors = {
+        beginner: "rgba(42, 168, 115, 0.70)",
+        advanced: "rgba(192, 145, 17, 0.87)",
+        expert: "rgba(124, 19, 33, 0.70)",
+    }
+
+    const howToBorders = {
+        beginner: "rgb(54, 184, 129)",
+        advanced: "#f0be1c",
+        expert: "rgb(255, 0, 43)",
+    }
+
+    const howToSkills = {
+        beginner: "https://i.imgur.com/ziEZp16.png",
+        advanced: "https://i.imgur.com/SJV0t8k.png",
+        expert: "https://i.imgur.com/SgtaTVa.png",
+    }
+
 
     return (
         <div className="white-space">
@@ -144,7 +174,7 @@ function HowToPage() {
                         return (
                             <>
                                 {line.includes("]]")?
-                                    <p className={`${line.includes("@@")? "newsText4" :"newsText5"} bolder margin-bottom-0 margin-top-20`}>
+                                    <p className={`${line.includes("@@")? "newsText4" :"newsText5"} bolder margin-bottom-0 margin-top-20`} key={index}>
                                         { line.includes("@@")? processedBigLine(processedBoldLine(line)): processedBoldLine(line)}
                                     </p>
                                 :
@@ -182,6 +212,54 @@ function HowToPage() {
                         )
                     })
                 }
+                {prevHowTo && prevHowTo.game_format === howTo.game_format?
+                    // <NavLink className="nav-link" to={`/rulebooks/${prevHowTo.id}`}>
+                    //     <h1 className="ellipsis">Prev: {prevHowTo.title}</h1>
+                    // </NavLink>:null
+                    <NavLink className="nav-link no-pad" to={`/rulebooks/${prevHowTo.id}`}>
+                        <div
+                            className="flex-items newsItem"
+                            style={{
+                                backgroundColor: howToColors[prevHowTo.skill_level],
+                                borderColor: howToBorders[prevHowTo.skill_level],
+                                marginTop: "40px",
+                                marginBottom: "-15px"
+                            }}
+                        >
+                            <h3 className="newsText no-wrap">{prevHowTo.game_format}</h3>
+                            <img className="skill_level" src={howToSkills[prevHowTo.skill_level]} alt={prevHowTo.skill_level}/>
+                            <h4 className="newsText">{prevHowTo.title}</h4>
+                        </div>
+                    </NavLink>:null
+                }
+                <br/>
+                {nextHowTo && nextHowTo.game_format === howTo.game_format?
+                    // <NavLink className="nav-link" to={`/rulebooks/${nextHowTo.id}`}>
+                    //     <h1 className="ellipsis">Next: {nextHowTo.title}</h1>
+                    // </NavLink>:null
+                    <NavLink className="nav-link no-pad" to={`/rulebooks/${nextHowTo.id}`}>
+                        <div
+                            className="flex-items newsItem"
+                            style={{
+                                backgroundColor: howToColors[nextHowTo.skill_level],
+                                borderColor: howToBorders[nextHowTo.skill_level],
+                                marginTop: "0px",
+                                marginBottom: "10px"
+                            }}
+                        >
+                            <h3 className="newsText no-wrap">{nextHowTo.game_format}</h3>
+                            <img className="skill_level" src={howToSkills[nextHowTo.skill_level]} alt={nextHowTo.skill_level}/>
+                            {/* <h4 className="newsText">{story.section}</h4> */}
+                            <h4 className="newsText">{nextHowTo.title}</h4>
+                        </div>
+                    </NavLink>:null
+                }
+                <NavLink className="nav-link no-pad" to={"/rulebooks"}>
+                    <button
+                        style={{ width: "100%" }}>
+                        Back to Rulebooks
+                    </button>
+                </NavLink>
             </div>
         </div>
     );

@@ -16,6 +16,7 @@ function ArticlesPage() {
         setNewsSortState,
         handleResetNewsQuery,
         someMoreNews,
+        setSomeMoreNews,
         handleSomeMoreNews,
     } = useContext(NewsQueryContext)
     const [articles, setArticles] = useState([]);
@@ -31,7 +32,13 @@ function ArticlesPage() {
 
         setLoading(false)
         setArticles(
-            data.articles.sort((a,b) => new Date(b.story_date) - new Date(a.story_date))
+            data.articles.sort((a,b) => {
+                let comparedArticles = new Date(b.story_date) - new Date(a.story_date)
+                if (comparedArticles === 0) {
+                    comparedArticles = b.id.localeCompare(a.id)
+                }
+                return comparedArticles
+            })
         );
     };
 
@@ -90,6 +97,9 @@ function ArticlesPage() {
 
     const handleNewsQuery = (event) => {
         setNewsQuery({ ...newsQuery, [event.target.name]: event.target.value });
+        console.log(someMoreNews)
+        setSomeMoreNews(20)
+        console.log(someMoreNews)
     };
 
     const handleNewsCheck = (event) => {
@@ -115,7 +125,7 @@ function ArticlesPage() {
                     <input
                         className="left dcbsearch-x-large"
                         type="text"
-                        placeholder=" Headline Contains..."
+                        placeholder=" Title Contains..."
                         name="title"
                         value={newsQuery.title}
                         onChange={handleNewsQuery}>
