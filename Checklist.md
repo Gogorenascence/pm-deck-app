@@ -60,13 +60,13 @@ article = {
 
 change story model to article -->
 
-dedicated article row
+<!-- dedicated article row -->
 favoriting for articles
 add articles to gameplay sections
 make a site links object similar to images object for articles
 make a template for Artwork added articles
-make card images clickable in articles
-site links need to work for internal and external sites
+<!-- make card images clickable in articles -->
+<!-- site links need to work for internal and external sites -->
 finish backtrack through commits
 make article delete and pop up
 
@@ -77,3 +77,5 @@ finish acount page
 
 hashmapping
 pagination for decks and cards
+
+save article creation and editting to session storage or state

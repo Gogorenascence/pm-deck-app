@@ -170,7 +170,7 @@ function DeckCopyPage() {
             document.title = "PlayMaker CardBase"
         };
     // eslint-disable-next-line
-    }, [deck, deck_list, main_list, pluck_list]);
+    }, [deck_id]);
 
     const sortMethods = {
         none: { method: (a,b) => a.card_number - b.card_number },

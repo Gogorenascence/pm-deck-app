@@ -289,9 +289,14 @@ function ArticleEditPage() {
                                 }
                                 <br/>
                                 { !account?
-                                    <h6 className="error">You must be logged in to create a article</h6>:
+                                    <h6 className="error">You must be logged in to save an article</h6>:
                                 null
                                 }
+                                <div className="margin-left-13">
+                                    <p>Add "//" to make a new line</p>
+                                    <p>Add "]]" to make a line bold</p>
+                                    <p className="margin-bottom-0">Add "@@" to make a line larger</p>
+                                </div>
                             </div>
                         </div>
                     </div>

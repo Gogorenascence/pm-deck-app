@@ -78,7 +78,7 @@ function NewsRow() {
                         {filteredStories.map((story, index) => {
                             return (
                                 <>
-                                {story.content ?
+                                {story.content ||(account && account.roles.includes("admin"))?
                                     <NavLink className="nav-link no-pad" to={`/articles/${story.id}`}>
                                         <div
                                             className="flex-items newsItem"

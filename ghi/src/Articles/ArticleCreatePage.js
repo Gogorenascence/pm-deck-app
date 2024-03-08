@@ -260,7 +260,7 @@ function ArticleCreatePage() {
                                 }
                                 <br/>
                                 { !account?
-                                    <h6 className="error">You must be logged in to create a article</h6>:
+                                    <h6 className="error">You must be logged in to create an article</h6>:
                                 null
                                 }
                                 <ArticleTemplates
