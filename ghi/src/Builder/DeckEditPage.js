@@ -317,16 +317,24 @@ function DeckEditPage() {
         const data = {...deck};
         const main = []
         const pluck = []
+        const card_names = []
+        const series_names = []
+
         for (let card of main_list){
             main.push(card.card_number)
+            card_names.push(card.name)
+            series_names.push(card.series_name)
         }
         for (let card of pluck_list){
             pluck.push(card.card_number)
+            card_names.push(card.name)
+            series_names.push(card.series_name)
         }
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
-        console.log(data)
+        data["card_names"] = card_names
+        data["series_names"] = series_names
 
         const cardUrl = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/${deck_id}/`;
         const fetchConfig = {

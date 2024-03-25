@@ -5495,3 +5495,56 @@
 # print("var_name: ", var_name)
 
 print([1,3] == [1,2,3])
+
+
+# def set_all_full_decks(self) -> list:
+#         db = self.collection.find()
+#         decks = []
+#         update_commands = []
+
+#         for deck in db:
+#             deck["id"] = str(deck["_id"])
+#             card_list = set(deck["cards"])
+#             pluck_list = set(deck["pluck"])
+#             deck["time_ago"] = self.get_times(deck["id"])
+
+#             DATABASE_URL = os.environ["DATABASE_URL"]
+#             conn = MongoClient(DATABASE_URL)
+#             db = conn.cards.cards
+
+#             card_names = []
+#             series_names = []
+#             for card_item in card_list:
+#                 card = db.find_one({"card_number": card_item})
+#                 card_name = card["name"]
+#                 card_names.append(card_name)
+#                 series_name = card["series_name"]
+#                 series_names.append(series_name)
+
+#             for pluck_item in pluck_list:
+#                 pluck = db.find_one({"card_number": pluck_item})
+#                 if pluck:
+#                     pluck_name = pluck["name"]
+#                     card_names.append(pluck_name)
+#                     series_name = pluck["series_name"]
+#                     series_names.append(series_name)
+#                 else:
+#                     print(deck["name"], pluck_item)
+#             deck["card_names"] = card_names
+#             deck["series_names"] = series_names
+#             decks.append(deck)
+
+#             print(type(deck["_id"]))
+#             update_commands.append({
+#                 "update_one": {
+#                     "filter": {"_id": deck["_id"]},
+#                     "update": {"$set": deck}
+#                 }
+#             })
+
+#         # print(update_commands)
+
+#         if update_commands:
+#             self.collection.bulk_write(update_commands)
+
+#         return decks

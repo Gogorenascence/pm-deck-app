@@ -113,6 +113,7 @@ function DeckDetailPage() {
         getDeckList();
         getCountedDeckList();
         getAgos();
+        console.log(deck)
     },[createdAgo, updatedAgo]);
 
     useEffect(() => {

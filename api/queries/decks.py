@@ -72,63 +72,6 @@ class DeckQueries(Queries):
     def delete_deck(self, id: str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
-    def add_card(self, id: str, card_number: int) -> DeckOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        cards = props["cards"]
-        pluck = props["pluck"]
-
-        DATABASE_URL = os.environ["DATABASE_URL"]
-        conn = MongoClient(DATABASE_URL)
-        db = conn.cards.cards
-        card = db.find_one({"card_number": card_number})
-        card_type = card["card_type"][0]
-
-        db = conn.cards.card_types
-        card_type = db.find_one({"_id": ObjectId(card_type)})
-        deck_type = card_type["deck_type"]
-
-        if deck_type == "Main" and cards.count(card_number) < 2:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$push": {"cards": card_number}},
-                return_document=ReturnDocument.AFTER,
-            )
-        elif deck_type == "Pluck" and pluck.count(card_number) < 2:
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$push": {"pluck": card_number}},
-                return_document=ReturnDocument.AFTER,
-            )
-
-        return DeckOut(**props, id=id)
-
-    def remove_card(self, id: str, card_number: int) -> DeckOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        cards = props["cards"]
-        pluck = props["pluck"]
-        if card_number in cards:
-            cards.remove(card_number)
-        elif card_number in pluck:
-            pluck.remove(card_number)
-        props["cards"] = cards
-        props["pluck"] = pluck
-        self.collection.find_one_and_update(
-            {"_id": ObjectId(id)},
-            {"$set": props},
-            return_document=ReturnDocument.AFTER,
-        )
-        return DeckOut(**props, id=id)
-
-    def clear_deck(self, id: str) -> DeckOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        props["cards"] = []
-        self.collection.find_one_and_update(
-            {"_id": ObjectId(id)},
-            {"$set": props},
-            return_document=ReturnDocument.AFTER,
-        )
-        return DeckOut(**props, id=id)
-
     def get_deck_list(self, id: str) -> list:
         deck = self.collection.find_one({"_id": ObjectId(id)})
         card_list = deck["cards"]
@@ -342,27 +285,24 @@ class DeckQueries(Queries):
 
         return time_ago
 
-    def get_cover_image(self, id: str) -> str:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        cards = props["cards"]
-        if len(cards) > 0:
-            first = cards[0]
-            DATABASE_URL = os.environ["DATABASE_URL"]
-            conn = MongoClient(DATABASE_URL)
-            db = conn.cards.cards
-            card = db.find_one({"card_number": first})
-            cover_image = card["picture_url"]
-        return cover_image
-
     def get_all_full_decks(self) -> list:
         db = self.collection.find()
         decks = []
         for deck in db:
             deck["id"] = str(deck["_id"])
             deck.pop("_id")
+            deck["time_ago"] = self.get_times(deck["id"])
+            decks.append(deck)
+        return decks
+
+    def set_all_full_decks(self) -> list:
+        db = self.collection.find()
+        decks = []
+        for deck in db:
+            # deck["id"] = str(deck["_id"])
             card_list = set(deck["cards"])
             pluck_list = set(deck["pluck"])
-            deck["time_ago"] = self.get_times(deck["id"])
+            # deck["time_ago"] = self.get_times(deck["id"])
 
             DATABASE_URL = os.environ["DATABASE_URL"]
             conn = MongoClient(DATABASE_URL)
@@ -389,63 +329,10 @@ class DeckQueries(Queries):
             deck["card_names"] = card_names
             deck["series_names"] = series_names
             decks.append(deck)
-        return decks
 
-    def get_all_game_decks(self):
-        db = self.collection.find()
-        items = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            items.append(DeckOut(**document))
-        items.sort(key=lambda x: x.name)
-        decks = []
-        all_decks = []
-        for deck in items:
-            pre_name = list(deck.name)
-            name = deck.name
-            var_name = ""
-            for char in pre_name:
-                if char.isalnum():
-                    var_name += char.lower()
-                else:
-                    var_name += "_"
-            id = deck.id
-            cards = deck.cards
-            pluck = deck.pluck
-
-            deck_template = '''
-{var_name} = Deck(
-    id="{id}",
-    name='{name}',
-    cards={cards},
-    pluck={pluck}
-)
-'''
-            deck_code = deck_template.format(
-                var_name=var_name,
-                name=name,
-                id=id,
-                cards=cards,
-                pluck=pluck
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(deck["_id"])},
+                {"$set": deck},
+                return_document=ReturnDocument.AFTER,
             )
-            decks.append(deck_code)
-            all_decks.append(var_name)
-        return [decks, all_decks]
-
-    def get_deck_sheet(self, id):
-        deck = self.collection.find_one({"_id": ObjectId(id)})
-        images = []
-        DATABASE_URL = os.environ["DATABASE_URL"]
-        conn = MongoClient(DATABASE_URL)
-        db = conn.cards.cards
-        for card_item in deck["cards"]:
-            card = db.find_one({"card_number": card_item})
-            card_image = card["picture_url"]
-            images.append(card_image)
-        for pluck_item in deck["pluck"]:
-            pluck = db.find_one({"card_number": pluck_item})
-            card_image = pluck["picture_url"]
-            images.append(card_image)
-        generate_card_sheet(images, deck["name"], os)
-        print(images)
-        return images
+        return decks

@@ -92,6 +92,7 @@ function CardsPage() {
             }
             typedCards.push(card)
         }
+        console.log(typedCards)
         setCards(typedCards.map(card => ({
             ...card,
             picture_url: card.picture_url.replace("https://playmakercards","https://compressedplaymakercards")

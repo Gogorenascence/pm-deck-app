@@ -312,15 +312,24 @@ function DeckCopyPage() {
         const data = {...deck};
         const main = []
         const pluck = []
+        const card_names = []
+        const series_names = []
+
         for (let card of main_list){
             main.push(card.card_number)
+            card_names.push(card.name)
+            series_names.push(card.series_name)
         }
         for (let card of pluck_list){
             pluck.push(card.card_number)
+            card_names.push(card.name)
+            series_names.push(card.series_name)
         }
         data["cards"] = main;
         data["pluck"] = pluck;
         data["strategies"] = selectedList
+        data["card_names"] = card_names
+        data["series_names"] = series_names
         data["parent_id"] = deck_id
         account ? data["account_id"] = account.id : data["account_id"] = deck.account_id
         delete data["id"]

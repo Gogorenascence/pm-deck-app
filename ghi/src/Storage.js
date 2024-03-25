@@ -47,7 +47,7 @@ export function loadDeckFromSessionStorage(
             setDeck({ ...deck,
                 name: parsedDeckState.name,
                 account_id: parsedDeckState.account_id,
-                description: parsedDeckState.description,
+                description: parsedDeckState.description?? "",
                 cover_card: parsedDeckState.cover_card,
                 parent_id: parsedDeckState.parent
             });

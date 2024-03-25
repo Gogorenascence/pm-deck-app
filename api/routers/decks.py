@@ -60,47 +60,6 @@ async def delete_deck(
     else:
         return True
 
-@router.put("/decks/{deck_id}/add_card/{card_number}", response_model=DeckOut)
-async def add_card(
-    deck_id: str,
-    card_number: int,
-    response: Response,
-    queries: DeckQueries = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    deck = queries.add_card(deck_id, card_number)
-    if deck is None:
-        response.status_code = 404
-    else:
-        return deck
-
-@router.put("/decks/{deck_id}/remove_card/{card_number}", response_model=DeckOut)
-async def remove_card(
-    deck_id: str,
-    card_number: int,
-    response: Response,
-    queries: DeckQueries = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    deck = queries.remove_card(deck_id, card_number)
-    if deck is None:
-        response.status_code = 404
-    else:
-        return deck
-
-@router.put("/decks/{deck_id}/clear/", response_model=DeckOut)
-async def clear_deck(
-    deck_id: str,
-    response: Response,
-    queries: DeckQueries = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    deck = queries.clear_deck(deck_id)
-    if deck is None:
-        response.status_code = 404
-    else:
-        return deck
-
 @router.get("/api/decks/{deck_id}/list/", response_model=list)
 async def get_deck_list(
     deck_id: str,
@@ -119,12 +78,10 @@ async def get_counted_deck_list(
     deck_list = queries.get_counted_deck_list(deck_id)
     return deck_list
 
-
 @router.get("/get_popular_cards/", response_model=list)
 async def get_popular_cards(queries: DeckQueries = Depends()):
     popular_cards = queries.get_popular_cards()
     return popular_cards
-
 
 @router.get("/get_time_ago/{deck_id}/", response_model=dict)
 async def get_times(
@@ -134,30 +91,15 @@ async def get_times(
     times = queries.get_times(deck_id)
     return times
 
-
-@router.get("/decks/{deck_id}/cover/", response_model=str)
-async def get_cover_image(
-    deck_id: str,
-    response: Response,
-    queries: DeckQueries = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    deck = queries.get_cover_image(deck_id)
-    if deck is None:
-        response.status_code = 404
-    else:
-        return deck
-
 @router.get("/api/full_decks/", response_model=dict)
 async def get_all_full_decks(queries: DeckQueries = Depends()):
     full_deck_list = queries.get_all_full_decks()
     return {"decks": full_deck_list}
 
-
-@router.get("/api/game_decks/", response_model=list)
-async def get_all_game_decks(queries: DeckQueries = Depends()):
-    return queries.get_all_game_decks()
-
+@router.get("/api/set_full_decks/", response_model=dict)
+async def set_all_full_decks(queries: DeckQueries = Depends()):
+    full_deck_list = queries.set_all_full_decks()
+    return {"decks": full_deck_list}
 
 @router.get("/api/decks/{deck_id}/deck_sheet", response_model=list)
 async def get_deck(
