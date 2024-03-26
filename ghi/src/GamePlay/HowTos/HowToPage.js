@@ -208,6 +208,7 @@ function HowToPage() {
                         )
                     })
                 }
+                <div className="margin-top-30">
                 {prevHowTo && prevHowTo.game_format === howTo.game_format?
                     // <NavLink className="nav-link" to={`/rulebooks/${prevHowTo.id}`}>
                     //     <h1 className="ellipsis">Prev: {prevHowTo.title}</h1>
@@ -218,8 +219,8 @@ function HowToPage() {
                             style={{
                                 backgroundColor: howToColors[prevHowTo.skill_level],
                                 borderColor: howToBorders[prevHowTo.skill_level],
-                                marginTop: "40px",
-                                marginBottom: "-15px"
+                                // marginTop: "40px",
+                                // marginBottom: "-15px"
                             }}
                         >
                             <h3 className="newsText no-wrap">Prev: </h3>
@@ -228,7 +229,7 @@ function HowToPage() {
                         </div>
                     </NavLink>:null
                 }
-                <br/>
+                {/* <br/> */}
                 {nextHowTo && nextHowTo.game_format === howTo.game_format?
                     // <NavLink className="nav-link" to={`/rulebooks/${nextHowTo.id}`}>
                     //     <h1 className="ellipsis">Next: {nextHowTo.title}</h1>
@@ -239,8 +240,8 @@ function HowToPage() {
                             style={{
                                 backgroundColor: howToColors[nextHowTo.skill_level],
                                 borderColor: howToBorders[nextHowTo.skill_level],
-                                marginTop: "0px",
-                                marginBottom: "10px"
+                                // marginTop: "0px",
+                                // marginBottom: "10px"
                             }}
                         >
                             <h3 className="newsText no-wrap">Next: </h3>
@@ -250,7 +251,8 @@ function HowToPage() {
                         </div>
                     </NavLink>:null
                 }
-                <NavLink className="nav-link no-pad" to={"/rulebooks"}>
+                </div>
+                <NavLink className="nav-link no-pad" to={"/rulebooks"} style={{ marginTop: "25px" }}>
                     <button
                         style={{ width: "100%" }}>
                         Back to Rulebooks
