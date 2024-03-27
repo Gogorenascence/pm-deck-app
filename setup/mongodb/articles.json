@@ -1419,7 +1419,7 @@
   "_id": {
     "$oid": "660195ab07a81a5d64cf293c"
   },
-  "title": "Card change: 3/24 - 3/30",
+  "title": "Card changes: 3/24 - 3/30",
   "subtitle": "",
   "author": "TeamPlayMaker",
   "story_date": "2024-03-25",
@@ -1446,6 +1446,21 @@
       }
     ]
   },
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "660366b84759e4cddf39ad46"
+  },
+  "title": "Deck Builder now follows maximum limits and Pluck deck building requirements",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-03-26",
+  "updated": null,
+  "section": "site",
+  "content": "The Deck Builder pages excluding the Pull Deck Builder page now greys out cards when reaching 4 copies in a deck or if they do not meet Pluck deck building requirements.",
+  "images": {},
   "news": true,
   "site_link": ""
 }]
