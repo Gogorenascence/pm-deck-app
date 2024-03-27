@@ -15,8 +15,11 @@ function CardPool({
     handleUsePool,
     handleShowPool,
     handleShowMore,
+    main_list
 })
 {
+
+    console.log(combinedList)
 
     const preprocessText = (text) => {
         return text.split("//").join("\n");
@@ -82,12 +85,21 @@ function CardPool({
                         {all_cards.slice(0, showMore).map((card, index) => {
                             return (
                                 <div className="flex-content" key={index.toString() + card.card_number.toString()}>
-                                    <img
-                                        onClick={() => handleClick(card)}
-                                        className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
-                                        title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                        src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                        alt={card.name}/>
+                                    { (card.card_type[0] < 1006 || card.hero_id === "GEN" || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id).length > 3)
+                                        && combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4?
+                                        <img
+                                            onClick={() => handleClick(card)}
+                                            className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
+                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    :
+                                        <img
+                                            className="builder-card glow3 greyScale"
+                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                            alt={card.name}/>
+                                    }
                                 </div>
                             );
                         })}

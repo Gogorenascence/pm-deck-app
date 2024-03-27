@@ -530,6 +530,7 @@ function DeckCopyPage() {
                 handleUsePool={handleUsePool}
                 handleShowPool={handleShowPool}
                 handleShowMore={handleShowMore}
+                main_list={main_list}
             />
             <StatsPanel
                 main_list={main_list}
@@ -568,6 +569,7 @@ function DeckCopyPage() {
                     <ImageViewListInput
                         title={"Pluck Deck"}
                         list={pluck_list}
+                        main_list={main_list}
                         showList={showPluck}
                         handleShowList={handleShowPluck}
                         handleRemoveCard={handleRemoveCard}

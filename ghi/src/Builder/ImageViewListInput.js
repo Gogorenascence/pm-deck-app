@@ -4,6 +4,7 @@ import React from 'react';
 function ImageViewListInput({
 title,
 list,
+main_list,
 showList,
 handleShowList,
 handleRemoveCard,
@@ -39,13 +40,23 @@ handleRemoveCard,
                 {list.sort((a,b) => a.card_number - b.card_number).map((card, index) => {
                     return (
                         <div className='flex-content' key={index.toString() + card.card_number.toString()}>
-                            <img
-                                className="builder-card2 pointer"
-                                onClick={() => handleRemoveCard(card)}
-                                title={card.name}
-                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                alt={card.name}
-                                variant="bottom"/>
+                            { (title === "Main Deck" || card.hero_id === "GEN" || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id).length > 3)?
+                                <img
+                                    className="builder-card2 pointer"
+                                    onClick={() => handleRemoveCard(card)}
+                                    title={card.name}
+                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={card.name}
+                                    variant="bottom"/>
+                            :
+                                <img
+                                    className="builder-card2 pointer greyScale"
+                                    onClick={() => handleRemoveCard(card)}
+                                    title={card.name}
+                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                    alt={card.name}
+                                    variant="bottom"/>
+                            }
                         </div>
                     );
                 })}
