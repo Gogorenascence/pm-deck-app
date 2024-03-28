@@ -317,9 +317,13 @@ function DeckBuildandImport() {
             series_names.push(card.series_name)
         }
         for (let card of pluck_list){
-            pluck.push(card.card_number)
-            card_names.push(card.name)
-            series_names.push(card.series_name)
+            if (card.hero_id === "GEN"
+                || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id)
+                .length > 3) {
+                pluck.push(card.card_number)
+                card_names.push(card.name)
+                series_names.push(card.series_name)
+            }
         }
         data["cards"] = main;
         data["pluck"] = pluck;
@@ -536,7 +540,7 @@ function DeckBuildandImport() {
                 handleRemoveCard={handleRemoveCard}
             />
             {listView?
-                <div className="deck-list">
+                <div className="deck-list media-display">
                     <div className="maindeck3">
                         <ListViewListInput
                             title={"Main Deck"}
@@ -545,10 +549,11 @@ function DeckBuildandImport() {
                         />
                     </div>
 
-                    <div className="pluckdeck3">
+                    <div className="pluckdeck3 media-margin-top-10">
                         <ListViewListInput
                             title={"Pluck Deck"}
                             list={pluck_list}
+                            main_list={main_list}
                             handleRemoveCard={handleRemoveCard}
                         />
                     </div>

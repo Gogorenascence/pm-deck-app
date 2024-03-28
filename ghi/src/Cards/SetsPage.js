@@ -71,7 +71,7 @@ function SetsPage() {
         <div className="white-space">
             <span className="media-flex-center">
                 <div className="wide400p">
-                    <h1 className="left-h1">Card Set Search</h1>
+                    <h1 className="left-h1-2">Card Set Search</h1>
                     <h2 className="left">Search our collection of Card Sets</h2>
                     <input
                         className="left dcbsearch-large"

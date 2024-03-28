@@ -103,7 +103,7 @@ function DecksPage() {
         <div className="white-space">
             <div className="media-flex-center">
                 <div className="wide400p">
-                    <h1 className="left-h1">Deck Search</h1>
+                    <h1 className="left-h1-2">Deck Search</h1>
                     <h2 className="left">Search our collection of decks</h2>
                     <input
                         className="left"

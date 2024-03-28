@@ -194,7 +194,7 @@ function CardsPage() {
             </div> */}
             <span className="media-flex-center">
                 <div className="wide400p">
-                    <h1 className="left-h1">Card Search</h1>
+                    <h1 className="left-h1-2">Card Search</h1>
                     <h2 className="left">Search our collection of cards</h2>
                     <input
                         className="left dcbsearch-x-x-large"

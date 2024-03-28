@@ -321,9 +321,13 @@ function DeckCopyPage() {
             series_names.push(card.series_name)
         }
         for (let card of pluck_list){
-            pluck.push(card.card_number)
-            card_names.push(card.name)
-            series_names.push(card.series_name)
+            if (card.hero_id === "GEN"
+                || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id)
+                .length > 3) {
+                pluck.push(card.card_number)
+                card_names.push(card.name)
+                series_names.push(card.series_name)
+            }
         }
         data["cards"] = main;
         data["pluck"] = pluck;
@@ -384,7 +388,7 @@ function DeckCopyPage() {
             <div className="between-space media-display">
                 <span className="media-flex-center">
                     <div>
-                        <h1 className="left-h1">Deck Copy</h1>
+                        <h1 className="left-h1-2">Deck Copy</h1>
                         <h2 className="left">Deck Details</h2>
                         <h5 className="label">Name </h5>
                         <input
@@ -538,7 +542,7 @@ function DeckCopyPage() {
                 handleRemoveCard={handleRemoveCard}
             />
             {listView?
-                <div className="deck-list">
+                <div className="deck-list media-display">
                     <div className="maindeck3">
                         <ListViewListInput
                             title={"Main Deck"}
@@ -547,10 +551,11 @@ function DeckCopyPage() {
                         />
                     </div>
 
-                    <div className="pluckdeck3">
+                    <div className="pluckdeck3 media-margin-top-10">
                         <ListViewListInput
                             title={"Pluck Deck"}
                             list={pluck_list}
+                            main_list={main_list}
                             handleRemoveCard={handleRemoveCard}
                         />
                     </div>

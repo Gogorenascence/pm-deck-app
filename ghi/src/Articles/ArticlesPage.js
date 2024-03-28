@@ -121,7 +121,7 @@ function ArticlesPage() {
         <div className="white-space">
             <span className="media-flex-center">
                 <div className="wide400p">
-                    <h1 className="left-h1">Article Search</h1>
+                    <h1 className="left-h1-2">Article Search</h1>
                     <input
                         className="left dcbsearch-x-large"
                         type="text"

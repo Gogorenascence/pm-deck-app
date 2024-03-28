@@ -127,7 +127,7 @@ function PullsDeckBuilder() {
         cardNumber: "",
         heroID: "",
         series: "",
-        illustrator: "",
+        startingNum: "",
         type: "",
         cardClass: "",
         extraEffect: "",
@@ -146,10 +146,11 @@ function PullsDeckBuilder() {
     const [sortState, setSortState] = useState("none");
 
     useEffect(() => {
-        window.scroll(0, 0);
+        // window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getCards();
         getBoosterSet();
+        console.log()
         document.title = "Deck Builder - PM CardBase"
         return () => {
             document.title = "PlayMaker CardBase"
@@ -203,7 +204,7 @@ function PullsDeckBuilder() {
         .filter(card => card.card_number.toString().includes(query.cardNumber))
         .filter(card => card.hero_id.toLowerCase().includes(query.heroID.toLowerCase()))
         .filter(card => card.series_name.toLowerCase().includes(query.series.toLowerCase()))
-                .filter(card => card.card_number >= query.startingNum)
+        .filter(card => card.card_number >= query.startingNum)
         .filter(card => query.type? card.card_type.some(type => type.toString() == query.type):card.card_type)
         .filter(card => card.card_class.includes(query.cardClass))
         .filter(card => query.extraEffect? card.extra_effects.some(effect => effect.toString() == query.extraEffect):card.extra_effects)
@@ -249,9 +250,14 @@ function PullsDeckBuilder() {
             setMainList([...main_list, card]);
             console.log(main_list);
         }
+        const poolIndex = cards.indexOf(card);
+        const newCards = [...cards];
+        newCards.splice(poolIndex, 1)
+        setCards(newCards)
     }
 
     const handleRemoveCard = (card) => {
+        setCards([...cards, card])
         if (card.card_type[0] === 1006 ||
             card.card_type[0] === 1007 ||
             card.card_type[0] === 1008){
@@ -383,7 +389,7 @@ function PullsDeckBuilder() {
             <div className="between-space media-display">
                 <span className="media-flex-center">
                     <div>
-                        <h1 className="left-h1">Deck Builder</h1>
+                        <h1 className="left-h1-2">Deck Builder</h1>
                         <h2 className="left">Deck Details</h2>
                         <h5 className="label">Name </h5>
                         <input
@@ -738,22 +744,32 @@ function PullsDeckBuilder() {
                                 null}
 
                                 <div className="card-pool-fill">
-                                    {all_cards.slice(0, showMore).map((card) => {
+                                    {all_cards.slice(0, showMore).map((card, index) => {
                                         return (
-                                            <div>
-                                                {ultraRares.includes(card.card_number) ?
-                                                    <div className={uniqueList.includes(card) ? "selected ultra2 pointer glow3" : "ultra2 pointer glow3"}
-                                                    style={{display: "flex", justifyContent: "center"}}>
-                                                        <img
-                                                            onClick={() => handleClick(card)}
-                                                            className="builder-card4 pointer"
-                                                            title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
-                                                            src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
-                                                            alt={card.name}/>
-                                                    </div>:
+                                            <div style={{display: "flex", justifyContent: "center"}} key={index}>
+                                                { combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4?
+                                                    <>
+                                                        {ultraRares.includes(card.card_number) ?
+                                                            <div className="ultra2 pointer glow3"
+                                                                style={{display: "flex", justifyContent: "center"}}>
+                                                                <img
+                                                                    onClick={() => handleClick(card)}
+                                                                    className="builder-card4 pointer"
+                                                                    title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                                    src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                                    alt={card.name}/>
+                                                            </div>:
+                                                            <img
+                                                                onClick={() => handleClick(card)}
+                                                                className="builder-card pointer glow3"
+                                                                title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
+                                                                src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
+                                                                alt={card.name}/>
+                                                        }
+                                                    </>
+                                                    :
                                                     <img
-                                                        onClick={() => handleClick(card)}
-                                                        className={uniqueList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
+                                                        className="builder-card glow3 greyScale"
                                                         title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                         src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                         alt={card.name}/>
@@ -791,7 +807,7 @@ function PullsDeckBuilder() {
                     handleRemoveCard={handleRemoveCard}
                 />
                 {listView?
-                    <div className="deck-list">
+                    <div className="deck-list media-display">
                         <div className="maindeck3">
                         <div style={{marginLeft: "20px"}}>
                             <div style={{display: "flex", alignItems: "center"}}>
@@ -814,7 +830,7 @@ function PullsDeckBuilder() {
                                                 <div className="card-container pointer">
                                                     <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                                     <img
-                                                        className="card-image"
+                                                        className="card-image media-hover-center"
                                                         src={card.picture_url}
                                                         alt={card.name}
                                                     />
@@ -823,11 +839,11 @@ function PullsDeckBuilder() {
                                         );
                                     })}
                                 </>:
-                            <h4 className="left no-cards">No cards added</h4>}
+                            <h4 className="left margin-0 media-margin-bottom-20">No cards added</h4>}
                         </div>
                     </div>
 
-                    <div className="pluckdeck3">
+                    <div className="pluckdeck3 media-margin-top-10">
                         <div style={{marginLeft: "20px"}}>
                         <div style={{display: "flex", alignItems: "center"}}>
                                 <h2
@@ -849,7 +865,7 @@ function PullsDeckBuilder() {
                                                 <div className="card-container pointer">
                                                     <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
                                                     <img
-                                                        className="card-image"
+                                                        className="card-image media-hover-center"
                                                         src={card.picture_url}
                                                         alt={card.name}
                                                     />
@@ -858,7 +874,7 @@ function PullsDeckBuilder() {
                                         );
                                     })}
                                 </>:
-                            <h4 className="left no-cards">No cards added</h4>}
+                            <h4 className="left margin-0 media-margin-bottom-20">No cards added</h4>}
                         </div>
                     </div>
                 </div>

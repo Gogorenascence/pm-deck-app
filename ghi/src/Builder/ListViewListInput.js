@@ -7,10 +7,11 @@ import {
 function ListViewListInput({
 title,
 list,
+main_list,
 handleRemoveCard,
 }) {
     return(
-        <div style={{marginLeft: "20px"}}>
+        <div className="margin-left-20">
             <div style={{display: "flex", alignItems: "center"}}>
                     <h2
                         className="left"
@@ -28,19 +29,31 @@ handleRemoveCard,
                         {list.sort((a,b) => a.card_number - b.card_number).map((card, index) => {
                             return (
                                 <Col style={{padding: "5px"}} key={index.toString() + card.card_number.toString()}>
-                                    <div className="card-container pointer">
-                                        <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
-                                        <img
-                                            className="card-image"
-                                            src={card.picture_url}
-                                            alt={card.name}
-                                        />
-                                    </div>
+                                    { (title === "Main Deck" || card.hero_id === "GEN" || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id).length > 3)?
+                                        <div className="card-container pointer">
+                                            <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                            <img
+                                                className="card-image media-hover-center"
+                                                src={card.picture_url}
+                                                alt={card.name}
+                                            />
+                                        </div>
+                                    :
+                                        <div className="card-container pointer">
+                                            <h5 onClick={() => handleRemoveCard(card)}>{card.name}</h5>
+                                            <h6 className='error3'>The Main deck needs at least 4 cards with the same Hero ID as this card.</h6>
+                                            <img
+                                                className="card-image3 greyScale media-hover-center"
+                                                src={card.picture_url}
+                                                alt={card.name}
+                                            />
+                                        </div>
+                                    }
                                 </Col>
                             );
                         })}
                     </>:
-                <h4 className="left no-cards">No cards added</h4>}
+                <h4 className="left margin-0 media-margin-bottom-20">No cards added</h4>}
         </div>
     )
 }
