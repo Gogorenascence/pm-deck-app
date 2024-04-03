@@ -20,7 +20,11 @@ function PullPage() {
     const [perPack, setPerPack] = useState(0)
     const [num, setNum] = useState("");
     const [savedPulls, setSavedPulls] = useState([]);
-    const {pulls, setPulls}= useContext(PullsContext);
+    const {
+        setBoosterSetPulled,
+        pulls,
+        setPulls
+    }= useContext(PullsContext);
 
     const lastSavedPullRef = useRef(null);
     const navigate = useNavigate()
@@ -90,6 +94,7 @@ function PullPage() {
             if (lastSavedPullRef.current) {
                 lastSavedPullRef.current.scrollIntoView({ behavior: 'smooth' });
             }
+            setBoosterSetPulled(boosterSet)
             // findUltras()
         } else {
             alert("No number of packs selected")
@@ -121,6 +126,7 @@ function PullPage() {
     }
 
     const handleClearPulls = (event) => {
+        setBoosterSetPulled("")
         setPulls([])
         setSavedPulls([])
     }
@@ -237,7 +243,7 @@ function PullPage() {
                 <button onClick={handleClearPulls} className="left media-center">
                     Clear Pulls
                 </button>
-                <button className="left media-center" onClick={() => navigate(`/cardsets/${card_set_id}/pulls/deckbuilder`)}>
+                <button className="left media-center" onClick={() => navigate(`/pulls/deckbuilder`)}>
                     Create Deck
                 </button>
 

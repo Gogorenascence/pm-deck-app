@@ -100,7 +100,7 @@ function App() {
                                                               copy={true}
                                                             />} />
               <Route path="/cardsets/:card_set_id/pulls" element={<PullPage />} />
-              <Route path="/cardsets/:card_set_id/pulls/deckbuilder" element={<PullsDeckBuilder />} />
+              <Route path="/pulls/deckbuilder" element={<PullsDeckBuilder />} />
               <Route path="/account" element={<AccountPage />} />
               <Route path="/reset/:reset_id" element={<ResetPassword />} />
               <Route path="/forum" element={<UnderConstruction />} />

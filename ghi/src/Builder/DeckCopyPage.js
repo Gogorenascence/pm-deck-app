@@ -535,6 +535,7 @@ function DeckCopyPage() {
                 handleShowPool={handleShowPool}
                 handleShowMore={handleShowMore}
                 main_list={main_list}
+                pluck_list={pluck_list}
             />
             <StatsPanel
                 main_list={main_list}

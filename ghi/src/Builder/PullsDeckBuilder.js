@@ -2,7 +2,7 @@ import {
     Col,
 } from "react-bootstrap";
 import { useState, useEffect, useContext, useRef } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { PullsContext } from "../Context/PullsContext";
 import { AuthContext } from "../Context/AuthContext";
 import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
@@ -25,7 +25,6 @@ function PullsDeckBuilder() {
         private: false,
     });
 
-    const {card_set_id} = useParams();
     const {account} = useContext(AuthContext)
 
     const fileInput = useRef(null);
@@ -95,7 +94,7 @@ function PullsDeckBuilder() {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const [cards, setCards] = useState([]);
-    const {pulls} = useContext(PullsContext);
+    const {boosterSetPulled, pulls} = useContext(PullsContext);
 
     const [showMore, setShowMore] = useState(50);
     const [listView, setListView] = useState(false);
@@ -136,17 +135,14 @@ function PullsDeckBuilder() {
     });
 
     const getBoosterSet = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
-        const boosterSetData = await response.json();
-        setBoosterSet(boosterSetData)
-        setUltraRares(boosterSetData.ultra_rares)
-
+        setBoosterSet(boosterSetPulled)
+        setUltraRares(boosterSetPulled.ultra_rares ?? [])
     };
 
     const [sortState, setSortState] = useState("none");
 
     useEffect(() => {
-        // window.scroll(0, 0);
+        window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getCards();
         getBoosterSet();
@@ -389,7 +385,7 @@ function PullsDeckBuilder() {
             <div className="between-space media-display">
                 <span className="media-flex-center">
                     <div>
-                        <h1 className="left-h1-2">Deck Builder</h1>
+                        <h1 className="left-h1-2">Pulls Deck Builder</h1>
                         <h2 className="left">Deck Details</h2>
                         <h5 className="label">Name </h5>
                         <input
@@ -658,7 +654,7 @@ function PullsDeckBuilder() {
                             className="left dcbsearch-medium"
                             type="text"
                             name="boosterSet">
-                            <option value={boosterSet.id}>{boosterSet.name}</option>
+                            <option value={boosterSet.id}>{boosterSet.name ?? "No Set Available"}</option>
                         </select>
                         <select
                             className="left dcbsearch-medium"
@@ -710,44 +706,43 @@ function PullsDeckBuilder() {
                     handleShowDecks={handleShowDecks}
                     clearDecks={clearDecks}
                 />
-                {all_cards.length?
+                { !noCards?
                     <div className={showPool ? "cardpool" : "no-cardpool"}>
-                        <div style={{marginLeft: "0px"}}>
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                <h2
-                                    className="left"
-                                    style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
-                                >Card Pool</h2>
-                                <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                                {all_cards.length > 0 ?
-                                    <h5
-                                        className="left db-pool-count"
-                                    >{all_cards.length}</h5>:
-                                    null}
-                                { showPool ?
-                                    <h5 className="left db-pool-count"
-                                        onClick={() => handleShowPool()}>
-                                            &nbsp;[Hide]
-                                    </h5> :
-                                    <h5 className="left db-pool-count"
-                                        onClick={() => handleShowPool()}>
-                                        &nbsp;[Show]
-                                    </h5>}
-                            </div>
-                            <div className={showPool ? "scrollable" : "hidden2"}>
-                                <div style={{margin: "8px"}}>
-
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <h2
+                                className="left"
+                                style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
+                                >Pulled Cards</h2>
+                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                            {all_cards.length > 0 ?
+                                <h5
+                                    className="left db-pool-count"
+                                >{all_cards.length}</h5>:
+                                null}
+                            { showPool ?
+                                <h5 className="left db-pool-count"
+                                    onClick={() => handleShowPool()}>
+                                        &nbsp;[Hide]
+                                </h5> :
+                                <h5 className="left db-pool-count"
+                                    onClick={() => handleShowPool()}>
+                                    &nbsp;[Show]
+                                </h5>}
+                        </div>
+                        <div className={showPool ? "scrollable" : "hidden2"}>
+                            <div style={{margin: "8px"}}>
                                 { all_cards.length == 0 && isQueryEmpty && !noCards?
                                     <div className="loading-container">
                                         <div className="loading-spinner"></div>
                                     </div> :
                                 null}
-
                                 <div className="card-pool-fill">
                                     {all_cards.slice(0, showMore).map((card, index) => {
                                         return (
                                             <div style={{display: "flex", justifyContent: "center"}} key={index}>
-                                                { combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4?
+                                                {((card.card_type[0] < 1006 && main_list.length < 60) ||
+                                                (card.card_type[0] > 1005 && pluck_list.length < 30)) &&
+                                                combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4?
                                                     <>
                                                         {ultraRares.includes(card.card_number) ?
                                                             <div className="ultra2 pointer glow3"
@@ -778,28 +773,66 @@ function PullsDeckBuilder() {
                                         );
                                     })}
                                 </div>
-                                </div>
-                                {showMore < all_cards.length ?
-                                    <button
-                                        style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
-                                        onClick={handleShowMore}>
-                                        Show More Cards ({all_cards.length - showMore} Remaining)
-                                    </button> : null }
                             </div>
+                            {showMore < all_cards.length ?
+                                <button
+                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
+                                    onClick={handleShowMore}>
+                                    Show More Cards ({all_cards.length - showMore} Remaining)
+                                </button> : null }
                         </div>
-                    </div>:
-                    <div className="no-cardpool">
-                    <div style={{marginLeft: "0px"}}>
-                        <div style={{display: "flex", alignItems: "center"}}>
-                            <h2
-                                className="left"
-                                style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
-                            >Card Pool</h2>
-                            <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
-                        </div>
-                        <h4 className="left no-cards">No cards added</h4>
                     </div>
-                </div>
+                :
+                    <div className="no-cardpool">
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <h2
+                            className="left"
+                            style={{margin: "1% 0px 1% 20px", fontWeight: "700"}}
+                            >Pulled Cards</h2>
+                        <img className="logo" src="https://i.imgur.com/YpdBflG.png" alt="cards icon"/>
+                        {all_cards.length > 0 ?
+                            <h5
+                                className="left db-pool-count"
+                            >{all_cards.length}</h5>:
+                            null}
+                        { showPool ?
+                            <h5 className="left db-pool-count"
+                                onClick={() => handleShowPool()}>
+                                    &nbsp;[Hide]
+                            </h5> :
+                            <h5 className="left db-pool-count"
+                                onClick={() => handleShowPool()}>
+                                &nbsp;[Show]
+                            </h5>}
+                    </div>
+
+                        <div className={showPool ? null : "hidden2"}>
+                            <div style={{margin: "8px"}}>
+
+                            { all_cards.length == 0 && isQueryEmpty && noCards?
+                                <div className="inScrollable">
+                                    <NavLink to="/cardsets"
+                                        className="black-white nav-link">
+                                        <div className="media-h1-h2-box">
+                                            <h1 className="media-h1-h2">No pulled cards</h1>
+                                            <h1 className="media-h1-h2">Click here for Card Set Search</h1>
+                                        </div>
+                                    </NavLink>
+                                </div>
+                                : null
+                            }
+
+                            </div>
+                            {showMore < all_cards.length ?
+                                <button
+                                    style={{ width: "97%", margin:".5% 0% .5% 1.5%"}}
+                                    onClick={handleShowMore}>
+                                    Show More Cards ({all_cards.length - showMore} Remaining)
+                                </button> : null }
+                        </div>
+
+
+                    </div>
                 }
                 <StatsPanel
                     main_list={main_list}

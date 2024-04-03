@@ -422,6 +422,7 @@ button:hover {
 }
 
 .inScrollable {
+  /* margin-top: -64px; */
   position: relative; /* Make the container a positioning context */
   width: 100%; /* Ensure the image container takes the full width of the scrollable div */
   height: 53vh;
@@ -437,7 +438,7 @@ button:hover {
   border-radius: 5px;
   height: 70vh;
   outline: 1px solid white;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 .no-cardpool {
@@ -446,7 +447,7 @@ button:hover {
   border: 2px solid rgb(68, 17, 206);
   border-radius: 5px;
   outline: 1px solid white;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 .maindeck {
@@ -3355,6 +3356,10 @@ button:hover {
   padding: 0;
 }
 
+.media-h1-h2-box {
+  margin-top: -64px;
+}
+
 @media screen and (max-width: 1330px) {
   .cards-page-card-list {
     display: grid;
@@ -3831,6 +3836,7 @@ button:hover {
   }
 
   .inScrollable {
+    margin-top: auto;
     position: relative; /* Make the container a positioning context */
     width: 100%; /* Ensure the image container takes the full width of the scrollable div */
     height: auto;
@@ -3838,6 +3844,10 @@ button:hover {
     align-items: center;
     justify-content: center;
   }
+
+  /* .cardpool {
+    height: auto;
+  } */
 
   .cardpool2-ro {
     margin: 0;
@@ -4009,6 +4019,14 @@ button:hover {
     left: 0%;
   }
 
+  .media-h1-h2 {
+    font-size: 1.5rem; /* Adjust the font size as per your requirement */
+    font-weight: 500;
+  }
+
+  .media-h1-h2-box {
+    margin-top: 0;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) and (max-width: 1333px){
