@@ -741,7 +741,7 @@ function PullsDeckBuilder() {
                                         return (
                                             <div style={{display: "flex", justifyContent: "center"}} key={index}>
                                                 {((card.card_type[0] < 1006 && main_list.length < 60) ||
-                                                (card.card_type[0] > 1005 && pluck_list.length < 30)) &&
+                                                (card.card_type[0] > 1005 && (card.card_type[0] > 1005 && pluck_list.length < 30))) &&
                                                 combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4?
                                                     <>
                                                         {ultraRares.includes(card.card_number) ?
