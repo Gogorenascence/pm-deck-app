@@ -523,7 +523,7 @@ function DeckBuildandImport() {
                 all_cards={all_cards}
                 noCards={noCards}
                 noPulledCards={noPulledCards}
-                combinedList={combinedList}
+                combinedList={uniqueList}
                 isQueryEmpty={isQueryEmpty}
                 usePool={usePool}
                 showPool={showPool}

@@ -24,6 +24,13 @@ function CardPool({
         return text.split("//").join("\n");
     };
 
+    const seeCombinedList = (card) => {
+        const cardInList = combinedList.filter(cardItem => cardItem.card_number === card.card_number)
+        if (cardInList.length > 0) {
+            return true
+        }
+    }
+
     return(
         <>
             { usePool?
@@ -73,7 +80,7 @@ function CardPool({
                                                 && combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4 ?
                                                 <img
                                                     onClick={() => handleClick(card)}
-                                                    className={combinedList.includes(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
+                                                    className={seeCombinedList(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
                                                     title={`${card.name}\n${preprocessText(card.effect_text)}\n${card.second_effect_text ? preprocessText(card.second_effect_text) : ""}`}
                                                     src={card.picture_url ? card.picture_url : "https://i.imgur.com/krY25iI.png"}
                                                     alt={card.name}/>
