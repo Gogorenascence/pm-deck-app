@@ -195,9 +195,6 @@ function Nav() {
                   <NavLink className="dropdown-item" to="/deckbuilder">
                     Deck Builder
                   </NavLink>
-                  {/* <NavLink className="dropdown-item" to="/deckimport">
-                    Deck Import
-                  </NavLink> */}
                   <NavLink className="dropdown-item" to="/decks">
                     Search Decks
                   </NavLink>
@@ -237,9 +234,12 @@ function Nav() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Game Play
+                  Game Plady
                 </a>
                 <div className="dropdown-menu" aria-labelledby="cardsDropdown">
+                  <NavLink className="dropdown-item" to="/rulebooks">
+                    How To Play
+                  </NavLink>
                   <NavLink className="dropdown-item" to="/gameplay">
                     GamePlay Portal
                   </NavLink>

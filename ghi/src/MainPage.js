@@ -7,7 +7,7 @@ import SimulatorRow from "./Display/SimulatorRow";
 
 function MainPage() {
 
-  // window.scroll(0, 0);
+  window.scroll(0, 0);
   document.body.style.overflow = 'auto';
 
     return (

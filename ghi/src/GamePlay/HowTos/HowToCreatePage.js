@@ -119,11 +119,11 @@ function HowToCreatePage() {
         }
     }
 
-    // if (!(account && account.roles.includes("admin"))) {
-    //     setTimeout(function() {
-    //         window.location.href = `${process.env.PUBLIC_URL}/`
-    //     }, 3000);
-    // }
+    if (!(account && account.roles.includes("admin"))) {
+        setTimeout(function() {
+            window.location.href = `${process.env.PUBLIC_URL}/`
+        }, 3000);
+    }
 
     return (
         <div>
