@@ -1,5 +1,8 @@
 2959625751
 
+CBC
+nan
+C0XkfjLvkcXR9JeE
 
 fighters leave after resolving but not after defending
 mv counts as any type during the planning phase only
@@ -86,3 +89,5 @@ After defeat player draws back to 6 cards
 shared mettle pool 4 x max players plus 4
 
 Players not going first draw 1 card
+
+plucke

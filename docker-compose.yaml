@@ -6,11 +6,12 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile.dev
+    image: cardbase:latest
     environment:
       CORS_HOST: http://localhost:3000
       # CORS_HOST: http://192.168.1.220:3000
       # CORS_HOST: http://13.57.107.204:3000
-      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_URL: mongodb+srv://nantahkl:C0XkfjLvkcXR9JeE@cardbasecluster.ryoluyz.mongodb.net/
       DATABASE_NAME: cards
       WAIT_HOSTS: mongo:27017
       WAIT_BEFORE: 5

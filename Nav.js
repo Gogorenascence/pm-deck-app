@@ -234,7 +234,7 @@ function Nav() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Game Plady
+                  Game Play
                 </a>
                 <div className="dropdown-menu" aria-labelledby="cardsDropdown">
                   <NavLink className="dropdown-item" to="/rulebooks">

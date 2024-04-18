@@ -91,4 +91,114 @@
   "skill_level": "beginner",
   "how_to_number": 17,
   "images": {}
+},
+{
+  "_id": {
+    "$oid": "66195cebc7083c3f3a53f366"
+  },
+  "title": "Pluck and the Pluck Deck",
+  "updated": null,
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 2.6,
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "66195d02c7083c3f3a53f367"
+  },
+  "title": "Cards and the Main Deck",
+  "updated": "2024-04-13",
+  "content": "test//\ntest2//",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 2.3,
+  "images": {
+    "0": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1b1dweanat2.png",
+        "caption": "",
+        "link": null,
+        "order": 0,
+        "alt_text": "Dive Bomb Finisher!!!"
+      },
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1g4fbfanat2.png",
+        "caption": "This is a card image",
+        "link": null,
+        "order": 1,
+        "alt_text": "Flamebell"
+      }
+    ],
+    "1": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1b1dweanat2.png",
+        "caption": "Endings have Enthusiasm in the top right corner",
+        "link": null,
+        "order": 0,
+        "alt_text": "PantheraMan"
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "66195d3fc7083c3f3a53f368"
+  },
+  "title": "The Play Area",
+  "updated": null,
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 2.9,
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "66195da5c7083c3f3a53f369"
+  },
+  "title": "The Start of A New Game",
+  "updated": null,
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 3.4,
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "66195db9c7083c3f3a53f36a"
+  },
+  "title": "The Planning Phase",
+  "updated": "2024-04-12",
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 3.5,
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "66196114c7083c3f3a53f36b"
+  },
+  "title": "End Phase and End Phase Maintenance",
+  "updated": null,
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 18,
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "661961a3c7083c3f3a53f36c"
+  },
+  "title": "Defeat and Second Wind",
+  "updated": null,
+  "content": "",
+  "game_format": "Standard",
+  "skill_level": "beginner",
+  "how_to_number": 20,
+  "images": {}
 }]

@@ -69,11 +69,11 @@ function ResetPassword() {
             to_email: "nantahkl@gmail.com",
             from_name: "Team CardBase",
             message: "Here's the reset link: ",
-            // reset_link: `http://localhost:3000/reset/${passwordReset.id}`
-            reset_link: "http://localhost:3000/reset/64f6a25e07273674a7a1375d"
+            reset_link: `http://localhost:3000/reset/${passwordReset.id}`
+            // reset_link: "http://localhost:3000/reset/64f6a25e07273674a7a1375d"
             };
 
-        emailjs.send("service_5y7llwl", "template_58fwghk", templateParams)
+        emailjs.send("service_y0l4y9e", "template_58fwghk", templateParams)
         .then(function(response) {
             console.log("Email sent successfully:", response);
         }, function(error) {
