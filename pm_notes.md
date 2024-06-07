@@ -3,7 +3,7 @@
 CBC
 nan
 C0XkfjLvkcXR9JeE
-
+mongodb+srv://nantahkl:C0XkfjLvkcXR9JeE@cardbasecluster.ryoluyz.mongodb.net/
 fighters leave after resolving but not after defending
 mv counts as any type during the planning phase only
 deck out - can not when need to

@@ -34,6 +34,7 @@ class DeckIn(BaseModel):
     card_names: Optional[list]
     series_names: Optional[list]
     private: Optional[bool]
+    creator: str
 
 
 class Deck(DeckIn):

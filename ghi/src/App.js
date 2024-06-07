@@ -13,7 +13,7 @@ import CardSetCreate from "./Cards/SetCreatePage";
 import SetDetailPage from "./Cards/SetDetailPage";
 import PullPage from "./Cards/PullPage";
 import UnderConstruction from "./Display/UnderConstruction";
-import NavBar from "./NavBar";
+// import NavBar from "./NavBar";
 import Footer from "./Footer";
 import LightSwitch from "./Display/LightSwitch";
 import BackToTop from "./Display/BackToTop";
@@ -61,6 +61,7 @@ import HowToCreatePage from "./GamePlay/HowTos/HowToCreatePage";
 import HowToPage from "./GamePlay/HowTos/HowToPage";
 import HowToEditPage from "./GamePlay/HowTos/HowToEditPage";
 import HowTosPage from "./GamePlay/HowTos/HowTosPage";
+import NavBar from "./FBANavBar";
 
 
 function App() {

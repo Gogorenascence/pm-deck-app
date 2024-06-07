@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { DeckQueryContext } from "../Context/DeckQueryContext";
 import { AuthContext } from "../Context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
+import helper from "../QueryObjects/Helper";
+
 
 function DecksPage() {
 
@@ -25,10 +27,12 @@ function DecksPage() {
 
     const getDecks = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
+        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
         const data = await response.json();
+        const deckData = helper.createAllTimesAgos(data.decks)
+        // console.log(deckData)
 
-        const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
+        const sortedDecks = [...deckData].sort(deckSortMethods[deckSortState].method);
         setLoading(false)
         setDecks(sortedDecks.reverse());
     };
@@ -86,18 +90,12 @@ function DecksPage() {
 
     const all_decks = decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
         .filter(deck => deck.name.toLowerCase().includes(deckQuery.deckName.toLowerCase()))
-        .filter(deck => (deck.description).toLowerCase().includes(deckQuery.description.toLowerCase()))
+        // .filter(deck => (deck.description).toLowerCase().includes(deckQuery.description.toLowerCase()))
         .filter(deck => deckQuery.cardName ? (deck.card_names && deck.card_names.length > 0 ? deck.card_names.some(name => name.toLowerCase().includes(deckQuery.cardName.toLowerCase())) : false) : true)
         .filter(deck => deckQuery.strategy? deck.strategies.some(strategy => strategy.includes(deckQuery.strategy)):deck.strategies)
         .filter(deck => deckQuery.seriesName ? (deck.series_names && deck.series_names.length > 0 ? deck.series_names.some(series => series.toLowerCase().includes(deckQuery.seriesName.toLowerCase())) : false) : true)
-        .filter(deck => deckQuery.user? (deck.account_id? users.find(user => user.id === deck.account_id && user.username.toLowerCase().includes(deckQuery.user.toLowerCase())):false):true)
+        .filter(deck => deckQuery.user? (deck.creator.toLowerCase().includes(deckQuery.user.toLowerCase())) : true)
         .sort(deckSortMethods[deckSortState].method)
-
-    const createdBy = (deck) => {
-        const account = deck.account_id? users.find(user => user.id === deck.account_id): null
-        return account? account.username : "TeamPlayMaker"
-    };
-
 
     return (
         <div className="white-space">
@@ -125,7 +123,7 @@ function DecksPage() {
                         style={{width: "370px", height: "37px"}}>
                     </input>
                     <br/>
-                    <input
+                    {/* <input
                         className="left"
                         type="text"
                         placeholder=" Description Contains..."
@@ -134,7 +132,7 @@ function DecksPage() {
                         onChange={handleDeckQuery}
                         style={{width: "370px", height: "37px"}}>
                     </input>
-                    <br/>
+                    <br/> */}
                     <input
                         className="left"
                         type="text"
@@ -227,21 +225,15 @@ function DecksPage() {
                                             variant="bottom"/>
                                     </div>
                                 </div>
-                                <Card.ImgOverlay className="blackfooter2 mt-auto">
-                                    <div className="flex">
-                                        <h3 className="left margin-top-20 media-margin-top-10">{deck.name}</h3>
-                                        { deck.private && deck.private === true ?
-                                            <img className="logo4" src="https://i.imgur.com/V3uOVpD.png" alt="private" />:null
-                                        }
+                                <Card.ImgOverlay className="blackfooter2">
+                                    <div style={{display: "flex"}}>
+                                        <h3 className="left cd-container-child ellipsis"
+                                        >{deck.name}</h3>
                                         {account?
-                                            <FavoriteDeck deck={deck}/>: null
+                                            <FavoriteDeck deck={deck}/>:null
                                         }
                                     </div>
-                                    {/* <h6 style={{margin: '0px 0px 5px 0px', fontWeight: "600"}}
-                                    >
-                                        User:
-                                    </h6> */}
-                                    <h6 className="left"
+                                    <h6 className="left ellipsis2"
                                         style={{margin: '0px 0px 5px 10px', fontWeight: "600"}}
                                     >
                                         Strategies: {deck.strategies.length > 0 ? deck.strategies.join(', ') : "n/a"}
@@ -251,27 +243,27 @@ function DecksPage() {
                                     >
                                         Main Deck: {deck.cards.length} &nbsp; Pluck Deck: {deck.pluck.length}
                                     </h6>
-                                    <div style={{ display: "flex" }}>
+                                    <div style={{ display: "flex", maxWidth: "90%"}}>
                                         <img className="logo2" src="https://i.imgur.com/nIY2qSx.png" alt="created on"/>
                                         <h6
-                                        className="left justify-content-end"
+                                        className="left justify-content-end ellipsis2"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {deck.time_ago.created} &nbsp; &nbsp;
+                                            {deck.created_on.ago} &nbsp; &nbsp;
                                         </h6>
                                         <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
                                         <h6
-                                        className="left justify-content-end"
+                                        className="left justify-content-end ellipsis2"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {deck.time_ago.updated} &nbsp; &nbsp;
+                                            {deck.updated_on.ago} &nbsp; &nbsp;
                                         </h6>
                                         <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
                                         <h6
                                         className="left justify-content-end"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {createdBy(deck)}
+                                            {deck.creator}
                                         </h6>
                                     </div>
                                 </Card.ImgOverlay>

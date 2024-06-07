@@ -5494,7 +5494,7 @@
 # print("pre_name: ", pre_name)
 # print("var_name: ", var_name)
 
-print([1,3] == [1,2,3])
+# print([1,3] == [1,2,3])
 
 
 # def set_all_full_decks(self) -> list:
@@ -5548,3 +5548,13 @@ print([1,3] == [1,2,3])
 #             self.collection.bulk_write(update_commands)
 
 #         return decks
+
+
+def is_palin(word):
+    print(word)
+    print(list(reversed(word)))
+    if list(reversed(word)) == list(word):
+        return True
+    else:
+        return False
+print(is_palin("wordrow"))

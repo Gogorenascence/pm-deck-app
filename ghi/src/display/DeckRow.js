@@ -18,7 +18,7 @@ function DeckRow() {
         const data = await response.json();
 
         const deckData = data.decks.filter(deck => deck.private ? deck.private === false || deck.account_id === account.id || account && account.roles.includes("admin"): true)
-        .slice(-4).reverse()
+        .sort((a,b) => b.updated_on.full_time.localeCompare(a.updated_on.full_time)).slice(0, 4)
         for (let deck of deckData){
             const date = new Date(deck["created_on"]["full_time"])
 
@@ -81,11 +81,7 @@ function DeckRow() {
             }
         }
         setDecks(deckData);
-    };
-
-    const createdBy = (deck) => {
-        const account = deck.account_id? users.find(user => user.id === deck.account_id): null
-        return account? account.username : "TeamPlayMaker"
+        console.log(deckData)
     };
 
     useEffect(() => {
@@ -153,7 +149,7 @@ function DeckRow() {
                                         className="left justify-content-end"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {createdBy(deck)}
+                                            {deck.creator}
                                         </h6>
                                     </div>
                                 </Card.ImgOverlay>
